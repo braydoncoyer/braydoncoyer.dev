@@ -4,6 +4,11 @@
   "description": "A portfolio website",
   "version": "0.1.0",
   "license": "0BSD",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint:fix"
+    }
+  },
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -35,6 +40,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^4.3.0",
     "prettier": "^2.1.2"
   },
   "repository": {
