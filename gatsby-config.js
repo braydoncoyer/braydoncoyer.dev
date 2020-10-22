@@ -9,12 +9,12 @@ module.exports = {
   plugins: [
     `gatsby-plugin-postcss`,
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts-v2`,
       options: {
         fonts: [
           {
             family: 'Inter',
-            variants: [
+            weights: [
               '100',
               '200',
               '300',
