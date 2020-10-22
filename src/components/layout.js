@@ -5,9 +5,9 @@ import { Toggle } from './toggle';
 
 const Layout = ({ children }) => (
   <ThemeProvider>
-    <main>
+    <main className="max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg flex justify-center mx-auto">
       <Toggle />
-      {children}
+      <div>{children}</div>
     </main>
   </ThemeProvider>
 );

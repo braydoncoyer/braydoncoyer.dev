@@ -26,3 +26,11 @@ body {
   font-family: 'Inter', Arial, Helvetica, sans-serif;
   background: var(--color-bg-primary);
 }
+
+mark {
+  display: inline-block;
+  line-height: 0em;
+  padding-bottom: 0.5em;
+  color: var(--color-text-primary);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 40%, #c0f5ce 40%);
+}
