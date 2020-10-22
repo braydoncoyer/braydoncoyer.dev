@@ -1,0 +1,6 @@
+{
+  "extends": ["wesbos"],
+  "rules": {
+    "global-require": 0
+  }
+}
