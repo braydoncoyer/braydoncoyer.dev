@@ -6,15 +6,15 @@
   --color-bg-primary: #171923;
   --color-bg-secondary: #283141;
   --color-text-primary: #f7fafc;
-  --color-text-secondary: #e2e8f0;
+  --color-text-secondary: #a0aec0;
   --color-text-accent: #81e6d9;
 }
 
 .light {
   --color-bg-primary: #ffffff;
   --color-bg-secondary: #edf2f7;
-  --color-text-primary: #2d3748;
-  --color-text-secondary: #4a5568;
+  --color-text-primary: #161e2e;
+  --color-text-secondary: #6c7280;
   --color-text-accent: #2b6cb0;
 }
 
@@ -24,4 +24,5 @@
 
 body {
   font-family: 'Inter', Arial, Helvetica, sans-serif;
+  background: var(--color-bg-primary);
 }
