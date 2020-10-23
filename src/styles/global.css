@@ -24,7 +24,8 @@
 
 body {
   font-family: 'Inter', Arial, Helvetica, sans-serif;
-  background: var(--color-bg-primary);
+  background-color: var(--color-bg-primary);
+  transition: background-color 0.5s;
 }
 
 mark {

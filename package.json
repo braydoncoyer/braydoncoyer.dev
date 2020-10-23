@@ -27,6 +27,7 @@
     "gatsby-plugin-purgecss": "^5.0.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-icons": "^3.11.0",
     "tailwindcss": "^1.9.5"
   },
   "devDependencies": {
