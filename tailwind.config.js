@@ -16,7 +16,7 @@ module.exports = {
         secondary: 'var(--color-text-secondary)',
       },
       colors: {
-        'dark-mode-blue': '#171923',
+        'primary-green': 'var(--color-primary-green)',
       },
     },
     fontFamily: {
