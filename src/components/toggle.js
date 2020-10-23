@@ -1,18 +1,29 @@
 import React from 'react';
+import { BiMoon, BiSun } from 'react-icons/bi';
+
 import { ThemeContext } from '../helpers/themeContext';
 
 export const Toggle = () => {
   const { theme, setTheme } = React.useContext(ThemeContext);
 
-  function isDark() {
-    return theme === 'dark';
-  }
+  const handleClick = () => {
+    if (theme === 'dark') setTheme('light');
+    if (theme === 'light') setTheme('dark');
+  };
 
   return (
-    <input
-      type="checkbox"
-      checked={isDark()}
-      onChange={(e) => setTheme(e.target.checked ? 'dark' : 'light')}
-    />
+    <div>
+      {theme === 'dark' ? (
+        <BiSun
+          onClick={handleClick}
+          className="text-primary text-2xl cursor-pointer"
+        />
+      ) : (
+        <BiMoon
+          onClick={handleClick}
+          className="text-primary text-2xl cursor-pointer"
+        />
+      )}
+    </div>
   );
 };
