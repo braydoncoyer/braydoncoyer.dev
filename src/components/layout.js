@@ -9,7 +9,7 @@ const Layout = ({ children }) => (
       <div className="absolute right-0 top-0 mr-4 mt-4 md:mr-0">
         <Toggle />
       </div>
-      <div>{children}</div>
+      <div className="space-y-32 md:space-y-64">{children}</div>
     </main>
   </ThemeProvider>
 );
