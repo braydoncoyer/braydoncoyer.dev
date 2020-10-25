@@ -5,11 +5,11 @@ import { Toggle } from './toggle';
 
 const Layout = ({ children }) => (
   <ThemeProvider>
-    <main className="px-4 relative max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg flex justify-center mx-auto md:p-0">
+    <main className="px-4 relative flex justify-center mx-auto max-w-screen-sm md:max-w-screen-md md:p-0 lg:max-w-screen-lg">
       <div className="absolute right-0 top-0 mr-4 mt-4 md:mr-0">
         <Toggle />
       </div>
-      <div className="space-y-32 md:space-y-64">{children}</div>
+      <div>{children}</div>
     </main>
   </ThemeProvider>
 );
