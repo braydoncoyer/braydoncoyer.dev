@@ -9,9 +9,11 @@ export default function Home() {
   return (
     <Layout>
       <WelcomeSection />
-      <AboutSection />
-      <TimelineSection />
-      <MusicSection />
+      <div className="space-y-32">
+        <AboutSection />
+        <TimelineSection />
+        <MusicSection />
+      </div>
     </Layout>
   );
 }

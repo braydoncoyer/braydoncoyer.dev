@@ -2,7 +2,7 @@ import React from 'react';
 import { HiCheck } from 'react-icons/hi';
 
 const TimelineSection = () => (
-  <div className="space-y-8 mt-32">
+  <div className="space-y-8">
     <h1 className="text-4xl font-semibold text-primary md:text-4xl">
       <mark>Timeline</mark>
     </h1>

@@ -8,7 +8,7 @@
   --color-text-primary: #f7fafc;
   --color-text-secondary: #a0aec0;
   --color-text-accent: #81e6d9;
-  --color-primary-green: #a7f1be;
+  --color-primary-green: #81dc99;
 }
 
 .light {
@@ -17,7 +17,7 @@
   --color-text-primary: #161e2e;
   --color-text-secondary: #6c7280;
   --color-text-accent: #2b6cb0;
-  --color-primary-green: #a7f1be;
+  --color-primary-green: #c0f5ce;
 }
 
 @tailwind base;
@@ -35,5 +35,9 @@ mark {
   line-height: 0em;
   padding-bottom: 0.5em;
   color: var(--color-text-primary);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 40%, #c0f5ce 40%);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 40%,
+    var(--color-primary-green) 40%
+  );
 }
