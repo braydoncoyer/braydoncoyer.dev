@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { IoMdThumbsUp } from 'react-icons/io';
 
 const BlogItem = ({ title, description, date, reactions, slug }) => (
