@@ -40,8 +40,8 @@ const BlogSection = () => {
         <mark>Blog</mark>
       </h1>
       <p className="text-secondary">
-        Blogging is my new thing. Check out some of my most recent articles
-        below.
+        Blogging has become my recent obsession - I love sharing what I know
+        with people. Feel free to take a look at a few of my recent articles.
       </p>
       <div className="space-y-4">
         {articles

@@ -2,7 +2,7 @@ import React from 'react';
 import { IoMdThumbsUp } from 'react-icons/io';
 
 const BlogItem = ({ title, description, date, reactions, slug }) => (
-  <div className="border border-primary rounded w-full text-left p-3">
+  <div className="border-2 border-secondary rounded w-full text-left p-3">
     <a
       href={`https://blog.braydoncoyer.dev/${slug}`}
       target="_blank"
