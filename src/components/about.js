@@ -5,7 +5,7 @@ const AboutSection = () => (
     <h1 className="text-4xl font-semibold text-primary md:text-4xl">
       About <mark>Me</mark>
     </h1>
-    <div className="space-y-4 text-base font-thin text-secondary">
+    <div className="space-y-4 text-secondary text-sm">
       <p>
         My name is Braydon Coyer. I’m a senior full stack engineer with a
         passion for everything front-end.

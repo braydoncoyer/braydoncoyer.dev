@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { BsBookmarksFill } from 'react-icons/bs';
 import axios from 'axios';
 import BlogItem from './blog-item';
 
@@ -39,10 +40,10 @@ const BlogSection = () => {
       <h1 className="text-4xl font-semibold text-primary md:text-4xl">
         <mark>Blog</mark>
       </h1>
-      <p className="text-secondary">
-        Blogging is my new thing. Check out some of my most recent articles
-        below.
-      </p>
+      {/* <p className="text-secondary">
+        Blogging has become my recent obsession - I love sharing what I know
+        with people. Feel free to take a look at a few of my recent articles.
+      </p> */}
       <div className="space-y-4">
         {articles
           ? articles
@@ -58,6 +59,20 @@ const BlogSection = () => {
                 />
               ))
           : null}
+      </div>
+      <div className="w-full flex justify-center items-center">
+        <div className="cursor-pointer px-4 py-2 rounded text-primary transition duration-500 ease-in-out md:hover:bg-secondary">
+          <a
+            href="https://blog.braydoncoyer.dev/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <div className="flex justify-around items-center space-x-4">
+              <p>Read More</p>
+              <BsBookmarksFill />
+            </div>
+          </a>
+        </div>
       </div>
     </div>
   );
