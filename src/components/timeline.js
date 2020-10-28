@@ -9,7 +9,7 @@ const TimelineSection = () => (
     {/* Year */}
     <div className="flex justify-center items-center space-x-4">
       <h2 className="text-2xl font-semibold text-primary">2020</h2>
-      <div className="border-b w-full border-gray-600" />
+      <div className="border-b-2 w-full border-secondary" />
     </div>
     {/* Item */}
     <div className="flex ml-4">
@@ -73,7 +73,7 @@ const TimelineSection = () => (
     {/* Year */}
     <div className="flex justify-center items-center space-x-4">
       <h2 className="text-2xl font-semibold text-primary">2019</h2>
-      <div className="border-b w-full border-gray-600" />
+      <div className="border-b-2 w-full border-secondary" />
     </div>
 
     {/* Item */}

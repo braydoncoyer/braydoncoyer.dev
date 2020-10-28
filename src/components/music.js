@@ -8,7 +8,7 @@ const MusicSection = () => (
     <p className="text-secondary">
       Lord of the Rings is my favorite movie series ever. Not only is it a
       beautiful movie, but the music score transports you to a magical place.
-      When coding, I pop in some AirPods and turn on this playlist.
+      When coding, I pop in some AirPods and turn to this playlist.
     </p>
     <div>
       <iframe
