@@ -12,7 +12,7 @@ export const Toggle = () => {
   };
 
   return (
-    <div>
+    <div className="transition duration-500 ease-in-out rounded-full p-2 hover:bg-secondary ">
       {theme === 'dark' ? (
         <BiSun
           onClick={handleClick}
