@@ -68,7 +68,7 @@ const BlogSection = () => {
             rel="noreferrer"
           >
             <div className="flex justify-around items-center space-x-4">
-              <p>Read More</p>
+              <p>Read More Articles</p>
               <BsBookmarksFill />
             </div>
           </a>
