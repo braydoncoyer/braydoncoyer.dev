@@ -46,6 +46,6 @@ mark {
   height: auto;
   position: fixed;
   top: 50vh;
-  right: 20px;
+  right: 30px;
   transform: translateY(-50%);
 }
