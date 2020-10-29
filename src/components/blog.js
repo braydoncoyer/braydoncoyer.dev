@@ -61,7 +61,7 @@ const BlogSection = () => {
           : null}
       </div>
       <div className="w-full flex justify-center items-center">
-        <div className="cursor-pointer px-4 py-2 rounded text-primary transition duration-500 ease-in-out md:hover:bg-secondary">
+        <div className="cursor-pointer px-4 py-2 rounded text-secondary transition duration-500 ease-in-out md:hover:bg-secondary">
           <a
             href="https://blog.braydoncoyer.dev/"
             target="_blank"
