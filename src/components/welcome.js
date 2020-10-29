@@ -5,7 +5,7 @@ const WelcomeSection = () => (
   <div className="min-h-screen flex justify-center items-center">
     <div className="flex flex-col items-center space-y-8 md:flex-row-reverse md:justify-between">
       <img className="w-1/3 md:w-1/4" src={Memoji} alt="Memoji" />
-      <div className="text-center space-y-2 md:text-left">
+      <div className="space-y-2 text-left">
         <h1 className="text-4xl font-semibold text-primary md:text-6xl">
           Hi, I'm <mark>Braydon</mark> 👋
         </h1>
