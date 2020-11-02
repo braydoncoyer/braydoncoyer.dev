@@ -5,7 +5,7 @@ const MusicSection = () => (
     <h1 className="text-4xl font-semibold text-primary md:text-4xl">
       <mark>Tunes</mark>
     </h1>
-    <p className="text-secondary">
+    <p className="text-secondary text-sm">
       Lord of the Rings is my favorite movie series ever. Not only is it a
       beautiful movie, but the music score transports you to a magical place.
       When coding, I pop in some AirPods and turn to this playlist.

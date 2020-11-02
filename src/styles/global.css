@@ -49,3 +49,11 @@ mark {
   right: 30px;
   transform: translateY(-50%);
 }
+
+.toggle-mode {
+  height: auto;
+  position: fixed;
+  top: 30px;
+  right: 32px;
+  /* transform: translateY(-50%); */
+}
