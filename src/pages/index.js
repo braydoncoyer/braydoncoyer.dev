@@ -7,6 +7,7 @@ import AboutSection from '../components/about';
 import TimelineSection from '../components/timeline';
 import MusicSection from '../components/music';
 import BlogSection from '../components/blog';
+import Footer from '../components/footer';
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
             <BlogSection />
             <TimelineSection />
             <MusicSection />
+            <Footer />
           </div>
         </Layout>
       </SocialIcons>

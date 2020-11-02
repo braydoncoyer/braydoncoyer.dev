@@ -12,11 +12,11 @@ const TimelineSection = () => (
       <div className="border-b-2 w-full border-secondary" />
     </div>
     {/* Item */}
-    <div className="flex ml-4">
-      <div className="w-5 h-5 bg-primary-green rounded-full flex justify-center items-center">
+    <div className="flex justify-around ml-4">
+      <div className="w-5 h-5 flex-none bg-primary-green rounded-full flex justify-center items-center">
         <HiCheck className="text-white" />
       </div>
-      <div className="ml-4">
+      <div className="ml-4 flex-grow">
         <p className="text-primary text-base font-semibold">
           Launched updated portfolio 🙌
         </p>
@@ -28,10 +28,10 @@ const TimelineSection = () => (
     </div>
     {/* Item */}
     <div className="flex ml-4">
-      <div className="w-5 h-5 bg-primary-green rounded-full flex justify-center items-center">
+      <div className="w-5 h-5 flex-none bg-primary-green rounded-full flex justify-center items-center">
         <HiCheck className="text-white" />
       </div>
-      <div className="ml-4">
+      <div className="ml-4 flex-grow">
         <p className="text-primary text-base font-semibold">
           Started a blog ✏️
         </p>
@@ -44,10 +44,10 @@ const TimelineSection = () => (
     </div>
     {/* Item */}
     <div className="flex ml-4">
-      <div className="w-5 h-5 bg-primary-green rounded-full flex justify-center items-center">
+      <div className="w-5 h-5 flex-none bg-primary-green rounded-full flex justify-center items-center">
         <HiCheck className="text-white" />
       </div>
-      <div className="ml-4">
+      <div className="ml-4 flex-grow">
         <p className="text-primary text-base font-semibold">Got hitched 👰</p>
         <p className="text-secondary text-sm mt-1">
           After dating for 4 years, I married the woman I've loved since
@@ -57,10 +57,10 @@ const TimelineSection = () => (
     </div>
     {/* Item */}
     <div className="flex ml-4">
-      <div className="w-5 h-5 bg-primary-green rounded-full flex justify-center items-center">
+      <div className="w-5 h-5 flex-none bg-primary-green rounded-full flex justify-center items-center">
         <HiCheck className="text-white" />
       </div>
-      <div className="ml-4">
+      <div className="ml-4 flex-grow">
         <p className="text-primary text-base font-semibold">
           Started working from home 👨‍💻
         </p>
@@ -78,10 +78,10 @@ const TimelineSection = () => (
 
     {/* Item */}
     <div className="flex ml-4">
-      <div className="w-5 h-5 bg-primary-green rounded-full flex justify-center items-center">
+      <div className="w-5 h-5 flex-none bg-primary-green rounded-full flex justify-center items-center">
         <HiCheck className="text-white" />
       </div>
-      <div className="ml-4">
+      <div className="ml-4 flex-grow">
         <p className="text-primary text-base font-semibold">
           Health care AI 🧰
         </p>
@@ -94,10 +94,10 @@ const TimelineSection = () => (
 
     {/* Item */}
     <div className="flex ml-4">
-      <div className="w-5 h-5 bg-primary-green rounded-full flex justify-center items-center">
+      <div className="w-5 h-5 flex-none bg-primary-green rounded-full flex justify-center items-center">
         <HiCheck className="text-white" />
       </div>
-      <div className="ml-4">
+      <div className="ml-4 flex-grow">
         <p className="text-primary text-base font-semibold">
           Launched NgLimeade 🍞
         </p>
@@ -110,10 +110,10 @@ const TimelineSection = () => (
 
     {/* Item */}
     <div className="flex ml-4">
-      <div className="w-5 h-5 bg-primary-green rounded-full flex justify-center items-center">
+      <div className="w-5 h-5 flex-none bg-primary-green rounded-full flex justify-center items-center">
         <HiCheck className="text-white" />
       </div>
-      <div className="ml-4">
+      <div className="ml-4 flex-grow">
         <p className="text-primary text-base font-semibold">
           Started new job at Cognizant 🔧
         </p>
@@ -126,10 +126,10 @@ const TimelineSection = () => (
 
     {/* Item */}
     <div className="flex ml-4">
-      <div className="w-5 h-5 bg-primary-green rounded-full flex justify-center items-center">
+      <div className="w-5 h-5 flex-none bg-primary-green rounded-full flex justify-center items-center">
         <HiCheck className="text-white" />
       </div>
-      <div className="ml-4">
+      <div className="ml-4 flex-grow">
         <p className="text-primary text-base font-semibold">Got engaged 💍</p>
         <p className="text-secondary text-sm mt-1">
           I asked my favorite person to marry me. She said yes!
