@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BsBookmarksFill } from 'react-icons/bs';
+import { GiBookCover } from 'react-icons/gi';
 import axios from 'axios';
 import BlogItem from './blog-item';
 
@@ -67,9 +67,9 @@ const BlogSection = () => {
             target="_blank"
             rel="noreferrer"
           >
-            <div className="flex justify-around items-center space-x-4">
+            <div className="flex justify-around items-center space-x-4 font-medium">
               <p>Read More Articles</p>
-              <BsBookmarksFill />
+              <GiBookCover className="text-lg" />
             </div>
           </a>
         </div>
