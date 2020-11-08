@@ -51,6 +51,17 @@ export default function Toolbox() {
               <li>Integrated terminal</li>
             </ul>
           </div>
+
+          <div className="space-y-4">
+            <h2 className="text-3xl font-semibold text-primary md:text-3xl">
+              Misc
+            </h2>
+            <ul className="text-secondary">
+              <li>Clubhouse - A free product management tool</li>
+              <li>Bear - A beautiful note-taking application</li>
+              <li>Things 3 - A beautiful and easy-to-use todo application</li>
+            </ul>
+          </div>
         </Layout>
       </SocialIcons>
     </div>
