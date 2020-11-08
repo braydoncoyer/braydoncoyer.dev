@@ -2,6 +2,7 @@ import React from 'react';
 
 import { FaTwitter, FaCodepen, FaLinkedin } from 'react-icons/fa';
 import { SiHashnode } from 'react-icons/si';
+import { Link } from 'gatsby';
 
 const Footer = () => (
   <div className="my-4 text-secondary text-sm">
@@ -34,7 +35,9 @@ const Footer = () => (
     </div>
     <div className="flex justify-around mb-6">
       <div className="w-1/2 md:w-1/4 flex justify-around">
-        <p className="cursor-pointer">/workflow</p>
+        <Link className="cursor-pointer" to="/toolbox/">
+          /toolbox
+        </Link>
         <p className="cursor-pointer">/blog</p>
         <p className="cursor-pointer">/resume</p>
       </div>
