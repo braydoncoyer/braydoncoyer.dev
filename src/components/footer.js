@@ -38,8 +38,20 @@ const Footer = () => (
         <Link className="cursor-pointer" to="/toolbox/">
           /toolbox
         </Link>
-        <p className="cursor-pointer">/snippets</p>
-        <p className="cursor-pointer">/resume</p>
+        <a
+          href="https://www.notion.so/9f35162787e0448094188b66304cf9f6?v=1b9c4e146edf46148fe7b1c5346cbea4"
+          target="_blank"
+          rel="noreferrer"
+        >
+          /snippets
+        </a>
+        <a
+          href="https://www.notion.so/Resume-395af92748204ac6a7078cce24132331"
+          target="_blank"
+          rel="noreferrer"
+        >
+          /resume
+        </a>
       </div>
     </div>
   </div>
