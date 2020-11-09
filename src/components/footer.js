@@ -38,7 +38,7 @@ const Footer = () => (
         <Link className="cursor-pointer" to="/toolbox/">
           /toolbox
         </Link>
-        <p className="cursor-pointer">/blog</p>
+        <p className="cursor-pointer">/snippets</p>
         <p className="cursor-pointer">/resume</p>
       </div>
     </div>
