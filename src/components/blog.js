@@ -14,6 +14,7 @@ const GET_ARTICLES = `
     publication {
       posts(page: 0) {
         title
+        coverImage
         slug
         dateAdded
         totalReactions
@@ -45,20 +46,31 @@ const BlogSection = () => {
         with people. Feel free to take a look at a few of my recent articles.
       </p> */}
       <div className="space-y-4">
-        {articles
+        {/* {articles
           ? articles
               .slice(0, MAX_ARTICLES)
               .map((item, index) => (
                 <BlogItem
                   key={index}
                   title={item.title}
+                  image={item.coverImage}
                   description={item.brief}
                   date={item.dateAdded}
                   slug={item.slug}
                   reactions={item.totalReactions}
                 />
               ))
-          : null}
+          : null} */}
+        {articles ? (
+          <BlogItem
+            title={articles[0].title}
+            image={articles[0].coverImage}
+            description={articles[0].brief}
+            slug={articles[0].slug}
+            reactions={articles[0].totalReactions}
+            featured
+          />
+        ) : null}
       </div>
       <div className="w-full flex justify-center items-center">
         <div className="cursor-pointer px-4 py-2 rounded text-secondary transition duration-500 ease-in-out md:hover:bg-secondary">
