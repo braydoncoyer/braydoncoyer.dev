@@ -4,7 +4,7 @@ import { SiHashnode } from 'react-icons/si';
 
 const SocialIcons = ({ children }) => (
   <div>
-    <div className="social-icons hidden md:block md:text-2xl md:text-secondary">
+    <div className="social-icons hidden md:block md:text-2xl md:text-coolGray-500">
       <a
         href="https://twitter.com/BraydonCoyer"
         target="_blank"

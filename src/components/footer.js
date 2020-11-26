@@ -6,7 +6,7 @@ import { Link } from 'gatsby';
 
 const Footer = () => (
   <div className="my-4 text-secondary text-sm">
-    <div className="my-6 w-full flex justify-evenly items-center text-xl text-secondary md:hidden">
+    <div className="my-6 w-full flex justify-evenly items-center text-xl text-coolGray-500 md:hidden">
       <a
         href="https://twitter.com/BraydonCoyer"
         target="_blank"
@@ -33,7 +33,7 @@ const Footer = () => (
         <FaLinkedin />
       </a>
     </div>
-    <div className="flex justify-around mb-6">
+    <div className="flex justify-around mb-6 text-coolGray-500">
       <div className="w-1/2 md:w-1/4 flex justify-around">
         <Link className="cursor-pointer" to="/toolbox/">
           /toolbox

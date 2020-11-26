@@ -21,17 +21,20 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
+    "autoprefixer": "^10.0.2",
     "axios": "^0.21.0",
+    "dayjs": "^1.9.6",
     "gatsby": "^2.24.79",
     "gatsby-plugin-google-fonts-v2": "0.0.6",
     "gatsby-plugin-postcss": "^3.0.3",
     "gatsby-plugin-purgecss": "^5.0.0",
     "gatsby-plugin-react-helmet": "^3.3.14",
+    "postcss": "^8.1.10",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
     "react-icons": "^3.11.0",
-    "tailwindcss": "^1.9.5"
+    "tailwindcss": "^2.0.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",

@@ -12,16 +12,16 @@ export const Toggle = () => {
   };
 
   return (
-    <div className="transition duration-500 ease-in-out rounded-full p-2 hover:bg-secondary ">
+    <div className="transition duration-500 ease-in-out rounded-full p-2">
       {theme === 'dark' ? (
         <BiSun
           onClick={handleClick}
-          className="text-secondary text-2xl cursor-pointer"
+          className="text-coolGray-500 text-2xl cursor-pointer"
         />
       ) : (
         <BiMoon
           onClick={handleClick}
-          className="text-secondary text-2xl cursor-pointer"
+          className="text-coolGray-500 text-2xl cursor-pointer"
         />
       )}
     </div>
