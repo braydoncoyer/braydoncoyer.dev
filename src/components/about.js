@@ -5,7 +5,7 @@ const AboutSection = () => (
     <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-purple-600 mb-3">
       About Me
     </h2>
-    <p className="text-coolGray-900 text-3xl sm:text-5xl lg:text-6xl leading-none font-extrabold tracking-tight mb-8">
+    <p className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-6xl leading-none font-extrabold tracking-tight mb-8">
       Here's my story.
     </p>
     <div className="text-coolGray-500 max-w-4xl text-lg sm:text-2xl font-normal sm:leading-10 space-y-6 mb-6">
