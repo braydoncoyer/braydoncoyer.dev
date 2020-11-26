@@ -8,7 +8,7 @@ const WelcomeSection = () => (
     <div className="flex flex-col items-center space-y-8 md:flex-row-reverse md:justify-between">
       <img className="w-1/3 md:w-1/4" src={Memoji} alt="Memoji" />
       <div className="space-y-2 text-left">
-        <h1 className="text-coolGray-900 text-3xl sm:text-5xl lg:text-6xl leading-none font-extrabold tracking-tight mb-8">
+        <h1 className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-6xl leading-none font-extrabold tracking-tight mb-8">
           Hi, I'm Braydon 👋
         </h1>
         <p className="text-coolGray-500 max-w-4xl text-lg sm:text-2xl font-normal sm:leading-10 space-y-6 mb-6">

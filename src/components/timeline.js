@@ -6,12 +6,12 @@ const TimelineSection = () => (
     <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-lightBlue-500 mb-3">
       Timeline
     </h2>
-    <p className="text-coolGray-900 text-3xl sm:text-5xl lg:text-6xl leading-none font-extrabold tracking-tight mb-12">
+    <p className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-6xl leading-none font-extrabold tracking-tight mb-12">
       Some highlights of my life.
     </p>
     {/* Year */}
     <div className="flex justify-center items-center space-x-4 mb-11">
-      <h2 className="text-2xl lg:text-3xl font-extrabold text-coolGray-900">
+      <h2 className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white">
         2020
       </h2>
       <div className="border-b-2 w-full text-coolGray-500" />
@@ -22,7 +22,7 @@ const TimelineSection = () => (
         <HiCheck />
       </div>
       <div className="ml-4 flex-grow">
-        <p className="text-coolGray-900 font-semibold">
+        <p className="text-coolGray-900 dark:text-white font-semibold">
           Launched updated portfolio 🙌
         </p>
         <p className="text-coolGray-500 mt-1">
@@ -37,7 +37,9 @@ const TimelineSection = () => (
         <HiCheck />
       </div>
       <div className="ml-4 flex-grow">
-        <p className="text-coolGray-900 font-semibold">Started a blog ✏️</p>
+        <p className="text-coolGray-900 dark:text-white font-semibold">
+          Started a blog ✏️
+        </p>
         <p className="text-coolGray-500 mt-1">
           In October, I decided it was time to start my development blog. I had
           been putting it off for years and finally made the jump. You can read
@@ -51,7 +53,9 @@ const TimelineSection = () => (
         <HiCheck />
       </div>
       <div className="ml-4 flex-grow">
-        <p className="text-coolGray-900 font-semibold">Got hitched 👰</p>
+        <p className="text-coolGray-900 dark:text-white font-semibold">
+          Got hitched 👰
+        </p>
         <p className="text-coolGray-500 mt-1">
           After dating for 4 years, I married the woman I've loved since
           middle-school.
@@ -64,7 +68,7 @@ const TimelineSection = () => (
         <HiCheck />
       </div>
       <div className="ml-4 flex-grow">
-        <p className="text-coolGray-900 font-semibold">
+        <p className="text-coolGray-900 dark:text-white font-semibold">
           Started working from home 👨‍💻
         </p>
         <p className="text-coolGray-500 mt-1">
@@ -76,7 +80,7 @@ const TimelineSection = () => (
 
     {/* Year */}
     <div className="flex justify-center items-center space-x-4 mb-11">
-      <h2 className="text-2xl lg:text-3xl font-extrabold text-coolGray-900">
+      <h2 className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white">
         2019
       </h2>
       <div className="border-b-2 w-full text-coolGray-500" />
@@ -88,7 +92,9 @@ const TimelineSection = () => (
         <HiCheck />
       </div>
       <div className="ml-4 flex-grow">
-        <p className="text-coolGray-900 font-semibold">Health care AI 🧰</p>
+        <p className="text-coolGray-900 dark:text-white font-semibold">
+          Health care AI 🧰
+        </p>
         <p className="text-coolGray-500 mt-1">
           I was placed in a team to architect and lead their front-end team to
           produce a component library for several health care industry leaders.
@@ -102,7 +108,9 @@ const TimelineSection = () => (
         <HiCheck />
       </div>
       <div className="ml-4 flex-grow">
-        <p className="text-coolGray-900 font-semibold">Launched NgLimeade 🍞</p>
+        <p className="text-coolGray-900 dark:text-white font-semibold">
+          Launched NgLimeade 🍞
+        </p>
         <p className="text-coolGray-500 mt-1">
           Launched an Angular toast library to get toast notifications up and
           running in a project within 30 seconds.
@@ -116,7 +124,7 @@ const TimelineSection = () => (
         <HiCheck />
       </div>
       <div className="ml-4 flex-grow">
-        <p className="text-coolGray-900 font-semibold">
+        <p className="text-coolGray-900 dark:text-white font-semibold">
           Started new job at Cognizant 🔧
         </p>
         <p className="text-coolGray-500 mt-1">
@@ -132,7 +140,9 @@ const TimelineSection = () => (
         <HiCheck />
       </div>
       <div className="ml-4 flex-grow">
-        <p className="text-coolGray-900 font-semibold">Got engaged 💍</p>
+        <p className="text-coolGray-900 dark:text-white font-semibold">
+          Got engaged 💍
+        </p>
         <p className="text-coolGray-500 mt-1">
           I asked my favorite person to marry me. She said yes!
         </p>
