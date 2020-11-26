@@ -1,8 +1,6 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import { BsBoxArrowUpRight } from 'react-icons/bs';
 import { BiCalendarEvent } from 'react-icons/bi';
-import { IoMdThumbsUp } from 'react-icons/io';
 import { FaStar } from 'react-icons/fa';
 
 const BlogItem = ({
@@ -22,26 +20,29 @@ const BlogItem = ({
       <div className="md:ml-8">
         <div className="space-y-2">
           {featured ? (
-            <div className="mt-4 inline-flex items-center rounded bg-primary-green px-1 space-x-2 text-white text-sm md:mt-0">
-              <FaStar /> <p className="uppercase">featured</p>
+            <div className="mt-4 inline-flex items-center rounded bg-gradient-to-br from-purple-500 to-indigo-500 py-1 px-3 space-x-1 text-trueGray-50 text-sm md:mt-0">
+              <FaStar /> <p className="uppercase font-semibold">featured</p>
             </div>
           ) : null}
 
-          <h1 className="text-lg font-semibold md:text-2xl">{title}</h1>
-          <div className="flex items-center space-x-2 text-secondary">
+          <h1 className="text-2xl lg:text-3xl font-extrabold text-coolGray-900">
+            {title}
+          </h1>
+          <div className="flex items-center space-x-2 text-coolGray-500 text-base sm:text-lg lg:text-base xl:text-lg">
             <BiCalendarEvent />
             <p>{date.format('MMM DD, YYYY')}</p>
           </div>
-          <p className="text-secondary md:break-normal">{description}</p>
+          <p className="text-coolGray-500 text-base sm:text-lg lg:text-base xl:text-lg">
+            {description}
+          </p>
         </div>
         <a
           href={`https://blog.braydoncoyer.dev/${slug}`}
           target="_blank"
           rel="noreferrer"
         >
-          <div className="flex items-center text-secondary space-x-2 mt-2">
-            <p>Read article</p>
-            <BsBoxArrowUpRight />
+          <div className="inline-flex text-base sm:text-lg lg:text-base xl:text-lg font-medium transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-violet-600 hover:text-violet-800 mt-2">
+            <p>Read article -></p>
           </div>
         </a>
       </div>
