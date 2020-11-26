@@ -63,11 +63,12 @@ const BlogSection = () => {
           : null} */}
         {articles ? (
           <BlogItem
-            title={articles[0].title}
-            image={articles[0].coverImage}
-            description={articles[0].brief}
-            slug={articles[0].slug}
-            reactions={articles[0].totalReactions}
+            title={articles[1].title}
+            image={articles[1].coverImage}
+            description={articles[1].brief}
+            slug={articles[1].slug}
+            reactions={articles[1].totalReactions}
+            publishDate={articles[1].dateAdded}
             featured
           />
         ) : null}

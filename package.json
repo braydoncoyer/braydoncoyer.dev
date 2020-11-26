@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "axios": "^0.21.0",
+    "dayjs": "^1.9.6",
     "gatsby": "^2.24.79",
     "gatsby-plugin-google-fonts-v2": "0.0.6",
     "gatsby-plugin-postcss": "^3.0.3",
