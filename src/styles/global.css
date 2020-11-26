@@ -26,11 +26,11 @@
 
 body {
   font-family: "Inter", Arial, Helvetica, sans-serif;
-  background-color: var(--color-bg-primary);
-  transition: background-color 0.5s;
+  /* background-color: var(--color-bg-primary);
+  transition: background-color 0.5s; */
 }
 
-mark {
+/* mark {
   display: inline-block;
   line-height: 0em;
   padding-bottom: 0.5em;
@@ -39,7 +39,7 @@ mark {
     rgba(255, 255, 255, 0) 40%,
     var(--color-primary-green) 40%
   );
-}
+} */
 
 .social-icons {
   height: auto;

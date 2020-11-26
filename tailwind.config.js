@@ -6,8 +6,11 @@ module.exports = {
     // purgeLayersByDefault: true,
   },
   purge: [],
+  darkMode: 'class',
   theme: {
     colors: {
+      white: colors.white,
+      black: colors.black,
       blueGray: colors.blueGray,
       coolGray: colors.coolGray,
       gray: colors.gray,
