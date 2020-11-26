@@ -1,5 +1,5 @@
 :root {
-  @apply .light;
+  @apply light;
 }
 
 .dark {
@@ -34,7 +34,6 @@ mark {
   display: inline-block;
   line-height: 0em;
   padding-bottom: 0.5em;
-  color: var(--color-text-primary);
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0) 40%,
