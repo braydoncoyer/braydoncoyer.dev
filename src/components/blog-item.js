@@ -25,7 +25,7 @@ const BlogItem = ({
             </div>
           ) : null}
 
-          <h1 className="text-2xl lg:text-3xl font-extrabold text-coolGray-900">
+          <h1 className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white">
             {title}
           </h1>
           <div className="flex items-center space-x-2 text-coolGray-500 text-base sm:text-lg lg:text-base xl:text-lg">
