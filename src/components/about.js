@@ -2,7 +2,7 @@ import React from 'react';
 
 const AboutSection = () => (
   <div className="mb-10 sm:mb-16 md:mb-20">
-    <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-purple-600 mb-3">
+    <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-orange-600 dark:text-orange-500 mb-3">
       About Me
     </h2>
     <p className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-6xl leading-none font-extrabold tracking-tight mb-8">

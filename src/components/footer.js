@@ -33,7 +33,7 @@ const Footer = () => (
         <FaLinkedin />
       </a>
     </div>
-    <div className="flex justify-around mb-6 text-coolGray-500">
+    <div className="flex justify-around mb-6 text-coolGray-500 dark:text-coolGray-400">
       <div className="w-1/2 md:w-1/4 flex justify-around">
         <Link className="cursor-pointer" to="/toolbox/">
           /toolbox
