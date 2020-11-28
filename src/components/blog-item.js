@@ -41,7 +41,7 @@ const BlogItem = ({
           target="_blank"
           rel="noreferrer"
         >
-          <div className="inline-flex text-base sm:text-lg lg:text-base xl:text-lg font-medium transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-violet-600 hover:text-violet-800 dark:text-violet-500 dark:hover:text-violet-700 mt-2">
+          <div className="inline-flex text-base sm:text-lg lg:text-base xl:text-lg font-medium transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-purple-600 hover:text-purple-700 dark:text-purple-500 dark:hover:text-purple-600 mt-2">
             <p>Read article -></p>
           </div>
         </a>

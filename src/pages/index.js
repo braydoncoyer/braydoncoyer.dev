@@ -5,6 +5,7 @@ import SocialIcons from '../components/social';
 import WelcomeSection from '../components/welcome';
 import AboutSection from '../components/about';
 import TimelineSection from '../components/timeline';
+import MarqueeSection from '../components/marquee';
 import MusicSection from '../components/music';
 import BlogSection from '../components/blog';
 import Footer from '../components/footer';
@@ -28,6 +29,7 @@ export default function Home() {
             <Footer />
           </div>
         </Layout>
+        <MarqueeSection />
       </SocialIcons>
     </div>
   );
