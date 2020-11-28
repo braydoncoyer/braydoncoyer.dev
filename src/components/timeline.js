@@ -2,7 +2,7 @@ import React from 'react';
 import { HiCheck } from 'react-icons/hi';
 
 const TimelineSection = () => (
-  <div className="mb-10 sm:mb-16 md:mb-20">
+  <div className="mb-10 sm:mb-16 md:mb-40">
     <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-lightBlue-500 dark:text-lightBlue-400 mb-3">
       Timeline
     </h2>
