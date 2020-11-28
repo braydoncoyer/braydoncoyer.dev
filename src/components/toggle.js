@@ -16,12 +16,12 @@ export const Toggle = () => {
       {theme === 'dark' ? (
         <BiSun
           onClick={handleClick}
-          className="text-coolGray-500 text-2xl cursor-pointer"
+          className="text-coolGray-500 dark:text-coolGray-400 text-2xl cursor-pointer"
         />
       ) : (
         <BiMoon
           onClick={handleClick}
-          className="text-coolGray-500 text-2xl cursor-pointer"
+          className="text-coolGray-500 dark:text-coolGray-400 text-2xl cursor-pointer"
         />
       )}
     </div>

@@ -4,7 +4,7 @@ import Layout from '../components/layout';
 import SocialIcons from '../components/social';
 
 const ToolboxItem = ({ href, title, description }) => (
-  <li>
+  <li className="text-coolGray-500 dark:text-coolGray-400 text-base sm:text-lg lg:text-base xl:text-lg">
     <a href={href} target="_blank" rel="noreferrer" className="underline">
       {title}
     </a>
@@ -22,20 +22,18 @@ export default function Toolbox() {
       </Helmet>
       <SocialIcons>
         <Layout>
-          <div className="space-y-12">
+          <div className="space-y-12 w-full">
             <div className="space-y-4">
-              <h1 className="text-4xl font-semibold text-primary md:text-4xl">
-                <mark>Toolbox</mark>
-              </h1>
-              <p className="text-secondary">
-                Here's a glance of the software and hardware I use on a
-                day-to-day basis. This list is ever growning, so check back
-                every hot minute.
+              <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-orange-600 dark:text-orange-500 mb-3">
+                Toolbox
+              </h2>
+              <p className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-6xl leading-none font-extrabold tracking-tight mb-8">
+                Here is what I use on a day-to-day basis.
               </p>
             </div>
 
             <div className="space-y-4">
-              <h2 className="text-2xl font-semibold text-primary">
+              <h2 className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white">
                 Code Editor & Extensions
               </h2>
               <ul className="text-secondary ml-4 space-y-2 list-disc">
@@ -80,7 +78,9 @@ export default function Toolbox() {
             </div>
 
             <div className="space-y-4">
-              <h2 className="text-2xl font-semibold text-primary">Terminal</h2>
+              <h2 className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white">
+                Terminal
+              </h2>
               <ul className="text-secondary ml-4 space-y-2 list-disc">
                 <ToolboxItem
                   href="https://hyper.is/"
@@ -93,19 +93,27 @@ export default function Toolbox() {
                   description="A beautiful theme for the Hyper terminal
                   based on the Night Owl VSCode theme"
                 />
-                <li>VSCode integrated terminal</li>
+                <li className="text-coolGray-500 dark:text-coolGray-400 text-base sm:text-lg lg:text-base xl:text-lg">
+                  VSCode integrated terminal
+                </li>
               </ul>
             </div>
 
             <div className="space-y-4">
-              <h2 className="text-2xl font-semibold text-primary">Hardware</h2>
+              <h2 className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white">
+                Hardware
+              </h2>
               <ul className="text-secondary ml-4 space-y-2 list-disc">
-                <li>Macbook Pro 2017, 2.8 GHz Quad-Core Intel Core i7</li>
+                <li className="text-coolGray-500 dark:text-coolGray-400 text-base sm:text-lg lg:text-base xl:text-lg">
+                  Macbook Pro 2017, 2.8 GHz Quad-Core Intel Core i7
+                </li>
                 <ToolboxItem
                   href="https://www.amazon.com/Apple-Keyboard-Numeric-Wireless-Rechargable/dp/B071ZZTNBM/ref=sr_1_3?crid=1WY4MOV63R6M7&dchild=1&keywords=apple+magic+keyboard+with+numeric+keypad&qid=1604938105&sprefix=Apple+Magic+Keyboard+with+nu%2Caps%2C172&sr=8-3"
                   title="Apple Magic Keyboard with Numeric Keypad"
                 />
-                <li>Apple Magic Mouse</li>
+                <li className="text-coolGray-500 dark:text-coolGray-400 text-base sm:text-lg lg:text-base xl:text-lg">
+                  Apple Magic Mouse
+                </li>
                 <ToolboxItem
                   href="https://www.amazon.com/AOC-AG493UCX-Immersive-Adaptive-Sync-Adjustable/dp/B07ZSGR4CH/ref=sr_1_3?crid=QREU82WQU8EE&dchild=1&keywords=aoc+agon+49+ultrawide+curved+gaming+monitor&qid=1604938356&sprefix=AOC+AGON+49%2Caps%2C165&sr=8-3"
                   title="AOC AGON 49-inch curved monitor"
@@ -118,7 +126,7 @@ export default function Toolbox() {
             </div>
 
             <div className="space-y-4">
-              <h2 className="text-2xl font-semibold text-primary">
+              <h2 className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white">
                 Miscellaneous
               </h2>
               <ul className="text-secondary ml-4 space-y-2 list-disc">

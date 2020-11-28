@@ -20,19 +20,19 @@ const BlogItem = ({
       <div className="md:ml-8">
         <div className="space-y-2">
           {featured ? (
-            <div className="mt-4 inline-flex items-center rounded bg-gradient-to-br from-purple-500 to-indigo-500 py-1 px-3 space-x-1 text-trueGray-50 text-sm md:mt-0">
+            <div className="mt-4 inline-flex items-center rounded bg-gradient-to-br from-purple-500 to-indigo-500 py-0.5 px-2 space-x-1 text-trueGray-50 text-sm md:mt-0">
               <FaStar /> <p className="uppercase font-semibold">featured</p>
             </div>
           ) : null}
 
-          <h1 className="text-2xl lg:text-3xl font-extrabold text-coolGray-900">
+          <h1 className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white">
             {title}
           </h1>
-          <div className="flex items-center space-x-2 text-coolGray-500 text-base sm:text-lg lg:text-base xl:text-lg">
+          <div className="flex items-center space-x-2 text-coolGray-500 dark:text-coolGray-400 text-base sm:text-lg lg:text-base xl:text-lg">
             <BiCalendarEvent />
             <p>{date.format('MMM DD, YYYY')}</p>
           </div>
-          <p className="text-coolGray-500 text-base sm:text-lg lg:text-base xl:text-lg">
+          <p className="text-coolGray-500 dark:text-coolGray-400 text-base sm:text-lg lg:text-base xl:text-lg">
             {description}
           </p>
         </div>
@@ -41,7 +41,7 @@ const BlogItem = ({
           target="_blank"
           rel="noreferrer"
         >
-          <div className="inline-flex text-base sm:text-lg lg:text-base xl:text-lg font-medium transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-violet-600 hover:text-violet-800 mt-2">
+          <div className="inline-flex text-base sm:text-lg lg:text-base xl:text-lg font-medium transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-violet-600 hover:text-violet-800 dark:text-violet-500 dark:hover:text-violet-700 mt-2">
             <p>Read article -></p>
           </div>
         </a>
