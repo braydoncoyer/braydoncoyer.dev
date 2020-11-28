@@ -23,13 +23,13 @@ export default function Home() {
           <WelcomeSection />
           <div className="space-y-32">
             <AboutSection />
+            <MarqueeSection />
             <BlogSection />
             <TimelineSection />
             <MusicSection />
             <Footer />
           </div>
         </Layout>
-        <MarqueeSection />
       </SocialIcons>
     </div>
   );
