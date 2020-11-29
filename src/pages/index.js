@@ -1,5 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { ThemeProvider } from '../helpers/themeContext';
+import Toggle from '../components/toggle';
 import Layout from '../components/layout';
 import SocialIcons from '../components/social';
 import WelcomeSection from '../components/welcome';
@@ -12,14 +14,35 @@ import Footer from '../components/footer';
 
 export default function Home() {
   return (
-    <div>
+    <>
       <Helmet>
         <meta charSet="utf-8" />
         <title>Braydon's Portfolio</title>
         <link rel="canonical" href="https://braydoncoyer.dev/" />
       </Helmet>
       <SocialIcons>
-        <Layout>
+        <ThemeProvider>
+          <body className="bg-white dark:bg-coolGray-900 transition-all">
+            <main>
+              <div className="absolute right-0 top-0 mr-4 mt-4 md:mr-6 md:mt-6">
+                <Toggle />
+              </div>
+              <Layout>
+                <WelcomeSection />
+                <AboutSection />
+              </Layout>
+              <MarqueeSection />
+              <Layout>
+                <BlogSection />
+                <TimelineSection />
+                <MusicSection />
+                <Footer />
+              </Layout>
+            </main>
+          </body>
+        </ThemeProvider>
+
+        {/* <Layout>
           <WelcomeSection />
           <div className="space-y-32">
             <AboutSection />
@@ -29,8 +52,8 @@ export default function Home() {
             <MusicSection />
             <Footer />
           </div>
-        </Layout>
+        </Layout> */}
       </SocialIcons>
-    </div>
+    </>
   );
 }
