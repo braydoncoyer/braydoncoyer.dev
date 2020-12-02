@@ -135,7 +135,7 @@ const TimelineSection = () => (
     </div>
 
     {/* Item */}
-    <div className="flex items-start  ml-4 mb-11 max-w-4xl">
+    <div className="flex items-start ml-4 mb-11 max-w-4xl">
       <div className="w-5 h-5 lg:w-6 lg:h-6 flex-none bg-gradient-to-br from-cyan-400 to-lightBlue-500 text-coolGray-50 rounded-full flex justify-center items-center">
         <HiCheck />
       </div>
