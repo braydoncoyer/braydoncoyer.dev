@@ -34,24 +34,10 @@ module.exports = {
       pink: colors.pink,
       rose: colors.rose,
     },
-    extend: {
-      // borderColor: {
-      //   primary: 'var(--color-text-primary)',
-      //   secondary: 'var(--color-text-secondary)',
-      // },
-      // backgroundColor: {
-      //   primary: 'var(--color-bg-primary)',
-      //   secondary: 'var(--color-bg-secondary)',
-      // },
-      // textColor: {
-      //   accent: 'var(--color-text-accent)',
-      //   primary: 'var(--color-text-primary)',
-      //   secondary: 'var(--color-text-secondary)',
-      // },
-      // colors: {
-      //   'primary-green': 'var(--color-primary-green)',
-      // },
-    },
+    fill: (theme) => ({
+      light: theme('colors.gray.50'),
+      dark: theme('colors.coolGray.900'),
+    }),
     fontFamily: {
       inter: ['Inter', 'Helvetica', 'Arial', 'sans-serif'],
     },

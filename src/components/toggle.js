@@ -3,7 +3,7 @@ import { BiMoon, BiSun } from 'react-icons/bi';
 
 import { ThemeContext } from '../helpers/themeContext';
 
-export const Toggle = () => {
+const Toggle = () => {
   const { theme, setTheme } = React.useContext(ThemeContext);
 
   const handleClick = () => {
@@ -27,3 +27,5 @@ export const Toggle = () => {
     </div>
   );
 };
+
+export default Toggle;
