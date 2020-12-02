@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { ThemeProvider } from '../helpers/themeContext';
 import Toggle from '../components/toggle';
 import Layout from '../components/layout';
+import BrushPattern from '../components/brush-bg';
 import SocialIcons from '../components/social';
 import WelcomeSection from '../components/welcome';
 import AboutSection from '../components/about';
@@ -34,25 +35,17 @@ export default function Home() {
               <MarqueeSection />
               <Layout>
                 <BlogSection />
-                <TimelineSection />
-                <MusicSection />
-                <Footer />
               </Layout>
+              <BrushPattern>
+                <Layout>
+                  <TimelineSection />
+                  <MusicSection />
+                  <Footer />
+                </Layout>
+              </BrushPattern>
             </main>
           </body>
         </ThemeProvider>
-
-        {/* <Layout>
-          <WelcomeSection />
-          <div className="space-y-32">
-            <AboutSection />
-            <MarqueeSection />
-            <BlogSection />
-            <TimelineSection />
-            <MusicSection />
-            <Footer />
-          </div>
-        </Layout> */}
       </SocialIcons>
     </>
   );
