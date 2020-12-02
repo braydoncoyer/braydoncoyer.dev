@@ -26,8 +26,6 @@
 
 body {
   font-family: "Inter", Arial, Helvetica, sans-serif;
-  /* background-color: var(--color-bg-primary);
-  transition: background-color 0.5s; */
 }
 
 /* mark {
@@ -54,5 +52,25 @@ body {
   position: fixed;
   top: 30px;
   right: 32px;
-  /* transform: translateY(-50%); */
 }
+
+.light .paint__wrapper {
+  background-color: white;
+  background-image: url("../assets/brush_strokes_light.svg");
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+
+.dark .paint__wrapper {
+  background: linear-gradient(to bottom, #171923 35%, #1e293c 35%);
+}
+
+.dark .paint__wrapper-pattern {
+  background-image: url("../assets/brush_strokes_dark.svg");
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+
+/* background-color: #f3f4f6;*/
