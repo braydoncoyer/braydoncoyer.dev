@@ -135,15 +135,15 @@ const TimelineSection = () => (
     </div>
 
     {/* Item */}
-    <div className="flex items-start text-base sm:text-lg lg:text-base xl:text-lg ml-4 mb-11 max-w-4xl">
+    <div className="flex items-start  ml-4 mb-11 max-w-4xl">
       <div className="w-5 h-5 lg:w-6 lg:h-6 flex-none bg-gradient-to-br from-cyan-400 to-lightBlue-500 text-coolGray-50 rounded-full flex justify-center items-center">
         <HiCheck />
       </div>
       <div className="ml-4 flex-grow">
-        <p className="text-coolGray-900 dark:text-white font-semibold">
+        <p className="text-coolGray-900 dark:text-white font-semibold max-w-4xl text-lg sm:text-2xl sm:leading-10 space-y-6">
           Got engaged 💍
         </p>
-        <p className="text-coolGray-500 dark:text-coolGray-400 mt-1">
+        <p className="text-coolGray-600 dark:text-coolGray-300 max-w-4xl text-lg sm:text-2xl font-normal sm:leading-10 space-y-6 mb-6">
           I asked my favorite person to marry me. She said yes!
         </p>
       </div>
