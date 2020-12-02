@@ -1,34 +1,52 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { ThemeProvider } from '../helpers/themeContext';
+import Toggle from '../components/toggle';
 import Layout from '../components/layout';
+import BrushPattern from '../components/brush-bg';
 import SocialIcons from '../components/social';
 import WelcomeSection from '../components/welcome';
 import AboutSection from '../components/about';
 import TimelineSection from '../components/timeline';
+import MarqueeSection from '../components/marquee';
 import MusicSection from '../components/music';
 import BlogSection from '../components/blog';
 import Footer from '../components/footer';
 
 export default function Home() {
   return (
-    <div>
+    <>
       <Helmet>
         <meta charSet="utf-8" />
         <title>Braydon's Portfolio</title>
         <link rel="canonical" href="https://braydoncoyer.dev/" />
       </Helmet>
       <SocialIcons>
-        <Layout>
-          <WelcomeSection />
-          <div className="space-y-32">
-            <AboutSection />
-            <BlogSection />
-            <TimelineSection />
-            <MusicSection />
-            <Footer />
-          </div>
-        </Layout>
+        <ThemeProvider>
+          <body className="bg-white dark:bg-coolGray-900 transition-all">
+            <main>
+              <div className="absolute right-0 top-0 mr-4 mt-4 md:mr-6 md:mt-6">
+                <Toggle />
+              </div>
+              <Layout>
+                <WelcomeSection />
+                <AboutSection />
+              </Layout>
+              <MarqueeSection />
+              <Layout>
+                <BlogSection />
+              </Layout>
+              <BrushPattern>
+                <Layout>
+                  <TimelineSection />
+                  <MusicSection />
+                  <Footer />
+                </Layout>
+              </BrushPattern>
+            </main>
+          </body>
+        </ThemeProvider>
       </SocialIcons>
-    </div>
+    </>
   );
 }
