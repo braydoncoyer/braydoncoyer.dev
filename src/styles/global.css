@@ -54,18 +54,12 @@ body {
   right: 32px;
 }
 
-.light .paint__wrapper {
-  background-color: white;
-  background-image: url("../assets/brush_strokes_light.svg");
-  background-position: 50% 0;
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-}
-
+/* dark background color that displays on content under the svg pattern */
 .dark .paint__wrapper {
-  background: linear-gradient(to bottom, #171923 35%, #1e293c 35%);
+  background-color: #1e293c;
 }
 
+/* the dark svg pattern */
 .dark .paint__wrapper-pattern {
   background-image: url("../assets/brush_strokes_dark.svg");
   background-position: 50% 0;
@@ -73,4 +67,15 @@ body {
   background-size: 100% auto;
 }
 
-/* background-color: #f3f4f6;*/
+/* light background color that displays on content under the svg pattern */
+.light .paint__wrapper {
+  background-color: #f3f4f6;
+}
+
+/* the light svg pattern */
+.light .paint__wrapper-pattern {
+  background-image: url("../assets/brush_strokes_light.svg");
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
