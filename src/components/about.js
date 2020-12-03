@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AboutSection = () => (
-  <div className="mb-10 sm:mb-16 md:mb-40">
+  <div className="mb-16 sm:mb-24 md:mb-40">
     <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-orange-600 dark:text-orange-500 mb-3">
       About Me
     </h2>
