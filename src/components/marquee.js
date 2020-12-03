@@ -1,5 +1,4 @@
 import React from 'react';
-import { BsFillHeartFill } from 'react-icons/bs';
 import Marquee from 'react-marquee-slider';
 import heart from '../assets/heart.svg';
 
