@@ -1,4 +1,4 @@
-:root {
+/* :root {
   @apply light;
 }
 
@@ -18,7 +18,7 @@
   --color-text-secondary: #6c7280;
   --color-text-accent: #2b6cb0;
   --color-primary-green: #c0f5ce;
-}
+} */
 
 @tailwind base;
 @tailwind components;
@@ -27,17 +27,6 @@
 body {
   font-family: "Inter", Arial, Helvetica, sans-serif;
 }
-
-/* mark {
-  display: inline-block;
-  line-height: 0em;
-  padding-bottom: 0.5em;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0) 40%,
-    var(--color-primary-green) 40%
-  );
-} */
 
 .social-icons {
   height: auto;

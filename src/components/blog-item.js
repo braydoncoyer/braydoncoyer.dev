@@ -1,7 +1,6 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import { BiCalendarEvent } from 'react-icons/bi';
-import { FaStar } from 'react-icons/fa';
+import { HiStar, HiCalendar } from 'react-icons/hi';
 
 const BlogItem = ({
   title,
@@ -21,7 +20,7 @@ const BlogItem = ({
         <div className="space-y-2">
           {featured ? (
             <div className="mt-4 inline-flex items-center rounded bg-gradient-to-br from-purple-500 to-indigo-500 py-0.5 px-2 space-x-1 text-trueGray-50 text-sm md:mt-0">
-              <FaStar /> <p className="uppercase font-semibold">featured</p>
+              <HiStar /> <p className="uppercase font-semibold">featured</p>
             </div>
           ) : null}
 
@@ -29,7 +28,7 @@ const BlogItem = ({
             {title}
           </h1>
           <div className="flex items-center space-x-2 text-coolGray-500 dark:text-coolGray-400 text-base sm:text-lg lg:text-base xl:text-lg">
-            <BiCalendarEvent />
+            <HiCalendar />
             <p>{date.format('MMM DD, YYYY')}</p>
           </div>
           <p className="text-coolGray-500 dark:text-coolGray-400 text-base sm:text-lg lg:text-base xl:text-lg">

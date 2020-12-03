@@ -1,5 +1,6 @@
 import React from 'react';
-import { BiMoon, BiSun } from 'react-icons/bi';
+// import { BiMoon, BiSun } from 'react-icons/bi';
+import { HiMoon, HiSun } from 'react-icons/hi';
 
 import { ThemeContext } from '../helpers/themeContext';
 
@@ -14,12 +15,12 @@ const Toggle = () => {
   return (
     <div className="transition duration-500 ease-in-out rounded-full p-2">
       {theme === 'dark' ? (
-        <BiSun
+        <HiSun
           onClick={handleClick}
           className="text-coolGray-500 dark:text-coolGray-400 text-2xl cursor-pointer"
         />
       ) : (
-        <BiMoon
+        <HiMoon
           onClick={handleClick}
           className="text-coolGray-500 dark:text-coolGray-400 text-2xl cursor-pointer"
         />
