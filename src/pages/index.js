@@ -8,6 +8,7 @@ import SocialIcons from '../components/social';
 import WelcomeSection from '../components/welcome';
 import AboutSection from '../components/about';
 import TimelineSection from '../components/timeline';
+import ProjectsSection from '../components/projects';
 import MarqueeSection from '../components/marquee';
 import MusicSection from '../components/music';
 import BlogSection from '../components/blog';
@@ -35,6 +36,7 @@ export default function Home() {
               <MarqueeSection />
               <Layout>
                 <BlogSection />
+                <ProjectsSection />
               </Layout>
               <BrushPattern>
                 <Layout>
