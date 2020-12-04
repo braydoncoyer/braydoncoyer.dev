@@ -5,7 +5,7 @@ import { SiHashnode } from 'react-icons/si';
 import { Link } from 'gatsby';
 
 const Footer = () => (
-  <div className="my-4 text-secondary text-sm">
+  <div className="mt-4 text-secondary text-sm">
     <div className="my-6 w-full flex justify-evenly items-center text-xl text-coolGray-500 md:hidden">
       <a
         href="https://twitter.com/BraydonCoyer"
@@ -33,8 +33,8 @@ const Footer = () => (
         <FaLinkedin />
       </a>
     </div>
-    <div className="flex justify-around mb-6 text-coolGray-500 dark:text-coolGray-400">
-      <div className="w-1/2 md:w-1/4 flex justify-around">
+    <div className="flex w-full justify-center py-6">
+      <div className="w-full md:w-1/4 flex justify-evenly pb-6 text-coolGray-600 dark:text-coolGray-300 font-normal sm:leading-10">
         <Link className="cursor-pointer" to="/toolbox/">
           /toolbox
         </Link>
