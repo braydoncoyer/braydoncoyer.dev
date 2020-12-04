@@ -1,5 +1,6 @@
 import React from 'react';
 import BundleImage from '../assets/bundleappsmacbookpro.png';
+import OfficeAPILogo from '../assets/officeapilogo.png';
 
 const ProjectsSection = () => (
   <div className="mb-16 sm:mb-24 md:mb-40">
@@ -58,21 +59,27 @@ const ProjectsSection = () => (
           </div>
         </div>
       </li>
-      <li className="bg-coolGray-100 dark:bg-blueGray-800 rounded-3xl">
+      <li className="bg-coolGray-100 dark:bg-blueGray-800 rounded-3xl relative overflow-hidden">
         <div className="h-96 p-10">
-          <p className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white mb-2">
-            OfficeAPI
-          </p>
-          <p className="text-coolGray-500 dark:text-coolGray-400 text-lg sm:text-2xl font-normal sm:leading-10 space-y-6 mb-2">
-            A fun side-project originally built with Spring Boot and MonogDb,
-            rebuilt with with Node.js, Express, Mongoose and MongoDb. Deployed
-            with Heroku.
-          </p>
-          <a href="https://www.officeapi.dev/" target="_blank" rel="noreferrer">
-            <div className="inline-flex text-base sm:text-lg lg:text-base xl:text-lg font-medium transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-orange-600 hover:text-orange-700 dark:text-orange-500 dark:hover:text-orange-400 mt-2">
-              <p>Visit -></p>
-            </div>
-          </a>
+          <div>
+            <p className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white mb-2">
+              bundleapps.io
+            </p>
+            <p className="text-coolGray-500 dark:text-coolGray-400 text-lg sm:text-2xl font-normal sm:leading-10 space-y-6 mb-2">
+              A startup consultant company needed a website spun up quickly in
+              order to publish their first iOS application. Built with Tailwind
+              UI, I was able to put something together for them by the end of
+              the day.
+            </p>
+            <a href="https://bundleapps.io/" target="_blank" rel="noreferrer">
+              <div className="inline-flex text-base sm:text-lg lg:text-base xl:text-lg font-medium transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-orange-600 hover:text-orange-700 dark:text-orange-500 dark:hover:text-orange-400 mt-2">
+                <p>Visit -></p>
+              </div>
+            </a>
+          </div>
+          <div className="absolute bottom-0 right-0 w-4/5">
+            <img src={OfficeAPILogo} alt="office API" />
+          </div>
         </div>
       </li>
       <li className="bg-coolGray-100 dark:bg-blueGray-800 rounded-3xl">
