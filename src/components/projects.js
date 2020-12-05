@@ -2,6 +2,7 @@ import React from 'react';
 import BundleImage from '../assets/bundleappsmacbookpro.png';
 // eslint-disable-next-line import/no-unresolved
 import OfficeAPILogo from '../assets/officeapilogo.png';
+import ToastItem from '../helpers/toast';
 
 const ProjectsSection = () => (
   <div className="mb-16 sm:mb-24 md:mb-40">
@@ -51,7 +52,11 @@ const ProjectsSection = () => (
               rebuilt with with Node.js, Express, Mongoose and MongoDb. Deployed
               with Heroku.
             </p>
-            <a href="https://bundleapps.io/" target="_blank" rel="noreferrer">
+            <a
+              href="https://www.officeapi.dev/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <div className="inline-flex text-base sm:text-lg lg:text-base xl:text-lg font-medium transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-orange-600 hover:text-orange-700 dark:text-orange-500 dark:hover:text-orange-400 mt-2">
                 <p>Visit -></p>
               </div>
@@ -59,26 +64,28 @@ const ProjectsSection = () => (
           </div>
         </div>
       </li>
-      <li className="bg-coolGray-100 dark:bg-blueGray-800 rounded-3xl">
-        <div className="p-10">
-          <div>
-            <img className="w-full" src={OfficeAPILogo} alt="officeAPI" />
-          </div>
-          <div className="mt-14 md:mt-28">
-            <p className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white mb-2">
-              NgLimeade
-            </p>
-            <p className="text-coolGray-500 dark:text-coolGray-400 text-lg sm:text-2xl font-normal sm:leading-10 space-y-6 mb-2">
-              NgLimeade is an Angular Toast Library that aims to get toast
-              notifications up and running in less than a minute! No joke! Check
-              it out for yourself!
-            </p>
-            <a href="https://bundleapps.io/" target="_blank" rel="noreferrer">
-              <div className="inline-flex text-base sm:text-lg lg:text-base xl:text-lg font-medium transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-orange-600 hover:text-orange-700 dark:text-orange-500 dark:hover:text-orange-400 mt-2">
-                <p>Visit -></p>
-              </div>
-            </a>
-          </div>
+      <li className="bg-coolGray-100 dark:bg-blueGray-800 rounded-3xl overflow-hidden p-10 flex flex-col items-center">
+        <div className="flex-grow">
+          <ToastItem />
+        </div>
+        <div className="mt-14">
+          <p className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white mb-2">
+            NgLimeade
+          </p>
+          <p className="text-coolGray-500 dark:text-coolGray-400 text-lg sm:text-2xl font-normal sm:leading-10 space-y-6 mb-2">
+            NgLimeade is an Angular Toast Library that aims to get toast
+            notifications up and running in less than a minute! No joke! Check
+            it out for yourself!
+          </p>
+          <a
+            href="https://www.npmjs.com/package/ng-limeade"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <div className="inline-flex text-base sm:text-lg lg:text-base xl:text-lg font-medium transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-orange-600 hover:text-orange-700 dark:text-orange-500 dark:hover:text-orange-400 mt-2">
+              <p>Visit -></p>
+            </div>
+          </a>
         </div>
       </li>
     </ul>
