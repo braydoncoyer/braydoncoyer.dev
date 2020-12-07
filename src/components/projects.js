@@ -65,8 +65,20 @@ const ProjectsSection = () => (
         </div>
       </li>
       <li className="bg-coolGray-100 dark:bg-blueGray-800 rounded-3xl overflow-hidden p-10 flex flex-col items-center">
-        <div className="flex-grow">
-          <ToastItem />
+        <div className="flex-grow w-full space-y-2">
+          <ToastItem
+            title="Hi there!"
+            description="Try dismissing me and see what
+              happens..."
+            color="emerald"
+            icon="question"
+          />
+          <ToastItem
+            title="Guess what?!"
+            description="NgLimeade makes notifications super easy!"
+            color="lightBlue"
+            icon="exclamation"
+          />
         </div>
         <div className="mt-14">
           <p className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white mb-2">

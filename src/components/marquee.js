@@ -32,7 +32,7 @@ const interests = [
 const MarqueeSection = () => {
   const speed = 30;
   return (
-    <div className="mb-16 sm:mb-24 md:mb-40">
+    <div className="mb-24 md:mb-40">
       <div className="flex justify-between items-center">
         <div className="w-2/5 border-t-2 mb-1 border-coolGray-500 dark:border-coolGray-400" />
         <HeartIcon />
