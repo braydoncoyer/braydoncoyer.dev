@@ -63,8 +63,8 @@ const TimelineSection = () => (
       Some important things to note.
     </p>
 
-    {timelineyearItems.map((year) => (
-      <TimelineYear timelineYear={year} />
+    {timelineyearItems.map((year, id) => (
+      <TimelineYear key={id} timelineYear={year} />
     ))}
   </div>
 );

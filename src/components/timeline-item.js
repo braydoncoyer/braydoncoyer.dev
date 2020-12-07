@@ -3,8 +3,8 @@ import { HiCheck } from 'react-icons/hi';
 
 const TimelineItem = ({ timelineItems }) => (
   <div>
-    {timelineItems.map((item) => (
-      <div className="flex items-start ml-4 mb-7">
+    {timelineItems.map((item, id) => (
+      <div key={id} className="flex items-start ml-4 mb-7">
         <div className="w-5 h-5 lg:w-7 lg:h-7 flex-none bg-gradient-to-br from-cyan-400 to-lightBlue-500 text-coolGray-50 rounded-full flex justify-center items-center mt-1">
           <HiCheck className="text-lg md:text-2xl" />
         </div>
