@@ -11,7 +11,7 @@ const ProjectsSection = () => (
     </h2>
     <div className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-6xl leading-none font-extrabold tracking-tight">
       <p className="mb-2">I like to bulid things.</p>
-      <p className="mb-8">Check them out.</p>
+      <p className="mb-8">Here's a few.</p>
     </div>
 
     <ul className="grid grid-cols-1 gap-8 md:gap-10 md:grid-cols-2 md:grid-row-2">
