@@ -1,7 +1,7 @@
 import React from 'react';
 
 const MusicSection = () => (
-  <div className="mb-10 sm:mb-16 md:mb-20">
+  <section className="mb-10 sm:mb-16 md:mb-20">
     <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-rose-600 dark:text-rose-500 mb-3">
       Tunes
     </h2>
@@ -24,7 +24,7 @@ const MusicSection = () => (
         src="https://embed.music.apple.com/us/playlist/the-lord-of-the-rings-the-complete-recordings/pl.u-4D9tmlJYzM"
       />
     </div>
-  </div>
+  </section>
 );
 
 export default MusicSection;

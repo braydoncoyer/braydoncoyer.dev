@@ -55,7 +55,7 @@ const timelineyearItems = [
 ];
 
 const TimelineSection = () => (
-  <div className="mb-24 md:mb-40">
+  <section className="mb-24 md:mb-40">
     <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-lightBlue-500 dark:text-lightBlue-400 mb-3">
       Timeline
     </h2>
@@ -66,7 +66,7 @@ const TimelineSection = () => (
     {timelineyearItems.map((year, id) => (
       <TimelineYear key={id} timelineYear={year} />
     ))}
-  </div>
+  </section>
 );
 
 export default TimelineSection;

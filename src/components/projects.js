@@ -5,7 +5,7 @@ import OfficeAPILogo from '../assets/officeapilogo.png';
 import ToastItem from '../helpers/toast';
 
 const ProjectsSection = () => (
-  <div className="mb-16 sm:mb-24 md:mb-40">
+  <section className="mb-16 sm:mb-24 md:mb-40">
     <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-orange-600 dark:text-orange-500 mb-3">
       Projects
     </h2>
@@ -101,7 +101,7 @@ const ProjectsSection = () => (
         </div>
       </li>
     </ul>
-  </div>
+  </section>
 );
 
 export default ProjectsSection;

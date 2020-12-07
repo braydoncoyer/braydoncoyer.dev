@@ -5,7 +5,7 @@ import { SiHashnode } from 'react-icons/si';
 import { Link } from 'gatsby';
 
 const Footer = () => (
-  <div className="mt-4 text-secondary text-sm">
+  <footer className="mt-4 text-secondary text-sm">
     <div className="my-6 w-full flex justify-evenly items-center text-xl text-coolGray-500 md:hidden">
       <a
         href="https://twitter.com/BraydonCoyer"
@@ -54,7 +54,7 @@ const Footer = () => (
         </a>
       </div>
     </div>
-  </div>
+  </footer>
 );
 
 export default Footer;
