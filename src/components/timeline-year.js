@@ -7,7 +7,7 @@ const TimelineYear = ({ timelineYear }) => (
       <h2 className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white">
         {timelineYear.yearTitle}
       </h2>
-      <div className="border-b-2 w-full border-coolGray-500 dark:border-coolGray-400" />
+      <div className="border-b-2 w-full border-gray-200 dark:border-coolGray-600" />
     </div>
     <TimelineItem timelineItems={timelineYear.yearItems} />
   </div>

@@ -40,8 +40,11 @@ const MarqueeSection = () => {
       </div>
 
       <Marquee velocity={speed}>
-        {interests.map((item) => (
-          <h1 className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white ml-16">
+        {interests.map((item, id) => (
+          <h1
+            key={id}
+            className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white ml-16"
+          >
             {item}
           </h1>
         ))}
