@@ -7,6 +7,13 @@
 module.exports = {
   /* Your site config here */
   plugins: [
+    {
+      resolve: 'gatsby-source-contentful',
+      options: {
+        spaceId: 'xjpkg47g93pq',
+        accessToken: 'DSsjEKYByvMXWMqNnK8sbTbvsOjNqBfs9QTfkMgcA30',
+      },
+    },
     `gatsby-plugin-postcss`,
     `gatsby-plugin-react-helmet`,
     {

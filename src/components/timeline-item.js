@@ -13,7 +13,7 @@ const TimelineItem = ({ timelineItems }) => (
             {item.itemTitle}
           </p>
           <p className="text-coolGray-600 dark:text-coolGray-300 font-normal text-lg sm:text-2xl sm:leading-10">
-            {item.description}
+            {item.description.description}
           </p>
         </div>
       </div>
