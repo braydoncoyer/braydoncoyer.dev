@@ -4,7 +4,7 @@ import { SiHashnode } from 'react-icons/si';
 import Memoji from '../assets/braydon_memoji.jpeg';
 
 const WelcomeSection = () => (
-  <div className="min-h-screen flex justify-between items-center">
+  <section className="min-h-screen flex justify-between items-center">
     <div className="flex w-full flex-col items-center space-y-8 md:flex-row-reverse md:justify-between">
       <img className="w-1/4 md:w-3/12" src={Memoji} alt="Memoji" />
       <div className="md:text-left text-center">
@@ -52,7 +52,7 @@ const WelcomeSection = () => (
         </a>
       </div>
     </div>
-  </div>
+  </section>
 );
 
 export default WelcomeSection;

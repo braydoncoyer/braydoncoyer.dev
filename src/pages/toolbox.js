@@ -24,7 +24,7 @@ export default function Toolbox() {
         </Helmet>
         <SocialIcons>
           <Layout>
-            <div className="space-y-12 w-full">
+            <section className="space-y-12 w-full">
               <div className="space-y-4">
                 <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-orange-600 dark:text-orange-500 mb-3">
                   Toolbox
@@ -167,7 +167,7 @@ export default function Toolbox() {
                   />
                 </ul>
               </div>
-            </div>
+            </section>
           </Layout>
         </SocialIcons>
       </body>

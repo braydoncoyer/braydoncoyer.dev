@@ -39,7 +39,7 @@ const BlogSection = () => {
   }, []);
   return (
     // Not changing below margin to match other sections because of svg pattern spacing
-    <div className="mb-24 md:mb-40">
+    <section className="mb-24 md:mb-40">
       <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-purple-600 dark:text-purple-500 mb-3">
         Blog
       </h2>
@@ -135,7 +135,7 @@ const BlogSection = () => {
           </div>
         </div>
       ) : null}
-    </div>
+    </section>
   );
 };
 
