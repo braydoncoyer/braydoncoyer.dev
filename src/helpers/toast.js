@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { HiCheckCircle, HiExclamationCircle } from 'react-icons/hi';
 
-const ToastItem = ({ title, description, color, icon }) => {
+const ToastItem = ({ title, description, icon, type }) => {
   const [toastState, setToastState] = useState('enter');
 
   const handleToastClick = () => {
@@ -21,9 +21,17 @@ const ToastItem = ({ title, description, color, icon }) => {
       } transform ease-out duration-300 cursor-pointer w-full`}
     >
       {/* <img src={LimeadeToast} alt="toast notification" /> */}
-      <div className={`w-full bg-${color}-400 rounded-xl p-2`}>
+      <div
+        className={`w-full rounded-xl p-2 ${
+          type === 'success' ? 'bg-emerald-400' : 'bg-lightBlue-400'
+        }`}
+      >
         <div className="w-full bg-white rounded-md px-4 py-2 flex items-center">
-          <div className={`text-${color}-400 text-5xl`}>
+          <div
+            className={`text-5xl ${
+              type === 'success' ? 'text-emerald-400' : 'text-lightBlue-400'
+            }`}
+          >
             {icon === 'question' ? <HiCheckCircle /> : <HiExclamationCircle />}
           </div>
           <div>

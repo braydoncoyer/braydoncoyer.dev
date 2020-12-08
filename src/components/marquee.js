@@ -10,7 +10,7 @@ const HeartIcon = () => (
 );
 
 const MarqueeSection = () => {
-  const speed = 30;
+  const speed = 15;
   const contentfulQuery = useStaticQuery(graphql`
     {
       allContentfulInterests {

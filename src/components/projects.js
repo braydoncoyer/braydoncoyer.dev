@@ -70,14 +70,14 @@ const ProjectsSection = () => (
             title="Hi there!"
             description="Try dismissing me and see what
               happens..."
-            color="emerald"
             icon="question"
+            type="success"
           />
           <ToastItem
             title="Guess what?!"
             description="NgLimeade makes notifications super easy!"
-            color="lightBlue"
             icon="exclamation"
+            type="info"
           />
         </div>
         <div className="mt-14">
