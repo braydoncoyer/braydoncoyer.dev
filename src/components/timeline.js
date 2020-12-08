@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import TimelineYear from './timeline-year';
 
@@ -20,11 +20,6 @@ const TimelineSection = () => {
       }
     }
   `);
-
-  useEffect(() => {
-    console.log('====TIMELINE DATA IS====');
-    console.log(data);
-  });
   return (
     <section className="mb-24 md:mb-40">
       <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-lightBlue-500 dark:text-lightBlue-400 mb-3">
