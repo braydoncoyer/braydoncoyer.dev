@@ -2,7 +2,7 @@ import React from 'react';
 
 const AboutSection = () => (
   <section className="mb-24 md:mb-40">
-    <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-orange-600 dark:text-orange-500 mb-3">
+    <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-amber-500 dark:text-amber-400 mb-3">
       About Me
     </h2>
     <p className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-6xl leading-none font-extrabold tracking-tight mb-8">
@@ -10,43 +10,70 @@ const AboutSection = () => (
     </p>
     <div className="text-coolGray-500 dark:text-coolGray-400 text-lg sm:text-2xl font-normal sm:leading-10 space-y-6 mb-6">
       <p>
-        My name is Braydon Coyer. I’m a senior full stack engineer with a
-        passion for everything front-end.
+        I’m Braydon, a senior full-stack engineer, creative coder and
+        self-proclaimed designer who has a passion for the front-end spectrum.
       </p>
       <p>
-        As a visual person, one of the ways I communicate is by creating and
-        designing. That’s why I chose web development as a career. While I am a
-        full stack engineer, my true passion is front-end development. I love
-        the challenge of taking a mockup and translating it into a pixel-perfect
-        application. CSS is my obsession, and I always love learning new things
-        that can help in my quest to make the web a more user-friendly &
-        stunning place.
+        I love creating, whether those things are web applications,{' '}
+        <a
+          className="underline  text-amber-500 hover:text-amber-600 dark:text-amber-400 dark:hover:text-amber-300"
+          href="https://codepen.io/braydoncoyer"
+          target="_blank"
+          rel="noreferrer"
+        >
+          CodePen creations,
+        </a>{' '}
+        mobile apps,{' '}
+        <a
+          className="underline  text-amber-500 hover:text-amber-600 dark:text-amber-400 dark:hover:text-amber-300"
+          href="https://anchor.fm/florida-man"
+          target="_blank"
+          rel="noreferrer"
+        >
+          podcasts,
+        </a>{' '}
+        or tinkering around in Photoshop or Illustrator.
       </p>
       <p>
-        My career started at a consulting company that had a primary focus on
-        user experience and design, and stressed the importance of getting the
-        frontend ‘just right.’ While there, I developed an eye for great designs
-        that think of the end-user first.
+        I specialize in front-end development and make it my mission to
+        translate user-focussed designs into pixel-perfect websites or
+        applications that run blazing fast.
       </p>
       <p>
-        Now years later, I’ve helped lead the development of several component
-        libraries for various clients, including Southwest Airlines, FedEx and
-        health care industry leaders.
+        I’m currently part of the team at{' '}
+        <a
+          className="underline  text-amber-500 hover:text-amber-600 dark:text-amber-400 dark:hover:text-amber-300"
+          href="https://www.cognizant.com/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Cognizant
+        </a>{' '}
+        where I help architect and develop full-stack RESTful microservices,
+        train and prepare developers for delivery, and assist in leading the
+        front-end practice in a lab-based working environment.
       </p>
       <p>
-        I’m very active on CodePen and love creating little projects to share
-        and I am well versed in paired programming and test driven development.
+        I always like learning new things. I often write about my findings on my{' '}
+        <a
+          className="underline  text-amber-500 hover:text-amber-600 dark:text-amber-400 dark:hover:text-amber-300"
+          href="https://blog.braydoncoyer.dev/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          blog,
+        </a>{' '}
+        and post helpful tech-related tidbits on{' '}
+        <a
+          className="underline  text-amber-500 hover:text-amber-600 dark:text-amber-400 dark:hover:text-amber-300"
+          href="https://twitter.com/BraydonCoyer"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Twitter
+        </a>{' '}
+        .
       </p>
-      <p>
-        I’m a firm believer that one never truly stops learning and I’m looking
-        to join a solid team and work on a product to help bring about change
-        and make a difference.
-      </p>
-      <p>
-        To put it simply, I have a passion for doing things like this. I would
-        love the opportunity to help make a difference in your project.
-      </p>
-      <p>- Braydon</p>
     </div>
   </section>
 );
