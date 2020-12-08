@@ -43,12 +43,12 @@ const BlogSection = () => {
       <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-purple-600 dark:text-purple-500 mb-3">
         Blog
       </h2>
-      <p className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-6xl leading-none font-extrabold tracking-tight mb-8">
+      <p className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-6xl leading-none font-extrabold tracking-tight">
         Writing is my new thing.
       </p>
       {articles ? (
         <div>
-          <div className="mt-6 pt-10 grid gap-16 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-12 ">
+          <div className="mt-2 pt-10 grid gap-16 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-12 ">
             <div>
               <img
                 className="rounded-3xl"
@@ -57,7 +57,7 @@ const BlogSection = () => {
               />
             </div>
 
-            <div>
+            <div className="-mt-10 md:mt-0">
               <p className="text-coolGray-500 dark:text-coolGray-400 text-base sm:text-lg lg:text-base xl:text-lg font-medium">
                 <time
                   dateTime={getArticleDate(articles[0].dateAdded).format(
@@ -94,7 +94,7 @@ const BlogSection = () => {
           </div>
 
           <div className="md:mt-16 md:border-t-2 border-gray-200 dark:border-coolGray-600">
-            <div className="mt-6 pt-10 grid gap-16 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-12">
+            <div className="mt-4 pt-10 grid gap-16 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-12">
               {articles.slice(1, 4).map((article, id) => (
                 <div key={id}>
                   <p className="text-coolGray-500 dark:text-coolGray-400 text-base sm:text-lg lg:text-base xl:text-lg font-medium">

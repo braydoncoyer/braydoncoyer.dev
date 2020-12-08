@@ -6,6 +6,9 @@
 
 module.exports = {
   /* Your site config here */
+  siteMetadata: {
+    siteUrl: 'http://localhost:8000/',
+  },
   plugins: [
     {
       resolve: 'gatsby-source-contentful',
@@ -14,6 +17,7 @@ module.exports = {
         accessToken: 'DSsjEKYByvMXWMqNnK8sbTbvsOjNqBfs9QTfkMgcA30',
       },
     },
+    `gatsby-plugin-robots-txt`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-react-helmet`,
     {
