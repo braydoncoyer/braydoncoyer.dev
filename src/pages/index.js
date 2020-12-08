@@ -19,6 +19,10 @@ export default function Home() {
     <>
       <Helmet>
         <meta charSet="utf-8" />
+        <meta
+          name="Description"
+          content="Welcome to the portfolio of Braydon Coyer! Check out some projects, blog posts and special tunes Braydon listens to while coding!"
+        />
         <title>Braydon's Portfolio</title>
         <link rel="canonical" href="https://braydoncoyer.dev/" />
       </Helmet>
