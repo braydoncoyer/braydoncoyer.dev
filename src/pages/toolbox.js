@@ -1,6 +1,5 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import Layout from '../components/layout';
 import SocialIcons from '../components/social';
 import Toggle from '../components/toggle';
 import { ThemeProvider } from '../helpers/themeContext';
@@ -24,6 +23,7 @@ export default function Toolbox() {
           content="Here's a list of what I use on a day-to-day basis."
         />
         <title>Braydon's Toolbox</title>
+        <link rel="canonical" href="https://braydoncoyer.dev/toolbox/" />
       </Helmet>
       <SocialIcons>
         <ThemeProvider>

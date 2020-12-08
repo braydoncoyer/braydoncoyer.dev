@@ -12,6 +12,7 @@ export default function Home() {
         <meta charSet="utf-8" />
         <meta name="Description" content="Page not found." />
         <title>404 - Not Found</title>
+        <link rel="canonical" href="https://braydoncoyer.dev/404/" />
       </Helmet>
       <SocialIcons>
         <ThemeProvider>
