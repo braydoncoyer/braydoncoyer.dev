@@ -1,25 +1,3 @@
-/* :root {
-  @apply light;
-}
-
-.dark {
-  --color-bg-primary: #171923;
-  --color-bg-secondary: #283141;
-  --color-text-primary: #f7fafc;
-  --color-text-secondary: #a0aec0;
-  --color-text-accent: #81e6d9;
-  --color-primary-green: #81dc99;
-}
-
-.light {
-  --color-bg-primary: #ffffff;
-  --color-bg-secondary: #edf2f7;
-  --color-text-primary: #161e2e;
-  --color-text-secondary: #6c7280;
-  --color-text-accent: #2b6cb0;
-  --color-primary-green: #c0f5ce;
-} */
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
