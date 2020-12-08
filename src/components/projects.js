@@ -16,7 +16,7 @@ const ProjectsSection = () => (
 
     <ul className="grid grid-cols-1 gap-8 md:gap-10 md:grid-cols-2 md:grid-row-2 mt-12">
       <li className="bg-coolGray-100 dark:bg-blueGray-800 md:col-span-2 rounded-3xl">
-        <div className="p-10 flex flex-col-reverse md:flex md:justify-around md:flex-row">
+        <div className="p-6 md:p-10 flex flex-col-reverse md:flex md:justify-around md:flex-row">
           <div className="mt-14 md:mt-0 md:max-w-lg">
             <p className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white mb-2">
               bundleapps.io
@@ -39,7 +39,7 @@ const ProjectsSection = () => (
         </div>
       </li>
       <li className="bg-coolGray-100 dark:bg-blueGray-800 rounded-3xl relative overflow-hidden">
-        <div className="p-10">
+        <div className="p-6 md:p-10">
           <div>
             <img className="w-full" src={OfficeAPILogo} alt="officeAPI" />
           </div>
@@ -64,7 +64,7 @@ const ProjectsSection = () => (
           </div>
         </div>
       </li>
-      <li className="bg-coolGray-100 dark:bg-blueGray-800 rounded-3xl overflow-hidden p-10 flex flex-col items-center">
+      <li className="bg-coolGray-100 dark:bg-blueGray-800 rounded-3xl overflow-hidden p-6 md:p-10 flex flex-col items-center">
         <div className="flex-grow w-full space-y-2">
           <ToastItem
             title="Hi there!"
