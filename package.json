@@ -29,6 +29,7 @@
     "gatsby-plugin-postcss": "^3.0.3",
     "gatsby-plugin-purgecss": "^5.0.0",
     "gatsby-plugin-react-helmet": "^3.3.14",
+    "gatsby-plugin-robots-txt": "^1.5.3",
     "gatsby-source-contentful": "^4.2.1",
     "postcss": "^8.1.10",
     "react": "^16.12.0",

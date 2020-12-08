@@ -14,7 +14,7 @@ const ProjectsSection = () => (
       <p className="mb-8">Here's a few.</p>
     </div>
 
-    <ul className="grid grid-cols-1 gap-8 md:gap-10 md:grid-cols-2 md:grid-row-2">
+    <ul className="grid grid-cols-1 gap-8 md:gap-10 md:grid-cols-2 md:grid-row-2 mt-12">
       <li className="bg-coolGray-100 dark:bg-blueGray-800 md:col-span-2 rounded-3xl">
         <div className="p-10 flex flex-col-reverse md:flex md:justify-around md:flex-row">
           <div className="mt-14 md:mt-0 md:max-w-lg">
