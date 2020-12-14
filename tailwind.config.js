@@ -30,6 +30,11 @@ module.exports = {
       pink: colors.pink,
       rose: colors.rose,
     },
+    inset: {
+      0: 0,
+      auto: 'auto',
+      '1/2': '50%',
+    },
     fill: (theme) => ({
       light: theme('colors.gray.50'),
       dark: theme('colors.coolGray.900'),

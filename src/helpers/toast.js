@@ -17,8 +17,8 @@ const ToastItem = ({ title, description, icon, type }) => {
     <div
       onClick={handleToastClick}
       className={`${
-        toastState === 'enter' ? '' : 'translate-x-6 opacity-0'
-      } transform ease-out duration-300 cursor-pointer w-full`}
+        toastState === 'enter' ? 'cursor-pointer' : 'translate-x-6 opacity-0'
+      } transform ease-out duration-300 w-full`}
     >
       {/* <img src={LimeadeToast} alt="toast notification" /> */}
       <div

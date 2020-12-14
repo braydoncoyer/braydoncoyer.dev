@@ -71,7 +71,7 @@ const AboutSection = () => (
           rel="noreferrer"
         >
           Twitter
-        </a>{' '}
+        </a>
         .
       </p>
     </div>
