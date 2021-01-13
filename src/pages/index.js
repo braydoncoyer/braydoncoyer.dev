@@ -14,15 +14,6 @@ import MusicSection from '../components/music';
 import BlogSection from '../components/blog';
 import Footer from '../components/footer';
 
-const ToolboxItem = ({ href, title, description }) => (
-  <li className="text-coolGray-500 dark:text-coolGray-400 text-base sm:text-lg lg:text-base xl:text-lg">
-    <a href={href} target="_blank" rel="noreferrer" className="underline">
-      {title}
-    </a>
-    {description ? <span> - {description}</span> : null}
-  </li>
-);
-
 export default function Home() {
   return (
     <>
@@ -35,33 +26,6 @@ export default function Home() {
         <title>Braydon's Portfolio</title>
         <link rel="canonical" href="https://braydoncoyer.dev/" />
       </Helmet>
-      {/* <SocialIcons>
-        <ThemeProvider>
-          <body className="bg-white dark:bg-coolGray-900 transition-all">
-            <main>
-              <Layout>
-                <div className="absolute right-0 top-0 mr-4 mt-4 md:mr-6 md:mt-6">
-                  <Toggle />
-                </div>
-                <WelcomeSection />
-                <AboutSection />
-              </Layout>
-              <MarqueeSection />
-              <Layout>
-                <BlogSection />
-                <ProjectsSection />
-              </Layout>
-              <BrushPattern>
-                <Layout>
-                  <TimelineSection />
-                  <MusicSection />
-                  <Footer />
-                </Layout>
-              </BrushPattern>
-            </main>
-          </body>
-        </ThemeProvider>
-      </SocialIcons> */}
       <SocialIcons>
         <ThemeProvider>
           <body className="bg-white dark:bg-coolGray-900 transition-all">
