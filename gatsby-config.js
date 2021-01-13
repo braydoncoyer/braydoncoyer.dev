@@ -11,7 +11,12 @@ require('dotenv').config({
 module.exports = {
   /* Your site config here */
   siteMetadata: {
-    siteUrl: 'http://localhost:8000/',
+    siteUrl: 'https://braydoncoyer.dev/',
+    title: "Braydon's Portfolio",
+    description:
+      'Welcome to my portfolio! Check out some of my projects, blog posts and special tunes I listen to while coding!',
+    author: 'Braydon Coyer',
+    keywords: ['Braydon Coyer', 'Developer Portfolio', 'Blog', 'DOM Artist'],
   },
   plugins: [
     {

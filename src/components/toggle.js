@@ -7,7 +7,6 @@ const Toggle = () => {
 
   const handleClick = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
-    console.log('clicked toggle');
   };
 
   return (

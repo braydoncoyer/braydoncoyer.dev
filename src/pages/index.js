@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import SEO from '../helpers/seo';
 import { ThemeProvider } from '../helpers/themeContext';
 import Toggle from '../components/toggle';
 import Layout from '../components/layout';
@@ -13,19 +13,18 @@ import MarqueeSection from '../components/marquee';
 import MusicSection from '../components/music';
 import BlogSection from '../components/blog';
 import Footer from '../components/footer';
+import Banner from '../assets/SEOProfileBanner.jpg';
+
+const homeBanner = {
+  src: Banner,
+  width: 1200,
+  height: 600,
+};
 
 export default function Home() {
   return (
     <>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <meta
-          name="Description"
-          content="Welcome to the portfolio of Braydon Coyer! Check out some projects, blog posts and special tunes Braydon listens to while coding!"
-        />
-        <title>Braydon's Portfolio</title>
-        <link rel="canonical" href="https://braydoncoyer.dev/" />
-      </Helmet>
+      <SEO title="Braydon's Portfolio" image={homeBanner} />
       <SocialIcons>
         <ThemeProvider>
           <body className="bg-white dark:bg-coolGray-900 transition-all">
