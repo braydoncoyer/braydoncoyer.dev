@@ -30,12 +30,17 @@ export default function Home() {
         <ThemeProvider>
           <body className="bg-white dark:bg-coolGray-900 transition-all">
             <main>
-              <div className="absolute right-0 top-0 mr-4 mt-4 md:mr-6 md:mt-6">
-                <Toggle />
-              </div>
               <Layout>
-                <WelcomeSection />
-                <AboutSection />
+                <div className="absolute right-0 top-0 mr-4 mt-4 md:mr-6 md:mt-6">
+                  <Toggle />
+                </div>
+              </Layout>
+              <Layout>
+                {/* The top padding fixes a click detction issue with the toggle when viewed on mobile. Come back and fix */}
+                <section className="pt-12">
+                  <WelcomeSection />
+                  <AboutSection />
+                </section>
               </Layout>
               <MarqueeSection />
               <Layout>

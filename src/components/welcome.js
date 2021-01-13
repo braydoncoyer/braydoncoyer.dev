@@ -1,14 +1,17 @@
 import React from 'react';
 import { FaTwitter, FaCodepen, FaLinkedin } from 'react-icons/fa';
 import { SiHashnode } from 'react-icons/si';
-import { HiChevronDown } from 'react-icons/hi';
 import Memoji from '../assets/braydon_memoji.jpeg';
 
 const WelcomeSection = () => (
   <section className="overflow-hidden">
     <div className="min-h-screen flex justify-between items-center relative">
       <div className="flex w-full flex-col items-center space-y-8 md:flex-row-reverse md:justify-between">
-        <img className="w-1/4 md:w-3/12" src={Memoji} alt="Memoji" />
+        <img
+          className="w-1/4 md:w-3/12 select-none"
+          src={Memoji}
+          alt="Memoji"
+        />
         <div className="md:text-left text-center">
           <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-teal-500 dark:text-teal-400 mb-3">
             Hey there,

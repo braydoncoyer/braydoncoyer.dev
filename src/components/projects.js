@@ -34,14 +34,18 @@ const ProjectsSection = () => (
             </a>
           </div>
           <div>
-            <img src={BundleImage} alt="bundleapps" />
+            <img className="select-none" src={BundleImage} alt="bundleapps" />
           </div>
         </div>
       </li>
       <li className="bg-coolGray-100 dark:bg-blueGray-800 rounded-3xl relative overflow-hidden">
         <div className="p-6 md:p-10">
           <div>
-            <img className="w-full" src={OfficeAPILogo} alt="officeAPI" />
+            <img
+              className="w-full select-none"
+              src={OfficeAPILogo}
+              alt="officeAPI"
+            />
           </div>
           <div className="mt-14 md:mt-28">
             <p className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white mb-2">

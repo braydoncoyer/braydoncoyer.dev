@@ -1,19 +1,17 @@
 import React from 'react';
-// import { BiMoon, BiSun } from 'react-icons/bi';
 import { HiMoon, HiSun } from 'react-icons/hi';
-
 import { ThemeContext } from '../helpers/themeContext';
 
 const Toggle = () => {
   const { theme, setTheme } = React.useContext(ThemeContext);
 
   const handleClick = () => {
-    if (theme === 'dark') setTheme('light');
-    if (theme === 'light') setTheme('dark');
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+    console.log('clicked toggle');
   };
 
   return (
-    <div className="transition duration-500 ease-in-out rounded-full p-2">
+    <div className="transition duration-500 ease-in-out rounded-full p-4">
       {theme === 'dark' ? (
         <HiSun
           onClick={handleClick}
