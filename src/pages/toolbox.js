@@ -1,8 +1,15 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import SEO from '../helpers/seo';
 import SocialIcons from '../components/social';
 import Toggle from '../components/toggle';
 import { ThemeProvider } from '../helpers/themeContext';
+import Banner from '../assets/SEOToolboxBanner.jpg';
+
+const toolboxBanner = {
+  src: Banner,
+  width: 1200,
+  height: 600,
+};
 
 const ToolboxItem = ({ href, title, description }) => (
   <li className="text-coolGray-500 dark:text-coolGray-400 text-base sm:text-lg lg:text-base xl:text-lg">
@@ -16,15 +23,12 @@ const ToolboxItem = ({ href, title, description }) => (
 export default function Toolbox() {
   return (
     <div>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <meta
-          name="Description"
-          content="Here's a list of what I use on a day-to-day basis."
-        />
-        <title>Braydon's Toolbox</title>
-        <link rel="canonical" href="https://braydoncoyer.dev/toolbox/" />
-      </Helmet>
+      <SEO
+        title="Braydon's Toolbox"
+        description="A list of what I use on a day-to-day basis."
+        pathname="/toolbox"
+        image={toolboxBanner}
+      />
       <SocialIcons>
         <ThemeProvider>
           <body className="bg-white dark:bg-coolGray-900 transition-all">
