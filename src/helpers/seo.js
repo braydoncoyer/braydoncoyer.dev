@@ -28,85 +28,114 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
   const canonical = pathname ? `${site.siteMetadata.siteUrl}${pathname}` : null;
 
   return (
-    <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
-      link={
-        canonical
-          ? [
-              {
-                rel: 'canonical',
-                href: canonical,
-              },
-            ]
-          : []
-      }
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          name: 'keywords',
-          content: site.siteMetadata.keywords.join(','),
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ]
-        .concat(
-          metaImage
-            ? [
-                {
-                  property: 'og:image',
-                  content: image,
-                },
-                {
-                  property: 'og:image:width',
-                  content: metaImage.width,
-                },
-                {
-                  property: 'og:image:height',
-                  content: metaImage.height,
-                },
-                {
-                  name: 'twitter:card',
-                  content: 'summary_large_image',
-                },
-              ]
-            : [
-                {
-                  name: 'twitter:card',
-                  content: 'summary',
-                },
-              ]
-        )
-        .concat(meta)}
-    />
+    <Helmet>
+      {/* <!-- Primary Meta Tags --> */}
+      <title>Braydon Coyer - Portfolio</title>
+      <meta name="title" content="Braydon Coyer - Portfolio" />
+      <meta
+        name="description"
+        content="Welcome to my portfolio! Check out some of my projects, blog posts and special tunes I listen to while coding!"
+      />
+
+      {/* <!-- Open Graph / Facebook --> */}
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://metatags.io/" />
+      <meta property="og:title" content="Braydon Coyer - Portfolio" />
+      <meta
+        property="og:description"
+        content="Welcome to my portfolio! Check out some of my projects, blog posts and special tunes I listen to while coding!"
+      />
+      <meta property="og:image" content="../assets/SEOProfileBanner.jpg" />
+
+      {/* <!-- Twitter --> */}
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:url" content="https://metatags.io/" />
+      <meta property="twitter:title" content="Braydon Coyer - Portfolio" />
+      <meta
+        property="twitter:description"
+        content="Welcome to my portfolio! Check out some of my projects, blog posts and special tunes I listen to while coding!"
+      />
+      <meta property="twitter:image" content="../assets/SEOProfileBanner.jpg" />
+    </Helmet>
+    // <Helmet
+    //   htmlAttributes={{
+    //     lang,
+    //   }}
+    //   title={title}
+    //   titleTemplate={`%s | ${site.siteMetadata.title}`}
+    //   link={
+    //     canonical
+    //       ? [
+    //           {
+    //             rel: 'canonical',
+    //             href: canonical,
+    //           },
+    //         ]
+    //       : []
+    //   }
+    //   meta={[
+    //     {
+    //       name: `description`,
+    //       content: metaDescription,
+    //     },
+    //     {
+    //       name: 'keywords',
+    //       content: site.siteMetadata.keywords.join(','),
+    //     },
+    //     {
+    //       property: `og:title`,
+    //       content: title,
+    //     },
+    //     {
+    //       property: `og:description`,
+    //       content: metaDescription,
+    //     },
+    //     {
+    //       property: `og:type`,
+    //       content: `website`,
+    //     },
+    //     {
+    //       name: `twitter:creator`,
+    //       content: site.siteMetadata.author,
+    //     },
+    //     {
+    //       name: `twitter:title`,
+    //       content: title,
+    //     },
+    //     {
+    //       name: `twitter:description`,
+    //       content: metaDescription,
+    //     },
+    //   ]
+    //     .concat(
+    //       metaImage
+    //         ? [
+    //             {
+    //               property: 'og:image',
+    //               content: image,
+    //             },
+    //             {
+    //               property: 'og:image:width',
+    //               content: metaImage.width,
+    //             },
+    //             {
+    //               property: 'og:image:height',
+    //               content: metaImage.height,
+    //             },
+    //             {
+    //               name: 'twitter:card',
+    //               content: 'summary_large_image',
+    //             },
+    //           ]
+    //         : [
+    //             {
+    //               name: 'twitter:card',
+    //               content: 'summary',
+    //             },
+    //           ]
+    //     )
+    //     .concat(meta)}
+    // />
   );
 }
 
