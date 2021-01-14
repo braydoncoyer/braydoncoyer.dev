@@ -39,7 +39,7 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
 
       {/* <!-- Open Graph / Facebook --> */}
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://metatags.io/" />
+      <meta property="og:url" content="https://braydoncoyer.dev/" />
       <meta property="og:title" content="Braydon Coyer - Portfolio" />
       <meta
         property="og:description"
@@ -49,7 +49,7 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
 
       {/* <!-- Twitter --> */}
       <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content="https://metatags.io/" />
+      <meta property="twitter:url" content="https://braydoncoyer.dev/" />
       <meta property="twitter:title" content="Braydon Coyer - Portfolio" />
       <meta
         property="twitter:description"
