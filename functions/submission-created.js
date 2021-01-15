@@ -6,6 +6,7 @@ exports.handler = async (event) => {
   const { payload } = JSON.parse(event.body);
   console.log('payload: ', payload);
   console.log(`Recieved a submission: ${payload.email}`);
+  console.log(JSON.stringify({ email: payload.emailAddress }));
 
   return fetch('https://api.buttondown.email/v1/subscribers', {
     method: 'POST',
