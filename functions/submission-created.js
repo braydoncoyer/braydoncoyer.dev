@@ -13,7 +13,7 @@ exports.handler = async (event) => {
       Authorization: `Token ${EMAIL_TOKEN}`,
       'Content-Type': 'application/json',
     },
-    body: { email: payload.emailAddress },
+    body: JSON.stringify({ email: payload.emailAddress }),
   })
     .then((response) => response.json())
     .then((data) => {
