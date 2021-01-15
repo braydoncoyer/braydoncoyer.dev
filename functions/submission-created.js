@@ -18,6 +18,7 @@ exports.handler = async (event) => {
   })
     .then((response) => response.json())
     .then((data) => {
+      console.log(JSON.stringify({ email: payload.emailAddress }));
       console.log(`Submitted to Buttondown:`);
       console.table(data);
     })
