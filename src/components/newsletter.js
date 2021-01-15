@@ -13,7 +13,7 @@ const NewsletterSection = () => {
   if (emailForm) {
     emailForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      processForm(emailForm);
+      processForm(emailForm, email);
     });
   }
 

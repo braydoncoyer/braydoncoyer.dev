@@ -2,8 +2,7 @@ require('dotenv').config();
 const fetch = require('node-fetch');
 
 const { EMAIL_TOKEN } = process.env;
-exports.handler = async (event) => {
-  const { email } = JSON.parse(event.body).payload;
+exports.handler = async (email) => {
   console.log(`Recieved a submission: ${email}`);
   return fetch('https://api.buttondown.email/v1/subscribers', {
     method: 'POST',

@@ -1,10 +1,9 @@
-export const processForm = (form) => {
-  const data = new FormData(form);
-  data.append('form-name', 'newsletter');
-  console.log(data);
+export const processForm = (form, email) => {
+  //   const data = new FormData(form);
+  //   data.append('form-name', 'newsletter');
   fetch('/', {
     method: 'POST',
-    body: data,
+    body: email,
   })
     .then(() => {
       form.innerHTML = `<div class="form--success">Almost there! Check your inbox for a confirmation e-mail.</div>`;
