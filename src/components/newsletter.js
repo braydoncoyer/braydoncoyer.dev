@@ -9,13 +9,19 @@ const NewsletterSection = () => {
     setEmail(event.target.value);
   };
 
-  const emailForm = document.querySelector('.email-form');
-  if (emailForm) {
-    emailForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      processForm(emailForm, email);
-    });
-  }
+  const handleOnSubmit = (event) => {
+    event.preventDefault();
+    console.log(event);
+    processForm(email);
+  };
+
+  //   const emailForm = document.querySelector('.email-form');
+  //   if (emailForm) {
+  //     emailForm.addEventListener('submit', (e) => {
+  //       e.preventDefault();
+  //       processForm(emailForm, email);
+  //     });
+  //   }
 
   return (
     <section className="mb-24 md:mb-40">
@@ -38,6 +44,7 @@ const NewsletterSection = () => {
               <form
                 name="newsletter"
                 method="POST"
+                onSubmit={handleOnSubmit}
                 data-netlify="true"
                 netlify-honeypot="bot-field"
                 className="sm:flex email-form"
