@@ -7,6 +7,7 @@ import BrushPattern from '../components/brush-bg';
 import SocialIcons from '../components/social';
 import WelcomeSection from '../components/welcome';
 import AboutSection from '../components/about';
+import NewsletterSection from '../components/newsletter';
 import TimelineSection from '../components/timeline';
 import ProjectsSection from '../components/projects';
 import MarqueeSection from '../components/marquee';
@@ -44,6 +45,7 @@ export default function Home() {
               <MarqueeSection />
               <Layout>
                 <BlogSection />
+                <NewsletterSection />
                 <ProjectsSection />
               </Layout>
               <BrushPattern>
