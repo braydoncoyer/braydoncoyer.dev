@@ -44,11 +44,11 @@ const NewsletterSection = () => {
               <form
                 name="newsletter"
                 method="POST"
-                action="/"
-                netlify
+                data-netlify="true"
                 netlify-honeypot="bot-field"
                 className="sm:flex email-form"
               >
+                <input type="hidden" name="form-name" value="newsletter" />
                 <div hidden aria-hidden="true">
                   <label htmlFor="bot-field">Robot input...</label>
                   <input name="bot-field" />
