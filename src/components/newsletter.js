@@ -44,7 +44,7 @@ const NewsletterSection = () => {
               <form
                 name="newsletter"
                 method="POST"
-                action="/toolbox"
+                action="/"
                 data-netlify="true"
                 netlify-honeypot="bot-field"
                 className="sm:flex email-form"
