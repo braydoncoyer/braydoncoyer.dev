@@ -35,6 +35,9 @@ const Footer = () => (
     </div>
     <div className="flex w-full justify-center py-6">
       <div className="w-full md:w-1/4 flex justify-evenly pb-6 text-coolGray-600 dark:text-coolGray-300 font-normal sm:leading-10">
+        <Link className="cursor-pointer" to="/newsletter/">
+          /newsletter
+        </Link>
         <Link className="cursor-pointer" to="/toolbox/">
           /toolbox
         </Link>
