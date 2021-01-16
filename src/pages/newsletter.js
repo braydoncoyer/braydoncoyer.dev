@@ -6,6 +6,7 @@ import SocialIcons from '../components/social';
 import Toggle from '../components/toggle';
 import { ThemeProvider } from '../helpers/themeContext';
 import Banner from '../assets/SEOToolboxBanner.jpg';
+import Footer from '../components/footer';
 
 const toolboxBanner = {
   src: Banner,
@@ -108,6 +109,9 @@ export default function Toolbox() {
                   </Link>
                 </div>
               </section>
+              <div className="mt-28">
+                <Footer />
+              </div>
             </main>
           </body>
         </ThemeProvider>
