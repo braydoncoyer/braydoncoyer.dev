@@ -23,19 +23,3 @@ exports.handler = async (event) => {
     })
     .catch((error) => ({ statusCode: 422, body: String(error) }));
 };
-
-// console.log(`Recieved a submission: ${email}`);
-// return fetch('https://api.buttondown.email/v1/subscribers', {
-//   method: 'POST',
-//   headers: {
-//     Authorization: `Token ${EMAIL_TOKEN}`,
-//     'Content-Type': 'application/json',
-//   },
-//   body: JSON.stringify({ email }),
-// })
-//   .then((response) => response.json())
-//   .then((data) => {
-//     console.log(`Submitted to Buttondown:\n ${data}`);
-//   })
-//   .catch((error) => ({ statusCode: 422, body: String(error) }));
-// };
