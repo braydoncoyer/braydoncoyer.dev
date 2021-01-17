@@ -30,8 +30,8 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
   return (
     <Helmet>
       {/* <!-- Primary Meta Tags --> */}
-      <title>Braydon Coyer - Portfolio</title>
-      <meta name="title" content="Braydon Coyer - Portfolio" />
+      <title>{title}</title>
+      <meta name="title" content={`${title}`} />
       <meta
         name="description"
         content="Welcome to my portfolio! Check out some of my projects, blog posts and special tunes I listen to while coding!"
