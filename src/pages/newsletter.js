@@ -27,9 +27,9 @@ export default function Toolbox() {
   return (
     <div>
       <SEO
-        title="Braydon's Toolbox"
-        description="A list of what I use on a day-to-day basis."
-        pathname="/toolbox"
+        title="Braydon's Newsletter"
+        description="Join my newsletter today!"
+        pathname="/newsletter"
         image={toolboxBanner}
       />
       <SocialIcons>

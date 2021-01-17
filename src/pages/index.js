@@ -25,7 +25,7 @@ const homeBanner = {
 export default function Home() {
   return (
     <>
-      <SEO title="Braydon's Portfolio" image={homeBanner} />
+      <SEO title="Portfolio" image={homeBanner} />
       <SocialIcons>
         <ThemeProvider>
           <body className="bg-white dark:bg-coolGray-900 transition-all">
