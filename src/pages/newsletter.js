@@ -6,14 +6,8 @@ import SEO from '../helpers/seo';
 import SocialIcons from '../components/social';
 import Toggle from '../components/toggle';
 import { ThemeProvider } from '../helpers/themeContext';
-import Banner from '../assets/SEOToolboxBanner.jpg';
+import Banner from '../../static/images/NewsletterBanner.png';
 import Footer from '../components/footer';
-
-const toolboxBanner = {
-  src: Banner,
-  width: 1200,
-  height: 600,
-};
 
 export default function Toolbox() {
   return (
@@ -21,8 +15,7 @@ export default function Toolbox() {
       <SEO
         title="Braydon's Newsletter"
         description="Join my newsletter today!"
-        pathname="/newsletter"
-        image={toolboxBanner}
+        image={Banner}
       />
       <SocialIcons>
         <ThemeProvider>

@@ -17,6 +17,8 @@ module.exports = {
       'Welcome to my portfolio! Check out some of my projects, blog posts and special tunes I listen to while coding!',
     author: 'Braydon Coyer',
     keywords: ['Braydon Coyer', 'Developer Portfolio', 'Blog', 'DOM Artist'],
+    image: './static/images/ProfileSEOBanner.png',
+    twitterUsername: '@BraydonCoyer',
   },
   plugins: [
     {

@@ -14,18 +14,12 @@ import MarqueeSection from '../components/marquee';
 import MusicSection from '../components/music';
 import BlogSection from '../components/blog';
 import Footer from '../components/footer';
-import Banner from '../assets/SEOProfileBanner.jpg';
-
-const homeBanner = {
-  src: Banner,
-  width: 1200,
-  height: 600,
-};
+import Banner from '../../static/images/ProfileSEOBanner.png';
 
 export default function Home() {
   return (
     <>
-      <SEO title="Portfolio" image={homeBanner} />
+      <SEO title="Braydon's Portfolio" image={Banner} />
       <SocialIcons>
         <ThemeProvider>
           <body className="bg-white dark:bg-coolGray-900 transition-all">
