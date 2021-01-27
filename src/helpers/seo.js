@@ -1,9 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
-function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
+function SEO({ title, description, author, keywords, image, url }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -12,150 +11,81 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
             title
             description
             author
+            image
             keywords
-            siteUrl
+            twitterUsername
           }
         }
       }
     `
   );
 
+  const metaTitle = title || site.siteMetadata.title;
   const metaDescription = description || site.siteMetadata.description;
-  const image =
-    metaImage && metaImage.src
-      ? `${site.siteMetadata.siteUrl}${metaImage.src}`
-      : null;
-  const canonical = pathname ? `${site.siteMetadata.siteUrl}${pathname}` : null;
+  const metaAuthor = author || site.siteMetadata.author;
+  const metaTwitterCreator = site.siteMetadata.twitterUsername;
+  const metaImage = image || site.siteMetadata.image;
+  const metaUrl = url || site.siteMetadata.url;
+  const metaKeywords = keywords || site.siteMetadata.keywords;
 
   return (
-    <Helmet>
-      {/* <!-- Primary Meta Tags --> */}
-      <title>{title}</title>
-      <meta name="title" content={`${title}`} />
-      <meta
-        name="description"
-        content="Welcome to my portfolio! Check out some of my projects, blog posts and special tunes I listen to while coding!"
-      />
-
-      {/* <!-- Open Graph / Facebook --> */}
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://braydoncoyer.dev/" />
-      <meta property="og:title" content="Braydon Coyer - Portfolio" />
-      <meta
-        property="og:description"
-        content="Welcome to my portfolio! Check out some of my projects, blog posts and special tunes I listen to while coding!"
-      />
-      <meta property="og:image" content="../assets/SEOProfileBanner.jpg" />
-
-      {/* <!-- Twitter --> */}
-      <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content="https://braydoncoyer.dev/" />
-      <meta property="twitter:title" content="Braydon Coyer - Portfolio" />
-      <meta
-        property="twitter:description"
-        content="Welcome to my portfolio! Check out some of my projects, blog posts and special tunes I listen to while coding!"
-      />
-      <meta property="twitter:image" content="../assets/SEOProfileBanner.jpg" />
-    </Helmet>
-    // <Helmet
-    //   htmlAttributes={{
-    //     lang,
-    //   }}
-    //   title={title}
-    //   titleTemplate={`%s | ${site.siteMetadata.title}`}
-    //   link={
-    //     canonical
-    //       ? [
-    //           {
-    //             rel: 'canonical',
-    //             href: canonical,
-    //           },
-    //         ]
-    //       : []
-    //   }
-    //   meta={[
-    //     {
-    //       name: `description`,
-    //       content: metaDescription,
-    //     },
-    //     {
-    //       name: 'keywords',
-    //       content: site.siteMetadata.keywords.join(','),
-    //     },
-    //     {
-    //       property: `og:title`,
-    //       content: title,
-    //     },
-    //     {
-    //       property: `og:description`,
-    //       content: metaDescription,
-    //     },
-    //     {
-    //       property: `og:type`,
-    //       content: `website`,
-    //     },
-    //     {
-    //       name: `twitter:creator`,
-    //       content: site.siteMetadata.author,
-    //     },
-    //     {
-    //       name: `twitter:title`,
-    //       content: title,
-    //     },
-    //     {
-    //       name: `twitter:description`,
-    //       content: metaDescription,
-    //     },
-    //   ]
-    //     .concat(
-    //       metaImage
-    //         ? [
-    //             {
-    //               property: 'og:image',
-    //               content: image,
-    //             },
-    //             {
-    //               property: 'og:image:width',
-    //               content: metaImage.width,
-    //             },
-    //             {
-    //               property: 'og:image:height',
-    //               content: metaImage.height,
-    //             },
-    //             {
-    //               name: 'twitter:card',
-    //               content: 'summary_large_image',
-    //             },
-    //           ]
-    //         : [
-    //             {
-    //               name: 'twitter:card',
-    //               content: 'summary',
-    //             },
-    //           ]
-    //     )
-    //     .concat(meta)}
-    // />
+    <Helmet
+      title={title}
+      meta={[
+        {
+          name: 'description',
+          content: metaDescription,
+        },
+        {
+          name: 'og:title',
+          content: metaTitle,
+        },
+        {
+          name: 'og:description',
+          content: metaDescription,
+        },
+        {
+          name: 'og:type',
+          content: 'website',
+        },
+        {
+          name: 'og:image',
+          content: metaImage,
+        },
+        {
+          name: 'og:url',
+          content: metaUrl,
+        },
+        {
+          name: 'twitter:card',
+          content: 'summary_large_image',
+        },
+        {
+          name: 'twitter:creator',
+          content: metaTwitterCreator,
+        },
+        {
+          name: 'twitter:title',
+          content: metaTitle,
+        },
+        {
+          name: 'twitter:description',
+          content: metaDescription,
+        },
+        {
+          name: 'twitter:image',
+          content: metaImage,
+        },
+      ].concat(
+        metaKeywords && metaKeywords.lenth > 0
+          ? {
+              name: 'keywords',
+              content: metaKeywords.join(', '),
+            }
+          : []
+      )}
+    />
   );
 }
-
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
-};
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
-  image: PropTypes.shape({
-    src: PropTypes.string.isRequired,
-    height: PropTypes.number.isRequired,
-    width: PropTypes.number.isRequired,
-  }),
-  pathname: PropTypes.string,
-};
 
 export default SEO;

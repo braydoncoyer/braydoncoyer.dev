@@ -3,14 +3,8 @@ import SEO from '../helpers/seo';
 import SocialIcons from '../components/social';
 import Toggle from '../components/toggle';
 import { ThemeProvider } from '../helpers/themeContext';
-import Banner from '../assets/SEOToolboxBanner.jpg';
+import Banner from '../../static/images/ToolboxBanner.png';
 import Footer from '../components/footer';
-
-const toolboxBanner = {
-  src: Banner,
-  width: 1200,
-  height: 600,
-};
 
 const ToolboxItem = ({ href, title, description }) => (
   <li className="text-coolGray-500 dark:text-coolGray-400 text-base sm:text-lg lg:text-base xl:text-lg">
@@ -27,8 +21,7 @@ export default function Toolbox() {
       <SEO
         title="Braydon's Toolbox"
         description="A list of what I use on a day-to-day basis."
-        pathname="/toolbox"
-        image={toolboxBanner}
+        image={Banner}
       />
       <SocialIcons>
         <ThemeProvider>
