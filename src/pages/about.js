@@ -9,7 +9,6 @@ import Layout from '../components/layout';
 import Banner from '../../static/images/NewsletterBanner.png';
 import AboutSection from '../components/about';
 import MarqueeSection from '../components/marquee';
-import Footer from '../components/footer';
 
 export default function Toolbox() {
   return (
@@ -18,7 +17,6 @@ export default function Toolbox() {
       <SocialIcons>
         <ThemeProvider>
           <body className="bg-white dark:bg-coolGray-900 min-h-screen">
-            <Nav />
             <main>
               <Layout>
                 <AboutSection />

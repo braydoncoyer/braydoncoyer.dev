@@ -23,7 +23,6 @@ export default function Home() {
       <SocialIcons>
         <ThemeProvider>
           <body className="bg-white dark:bg-coolGray-900">
-            <Nav />
             <main>
               <Layout>
                 <WelcomeSection />
@@ -33,11 +32,6 @@ export default function Home() {
                 <TimelineSection />
                 <MusicSection />
               </Layout>
-              {/* <BrushPattern>
-                <Layout>
-                  
-                </Layout>
-              </BrushPattern> */}
             </main>
           </body>
         </ThemeProvider>
