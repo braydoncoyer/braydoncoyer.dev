@@ -21,7 +21,8 @@ const WelcomeSection = () => (
           </h1>
           <p className="text-coolGray-600 dark:text-coolGray-400 prose leading-6 mb-6">
             I'm a senior full stack engineer with a passion for everything
-            front-end. Welcome to my corner of the internet.
+            front-end. Welcome to my corner of the internet. I'm glad you're
+            here!
           </p>
         </div>
 

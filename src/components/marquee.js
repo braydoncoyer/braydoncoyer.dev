@@ -33,12 +33,12 @@ const MarqueeSection = () => {
       <Marquee velocity={speed}>
         {contentfulQuery.allContentfulInterests.edges[0].node.title.map(
           (item, id) => (
-            <h1
+            <p
               key={id}
               className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white ml-16"
             >
               {item}
-            </h1>
+            </p>
           )
         )}
       </Marquee>

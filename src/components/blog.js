@@ -39,26 +39,26 @@ const BlogSection = () => {
   }, []);
   return (
     // Not changing below margin to match other sections because of svg pattern spacing
-    <section className="mb-24 md:mb-40">
+    <section className="mb-16">
       <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-purple-600 dark:text-purple-500 mb-3">
         Blog
       </h2>
-      <p className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-6xl leading-none font-extrabold tracking-tight">
-        Writing is my new thing.
+      <p className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-5xl leading-none font-extrabold tracking-tight mb-4">
+        Some recent posts.
       </p>
       {articles ? (
         <div>
-          <div className="mt-2 pt-10 grid gap-16 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-12 ">
-            <div>
+          <div className="grid gap-16 md:gap-10">
+            {/* <div>
               <img
                 className="rounded-3xl select-none"
                 src={articles[0].coverImage}
                 alt="article preview"
               />
-            </div>
+            </div> */}
 
             <div className="-mt-10 md:mt-0">
-              <p className="text-coolGray-500 dark:text-coolGray-400 text-base sm:text-lg lg:text-base xl:text-lg font-medium">
+              <p className="text-coolGray-500 dark:text-coolGray-400 prose leading-6 font-medium">
                 <time
                   dateTime={getArticleDate(articles[0].dateAdded).format(
                     'MMM DD, YYYY'
@@ -76,7 +76,7 @@ const BlogSection = () => {
                 <p className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white">
                   {articles[0].title}
                 </p>
-                <p className="mt-3 text-coolGray-500 dark:text-coolGray-400 text-lg sm:text-2xl font-normal sm:leading-10">
+                <p className="mt-3 text-coolGray-600 dark:text-coolGray-400 prose leading-6 mb-6">
                   {articles[0].brief}
                 </p>
               </a>
@@ -85,7 +85,7 @@ const BlogSection = () => {
                   href={`https://blog.braydoncoyer.dev/${articles[0].slug}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-base sm:text-lg lg:text-base xl:text-lg font-medium text-purple-600 hover:text-purple-700 dark:text-purple-500 dark:hover:text-purple-600"
+                  className="text-purple-600 hover:text-purple-700 dark:text-purple-500 dark:hover:text-purple-600 prose leading-6 "
                 >
                   Read full story
                 </a>
@@ -93,11 +93,11 @@ const BlogSection = () => {
             </div>
           </div>
 
-          <div className="md:mt-16 md:border-t-2 border-gray-200 dark:border-coolGray-600">
-            <div className="mt-4 pt-10 grid gap-16 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-12">
+          <div className="mt-8">
+            <div className="mt-1 pt-6 grid gap-16">
               {articles.slice(1, 4).map((article, id) => (
                 <div key={id}>
-                  <p className="text-coolGray-500 dark:text-coolGray-400 text-base sm:text-lg lg:text-base xl:text-lg font-medium">
+                  <p className="text-coolGray-500 dark:text-coolGray-400 prose leading-6 font-medium">
                     <time
                       dateTime={getArticleDate(article.dateAdded).format(
                         'MMM DD, YYYY'
@@ -115,7 +115,7 @@ const BlogSection = () => {
                     <p className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white">
                       {article.title}
                     </p>
-                    <p className="mt-3 text-coolGray-500 dark:text-coolGray-400 text-lg sm:text-2xl font-normal sm:leading-10">
+                    <p className="mt-3 text-coolGray-600 dark:text-coolGray-400 prose leading-6 mb-6">
                       {article.brief}
                     </p>
                   </a>
@@ -124,7 +124,7 @@ const BlogSection = () => {
                       href={`https://blog.braydoncoyer.dev/${article.slug}`}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-base sm:text-lg lg:text-base xl:text-lg font-medium text-purple-600 hover:text-purple-700 dark:text-purple-500 dark:hover:text-purple-600"
+                      className="text-purple-600 hover:text-purple-700 dark:text-purple-500 dark:hover:text-purple-600 prose leading-6 font-medium"
                     >
                       Read full story
                     </a>
