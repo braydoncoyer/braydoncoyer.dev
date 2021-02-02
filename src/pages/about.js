@@ -9,6 +9,7 @@ import Layout from '../components/layout';
 import Banner from '../../static/images/NewsletterBanner.png';
 import AboutSection from '../components/about';
 import MarqueeSection from '../components/marquee';
+import Footer from '../components/footer';
 
 export default function Toolbox() {
   return (

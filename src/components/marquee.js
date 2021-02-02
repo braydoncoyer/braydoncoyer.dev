@@ -23,7 +23,7 @@ const MarqueeSection = () => {
     }
   `);
   return (
-    <section className="mb-24 md:mb-40">
+    <section className="mb-16">
       <div className="flex justify-between items-center">
         <div className="w-2/5 border-t-2 mb-1 border-coolGray-500 dark:border-coolGray-400" />
         <HeartIcon />

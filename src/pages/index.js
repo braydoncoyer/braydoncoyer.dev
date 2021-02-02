@@ -30,14 +30,14 @@ export default function Home() {
                 <BlogSection />
                 <NewsletterSection />
                 <ProjectsSection />
+                <TimelineSection />
+                <MusicSection />
               </Layout>
-              <BrushPattern>
+              {/* <BrushPattern>
                 <Layout>
-                  <TimelineSection />
-                  <MusicSection />
-                  <Footer />
+                  
                 </Layout>
-              </BrushPattern>
+              </BrushPattern> */}
             </main>
           </body>
         </ThemeProvider>

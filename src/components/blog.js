@@ -57,7 +57,7 @@ const BlogSection = () => {
               />
             </div> */}
 
-            <div className="-mt-10 md:mt-0">
+            <div>
               <p className="text-coolGray-500 dark:text-coolGray-400 prose leading-6 font-medium">
                 <time
                   dateTime={getArticleDate(articles[0].dateAdded).format(
