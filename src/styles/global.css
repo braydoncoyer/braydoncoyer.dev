@@ -6,6 +6,14 @@ body {
   font-family: "Inter", Arial, Helvetica, sans-serif;
 }
 
+.sticky-nav {
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  backdrop-filter: saturate(180%) blur(20px);
+  transition: background-color 0.1 ease-in-out;
+}
+
 .social-icons {
   height: auto;
   position: fixed;

@@ -22,13 +22,27 @@ export default function Home() {
       <SEO title="Braydon's Portfolio" image={Banner} />
       <SocialIcons>
         <ThemeProvider>
-          <body className="bg-white dark:bg-coolGray-900 transition-all">
-            <main>
-              <Layout>
-                <div className="absolute right-0 top-0 mr-4 mt-4 md:mr-6 md:mt-6">
+          <body className="bg-white dark:bg-coolGray-900">
+            <nav className="sticky-nav flex justify-between items-center max-w-4xl w-full p-8 my-0 md:mb-8 mx-auto bg-white dark:bg-coolGray-900 bg-opacity-60">
+              <div className="text-gray-900 dark:text-gray-100 font-semibold">
+                braydoncoyer.dev
+              </div>
+              <div className="flex items-center">
+                <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">
+                  Home
+                </a>
+                <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">
+                  About
+                </a>
+                <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">
+                  Blog
+                </a>
+                <div className="ml-4">
                   <Toggle />
                 </div>
-              </Layout>
+              </div>
+            </nav>
+            <main>
               <Layout>
                 {/* The top padding fixes a click detction issue with the toggle when viewed on mobile. Come back and fix */}
                 <section className="pt-12">
