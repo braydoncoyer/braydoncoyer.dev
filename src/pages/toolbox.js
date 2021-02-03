@@ -35,51 +35,49 @@ export default function Toolbox() {
                   </p>
                 </div>
 
-                <div className="space-y-8">
-                  <div>
-                    <h2 className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white">
-                      Code Editor & Extensions
-                    </h2>
-                    <ul className="text-secondary ml-4 space-y-2 list-disc">
-                      <ToolboxItem
-                        href="https://code.visualstudio.com/"
-                        title="Visual Studio Code"
-                        description="Code Editor"
-                      />
-                      <ToolboxItem
-                        href="https://marketplace.visualstudio.com/items?itemName=sdras.night-owl"
-                        title="Night Owl"
-                        description="A theme by Sarah Drasner"
-                      />
-                      <ToolboxItem
-                        href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2"
-                        title="Bracket Pair Colorizer 2"
-                        description="A customizable extension for
+                <div className="space-y-4">
+                  <h2 className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white">
+                    Code Editor & Extensions
+                  </h2>
+                  <ul className="text-secondary ml-4 space-y-2 list-disc">
+                    <ToolboxItem
+                      href="https://code.visualstudio.com/"
+                      title="Visual Studio Code"
+                      description="Code Editor"
+                    />
+                    <ToolboxItem
+                      href="https://marketplace.visualstudio.com/items?itemName=sdras.night-owl"
+                      title="Night Owl"
+                      description="A theme by Sarah Drasner"
+                    />
+                    <ToolboxItem
+                      href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2"
+                      title="Bracket Pair Colorizer 2"
+                      description="A customizable extension for
                   colorizing matching brackets"
-                      />
-                      <ToolboxItem
-                        href="https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow"
-                        title="Indent Rainbow"
-                        description="Makes indentation easier to read"
-                      />
-                      <ToolboxItem
-                        href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode"
-                        title="Prettier"
-                        description="Code formatter"
-                      />
-                      <ToolboxItem
-                        href="https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss"
-                        title="Tailwind CSS IntelliSense"
-                        description="Intelligent Tailwind CSS tooling
+                    />
+                    <ToolboxItem
+                      href="https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow"
+                      title="Indent Rainbow"
+                      description="Makes indentation easier to read"
+                    />
+                    <ToolboxItem
+                      href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode"
+                      title="Prettier"
+                      description="Code formatter"
+                    />
+                    <ToolboxItem
+                      href="https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss"
+                      title="Tailwind CSS IntelliSense"
+                      description="Intelligent Tailwind CSS tooling
                   for VSCode"
-                      />
-                      <ToolboxItem
-                        href="https://marketplace.visualstudio.com/items?itemName=emmanuelbeziat.vscode-great-icons"
-                        title="VSCode Great Icons"
-                        description="Icon pack for VSCode"
-                      />
-                    </ul>
-                  </div>
+                    />
+                    <ToolboxItem
+                      href="https://marketplace.visualstudio.com/items?itemName=emmanuelbeziat.vscode-great-icons"
+                      title="VSCode Great Icons"
+                      description="Icon pack for VSCode"
+                    />
+                  </ul>
 
                   <div className="space-y-4">
                     <h2 className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white">

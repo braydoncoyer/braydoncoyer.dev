@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import Toggle from './toggle';
 
 const Nav = () => (
-  <nav className="sticky-nav flex justify-center items-center w-full py-8 px-5 my-0 md:mb-8 mx-auto bg-white dark:bg-coolGray-900 bg-opacity-60">
+  <nav className="sticky-nav flex justify-center items-center w-full py-8 px-5 my-0 md:mb-8 mx-auto bg-white dark:bg-coolGray-900 bg-opacity-80">
     <div className="flex justify-between items-center max-w-4xl w-full">
       <div className="text-gray-900 dark:text-gray-100 font-semibold">
         <Link className="cursor-pointer" to="/">
