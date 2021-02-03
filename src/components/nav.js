@@ -3,31 +3,29 @@ import { Link } from 'gatsby';
 import Toggle from './toggle';
 
 const Nav = () => (
-  <nav className="sticky-nav flex justify-center items-center w-full p-8 my-0 md:mb-8 mx-auto bg-white dark:bg-coolGray-900 bg-opacity-60">
+  <nav className="sticky-nav flex justify-center items-center w-full py-8 px-5 my-0 md:mb-8 mx-auto bg-white dark:bg-coolGray-900 bg-opacity-60">
     <div className="flex justify-between items-center max-w-4xl w-full">
       <div className="text-gray-900 dark:text-gray-100 font-semibold">
         <Link className="cursor-pointer" to="/">
-          <a className="p-1 sm:p-4">braydoncoyer.dev</a>
+          Braydon Coyer
         </Link>
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center space-x-4 justify-evenly text-gray-900 dark:text-gray-100">
         <Link className="cursor-pointer" to="/">
-          <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">Home</a>
+          Home
         </Link>
         <Link className="cursor-pointer" to="/about">
-          <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">About</a>
+          About
         </Link>
         <a
-          className="p-1 sm:p-4 text-gray-900 dark:text-gray-100"
+          className="text-gray-900 dark:text-gray-100"
           href="https://blog.braydoncoyer.dev"
           target="_blank"
           rel="noreferrer"
         >
           Blog
         </a>
-        <div className="ml-4">
-          <Toggle />
-        </div>
+        <Toggle />
       </div>
     </div>
   </nav>

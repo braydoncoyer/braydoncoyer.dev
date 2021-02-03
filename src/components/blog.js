@@ -43,20 +43,12 @@ const BlogSection = () => {
       <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-purple-600 dark:text-purple-500 mb-3">
         Blog
       </h2>
-      <p className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-5xl leading-none font-extrabold tracking-tight mb-4">
+      <p className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-5xl leading-none font-extrabold tracking-tight mb-10">
         Some recent posts.
       </p>
       {articles ? (
         <div>
           <div className="grid gap-16 md:gap-10">
-            {/* <div>
-              <img
-                className="rounded-3xl select-none"
-                src={articles[0].coverImage}
-                alt="article preview"
-              />
-            </div> */}
-
             <div>
               <p className="text-coolGray-500 dark:text-coolGray-400 prose leading-6 font-medium">
                 <time
@@ -134,7 +126,9 @@ const BlogSection = () => {
             </div>
           </div>
         </div>
-      ) : null}
+      ) : (
+        <div>Loading articles... </div>
+      )}
     </section>
   );
 };
