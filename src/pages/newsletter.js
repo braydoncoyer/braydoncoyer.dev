@@ -20,15 +20,13 @@ export default function Toolbox() {
           <body className="bg-white dark:bg-coolGray-900">
             <main className="flex flex-col justify-between px-4 mx-auto min-h-screen max-w-screen-sm md:max-w-screen-md md:p-0 lg:max-w-screen-lg xl:max-w-screen-xl">
               <Layout>
-                <section className="space-y-12 w-full">
-                  <div className="space-y-4">
-                    <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-indigo-500 mb-3">
-                      Newsletter
-                    </h2>
-                    <p className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-5xl leading-none font-extrabold tracking-tight mb-4">
-                      Join my newsletter!
-                    </p>
-                  </div>
+                <section className="w-full">
+                  <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-indigo-500 mb-3">
+                    Newsletter
+                  </h2>
+                  <p className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-5xl leading-none font-extrabold tracking-tight mb-4">
+                    Join my newsletter!
+                  </p>
 
                   <div className="text-coolGray-500 dark:text-coolGray-400 prose leading-6 mb-6">
                     <p>Never miss out on my new content!</p>
@@ -36,20 +34,27 @@ export default function Toolbox() {
                       I love to read, write, create new things and help others
                       learn front-end development!
                     </p>
-                    <h3 className="text-coolGray-900 dark:text-white text-xl sm:text-2xl lg:text-2xl leading-none font-extrabold tracking-tight mb-8">
-                      Each newsletter gives you:
-                    </h3>
+                    <h2 className="text-coolGray-900 dark:text-white text-2xl lg:text-3xl leading-none font-extrabold tracking-tight mb-8">
+                      What you can expect:
+                    </h2>
 
-                    <div className="flex items-start">
-                      <div className="w-5 h-5 bg-indigo-500 dark:bg-indigo-600 text-coolGray-50 rounded-full flex justify-center items-center">
+                    <div className="flex items-center">
+                      <div className="w-5 h-5 flex-none bg-indigo-500 dark:bg-indigo-600 text-coolGray-50 rounded-full flex justify-center items-center mt-1">
                         <HiArrowCircleRight className="text-lg" />
                       </div>
-                      <p className="ml-3 text-coolGray-600 dark:text-coolGray-300 prose leading-6 my-0">
-                        An update about me and a sneak peek at what I’m working
-                        on
+                      <p className="text-coolGray-600 dark:text-coolGray-300 font-semibold prose leading-6 ml-4 mb-1">
+                        Updates about me and my life
                       </p>
                     </div>
-                    <div className="flex items-start mb-7">
+                    <div className="flex items-center">
+                      <div className="w-5 h-5 flex-none bg-indigo-500 dark:bg-indigo-600 text-coolGray-50 rounded-full flex justify-center items-center mt-1">
+                        <HiArrowCircleRight className="text-lg" />
+                      </div>
+                      <p className="text-coolGray-600 dark:text-coolGray-300 font-semibold prose leading-6 ml-4 mb-1">
+                        Sneak peeks at what I’m working on
+                      </p>
+                    </div>
+                    <div className="flex items-center">
                       <div className="w-5 h-5 flex-none bg-indigo-500 dark:bg-indigo-600 text-coolGray-50 rounded-full flex justify-center items-center mt-1">
                         <HiArrowCircleRight className="text-lg" />
                       </div>
@@ -57,7 +62,7 @@ export default function Toolbox() {
                         My recent blog articles
                       </p>
                     </div>
-                    <div className="flex items-start mb-7">
+                    <div className="flex items-center">
                       <div className="w-5 h-5 flex-none bg-indigo-500 dark:bg-indigo-600 text-coolGray-50 rounded-full flex justify-center items-center mt-1">
                         <HiArrowCircleRight className="text-lg" />
                       </div>
@@ -65,7 +70,7 @@ export default function Toolbox() {
                         Tutorials and snippets I’ve created
                       </p>
                     </div>
-                    <div className="flex items-start mb-7">
+                    <div className="flex items-center">
                       <div className="w-5 h-5 flex-none bg-indigo-500 dark:bg-indigo-600 text-coolGray-50 rounded-full flex justify-center items-center mt-1">
                         <HiArrowCircleRight className="text-lg" />
                       </div>
@@ -73,7 +78,7 @@ export default function Toolbox() {
                         Helpful content from the community
                       </p>
                     </div>
-                    <div className="flex items-start mb-7">
+                    <div className="flex items-center">
                       <div className="w-5 h-5 flex-none bg-indigo-500 dark:bg-indigo-600 text-coolGray-50 rounded-full flex justify-center items-center mt-1">
                         <HiArrowCircleRight className="text-lg" />
                       </div>

@@ -1,10 +1,8 @@
 import React from 'react';
 import SEO from '../helpers/seo';
 import SocialIcons from '../components/social';
-import Toggle from '../components/toggle';
 import { ThemeProvider } from '../helpers/themeContext';
 import Banner from '../../static/images/ToolboxBanner.png';
-import Footer from '../components/footer';
 import Layout from '../components/layout';
 
 const ToolboxItem = ({ href, title, description }) => (

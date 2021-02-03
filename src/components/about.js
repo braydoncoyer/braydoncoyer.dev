@@ -16,7 +16,7 @@ const AboutSection = () => (
       <p>
         I love creating, whether those things are web applications,{' '}
         <a
-          className="underline  text-amber-500 hover:text-amber-600 dark:text-amber-400 dark:hover:text-amber-300"
+          className="underline text-amber-500 hover:text-amber-600 dark:text-amber-400 dark:hover:text-amber-300"
           href="https://codepen.io/braydoncoyer"
           target="_blank"
           rel="noreferrer"
