@@ -28,9 +28,9 @@ const Layout = (props) => {
   const meta = {
     title: 'Braydon Coyer - Portfolio',
     description: 'Senior Full Stack Engineer, DOM Artist and TDD enthusiast.',
-    image: '',
-    url: site.siteUrl,
-    twitterUsername: site.twitterUsername,
+    image: site.siteMetadata.image,
+    url: site.siteMetadata.siteUrl,
+    twitterUsername: site.siteMetadata.twitterUsername,
     type: 'website',
     ...customMeta,
   };
