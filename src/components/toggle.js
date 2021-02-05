@@ -10,7 +10,7 @@ const Toggle = () => {
   };
 
   return (
-    <div className="transition duration-500 ease-in-out rounded-full p-4">
+    <div className="rounded-md p-2 bg-coolGray-100 dark:bg-blueGray-800">
       {theme === 'dark' ? (
         <HiSun
           onClick={handleClick}

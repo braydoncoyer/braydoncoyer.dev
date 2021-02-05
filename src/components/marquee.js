@@ -23,7 +23,7 @@ const MarqueeSection = () => {
     }
   `);
   return (
-    <section className="mb-24 md:mb-40">
+    <section>
       <div className="flex justify-between items-center">
         <div className="w-2/5 border-t-2 mb-1 border-coolGray-500 dark:border-coolGray-400" />
         <HeartIcon />
@@ -33,12 +33,12 @@ const MarqueeSection = () => {
       <Marquee velocity={speed}>
         {contentfulQuery.allContentfulInterests.edges[0].node.title.map(
           (item, id) => (
-            <h1
+            <p
               key={id}
               className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white ml-16"
             >
               {item}
-            </h1>
+            </p>
           )
         )}
       </Marquee>

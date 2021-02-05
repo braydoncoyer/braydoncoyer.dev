@@ -5,23 +5,23 @@ import OfficeAPILogo from '../assets/officeapilogo.png';
 import ToastItem from '../helpers/toast';
 
 const ProjectsSection = () => (
-  <section className="mb-16 sm:mb-24 md:mb-40">
+  <section className="mb-24">
     <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-orange-600 dark:text-orange-500 mb-3">
       Projects
     </h2>
-    <div className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-6xl leading-none font-extrabold tracking-tight">
+    <div className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-5xl leading-none font-extrabold tracking-tight mb-4">
       <p className="mb-2">I like to build things.</p>
       <p className="mb-8">Here's a few.</p>
     </div>
 
-    <ul className="grid grid-cols-1 gap-8 md:gap-10 md:grid-cols-2 md:grid-row-2 mt-12">
-      <li className="bg-coolGray-100 dark:bg-blueGray-800 md:col-span-2 rounded-3xl">
-        <div className="p-6 md:p-10 flex flex-col-reverse md:flex md:justify-around md:flex-row">
-          <div className="mt-14 md:mt-0 md:max-w-lg">
+    <ul className="grid grid-cols-1 gap-8  mt-12">
+      <li className="bg-coolGray-100 dark:bg-blueGray-800 rounded-3xl">
+        <div className="p-6 md:p-10 flex flex-col-reverse ">
+          <div className="mt-8 md:max-w-lg">
             <p className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white mb-2">
               bundleapps.io
             </p>
-            <p className="text-coolGray-500 dark:text-coolGray-400 text-lg sm:text-2xl font-normal sm:leading-10 space-y-6 mb-2">
+            <p className="text-coolGray-600 dark:text-coolGray-400 prose leading-6 mb-3">
               A startup consultant company needed a website spun up quickly in
               order to publish their first iOS application. Built with Tailwind
               UI, I was able to put something together for them by the end of
@@ -47,11 +47,11 @@ const ProjectsSection = () => (
               alt="officeAPI"
             />
           </div>
-          <div className="mt-14 md:mt-28">
+          <div className="mt-9">
             <p className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white mb-2">
               officeapi.dev
             </p>
-            <p className="text-coolGray-500 dark:text-coolGray-400 text-lg sm:text-2xl font-normal sm:leading-10 space-y-6 mb-2">
+            <p className="text-coolGray-600 dark:text-coolGray-400 prose leading-6 mb-3">
               A fun side-project originally built with Spring Boot and MonogDb,
               rebuilt with with Node.js, Express, Mongoose and MongoDb. Deployed
               with Heroku.
@@ -84,11 +84,11 @@ const ProjectsSection = () => (
             type="info"
           />
         </div>
-        <div className="mt-14">
+        <div className="mt-8">
           <p className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white mb-2">
             NgLimeade
           </p>
-          <p className="text-coolGray-500 dark:text-coolGray-400 text-lg sm:text-2xl font-normal sm:leading-10 space-y-6 mb-2">
+          <p className="text-coolGray-500 dark:text-coolGray-400 rose leading-6 mb-3">
             NgLimeade is an Angular Toast Library that aims to get toast
             notifications up and running in less than a minute! No joke! Check
             it out for yourself!
