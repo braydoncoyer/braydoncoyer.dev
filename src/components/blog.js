@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import dayjs from 'dayjs';
+import NewsletterSection from './newsletter';
 
 const axiosHashnodeGraphQL = axios.create({
   baseURL: 'https://api.hashnode.com',
@@ -39,7 +40,7 @@ const BlogSection = () => {
   }, []);
   return (
     // Not changing below margin to match other sections because of svg pattern spacing
-    <section className="mb-16">
+    <section className="mb-24">
       <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-purple-600 dark:text-purple-500 mb-3">
         Blog
       </h2>
@@ -127,8 +128,13 @@ const BlogSection = () => {
           </div>
         </div>
       ) : (
-        <div>Loading articles... </div>
+        <div className="prose text-white dark:text-blueGray-900">
+          Loading articles...
+        </div>
       )}
+      <div className="mt-12">
+        <NewsletterSection />
+      </div>
     </section>
   );
 };

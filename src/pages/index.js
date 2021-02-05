@@ -1,7 +1,6 @@
 import React from 'react';
 import Layout from '../components/layout';
 import WelcomeSection from '../components/welcome';
-import NewsletterSection from '../components/newsletter';
 import TimelineSection from '../components/timeline';
 import ProjectsSection from '../components/projects';
 import MusicSection from '../components/music';
@@ -13,7 +12,6 @@ export default function Home() {
       <Layout>
         <WelcomeSection />
         <BlogSection />
-        <NewsletterSection />
         <ProjectsSection />
         <TimelineSection />
         <MusicSection />

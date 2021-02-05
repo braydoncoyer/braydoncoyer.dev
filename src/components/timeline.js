@@ -21,7 +21,7 @@ const TimelineSection = () => {
     }
   `);
   return (
-    <section className="mb-16">
+    <section className="mb-24">
       <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-lightBlue-500 dark:text-lightBlue-400 mb-3">
         Timeline
       </h2>
