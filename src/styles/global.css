@@ -6,6 +6,12 @@ body {
   font-family: "Inter", Arial, Helvetica, sans-serif;
 }
 
+.sticky-nav {
+  position: sticky;
+  z-index: 10;
+  top: 0;
+}
+
 .social-icons {
   height: auto;
   position: fixed;
