@@ -11,20 +11,20 @@ const HeartIcon = () => (
 
 const MarqueeSection = () => {
   const speed = 15;
-  const contentfulQuery = useStaticQuery(graphql`
-    {
-      allContentfulInterests {
-        edges {
-          node {
-            title
-          }
-        }
-      }
-    }
-  `);
+  // const contentfulQuery = useStaticQuery(graphql`
+  //   {
+  //     allContentfulInterests {
+  //       edges {
+  //         node {
+  //           title
+  //         }
+  //       }
+  //     }
+  //   }
+  // `);
   return (
     <section>
-      <div className="flex justify-between items-center">
+      {/* <div className="flex justify-between items-center">
         <div className="w-2/5 border-t-2 mb-1 border-coolGray-500 dark:border-coolGray-400" />
         <HeartIcon />
         <div className="w-2/5 border-t-2 mb-1 border-coolGray-500 dark:border-coolGray-400" />
@@ -42,7 +42,7 @@ const MarqueeSection = () => {
           )
         )}
       </Marquee>
-      <div className="w-full border-b-2 mt-7 border-coolGray-500 dark:border-coolGray-400" />
+      <div className="w-full border-b-2 mt-7 border-coolGray-500 dark:border-coolGray-400" /> */}
     </section>
   );
 };

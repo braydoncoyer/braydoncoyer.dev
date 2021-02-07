@@ -22,10 +22,16 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: 'gatsby-source-contentful',
+      resolve: `gatsby-plugin-mdx`,
       options: {
-        spaceId: 'xjpkg47g93pq',
-        accessToken: 'DSsjEKYByvMXWMqNnK8sbTbvsOjNqBfs9QTfkMgcA30',
+        extensions: [`.mdx`, `.md`],
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/data/blog`,
+        name: `posts`,
       },
     },
     {
