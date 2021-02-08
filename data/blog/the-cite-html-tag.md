@@ -25,7 +25,10 @@ Please note that, according to the MDN Web Docs,
 
 If you want to play around with the tag, feel free to fork the pen below!
 
-[https://codepen.io/braydoncoyer/pen/yLaqPoY](https://codepen.io/braydoncoyer/pen/yLaqPoY)
+<iframe height="465" style="width: 100%;" scrolling="no" title="The cite HTML Tag" src="https://codepen.io/braydoncoyer/embed/yLaqPoY?height=265&theme-id=light&default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/braydoncoyer/pen/yLaqPoY'>The cite HTML Tag</a> by Braydon Coyer
+  (<a href='https://codepen.io/braydoncoyer'>@braydoncoyer</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
 
 ### Compatibility
 
@@ -35,4 +38,4 @@ The tag is part of the HTML Living Standard and is supported on all major web br
 
 Thanks for reading! Have you ever used the tag in a project? Let me know in the comments below!
 
-If you liked this article and want more content like this, read some of my [other articles](https://blog.braydoncoyer.dev/) , subscribe to my newsletter and make sure to follow me on [Twitter](https://twitter.com/BraydonCoyer)!
+Thanks for reading! If you liked this article and want more content like this, read some of my [other articles](https://braydoncoyer.dev/blog), and make sure to follow me on [Twitter](https://twitter.com/BraydonCoyer)!

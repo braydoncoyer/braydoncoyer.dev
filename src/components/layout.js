@@ -95,7 +95,7 @@ const Layout = (props) => {
           <div className="min-h-screen px-4 mx-auto max-w-screen-sm md:max-w-2xl flex flex-col">
             <Nav />
             <main className="flex-grow">{children}</main>
-            <div className="mt-12">
+            <div className="mt-6">
               <Footer />
             </div>
           </div>
