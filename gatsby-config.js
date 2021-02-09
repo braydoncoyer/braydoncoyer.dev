@@ -21,10 +21,32 @@ module.exports = {
     twitterUsername: '@BraydonCoyer',
   },
   plugins: [
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-robots-txt`,
+    `gatsby-plugin-postcss`,
+    `gatsby-plugin-react-helmet`,
+    `gatsby-remark-images`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590,
+            },
+          },
+        ],
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590,
+            },
+          },
+        ],
       },
     },
     {
@@ -32,6 +54,13 @@ module.exports = {
       options: {
         path: `${__dirname}/data/blog`,
         name: `posts`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/static/images`,
+        name: `images`,
       },
     },
     {
@@ -45,9 +74,6 @@ module.exports = {
         anonymize: true,
       },
     },
-    `gatsby-plugin-robots-txt`,
-    `gatsby-plugin-postcss`,
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-google-fonts-v2`,
       options: {

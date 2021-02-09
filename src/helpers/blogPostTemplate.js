@@ -2,6 +2,7 @@ import React from 'react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { graphql } from 'gatsby';
 import dayjs from 'dayjs';
+import Img from 'gatsby-image';
 import Layout from '../components/layout';
 import ProfileImage from '../assets/avatar.jpg';
 import NewsletterSection from '../components/newsletter';
@@ -38,6 +39,9 @@ const BlogPostTemplate = ({ data }) => {
             1,500 views
           </p>
         </div>
+        {frontmatter.coverImage ? (
+          <Img fluid={frontmatter.coverImage.childImageSharp.fluid} />
+        ) : null}
         <div className="text-coolGray-600 dark:text-coolGray-400 prose">
           <MDXRenderer className="prose">{body}</MDXRenderer>
         </div>
@@ -55,6 +59,14 @@ export const query = graphql`
       frontmatter {
         title
         publishedAt
+        coverImage {
+          publicURL
+          childImageSharp {
+            fluid(maxWidth: 2000) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
       body
       timeToRead

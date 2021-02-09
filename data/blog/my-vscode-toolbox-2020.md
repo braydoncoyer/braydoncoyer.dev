@@ -1,8 +1,8 @@
 ---
-title: "My VSCode Toolbox - 2020"
-publishedAt: "2020-11-16"
-summary: "Here's a list of my VSCode extensions in 2020."
-image: "/static/images/my-vscode-toolbox-2020/banner.png"
+title: My VSCode Toolbox - 2020
+publishedAt: 2020-11-16
+summary: Here's a list of my VSCode extensions in 2020.
+coverImage: ../../static/images/vscodebanner.png
 ---
 
 There are a plethora of options when it comes to code editors, especially for front-end developers. I've tried Atom, Sublime Text, Webstorm - you name it. While each editor has its own strengths, I find myself coming back to VSCode purely for its level of customization.
@@ -10,6 +10,8 @@ There are a plethora of options when it comes to code editors, especially for fr
 As 2020 wraps up, I thought it would be interesting to cover my personal setup so you can take a look into how I work and so that I can look back in 2021 and see what's changed.
 
 Let's dive in!
+
+`Hello, World!`
 
 ### Theme
 
@@ -90,7 +92,7 @@ If you use Docker, this official plugin from Microsoft allows you to easily buil
 
 When I'm in the groove, I prefer to remove as many distractions as I can so I can focus on what is in front of me. Because of this, I've changed some minor things in the editor to aid in that endeavor, like moving the file editor panel to the right-hand side of the application, and utilizing shortcuts to quickly show/hide pieces of the editor.
 
-```javascript
+```json
 {
   ...
   "editor.fontSize": 16,
@@ -98,6 +100,35 @@ When I'm in the groove, I prefer to remove as many distractions as I can so I ca
   "editor.formatOnPaste": true,
   "editor.quickSuggestionsDelay": 0
 }
+```
+
+And then CSS
+
+```css
+background: purple;
+display: flex;
+```
+
+```jsx
+<Highlight
+  {...defaultProps}
+  code={props.children.props.children.trim()}
+  language={
+    matches && matches.groups && matches.groups.lang ? matches.groups.lang : ""
+  }
+>
+  {({ className, style, tokens, getLineProps, getTokenProps }) => (
+    <pre className={className} style={style}>
+      {tokens.map((line, i) => (
+        <div {...getLineProps({ line, key: i })}>
+          {line.map((token, key) => (
+            <span {...getTokenProps({ token, key })} />
+          ))}
+        </div>
+      ))}
+    </pre>
+  )}
+</Highlight>
 ```
 
 After applying these settings, VSCode looks like this.

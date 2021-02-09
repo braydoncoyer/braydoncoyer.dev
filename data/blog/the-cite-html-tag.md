@@ -1,8 +1,8 @@
 ---
-title: "The < cite > HTML Tag"
-publishedAt: "2021-01-21"
-summary: "Today, we look at the <cite> tag and how you should use it in your projects."
-image: "/static/images/the-cite-html-tag/banner.png"
+title: The < cite > HTML Tag
+publishedAt: 2021-01-21
+summary: Today, we look at the <cite> tag and how you should use it in your projects.
+coverImage: ../../static/images/vscodebanner.png
 ---
 
 Welcome to part three of the Uncommon HTML Tag series!

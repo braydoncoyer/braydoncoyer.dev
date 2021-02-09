@@ -1,6 +1,8 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/display-name */
 import { MDXProvider } from '@mdx-js/react';
 import React from 'react';
+import { Code } from './src/components/code';
 
 const components = {
   h3: ({ children }) => (
@@ -13,9 +15,22 @@ const components = {
       {children}
     </h4>
   ),
-  //   'p.inlineCode': (props) => (
-  //     <code style={{ backgroundColor: 'red' }} {...props} />
-  //   ),
+  'p.inlineCode': ({ children }) => (
+    <code className="px-1 py-12 border border-coolGray-500 dark:border-coolGray-400 rounded-md bg-coolGray-100 dark:bg-blueGray-800">
+      {children}
+    </code>
+  ),
+  // pre: ({ children: { props } }) => {
+  //   if (props.mdxType === 'code') {
+  //     return (
+  //       <Code
+  //         codeString={props.children.trim()}
+  //         language={props.className && props.className.replace('language-', '')}
+  //         {...props}
+  //       />
+  //     );
+  //   }
+  // },
 };
 const wrapRootElement = ({ element }) => (
   <MDXProvider components={components}>{element}</MDXProvider>
