@@ -14,7 +14,7 @@ const BlogPostTemplate = ({ data }) => {
 
   return (
     <>
-      <Layout>
+      <Layout title={frontmatter.title}>
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-coolGray-900 dark:text-white">
           {frontmatter.title}
         </h1>
