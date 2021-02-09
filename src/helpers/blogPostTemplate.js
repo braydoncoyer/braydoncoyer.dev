@@ -40,7 +40,10 @@ const BlogPostTemplate = ({ data }) => {
           </p>
         </div>
         {frontmatter.coverImage ? (
-          <Img fluid={frontmatter.coverImage.childImageSharp.fluid} />
+          <Img
+            className="mb-8"
+            fluid={frontmatter.coverImage.childImageSharp.fluid}
+          />
         ) : null}
         <div className="text-coolGray-600 dark:text-coolGray-400 prose">
           <MDXRenderer className="prose">{body}</MDXRenderer>
