@@ -24,7 +24,7 @@ exports.createPages = ({ actions, graphql }) => {
 
     posts.forEach((post) => {
       createPage({
-        path: post.fields.slug,
+        path: `blog${post.fields.slug}`,
         component: blogPostTemplate,
         context: {
           slug: post.fields.slug,

@@ -46,7 +46,7 @@ export default function Blog({ data }) {
         {/* <Dump data={data} /> */}
         {data.allMdx.nodes.map(({ id, frontmatter, fields }) => (
           <div>
-            <Link to={fields.slug} key={id}>
+            <Link to={`/blog${fields.slug}`} key={id}>
               <div>
                 <p className="text-coolGray-500 dark:text-coolGray-400 prose leading-6 font-medium">
                   <time>{frontmatter.publishedAt}</time>
