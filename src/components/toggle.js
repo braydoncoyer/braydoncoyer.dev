@@ -10,19 +10,17 @@ const Toggle = () => {
   };
 
   return (
-    <div className="rounded-md p-2 bg-coolGray-100 dark:bg-blueGray-800">
+    <button
+      type="button"
+      onClick={handleClick}
+      className="rounded-md p-2 bg-coolGray-100 dark:bg-blueGray-800 "
+    >
       {theme === 'dark' ? (
-        <HiSun
-          onClick={handleClick}
-          className="text-coolGray-500 dark:text-coolGray-400 text-2xl cursor-pointer"
-        />
+        <HiSun className="text-coolGray-500 dark:text-coolGray-400 text-2xl cursor-pointer" />
       ) : (
-        <HiMoon
-          onClick={handleClick}
-          className="text-coolGray-500 dark:text-coolGray-400 text-2xl cursor-pointer"
-        />
+        <HiMoon className="text-coolGray-500 dark:text-coolGray-400 text-2xl cursor-pointer" />
       )}
-    </div>
+    </button>
   );
 };
 

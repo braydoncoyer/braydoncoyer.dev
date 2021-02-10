@@ -14,7 +14,9 @@ export const Code = ({ codeString, language, ...props }) => (
       <pre className={className} style={style}>
         {tokens.map((line, i) => (
           <div {...getLineProps({ line, key: i })}>
-            <span>{i + 1}</span>
+            <span className="select-none opacity-30 inline-block w-8">
+              {i + 1}
+            </span>
             {line.map((token, key) => (
               <span {...getTokenProps({ token, key })} />
             ))}

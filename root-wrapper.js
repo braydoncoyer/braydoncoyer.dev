@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/display-name */
 import { MDXProvider } from '@mdx-js/react';
@@ -22,6 +23,17 @@ const components = {
     </code>
   ),
   blockquote: ({ children }) => <Blockquote content={children} />,
+  pre: ({ children: { props } }) => {
+    if (props.mdxType === 'code') {
+      return (
+        <Code
+          codeString={props.children.trim()}
+          language={props.className && props.className.replace('language-', '')}
+          {...props}
+        />
+      );
+    }
+  },
 };
 const wrapRootElement = ({ element }) => (
   <MDXProvider components={components}>{element}</MDXProvider>

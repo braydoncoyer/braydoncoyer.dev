@@ -10,7 +10,7 @@ export default function Blog({ data }) {
         <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-purple-600 dark:text-purple-500 mb-3">
           Blog
         </h2>
-        <p className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-5xl leading-none font-extrabold tracking-tight mb-4">
+        <p className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-5xl leading-none font-extrabold tracking-tight mb-6">
           Writing is my new thing.
         </p>
 
@@ -45,16 +45,13 @@ export default function Blog({ data }) {
 
         {/* <Dump data={data} /> */}
         {data.allMdx.nodes.map(({ id, frontmatter, fields }) => (
-          <div>
+          <div className="mb-8">
             <Link to={`/blog${fields.slug}`} key={id}>
               <div>
-                <p className="text-coolGray-500 dark:text-coolGray-400 prose leading-6 font-medium">
-                  <time>{frontmatter.publishedAt}</time>
-                </p>
-                <p className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white">
+                <p className="text-xl lg:text-2xl font-extrabold text-coolGray-900 dark:text-white">
                   {frontmatter.title}
                 </p>
-                <p className="mt-3 text-coolGray-600 dark:text-coolGray-400 prose leading-6 mb-6">
+                <p className="mt-1 text-coolGray-600 dark:text-coolGray-400 prose leading-6">
                   {frontmatter.summary}
                 </p>
               </div>
