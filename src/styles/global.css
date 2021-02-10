@@ -8,88 +8,9 @@ body {
 
 /* Blog Styles */
 
-.prose pre {
-  @apply bg-coolGray-100 border border-coolGray-500 dark:border-coolGray-400 dark:bg-blueGray-800 text-coolGray-500 dark:text-coolGray-400;
-}
-
-.prose code {
-  @apply px-1 py-0.5 border border-coolGray-500 dark:border-coolGray-400 rounded-md bg-coolGray-100 dark:bg-blueGray-800;
-}
-
-.prose img {
-  /* Don't apply styles to next/image */
-  @apply m-0;
-}
-
-pre {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-code[class*="language-"],
-pre[class*="language-"] {
-  @apply text-coolGray-500 dark:text-coolGray-400;
-}
-
 pre::-webkit-scrollbar {
   display: none;
 }
-
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-  @apply text-gray-700 dark:text-gray-300;
-}
-
-.token.punctuation {
-  @apply text-gray-700 dark:text-gray-300;
-}
-
-.token.property,
-.token.tag,
-.token.boolean,
-.token.number,
-.token.constant,
-.token.symbol,
-.token.deleted {
-  @apply text-green-500;
-}
-
-.token.selector,
-.token.attr-name,
-.token.string,
-.token.char,
-.token.builtin,
-.token.inserted {
-  @apply text-purple-500;
-}
-
-.token.operator,
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string {
-  @apply text-yellow-500;
-}
-
-.token.atrule,
-.token.attr-value,
-.token.keyword {
-  @apply text-blue-500;
-}
-
-.token.function,
-.token.class-name {
-  @apply text-pink-500;
-}
-
-.token.regex,
-.token.important,
-.token.variable {
-  @apply text-yellow-500;
-}
-
 /* Portfolio Styles */
 
 .sticky-nav {

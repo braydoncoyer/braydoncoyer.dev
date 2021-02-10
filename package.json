@@ -44,6 +44,7 @@
     "gatsby-source-contentful": "^4.2.1",
     "gatsby-source-filesystem": "^2.11.0",
     "gatsby-transformer-sharp": "^2.12.0",
+    "mdx-utils": "^0.2.0",
     "node-fetch": "^2.6.1",
     "postcss": "^8.1.10",
     "prism-react-renderer": "^1.1.1",

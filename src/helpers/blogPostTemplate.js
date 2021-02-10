@@ -27,12 +27,12 @@ const BlogPostTemplate = ({ data }) => {
               src={ProfileImage}
               alt="Braydon Coyer"
             />
-            <p className="text-sm text-gray-700 dark:text-gray-300 ml-2">
+            <p className="text-sm text-coolGray-600 dark:text-coolGray-400 ml-2">
               {'Braydon Coyer / '}
               {getArticleDate(frontmatter.publishedAt).format('MMMM DD, YYYY')}
             </p>
           </div>
-          <p className="text-sm text-gray-500 min-w-32 mt-2 md:mt-0">
+          <p className="text-sm text-coolGray-600 dark:text-coolGray-400 min-w-32 mt-2 md:mt-0">
             {timeToRead * 2}
             {` min read`}
             {` • `}
