@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { graphql, Link } from 'gatsby';
 import Layout from '../components/layout';
 import Dump from '../components/dump';
 
 export default function Blog({ data }) {
+  const [searchValue, setSearchValue] = useState('');
+  const filteredBlogPosts = data.allMdx.nodes
+    .sort(
+      (a, b) =>
+        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
+    )
+    .filter((x) => x.frontmatter.title.includes(searchValue.toLowerCase()));
+
+  useEffect(() => {
+    console.log(searchValue);
+  }, [searchValue]);
   return (
     <>
       <Layout title="Blog | Braydon Coyer" description="My blog.">
@@ -33,7 +44,9 @@ export default function Blog({ data }) {
                 </svg>
               </div>
               <input
+                aria-label="Search articles"
                 type="text"
+                onChange={(e) => setSearchValue(e.target.value)}
                 name="email"
                 id="email"
                 className="focus:ring-indigo-500 focus:border-indigo-500 block w-full rounded-none rounded-md pl-10 sm:text-sm border-gray-300"
@@ -43,7 +56,6 @@ export default function Blog({ data }) {
           </div>
         </div>
 
-        {/* <Dump data={data} /> */}
         {data.allMdx.nodes.map(({ id, frontmatter, fields }) => (
           <div className="mb-8">
             <Link to={`/blog${fields.slug}`} key={id}>
@@ -58,6 +70,11 @@ export default function Blog({ data }) {
             </Link>
           </div>
         ))}
+        {/* {filteredBlogPosts
+          ? filteredBlogPosts.map((frontmatter) => (
+              <div className="mb-8">{frontmatter}</div>
+            ))
+          : null} */}
       </Layout>
     </>
   );
