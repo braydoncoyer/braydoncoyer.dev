@@ -8,9 +8,12 @@ import ProfileImage from '../assets/avatar.jpg';
 import NewsletterSection from '../components/newsletter';
 
 const BlogPostTemplate = ({ data }) => {
-  const { frontmatter, body, timeToRead } = data.mdx;
+  const { frontmatter, body, timeToRead, fields } = data.mdx;
+  const { slug } = fields;
 
   const getArticleDate = (day) => dayjs(day);
+
+  const getPublicURL = () => `https://braydoncoyer.dev/blog${slug}`;
 
   return (
     <>
@@ -51,6 +54,17 @@ const BlogPostTemplate = ({ data }) => {
         <div className="mt-8">
           <NewsletterSection />
         </div>
+        <div className="text-coolGray-600 dark:text-coolGray-400 prose">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={`https://twitter.com/search?q=${encodeURIComponent(
+              getPublicURL()
+            )}`}
+          >
+            Discuss on Twitter
+          </a>
+        </div>
       </Layout>
     </>
   );
@@ -73,6 +87,9 @@ export const query = graphql`
       }
       body
       timeToRead
+      fields {
+        slug
+      }
     }
   }
 `;

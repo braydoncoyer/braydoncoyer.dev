@@ -43,6 +43,11 @@ export default function Toolbox() {
                 description="A theme by Sarah Drasner"
               />
               <ToolboxItem
+                href="https://www.monolisa.dev/"
+                title="MonoLisa"
+                description="A font for software developers"
+              />
+              <ToolboxItem
                 href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2"
                 title="Bracket Pair Colorizer 2"
                 description="A customizable extension for

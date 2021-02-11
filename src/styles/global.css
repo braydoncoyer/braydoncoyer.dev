@@ -6,11 +6,6 @@ body {
   font-family: "Inter", Arial, Helvetica, sans-serif;
 }
 
-/* Blog Styles */
-
-pre::-webkit-scrollbar {
-  display: none;
-}
 /* Portfolio Styles */
 
 .sticky-nav {

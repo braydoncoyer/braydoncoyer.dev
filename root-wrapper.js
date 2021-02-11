@@ -43,7 +43,10 @@ const components = {
   ),
   strong: (props) => <span className="font-bold" {...props} />,
   'p.inlineCode': ({ children }) => (
-    <code className="py-0.5 px-1 rounded bg-coolGray-100 dark:text-coolGray-400 dark:bg-blueGray-800">
+    <code
+      className="py-0.5 px-1 rounded bg-coolGray-100 dark:text-coolGray-400 dark:bg-blueGray-800"
+      style={{ fontFamily: 'MonoLisa' }}
+    >
       {children}
     </code>
   ),
