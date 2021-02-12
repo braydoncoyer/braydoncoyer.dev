@@ -8,18 +8,21 @@ require('dotenv').config({
   path: `.env${process.env.NODE_ENV}`,
 });
 
+const siteMetadata = {
+  title: 'Braydon Coyer',
+  titleTemplate: 'Portfolio',
+  description: 'Senior Full Stack Engineer, DOM Artist and TDD enthusiast.',
+  image: '/images/ProfileSEOBanner.png',
+  siteUrl: 'https://braydoncoyer.dev',
+  siteLanguage: `en-US`,
+  siteLocale: `en_us`,
+  twitterUsername: '@BraydonCoyer',
+  authorName: 'Braydon Coyer',
+};
+
 module.exports = {
   /* Your site config here */
-  siteMetadata: {
-    siteUrl: 'https://braydoncoyer.dev/',
-    title: "Braydon's Portfolio",
-    description:
-      'Welcome to my portfolio! Check out some of my projects, blog posts and special tunes I listen to while coding!',
-    author: 'Braydon Coyer',
-    keywords: ['Braydon Coyer', 'Developer Portfolio', 'Blog', 'DOM Artist'],
-    image: './static/images/ProfileSEOBanner.png',
-    twitterUsername: '@BraydonCoyer',
-  },
+  siteMetadata,
   plugins: [
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,

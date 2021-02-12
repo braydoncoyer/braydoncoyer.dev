@@ -60,4 +60,30 @@ function Button({ children }: Props): JSX.Element {
 export default Button;
 ```
 
+```css {6-8}
+.radio__card {
+  position: relative;
+  background-color: white;
+  width: 350px;
+  height: 200px;
+  border-radius: 20px;
+  padding: 30px;
+  color: #554548;
+
+  &-options {
+    margin-top: 20px;
+
+    &-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 25px;
+
+      &-header {
+        margin-left: 25px;
+      }
+    }
+  }
+}
+```
+
 ![This is a gif of gollum](https://media4.giphy.com/media/Cr7yTbjNuY27C/giphy.gif)

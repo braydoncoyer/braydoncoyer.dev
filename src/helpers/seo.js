@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
+import { HiMenuAlt1 } from 'react-icons/hi';
 
 function SEO({ title, description, author, keywords, image, url }) {
   const { site } = useStaticQuery(
@@ -10,9 +11,8 @@ function SEO({ title, description, author, keywords, image, url }) {
           siteMetadata {
             title
             description
-            author
+            authorName
             image
-            keywords
             twitterUsername
           }
         }
@@ -20,72 +20,15 @@ function SEO({ title, description, author, keywords, image, url }) {
     `
   );
 
-  const metaTitle = title || site.siteMetadata.title;
-  const metaDescription = description || site.siteMetadata.description;
-  const metaAuthor = author || site.siteMetadata.author;
-  const metaTwitterCreator = site.siteMetadata.twitterUsername;
-  const metaImage = image || site.siteMetadata.image;
-  const metaUrl = url || site.siteMetadata.url;
-  const metaKeywords = keywords || site.siteMetadata.keywords;
+  // const metaTitle = title || site.siteMetadata.title;
+  // const metaDescription = description || site.siteMetadata.description;
+  // const metaAuthor = author || site.siteMetadata.authorName;
+  // const metaTwitterCreator = site.siteMetadata.twitterUsername;
+  // const metaImage = image || site.siteMetadata.image;
+  // const metaUrl = url || site.siteMetadata.url;
+  // const metaKeywords = keywords || site.siteMetadata.keywords;
 
-  return (
-    <Helmet
-      title={title}
-      meta={[
-        {
-          name: 'description',
-          content: metaDescription,
-        },
-        {
-          name: 'og:title',
-          content: metaTitle,
-        },
-        {
-          name: 'og:description',
-          content: metaDescription,
-        },
-        {
-          name: 'og:type',
-          content: 'website',
-        },
-        {
-          name: 'og:image',
-          content: metaImage,
-        },
-        {
-          name: 'og:url',
-          content: metaUrl,
-        },
-        {
-          name: 'twitter:card',
-          content: 'summary_large_image',
-        },
-        {
-          name: 'twitter:creator',
-          content: metaTwitterCreator,
-        },
-        {
-          name: 'twitter:title',
-          content: metaTitle,
-        },
-        {
-          name: 'twitter:description',
-          content: metaDescription,
-        },
-        {
-          name: 'twitter:image',
-          content: metaImage,
-        },
-      ].concat(
-        metaKeywords && metaKeywords.lenth > 0
-          ? {
-              name: 'keywords',
-              content: metaKeywords.join(', '),
-            }
-          : []
-      )}
-    />
-  );
+  return <p>Hello</p>;
 }
 
 export default SEO;

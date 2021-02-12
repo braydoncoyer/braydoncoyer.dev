@@ -1,14 +1,26 @@
 import React from 'react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { graphql } from 'gatsby';
+import SEO from 'react-seo-component';
 import dayjs from 'dayjs';
 import Img from 'gatsby-image';
 import Layout from '../components/layout';
 import ProfileImage from '../assets/avatar.jpg';
 import NewsletterSection from '../components/newsletter';
+import { useSiteMetadata } from '../hooks/useSiteMetadata';
 
 const BlogPostTemplate = ({ data }) => {
+  const {
+    image,
+    siteUrl,
+    siteLanguage,
+    siteLocale,
+    twitterUsername,
+    authorName,
+  } = useSiteMetadata();
+
   const { frontmatter, body, timeToRead, fields } = data.mdx;
+  const { title, publishedAt, coverImage, summary } = frontmatter;
   const { slug } = fields;
 
   const getArticleDate = (day) => dayjs(day);
@@ -17,7 +29,25 @@ const BlogPostTemplate = ({ data }) => {
 
   return (
     <>
-      <Layout title={frontmatter.title}>
+      <Layout>
+        <SEO
+          title={title}
+          titleSeparator="|"
+          titleTemplate="Blog"
+          description={summary}
+          image={`${siteUrl}/images${slug.replace(/\/$/, '')}${
+            coverImage.publicURL
+          }`}
+          pathname={`${siteUrl}/blog${slug}`}
+          siteLanguage={siteLanguage}
+          siteLocale={siteLocale}
+          twitterUsername={twitterUsername}
+          authorName={authorName}
+          article
+          publishedDate={publishedAt}
+          modifiedDate={new Date(Date.now()).toISOString()}
+        />
+
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-coolGray-900 dark:text-white">
           {frontmatter.title}
         </h1>
@@ -76,6 +106,7 @@ export const query = graphql`
       frontmatter {
         title
         publishedAt
+        summary
         coverImage {
           publicURL
           childImageSharp {

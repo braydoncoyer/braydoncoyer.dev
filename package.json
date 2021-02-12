@@ -54,6 +54,7 @@
     "react-helmet": "^6.1.0",
     "react-icons": "^3.11.0",
     "react-marquee-slider": "^1.1.2",
+    "react-seo-component": "^2.0.2",
     "styled-components": "^5.2.1",
     "tailwindcss": "^2.0.1"
   },

@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { graphql, Link } from 'gatsby';
+import SEO from 'react-seo-component';
 import Layout from '../components/layout';
-import Dump from '../components/dump';
+import { useSiteMetadata } from '../hooks/useSiteMetadata';
 
 export default function Blog({ data }) {
+  const {
+    title,
+    image,
+    siteUrl,
+    siteLanguage,
+    siteLocale,
+    twitterUsername,
+  } = useSiteMetadata();
+
   const [searchValue, setSearchValue] = useState('');
   const filteredBlogPosts = data.allMdx.nodes
     .sort(
@@ -17,7 +27,18 @@ export default function Blog({ data }) {
   }, [searchValue]);
   return (
     <>
-      <Layout title="Blog | Braydon Coyer" description="My blog.">
+      <SEO
+        title={title}
+        titleTemplate="Blog"
+        titleSeparator="|"
+        description="A blend of tutorials, thoughts and other musings."
+        image={`${siteUrl}${image}`}
+        pathname={`${siteUrl}/blog`}
+        siteLanguage={siteLanguage}
+        siteLocale={siteLocale}
+        twitterUsername={twitterUsername}
+      />
+      <Layout titleTemplate="Blog" description="My blog.">
         <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-purple-600 dark:text-purple-500 mb-3">
           Blog
         </h2>
