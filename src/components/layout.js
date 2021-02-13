@@ -17,7 +17,7 @@ const Layout = (props) => {
   //   authorName,
   // } = useSiteMetadata();
 
-  const { children, location, ...customMeta } = props;
+  const { children } = props;
   // const meta = {
   //   title: 'Braydon Coyer',
   //   titleTemplate: `Portfolio`,

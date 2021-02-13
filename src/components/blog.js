@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import dayjs from 'dayjs';
-import { graphql, Link, StaticQuery, useStaticQuery } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 import NewsletterSection from './newsletter';
-
-const MAX_ARTICLES = 3;
 
 export default function BlogSection() {
   const data = useStaticQuery(graphql`
@@ -26,9 +23,6 @@ export default function BlogSection() {
       }
     }
   `);
-  const [articles, setArticles] = useState(null);
-
-  const getArticleDate = (day) => dayjs(day);
 
   return (
     // Not changing below margin to match other sections because of svg pattern spacing

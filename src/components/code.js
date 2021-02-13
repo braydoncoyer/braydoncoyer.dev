@@ -20,7 +20,7 @@ const calculateLinesToHighlight = (meta) => {
   };
 };
 
-export const Code = ({ codeString, language, metastring, ...props }) => {
+export const Code = ({ codeString, language, metastring }) => {
   const shouldHighlightLine = calculateLinesToHighlight(metastring);
 
   return (
