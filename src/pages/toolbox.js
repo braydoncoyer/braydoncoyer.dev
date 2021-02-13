@@ -1,5 +1,7 @@
 import React from 'react';
+import SEO from 'react-seo-component';
 import Layout from '../components/layout';
+import { useSiteMetadata } from '../hooks/useSiteMetadata';
 
 const ToolboxItem = ({ href, title, description }) => (
   <li className="text-coolGray-500 dark:text-coolGray-400 text-base sm:text-lg lg:text-base xl:text-lg">
@@ -11,10 +13,29 @@ const ToolboxItem = ({ href, title, description }) => (
 );
 
 export default function Toolbox() {
+  const {
+    title,
+    image,
+    siteUrl,
+    siteLanguage,
+    siteLocale,
+    twitterUsername,
+  } = useSiteMetadata();
   return (
     <>
+      <SEO
+        title={title}
+        titleTemplate="Toolbox"
+        titleSeparator="|"
+        description={`Here's what I use on a day-to-day basis.`}
+        image={`${siteUrl}${image}`}
+        pathname={`${siteUrl}/toolbox`}
+        siteLanguage={siteLanguage}
+        siteLocale={siteLocale}
+        twitterUsername={twitterUsername}
+      />
       <Layout
-        title="Toolbox | Braydon Coyer"
+        titleTemplate="Toolbox"
         description="Here's what I use on a day-to-day basis."
       >
         <section>
@@ -41,6 +62,11 @@ export default function Toolbox() {
                 href="https://marketplace.visualstudio.com/items?itemName=sdras.night-owl"
                 title="Night Owl"
                 description="A theme by Sarah Drasner"
+              />
+              <ToolboxItem
+                href="https://www.monolisa.dev/"
+                title="MonoLisa"
+                description="A font for software developers"
               />
               <ToolboxItem
                 href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2"
