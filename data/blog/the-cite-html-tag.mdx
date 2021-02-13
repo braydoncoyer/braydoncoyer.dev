@@ -1,0 +1,71 @@
+---
+title: The cite HTML Tag
+publishedAt: 2021-01-21
+summary: Today, we look at the <cite> tag and how you should use it in your projects.
+coverImage: ../../static/images/the-cite-html-tag/banner.png
+---
+
+Welcome to part three of the Uncommon HTML Tag series!
+
+With each article in this series, I will introduce a widely unknown HTML tag, discuss compatibility across browsers and cover some real-world use cases with the element.
+
+### The < cite > Tag
+
+The `<cite></cite>` tag is a semantic element that is used in conjunction with the `<blockquote></blockquote>` element to denote a referenced piece of work, such as a book, an essay, a film, a musical or even a tweet.
+
+Many browsers style the content of a `<cite></cite>` element in italics by default.
+
+Let's take a look at how it's used!
+
+```html
+<blockquote>
+  When Mr. Bilbo Baggins of Bag End announced that he would shortly be
+  celebrating his eleventy-first birthday with a party of special magnificence,
+  there was much talk and excitement in Hobbiton.
+
+  <p>
+    First paragraph in
+    <cite>The Lord of the Rings: The Fellowship of the Ring</cite>
+    by J. R. R. Tolkien (Chapter 1: A Long-Expected Party).
+  </p>
+</blockquote>
+```
+
+![Screen Shot 2021-01-08 at 4.10.52 PM.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1610144211782/9ln9K8ugt.png)
+
+Both the opening and closing tags are mandatory and, unlike some of the other HTML tags we've discussed, does not contain any unique attributes (global attributes can be used).
+
+Please note that, according to the MDN Web Docs,
+
+> ...the W3C specification says that a reference to a creative work, as included within a `<cite>` element, may include the name of the work’s author. However, the WHATWG specification for `<cite>` says the opposite: that a person’s name must never be included, under any circumstances.
+
+If you want to play around with the `<cite></cite>` tag, feel free to fork the pen below!
+
+<iframe
+  height="465"
+  style="width: 100%;"
+  scrolling="no"
+  title="The cite HTML Tag"
+  src="https://codepen.io/braydoncoyer/embed/yLaqPoY?height=265&theme-id=light&default-tab=html,result"
+  frameborder="no"
+  loading="lazy"
+  allowtransparency="true"
+  allowfullscreen="true"
+>
+  See the Pen{" "}
+  <a href="https://codepen.io/braydoncoyer/pen/yLaqPoY">The cite HTML Tag</a> by
+  Braydon Coyer (<a href="https://codepen.io/braydoncoyer">@braydoncoyer</a>) on{" "}
+  <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+### Compatibility
+
+The `<cite></cite>` tag is part of the HTML Living Standard and is supported on all major web browsers!
+
+![Screen Shot 2021-01-08 at 4.13.28 PM.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1610144223593/2BfA0ckvk.png)
+
+### Conclusion
+
+Thanks for reading! Have you ever used the `<cite></cite>` tag in a project? Let me know in the comments below!
+
+If you liked this article and want more content like this, read some of my other articles, subscribe to my newsletter below and make sure to follow me on [Twitter](https://twitter.com/BraydonCoyer)!

@@ -1,7 +1,27 @@
-import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import Marquee from 'react-marquee-slider';
 import heart from '../assets/heart.svg';
+
+const likes = [
+  'Angular',
+  'Valorant',
+  'React',
+  'Running',
+  'Gatsby',
+  'Apex Legends',
+  'Panda Express',
+  'Dr. Pepper',
+  'Basketball',
+  'Apple Products',
+  'Street Tacos',
+  'CodePen',
+  'Test Driven Development',
+  'Public Speaking',
+  'Christmas Time',
+  'Lord of the Rings',
+  'TailwindCSS',
+  'Movie Music Scores',
+];
 
 const HeartIcon = () => (
   <div className="w-12 h-12 rounded-xl bg-gradient-to-br flex items-center justify-center from-pink-500 to-rose-500 mb-1">
@@ -10,39 +30,27 @@ const HeartIcon = () => (
 );
 
 const MarqueeSection = () => {
-  const speed = 15;
-  const contentfulQuery = useStaticQuery(graphql`
-    {
-      allContentfulInterests {
-        edges {
-          node {
-            title
-          }
-        }
-      }
-    }
-  `);
+  const speed = 7;
+
   return (
-    <section>
+    <section className="mb-16">
       <div className="flex justify-between items-center">
-        <div className="w-2/5 border-t-2 mb-1 border-coolGray-500 dark:border-coolGray-400" />
+        <div className="w-2/5 border-t border-gray-200 mb-1" />
         <HeartIcon />
-        <div className="w-2/5 border-t-2 mb-1 border-coolGray-500 dark:border-coolGray-400" />
+        <div className="w-2/5 border-t border-gray-200 mb-1" />
       </div>
 
       <Marquee velocity={speed}>
-        {contentfulQuery.allContentfulInterests.edges[0].node.title.map(
-          (item, id) => (
-            <p
-              key={id}
-              className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white ml-16"
-            >
-              {item}
-            </p>
-          )
-        )}
+        {likes.map((item, id) => (
+          <p
+            key={id}
+            className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white ml-16"
+          >
+            {item}
+          </p>
+        ))}
       </Marquee>
-      <div className="w-full border-b-2 mt-7 border-coolGray-500 dark:border-coolGray-400" />
+      <div className="w-full border-t border-gray-200 mb-1 mt-7" />
     </section>
   );
 };

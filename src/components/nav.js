@@ -17,14 +17,9 @@ const Nav = () => (
         <Link className="cursor-pointer" to="/about">
           About
         </Link>
-        <a
-          className="text-gray-900 dark:text-gray-100"
-          href="https://blog.braydoncoyer.dev"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <Link className="cursor-pointer" to="/blog">
           Blog
-        </a>
+        </Link>
         <Toggle />
       </div>
     </div>

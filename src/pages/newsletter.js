@@ -1,15 +1,33 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
+import SEO from 'react-seo-component';
 import { HiArrowCircleRight } from 'react-icons/hi';
 import Layout from '../components/layout';
+import { useSiteMetadata } from '../hooks/useSiteMetadata';
 
 export default function Toolbox() {
+  const {
+    title,
+    image,
+    siteUrl,
+    siteLanguage,
+    siteLocale,
+    twitterUsername,
+  } = useSiteMetadata();
   return (
     <>
-      <Layout
-        title="Newsletter | Braydon Coyer"
+      <SEO
+        title={title}
+        titleTemplate="Newsletter"
+        titleSeparator="|"
         description="Sign up for my newsletter!"
-      >
+        image={`${siteUrl}${image}`}
+        pathname={`${siteUrl}/newsletter`}
+        siteLanguage={siteLanguage}
+        siteLocale={siteLocale}
+        twitterUsername={twitterUsername}
+      />
+      <Layout>
         <section className="w-full">
           <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-indigo-500 mb-3">
             Newsletter

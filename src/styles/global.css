@@ -6,6 +6,8 @@ body {
   font-family: "Inter", Arial, Helvetica, sans-serif;
 }
 
+/* Portfolio Styles */
+
 .sticky-nav {
   position: sticky;
   z-index: 10;
