@@ -42,11 +42,11 @@ export default function Blog({ data }) {
         <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-purple-600 dark:text-purple-500 mb-3">
           Blog
         </h2>
-        <p className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-5xl leading-none font-extrabold tracking-tight mb-6">
+        <p className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-5xl leading-none font-extrabold tracking-tight mb-16">
           Writing is my new thing.
         </p>
 
-        <div className="mb-12">
+        {/* <div className="mb-12">
           <div className="mt-1 flex rounded-md shadow-sm">
             <div className="relative flex items-stretch flex-grow focus-within:z-10">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -75,7 +75,7 @@ export default function Blog({ data }) {
               />
             </div>
           </div>
-        </div>
+        </div> */}
 
         {data.allMdx.nodes.map(({ id, frontmatter, fields }) => (
           <div className="mb-8">

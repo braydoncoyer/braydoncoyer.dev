@@ -3,6 +3,7 @@ import React from 'react';
 import SEO from 'react-seo-component';
 import Layout from '../components/layout';
 import AboutSection from '../components/about';
+import TimelineSection from '../components/timeline';
 import MarqueeSection from '../components/marquee';
 import { useSiteMetadata } from '../hooks/useSiteMetadata';
 
@@ -31,6 +32,7 @@ export default function Toolbox() {
       <Layout>
         <AboutSection />
         <MarqueeSection />
+        <TimelineSection />
       </Layout>
     </>
   );

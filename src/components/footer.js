@@ -38,14 +38,12 @@ const Footer = () => (
                 </li>
 
                 <li>
-                  <a
-                    href="https://blog.braydoncoyer.dev"
-                    target="_blank"
-                    rel="noreferrer"
+                  <Link
                     className="text-base text-coolGray-600 dark:text-coolGray-400 hover:text-gray-900"
+                    to="/blog"
                   >
                     Blog
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

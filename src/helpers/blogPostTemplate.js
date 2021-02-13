@@ -71,9 +71,9 @@ const BlogPostTemplate = ({ data }) => {
           </div>
           <p className="text-sm text-coolGray-600 dark:text-coolGray-400 min-w-32 mt-2 md:mt-0">
             {timeToRead * 2}
-            {` min read`}
-            {` • `}
-            1,500 views
+            {` minute read`}
+            {/* {` • `}
+            1,500 views */}
           </p>
         </div>
         {frontmatter.coverImage ? (
