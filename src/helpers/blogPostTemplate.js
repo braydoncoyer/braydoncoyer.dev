@@ -35,9 +35,13 @@ const BlogPostTemplate = ({ data }) => {
           titleSeparator="|"
           titleTemplate="Blog"
           description={summary}
-          image={`${siteUrl}/images${slug.replace(/\/$/, '')}${
-            coverImage.publicURL
-          }`}
+          image={
+            coverImage === null
+              ? `${siteUrl}${image}`
+              : `${siteUrl}/images${slug.replace(/\/$/, '')}${
+                  coverImage.publicURL
+                }`
+          }
           pathname={`${siteUrl}/blog${slug}`}
           siteLanguage={siteLanguage}
           siteLocale={siteLocale}
