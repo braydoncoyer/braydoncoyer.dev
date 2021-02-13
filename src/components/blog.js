@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import dayjs from 'dayjs';
+import React from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import NewsletterSection from './newsletter';
 
