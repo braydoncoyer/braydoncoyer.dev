@@ -52,7 +52,7 @@ export default function Toolbox() {
             <h2 className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white">
               Code Editor & Extensions
             </h2>
-            <ul className="text-secondary ml-4 space-y-2 list-disc">
+            <ul className="text-secondary ml-6 space-y-2 list-disc">
               <ToolboxItem
                 href="https://code.visualstudio.com/"
                 title="Visual Studio Code"
@@ -101,7 +101,7 @@ export default function Toolbox() {
               <h2 className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white">
                 Terminal
               </h2>
-              <ul className="text-secondary ml-4 space-y-2 list-disc">
+              <ul className="text-secondary ml-6 space-y-2 list-disc">
                 <ToolboxItem
                   href="https://hyper.is/"
                   title="Hyper"
@@ -123,7 +123,7 @@ export default function Toolbox() {
               <h2 className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white">
                 Hardware
               </h2>
-              <ul className="text-secondary ml-4 space-y-2 list-disc">
+              <ul className="text-secondary ml-6 space-y-2 list-disc">
                 <li className="text-coolGray-500 dark:text-coolGray-400 text-base sm:text-lg lg:text-base xl:text-lg">
                   Macbook Pro 2017, 2.8 GHz Quad-Core Intel Core i7
                 </li>
@@ -149,7 +149,7 @@ export default function Toolbox() {
               <h2 className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white">
                 Miscellaneous
               </h2>
-              <ul className="text-secondary ml-4 space-y-2 list-disc">
+              <ul className="text-secondary ml-6 space-y-2 list-disc">
                 <ToolboxItem
                   href="https://culturedcode.com/things/"
                   title="Things 3"
