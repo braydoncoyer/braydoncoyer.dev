@@ -8,6 +8,7 @@ import Layout from '../components/layout';
 import ProfileImage from '../assets/avatar.jpg';
 import NewsletterSection from '../components/newsletter';
 import { useSiteMetadata } from '../hooks/useSiteMetadata';
+import Dump from '../components/dump';
 
 const BlogPostTemplate = ({ data }) => {
   const {
@@ -20,7 +21,7 @@ const BlogPostTemplate = ({ data }) => {
   } = useSiteMetadata();
 
   const { frontmatter, body, timeToRead, fields } = data.mdx;
-  const { title, publishedAt, coverImage, summary } = frontmatter;
+  const { title, publishedAt, coverImage, summary, imageName } = frontmatter;
   const { slug } = fields;
 
   const getArticleDate = (day) => dayjs(day);
@@ -38,9 +39,7 @@ const BlogPostTemplate = ({ data }) => {
           image={
             coverImage === null
               ? `${siteUrl}${image}`
-              : `${siteUrl}/images${slug.replace(/\/$/, '')}${
-                  coverImage.publicURL
-                }`
+              : `${siteUrl}/images${slug.replace(/\/$/, '')}${imageName}`
           }
           pathname={`${siteUrl}/blog${slug}`}
           siteLanguage={siteLanguage}
@@ -51,6 +50,14 @@ const BlogPostTemplate = ({ data }) => {
           publishedDate={publishedAt}
           modifiedDate={new Date(Date.now()).toISOString()}
         />
+
+        {/* <Dump
+          image={
+            coverImage === null
+              ? `${siteUrl}${image}`
+              : `${siteUrl}/images${slug.replace(/\/$/, '')}/${imageName}`
+          }
+        /> */}
 
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-coolGray-900 dark:text-white">
           {frontmatter.title}
@@ -119,6 +126,7 @@ export const query = graphql`
             }
           }
         }
+        imageName
       }
       body
       timeToRead
