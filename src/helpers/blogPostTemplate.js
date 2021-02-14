@@ -9,7 +9,6 @@ import ProfileImage from '../assets/avatar.jpg';
 import NewsletterSection from '../components/newsletter';
 import { useSiteMetadata } from '../hooks/useSiteMetadata';
 import ArticleViews from './articleViews';
-import Dump from '../components/dump';
 
 const BlogPostTemplate = ({ data }) => {
   const {
@@ -51,14 +50,6 @@ const BlogPostTemplate = ({ data }) => {
           publishedDate={publishedAt}
           modifiedDate={new Date(Date.now()).toISOString()}
         />
-
-        {/* <Dump
-          image={
-            coverImage === null
-              ? `${siteUrl}${image}`
-              : `${siteUrl}/images${slug.replace(/\/$/, '')}/${imageName}`
-          }
-        /> */}
 
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-coolGray-900 dark:text-white">
           {frontmatter.title}

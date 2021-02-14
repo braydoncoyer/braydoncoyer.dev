@@ -84,7 +84,7 @@ export default function Blog({ data }) {
                 <p className="text-xl lg:text-2xl font-extrabold text-coolGray-900 dark:text-white">
                   {frontmatter.title}
                 </p>
-                <p className="mt-1 text-coolGray-600 dark:text-coolGray-400 prose leading-6">
+                <p className="mt-2 text-coolGray-600 dark:text-coolGray-400 prose leading-6">
                   {frontmatter.summary}
                 </p>
               </div>
