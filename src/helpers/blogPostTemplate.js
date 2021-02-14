@@ -8,6 +8,7 @@ import Layout from '../components/layout';
 import ProfileImage from '../assets/avatar.jpg';
 import NewsletterSection from '../components/newsletter';
 import { useSiteMetadata } from '../hooks/useSiteMetadata';
+import ArticleViews from './articleViews';
 import Dump from '../components/dump';
 
 const BlogPostTemplate = ({ data }) => {
@@ -79,8 +80,8 @@ const BlogPostTemplate = ({ data }) => {
           <p className="text-sm text-coolGray-600 dark:text-coolGray-400 min-w-32 mt-2 md:mt-0">
             {timeToRead * 2}
             {` minute read`}
-            {/* {` • `}
-            1,500 views */}
+            {` • `}
+            <ArticleViews id="test-blog" />
           </p>
         </div>
         {frontmatter.coverImage ? (
