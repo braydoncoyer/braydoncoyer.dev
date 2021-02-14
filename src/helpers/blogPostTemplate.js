@@ -81,7 +81,7 @@ const BlogPostTemplate = ({ data }) => {
             {timeToRead * 2}
             {` minute read`}
             {` • `}
-            <ArticleViews id="test-blog" />
+            <ArticleViews id={slug} />
           </p>
         </div>
         {frontmatter.coverImage ? (
