@@ -27,6 +27,10 @@
   content: "tsx";
 }
 
+.gatsby-highlight pre[class~="language-ts"]::before {
+  content: "ts";
+}
+
 .gatsby-highlight pre[class~="language-js"]::before {
   content: "js";
 }
