@@ -39,7 +39,7 @@ const BlogPostTemplate = ({ data }) => {
           image={
             coverImage === null
               ? `${siteUrl}${image}`
-              : `${siteUrl}/images${slug.replace(/\/$/, '')}${imageName}`
+              : `${siteUrl}/images${slug.replace(/\/$/, '')}/${imageName}`
           }
           pathname={`${siteUrl}/blog${slug}`}
           siteLanguage={siteLanguage}
