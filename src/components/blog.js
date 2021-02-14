@@ -2,6 +2,8 @@ import React from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import NewsletterSection from './newsletter';
 
+const MAX_ARTICLES = 5;
+
 export default function BlogSection() {
   const data = useStaticQuery(graphql`
     {
@@ -33,20 +35,22 @@ export default function BlogSection() {
         Some recent posts.
       </p>
 
-      {data.allMdx.nodes.map(({ id, frontmatter, fields }) => (
-        <div className="mb-8">
-          <Link to={`/blog${fields.slug}`} key={id}>
-            <div>
-              <p className="text-xl lg:text-2xl font-extrabold text-coolGray-900 dark:text-white">
-                {frontmatter.title}
-              </p>
-              <p className="mt-1 text-coolGray-600 dark:text-coolGray-400 prose leading-6">
-                {frontmatter.summary}
-              </p>
-            </div>
-          </Link>
-        </div>
-      ))}
+      {data.allMdx.nodes
+        .slice(0, MAX_ARTICLES)
+        .map(({ id, frontmatter, fields }) => (
+          <div className="mb-8">
+            <Link to={`/blog${fields.slug}`} key={id}>
+              <div>
+                <p className="text-xl lg:text-2xl font-extrabold text-coolGray-900 dark:text-white">
+                  {frontmatter.title}
+                </p>
+                <p className="mt-2 text-coolGray-600 dark:text-coolGray-400 prose leading-6">
+                  {frontmatter.summary}
+                </p>
+              </div>
+            </Link>
+          </div>
+        ))}
 
       <div className="mt-12">
         <NewsletterSection />
