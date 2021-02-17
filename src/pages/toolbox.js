@@ -15,7 +15,6 @@ const ToolboxItem = ({ href, title, description }) => (
 export default function Toolbox() {
   const {
     title,
-    image,
     siteUrl,
     siteLanguage,
     siteLocale,

@@ -8,7 +8,6 @@ import { useSiteMetadata } from '../hooks/useSiteMetadata';
 export default function Toolbox() {
   const {
     title,
-    image,
     siteUrl,
     siteLanguage,
     siteLocale,
