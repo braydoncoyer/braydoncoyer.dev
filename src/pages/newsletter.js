@@ -8,7 +8,6 @@ import { useSiteMetadata } from '../hooks/useSiteMetadata';
 export default function Toolbox() {
   const {
     title,
-    image,
     siteUrl,
     siteLanguage,
     siteLocale,
@@ -21,7 +20,7 @@ export default function Toolbox() {
         titleTemplate="Newsletter"
         titleSeparator="|"
         description="Sign up for my newsletter!"
-        image={`${siteUrl}${image}`}
+        image={`${siteUrl}/images/NewsletterBanner.png`}
         pathname={`${siteUrl}/newsletter`}
         siteLanguage={siteLanguage}
         siteLocale={siteLocale}

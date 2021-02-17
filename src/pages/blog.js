@@ -7,7 +7,6 @@ import { useSiteMetadata } from '../hooks/useSiteMetadata';
 export default function Blog({ data }) {
   const {
     title,
-    image,
     siteUrl,
     siteLanguage,
     siteLocale,
@@ -32,7 +31,7 @@ export default function Blog({ data }) {
         titleTemplate="Blog"
         titleSeparator="|"
         description="A blend of tutorials, thoughts and other musings."
-        image={`${siteUrl}${image}`}
+        image={`${siteUrl}/images/BlogSEOBanner.png`}
         pathname={`${siteUrl}/blog`}
         siteLanguage={siteLanguage}
         siteLocale={siteLocale}

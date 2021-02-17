@@ -9,6 +9,8 @@ import ProfileImage from '../assets/avatar.jpg';
 import NewsletterSection from '../components/newsletter';
 import { useSiteMetadata } from '../hooks/useSiteMetadata';
 import ArticleViews from './articleViews';
+import { getGitHubEditURL } from './getGithubEditUrl';
+import { getTwitterShareUrl } from './getTwitterShareUrl';
 
 const BlogPostTemplate = ({ data }) => {
   const {
@@ -25,8 +27,6 @@ const BlogPostTemplate = ({ data }) => {
   const { slug } = fields;
 
   const getArticleDate = (day) => dayjs(day);
-
-  const getPublicURL = () => `https://braydoncoyer.dev/blog${slug}`;
 
   return (
     <>
@@ -84,19 +84,29 @@ const BlogPostTemplate = ({ data }) => {
         <div className="text-coolGray-600 dark:text-coolGray-400 prose">
           <MDXRenderer className="prose">{body}</MDXRenderer>
         </div>
-        <div className="mt-8">
+        <div className="mt-8 mb-4">
           <NewsletterSection />
         </div>
-        <div className="text-coolGray-600 dark:text-coolGray-400 prose">
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href={`https://twitter.com/search?q=${encodeURIComponent(
-              getPublicURL()
-            )}`}
-          >
-            Discuss on Twitter
-          </a>
+        <div className="text-coolGray-600 dark:text-coolGray-400 italic flex justify-start md:justify-end space-x-3">
+          <span>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={getTwitterShareUrl(slug)}
+            >
+              Discuss on Twitter
+            </a>
+          </span>
+          <span>{` • `}</span>
+          <span>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={`${getGitHubEditURL(slug)}`}
+            >
+              Edit on GitHub
+            </a>
+          </span>
         </div>
       </Layout>
     </>
