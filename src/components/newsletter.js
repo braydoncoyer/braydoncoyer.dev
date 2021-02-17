@@ -2,7 +2,7 @@
 import React from 'react';
 
 const NewsletterSection = () => (
-  <section className="mb-16">
+  <section>
     <div className="bg-transparent">
       <div className="w-full mx-auto ">
         <div className="px-6 py-6 md:px-8 md:py-8 bg-coolGray-100 dark:bg-blueGray-800 rounded-lg">
