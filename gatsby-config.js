@@ -24,6 +24,7 @@ module.exports = {
   /* Your site config here */
   siteMetadata,
   plugins: [
+    `gatsby-plugin-sitemap`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-robots-txt`,
