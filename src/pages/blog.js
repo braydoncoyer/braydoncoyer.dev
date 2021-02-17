@@ -1,5 +1,4 @@
-/* eslint-disable no-shadow */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { graphql, Link } from 'gatsby';
 import SEO from 'react-seo-component';
 import Layout from '../components/layout';
@@ -17,35 +16,14 @@ export default function Blog({ data }) {
 
   const allPosts = data.allMdx.nodes;
 
-  const emptyQuery = '';
-
-  const [state, setState] = useState({
-    filteredData: [],
-    query: emptyQuery,
-  });
-
-  const handleInputChange = (event) => {
-    console.log(event.target.value);
-    const inputQuery = event.target.value;
-    const localPosts = allPosts || [];
-
-    const localFilteredData = localPosts.filter(
-      (post) =>
-        post.frontmatter.summary
-          .toLowerCase()
-          .includes(inputQuery.toLowerCase()) ||
-        post.frontmatter.title.toLowerCase().includes(inputQuery.toLowerCase())
-    );
-    console.log(localFilteredData);
-    setState({
-      inputQuery,
-      localFilteredData,
-    });
-  };
-
-  const { filteredData, query } = state;
-  const hasSearchResults = filteredData && query !== emptyQuery;
-  const posts = hasSearchResults ? filteredData : allPosts;
+  const [searchValue, setSearchValue] = useState('');
+  const filteredBlogPosts = allPosts.filter(
+    (post) =>
+      post.frontmatter.summary
+        .toLowerCase()
+        .includes(searchValue.toLowerCase()) ||
+      post.frontmatter.title.toLowerCase().includes(searchValue.toLowerCase())
+  );
 
   return (
     <>
@@ -64,7 +42,7 @@ export default function Blog({ data }) {
         <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-purple-600 dark:text-purple-500 mb-3">
           Blog
         </h2>
-        <p className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-5xl leading-none font-extrabold tracking-tight mb-16">
+        <p className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-5xl leading-none font-extrabold tracking-tight mb-8">
           Writing is my new thing.
         </p>
 
@@ -73,33 +51,36 @@ export default function Blog({ data }) {
             <div className="relative flex items-stretch flex-grow focus-within:z-10">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <svg
-                  className="h-5 w-5"
+                  className="h-5 w-5 text-gray-500"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
-                  fill="bg-red-500"
+                  fill="currentColor"
+                  stroke="none"
                   aria-hidden="true"
                 >
-                  <path
-                    fillRule="evenodd"
-                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                    clipRule="evenodd"
-                  />
+                  <path d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" />
                 </svg>
               </div>
               <input
                 aria-label="Search articles"
                 type="text"
-                onChange={handleInputChange}
-                name="email"
-                id="email"
-                className="focus:ring-indigo-500 focus:border-indigo-500 block w-full rounded-none rounded-md pl-10 sm:text-sm border-gray-300"
-                placeholder="Article name"
+                autoComplete="off"
+                onChange={(e) => setSearchValue(e.target.value)}
+                name="search"
+                id="search"
+                className="focus:ring-purple-600 focus:border-purple-600 block w-full rounded-md pl-10 sm:text-sm text-coolGray-900 dark:text-white bg-white dark:bg-blueGray-800"
+                placeholder="Article name || description"
               />
             </div>
           </div>
         </div>
 
-        {posts.map(({ id, frontmatter, fields }) => (
+        {!filteredBlogPosts.length && (
+          <div className="text-coolGray-600 dark:text-coolGray-400 prose leading-6 mb-3">
+            <p>Oops. No posts found. Try another search query...</p>
+          </div>
+        )}
+        {filteredBlogPosts.map(({ id, frontmatter, fields }) => (
           <div className="mb-8">
             <Link to={`/blog${fields.slug}`} key={id}>
               <div>
@@ -113,11 +94,6 @@ export default function Blog({ data }) {
             </Link>
           </div>
         ))}
-        {/* {filteredBlogPosts
-          ? filteredBlogPosts.map((frontmatter) => (
-              <div className="mb-8">{frontmatter}</div>
-            ))
-          : null} */}
       </Layout>
     </>
   );
