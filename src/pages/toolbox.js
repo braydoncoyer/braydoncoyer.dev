@@ -28,7 +28,7 @@ export default function Toolbox() {
         titleTemplate="Toolbox"
         titleSeparator="|"
         description={`Here's what I use on a day-to-day basis.`}
-        image={`${siteUrl}${image}`}
+        image={`${siteUrl}/images/ToolboxBanner.png`}
         pathname={`${siteUrl}/toolbox`}
         siteLanguage={siteLanguage}
         siteLocale={siteLocale}
