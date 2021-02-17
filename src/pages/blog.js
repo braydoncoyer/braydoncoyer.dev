@@ -7,7 +7,6 @@ import { useSiteMetadata } from '../hooks/useSiteMetadata';
 export default function Blog({ data }) {
   const {
     title,
-    image,
     siteUrl,
     siteLanguage,
     siteLocale,
