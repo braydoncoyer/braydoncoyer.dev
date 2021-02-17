@@ -1,5 +1,5 @@
 import React from 'react';
-import { RiBubbleChartLine } from 'react-icons/ri';
+import { TiWarningOutline } from 'react-icons/ti';
 
 const styles = {
   float: 'left',
@@ -9,16 +9,16 @@ const styles = {
   padding: '7px 0px 0px 6px',
 };
 
-const Thoughtquote = ({ children }) => (
-  <div className="px-8 py-6 mb-6 border-l-4 leading-relaxed dark:text-coolGray-300 relative border-violet-500 bg-violet-500 bg-opacity-10">
+const Warningquote = ({ children }) => (
+  <div className="px-8 py-6 mb-6 border-l-4 leading-relaxed dark:text-coolGray-300 relative border-rose-500 bg-rose-500 bg-opacity-10">
     <div
       className="text-center bg-white dark:bg-coolGray-900 rounded-full w-10 h-10 flex items-center justify-center"
       style={styles}
     >
-      <RiBubbleChartLine className="text-2xl dark:text-violet-500" />
+      <TiWarningOutline className="text-2xl dark:text-rose-500" />
     </div>
     <div className="p-0 m-0">{children}</div>
   </div>
 );
 
-export default Thoughtquote;
+export default Warningquote;
