@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import React, { useState, useEffect } from 'react';
 import { graphql, Link } from 'gatsby';
 import SEO from 'react-seo-component';
@@ -14,17 +15,38 @@ export default function Blog({ data }) {
     twitterUsername,
   } = useSiteMetadata();
 
-  const [searchValue, setSearchValue] = useState('');
-  const filteredBlogPosts = data.allMdx.nodes
-    .sort(
-      (a, b) =>
-        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
-    )
-    .filter((x) => x.frontmatter.title.includes(searchValue.toLowerCase()));
+  const allPosts = data.allMdx.nodes;
 
-  useEffect(() => {
-    console.log(searchValue);
-  }, [searchValue]);
+  const emptyQuery = '';
+
+  const [state, setState] = useState({
+    filteredData: [],
+    query: emptyQuery,
+  });
+
+  const handleInputChange = (event) => {
+    console.log(event.target.value);
+    const inputQuery = event.target.value;
+    const localPosts = allPosts || [];
+
+    const localFilteredData = localPosts.filter(
+      (post) =>
+        post.frontmatter.summary
+          .toLowerCase()
+          .includes(inputQuery.toLowerCase()) ||
+        post.frontmatter.title.toLowerCase().includes(inputQuery.toLowerCase())
+    );
+    console.log(localFilteredData);
+    setState({
+      inputQuery,
+      localFilteredData,
+    });
+  };
+
+  const { filteredData, query } = state;
+  const hasSearchResults = filteredData && query !== emptyQuery;
+  const posts = hasSearchResults ? filteredData : allPosts;
+
   return (
     <>
       <SEO
@@ -46,7 +68,7 @@ export default function Blog({ data }) {
           Writing is my new thing.
         </p>
 
-        {/* <div className="mb-12">
+        <div className="mb-12">
           <div className="mt-1 flex rounded-md shadow-sm">
             <div className="relative flex items-stretch flex-grow focus-within:z-10">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -67,7 +89,7 @@ export default function Blog({ data }) {
               <input
                 aria-label="Search articles"
                 type="text"
-                onChange={(e) => setSearchValue(e.target.value)}
+                onChange={handleInputChange}
                 name="email"
                 id="email"
                 className="focus:ring-indigo-500 focus:border-indigo-500 block w-full rounded-none rounded-md pl-10 sm:text-sm border-gray-300"
@@ -75,9 +97,9 @@ export default function Blog({ data }) {
               />
             </div>
           </div>
-        </div> */}
+        </div>
 
-        {data.allMdx.nodes.map(({ id, frontmatter, fields }) => (
+        {posts.map(({ id, frontmatter, fields }) => (
           <div className="mb-8">
             <Link to={`/blog${fields.slug}`} key={id}>
               <div>
