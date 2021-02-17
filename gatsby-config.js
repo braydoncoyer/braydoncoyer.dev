@@ -54,6 +54,14 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://braydoncoyer.dev/',
+        sitemap: 'https://braydoncoyer.dev/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/' }],
+      },
+    },
+    {
       resolve: 'gatsby-plugin-firebase',
       options: {
         credentials: {
