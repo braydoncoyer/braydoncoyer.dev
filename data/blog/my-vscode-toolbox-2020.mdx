@@ -10,7 +10,7 @@ There are a plethora of options when it comes to code editors, especially for fr
 
 As 2020 wraps up, I thought it would be interesting to cover my personal setup so you can take a look into how I work and so that I can look back in 2021 and see what's changed.
 
-Let's dive in! `Button` testestes
+Let's dive in!
 
 ### Theme
 
@@ -99,77 +99,6 @@ When I'm in the groove, I prefer to remove as many distractions as I can so I ca
   "editor.formatOnPaste": true,
   "editor.quickSuggestionsDelay": 0
 }
-```
-
-And then CSS When I'm in the groove, I prefer to remove as many distractions as I can so I can focus on what is in front of me. Because of this, I've changed some minor things in the editor to aid in that endeavor, like moving the file editor panel to
-
-```css
-.gatsby-highlight {
-  position: relative;
-  -webkit-overflow-scrolling: touch;
-}
-.gatsby-highlight pre[class*="language-"] {
-  -webkit-overflow-scrolling: touch;
-}
-.gatsby-highlight pre[class*="language-"]::before {
-  background: black;
-  border-radius: 0 0 0.25rem 0.25rem;
-  color: white;
-  font-size: 12px;
-  letter-spacing: 0.025rem;
-  padding: 0.1rem 0.5rem;
-  position: absolute;
-  right: 1rem;
-  text-align: right;
-  text-transform: uppercase;
-  top: 0;
-}
-.gatsby-highlight pre[class="language-js"]::before {
-  content: "js";
-  background: #f7df1e;
-  color: black;
-}
-```
-
-And some HTML
-
-```html
-<body>
-  <h1>Testing this out!</h1>
-  <p>
-    lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-    lorem ipsum lorem ipsum
-  </p>
-  <div class="container__wrapper">
-    <span> Testing </span>
-    <div>Here's some content</div>
-  </div>
-</body>
-```
-
-```jsx
-type Props = {
-  children: string,
-};
-
-function Button({ children }: Props): JSX.Element {
-  return <button>{children}</button>;
-}
-
-export default Button;
-```
-
-```tsx
-type Props = {
-  children: string;
-  size?: string;
-};
-
-function Button({ children }: Props): JSX.Element {
-  return <button>{children}</button>;
-}
-
-export default Button;
 ```
 
 After applying these settings, VSCode looks like this.

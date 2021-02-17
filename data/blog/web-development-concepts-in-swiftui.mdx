@@ -22,7 +22,13 @@ Before we dive into some code, let's first define SwiftUI and the role it plays 
 
 According to [Apple](https://developer.apple.com/documentation/swiftui),
 
-> SwiftUI provides views, controls, and layout structures for declaring your app’s user interface. The framework provides event handlers for delivering taps, gestures, and other types of input to your app, and tools to manage the flow of data from your app’s models down to the views and controls that users will see and interact with.
+<Blockquote>
+  SwiftUI provides views, controls, and layout structures for declaring your
+  app’s user interface. The framework provides event handlers for delivering
+  taps, gestures, and other types of input to your app, and tools to manage the
+  flow of data from your app’s models down to the views and controls that users
+  will see and interact with.
+</Blockquote>
 
 SwiftUI is declarative in nature, meaning that we tell SwiftUI how our user interface should look at different states in our application and it takes care of the rest. It's a little more involved than that, but you get the basic idea.
 
@@ -32,7 +38,7 @@ SwiftUI is declarative in nature, meaning that we tell SwiftUI how our user inte
 
 Views are the building blocks of your mobile application. Just like Components in modern JavaScript frameworks, Views are slices of your application that define bits of your user interface. Everything that you see and interact with inside of your mobile application will be built using Views.
 
-**The mental link? Views are essentially Components.**
+<Ideaquote>The mental link? Views are essentially Components.</Ideaquote>
 
 SwiftUI has many built-in Views that we can use right out of the box, but let's take a look at one I created.
 
@@ -79,7 +85,10 @@ struct HStackExample: View {
 
 By default, an HStack determines its width by the Views inside it.
 
-**The mental link? An HStack provides the same default functionality that we get when we set up a _flex-container._**
+<Ideaquote>
+  The mental link? An HStack provides the same default functionality that we get
+  when we set up a `flex-container.`
+</Ideaquote>
 
 ```
 // HTML
@@ -134,7 +143,11 @@ struct VStackExample: View {
 
 By default, Views inside a VStack are **centered** which is extremely convenient.
 
-**The mental link? A VStack provides the same default functionality that we get when we create a flex-container, set `flex-direction` to `column`, and `align-items` to `center`.**
+<Ideaquote>
+  The mental link? A VStack provides the same default functionality that we get
+  when we create a flex-container, set `flex-direction` to `column`, and
+  `align-items` to `center`.
+</Ideaquote>
 
 ```
 .flex__items {
@@ -214,7 +227,11 @@ VStack() {
 
 ![Screen Shot 2020-10-08 at 7.07.11 PM.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1602202042640/VIRD1M2vl.png)
 
-_NOTE: With all of the examples above, I changed the size of the Stack container so things appear in a more visually-pleasing format. In order to change the size of a Stack, you need to attach a Modifier. _
+<Infoquote>
+  With all of the examples above, I changed the size of the Stack container so
+  things appear in a more visually-pleasing format. In order to change the size
+  of a Stack, you need to attach a Modifier.
+</Infoquote>
 
 ### Modifiers
 
@@ -222,7 +239,11 @@ Modifiers are another foundational concept in SwiftUI. They wrap Views and are c
 
 Conventionally, we usually don't put Modifiers in the definition of our custom Views, but rather allow the consumer to determine the look of the View.
 
-**The mental link? Modifiers change the look of a View, much like we'd use CSS properties to change things like font color, width, height, z-index and padding of DOM elements.**
+<Ideaquote>
+  The mental link? Modifiers change the look of a View, much like we'd use CSS
+  properties to change things like font color, width, height, z-index and
+  padding of DOM elements.
+</Ideaquote>
 
 Let's take a look at some examples.
 

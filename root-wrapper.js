@@ -7,7 +7,19 @@ import { preToCodeBlock } from 'mdx-utils';
 import React from 'react';
 import { Code } from './src/components/code';
 import Blockquote from './src/components/blockquote';
+import Thoughtquote from './src/components/thoughtquote';
+import Ideaquote from './src/components/ideaquote';
+import Infoquote from './src/components/infoquote';
+import Warningquote from './src/components/warningquote';
 import './src/styles/language-tabs.css';
+
+const shortcodes = {
+  Blockquote,
+  Thoughtquote,
+  Ideaquote,
+  Infoquote,
+  Warningquote,
+};
 
 const components = {
   a: (props) => <a className="text-coolGray-900 dark:text-white" {...props} />,
@@ -62,6 +74,7 @@ const components = {
 
     return <pre {...preProps} />;
   },
+  ...shortcodes,
 };
 const wrapRootElement = ({ element }) => (
   <MDXProvider components={components}>{element}</MDXProvider>
