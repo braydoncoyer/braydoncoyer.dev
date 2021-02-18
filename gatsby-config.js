@@ -54,6 +54,56 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-feed-mdx`,
+      options: {
+        query: `
+        {
+          site {
+            siteMetadata {
+              title
+              description
+              siteUrl
+              site_url: siteUrl
+            }
+          }
+        }
+      `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMdx } }) =>
+              allMdx.nodes.map((edge) => ({
+                ...edge.frontmatter,
+                description: edge.frontmatter.summary,
+                date: edge.frontmatter.publishedAt,
+                url: `${site.siteMetadata.siteUrl}/blog${edge.fields.slug}`,
+                guid: `${site.siteMetadata.siteUrl}/blog${edge.fields.slug}`,
+              })),
+            query: `
+            {
+              allMdx(sort: { fields: [frontmatter___publishedAt], order: DESC }) {
+                nodes {
+                  id
+                  excerpt(pruneLength: 250)
+                  frontmatter {
+                    title
+                    publishedAt
+                    summary
+                  }
+                  fields {
+                    slug
+                  }
+                  timeToRead
+                }
+              }
+            }
+          `,
+            output: '/rss.xml',
+            title: `Braydon Coyer's Blog`,
+          },
+        ],
+      },
+    },
+    {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
         host: 'https://braydoncoyer.dev/',
