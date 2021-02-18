@@ -1,6 +1,12 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { FaTwitter, FaCodepen, FaLinkedin, FaGithub } from 'react-icons/fa';
+import {
+  FaTwitter,
+  FaCodepen,
+  FaLinkedin,
+  FaGithub,
+  FaRss,
+} from 'react-icons/fa';
 
 const Footer = () => (
   <footer
@@ -130,6 +136,13 @@ const Footer = () => (
         >
           <span className="sr-only">LinkedIn</span>
           <FaLinkedin className="h-5 w-5" />
+        </a>
+        <a
+          href="https://braydoncoyer.dev/rss.xml"
+          className="text-gray-400 hover:text-gray-500"
+        >
+          <span className="sr-only">RSS</span>
+          <FaRss className="h-5 w-5" />
         </a>
       </div>
       <p className="mt-8 text-base text-gray-400 md:mt-0 md:order-1">
