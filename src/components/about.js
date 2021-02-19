@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 
 const AboutSection = () => (
   <section className="mb-16">
@@ -42,7 +43,7 @@ const AboutSection = () => (
       <p>
         I’m currently part of the team at{' '}
         <a
-          className="underline  text-amber-500 hover:text-amber-600 dark:text-amber-400 dark:hover:text-amber-300"
+          className="underline text-amber-500 hover:text-amber-600 dark:text-amber-400 dark:hover:text-amber-300"
           href="https://www.cognizant.com/"
           target="_blank"
           rel="noreferrer"
@@ -55,14 +56,12 @@ const AboutSection = () => (
       </p>
       <p>
         I always like learning new things. I often write about my findings on my{' '}
-        <a
-          className="underline  text-amber-500 hover:text-amber-600 dark:text-amber-400 dark:hover:text-amber-300"
-          href="https://blog.braydoncoyer.dev/"
-          target="_blank"
-          rel="noreferrer"
+        <Link
+          className="underline text-amber-500 hover:text-amber-600 dark:text-amber-400 dark:hover:text-amber-300"
+          to="/blog"
         >
           blog,
-        </a>{' '}
+        </Link>{' '}
         and post helpful tech-related tidbits on{' '}
         <a
           className="underline  text-amber-500 hover:text-amber-600 dark:text-amber-400 dark:hover:text-amber-300"
