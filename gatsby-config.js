@@ -151,6 +151,15 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-scroll-indicator`,
+      options: {
+        color: '#34D399',
+        height: '6px',
+        paths: ['/blog/**'],
+        zIndex: `9999`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-google-fonts-v2`,
       options: {
         fonts: [
