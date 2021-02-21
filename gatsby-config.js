@@ -153,13 +153,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-scroll-indicator`,
       options: {
-        // set the color you want for your progress bar here
         color: '#34D399',
-        // set the height of the scroll indicator
         height: '6px',
-        // Set specific paths where you want the scroll indicator using regex
         paths: ['/blog/**'],
-        // Configure the z-index of the indicator element
         zIndex: `9999`,
       },
     },

@@ -151,6 +151,11 @@ export default function Toolbox() {
               <ul className="text-secondary ml-6 space-y-2 list-disc">
                 <ToolboxItem
                   href="https://culturedcode.com/things/"
+                  title="Notion"
+                  description="An all-in-one workspace for the whole team"
+                />
+                <ToolboxItem
+                  href="https://culturedcode.com/things/"
                   title="Things 3"
                   description="An award-winning personal task manager that helps
                   you achieve your goals"
