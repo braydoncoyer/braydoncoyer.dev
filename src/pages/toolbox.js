@@ -184,6 +184,44 @@ export default function Toolbox() {
                 />
               </ul>
             </div>
+
+            <div className="space-y-4">
+              <h2 className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white">
+                My portfolio
+              </h2>
+              <ul className="text-secondary ml-6 space-y-2 list-disc">
+                <ToolboxItem
+                  href="https://www.gatsbyjs.com/"
+                  title="Gatsby"
+                  description="A React based static site generator built on top of GraphQL"
+                />
+                <ToolboxItem
+                  href="https://www.gatsbyjs.com/plugins/gatsby-plugin-mdx/"
+                  title="MDX"
+                  description="Markdown in the component era. Allows JSX embedds inside markdown, useful for blog posts and documentation"
+                />
+                <ToolboxItem
+                  href="https://tailwindcss.com/"
+                  title="TailwindCSS"
+                  description="A utility-first CSS framework packed with pre-built classes that can be composed to build any design, directly in your markup "
+                />
+                <ToolboxItem
+                  href="https://github.com/FormidableLabs/prism-react-renderer"
+                  title="Prism React Renderer"
+                  description="A React component used to highlight code blocks"
+                />
+                <ToolboxItem
+                  href="https://firebase.google.com/"
+                  title="Firebase"
+                  description="A realtime database used to track article views"
+                />
+                <ToolboxItem
+                  href="https://buttondown.email/"
+                  title="Buttondown"
+                  description="A small, elegant tool for producing newsletters"
+                />
+              </ul>
+            </div>
           </div>
         </section>
       </Layout>
