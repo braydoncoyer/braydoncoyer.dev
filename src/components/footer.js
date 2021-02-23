@@ -51,6 +51,14 @@ const Footer = () => (
                     Blog
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    className="text-base text-coolGray-600 dark:text-coolGray-400 hover:text-gray-900"
+                    to="/toolbox"
+                  >
+                    Toolbox
+                  </Link>
+                </li>
               </ul>
             </div>
             <div className="mt-12 md:mt-0">
@@ -61,18 +69,18 @@ const Footer = () => (
                 <li>
                   <Link
                     className="text-base text-coolGray-600 dark:text-coolGray-400 hover:text-gray-900"
-                    to="/toolbox"
+                    to="/newsletter"
                   >
-                    Toolbox
+                    Newsletter
                   </Link>
                 </li>
 
                 <li>
                   <Link
                     className="text-base text-coolGray-600 dark:text-coolGray-400 hover:text-gray-900"
-                    to="/newsletter"
+                    to="/changelog"
                   >
-                    Newsletter
+                    Changelog
                   </Link>
                 </li>
 

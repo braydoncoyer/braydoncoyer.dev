@@ -1,9 +1,10 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import SEO from 'react-seo-component';
-import { HiArrowCircleRight } from 'react-icons/hi';
+import dayjs from 'dayjs';
+import Badge from '../components/badge';
 import Layout from '../components/layout';
 import { useSiteMetadata } from '../hooks/useSiteMetadata';
+import { changes } from '../../data/changelog/changelog.json';
 
 export default function Toolbox() {
   const {
@@ -13,6 +14,9 @@ export default function Toolbox() {
     siteLocale,
     twitterUsername,
   } = useSiteMetadata();
+
+  const date = (day) => dayjs(day);
+
   return (
     <>
       <SEO
@@ -35,99 +39,30 @@ export default function Toolbox() {
             What's new ✨
           </p>
 
-          <div className="text-coolGray-500 dark:text-coolGray-400 prose leading-6 mb-6">
-            <p>Never miss out on my new content!</p>
-            <p>
-              I love to read, write, create new things and help others learn
-              front-end development!
-            </p>
-            <h2 className="text-coolGray-900 dark:text-white text-2xl lg:text-3xl leading-none font-extrabold tracking-tight mb-8">
-              What you can expect:
-            </h2>
+          <p className="text-coolGray-600 dark:text-coolGray-400 prose leading-6 mb-6">
+            Here's a list of things that have recently changed, features that
+            have been added or a log of things that have been removed.
+          </p>
 
-            <div className="flex items-center">
-              <div className="w-5 h-5 flex-none bg-indigo-500 dark:bg-indigo-600 text-coolGray-50 rounded-full flex justify-center items-center mt-1">
-                <HiArrowCircleRight className="text-lg" />
-              </div>
-              <p className="text-coolGray-600 dark:text-coolGray-300 prose leading-6 ml-4 mb-1">
-                Updates about me and my life
-              </p>
+          {changes.map((change, id) => (
+            <div className="mt-12" key={id}>
+              <h3 className="text-coolGray-900 dark:text-white text-lg lg:text-2xl leading-none font-extrabold tracking-tight mb-4">
+                {date(change.date).format('MMMM DD, YYYY')}
+              </h3>
+              {change.items.map((item, key) => (
+                <div key={key} className="flex items-start mt-4 ml-4 md:ml-6">
+                  <div className="flex-none flex justify-center items-center mt-1">
+                    <Badge>{item.type}</Badge>
+                  </div>
+                  <div className="ml-4">
+                    <p className="text-coolGray-600 dark:text-coolGray-400 prose leading-6 mb-6">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
-            <div className="flex items-center">
-              <div className="w-5 h-5 flex-none bg-indigo-500 dark:bg-indigo-600 text-coolGray-50 rounded-full flex justify-center items-center mt-1">
-                <HiArrowCircleRight className="text-lg" />
-              </div>
-              <p className="text-coolGray-600 dark:text-coolGray-300 prose leading-6 ml-4 mb-1">
-                Sneak peeks at what I’m working on
-              </p>
-            </div>
-            <div className="flex items-center">
-              <div className="w-5 h-5 flex-none bg-indigo-500 dark:bg-indigo-600 text-coolGray-50 rounded-full flex justify-center items-center mt-1">
-                <HiArrowCircleRight className="text-lg" />
-              </div>
-              <p className="ml-3 text-coolGray-600 dark:text-coolGray-300 prose leading-6 mb-6">
-                My recent blog articles
-              </p>
-            </div>
-            <div className="flex items-center">
-              <div className="w-5 h-5 flex-none bg-indigo-500 dark:bg-indigo-600 text-coolGray-50 rounded-full flex justify-center items-center mt-1">
-                <HiArrowCircleRight className="text-lg" />
-              </div>
-              <p className="ml-3 text-coolGray-600 dark:text-coolGray-300 prose leading-6 mb-6">
-                Tutorials and snippets I’ve created
-              </p>
-            </div>
-            <div className="flex items-center">
-              <div className="w-5 h-5 flex-none bg-indigo-500 dark:bg-indigo-600 text-coolGray-50 rounded-full flex justify-center items-center mt-1">
-                <HiArrowCircleRight className="text-lg" />
-              </div>
-              <p className="ml-3 text-coolGray-600 dark:text-coolGray-300 prose leading-6 mb-6">
-                Helpful content from the community
-              </p>
-            </div>
-            <div className="flex items-center">
-              <div className="w-5 h-5 flex-none bg-indigo-500 dark:bg-indigo-600 text-coolGray-50 rounded-full flex justify-center items-center mt-1">
-                <HiArrowCircleRight className="text-lg" />
-              </div>
-              <p className="ml-3 text-coolGray-600 dark:text-coolGray-300 prose leading-6 mb-6">
-                Pre-released tutorials
-              </p>
-            </div>
-          </div>
-          <div className="mt-12 sm:w-full sm:max-w-md xl:mt-8">
-            <form
-              name="newsletter"
-              method="POST"
-              data-netlify="true"
-              netlify-honeypot="bot-field"
-              className="sm:flex email-form"
-            >
-              <input type="hidden" name="form-name" value="newsletter" />
-              <div hidden aria-hidden="true">
-                <label htmlFor="bot-field">Robot input...</label>
-                <input name="bot-field" />
-              </div>
-              <label htmlFor="emailAddress" className="sr-only">
-                Email address
-              </label>
-              <input
-                id="emailAddress"
-                name="emailAddress"
-                type="email"
-                autoComplete="email"
-                required
-                className="w-full px-5 py-3 placeholder-coolGray-500 focus:ring-indigo-500 focus:border-indigo-500 dark:focus:border-indigo-600 sm:max-w-xs border-gray-300 rounded-md"
-                placeholder="Enter your email"
-              />
-
-              <button
-                type="submit"
-                className="mt-3 w-full flex items-center justify-center px-5 py-3 shadow text-base font-medium rounded-md text-white bg-indigo-500 dark:bg-indigo-600 hover:bg-indigo-400 dark:hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-coolGray-100 dark:focus:ring-offset-blueGray-800 focus:ring-indigo-500 dark:focus:ring-white sm:mt-0 sm:ml-3 sm:w-auto sm:flex-shrink-0"
-              >
-                Join for Free
-              </button>
-            </form>
-          </div>
+          ))}
         </section>
       </Layout>
     </>
