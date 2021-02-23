@@ -6,6 +6,10 @@
                 {
                     "type": "feature",
                     "description": "Added new changelog page tracking changes to portfolio."
+                },
+                {
+                    "type": "change",
+                    "description": "Updated all imports to use aliases to avoid long relative path names."
                 }
             ]
         },

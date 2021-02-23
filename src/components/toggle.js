@@ -1,6 +1,6 @@
 import React from 'react';
 import { HiMoon, HiSun } from 'react-icons/hi';
-import { ThemeContext } from '../helpers/themeContext';
+import { ThemeContext } from '~helpers/themeContext';
 
 const Toggle = () => {
   const { theme, setTheme } = React.useContext(ThemeContext);

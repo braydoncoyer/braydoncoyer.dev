@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import firebase from 'gatsby-plugin-firebase';
-import incrementViews from '../lib/increment-views';
+import incrementViews from '~lib/increment-views';
 
 const ArticleViews = ({ id }) => {
   const [viewCount, setViewCount] = useState('');

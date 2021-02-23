@@ -1,7 +1,7 @@
 import React from 'react';
 import SEO from 'react-seo-component';
-import Layout from '../components/layout';
-import { useSiteMetadata } from '../hooks/useSiteMetadata';
+import Layout from '~components/layout';
+import { useSiteMetadata } from '~hooks/useSiteMetadata';
 
 const ToolboxItem = ({ href, title, description }) => (
   <li className="text-coolGray-500 dark:text-coolGray-400 text-base sm:text-lg lg:text-base xl:text-lg">

@@ -1,10 +1,10 @@
 import React from 'react';
 import SEO from 'react-seo-component';
 import dayjs from 'dayjs';
-import Badge from '../components/badge';
-import Layout from '../components/layout';
-import { useSiteMetadata } from '../hooks/useSiteMetadata';
-import { changes } from '../../data/changelog/changelog.json';
+import Badge from '~components/badge';
+import Layout from '~components/layout';
+import { useSiteMetadata } from '~hooks/useSiteMetadata';
+import { changes } from '~data/changelog/changelog.json';
 
 export default function Toolbox() {
   const {

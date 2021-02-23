@@ -1,34 +1,10 @@
 import React from 'react';
-// import { useStaticQuery, graphql } from 'gatsby';
-import Footer from './footer';
-import { ThemeProvider } from '../helpers/themeContext';
-import Nav from './nav';
-// import { useSiteMetadata } from '../hooks/useSiteMetadata';
+import Footer from '~components/footer';
+import { ThemeProvider } from '~helpers/themeContext';
+import Nav from '~components/nav';
 
 const Layout = (props) => {
-  // const {
-  //   title,
-  //   description,
-  //   image,
-  //   siteUrl,
-  //   siteLanguage,
-  //   siteLocale,
-  //   twitterUsername,
-  //   authorName,
-  // } = useSiteMetadata();
-
   const { children } = props;
-  // const meta = {
-  //   title: 'Braydon Coyer',
-  //   titleTemplate: `Portfolio`,
-  //   description,
-  //   image,
-  //   url: siteUrl,
-  //   twitterUsername,
-  //   type: 'website',
-  //   ...customMeta,
-  // };
-
   return (
     <div>
       <ThemeProvider>

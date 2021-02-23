@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
-import NewsletterSection from './newsletter';
+import NewsletterSection from '~components/newsletter';
 
 const MAX_ARTICLES = 5;
 

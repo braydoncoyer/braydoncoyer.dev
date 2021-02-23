@@ -1,8 +1,7 @@
 import React from 'react';
-import BundleImage from '../assets/bundleappsmacbookpro.png';
-// eslint-disable-next-line import/no-unresolved
-import OfficeAPILogo from '../assets/officeapilogo.png';
-import ToastItem from '../helpers/toast';
+import BundleImage from '~assets/bundleappsmacbookpro.png';
+import OfficeAPILogo from '~assets/officeapilogo.png';
+import ToastItem from '~helpers/toast';
 
 const ProjectsSection = () => (
   <section className="mb-24">
