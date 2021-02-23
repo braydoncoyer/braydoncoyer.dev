@@ -1,5 +1,5 @@
 import React from 'react';
-import TimelineYear from './timeline-year';
+import TimelineYear from '~components/timeline-year';
 
 const timelineContent = [
   {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import Toggle from './toggle';
+import Toggle from '~components/toggle';
 
 const Nav = () => (
   <nav className="sticky-nav flex justify-center items-center w-full py-4 my-0 md:mb-8 mx-auto bg-white dark:bg-coolGray-900">

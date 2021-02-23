@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfileImage from '../assets/avatar.jpg';
+import ProfileImage from '~assets/avatar.jpg';
 
 const WelcomeSection = () => (
   <section className="mb-24">

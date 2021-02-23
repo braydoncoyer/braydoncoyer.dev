@@ -3,5 +3,40 @@
   "rules": {
     "global-require": 0,
     "react/prop-types": 0
+  },
+  "settings": {
+    "import/resolver": {
+      "alias": [
+        [
+          "~components",
+          "./src/components"
+        ],
+        [
+          "~hooks",
+          "./src/hooks"
+        ],
+        [
+          "~helpers",
+          "./src/helpers"
+        ],
+        [
+          "~styles",
+          "./src/styles"
+        ],
+        [
+          "~lib",
+          "./src/lib"
+        ]
+        ,
+        [
+          "~assets",
+          "./src/assets"
+        ],
+        [
+          "~data",
+          "./data"
+        ]
+      ]
+    }
   }
 }

@@ -20,7 +20,6 @@ const ToastItem = ({ title, description, icon, type }) => {
         toastState === 'enter' ? 'cursor-pointer' : 'translate-x-6 opacity-0'
       } transform ease-out duration-300 w-full`}
     >
-      {/* <img src={LimeadeToast} alt="toast notification" /> */}
       <div
         className={`w-full rounded-xl p-2 ${
           type === 'success' ? 'bg-emerald-400' : 'bg-lightBlue-400'

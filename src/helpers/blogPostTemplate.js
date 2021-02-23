@@ -4,13 +4,13 @@ import { graphql } from 'gatsby';
 import SEO from 'react-seo-component';
 import dayjs from 'dayjs';
 import Img from 'gatsby-image';
-import Layout from '../components/layout';
-import ProfileImage from '../assets/avatar.jpg';
-import NewsletterSection from '../components/newsletter';
-import { useSiteMetadata } from '../hooks/useSiteMetadata';
-import ArticleViews from './articleViews';
-import { getGitHubEditURL } from './getGithubEditUrl';
-import { getTwitterShareUrl } from './getTwitterShareUrl';
+import Layout from '~components/layout';
+import ProfileImage from '~assets/avatar.jpg';
+import NewsletterSection from '~components/newsletter';
+import { useSiteMetadata } from '~hooks/useSiteMetadata';
+import ArticleViews from '~helpers/articleViews';
+import { getGitHubEditURL } from '~helpers/getGithubEditUrl';
+import { getTwitterShareUrl } from '~helpers/getTwitterShareUrl';
 
 const BlogPostTemplate = ({ data }) => {
   const {

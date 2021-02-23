@@ -1,5 +1,5 @@
 import React from 'react';
-import TimelineItem from './timeline-item';
+import TimelineItem from '~components/timeline-item';
 
 const TimelineYear = ({ timelineYear }) => (
   <div>

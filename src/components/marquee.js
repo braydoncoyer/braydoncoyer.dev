@@ -1,6 +1,6 @@
 import React from 'react';
 import Marquee from 'react-marquee-slider';
-import heart from '../assets/heart.svg';
+import heart from '~assets/heart.svg';
 
 const likes = [
   'Angular',

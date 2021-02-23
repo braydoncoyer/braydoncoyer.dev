@@ -1,11 +1,11 @@
 import React from 'react';
 import SEO from 'react-seo-component';
-import Layout from '../components/layout';
-import WelcomeSection from '../components/welcome';
-import ProjectsSection from '../components/projects';
-import MusicSection from '../components/music';
-import BlogSection from '../components/blog';
-import { useSiteMetadata } from '../hooks/useSiteMetadata';
+import Layout from '~components/layout';
+import WelcomeSection from '~components/welcome';
+import ProjectsSection from '~components/projects';
+import MusicSection from '~components/music';
+import BlogSection from '~components/blog';
+import { useSiteMetadata } from '~hooks/useSiteMetadata';
 
 export default function Home() {
   const {
