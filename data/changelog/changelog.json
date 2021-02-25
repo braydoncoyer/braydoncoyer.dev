@@ -1,6 +1,19 @@
 {
     "changes": [
         {
+            "date": "2021-02-25", 
+            "items": [
+                {
+                    "type": "change",
+                    "description": "Relocated data sources to separate directories to clean up a few components."
+                },
+                {
+                    "type": "change",
+                    "description": "Rounded corners of all images on my blog and callout components."
+                }
+            ]
+        },
+        {
             "date": "2021-02-23", 
             "items": [
                 {

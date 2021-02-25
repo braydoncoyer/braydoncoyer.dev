@@ -85,7 +85,7 @@ const BlogPostTemplate = ({ data }) => {
         </div>
         {frontmatter.coverImage ? (
           <Img
-            className="mb-8"
+            className="mb-8 rounded-lg"
             fluid={frontmatter.coverImage.childImageSharp.fluid}
           />
         ) : null}
