@@ -64,7 +64,7 @@ const components = {
   ),
   blockquote: ({ children }) => <Blockquote>{children}</Blockquote>,
   // eslint-disable-next-line jsx-a11y/alt-text
-  img: (props) => <img className="w-full" {...props} />,
+  img: (props) => <img className="w-full rounded-lg" {...props} />,
   pre: (preProps) => {
     const props = preToCodeBlock(preProps);
 

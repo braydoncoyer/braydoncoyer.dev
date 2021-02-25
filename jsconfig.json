@@ -22,6 +22,9 @@
             ],
             "~data": [
                 "data"
+            ],
+            "~layouts": [
+                "layouts"
             ]
         }
     }

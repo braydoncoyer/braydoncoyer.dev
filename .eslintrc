@@ -35,6 +35,10 @@
         [
           "~data",
           "./data"
+        ],
+        [
+          "~layouts",
+          "./src/layouts"
         ]
       ]
     }
