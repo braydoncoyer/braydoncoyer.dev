@@ -2,7 +2,7 @@
 import React from 'react';
 import SEO from 'react-seo-component';
 import { HiArrowCircleRight } from 'react-icons/hi';
-import Layout from '~components/layout';
+import Layout from '~layouts/mainLayout';
 import { useSiteMetadata } from '~hooks/useSiteMetadata';
 
 export default function Toolbox() {

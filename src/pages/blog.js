@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { graphql, Link } from 'gatsby';
 import SEO from 'react-seo-component';
-import Layout from '~components/layout';
+import Layout from '~layouts/mainLayout';
 import { useSiteMetadata } from '~hooks/useSiteMetadata';
 
 export default function Blog({ data }) {

@@ -5,6 +5,10 @@
             "items": [
                 {
                     "type": "change",
+                    "description": "Refactored architecture of project to better categorize and group files together. "
+                },
+                {
+                    "type": "change",
                     "description": "Relocated data sources to separate directories to clean up a few components."
                 },
                 {

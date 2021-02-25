@@ -1,6 +1,6 @@
 import React from 'react';
 import SEO from 'react-seo-component';
-import Layout from '~components/layout';
+import Layout from '~layouts/mainLayout';
 import { useSiteMetadata } from '~hooks/useSiteMetadata';
 
 const ToolboxItem = ({ href, title, description }) => (

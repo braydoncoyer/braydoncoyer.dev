@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import SEO from 'react-seo-component';
 import dayjs from 'dayjs';
 import Img from 'gatsby-image';
-import Layout from '~components/layout';
+import Layout from '~layouts/mainLayout';
 import ProfileImage from '~assets/avatar.jpg';
 import NewsletterSection from '~components/newsletter';
 import { useSiteMetadata } from '~hooks/useSiteMetadata';

@@ -6,6 +6,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
     resolve: {
       alias: {
         '~components': path.resolve(__dirname, 'src/components'),
+        '~layouts': path.resolve(__dirname, 'src/layouts'),
         '~hooks': path.resolve(__dirname, 'src/hooks'),
         '~helpers': path.resolve(__dirname, 'src/helpers'),
         '~styles': path.resolve(__dirname, 'src/styles'),
@@ -19,7 +20,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
-  const blogPostTemplate = path.resolve('src/helpers/blogPostTemplate.js');
+  const blogPostTemplate = path.resolve('src/layouts/blogLayout.js');
 
   return graphql(`
     {
