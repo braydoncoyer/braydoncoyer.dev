@@ -5,6 +5,7 @@
 import { MDXProvider } from '@mdx-js/react';
 import { preToCodeBlock } from 'mdx-utils';
 import React from 'react';
+import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import { Code } from './src/components/code';
 import Blockquote from './src/components/blockquote';
 import Thoughtquote from './src/components/thoughtquote';
@@ -22,7 +23,9 @@ const shortcodes = {
 };
 
 const components = {
-  a: (props) => <a className="text-coolGray-900 dark:text-white" {...props} />,
+  a: (props) => (
+    <OutboundLink className="text-coolGray-900 dark:text-white" {...props} />
+  ),
   h1: ({ children }) => (
     <h1 className="text-3xl lg:text-4xl font-extrabold text-coolGray-900 dark:text-white mb-4">
       {children}
