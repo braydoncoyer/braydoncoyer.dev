@@ -3,7 +3,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { graphql } from 'gatsby';
 import SEO from 'react-seo-component';
 import dayjs from 'dayjs';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import Layout from '~layouts/mainLayout';
 import ProfileImage from '~assets/avatar.jpg';
 import NewsletterSection from '~components/newsletter';
@@ -84,9 +84,9 @@ const BlogPostTemplate = ({ data }) => {
           </p>
         </div>
         {frontmatter.coverImage ? (
-          <Img
+          <GatsbyImage
+            image={frontmatter.coverImage.childImageSharp.gatsbyImageData}
             className="mb-8 rounded-lg"
-            fluid={frontmatter.coverImage.childImageSharp.fluid}
           />
         ) : null}
         <div className="text-coolGray-600 dark:text-coolGray-400 prose">
@@ -131,9 +131,7 @@ export const query = graphql`
         coverImage {
           publicURL
           childImageSharp {
-            fluid(maxWidth: 2000) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
         imageName

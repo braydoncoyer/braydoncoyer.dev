@@ -1,14 +1,14 @@
 import React from 'react';
-import ProfileImage from '~assets/avatar.jpg';
+import { StaticImage } from 'gatsby-plugin-image';
 
 const WelcomeSection = () => (
   <section className="mb-24">
     <div className=" flex justify-between items-center relative">
       <div className=" w-full space-y-8 md:flex-row-reverse md:justify-between">
         <div className="text-left">
-          <img
+          <StaticImage
             className="mt-8 mb-16 ml-3 rounded-full h-36 w-36 ring-4 ring-offset-8 ring-offset-white dark:ring-offset-coolGray-900 ring-teal-500 dark:ring-teal-400 select-none"
-            src={ProfileImage}
+            src="../assets/avatar.jpg"
             alt="Braydon Coyer"
           />
           <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-teal-500 dark:text-teal-400 mb-3">
