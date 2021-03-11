@@ -86,6 +86,7 @@ const BlogPostTemplate = ({ data }) => {
         {frontmatter.coverImage ? (
           <GatsbyImage
             image={frontmatter.coverImage.childImageSharp.gatsbyImageData}
+            alt="Cover"
             className="mb-8 rounded-lg"
           />
         ) : null}
@@ -131,7 +132,7 @@ export const query = graphql`
         coverImage {
           publicURL
           childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH)
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
           }
         }
         imageName
