@@ -80,7 +80,7 @@ export default function Blog({ data }) {
           </div>
         )}
         {filteredBlogPosts.map(({ id, frontmatter, fields }) => (
-          <div className="mb-8">
+          <div className="mb-8" key={id}>
             <Link to={`/blog${fields.slug}`} key={id}>
               <div>
                 <p className="text-xl lg:text-2xl font-extrabold text-coolGray-900 dark:text-white">

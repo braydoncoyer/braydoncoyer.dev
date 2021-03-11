@@ -23,10 +23,12 @@ const siteMetadata = {
 module.exports = {
   /* Your site config here */
   siteMetadata,
+  flags: { PRESERVE_WEBPACK_CACHE: true },
   plugins: [
     `gatsby-plugin-sitemap`,
-    `gatsby-transformer-sharp`,
+    `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     `gatsby-plugin-robots-txt`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-react-helmet`,

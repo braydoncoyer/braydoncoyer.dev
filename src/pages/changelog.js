@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 import Badge from '~components/badge';
 import Layout from '~layouts/mainLayout';
 import { useSiteMetadata } from '~hooks/useSiteMetadata';
-import { changes } from '~data/changelog/changelog.json';
+import { changes } from '~data/changelog/changelog.js';
 
 export default function Toolbox() {
   const {
