@@ -1,0 +1,105 @@
+---
+title: GatsbyConf 2021 - Gatsby v3.0 And The New Gatsby Image
+publishedAt: 2021-03-12
+summary: March is off to a great start with the coming and going of GatsbyConf 2021 and the big announcement of Gatsby v3.0! There are many things to digest here, but perhaps the most exciting for me is the newly revamped Gatsby Plugin Image! Let's talk about what's new.
+coverImage: ../../static/images/gatsbyconf-2021-gatsby-v3-and-the-new-gatsby-image/Gatsbyv3PluginImageBanner.png
+imageName: Gatsbyv3PluginImageBanner.png
+---
+
+2021 seems to be flying by quickly. March is off to a great start with the coming and going of GatsbyConf 2021 and the big announcement of Gatsby v3.0! There are many reasons to love Gatsby and v3.0 brings with it many new features and changes:
+
+- Incremental Builds
+- A revamped Gatsby Plugin Image
+- 70% improved local developer experiences
+- Faster refreshes
+- WordPress & Contentful updates
+- And updates to all of the major dependencies
+
+Wow! There are many things to digest here, but perhaps the most exciting for me is the newly revamped [Gatsby Plugin Image](https://www.gatsbyjs.com/plugins/gatsby-plugin-image) that shipped with Gatsby v3.0!
+
+### What is Gatsby Plugin Image?
+
+Images are a key component to building beautiful user interfaces, but optimizing them in a performant manner can prove to be anything but easy. Performant user interfaces (specifically when it comes to images) require a lot of thought. After all, we don’t want to load large images to be displayed for mobile users and likewise, we don’t want to serve small images for larger devices. Luckily, Gatsby provides an official plugin that not only optimizes our images but also produces the images at multiple sizes so our app can choose the best size for the screen that’s viewing the webpage.
+
+### What’s new with Gatsby Plugin Image? StaticImage and GatsbyImage Components!
+
+Before v3.0, Gatsby Image required you to make a query and pass the image source to a single generic `<Img />` component provided from the plugin. While not difficult to work with, the plugin required some tinkering to get working properly.
+
+Rebuilt from the ground-up, Gatsby Plugin Image provides two new components for static and dynamic images, along with a few properties for how the image should be displayed before it fully loads.
+
+For static images that will always be the same, the new `<StaticImage />` component should be utilized. Here's an example taken from [officail documentation](https://www.gatsbyjs.com/plugins/gatsby-plugin-image/).
+
+```jsx
+import { StaticImage } from 'gatsby-plugin-image';
+
+export function Dino() {
+  return <StaticImage src="../images/dino.png" alt="A dinosaur" />;
+}
+```
+
+As applications become more complex, it’s not uncommon for images to be dynamically sourced. In situations like this, the revamped plugin provides a component called `<GatsbyImage />`. This component works very similarly to the old plugin. Here's an example.
+
+```jsx
+import { graphql } from 'gatsby';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+
+function BlogPost({ data }) {
+  const image = getImage(data.blogPost.avatar);
+  return (
+    <section>
+      <h2>{data.blogPost.title}</h2>
+      <GatsbyImage image={image} alt={data.blogPost.author} />
+      <p>{data.blogPost.body}</p>
+    </section>
+  );
+}
+
+export const pageQuery = graphql`
+  query {
+    blogPost(id: { eq: $Id }) {
+      title
+      body
+      author
+      avatar {
+        childImageSharp {
+          gatsbyImageData(
+            width: 200
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
+          )
+        }
+      }
+    }
+  }
+`;
+```
+
+### Image Options
+
+As you’d expect from an official plugin, the new Gatsby Plugin Image provides several options for customization. Options are passed to the `<StaticImage />` component as props, or through the GraphQL resolver for the `<GatsbyImage />` component.
+
+I’d like to focus on the `placeholder` option, which determines how the image is displayed until fully loaded. According to the documentation,
+
+> To ensure that the layout does not jump around, a placeholder is displayed before the image loads.
+
+You’ve probably seen this before (it’s very common on blog sites) — you load a page and see a temporary blurred block that eventually clears up and displays the crisp image.
+
+The Gatsby Plugin Image provides three types of placeholders for the component:
+
+- Dominant Color — the default option which calculates the dominant color in the image and uses it as a background until the image is fully loaded.
+- Blurred — this option generates a blurred background until the image is fully loaded.
+- Traced SVG — the final option produces a simple sketched version of the final image and fills in the lines when the image is fully loaded.
+
+For a full list of options and integration steps, refer to the [official documentation](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-plugin-image/#image-options).
+
+### Migration to the new Gatsby Plugin Image
+
+Migrating to the new system is easy thanks to a codemod released by the Gatsby team. I updated my personal website to use the new Gatsby Plugin Image within 5 minutes thanks to [the direct documentation](https://www.gatsbyjs.com/docs/reference/release-notes/image-migration-guide)!
+
+### Conclusion
+
+The new Gatsby Plugin Image has been rebuilt from the ground-up and provides several new features and enhancements that make working the plugin much easier. If you’re coming from a past Gatsby project, it’s easy to migrate to the new system. If you’re new, the Gatsby team has done a wonderful job of producing easy-to-understand documentation.
+
+Did you attend GatsbyConf this year? What was your favorite announcement?
+
+Thanks for reading! If you liked this article and want more content like this, read some of my [other articles](https://braydoncoyer.dev/blog/), subscribe to my newsletter and make sure to follow me on [Twitter](https://twitter.com/BraydonCoyer)!
