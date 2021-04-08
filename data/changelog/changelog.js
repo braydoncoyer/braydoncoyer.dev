@@ -4,7 +4,7 @@ export const changes = [
     items: [
       {
         type: 'feature',
-        description: 'Updated my portfolio to Gatsvy v3.0!',
+        description: 'Updated my portfolio to Gatsby v3.0!',
       },
     ],
   },
