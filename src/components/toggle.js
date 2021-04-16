@@ -13,7 +13,7 @@ const Toggle = () => {
     <button
       type="button"
       onClick={handleClick}
-      className="rounded-md p-2 bg-coolGray-100 dark:bg-blueGray-800 "
+      className="rounded-md p-2 bg-coolGray-200 hover:bg-coolGray-300 dark:bg-blueGray-800 dark:hover:bg-coolGray-700"
     >
       {theme === 'dark' ? (
         <HiSun className="text-coolGray-500 dark:text-coolGray-400 text-2xl cursor-pointer" />

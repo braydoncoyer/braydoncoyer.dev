@@ -1,5 +1,15 @@
 export const changes = [
   {
+    date: '2021-04-16',
+    items: [
+      {
+        type: 'feature',
+        description:
+          'Updated to Tailwind v2.1 and took advantage of the new backdrop-filter utility class to give my navbar a glassy feel!',
+      },
+    ],
+  },
+  {
     date: '2021-03-11',
     items: [
       {
