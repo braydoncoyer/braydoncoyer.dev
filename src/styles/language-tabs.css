@@ -2,10 +2,10 @@
   position: relative;
   -webkit-overflow-scrolling: touch;
 }
-.gatsby-highlight pre[class*="language-"] {
+.gatsby-highlight pre[class*='language-'] {
   -webkit-overflow-scrolling: touch;
 }
-.gatsby-highlight pre[class*="language-"]::before {
+.gatsby-highlight pre[class*='language-']::before {
   background: #151f28;
   border-radius: 0.35rem 0.35rem 0 0;
   color: #d1d5db;
@@ -19,26 +19,30 @@
   text-transform: uppercase;
 }
 
-.gatsby-highlight pre[class~="language-jsx"]::before {
-  content: "jsx";
+.gatsby-highlight pre[class~='language-jsx']::before {
+  content: 'jsx';
 }
 
-.gatsby-highlight pre[class~="language-tsx"]::before {
-  content: "tsx";
+.gatsby-highlight pre[class~='language-tsx']::before {
+  content: 'tsx';
 }
 
-.gatsby-highlight pre[class~="language-ts"]::before {
-  content: "ts";
+.gatsby-highlight pre[class~='language-ts']::before {
+  content: 'ts';
 }
 
-.gatsby-highlight pre[class~="language-js"]::before {
-  content: "js";
+.gatsby-highlight pre[class~='language-js']::before {
+  content: 'js';
 }
 
-.gatsby-highlight pre[class~="language-html"]::before {
-  content: "html";
+.gatsby-highlight pre[class~='language-html']::before {
+  content: 'html';
 }
 
-.gatsby-highlight pre[class~="language-css"]::before {
-  content: "css";
+.gatsby-highlight pre[class~='language-css']::before {
+  content: 'css';
+}
+
+.gatsby-highlight pre[class~='language-scss']::before {
+  content: 'scss';
 }
