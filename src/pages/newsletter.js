@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import SEO from 'react-seo-component';
-import { HiArrowCircleRight } from 'react-icons/hi';
 import Layout from '~layouts/mainLayout';
 import { useSiteMetadata } from '~hooks/useSiteMetadata';
 
