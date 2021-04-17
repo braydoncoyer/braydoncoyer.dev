@@ -20,7 +20,7 @@ const ProjectsSection = () => (
             <p className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white mb-2">
               bundleapps.io
             </p>
-            <p className="text-coolGray-600 dark:text-coolGray-400 prose leading-6 mb-3">
+            <p className="text-coolGray-600 dark:text-coolGray-400 prose-lg mb-3">
               A startup consultant company needed a website spun up quickly in
               order to publish their first iOS application. Built with Tailwind
               UI, I was able to put something together for them by the end of
@@ -50,7 +50,7 @@ const ProjectsSection = () => (
             <p className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white mb-2">
               officeapi.dev
             </p>
-            <p className="text-coolGray-600 dark:text-coolGray-400 prose leading-6 mb-3">
+            <p className="text-coolGray-600 dark:text-coolGray-400 prose-lg mb-3">
               A fun side-project originally built with Spring Boot and MonogDb,
               rebuilt with with Node.js, Express, Mongoose and MongoDb. Deployed
               with Heroku.
@@ -87,7 +87,7 @@ const ProjectsSection = () => (
           <p className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white mb-2">
             NgLimeade
           </p>
-          <p className="text-coolGray-500 dark:text-coolGray-400 rose leading-6 mb-3">
+          <p className="text-coolGray-500 dark:text-coolGray-400 prose-lg mb-3">
             NgLimeade is an Angular Toast Library that aims to get toast
             notifications up and running in less than a minute! No joke! Check
             it out for yourself!

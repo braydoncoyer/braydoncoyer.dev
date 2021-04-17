@@ -9,10 +9,10 @@ const TimelineItem = ({ timelineItems }) => (
           <HiCheck className="text-lg" />
         </div>
         <div className="ml-4">
-          <p className="text-coolGray-900 dark:text-white font-semibold prose leading-6 mb-1">
+          <p className="text-coolGray-900 dark:text-white font-semibold  prose-lg mb-1">
             {item.itemTitle}
           </p>
-          <p className="text-coolGray-600 dark:text-coolGray-400 prose leading-6 mb-6">
+          <p className="text-coolGray-600 dark:text-coolGray-400  prose-lg mb-6">
             {item.itemDescription}
           </p>
         </div>

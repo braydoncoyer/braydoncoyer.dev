@@ -8,7 +8,7 @@ const MusicSection = () => (
     <p className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-5xl leading-none font-extrabold tracking-tight mb-4">
       Music while coding? Absolutely.
     </p>
-    <p className="text-coolGray-600 dark:text-coolGray-400 prose leading-6 mb-6">
+    <p className="text-coolGray-600 dark:text-coolGray-400 prose-lg mb-6">
       Lord of the Rings is my favorite movie series ever. Not only is it a
       beautiful movie, but the music score transports you to a magical place.
       When coding, I pop in some AirPods and turn to this playlist.

@@ -1,5 +1,25 @@
 export const changes = [
   {
+    date: '2021-04-17',
+    items: [
+      {
+        type: 'bug fix',
+        description:
+          'Fixed an issue where the newly incorporated backdrop-filter utilities were not working on Safari.',
+      },
+      {
+        type: 'change',
+        description:
+          'Bumped up the font size across the site for easier reading!',
+      },
+      {
+        type: 'change',
+        description:
+          'Links found on my blog are now aligned with styling choices for my selected color palette!',
+      },
+    ],
+  },
+  {
     date: '2021-04-16',
     items: [
       {

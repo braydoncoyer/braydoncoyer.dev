@@ -21,6 +21,11 @@ const Badge = ({ children }) => (
             : ''
         }
         ${
+          children.toLowerCase() === 'bug fix'
+            ? 'bg-blue-100 text-blue-800'
+            : ''
+        }
+        ${
           children.toLowerCase() === 'seo'
             ? 'bg-purple-100 text-purple-800'
             : ''

@@ -10,7 +10,7 @@ const NewsletterSection = () => (
             <h2 className="text-2xl lg:text-3xl font-extrabold tracking-tight text-coolGray-900 dark:text-white sm:text-3xl">
               Join my newsletter!
             </h2>
-            <p className="mt-3 prose leading-6 text-coolGray-500 dark:text-coolGray-400">
+            <p className="mt-3 prose-lg text-coolGray-500 dark:text-coolGray-400">
               A periodic update about my life, recent blog posts, tutorials and
               discoveries.
             </p>

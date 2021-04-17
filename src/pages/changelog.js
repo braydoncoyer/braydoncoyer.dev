@@ -39,7 +39,7 @@ export default function Toolbox() {
             What's new ✨
           </p>
 
-          <p className="text-coolGray-600 dark:text-coolGray-400 prose leading-6 mb-6">
+          <p className="text-coolGray-600 dark:text-coolGray-400 prose-lg mb-6">
             Here's a list of things that have recently changed, features that
             have been added or a log of things that have been removed.
           </p>
@@ -55,7 +55,7 @@ export default function Toolbox() {
                     <Badge>{item.type}</Badge>
                   </div>
                   <div className="ml-4">
-                    <p className="text-coolGray-600 dark:text-coolGray-400 prose leading-6 mb-6">
+                    <p className="text-coolGray-600 dark:text-coolGray-400 prose-lg mb-6">
                       {item.description}
                     </p>
                   </div>

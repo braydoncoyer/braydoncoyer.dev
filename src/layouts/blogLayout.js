@@ -90,13 +90,13 @@ const BlogPostTemplate = ({ data }) => {
             className="mb-8 rounded-lg"
           />
         ) : null}
-        <div className="text-coolGray-600 dark:text-coolGray-400 prose">
-          <MDXRenderer className="prose">{body}</MDXRenderer>
+        <div className="text-coolGray-600 dark:text-coolGray-400 prose-lg">
+          <MDXRenderer>{body}</MDXRenderer>
         </div>
         <div className="mt-8 mb-4">
           <NewsletterSection />
         </div>
-        <div className="text-coolGray-600 dark:text-coolGray-400 italic flex justify-start md:justify-end space-x-3">
+        <div className="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-500 italic flex justify-start md:justify-end space-x-3">
           <span>
             <a
               target="_blank"
