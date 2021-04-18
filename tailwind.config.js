@@ -1,9 +1,27 @@
 const colors = require('tailwindcss/colors');
+const plugin = require('tailwindcss/plugin');
 
 module.exports = {
+  mode: 'jit',
   purge: ['./src/**/*.{js,jsx,ts,tsx}'],
   darkMode: 'class',
   theme: {
+    extend: {
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            a: {
+              color: theme('colors.emerald.500'),
+              '&:hover': {
+                color: theme('colors.emerald.600'),
+              },
+            },
+
+            // ...
+          },
+        },
+      }),
+    },
     colors: {
       white: colors.white,
       black: colors.black,
@@ -44,5 +62,38 @@ module.exports = {
     },
   },
   variants: {},
-  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    plugin(function ({ addVariant, e, postcss }) {
+      addVariant('firefox', ({ container, separator }) => {
+        const isFirefoxRule = postcss.atRule({
+          name: '-moz-document',
+          params: 'url-prefix()',
+        });
+        isFirefoxRule.append(container.nodes);
+        container.append(isFirefoxRule);
+        isFirefoxRule.walkRules((rule) => {
+          rule.selector = `.${e(
+            `firefox${separator}${rule.selector.slice(1)}`
+          )}`;
+        });
+      });
+    }),
+    plugin(function ({ addVariant, e, postcss }) {
+      addVariant('safari', ({ container, separator }) => {
+        const isSafariRule = postcss.atRule({
+          name: '-safari-document',
+          params: 'url-prefix()',
+        });
+        isSafariRule.append(container.nodes);
+        container.append(isSafariRule);
+        isSafariRule.walkRules((rule) => {
+          rule.selector = `.${e(
+            `safari${separator}${rule.selector.slice(1)}`
+          )}`;
+        });
+      });
+    }),
+  ],
 };

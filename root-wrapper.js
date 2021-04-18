@@ -24,7 +24,10 @@ const shortcodes = {
 
 const components = {
   a: (props) => (
-    <OutboundLink className="text-coolGray-900 dark:text-white" {...props} />
+    <OutboundLink
+      className="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-500"
+      {...props}
+    />
   ),
   h1: ({ children }) => (
     <h1 className="text-3xl lg:text-4xl font-extrabold text-coolGray-900 dark:text-white mb-4">

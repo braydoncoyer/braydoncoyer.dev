@@ -13,7 +13,7 @@ export default function Home() {
           <h1 className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-5xl leading-none font-extrabold tracking-tight mb-4">
             This wasn't supposed to happen.
           </h1>
-          <p className="text-coolGray-600 dark:text-coolGray-400 prose leading-6 mb-8">
+          <p className="text-coolGray-600 dark:text-coolGray-400 prose-lg mb-8">
             Something went wrong... The page you were trying to reach doesn't
             exist.
           </p>

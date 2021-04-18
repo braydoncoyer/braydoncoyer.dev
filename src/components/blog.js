@@ -38,13 +38,13 @@ export default function BlogSection() {
       {data.allMdx.nodes
         .slice(0, MAX_ARTICLES)
         .map(({ id, frontmatter, fields }) => (
-          <div className="mb-8" key={id}>
+          <div className="mb-10" key={id}>
             <Link to={`/blog${fields.slug}`}>
               <div>
                 <p className="text-xl lg:text-2xl font-extrabold text-coolGray-900 dark:text-white">
                   {frontmatter.title}
                 </p>
-                <p className="mt-2 text-coolGray-600 dark:text-coolGray-400 prose leading-6">
+                <p className="mt-2 text-coolGray-600 dark:text-coolGray-400 prose-lg">
                   {frontmatter.summary}
                 </p>
               </div>

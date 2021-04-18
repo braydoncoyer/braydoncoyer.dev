@@ -75,18 +75,18 @@ export default function Blog({ data }) {
         </div>
 
         {!filteredBlogPosts.length && (
-          <div className="text-coolGray-600 dark:text-coolGray-400 prose leading-6 mb-3">
+          <div className="text-coolGray-600 dark:text-coolGray-400 prose-lg mb-3">
             <p>Oops. No posts found. Try another search query...</p>
           </div>
         )}
         {filteredBlogPosts.map(({ id, frontmatter, fields }) => (
-          <div className="mb-8" key={id}>
+          <div className="mb-10" key={id}>
             <Link to={`/blog${fields.slug}`} key={id}>
               <div>
                 <p className="text-xl lg:text-2xl font-extrabold text-coolGray-900 dark:text-white">
                   {frontmatter.title}
                 </p>
-                <p className="mt-2 text-coolGray-600 dark:text-coolGray-400 prose leading-6">
+                <p className="mt-2 text-coolGray-600 dark:text-coolGray-400 prose-lg">
                   {frontmatter.summary}
                 </p>
               </div>

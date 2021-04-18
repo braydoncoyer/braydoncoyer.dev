@@ -4,8 +4,13 @@ import Layout from '~layouts/mainLayout';
 import { useSiteMetadata } from '~hooks/useSiteMetadata';
 
 const ToolboxItem = ({ href, title, description }) => (
-  <li className="text-coolGray-500 dark:text-coolGray-400 text-base sm:text-lg lg:text-base xl:text-lg">
-    <a href={href} target="_blank" rel="noreferrer" className="underline">
+  <li className="prose-lg prose-emerald text-coolGray-500 dark:text-coolGray-400">
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className="underline prose-lg"
+    >
       {title}
     </a>
     {description ? <span> - {description}</span> : null}
@@ -42,7 +47,7 @@ export default function Toolbox() {
             <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-orange-600 dark:text-orange-500 mb-3">
               Toolbox
             </h2>
-            <p className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-6xl leading-none font-extrabold tracking-tight mb-8">
+            <p className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-5xl leading-none font-extrabold tracking-tight mb-8">
               Here is what I use on a day-to-day basis.
             </p>
           </div>
@@ -165,6 +170,11 @@ export default function Toolbox() {
                   title="Bear"
                   description="A beautiful, flexible writing app for crafting notes
                   and prose"
+                />
+                <ToolboxItem
+                  href="https://www.craft.do/"
+                  title="Craft"
+                  description="Built for digital devices from the ground up, Craft brings back the joy to writing."
                 />
                 <ToolboxItem
                   href="https://flexibits.com/fantastical"

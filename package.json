@@ -25,7 +25,6 @@
     "@mdx-js/react": "^1.6.22",
     "@tailwindcss/forms": "^0.2.1",
     "@tailwindcss/typography": "^0.4.0",
-    "autoprefixer": "^10.0.2",
     "axios": "^0.21.0",
     "dayjs": "^1.9.6",
     "dotenv": "^8.2.0",
@@ -64,6 +63,7 @@
     "tailwindcss": "^2.1.0"
   },
   "devDependencies": {
+    "autoprefixer": "^10.2.5",
     "babel-eslint": "^10.1.0",
     "env-cmd": "^10.1.0",
     "eslint": "^7.11.0",

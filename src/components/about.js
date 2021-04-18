@@ -9,7 +9,7 @@ const AboutSection = () => (
     <p className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-5xl leading-none font-extrabold tracking-tight mb-4">
       Here's my story.
     </p>
-    <div className="text-coolGray-600 dark:text-coolGray-400 prose leading-6 mb-6">
+    <div className="text-coolGray-600 dark:text-coolGray-400 prose-lg mb-6">
       <p>
         I’m Braydon, a senior full-stack engineer, creative coder and
         self-proclaimed designer who has a passion for the front-end spectrum.

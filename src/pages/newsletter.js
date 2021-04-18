@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import SEO from 'react-seo-component';
-import { HiArrowCircleRight } from 'react-icons/hi';
 import Layout from '~layouts/mainLayout';
 import { useSiteMetadata } from '~hooks/useSiteMetadata';
 
@@ -35,21 +34,23 @@ export default function Toolbox() {
             Join my newsletter!
           </p>
 
-          <div className="text-coolGray-500 dark:text-coolGray-400 prose leading-6 mb-6">
+          <div className="text-coolGray-500 dark:text-coolGray-400 prose-lg mb-6">
             <p>Never miss out on my new content!</p>
             <p>
-              I love to read, write, create new things and help others learn
-              front-end development!
+              I love to read, write and create new things. With each newsletter,
+              you'll get a sneak peek at what I'm working on, updates from my
+              blog, tutorials and snippets I've created, and content I've found
+              helpful from the community!
             </p>
-            <h2 className="text-coolGray-900 dark:text-white text-2xl lg:text-3xl leading-none font-extrabold tracking-tight mb-8">
+            {/* <h2 className="text-coolGray-900 dark:text-white text-2xl lg:text-3xl leading-none font-extrabold tracking-tight mb-4">
               What you can expect:
             </h2>
 
-            <div className="flex items-center">
+            <div className="flex items-center prose-lg">
               <div className="w-5 h-5 flex-none bg-indigo-500 dark:bg-indigo-600 text-coolGray-50 rounded-full flex justify-center items-center mt-1">
                 <HiArrowCircleRight className="text-lg" />
               </div>
-              <p className="text-coolGray-600 dark:text-coolGray-300 prose leading-6 ml-4 mb-1">
+              <p className="text-coolGray-600 dark:text-coolGray-300 leading-6 ml-4 mb-1">
                 Updates about me and my life
               </p>
             </div>
@@ -57,7 +58,7 @@ export default function Toolbox() {
               <div className="w-5 h-5 flex-none bg-indigo-500 dark:bg-indigo-600 text-coolGray-50 rounded-full flex justify-center items-center mt-1">
                 <HiArrowCircleRight className="text-lg" />
               </div>
-              <p className="text-coolGray-600 dark:text-coolGray-300 prose leading-6 ml-4 mb-1">
+              <p className="text-coolGray-600 dark:text-coolGray-300  leading-6 ml-4 mb-1">
                 Sneak peeks at what I’m working on
               </p>
             </div>
@@ -65,7 +66,7 @@ export default function Toolbox() {
               <div className="w-5 h-5 flex-none bg-indigo-500 dark:bg-indigo-600 text-coolGray-50 rounded-full flex justify-center items-center mt-1">
                 <HiArrowCircleRight className="text-lg" />
               </div>
-              <p className="ml-3 text-coolGray-600 dark:text-coolGray-300 prose leading-6 mb-6">
+              <p className="ml-3 text-coolGray-600 dark:text-coolGray-300  leading-6 mb-6">
                 My recent blog articles
               </p>
             </div>
@@ -73,7 +74,7 @@ export default function Toolbox() {
               <div className="w-5 h-5 flex-none bg-indigo-500 dark:bg-indigo-600 text-coolGray-50 rounded-full flex justify-center items-center mt-1">
                 <HiArrowCircleRight className="text-lg" />
               </div>
-              <p className="ml-3 text-coolGray-600 dark:text-coolGray-300 prose leading-6 mb-6">
+              <p className="ml-3 text-coolGray-600 dark:text-coolGray-300 leading-6 mb-6">
                 Tutorials and snippets I’ve created
               </p>
             </div>
@@ -81,7 +82,7 @@ export default function Toolbox() {
               <div className="w-5 h-5 flex-none bg-indigo-500 dark:bg-indigo-600 text-coolGray-50 rounded-full flex justify-center items-center mt-1">
                 <HiArrowCircleRight className="text-lg" />
               </div>
-              <p className="ml-3 text-coolGray-600 dark:text-coolGray-300 prose leading-6 mb-6">
+              <p className="ml-3 text-coolGray-600 dark:text-coolGray-300 leading-6 mb-6">
                 Helpful content from the community
               </p>
             </div>
@@ -89,10 +90,10 @@ export default function Toolbox() {
               <div className="w-5 h-5 flex-none bg-indigo-500 dark:bg-indigo-600 text-coolGray-50 rounded-full flex justify-center items-center mt-1">
                 <HiArrowCircleRight className="text-lg" />
               </div>
-              <p className="ml-3 text-coolGray-600 dark:text-coolGray-300 prose leading-6 mb-6">
+              <p className="ml-3 text-coolGray-600 dark:text-coolGray-300 leading-6 mb-6">
                 Pre-released tutorials
               </p>
-            </div>
+            </div> */}
           </div>
           <div className="mt-12 sm:w-full sm:max-w-md xl:mt-8">
             <form
