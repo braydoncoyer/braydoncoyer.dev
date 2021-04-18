@@ -25,7 +25,7 @@ const shortcodes = {
 const components = {
   a: (props) => (
     <OutboundLink
-      className="dark:text-emerald-400 dark:hover:text-emerald-500"
+      className="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-500"
       {...props}
     />
   ),
