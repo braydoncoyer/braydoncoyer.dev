@@ -1,5 +1,19 @@
 export const changes = [
   {
+    date: '2021-04-18',
+    items: [
+      {
+        type: 'feature',
+        description:
+          'Code blocks now adapt their themes and change appearance depending on if light or dark mode is acivated!',
+      },
+      {
+        type: 'change',
+        description: `Website theme now defaults to user's system preference instead of defaulting to dark mode.`,
+      },
+    ],
+  },
+  {
     date: '2021-04-17',
     items: [
       {

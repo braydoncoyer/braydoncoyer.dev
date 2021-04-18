@@ -5,10 +5,16 @@
 .gatsby-highlight pre[class*='language-'] {
   -webkit-overflow-scrolling: touch;
 }
+
+.dark .gatsby-highlight pre[class*='language-']::before {
+  background: #1d2b3b;
+  color: #9ca3af;
+}
+
 .gatsby-highlight pre[class*='language-']::before {
-  background: #151f28;
+  background: #f3f4f6;
   border-radius: 0.35rem 0.35rem 0 0;
-  color: #d1d5db;
+  color: #4b5663;
   font-size: 12px;
   letter-spacing: 0.025rem;
   padding: 0.2rem 1rem;
