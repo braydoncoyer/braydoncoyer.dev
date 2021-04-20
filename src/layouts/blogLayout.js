@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 import SEO from 'react-seo-component';
 import dayjs from 'dayjs';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import { getArticlePublicURL } from '~helpers/getArticlePublicUrl';
 import Dropdown from '~components/dropdown';
 import Layout from '~layouts/mainLayout';
 import ProfileImage from '~assets/avatar.jpg';
@@ -55,8 +56,8 @@ const BlogPostTemplate = ({ data }) => {
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 md:mb-6 text-coolGray-900 dark:text-white">
           {frontmatter.title}
         </h1>
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full mb-4 md:mb-6">
-          <div className="flex items-center justify-between w-full">
+        <div className="md:flex md:flex-row md:justify-between md:items-center w-full mb-4 md:mb-6">
+          <div className="flex justify-between">
             <div className="flex items-center">
               <img
                 className="rounded-full"
@@ -81,14 +82,22 @@ const BlogPostTemplate = ({ data }) => {
               </p>
             </div>
             <div className="flex items-center sm:block md:hidden">
-              <Dropdown />
+              <Dropdown
+                slug={getArticlePublicURL(slug)}
+                title={title}
+                summary={summary}
+              />
             </div>
           </div>
-          <p className="text-sm text-coolGray-600 dark:text-coolGray-400 min-w-32 mt-2 md:mt-0">
-            {timeToRead * 2}
-            {` minute read`}
-            {` • `}
-            <ArticleViews id={slug} />
+          <p className="text-sm flex space-x-4 text-coolGray-600 dark:text-coolGray-400 mt-2 md:mt-0">
+            {timeToRead * 2} {` minute read`} {` • `} <ArticleViews id={slug} />{' '}
+            <span className="hidden md:block">
+              <Dropdown
+                slug={getArticlePublicURL(slug)}
+                title={title}
+                summary={summary}
+              />
+            </span>
           </p>
         </div>
         {frontmatter.coverImage ? (

@@ -1,5 +1,14 @@
 export const changes = [
   {
+    date: '2021-04-20',
+    items: [
+      {
+        type: 'feature',
+        description: 'Added a social sharing option to blog posts!',
+      },
+    ],
+  },
+  {
     date: '2021-04-18',
     items: [
       {
