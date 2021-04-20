@@ -80,5 +80,20 @@ module.exports = {
         });
       });
     }),
+    plugin(function ({ addVariant, e, postcss }) {
+      addVariant('safari', ({ container, separator }) => {
+        const isSafariRule = postcss.atRule({
+          name: '-safari-document',
+          params: 'url-prefix()',
+        });
+        isSafariRule.append(container.nodes);
+        container.append(isSafariRule);
+        isSafariRule.walkRules((rule) => {
+          rule.selector = `.${e(
+            `safari${separator}${rule.selector.slice(1)}`
+          )}`;
+        });
+      });
+    }),
   ],
 };

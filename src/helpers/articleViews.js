@@ -24,7 +24,7 @@ const ArticleViews = ({ id }) => {
   }, [id]);
 
   return (
-    <span className="text-sm text-coolGray-600 dark:text-coolGray-400 min-w-32">
+    <span className="text-sm text-coolGray-600 dark:text-coolGray-400 min-w-32 mt-2 md:mt-0">
       {viewCount || `---`} views
     </span>
   );

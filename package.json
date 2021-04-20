@@ -21,8 +21,6 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
-    "@headlessui/react": "^1.0.0",
-    "@heroicons/react": "^1.0.1",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@tailwindcss/forms": "^0.2.1",
@@ -56,13 +54,11 @@
     "prism-react-renderer": "^1.1.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
-    "react-copy-to-clipboard": "^5.0.3",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
     "react-icons": "^3.11.0",
     "react-marquee-slider": "^1.1.2",
     "react-seo-component": "^2.0.2",
-    "react-share": "^4.4.0",
     "styled-components": "^5.2.1",
     "tailwindcss": "^2.1.0"
   },
