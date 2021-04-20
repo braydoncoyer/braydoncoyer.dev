@@ -45,8 +45,7 @@ const Dropdown = ({ slug, title, summary }) => (
                     title={title}
                     via="BraydonCoyer"
                   >
-                    <a
-                      href="#"
+                    <div
                       className={classNames(
                         active
                           ? 'rounded bg-coolGray-100 text-coolGray-700 dark:bg-coolGray-800 dark:text-coolGray-200'
@@ -59,7 +58,7 @@ const Dropdown = ({ slug, title, summary }) => (
                         aria-hidden="true"
                       />
                       Twitter
-                    </a>
+                    </div>
                   </TwitterShareButton>
                 )}
               </Menu.Item>
@@ -72,8 +71,7 @@ const Dropdown = ({ slug, title, summary }) => (
                     source={slug}
                     url={slug}
                   >
-                    <a
-                      href="#"
+                    <div
                       className={classNames(
                         active
                           ? 'rounded bg-coolGray-100 text-coolGray-700 dark:bg-coolGray-800 dark:text-coolGray-200'
@@ -86,15 +84,14 @@ const Dropdown = ({ slug, title, summary }) => (
                         aria-hidden="true"
                       />
                       Linkedin
-                    </a>
+                    </div>
                   </LinkedinShareButton>
                 )}
               </Menu.Item>
               <Menu.Item>
                 {({ active }) => (
                   <CopyToClipboard text={slug}>
-                    <a
-                      href="#"
+                    <div
                       className={classNames(
                         active
                           ? 'rounded bg-coolGray-100 text-coolGray-700 dark:bg-coolGray-800 dark:text-coolGray-200'
@@ -107,7 +104,7 @@ const Dropdown = ({ slug, title, summary }) => (
                         aria-hidden="true"
                       />
                       Copy URL
-                    </a>
+                    </div>
                   </CopyToClipboard>
                 )}
               </Menu.Item>
