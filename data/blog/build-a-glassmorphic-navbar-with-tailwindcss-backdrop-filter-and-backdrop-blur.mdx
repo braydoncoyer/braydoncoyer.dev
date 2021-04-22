@@ -1,0 +1,179 @@
+---
+title: Build a Glassmorphic Navbar with TailwindCSS backdrop-filter & backdrop-blur
+publishedAt: 2021-04-22
+summary: TailwindCSS v2.1 brings with it several new utility classes, including filters! Let me show you how I built my website's glassmorphic navbar using TailwindCSS!
+coverImage: ../../static/images/build-a-glassmorphic-navbar-with-tailwindcss-backdrop-filter-and-backdrop-blur/GlassmorphicNavbarArticleBanner.png
+imageName: GlassmorphicNavbarArticleBanner.png
+---
+
+Glassmorphism, a design trend that spiked in popularity in late 2020, is a methodology where a background-blur is applied to an element, giving it a sense of translucency and distinct perspective from its surrounding elements.
+
+While the design trend has only recently gained traction, it is something we’ve seen before, even in widely used systems (I’m looking at you, Windows Vista). What's old is new, I guess.
+
+I'm all for trying new things and one of the things I did over the weekend was utilize the new backdrop utility classes in TailwindCSS v2.1 to give my website's navbar a frosted glass feel! It turned out so well, I thought I’d show you how to make this yourself! Check it out!
+
+![glassmorphicnavbar.gif](https://res.craft.do/user/full/2f1f2003-c717-014a-0ff0-8172b22b7eda/ED1F9B33-ABEE-419E-B096-AA8B7D398210_2)
+
+## TailwindCSS v2.1 and the new backdrop utility classes
+
+CSS filters weren’t supported by Tailwind in the past but with the release of v2.1, a bunch of handy utility classes are now available for us to use, including the new backdrop-filter classes!
+
+In order to achieve the glassmorphic effect on the navbar, we only need to utilize the `backdrop-filter` and `backdrop-blur` utility classes, and adjust the opacity a bit. It's dead simple!
+
+Before moving forward, make sure you have Tailwind v2.1 installed!
+
+## The basic structure of the Navbar
+
+Let’s start by using the ‘nav’ semantic element and populating it with a few items.
+
+```html
+<nav>
+  <div>
+    <div>
+      <span>My Logo</span>
+      <div>
+        <a href="#"> Dashboard </a>
+        <a href="#"> About </a>
+        <a href="#"> Projects </a>
+        <a href="#"> Contact </a>
+      </div>
+    </div>
+  </div>
+</nav>
+```
+
+Before we apply the glassmorphic effect, let’s style the navbar so it actually looks like a navbar.
+
+```html
+<nav className="sticky top-0 z-10 bg-white">
+  <div className="max-w-5xl mx-auto px-4">
+    <div className="flex items-center justify-between h-16">
+      <span className="text-2xl text-gray-900 font-semibold">Logo</span>
+      <div className="flex space-x-4 text-gray-900">
+        <a href="#">Dashboard</a>
+        <a href="#">About</a>
+        <a href="#">Projects</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </div>
+</nav>
+```
+
+A lot of these styles are self-explanatory, but let me hit on a few things:
+
+- The nav element has a background-color applied to it. If there is no background-color, the filter classes won’t have anything to blur!
+- The nav element is sticky - there’s no point in giving the navbar a glassy feel if we don’t see it when we scroll down the page!
+- A z-index is applied to the nav, just so other elements don’t break the illusion.
+
+![Screen Shot 2021-04-19 at 8.59.05 AM.jpeg](https://res.craft.do/user/full/2f1f2003-c717-014a-0ff0-8172b22b7eda/doc/73A1CACD-6700-44EC-AA0C-EB4E3E3BD383/4D49D590-E1E0-4640-B777-31D4DCFD65B2_2)
+
+At this point, the navbar should look something like the above picture. If you scroll down the page, it should stick to the top of the screen. Nice!
+
+### Applying the backdrop-filter and backdrop-blur utility classes
+
+Now that the structure is there, let’s add the magic. ✨
+
+Add the `backdrop-filter` and `backdrop-blur-lg` utility classes to the nav element.
+
+```html
+<nav className="... backdrop-filter backdrop-blur-lg">...</nav>
+```
+
+If you scroll down the page at this point, nothing seems to have changed. Although the utility classes are at work, we need to adjust the background-opacity of the navbar for them to be revealed.
+
+![Screen Shot 2021-04-19 at 9.04.20 AM.jpeg](https://res.craft.do/user/full/2f1f2003-c717-014a-0ff0-8172b22b7eda/doc/73A1CACD-6700-44EC-AA0C-EB4E3E3BD383/B18BBAC5-AAD6-47EF-91A0-BB5165CD4271_2)
+
+The lower the background-opacity, the more content shows through the element. Feel free to play with the value a bit. I've add the `bg-opacity-30` class to my navbar.
+
+```html
+<nav className="... bg-opacity-30">...</nav>
+```
+
+![Screen Shot 2021-04-19 at 9.08.14 AM.jpeg](https://res.craft.do/user/full/2f1f2003-c717-014a-0ff0-8172b22b7eda/doc/73A1CACD-6700-44EC-AA0C-EB4E3E3BD383/733D4B37-8CC1-476E-BF19-101B2F52BF44_2)
+
+The navbar now has a glassy feel, and adds a cool effect without taking too much away from the user’s experience on the website. We could stop there, but there’s one more thing we could do.
+
+As it stands now, the frosted glass navbar can be hard to distinguish from the background of the website.
+
+Adding a slight bottom-border allows the harsh color to contrast the blurry background of the navbar, visually identifying the end of the element. It’s subtle, but adds a whole new layer to the overall presentation.
+
+```html
+<nav className="... border-b border-gray-200">...</nav>
+```
+
+![Screen Shot 2021-04-19 at 9.15.49 AM.jpeg](https://res.craft.do/user/full/2f1f2003-c717-014a-0ff0-8172b22b7eda/doc/73A1CACD-6700-44EC-AA0C-EB4E3E3BD383/7CB12B25-8D55-435E-9D3D-F2646E54BE63_2)
+
+Great job! We've now added all of the styles required to achieve the glassmorphic effect on the navbar!
+
+But, if you’re testing your changes on multiple modern browsers, you may have noticed a bug...
+
+## Don't leave out Firefox
+
+That’s right. If you preview your changes on Firefox, you’ll see that the blur doesn’t show up at all.
+
+![Screen Shot 2021-04-19 at 9.18.27 AM.jpeg](https://res.craft.do/user/full/2f1f2003-c717-014a-0ff0-8172b22b7eda/doc/73A1CACD-6700-44EC-AA0C-EB4E3E3BD383/E54FB8D7-1DFA-436C-8E02-A08A89878166_2)
+
+Turns out, Firefox doesn’t support CSS backdrop-blur. So what’s the workaround?
+
+Thankfully, [Sam Selikoff posted a custom variant he wrote on Twitter](https://twitter.com/samselikoff/status/1383087435609993221). The variant targets users who are using Firefox so that we can increase the opacity of the navbar only on those devices.
+
+Open the tailwind.config.js file and add the following code under the `plugins` property.
+
+```js {1,7-21}
+const plugin = require('tailwindcss/plugin');
+
+module.exports {
+	...
+	plugins: [
+		...
+	plugin(function ({ addVariant, e, postcss }) {
+	  addVariant('firefox', ({ container, separator }) => {
+		const isFirefoxRule = postcss.atRule({
+		  name: '-moz-document',
+		  params: 'url-prefix()',
+		});
+		isFirefoxRule.append(container.nodes);
+		container.append(isFirefoxRule);
+		isFirefoxRule.walkRules((rule) => {
+		  rule.selector = `.${e(
+			`firefox${separator}${rule.selector.slice(1)}`
+		  )}`;
+		});
+	  });
+	}),
+  ],
+}
+```
+
+Now head back to the navbar and include the following class:
+
+```html
+<nav className="... firefox:bg-opacity-90">...</nav>
+```
+
+![Screen Shot 2021-04-19 at 10.00.49 AM.jpeg](https://res.craft.do/user/full/2f1f2003-c717-014a-0ff0-8172b22b7eda/doc/73A1CACD-6700-44EC-AA0C-EB4E3E3BD383/8A5ED97B-43A5-4EF5-9D4A-E303E7E02DCC_2)
+
+Although the navbar isn’t blurred, the opacity is bumped up a bit but still maintains the translucent effect.
+
+## When glassmorphism should be used
+
+While it can be tempting to build out entire user interfaces using this design fad, please note that it has accessibility concerns due to its translucent nature.
+
+If you use glassmorphism, use it sparingly.
+
+For more information on a accessibility best-practices with glassmorphism, [read this article by Aimee Liang](https://bootcamp.uxdesign.cc/how-to-make-glassmorphism-more-accessible-9121d816004c).
+
+## A brief note about autoprefixer
+
+As I was updating my website’s navbar last weekend, I noticed a problem similar to the Firefox issue but when viewing the website on Safari (and all of my mobile devices). After hours of debugging and looking on the web, it turns out I didn’t have [autoprefixer](https://www.npmjs.com/package/autoprefixer) installed or configured in my postcss.config.js file, so the appropriate vendor prefixes weren’t being added to my elements. Oops!
+
+## Conclusion
+
+TailwindCSS continues to improve and with the release of v2.1, many CSS filters are now supported with associated utility classes.
+
+Thanks for reading!
+
+If you enjoyed this article, consider [signing up for my developer newsletter!](https://braydoncoyer.dev/newsletter)
+
+If you’d like to keep up to date with me on a daily basis, [follow me on Twitter!](https://twitter.com/BraydonCoyer)

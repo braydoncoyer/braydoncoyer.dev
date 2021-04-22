@@ -89,8 +89,10 @@ const BlogPostTemplate = ({ data }) => {
               />
             </div>
           </div>
-          <p className="text-sm flex space-x-4 text-coolGray-600 dark:text-coolGray-400 mt-2 md:mt-0">
-            {timeToRead * 2} {` minute read`} {` • `} <ArticleViews id={slug} />{' '}
+          <div className="text-sm flex space-x-2 text-coolGray-600 dark:text-coolGray-400 mt-2 md:mt-0">
+            <p>{`${timeToRead * 2} minute read`}</p>
+            <p>•</p>
+            <ArticleViews id={slug} />{' '}
             <span className="hidden md:block">
               <Dropdown
                 slug={getArticlePublicURL(slug)}
@@ -98,7 +100,7 @@ const BlogPostTemplate = ({ data }) => {
                 summary={summary}
               />
             </span>
-          </p>
+          </div>
         </div>
         {frontmatter.coverImage ? (
           <GatsbyImage
