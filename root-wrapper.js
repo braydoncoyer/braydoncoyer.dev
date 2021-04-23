@@ -6,6 +6,7 @@ import { MDXProvider } from '@mdx-js/react';
 import { preToCodeBlock } from 'mdx-utils';
 import React from 'react';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
+import { AnchorLink } from 'gatsby-plugin-anchor-links';
 import { Code } from './src/components/code';
 import Blockquote from './src/components/blockquote';
 import Thoughtquote from './src/components/thoughtquote';
@@ -35,8 +36,13 @@ const components = {
     </h1>
   ),
   h2: ({ children }) => (
-    <h2 className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white mb-4">
-      {children}
+    <h2
+      id={children.toLowerCase().replace(/ /g, '-')}
+      className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white mb-4"
+    >
+      <AnchorLink to={`#${children.toLowerCase().replace(/ /g, '-')}`}>
+        {children}
+      </AnchorLink>
     </h2>
   ),
   h3: ({ children }) => (
