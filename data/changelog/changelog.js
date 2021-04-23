@@ -1,5 +1,15 @@
 export const changes = [
   {
+    date: '2021-04-23',
+    items: [
+      {
+        type: 'feature',
+        description:
+          'Added support for heading anchor links! Now you can share an article and others can start reading at specific spots!',
+      },
+    ],
+  },
+  {
     date: '2021-04-20',
     items: [
       {

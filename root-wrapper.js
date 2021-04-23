@@ -6,6 +6,7 @@ import { MDXProvider } from '@mdx-js/react';
 import { preToCodeBlock } from 'mdx-utils';
 import React from 'react';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
+import { AnchorLink } from '~components/anchorLink';
 import { Code } from './src/components/code';
 import Blockquote from './src/components/blockquote';
 import Thoughtquote from './src/components/thoughtquote';
@@ -31,32 +32,32 @@ const components = {
   ),
   h1: ({ children }) => (
     <h1 className="text-3xl lg:text-4xl font-extrabold text-coolGray-900 dark:text-white mb-4">
-      {children}
+      <AnchorLink>{children}</AnchorLink>
     </h1>
   ),
   h2: ({ children }) => (
     <h2 className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white mb-4">
-      {children}
+      <AnchorLink>{children}</AnchorLink>
     </h2>
   ),
   h3: ({ children }) => (
     <h3 className="text-xl lg:text-2xl font-extrabold text-coolGray-900 dark:text-white mb-4">
-      {children}
+      <AnchorLink>{children}</AnchorLink>
     </h3>
   ),
   h4: ({ children }) => (
     <h4 className="text-lg lg:text-xl font-extrabold text-coolGray-900 dark:text-white mb-4">
-      {children}
+      <AnchorLink>{children}</AnchorLink>
     </h4>
   ),
   h5: ({ children }) => (
     <h5 className="text-md lg:text-lg font-extrabold text-coolGray-900 dark:text-white mb-4">
-      {children}
+      <AnchorLink>{children}</AnchorLink>
     </h5>
   ),
   h6: ({ children }) => (
     <h6 className="text-md lg:text-md font-extrabold text-coolGray-900 dark:text-white mb-4">
-      {children}
+      <AnchorLink>{children}</AnchorLink>
     </h6>
   ),
   strong: (props) => <span className="font-bold" {...props} />,

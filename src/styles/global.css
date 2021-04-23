@@ -6,6 +6,10 @@ body {
   font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 
+html {
+  scroll-padding-top: 80px;
+}
+
 /* Portfolio Styles */
 
 .social-icons {
