@@ -32,7 +32,6 @@
     "dotenv": "^8.2.0",
     "firebase": "^8.2.7",
     "gatsby": "^3.0.0",
-    "gatsby-plugin-anchor-links": "^1.2.1",
     "gatsby-plugin-feed-mdx": "^1.1.0",
     "gatsby-plugin-firebase": "^0.2.0-beta.4",
     "gatsby-plugin-google-analytics": "^3.0.0",
