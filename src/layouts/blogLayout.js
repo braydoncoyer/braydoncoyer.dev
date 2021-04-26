@@ -4,6 +4,8 @@ import { graphql } from 'gatsby';
 import SEO from 'react-seo-component';
 import dayjs from 'dayjs';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import { OutboundLink } from 'gatsby-plugin-google-analytics';
+import Infoquote from '~components/infoquote';
 import { getArticlePublicURL } from '~helpers/getArticlePublicUrl';
 import Dropdown from '~components/dropdown';
 import Layout from '~layouts/mainLayout';
@@ -25,10 +27,21 @@ const BlogPostTemplate = ({ data }) => {
   } = useSiteMetadata();
 
   const { frontmatter, body, timeToRead, fields } = data.mdx;
-  const { title, publishedAt, coverImage, summary, imageName } = frontmatter;
+  const {
+    title,
+    publishedAt,
+    coverImage,
+    summary,
+    imageName,
+    canonicalUrl,
+  } = frontmatter;
   const { slug } = fields;
 
   const getArticleDate = (day) => dayjs(day);
+  const determineCanonicalUrl = () => {
+    if (canonicalUrl === null) return `${siteUrl}/blog${slug}`;
+    return canonicalUrl;
+  };
 
   return (
     <>
@@ -43,7 +56,7 @@ const BlogPostTemplate = ({ data }) => {
               ? `${siteUrl}${image}`
               : `${siteUrl}/images${slug.replace(/\/$/, '')}/${imageName}`
           }
-          pathname={`${siteUrl}/blog${slug}`}
+          pathname={determineCanonicalUrl()}
           siteLanguage={siteLanguage}
           siteLocale={siteLocale}
           twitterUsername={twitterUsername}
@@ -109,7 +122,21 @@ const BlogPostTemplate = ({ data }) => {
             className="mb-8 rounded-lg"
           />
         ) : null}
+
         <div className="text-coolGray-600 dark:text-coolGray-400 prose-lg">
+          {canonicalUrl !== null ? (
+            <div>
+              <Infoquote>
+                This article was originally posted{' '}
+                <OutboundLink
+                  className="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-500"
+                  href={canonicalUrl}
+                >
+                  here.
+                </OutboundLink>
+              </Infoquote>
+            </div>
+          ) : null}
           <MDXRenderer>{body}</MDXRenderer>
         </div>
         <div className="mt-8 mb-4">
@@ -155,6 +182,7 @@ export const query = graphql`
           }
         }
         imageName
+        canonicalUrl
       }
       body
       timeToRead
