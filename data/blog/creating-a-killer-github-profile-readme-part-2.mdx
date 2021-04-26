@@ -4,17 +4,8 @@ publishedAt: 2021-01-26
 summary: In this second article and final issue in this series, I will add the dynamic content injection and will get you familiar with GitHub Action workflows!
 coverImage: ../../static/images/creating-a-killer-github-profile-readme-part-2/githubbannerpart2.png
 imageName: githubbannerpart2.png
+canonicalUrl: https://daily.dev/blog/creating-a-killer-github-profile-readme-part-2
 ---
-
-<Infoquote>
-  This article was originally posted on{" "}
-  <a
-    href="https://daily.dev/posts/creating-a-killer-github-profile-readme-part-2"
-    target="_blank"
-  >
-    Daily.Dev.
-  </a>
-</Infoquote>
 
 Welcome to part 2 of this article series where I show you how to create a killer GitHub profile!
 
@@ -53,9 +44,9 @@ There are four steps this file needs to complete:
 Thinking about these responsibilities, I imported the required dependencies in the `index.js` file.
 
 ```jsx
-require("isomorphic-unfetch");
-const { promises: fs } = require("fs");
-const path = require("path");
+require('isomorphic-unfetch');
+const { promises: fs } = require('fs');
+const path = require('path');
 ```
 
 To complete step one, I declared an async function called `main` , grabbed a reference to the template file and placed it in variable named `readmeTemplate`.
@@ -63,8 +54,8 @@ To complete step one, I declared an async function called `main` , grabbed a ref
 ```jsx
 async function main() {
   const readmeTemplate = (
-    await fs.readFile(path.join(process.cwd(), "./README.template.md"))
-  ).toString("utf-8");
+    await fs.readFile(path.join(process.cwd(), './README.template.md'))
+  ).toString('utf-8');
 }
 main();
 ```
@@ -73,7 +64,7 @@ The next step is to make the API request. Below the `readmeTemplate` variable, I
 
 ```jsx
 const office_quote = await (
-  await fetch("https://officeapi.dev/api/quotes/random")
+  await fetch('https://officeapi.dev/api/quotes/random')
 ).json();
 ```
 
@@ -81,9 +72,9 @@ The third step is to replace the patterns in the template file with the dynamic 
 
 ```jsx
 const readme = readmeTemplate
-  .replace("{office_quote}", office_quote.data.content)
+  .replace('{office_quote}', office_quote.data.content)
   .replace(
-    "{office_character}",
+    '{office_character}',
     `- ${office_quote.data.character.firstname} ${office_quote.data.character.lastname}`
   );
 ```
@@ -91,7 +82,7 @@ const readme = readmeTemplate
 Finally, I create/replace the contents of the `README.md` file with the `readmeTemplate` variable.
 
 ```jsx
-await fs.writeFile("README.md", readme);
+await fs.writeFile('README.md', readme);
 ```
 
 At this point I could run `node .` at the root of my repository and the `index.js` file worked its magic. Opening the `README.md` file, I saw the dynamic quote at the bottom of the file.
@@ -122,7 +113,7 @@ name: Dynamic README injection
 on:
   schedule: # Run workflow automatically
     # This will make it run every hour
-    - cron: "0 * * * *"
+    - cron: '0 * * * *'
     # Run workflow manually (without waiting for the cron to be called), through the Github Actions Workflow page directly
 ```
 
@@ -135,7 +126,7 @@ name: Dynamic README injection
 on:
   schedule: # Run workflow automatically
     # This will make it run every hour
-    - cron: "0 * * * *"
+    - cron: '0 * * * *'
     # Run workflow manually (without waiting for the cron to be called), through the Github Actions Workflow page directly
 jobs:
   get-office-quotes:

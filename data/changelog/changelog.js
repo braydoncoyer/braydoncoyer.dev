@@ -1,5 +1,14 @@
 export const changes = [
   {
+    date: '2021-04-26',
+    items: [
+      {
+        type: 'change',
+        description: 'Canonical URLs are now pulled from frontmatter.',
+      },
+    ],
+  },
+  {
     date: '2021-04-23',
     items: [
       {
