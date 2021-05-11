@@ -3,6 +3,11 @@ export const timelineContent = [
     yearTitle: '2021',
     timelineItems: [
       {
+        itemTitle: 'Baby daughter born 👶',
+        itemDescription:
+          'My wife and I welcomed our first child, ElizaJane Anne Coyer, into the world on May 3rd, 2021.',
+      },
+      {
         itemTitle: 'Built custom blog 🎨',
         itemDescription:
           'Migrated my articles from a subdomain to this portfolio and built a custom blog system powered by MDX and Gatsby.',

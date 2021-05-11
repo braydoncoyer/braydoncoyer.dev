@@ -1,5 +1,15 @@
 export const changes = [
   {
+    date: '2021-05-12',
+    items: [
+      {
+        type: 'change',
+        description:
+          'Updated personal timeline to reflect my daughter by born in May 2011.',
+      },
+    ],
+  },
+  {
     date: '2021-04-26',
     items: [
       {
