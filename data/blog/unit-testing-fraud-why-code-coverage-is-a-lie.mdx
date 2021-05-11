@@ -29,11 +29,10 @@ Many developers hate writing unit tests and don’t see the value of spending ti
 
 I was on a delivery team with a handful of other developers and found a bug in production. All of the tests passed and the code coverage report said that the component in question had 100% code coverage. When I opened the test file, I saw something like this. Do you see what's wrong?
 
-```javascript
+```js
 it('should call the injected userService method on init and return the credentials', () => {
 	component.ngOnInit();
 	expect(true)toBeTruthy();
-
 })
 ```
 
@@ -63,7 +62,7 @@ If a team follows Test Driven Development, coverage percentages should be within
 
 I understand my opinion may step on some toes, but let me wrap up this article with a summary:
 
-- A high coverage percentage does not equal quality-tested code.
-- A target coverage threshold should not take the place of code reviews.
-- Instead of putting most of the focus on a high percentage of code coverage, developers should understand ( and experience ) the incredible value of well-formed tests.
-- TDD, by definition, should allow developers to attain high coverage percentages.
+1. A high coverage percentage does not equal quality-tested code.
+2. A target coverage threshold should not take the place of code reviews.
+3. Instead of putting most of the focus on a high percentage of code coverage, developers should understand ( and experience ) the incredible value of well-formed tests.
+4. TDD, by definition, should allow developers to attain high coverage percentages.
