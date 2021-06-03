@@ -11,6 +11,8 @@ import { Code } from './src/components/code';
 import Blockquote from './src/components/blockquote';
 import Thoughtquote from './src/components/thoughtquote';
 import Ideaquote from './src/components/ideaquote';
+import UnorderedList from './src/components/unorderedlist';
+import OrderedList from './src/components/orderedlist';
 import Infoquote from './src/components/infoquote';
 import Warningquote from './src/components/warningquote';
 import './src/styles/language-tabs.css';
@@ -69,6 +71,12 @@ const components = {
       {children}
     </code>
   ),
+  ul: ({ children }) => <UnorderedList>{children}</UnorderedList>,
+  ol: (props) => {
+    if (props) {
+      return <OrderedList>{props}</OrderedList>;
+    }
+  },
   blockquote: ({ children }) => <Blockquote>{children}</Blockquote>,
   // eslint-disable-next-line jsx-a11y/alt-text
   img: (props) => <img className="w-full rounded-lg" {...props} />,
