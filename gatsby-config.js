@@ -161,6 +161,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-plausible`,
+      options: {
+        domain: `braydoncoyer.dev`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-scroll-indicator`,
       options: {
         color: '#34D399',
