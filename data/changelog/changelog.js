@@ -1,5 +1,15 @@
 export const changes = [
   {
+    date: '2021-06-09',
+    items: [
+      {
+        type: 'feature',
+        description:
+          'Added a callout box for announcements. This new visual component can be found in some of my articles.',
+      },
+    ],
+  },
+  {
     date: '2021-06-03',
     items: [
       {

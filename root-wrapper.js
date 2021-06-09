@@ -14,6 +14,7 @@ import Ideaquote from './src/components/ideaquote';
 import UnorderedList from './src/components/unorderedlist';
 import OrderedList from './src/components/orderedlist';
 import Infoquote from './src/components/infoquote';
+import Announcementquote from './src/components/announcementquote';
 import Warningquote from './src/components/warningquote';
 import './src/styles/language-tabs.css';
 
@@ -23,6 +24,7 @@ const shortcodes = {
   Ideaquote,
   Infoquote,
   Warningquote,
+  Announcementquote,
 };
 
 const components = {
