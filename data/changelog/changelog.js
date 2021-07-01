@@ -1,5 +1,15 @@
 export const changes = [
   {
+    date: '2021-07-01',
+    items: [
+      {
+        type: 'bug fix',
+        description:
+          'Fixed an issue where inline code blocks had the wrong font applied. The correct mono font is now painted across all inline blocks!',
+      },
+    ],
+  },
+  {
     date: '2021-06-09',
     items: [
       {
