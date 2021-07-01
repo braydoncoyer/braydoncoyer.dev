@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  @font-face {
+    font-family: 'MonoLisa';
+    src: url('/fonts/MonoLisa-Regular.woff2') format('woff2');
+  }
+}
+
 body {
   font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
