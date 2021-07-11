@@ -1,5 +1,15 @@
 export const changes = [
   {
+    date: '2021-07-11',
+    items: [
+      {
+        type: 'bug fix',
+        description:
+          'Fixed an issue where a few articles on my blo would fail to load. Everything is now back to normal!',
+      },
+    ],
+  },
+  {
     date: '2021-07-01',
     items: [
       {
