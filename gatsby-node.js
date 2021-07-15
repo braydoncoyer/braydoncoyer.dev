@@ -24,7 +24,7 @@ exports.createPages = ({ actions, graphql }) => {
 
   return graphql(`
     {
-      allMdx {
+      allMdx(sort: { fields: [frontmatter___publishedAt], order: DESC }) {
         nodes {
           fields {
             slug
@@ -39,12 +39,16 @@ exports.createPages = ({ actions, graphql }) => {
     if (result.errors) throw result.errors;
     const posts = result.data.allMdx.nodes;
 
-    posts.forEach((post) => {
+    posts.forEach((post, index) => {
+      // console.table(`post is ${post}`);
+      console.table(index === posts.length - 1 ? null : posts[index + 1]);
       createPage({
         path: `blog${post.fields.slug}`,
         component: blogPostTemplate,
         context: {
           slug: post.fields.slug,
+          prev: index === 0 ? null : posts[index - 1].node,
+          next: index === posts.length - 1 ? null : posts[index + 1].node,
         },
       });
     });

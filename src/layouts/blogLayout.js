@@ -1,6 +1,6 @@
 import React from 'react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import SEO from 'react-seo-component';
 import dayjs from 'dayjs';
 import { GatsbyImage } from 'gatsby-plugin-image';
@@ -16,7 +16,7 @@ import ArticleViews from '~helpers/articleViews';
 import { getGitHubEditURL } from '~helpers/getGithubEditUrl';
 import { getTwitterShareUrl } from '~helpers/getTwitterShareUrl';
 
-const BlogPostTemplate = ({ data }) => {
+const BlogPostTemplate = ({ data, pageContext }) => {
   const {
     image,
     siteUrl,
@@ -36,6 +36,20 @@ const BlogPostTemplate = ({ data }) => {
     canonicalUrl,
   } = frontmatter;
   const { slug } = fields;
+
+  const prev = pageContext.prev
+    ? {
+        url: `/blog/${pageContext.prev.fields.slug}`,
+        title: pageContext.prev.frontmatter.title,
+      }
+    : null;
+
+  const next = pageContext.next
+    ? {
+        url: `/blog/${pageContext.next.fields.slug}`,
+        title: pageContext.next.frontmatter.title,
+      }
+    : null;
 
   const getArticleDate = (day) => dayjs(day);
   const determineCanonicalUrl = () => {
@@ -162,6 +176,21 @@ const BlogPostTemplate = ({ data }) => {
               Edit on GitHub
             </a>
           </span>
+          <div>
+            {JSON.stringify(pageContext)}
+            {prev && (
+              <Link to={prev.url}>
+                <span>Previous</span>
+                <h3>{prev.title}</h3>
+              </Link>
+            )}
+            {next && (
+              <Link to={next.url}>
+                <span>Next</span>
+                <h3>{next.title}</h3>
+              </Link>
+            )}
+          </div>
         </div>
       </Layout>
     </>
