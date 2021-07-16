@@ -1,5 +1,15 @@
 export const changes = [
   {
+    date: '2021-07-16',
+    items: [
+      {
+        type: 'feature',
+        description:
+          'Added the ability to read the next or previous article after reaching the end of a blog post.',
+      },
+    ],
+  },
+  {
     date: '2021-07-11',
     items: [
       {

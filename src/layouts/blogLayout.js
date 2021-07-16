@@ -176,21 +176,58 @@ const BlogPostTemplate = ({ data, pageContext }) => {
               Edit on GitHub
             </a>
           </span>
-          <div>
-            {/* {JSON.stringify(pageContext)} */}
-            {prev && (
+        </div>
+        <div className="mt-8 flex justify-between text-emerald-500 dark:text-emerald-400">
+          {prev ? (
+            <div className="hover:text-emerald-600 dark:hover:text-emerald-500 text-left">
               <Link to={prev.url}>
-                <span>Previous</span>
-                <h3>{prev.title}</h3>
+                <span className="flex items-top items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 19l-7-7 7-7"
+                    />
+                  </svg>{' '}
+                  Previous Article
+                </span>
+                <span className="hidden md:block">{prev.title}</span>
               </Link>
-            )}
-            {next && (
+            </div>
+          ) : (
+            <div />
+          )}
+          {next && (
+            <div className="hover:text-emerald-600 dark:hover:text-emerald-500 text-right">
               <Link to={next.url}>
-                <span>Next</span>
-                <h3>{next.title}</h3>
+                <span className="flex justify-end items-center">
+                  Next Article
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </span>
+                <span className="hidden md:block">{next.title}</span>
               </Link>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </Layout>
     </>
