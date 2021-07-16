@@ -39,14 +39,14 @@ const BlogPostTemplate = ({ data, pageContext }) => {
 
   const prev = pageContext.prev
     ? {
-        url: `/blog/${pageContext.prev.fields.slug}`,
+        url: `/blog${pageContext.prev.fields.slug}`,
         title: pageContext.prev.frontmatter.title,
       }
     : null;
 
   const next = pageContext.next
     ? {
-        url: `/blog/${pageContext.next.fields.slug}`,
+        url: `/blog${pageContext.next.fields.slug}`,
         title: pageContext.next.frontmatter.title,
       }
     : null;
@@ -177,7 +177,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
             </a>
           </span>
           <div>
-            {JSON.stringify(pageContext)}
+            {/* {JSON.stringify(pageContext)} */}
             {prev && (
               <Link to={prev.url}>
                 <span>Previous</span>

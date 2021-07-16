@@ -25,28 +25,28 @@ exports.createPages = ({ actions, graphql }) => {
   return graphql(`
     {
       allMdx(sort: { fields: [frontmatter___publishedAt], order: DESC }) {
-        nodes {
-          fields {
-            slug
-          }
-          frontmatter {
-            title
+        edges {
+          node {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+            }
           }
         }
       }
     }
   `).then((result) => {
     if (result.errors) throw result.errors;
-    const posts = result.data.allMdx.nodes;
+    const posts = result.data.allMdx.edges;
 
     posts.forEach((post, index) => {
-      // console.table(`post is ${post}`);
-      console.table(index === posts.length - 1 ? null : posts[index + 1]);
       createPage({
-        path: `blog${post.fields.slug}`,
+        path: `blog${post.node.fields.slug}`,
         component: blogPostTemplate,
         context: {
-          slug: post.fields.slug,
+          slug: post.node.fields.slug,
           prev: index === 0 ? null : posts[index - 1].node,
           next: index === posts.length - 1 ? null : posts[index + 1].node,
         },
