@@ -1,6 +1,6 @@
 import React from 'react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import SEO from 'react-seo-component';
 import dayjs from 'dayjs';
 import { GatsbyImage } from 'gatsby-plugin-image';
@@ -16,7 +16,7 @@ import ArticleViews from '~helpers/articleViews';
 import { getGitHubEditURL } from '~helpers/getGithubEditUrl';
 import { getTwitterShareUrl } from '~helpers/getTwitterShareUrl';
 
-const BlogPostTemplate = ({ data }) => {
+const BlogPostTemplate = ({ data, pageContext }) => {
   const {
     image,
     siteUrl,
@@ -36,6 +36,20 @@ const BlogPostTemplate = ({ data }) => {
     canonicalUrl,
   } = frontmatter;
   const { slug } = fields;
+
+  const prev = pageContext.prev
+    ? {
+        url: `/blog${pageContext.prev.fields.slug}`,
+        title: pageContext.prev.frontmatter.title,
+      }
+    : null;
+
+  const next = pageContext.next
+    ? {
+        url: `/blog${pageContext.next.fields.slug}`,
+        title: pageContext.next.frontmatter.title,
+      }
+    : null;
 
   const getArticleDate = (day) => dayjs(day);
   const determineCanonicalUrl = () => {
@@ -162,6 +176,58 @@ const BlogPostTemplate = ({ data }) => {
               Edit on GitHub
             </a>
           </span>
+        </div>
+        <div className="mt-8 flex justify-between text-emerald-500 dark:text-emerald-400">
+          {prev ? (
+            <div className="hover:text-emerald-600 dark:hover:text-emerald-500 text-left">
+              <Link to={prev.url}>
+                <span className="flex items-top items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 19l-7-7 7-7"
+                    />
+                  </svg>{' '}
+                  Previous Article
+                </span>
+                <span className="hidden md:block">{prev.title}</span>
+              </Link>
+            </div>
+          ) : (
+            <div />
+          )}
+          {next && (
+            <div className="hover:text-emerald-600 dark:hover:text-emerald-500 text-right">
+              <Link to={next.url}>
+                <span className="flex justify-end items-center">
+                  Next Article
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </span>
+                <span className="hidden md:block">{next.title}</span>
+              </Link>
+            </div>
+          )}
         </div>
       </Layout>
     </>
