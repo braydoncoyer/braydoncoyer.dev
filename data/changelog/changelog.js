@@ -1,5 +1,35 @@
 export const changes = [
   {
+    date: '2021-07-19',
+    items: [
+      {
+        type: 'change',
+        description:
+          'Changed the newsletter form to attract subscribers with a free CSS tutorial!',
+      },
+      {
+        type: 'change',
+        description:
+          'Changed the look of the page dedicated to my newsletter, showing the updated sign up form!',
+      },
+      {
+        type: 'feature',
+        description:
+          'Added a link to read my past newsletter issues! This can be accessed on the newsletter page!',
+      },
+      {
+        type: 'change',
+        description:
+          'Changed how many articles are displayed on the home page, reducing from 5 most recent posts to 3.',
+      },
+      {
+        type: 'bug fix',
+        description:
+          'Fixed an issue where the cursor style was not set to pointer when users try to copy an article URL via the share dropdown menu.',
+      },
+    ],
+  },
+  {
     date: '2021-07-16',
     items: [
       {
