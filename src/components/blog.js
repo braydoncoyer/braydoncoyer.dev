@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import NewsletterSection from '~components/newsletter';
 
-const MAX_ARTICLES = 5;
+const MAX_ARTICLES = 3;
 
 export default function BlogSection() {
   const data = useStaticQuery(graphql`

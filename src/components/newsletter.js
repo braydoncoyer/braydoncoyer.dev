@@ -5,15 +5,26 @@ const NewsletterSection = () => (
   <section>
     <div className="bg-transparent">
       <div className="w-full mx-auto ">
-        <div className="px-6 py-6 md:px-8 md:py-8 bg-coolGray-100 dark:bg-blueGray-800 rounded-lg">
+        <div className="px-6 py-6 bg-coolGray-100 dark:bg-blueGray-800 rounded-lg">
           <div className="">
-            <h2 className="text-2xl lg:text-3xl font-extrabold tracking-tight text-coolGray-900 dark:text-white sm:text-3xl">
-              Join my newsletter!
+            <h2 className="text-xl lg:text-2xl font-bold tracking-tight text-coolGray-900 dark:text-white sm:text-2xl">
+              Articles delivered to your inbox!
             </h2>
-            <p className="mt-3 prose-lg text-coolGray-500 dark:text-coolGray-400">
-              A periodic update about my life, recent blog posts, tutorials and
-              discoveries.
-            </p>
+            <div className="mt-2 space-y-3">
+              <p className="text-coolGray-500 dark:text-coolGray-400">
+                A periodic update about my life, recent blog posts, how-tos, and
+                discoveries.
+              </p>
+              <p className="text-coolGray-500 dark:text-coolGray-400">
+                As a thank you, I'll also send you a{' '}
+                <span className="font-bold text-indigo-500 dark:text-indigo-400">
+                  FREE CSS tutorial!
+                </span>
+              </p>
+              <p className="text-coolGray-500 dark:text-coolGray-400">
+                No spam - unsubscribe at any time!
+              </p>
+            </div>
           </div>
           <div className="mt-8 w-full">
             <form
@@ -38,15 +49,29 @@ const NewsletterSection = () => (
                 type="email"
                 autoComplete="email"
                 required
-                className="w-full px-5 py-3 placeholder-coolGray-500 focus:ring-indigo-500 focus:border-indigo-500 dark:focus:border-indigo-600 border-gray-300 rounded-md"
+                className="w-full px-4 py-2 placeholder-coolGray-500 focus:ring-indigo-500 focus:border-indigo-500 dark:focus:border-indigo-600 border-gray-300 rounded-md"
                 placeholder="Enter your email"
               />
 
               <button
                 type="submit"
-                className="mt-3 px-5 py-3 shadow text-base font-medium rounded-md text-white bg-indigo-500 dark:bg-indigo-600 hover:bg-indigo-400 dark:hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-coolGray-100 dark:focus:ring-offset-blueGray-800 focus:ring-indigo-500 dark:focus:ring-white ml-0 w-full flex-shrink-0"
+                className="flex items-center justify-center space-x-3 mt-3 px-4 py-2 shadow text-base font-medium rounded-md text-white bg-indigo-500 dark:bg-indigo-600 hover:bg-indigo-400 dark:hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-coolGray-100 dark:focus:ring-offset-blueGray-800 focus:ring-indigo-500 dark:focus:ring-white ml-0 w-full flex-shrink-0"
               >
-                Subscribe
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
+                  />
+                </svg>
+                <span>Subscribe & get my free tutorial!</span>
               </button>
             </form>
           </div>

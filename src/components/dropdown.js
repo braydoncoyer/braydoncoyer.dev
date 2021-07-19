@@ -91,12 +91,13 @@ const Dropdown = ({ slug, title, summary }) => (
               <Menu.Item>
                 {({ active }) => (
                   <CopyToClipboard text={slug}>
-                    <div
+                    <button
+                      type="button"
                       className={classNames(
                         active
-                          ? 'rounded bg-coolGray-100 text-coolGray-700 dark:bg-coolGray-800 dark:text-coolGray-200'
+                          ? 'cursor-pointer rounded bg-coolGray-100 text-coolGray-700 dark:bg-coolGray-800 dark:text-coolGray-200'
                           : 'text-coolGray-600 dark:text-coolGray-400',
-                        'group flex items-center px-4 py-2 text-sm'
+                        'group flex items-center px-4 py-2 text-sm w-full'
                       )}
                     >
                       <ClipboardIcon
@@ -104,7 +105,7 @@ const Dropdown = ({ slug, title, summary }) => (
                         aria-hidden="true"
                       />
                       Copy URL
-                    </div>
+                    </button>
                   </CopyToClipboard>
                 )}
               </Menu.Item>
