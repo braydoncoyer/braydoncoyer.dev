@@ -5,25 +5,23 @@ const NewsletterSection = () => (
   <section>
     <div className="bg-transparent">
       <div className="w-full mx-auto ">
-        <div className="px-6 py-6 bg-coolGray-100 dark:bg-blueGray-800 rounded-lg">
+        <div className="px-6 py-6 bg-secondary rounded-lg">
           <div className="">
-            <h2 className="text-xl lg:text-2xl font-bold tracking-tight text-coolGray-900 dark:text-white sm:text-2xl">
+            <h2 className="text-xl lg:text-2xl font-bold tracking-tight text-primary sm:text-2xl">
               Articles delivered to your inbox!
             </h2>
-            <div className="mt-2 space-y-3">
-              <p className="text-coolGray-500 dark:text-coolGray-400">
+            <div className="mt-2 space-y-3 text-secondary">
+              <p className="text-secondary">
                 A periodic update about my life, recent blog posts, how-tos, and
                 discoveries.
               </p>
-              <p className="text-coolGray-500 dark:text-coolGray-400">
+              <p>
                 As a thank you, I'll also send you a{' '}
-                <span className="font-bold text-indigo-500 dark:text-indigo-400">
+                <span className="font-bold text-indigo-hover">
                   FREE CSS tutorial!
                 </span>
               </p>
-              <p className="text-coolGray-500 dark:text-coolGray-400">
-                No spam - unsubscribe at any time!
-              </p>
+              <p>No spam - unsubscribe at any time!</p>
             </div>
           </div>
           <div className="mt-8 w-full">
@@ -55,7 +53,7 @@ const NewsletterSection = () => (
 
               <button
                 type="submit"
-                className="flex items-center justify-center space-x-3 mt-3 px-4 py-2 shadow text-base font-medium rounded-md text-white bg-indigo-500 dark:bg-indigo-600 hover:bg-indigo-400 dark:hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-coolGray-100 dark:focus:ring-offset-blueGray-800 focus:ring-indigo-500 dark:focus:ring-white ml-0 w-full flex-shrink-0"
+                className="flex items-center justify-center space-x-3 mt-3 px-4 py-2 shadow text-base font-medium rounded-md text-white bg-button-indigo hover:bg-button-indigo-hover dark:hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-coolGray-100 dark:focus:ring-offset-blueGray-800 focus:ring-indigo-500 dark:focus:ring-white ml-0 w-full flex-shrink-0"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

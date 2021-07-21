@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { HiMoon, HiSun } from 'react-icons/hi';
-import { ThemeContext } from '~helpers/themeContext';
+// import { ThemeContext } from '~helpers/themeContext';
+import { ThemeContext } from 'gatsby-plugin-theme-switcher';
 
 const Toggle = () => {
-  const { theme, setTheme } = React.useContext(ThemeContext);
+  const { theme, switchTheme } = useContext(ThemeContext);
 
   const handleClick = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
+    switchTheme(theme === 'theme-dark' ? 'theme-light' : 'theme-dark');
   };
 
   return (
@@ -15,7 +16,7 @@ const Toggle = () => {
       onClick={handleClick}
       className="rounded-md p-2 bg-coolGray-200 hover:bg-coolGray-300 dark:bg-blueGray-800 dark:hover:bg-coolGray-700"
     >
-      {theme === 'dark' ? (
+      {theme === 'theme-dark' ? (
         <HiSun className="text-coolGray-500 dark:text-coolGray-400 text-2xl cursor-pointer" />
       ) : (
         <HiMoon className="text-coolGray-500 dark:text-coolGray-400 text-2xl cursor-pointer" />

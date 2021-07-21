@@ -1,0 +1,65 @@
+.theme-light {
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f3f4f6;
+  --color-bg-emerald: #34d399;
+  /* Headings */
+  --color-text-primary: #111827;
+  /* All other text */
+  --color-text-secondary: #4b5563;
+  --color-text-secondary-hover: #111827;
+  --color-text-footer-icons: #a1a1aa;
+  --color-text-footer-icons-hover: #71717a;
+  --color-text-link: #10b981;
+  --color-text-emerald: #10b981;
+  --color-text-emerald-hover: #059669;
+  --color-text-indigo: #6366f1;
+  --color-text-indigo-hover: #818cf8;
+  --color-text-orange: #ea580c;
+  --color-text-orange-hover: #c2410c;
+  --color-text-rose: #e11d48;
+  --color-text-amber: #f59e0b;
+  --color-text-amber-hover: #d97706;
+  --color-text-blue: #3b82f6;
+
+  /* Border */
+  --color-border: #e5e7eb;
+
+  /* Button backgrounds */
+  --color-button-indigo: #6366f1;
+  --color-button-indigo-hover: #818cf8;
+}
+
+@media (prefers-color-scheme: dark) {
+}
+
+.theme-dark {
+  --color-bg-primary: #111827;
+  --color-bg-secondary: #1e293b;
+  --color-bg-emerald: #34d399;
+
+  /* Headings */
+  --color-text-primary: #ffffff;
+  /* All other text */
+  --color-text-secondary: #9ca3af;
+  --color-text-secondary-hover: #6b7280;
+  --color-text-footer-icons: #3f3f46;
+  --color-text-footer-icons-hover: #52525b;
+  --color-text-link: #34d399;
+  --color-text-emerald: #34d399;
+  --color-text-emerald-hover: #10b981;
+  --color-text-indigo: #4f46e5;
+  --color-text-indigo-hover: #6366f1;
+  --color-text-orange: #f97316;
+  --color-text-orange-hover: #fb923c;
+  --color-text-rose: #f43f5e;
+  --color-text-amber: #fbbf24;
+  --color-text-amber-hover: #fcd34d;
+  --color-text-blue: #38bdf8;
+
+  /* Border */
+  --color-border: #374151;
+
+  /* Button backgrounds */
+  --color-button-indigo: #4f46e5;
+  --color-button-indigo-hover: #6366f1;
+}

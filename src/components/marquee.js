@@ -15,9 +15,9 @@ const MarqueeSection = () => {
   return (
     <section className="mb-16">
       <div className="flex justify-between items-center">
-        <div className="w-2/5 border-t border-gray-200 mb-1" />
+        <div className="w-2/5 border-t border-coolGray-200 mb-1" />
         <HeartIcon />
-        <div className="w-2/5 border-t border-gray-200 mb-1" />
+        <div className="w-2/5 border-t border-coolGray-200 mb-1" />
       </div>
 
       <Marquee velocity={speed}>

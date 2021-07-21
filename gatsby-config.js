@@ -34,6 +34,15 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-remark-images`,
     {
+      resolve: 'gatsby-plugin-theme-switcher',
+      options: {
+        defaultDarkTheme: 'theme-dark',
+        defaultLightTheme: 'theme-light',
+        themeStorageKey: 'my-key',
+        minify: true,
+      },
+    },
+    {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],

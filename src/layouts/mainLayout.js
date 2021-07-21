@@ -4,7 +4,7 @@ import { ThemeProvider } from '~helpers/themeContext';
 import Nav from '~components/nav';
 
 const Layout = ({ children }) => (
-  <body className="bg-white dark:bg-coolGray-900">
+  <body className="bg-primary">
     <ThemeProvider>
       <Nav />
       <div className="min-h-screen px-4 mx-auto max-w-screen-sm md:max-w-2xl flex flex-col">

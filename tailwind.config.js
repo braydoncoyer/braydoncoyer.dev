@@ -4,7 +4,6 @@ const plugin = require('tailwindcss/plugin');
 module.exports = {
   mode: 'jit',
   purge: ['./src/**/*.{js,jsx,ts,tsx}'],
-  darkMode: 'class',
   theme: {
     extend: {
       typography: (theme) => ({
@@ -21,6 +20,33 @@ module.exports = {
           },
         },
       }),
+      textColor: {
+        white: '#ffffff',
+        primary: 'var(--color-text-primary)',
+        secondary: 'var(--color-text-secondary)',
+        emerald: 'var(--color-text-emerald)',
+        'emerald-hover': 'var(--color-text-emerald-hover)',
+        indigo: 'var(--color-text-indigo)',
+        'indigo-hover': 'var(--color-text-indigo-hover)',
+        orange: 'var(--color-text-orange)',
+        'orange-hover': 'var(--color-text-orange-hover)',
+        rose: 'var(--color-text-rose)',
+        amber: 'var(--color-text-amber)',
+        'amber-hover': 'var(--color-text-amber-hover)',
+        blue: 'var(--color-text-blue)',
+        link: 'var(--color-text-link)',
+        default: 'var(--color-text-default)',
+      },
+      backgroundColor: {
+        primary: 'var(--color-bg-primary)',
+        secondary: 'var(--color-bg-secondary)',
+        emerald: 'var(--color-bg-emerald)',
+        'button-indigo': 'var(--color-button-indigo)',
+        'button-indigo-hover': 'var(--color-button-indigo-hover)',
+      },
+      ringOffsetColor: {
+        primary: 'var(--color-bg-primary)',
+      },
     },
     colors: {
       white: colors.white,

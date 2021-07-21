@@ -47,6 +47,7 @@
     "gatsby-plugin-scroll-indicator": "^1.0.1",
     "gatsby-plugin-sharp": "^3.0.0",
     "gatsby-plugin-sitemap": "^3.0.0",
+    "gatsby-plugin-theme-switcher": "^1.0.0",
     "gatsby-remark-images": "^4.0.0",
     "gatsby-source-contentful": "^4.2.1",
     "gatsby-source-filesystem": "^3.0.0",
