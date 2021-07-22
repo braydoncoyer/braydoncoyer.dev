@@ -36,6 +36,10 @@ module.exports = {
         blue: 'var(--color-text-blue)',
         link: 'var(--color-text-link)',
         default: 'var(--color-text-default)',
+        'footer-link': 'var(--color-text-link-footer)',
+        'footer-link-hover': 'var(--color-text-link-footer-hover)',
+        'footer-icon': 'var(--color-text-footer-icons)',
+        'footer-icon-hover': 'var(--color-text-footer-icons-hover)',
       },
       backgroundColor: {
         primary: 'var(--color-bg-primary)',

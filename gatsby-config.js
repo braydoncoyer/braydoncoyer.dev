@@ -38,7 +38,7 @@ module.exports = {
       options: {
         defaultDarkTheme: 'theme-dark',
         defaultLightTheme: 'theme-light',
-        themeStorageKey: 'my-key',
+        themeStorageKey: 'theme',
         minify: true,
       },
     },
