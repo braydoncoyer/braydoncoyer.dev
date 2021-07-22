@@ -51,6 +51,9 @@ module.exports = {
       ringOffsetColor: {
         primary: 'var(--color-bg-primary)',
       },
+      borderColor: {
+        primary: 'var(--color-border)',
+      },
     },
     colors: {
       white: colors.white,

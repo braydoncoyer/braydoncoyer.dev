@@ -5,14 +5,14 @@ const TimelineItem = ({ timelineItems }) => (
   <div>
     {timelineItems.map((item, id) => (
       <div key={id} className="flex items-start ml-4">
-        <div className="w-5 h-5 flex-none bg-gradient-to-br from-cyan-400 to-lightBlue-500 text-coolGray-50 rounded-full flex justify-center items-center mt-1">
+        <div className="w-5 h-5 flex-none bg-gradient-to-br from-cyan-400 to-lightBlue-500 text-white rounded-full flex justify-center items-center mt-1">
           <HiCheck className="text-lg" />
         </div>
         <div className="ml-4">
-          <p className="text-coolGray-900 dark:text-white font-semibold  prose-lg mb-1">
+          <p className="text-primary font-semibold  prose-lg mb-1">
             {item.itemTitle}
           </p>
-          <p className="text-coolGray-600 dark:text-coolGray-400  prose-lg mb-6">
+          <p className="text-secondary  prose-lg mb-6">
             {item.itemDescription}
           </p>
         </div>

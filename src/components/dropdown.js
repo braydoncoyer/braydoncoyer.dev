@@ -16,7 +16,7 @@ const Dropdown = ({ slug, title, summary }) => (
     {({ open }) => (
       <>
         <div>
-          <Menu.Button className="bg-white dark:bg-coolGray-900 rounded-full flex items-center text-gray-400 dark:text-coolGray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-coolGray-900 focus:ring-emerald-500">
+          <Menu.Button className="bg-primary rounded-full flex items-center text-gray-400 dark:text-coolGray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-coolGray-900 focus:ring-emerald-500">
             <span className="sr-only">Open options</span>
             <ShareIcon className="h-5 w-5" aria-hidden="true" />
           </Menu.Button>
@@ -34,7 +34,7 @@ const Dropdown = ({ slug, title, summary }) => (
         >
           <Menu.Items
             static
-            className="z-10 p-1 origin-top-right absolute right-0 mt-2 w-56 shadow-lg rounded-md bg-white dark:bg-coolGray-900 border border-coolGray-200 ring-1 ring-black dark:border-coolGray-700 ring-opacity-5 focus:outline-none"
+            className="z-10 p-1 origin-top-right absolute right-0 mt-2 w-56 shadow-lg rounded-md bg-primary border border-primary ring-1 ring-black ring-opacity-5 focus:outline-none"
           >
             <div className="py-1">
               <Menu.Item>
@@ -48,8 +48,8 @@ const Dropdown = ({ slug, title, summary }) => (
                     <div
                       className={classNames(
                         active
-                          ? 'rounded bg-coolGray-100 text-coolGray-700 dark:bg-coolGray-800 dark:text-coolGray-200'
-                          : 'text-coolGray-600 dark:text-coolGray-400',
+                          ? 'rounded bg-secondary text-secondary'
+                          : 'text-secondary',
                         'group flex items-center px-4 py-2 text-sm'
                       )}
                     >
@@ -74,8 +74,8 @@ const Dropdown = ({ slug, title, summary }) => (
                     <div
                       className={classNames(
                         active
-                          ? 'rounded bg-coolGray-100 text-coolGray-700 dark:bg-coolGray-800 dark:text-coolGray-200'
-                          : 'text-coolGray-600 dark:text-coolGray-400',
+                          ? 'rounded bg-secondary text-secondary'
+                          : 'text-secondary',
                         'group flex items-center px-4 py-2 text-sm'
                       )}
                     >
@@ -95,8 +95,8 @@ const Dropdown = ({ slug, title, summary }) => (
                       type="button"
                       className={classNames(
                         active
-                          ? 'cursor-pointer rounded bg-coolGray-100 text-coolGray-700 dark:bg-coolGray-800 dark:text-coolGray-200'
-                          : 'text-coolGray-600 dark:text-coolGray-400',
+                          ? 'cursor-pointer rounded bg-secondary text-secondary'
+                          : 'text-secondary',
                         'group flex items-center px-4 py-2 text-sm w-full'
                       )}
                     >

@@ -13,7 +13,7 @@ const Footer = () => (
     <h2 id="footerHeading" className="sr-only">
       Footer
     </h2>
-    <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-6 lg:px-8 border-t border-gray-200">
+    <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-6 lg:px-8 border-t border-primary">
       <div className="xl:grid xl:grid-cols-2 xl:gap-8">
         <div className="grid grid-cols-2 gap-8 xl:col-span-2">
           <div className="md:grid md:grid-cols-2 md:gap-8">

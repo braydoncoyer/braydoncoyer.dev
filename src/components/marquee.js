@@ -15,22 +15,22 @@ const MarqueeSection = () => {
   return (
     <section className="mb-16">
       <div className="flex justify-between items-center">
-        <div className="w-2/5 border-t border-coolGray-200 mb-1" />
+        <div className="w-2/5 border-t border-primary mb-1" />
         <HeartIcon />
-        <div className="w-2/5 border-t border-coolGray-200 mb-1" />
+        <div className="w-2/5 border-t border-primary mb-1" />
       </div>
 
       <Marquee velocity={speed}>
         {interests.map((item, id) => (
           <p
             key={id}
-            className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white ml-16"
+            className="text-2xl lg:text-3xl font-extrabold text-primary ml-16"
           >
             {item}
           </p>
         ))}
       </Marquee>
-      <div className="w-full border-t border-gray-200 mb-1 mt-7" />
+      <div className="w-full border-t border-primary mb-1 mt-7" />
     </section>
   );
 };
