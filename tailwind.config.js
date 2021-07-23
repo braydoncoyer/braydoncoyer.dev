@@ -47,12 +47,18 @@ module.exports = {
         emerald: 'var(--color-bg-emerald)',
         'button-indigo': 'var(--color-button-indigo)',
         'button-indigo-hover': 'var(--color-button-indigo-hover)',
+        blockquote: 'var(--color-blockquote-bg)',
       },
       ringOffsetColor: {
         primary: 'var(--color-bg-primary)',
       },
       borderColor: {
         primary: 'var(--color-border)',
+        blockquote: 'var(--color-blockquote-border)',
+        infoquote: 'var(--color-infoquote-border)',
+      },
+      backgroundOpacity: {
+        navbar: '0.3',
       },
     },
     colors: {

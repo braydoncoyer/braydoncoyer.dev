@@ -54,7 +54,7 @@ const Dropdown = ({ slug, title, summary }) => (
                       )}
                     >
                       <FaTwitterSquare
-                        className="mr-3 h-5 w-5 text-coolGray-600 group-hover:text-emerald-500 dark:text-gray-400 dark:group-hover:text-emerald-400"
+                        className="mr-3 h-5 w-5 text-secondary group-hover:text-emerald"
                         aria-hidden="true"
                       />
                       Twitter
@@ -80,7 +80,7 @@ const Dropdown = ({ slug, title, summary }) => (
                       )}
                     >
                       <FaLinkedin
-                        className="mr-3 h-5 w-5 text-coolGray-600 group-hover:text-emerald-500 dark:text-gray-400 dark:group-hover:text-emerald-400"
+                        className="mr-3 h-5 w-5 text-secondary group-hover:text-emerald"
                         aria-hidden="true"
                       />
                       Linkedin
@@ -101,7 +101,7 @@ const Dropdown = ({ slug, title, summary }) => (
                       )}
                     >
                       <ClipboardIcon
-                        className="mr-3 h-5 w-5 text-coolGray-600 group-hover:text-emerald-500 dark:text-gray-400 dark:group-hover:text-emerald-400"
+                        className="mr-3 h-5 w-5 text-secondary group-hover:text-emerald"
                         aria-hidden="true"
                       />
                       Copy URL

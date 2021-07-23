@@ -10,9 +10,9 @@ const styles = {
 };
 
 const Blockquote = ({ children }) => (
-  <div className="px-8 py-6 mb-6 rounded-lg border-l-4 leading-relaxed dark:text-coolGray-300 relative border-coolGray-600 dark:border-coolGray-300 bg-coolGray-400 bg-opacity-10">
+  <div className="px-8 py-6 mb-6 rounded-lg border-l-4 leading-relaxed text-secondary relative border-blockquote bg-blockquote bg-opacity-10">
     <div
-      className="text-center bg-white dark:bg-coolGray-900 rounded-full w-10 h-10 flex items-center justify-center"
+      className="text-center bg-primary rounded-full w-10 h-10 flex items-center justify-center"
       style={styles}
     >
       <FaQuoteLeft />

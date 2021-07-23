@@ -29,6 +29,11 @@
   /* Button backgrounds */
   --color-button-indigo: #6366f1;
   --color-button-indigo-hover: #818cf8;
+
+  /* Blockquote backgrounds */
+  --color-blockquote-bg: #f5f6f7;
+  --color-blockquote-border: #4b5563;
+  --color-infoquote-border: #38bdf8;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -68,4 +73,9 @@
   /* Button backgrounds */
   --color-button-indigo: #4f46e5;
   --color-button-indigo-hover: #6366f1;
+
+  /* Blockquote backgrounds */
+  --color-blockquote-bg: #1e2835;
+  --color-blockquote-border: #d1d5db;
+  --color-infoquote-border: #38bdf8;
 }

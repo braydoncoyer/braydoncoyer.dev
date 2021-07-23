@@ -177,9 +177,9 @@ const BlogPostTemplate = ({ data, pageContext }) => {
             </a>
           </span>
         </div>
-        <div className="mt-8 flex justify-between text-emerald-500 dark:text-emerald-400">
+        <div className="mt-8 flex justify-between text-emerald">
           {prev ? (
-            <div className="hover:text-emerald-600 dark:hover:text-emerald-500 text-left">
+            <div className="hover:text-emerald-hover text-left">
               <Link to={prev.url}>
                 <span className="flex items-top items-center">
                   <svg
@@ -205,7 +205,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
             <div />
           )}
           {next && (
-            <div className="hover:text-emerald-600 dark:hover:text-emerald-500 text-right">
+            <div className="hover:text-emerald-hover text-right">
               <Link to={next.url}>
                 <span className="flex justify-end items-center">
                   Next Article

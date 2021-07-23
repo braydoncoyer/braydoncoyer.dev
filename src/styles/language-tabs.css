@@ -6,7 +6,7 @@
   -webkit-overflow-scrolling: touch;
 }
 
-.dark .gatsby-highlight pre[class*='language-']::before {
+.theme-dark .gatsby-highlight pre[class*='language-']::before {
   background: #1d2b3b;
   color: #9ca3af;
 }

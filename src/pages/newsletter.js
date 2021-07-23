@@ -28,14 +28,14 @@ export default function Toolbox() {
       />
       <Layout>
         <section className="w-full">
-          <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-indigo-500 mb-3">
+          <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-indigo mb-3">
             Newsletter
           </h2>
-          <p className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-5xl leading-none font-extrabold tracking-tight mb-4">
+          <p className="text-primary text-3xl sm:text-5xl lg:text-5xl leading-none font-extrabold tracking-tight mb-4">
             Join my newsletter!
           </p>
 
-          <div className="text-coolGray-500 dark:text-coolGray-400 prose-lg mb-6">
+          <div className="text-secondary prose-lg mb-6">
             <p>Never miss out on my new content!</p>
             <p>
               I love to read, write and create new things. With each newsletter,
@@ -51,7 +51,7 @@ export default function Toolbox() {
                 target="_blank"
                 rel="noreferrer"
                 href="https://buttondown.email/braydoncoyer/archive/"
-                className="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-500 italic"
+                className="text-emerald hover:text-emerald-hover italic"
               >
                 Newsletter archive - read past issues!
               </a>
