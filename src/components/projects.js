@@ -5,29 +5,29 @@ import ToastItem from '~helpers/toast';
 
 const ProjectsSection = () => (
   <section className="mb-24">
-    <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-orange-600 dark:text-orange-500 mb-3">
+    <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-orange mb-3">
       Projects
     </h2>
-    <div className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-5xl leading-none font-extrabold tracking-tight mb-4">
+    <div className="text-primary text-3xl sm:text-5xl lg:text-5xl leading-none font-extrabold tracking-tight mb-4">
       <p className="mb-2">I like to build things.</p>
       <p className="mb-8">Here's a few.</p>
     </div>
 
     <ul className="grid grid-cols-1 gap-8  mt-12">
-      <li className="bg-coolGray-100 dark:bg-blueGray-800 rounded-3xl">
+      <li className="bg-secondary rounded-3xl">
         <div className="p-6 md:p-10 flex flex-col-reverse ">
           <div className="mt-8 md:max-w-lg">
-            <p className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white mb-2">
+            <p className="text-2xl lg:text-3xl font-extrabold text-primary mb-2">
               bundleapps.io
             </p>
-            <p className="text-coolGray-600 dark:text-coolGray-400 prose-lg mb-3">
+            <p className="text-secondary prose-lg mb-3">
               A startup consultant company needed a website spun up quickly in
               order to publish their first iOS application. Built with Tailwind
               UI, I was able to put something together for them by the end of
               the day.
             </p>
             <a href="https://bundleapps.io/" target="_blank" rel="noreferrer">
-              <div className="inline-flex text-base sm:text-lg lg:text-base xl:text-lg font-medium transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-orange-600 hover:text-orange-700 dark:text-orange-500 dark:hover:text-orange-400 mt-2">
+              <div className="inline-flex text-base sm:text-lg lg:text-base xl:text-lg font-medium transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-orange hover:text-orange-hover mt-2">
                 <p>Visit -></p>
               </div>
             </a>
@@ -37,7 +37,7 @@ const ProjectsSection = () => (
           </div>
         </div>
       </li>
-      <li className="bg-coolGray-100 dark:bg-blueGray-800 rounded-3xl relative overflow-hidden">
+      <li className="bg-secondary rounded-3xl relative overflow-hidden">
         <div className="p-6 md:p-10">
           <div>
             <img
@@ -47,10 +47,10 @@ const ProjectsSection = () => (
             />
           </div>
           <div className="mt-9">
-            <p className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white mb-2">
+            <p className="text-2xl lg:text-3xl font-extrabold text-primary mb-2">
               officeapi.dev
             </p>
-            <p className="text-coolGray-600 dark:text-coolGray-400 prose-lg mb-3">
+            <p className="text-secondary prose-lg mb-3">
               A fun side-project originally built with Spring Boot and MonogDb,
               rebuilt with with Node.js, Express, Mongoose and MongoDb. Deployed
               with Heroku.
@@ -60,14 +60,14 @@ const ProjectsSection = () => (
               target="_blank"
               rel="noreferrer"
             >
-              <div className="inline-flex text-base sm:text-lg lg:text-base xl:text-lg font-medium transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-orange-600 hover:text-orange-700 dark:text-orange-500 dark:hover:text-orange-400 mt-2">
+              <div className="inline-flex text-base sm:text-lg lg:text-base xl:text-lg font-medium transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-orange hover:text-orange-hover mt-2">
                 <p>Visit -></p>
               </div>
             </a>
           </div>
         </div>
       </li>
-      <li className="bg-coolGray-100 dark:bg-blueGray-800 rounded-3xl overflow-hidden p-6 md:p-10 flex flex-col items-center">
+      <li className="bg-secondary rounded-3xl overflow-hidden p-6 md:p-10 flex flex-col items-center">
         <div className="flex-grow w-full space-y-2">
           <ToastItem
             title="Hi there!"
@@ -84,7 +84,7 @@ const ProjectsSection = () => (
           />
         </div>
         <div className="mt-8">
-          <p className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white mb-2">
+          <p className="text-2xl lg:text-3xl font-extrabold text-primary mb-2">
             NgLimeade
           </p>
           <p className="text-coolGray-500 dark:text-coolGray-400 prose-lg mb-3">
@@ -97,7 +97,7 @@ const ProjectsSection = () => (
             target="_blank"
             rel="noreferrer"
           >
-            <div className="inline-flex text-base sm:text-lg lg:text-base xl:text-lg font-medium transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-orange-600 hover:text-orange-700 dark:text-orange-500 dark:hover:text-orange-400 mt-2">
+            <div className="inline-flex text-base sm:text-lg lg:text-base xl:text-lg font-medium transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-orange hover:text-orange-hover mt-2">
               <p>Visit -></p>
             </div>
           </a>

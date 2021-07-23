@@ -1,5 +1,15 @@
 export const changes = [
   {
+    date: '2021-07-22',
+    items: [
+      {
+        type: 'bug fix',
+        description:
+          'Fixed the classic dark mode bug where the screen flashes white as the page loads. This new theme implementation allows for further themes to be easily created in the future.',
+      },
+    ],
+  },
+  {
     date: '2021-07-19',
     items: [
       {

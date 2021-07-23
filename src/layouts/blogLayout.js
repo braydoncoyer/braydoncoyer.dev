@@ -80,7 +80,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
           modifiedDate={new Date(Date.now()).toISOString()}
         />
 
-        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 md:mb-6 text-coolGray-900 dark:text-white">
+        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 md:mb-6 text-primary">
           {frontmatter.title}
         </h1>
         <div className="md:flex md:flex-row md:justify-between md:items-center w-full mb-4 md:mb-6">
@@ -93,9 +93,9 @@ const BlogPostTemplate = ({ data, pageContext }) => {
                 src={ProfileImage}
                 alt="Braydon Coyer"
               />
-              <p className="text-sm text-coolGray-600 dark:text-coolGray-400 ml-2">
+              <p className="text-sm text-secondary ml-2">
                 <a
-                  className="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-500"
+                  className="text-emerald hover:text-emerald-hover"
                   href="https://twitter.com/BraydonCoyer"
                   rel="noreferrer"
                   target="_blank"
@@ -116,7 +116,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
               />
             </div>
           </div>
-          <div className="text-sm flex space-x-2 text-coolGray-600 dark:text-coolGray-400 mt-2 md:mt-0">
+          <div className="text-sm flex space-x-2 text-secondary mt-2 md:mt-0">
             <p>{`${timeToRead * 2} minute read`}</p>
             <p>•</p>
             <ArticleViews id={slug} />{' '}
@@ -137,13 +137,13 @@ const BlogPostTemplate = ({ data, pageContext }) => {
           />
         ) : null}
 
-        <div className="text-coolGray-600 dark:text-coolGray-400 prose-lg">
+        <div className="text-secondary prose-lg">
           {canonicalUrl !== null ? (
             <div>
               <Infoquote>
                 This article was originally posted{' '}
                 <OutboundLink
-                  className="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-500"
+                  className="text-emerald hover:text-emerald-hover"
                   href={canonicalUrl}
                 >
                   here.
@@ -156,7 +156,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
         <div className="mt-8 mb-4">
           <NewsletterSection />
         </div>
-        <div className="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-500 italic flex justify-start md:justify-end space-x-3">
+        <div className="text-emerald hover:text-emerald-hover italic flex justify-start md:justify-end space-x-3">
           <span>
             <a
               target="_blank"
@@ -177,9 +177,9 @@ const BlogPostTemplate = ({ data, pageContext }) => {
             </a>
           </span>
         </div>
-        <div className="mt-8 flex justify-between text-emerald-500 dark:text-emerald-400">
+        <div className="mt-8 flex justify-between text-emerald">
           {prev ? (
-            <div className="hover:text-emerald-600 dark:hover:text-emerald-500 text-left">
+            <div className="hover:text-emerald-hover text-left">
               <Link to={prev.url}>
                 <span className="flex items-top items-center">
                   <svg
@@ -205,7 +205,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
             <div />
           )}
           {next && (
-            <div className="hover:text-emerald-600 dark:hover:text-emerald-500 text-right">
+            <div className="hover:text-emerald-hover text-right">
               <Link to={next.url}>
                 <span className="flex justify-end items-center">
                   Next Article

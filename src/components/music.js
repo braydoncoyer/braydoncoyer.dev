@@ -2,13 +2,13 @@ import React from 'react';
 
 const MusicSection = () => (
   <section>
-    <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-rose-600 dark:text-rose-500 mb-3">
+    <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-rose mb-3">
       Tunes
     </h2>
-    <p className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-5xl leading-none font-extrabold tracking-tight mb-4">
+    <p className="text-primary text-3xl sm:text-5xl lg:text-5xl leading-none font-extrabold tracking-tight mb-4">
       Music while coding? Absolutely.
     </p>
-    <p className="text-coolGray-600 dark:text-coolGray-400 prose-lg mb-6">
+    <p className="text-secondary prose-lg mb-6">
       Lord of the Rings is my favorite movie series ever. Not only is it a
       beautiful movie, but the music score transports you to a magical place.
       When coding, I pop in some AirPods and turn to this playlist.

@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import './themes.css';
+
 @layer base {
   @font-face {
     font-family: 'MonoLisa';
@@ -38,30 +40,4 @@ html {
   position: fixed;
   top: 30px;
   right: 32px;
-}
-
-/* dark background color that displays on content under the svg pattern */
-.dark .paint__wrapper {
-  background-color: #1e293c;
-}
-
-/* the dark svg pattern */
-.dark .paint__wrapper-pattern {
-  background-image: url('../assets/brush_strokes_dark.svg');
-  background-position: 50% 0;
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-}
-
-/* light background color that displays on content under the svg pattern */
-.light .paint__wrapper {
-  background-color: #f3f4f6;
-}
-
-/* the light svg pattern */
-.light .paint__wrapper-pattern {
-  background-image: url('../assets/brush_strokes_light.svg');
-  background-position: 50% 0;
-  background-repeat: no-repeat;
-  background-size: 100% auto;
 }

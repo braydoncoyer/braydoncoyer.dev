@@ -38,10 +38,10 @@ export default function Blog({ data }) {
         twitterUsername={twitterUsername}
       />
       <Layout titleTemplate="Blog" description="My blog.">
-        <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-purple-600 dark:text-purple-500 mb-3">
+        <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-indigo mb-3">
           Blog
         </h2>
-        <p className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-5xl leading-none font-extrabold tracking-tight mb-8">
+        <p className="text-primary text-3xl sm:text-5xl lg:text-5xl leading-none font-extrabold tracking-tight mb-8">
           Writing is my new thing.
         </p>
 
@@ -67,7 +67,7 @@ export default function Blog({ data }) {
                 onChange={(e) => setSearchValue(e.target.value)}
                 name="search"
                 id="search"
-                className="focus:ring-purple-600 focus:border-purple-600 block w-full rounded-md pl-10 sm:text-sm text-coolGray-900 dark:text-white bg-white dark:bg-blueGray-800"
+                className="focus:ring-purple-600 focus:border-purple-600 block w-full rounded-md pl-10 sm:text-sm text-secondary"
                 placeholder="Article name || description"
               />
             </div>
@@ -75,7 +75,7 @@ export default function Blog({ data }) {
         </div>
 
         {!filteredBlogPosts.length && (
-          <div className="text-coolGray-600 dark:text-coolGray-400 prose-lg mb-3">
+          <div className="text-secondary prose-lg mb-3">
             <p>Oops. No posts found. Try another search query...</p>
           </div>
         )}
@@ -83,10 +83,10 @@ export default function Blog({ data }) {
           <div className="mb-10" key={id}>
             <Link to={`/blog${fields.slug}`} key={id}>
               <div>
-                <p className="text-xl lg:text-2xl font-extrabold text-coolGray-900 dark:text-white">
+                <p className="text-xl lg:text-2xl font-extrabold text-primary">
                   {frontmatter.title}
                 </p>
-                <p className="mt-2 text-coolGray-600 dark:text-coolGray-400 prose-lg">
+                <p className="mt-2 text-secondary prose-lg">
                   {frontmatter.summary}
                 </p>
               </div>

@@ -22,13 +22,13 @@ const ToastItem = ({ title, description, icon, type }) => {
     >
       <div
         className={`w-full rounded-xl p-2 ${
-          type === 'success' ? 'bg-emerald-400' : 'bg-lightBlue-400'
+          type === 'success' ? 'bg-emerald' : 'bg-lightBlue-400'
         }`}
       >
         <div className="w-full bg-white rounded-md px-4 py-2 flex items-center">
           <div
             className={`text-5xl ${
-              type === 'success' ? 'text-emerald-400' : 'text-lightBlue-400'
+              type === 'success' ? 'text-emerald' : 'text-lightBlue-400'
             }`}
           >
             {icon === 'question' ? <HiCheckCircle /> : <HiExclamationCircle />}

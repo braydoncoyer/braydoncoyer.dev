@@ -9,15 +9,15 @@ const WelcomeSection = () => (
           <img
             src={avatar}
             alt="Braydon Coyer"
-            className="mt-8 mb-16 h-36 w-36 ml-3  rounded-full ring-4 ring-offset-8 ring-offset-white dark:ring-offset-coolGray-900 ring-teal-500 dark:ring-teal-400 select-none"
+            className="mt-8 mb-16 h-36 w-36 ml-3  rounded-full ring-4 ring-offset-8 ring-offset-primary ring-teal-500 dark:ring-teal-400 select-none"
           />
           <h2 className="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-teal-500 dark:text-teal-400 mb-3">
             Hey there,
           </h2>
-          <h1 className="text-coolGray-900 dark:text-white text-3xl sm:text-5xl lg:text-5xl leading-none font-extrabold tracking-tight mb-4">
+          <h1 className="text-primary text-3xl sm:text-5xl lg:text-5xl leading-none font-extrabold tracking-tight mb-4">
             I'm Braydon.
           </h1>
-          <p className="text-coolGray-600 dark:text-coolGray-400 prose-lg">
+          <p className="text-secondary prose-lg">
             I'm a senior full stack engineer with a passion for everything
             front-end. Welcome to my corner of the internet. I'm glad you're
             here!

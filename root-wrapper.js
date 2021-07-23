@@ -30,44 +30,44 @@ const shortcodes = {
 const components = {
   a: (props) => (
     <OutboundLink
-      className="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-500"
+      className="text-emerald hover:text-emerald-hover"
       {...props}
     />
   ),
   h1: ({ children }) => (
-    <h1 className="text-3xl lg:text-4xl font-extrabold text-coolGray-900 dark:text-white mb-4">
+    <h1 className="text-3xl lg:text-4xl font-extrabold text-primary mb-4">
       <AnchorLink>{children}</AnchorLink>
     </h1>
   ),
   h2: ({ children }) => (
-    <h2 className="text-2xl lg:text-3xl font-extrabold text-coolGray-900 dark:text-white mb-4">
+    <h2 className="text-2xl lg:text-3xl font-extrabold text-primary mb-4">
       <AnchorLink>{children}</AnchorLink>
     </h2>
   ),
   h3: ({ children }) => (
-    <h3 className="text-xl lg:text-2xl font-extrabold text-coolGray-900 dark:text-white mb-4">
+    <h3 className="text-xl lg:text-2xl font-extrabold text-primary mb-4">
       <AnchorLink>{children}</AnchorLink>
     </h3>
   ),
   h4: ({ children }) => (
-    <h4 className="text-lg lg:text-xl font-extrabold text-coolGray-900 dark:text-white mb-4">
+    <h4 className="text-lg lg:text-xl font-extrabold text-primary mb-4">
       <AnchorLink>{children}</AnchorLink>
     </h4>
   ),
   h5: ({ children }) => (
-    <h5 className="text-md lg:text-lg font-extrabold text-coolGray-900 dark:text-white mb-4">
+    <h5 className="text-md lg:text-lg font-extrabold text-primary mb-4">
       <AnchorLink>{children}</AnchorLink>
     </h5>
   ),
   h6: ({ children }) => (
-    <h6 className="text-md lg:text-md font-extrabold text-coolGray-900 dark:text-white mb-4">
+    <h6 className="text-md lg:text-md font-extrabold text-primary mb-4">
       <AnchorLink>{children}</AnchorLink>
     </h6>
   ),
   strong: (props) => <span className="font-bold" {...props} />,
   'p.inlineCode': ({ children }) => (
     <code
-      className="py-0.5 px-1 rounded bg-coolGray-100 dark:text-coolGray-400 dark:bg-blueGray-800"
+      className="py-0.5 px-1 rounded bg-secondary"
       style={{ fontFamily: 'MonoLisa' }}
     >
       {children}

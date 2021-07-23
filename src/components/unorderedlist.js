@@ -6,7 +6,7 @@ const UnorderedList = ({ children }) => (
       <div className="flex items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-[18px] w-[18px] mb-0.5 text-emerald-500 dark:text-emerald-400"
+          className="h-[18px] w-[18px] mb-0.5 text-emerald"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
