@@ -1,8 +1,8 @@
+import React from 'react';
+import SEO from 'react-seo-component';
 import Layout from '~layouts/mainLayout';
 import NewsletterSection from '~components/newsletter';
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
-import SEO from 'react-seo-component';
 import { useSiteMetadata } from '~hooks/useSiteMetadata';
 
 export default function Toolbox() {
