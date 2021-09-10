@@ -1,8 +1,8 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import SEO from 'react-seo-component';
-import NewsletterSection from '~components/newsletter';
 import Layout from '~layouts/mainLayout';
+import NewsletterSection from '~components/newsletter';
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useSiteMetadata } from '~hooks/useSiteMetadata';
 
 export default function Toolbox() {
@@ -50,7 +50,7 @@ export default function Toolbox() {
               <a
                 target="_blank"
                 rel="noreferrer"
-                href="https://buttondown.email/braydoncoyer/archive/"
+                href="https://www.getrevue.co/profile/braydoncoyer"
                 className="text-emerald hover:text-emerald-hover italic"
               >
                 Newsletter archive - read past issues!
