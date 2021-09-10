@@ -53,11 +53,11 @@ const NewsletterSection = () => (
 
               <button
                 type="submit"
-                className="flex items-center justify-center space-x-3 mt-3 px-4 py-2 shadow text-base font-medium rounded-md text-white bg-button-indigo hover:bg-button-indigo-hover dark:hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-coolGray-100 dark:focus:ring-offset-blueGray-800 focus:ring-indigo-500 dark:focus:ring-white ml-0 w-full flex-shrink-0"
+                className="flex items-center justify-center space-x-3 mt-3 px-4 py-2 shadow text-sm font-medium rounded-md text-white bg-button-indigo hover:bg-button-indigo-hover dark:hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-coolGray-100 dark:focus:ring-offset-blueGray-800 focus:ring-indigo-500 dark:focus:ring-white ml-0 w-full flex-shrink-0 md:text-base"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
+                  className="hidden md:block h-6 w-6"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"

@@ -1,6 +1,6 @@
+import Layout from '~layouts/mainLayout';
 import React from 'react';
 import SEO from 'react-seo-component';
-import Layout from '~layouts/mainLayout';
 import { useSiteMetadata } from '~hooks/useSiteMetadata';
 
 const ToolboxItem = ({ href, title, description }) => (
@@ -133,7 +133,7 @@ export default function Toolbox() {
                   title="Apple Magic Keyboard with Numeric Keypad"
                 />
                 <li className="text-coolGray-500 dark:text-coolGray-400 text-base sm:text-lg lg:text-base xl:text-lg">
-                  Apple Magic Mouse
+                  Apple Magic Trackpad
                 </li>
                 <ToolboxItem
                   href="https://www.amazon.com/AOC-AG493UCX-Immersive-Adaptive-Sync-Adjustable/dp/B07ZSGR4CH/ref=sr_1_3?crid=QREU82WQU8EE&dchild=1&keywords=aoc+agon+49+ultrawide+curved+gaming+monitor&qid=1604938356&sprefix=AOC+AGON+49%2Caps%2C165&sr=8-3"
@@ -228,9 +228,9 @@ export default function Toolbox() {
                   description="A realtime database used to track article views"
                 />
                 <ToolboxItem
-                  href="https://buttondown.email/"
-                  title="Buttondown"
-                  description="A small, elegant tool for producing newsletters"
+                  href="https://www.getrevue.co/"
+                  title="Revue"
+                  description="An editorial newsletter tool for writers and publishers"
                 />
               </ul>
             </div>
