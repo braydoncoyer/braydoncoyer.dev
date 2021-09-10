@@ -1,5 +1,14 @@
 export const changes = [
   {
+    date: '2021-09-10',
+    items: [
+      {
+        type: 'change',
+        description: 'Changed newsletter provider from Buttondown to Revue.',
+      },
+    ],
+  },
+  {
     date: '2021-07-22',
     items: [
       {
