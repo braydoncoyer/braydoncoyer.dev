@@ -15,7 +15,7 @@ We now understand the importance of testing in isolation I want to shift our foc
 
 ## Understanding the setup
 
-For the purposes of this article, I've created a new Angular application and bootstrapped a [json-server](https://github.com/typicode/json-server) into the project so we can make API requests and compliment our learning process. By default, this API is running on `localhost:3000`.
+For the purposes of this article, I've created a new Angular application and bootstrapped a [json-server](https://github.com/typicode/json-server) into the project so we can make API requests and complement our learning process. By default, this API is running on `localhost:3000`.
 
 If you'd like to follow along, feel free to clone down [this repo](https://github.com/braydoncoyer/angular-service-test-http) before continuing! I've created a `starting` branch that has everything you need to follow along!
 
@@ -92,7 +92,7 @@ export class BooksService {
 If you feel uncomfortable with any of these functions and what they are doing or the various operators in play, [read the official Angular documentation about creating HTTP services](https://angular.io/tutorial/toh-pt6#get-heroes-with-httpclient).
 
 <Ideaquote>
-  I have defined the URL here in the service, but ideally this would be sourced
+  I have defined the URL here in the service, but ideally, this would be sourced
   from an environment variable defined in your project.
 </Ideaquote>
 
@@ -124,7 +124,7 @@ I find it's helpful to scan the function and write down the various logic branch
 
 ### Identifying What to Test in an Angular HTTP Service
 
-Take a second and give the Service above a once-over. Scan though the functions and determine the input and output. Is there anything else that would be beneficial for us to check? Create a testing outline and then continue reading.
+Take a second and give the Service above a once-over. Scan through the functions and determine the input and output. Is there anything else that would be beneficial for us to check? Create a testing outline and then continue reading.
 
 Done?
 
@@ -172,8 +172,8 @@ The test should pass now. Great!
 
 When writing unit tests, I like to follow the Arrange-Act-Assert (the 3 A's) pattern to help structure my test cases.
 
-1. Arrange - set up the test case. Does the test require any special preperation? Use this step to get the code under test (the Service function) in a place where we can make our assertions. There will be times when there isn't anything to Arrange. That's fine - continue on to the next step.
-2. Act - execute the code under test. In order for us to determine expected behavior of software, we need to run the code under test. Pass any necessary arguments to the code under test in order to achieve the expected behavior.
+1. Arrange - set up the test case. Does the test require any special preparation? Use this step to get the code under test (the Service function) in a place where we can make our assertions. There will be times when there isn't anything to Arrange. That's fine - continue on to the next step.
+2. Act - execute the code under test. In order for us to determine the expected behavior of software, we need to run the code under test. Pass any necessary arguments to the code under test in order to achieve the expected behavior.
 3. Assert - verify expected outcomes. This is the step that actually controls whether your test passes or fails.
 
 ## Writing an Angular Unit Test for the getAllBooks Function
@@ -229,7 +229,8 @@ This may look like a lot and be confusing, so let me break it down.
 
 1. I call the code under test - the `getAllBooks` function. This is part of the Act step in the Arrange-Act-Assert pattern.
 2. I make sure the data coming back from the function is an array of Books, which I've mocked out and brought into this test file. This satisfies the Assert step in the Arrange-Act-Assert pattern. You may be thinking that this looks funny; why do we need to subscribe to the `getAllBooks` function? The function returns an Observable, so the only way to check the data that is being returned is to subscribe to the Observable and make the assertion inside.
-3. We set up and utilize the `HttpTestingController` for multiple reasons, but here we're using it to specify the URL that we expect the Service function to hit, as well as the request method to be used. 4. We also use the `HttpTestingController` to flush (send) data through the stream. At first glance this sort of seems to go against the normal testing pattern where you'd specify the data to be returned _before_ the assertion statement. However, because we must subscribe to the `getAllBooks` function, we flush the data after we're listening for that Observable to emit the value.
+3. We set up and utilize the `HttpTestingController` for multiple reasons, but here we're using it to specify the URL that we expect the Service function to hit, as well as the request method to be used.
+4. We also use the `HttpTestingController` to flush (send) data through the stream. At first glance this sort of seems to go against the normal testing pattern where you'd specify the data to be returned _before_ the assertion statement. However, because we must subscribe to the `getAllBooks` function, we flush the data after we're listening for that Observable to emit the value.
 
 To be even more clear, when the flush statement is executed, it sends the `mockBookArray` data through the stream, the subscribe block resolves and our assertion then takes place.
 
@@ -269,7 +270,7 @@ it('should call getBookById and return the appropriate Book', () => {
 });
 ```
 
-This test allows you to see a bit more of the Arrange-Act-Assert pattern. Due to the nature of the code under test, we know that the function requires an ID value to be passed. We control this from the test-side by declaring an `id` variable , setting the value to `'1'` and passing it to the `getBookById` function.
+This test allows you to see a bit more of the Arrange-Act-Assert pattern. Due to the nature of the code under test, we know that the function requires an ID value to be passed. We control this from the test-side by declaring an `id` variable, setting the value to `'1'` and passing it to the `getBookById` function.
 
 Everything else is familiar - we still check that the request method is `GET` and that the appropriate URL is being hit. We also send back a mock Book via the `flush` method so that our assertion kicks off inside of the subscribe block.
 
