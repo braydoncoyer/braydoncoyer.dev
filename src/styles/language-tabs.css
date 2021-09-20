@@ -52,3 +52,7 @@
 .gatsby-highlight pre[class~='language-scss']::before {
   content: 'scss';
 }
+
+.gatsby-highlight pre[class~='language-bash']::before {
+  content: 'bash';
+}

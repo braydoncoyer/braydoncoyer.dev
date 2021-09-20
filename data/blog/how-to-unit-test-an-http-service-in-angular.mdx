@@ -1,0 +1,309 @@
+---
+title: 'How to Unit Test an HTTP Service in Angular'
+publishedAt: 2021-09-20 07:32:14
+summary: By the time we wrap up this addition to the series, not only will you understand how to write valuable tests, but you'll also understand what to test in an HTTP Service.
+coverImage: ../../static/images/how-to-unit-test-an-http-service-in-angular/TestingAngularPart3Banner.png
+imageName: TestingAngularPart3Banner.png
+---
+
+We now understand the importance of testing in isolation I want to shift our focus to testing an HTTP Service. By the time we wrap up this addition to the series, not only will you understand how to write valuable tests, but you'll also understand _what_ to test - something I feel a lot of newcomers to unit testing struggle to wrap their minds around.
+
+<Infoquote>
+  If you haven't read parts one and two, I encourage you to come back to this
+  article after reviewing the foundational concepts laid out in those posts.
+</Infoquote>
+
+## Understanding the setup
+
+For the purposes of this article, I've created a new Angular application and bootstrapped a [json-server](https://github.com/typicode/json-server) into the project so we can make API requests and compliment our learning process. By default, this API is running on `localhost:3000`.
+
+If you'd like to follow along, feel free to clone down [this repo](https://github.com/braydoncoyer/angular-service-test-http) before continuing! I've created a `starting` branch that has everything you need to follow along!
+
+## Altering the karma.config with ChromeHeadless
+
+When you run `ng test` in a new Angular project, the Karma report will be opened in a new Chrome tab. I prefer to have my test results shown in the terminal. To make this change, alter the `browsers` property in your `karma.config.js` file.
+
+```ts {4}
+module.exports = function(config) {
+	config.set({
+	...
+	browsers: ['ChomeHeadless'],
+	});
+}
+```
+
+## The Angular HTTP Service We Will Be Unit Testing
+
+I have created a very simplistic HTTP service with all of the CRUD operations. Take a look below.
+
+```ts
+@Injectable({
+  providedIn: 'root'
+})
+export class BooksService {
+  url = 'localhost:3000/';
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
+  constructor(private http: HttpClient) {}
+
+  getAllBooks(): Observable<Book[]> {
+    return this.http
+      .get<Book[]>(`${this.url}/books`)
+      .pipe(catchError(this.handleError<Book[]>('getAllBooks', [])));
+  }
+
+  getBookById(id: number): Observable<Book> {
+    return this.http
+      .get<Book>(`${this.url}/books/${id}`)
+      .pipe(catchError(this.handleError<Book>(`getBookById id=${id}`)));
+  }
+
+  updateBook(book: Book): Observable<any> {
+    return this.http
+      .put(`${this.url}/books`, book, this.httpOptions)
+      .pipe(catchError(this.handleError<any>(`updateBook`)));
+  }
+
+  addBook(book: Book): Observable<Book> {
+    return this.http
+      .post<Book>(`${this.url}/books`, book, this.httpOptions)
+      .pipe(catchError(this.handleError<Book>(`addBook`)));
+  }
+
+  deleteBook(book: Book): Observable<Book> {
+    return this.http
+      .delete<Book>(`${this.url}/books/${book.id}`, this.httpOptions)
+      .pipe(catchError(this.handleError<Book>(`deleteBook`)));
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(`${operation} failed: ${error.message}`);
+
+      return of(result as T);
+    };
+  }
+}
+```
+
+If you feel uncomfortable with any of these functions and what they are doing or the various operators in play, [read the official Angular documentation about creating HTTP services](https://angular.io/tutorial/toh-pt6#get-heroes-with-httpclient).
+
+<Ideaquote>
+  I have defined the URL here in the service, but ideally this would be sourced
+  from an environment variable defined in your project.
+</Ideaquote>
+
+## What Do I Need to Unit Test?
+
+With this basic Service in play, now is a good time to address the elephant in the room. What should you test in this class? There's a total of five functions, each making an API call to our json-server backend.
+
+All functions we create, whether that's in a Component or Service, should have supporting test cases.
+
+To help identify what to test, let's briefly turn our attention to a simple metaphor from a previous article I wrote called [The Gumball Machine: How To Quickly Identify Unit Test Cases](https://braydoncoyer.dev/blog/the-gumball-machine-how-to-quickly-identify-unit-test-cases/).
+
+### The Gumball Machine
+
+How does a gumball machine work? There are three major events:
+
+1. Put a quarter in the machine
+2. Turn the handle
+3. A gumball comes rolling out
+
+![https://images.unsplash.com/photo-1627173346975-58de4e5ec98d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80](https://images.unsplash.com/photo-1627173346975-58de4e5ec98d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80)
+
+Think of functions as a gumball machine and follow the three steps:
+
+1. Put the quarter in the machine (pass arguments to the function, if necessary)
+2. Turn the handle (execute the code under test — the function itself)
+3. A gumball comes rolling out (verify the behavior - the function returns the expected data)
+
+I find it's helpful to scan the function and write down the various logic branches and the possible values that can be returned. These notes become an outline for writing unit tests for that function.
+
+### Identifying What to Test in an Angular HTTP Service
+
+Take a second and give the Service above a once-over. Scan though the functions and determine the input and output. Is there anything else that would be beneficial for us to check? Create a testing outline and then continue reading.
+
+Done?
+
+Here's what I came up with:
+
+1. Check that the functions return appropriate data (array of Books or a single Book)
+2. Check that the expected API endpoint was called with the appropriate request method
+3. If an error occurs, check to make sure that the `handleError` function was called with the appropriate argument(s). _NOTE: I won't be focussing on this test case in this article._
+
+## Adding the HttpClientTestingModule to our Angular Unit Test File
+
+Running the tests at this point produces an error. Can you guess why?
+
+```bash
+Chrome Headless 92.0.4515.159 (Mac OS 10.15.7) BooksService should be created FAILED
+        NullInjectorError: R3InjectorError(DynamicTestModule)[BooksService -> HttpClient -> HttpClient]:
+          NullInjectorError: No provider for HttpClient!
+        error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'BooksService', 'HttpClient', 'HttpClient' ] })
+...
+```
+
+The error message actually gives us a hint. We aren't testing this Service in isolation - is has an injected dependency: the HTTP Client. In order for the default test to pass in the Service, we need to bring in the `HttpClientTestingModule` - a module that provides all of the tools that we need to properly test Angular HTTP Services.
+
+```ts
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+...
+
+beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule]
+    });
+    service = TestBed.inject(BooksService);
+  });
+```
+
+The test should pass now. Great!
+
+<Ideaquote>
+  It is possible to test HTTP services without using the HTTPClientTestingModule
+  by mocking out various dependencies, but for the sake of simplicity, this
+  tutorial will only demonstrate solutions with the module Angular provides.
+</Ideaquote>
+
+## Unit Testing Pattern: Arrange-Act-Assert
+
+When writing unit tests, I like to follow the Arrange-Act-Assert (the 3 A's) pattern to help structure my test cases.
+
+1. Arrange - set up the test case. Does the test require any special preperation? Use this step to get the code under test (the Service function) in a place where we can make our assertions. There will be times when there isn't anything to Arrange. That's fine - continue on to the next step.
+2. Act - execute the code under test. In order for us to determine expected behavior of software, we need to run the code under test. Pass any necessary arguments to the code under test in order to achieve the expected behavior.
+3. Assert - verify expected outcomes. This is the step that actually controls whether your test passes or fails.
+
+## Writing an Angular Unit Test for the getAllBooks Function
+
+Let's focus on the first piece of code in the HTTP service - the `getAllBooks` function. It doesn't take any function arguments and is expected to return an array of Books.
+
+With this in mind, let's create a new test and add the following test logic:
+
+```ts
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
+
+import { mockBookArray } from 'src/mocks/mockBooks';
+
+describe('BooksService', () => {
+	let service: BooksService;
+  let httpController: HttpTestingController;
+
+	let url = 'localhost:3000/';
+
+	  beforeEach(() => {
+	    TestBed.configureTestingModule({
+	      imports: [HttpClientTestingModule],
+	    });
+	    service = TestBed.inject(BooksService);
+	    httpController = TestBed.inject(HttpTestingController);
+	  });
+
+	it('should call getAllBooks and return an array of Books', () => {
+
+			// 1
+		  service.getAllBooks().subscribe((res) => {
+				//2
+	      expect(res).toEqual(mockBookArray);
+	    });
+
+			//3
+	    const req = httpController.expectOne({
+	      method: 'GET',
+	      url: `${url}/books`,
+	    });
+
+			//4
+	    req.flush(mockBookArray);
+	  });
+}
+
+```
+
+This may look like a lot and be confusing, so let me break it down.
+
+1. I call the code under test - the `getAllBooks` function. This is part of the Act step in the Arrange-Act-Assert pattern.
+2. I make sure the data coming back from the function is an array of Books, which I've mocked out and brought into this test file. This satisfies the Assert step in the Arrange-Act-Assert pattern. You may be thinking that this looks funny; why do we need to subscribe to the `getAllBooks` function? The function returns an Observable, so the only way to check the data that is being returned is to subscribe to the Observable and make the assertion inside.
+3. We set up and utilize the `HttpTestingController` for multiple reasons, but here we're using it to specify the URL that we expect the Service function to hit, as well as the request method to be used. 4. We also use the `HttpTestingController` to flush (send) data through the stream. At first glance this sort of seems to go against the normal testing pattern where you'd specify the data to be returned _before_ the assertion statement. However, because we must subscribe to the `getAllBooks` function, we flush the data after we're listening for that Observable to emit the value.
+
+To be even more clear, when the flush statement is executed, it sends the `mockBookArray` data through the stream, the subscribe block resolves and our assertion then takes place.
+
+At this point, if you run the test, you should get a passing checkmark.
+
+<Infoquote>
+  If you'd like access to the mock data I'm using in these examples, check out
+  my GitHub repo under the `completed_test` branch.
+</Infoquote>
+
+## Writing a Unit Test for the getBookById Function
+
+This function is similar to the first. Can you come up with test criteria?
+
+Here's how I'm testing this function:
+
+```ts
+import { mockBook1, mockBookArray } from 'src/mocks/mockBooks';
+...
+it('should call getBookById and return the appropriate Book', () => {
+		// Arrange
+    const id = '1';
+
+		// Act
+    service.getBookById(id).subscribe((data) => {
+
+			// Assert
+      expect(data).toEqual(mockBook1);
+    });
+
+    const req = httpController.expectOne({
+      method: 'GET',
+      url: `${url}/books/${id}`,
+    });
+
+    req.flush(mockBook1);
+});
+```
+
+This test allows you to see a bit more of the Arrange-Act-Assert pattern. Due to the nature of the code under test, we know that the function requires an ID value to be passed. We control this from the test-side by declaring an `id` variable , setting the value to `'1'` and passing it to the `getBookById` function.
+
+Everything else is familiar - we still check that the request method is `GET` and that the appropriate URL is being hit. We also send back a mock Book via the `flush` method so that our assertion kicks off inside of the subscribe block.
+
+## Writing a Unit Test for the updateBook Function
+
+Now let's look at the `updateBook` function. The same patterns apply here, but the request method is different. Don't let that scare you! Take note of what argument(s) the function requires, and what the expected output, then write the test.
+
+```ts
+it('should call updateBook and return the updated book from the API', () => {
+  const updatedBook: Book = {
+    id: '1',
+    title: 'New title',
+    author: 'Author 1'
+  };
+
+  service.updateBook(mockBook1).subscribe((data) => {
+    expect(data).toEqual(updatedBook);
+  });
+
+  const req = httpController.expectOne({
+    method: 'PUT',
+    url: `${url}/books`
+  });
+
+  req.flush(updatedBook);
+});
+```
+
+## Conclusion
+
+Once you know the pattern, testing HTTP Services in Angular isn't that difficult.
+
+Try testing the remaining functions in the Service class. Can you do it?
+
+Feel free to check the `completed_tests` branch of my [GitHub repository](https://github.com/braydoncoyer/angular-service-test-http/tree/completed_tests) and use it as a reference if you get stuck!
+
+Thanks for reading! If you enjoyed this article and found it helpful, consider reading my other articles and subscribing to my newsletter below!
