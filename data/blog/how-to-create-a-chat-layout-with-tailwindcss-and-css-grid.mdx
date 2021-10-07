@@ -1,0 +1,168 @@
+---
+title: 'How to Create a Chat Layout with TailwindCSS and CSS Grid'
+publishedAt: 2021-10-08 07:32:14
+summary: In this brief article, I'll show you how easy it is to build a chat layout with TailwindCSS using their CSS Grid utility classes.
+coverImage: ../../static/images/how-to-create-a-chat-layout-with-tailwindcss-and-css-grid/chat_layout_banner.png
+imageName: chat_layout_banner.png
+---
+
+TailwindCSS provides utility classes that enable rapid development and styling of your websites and applications.
+
+In this brief article, I'll show you how easy it is to build a chat layout with TailwindCSS using their CSS Grid utility classes.
+
+Let's go!
+
+## The Tech Stack: Next.js & Supabase
+
+Before we continue on, it's important to note that Next.js is being used in conjunction with Supabase to build this chat application.
+
+While the front-end framework and database choices are irrelevant to the styling itself, I use this tech stack to pull messages from the Supabase database and detect if the message belongs to the currently logged in user or not. More on that in a minute.
+
+## The Chat App Markup
+
+Let's turn our attention to the markup of the chat application layout. The entire layout is handled in two components: `MessageList` and `Message.`
+
+### The MessageList Component
+
+A top-level component is needed to be responsible for holding the messages and rendering the list on the page. In the code below, I've created a component called `MessageList` which queries the database for the messages and lists them on the page in an unordered list, passing each message down to an individual `Message` component.
+
+```jsx
+export const MessageList = () => {
+  const { messages } = useFeed(); // Retrieve messages from database
+
+  return (
+    <ul>
+      {messages && messages.map((message) => <Message message={message} />)}
+    </ul>
+  );
+};
+```
+
+### The Message Component
+
+The `Message` component simply displays the content passed to it by props and will be styled accordingly.
+
+```jsx
+export const Message = ({ message }) => {
+  const { user } = useAuth(); // the currently logged in user
+
+  function isMessageFromUser() {
+    return user?.id === message.user_id;
+  }
+
+  return (
+    <div>
+      <div>{message.message}</div>
+    </div>
+  );
+};
+```
+
+A few things to note:
+
+1. The `useAuth` hook is used to pull the current logged in user
+2. The `isMessageFromUser` helper function is used to quickly evaluate if the message was sent from the user logged in.
+
+After glancing at the markup above, you may be wondering why we need an extra parent `div` in the `Message` component. We need the extra `div` for styling purposes; more on that in a moment.
+
+## Creating the Chat Layout with TailwindCSS and CSS Grid
+
+You know what to expect when it comes to a chat layout. If you're looking at the screen, messages you send are displayed aligned to the right, while any messages sent by others are aligned on the left.
+
+How do we accomplish this with TailwindCSS?
+
+Truth be told, there's a handful of ways to approach this.
+
+We could use margin to fill the empty space. We could even use Flexbox.
+
+In my opinion, however, CSS Grid provides the simplest solution when attempting to create the expected layout of a chat application.
+
+Here's the gist:
+
+1. We'll use CSS Grid to target the top-level `ul` element and make it a single-column grid layout.
+2. Next, the child elements (each individual message) will align to the left or right depending on who sent the message. If the current logged in user sent the message, we'll use the `place-self-end` utility class to align it to the right. Otherwise, we'll use `place-self-start` to align to the left.
+
+Simple, right? Here's a graphic to help reinforce what's going to happen.
+
+![Chat Layout Help Graphic](https://cdn.hashnode.com/res/hashnode/image/upload/v1633638572414/4mlJ4n2Dk.png)
+
+### Styling the MessageList Component
+
+Following the plan above, all we need to do is target the `ul` element and apply the following utility classes:
+
+```jsx
+<ul className="space-y-12 grid grid-cols-1">
+  {messages && messages?.map((message) => <Message message={message} />)}
+</ul>
+```
+
+I use `space-y-12` to give each message some breathing room on the vertical axis.
+
+That's it! Let's turn our attention to the `Message` component.
+
+### Styling the Message Component
+
+This component requires styles to be applied dynamically; if the user sent a message, it should align on the right, otherwise it should align left.
+
+Remember the `isMessageFromUser` helper function we created above? This will come in handy so we can make some conditional checks inline and apply utility classes based on the evaluation
+
+```jsx
+<div
+  className={`${
+    isMessageFromUser() ? 'place-self-end' : 'place-self-start'
+  } space-y-2`}
+>
+  <div className={`bg-white p-5 rounded-2xl`}>{message.message}</div>
+</div>
+```
+
+With that, each message should now align properly!
+
+### The Message Feet
+
+To add the finishing touches, let's add the message feet to help reinforce which side the message is coming from. Once again, we ca the helper function to assist with the styling.
+
+```jsx
+<div
+  className={`${
+    isMessageFromUser() ? 'place-self-end' : 'place-self-start'
+  } space-y-2`}
+>
+  <div
+    className={`bg-white p-5 rounded-2xl ${
+      isMessageFromUser() ? 'rounded-tr-none' : 'rounded-tl-none'
+    }`}
+  >
+    {message.message}
+  </div>
+</div>
+```
+
+And with that, our chat application looks something like this!
+
+![The final result](https://cdn.hashnode.com/res/hashnode/image/upload/v1633638618984/4_5CtAhQk.png)
+
+## Conclusion
+
+TailwindCSS makes it super easy to style your webpage or application. And while Flexbox may have been your go-to option for a task like this, my hope is that this article demonstrated how easy it can be to create a chat layout with CSS Grid, too!
+
+If you'd like to check out a final version, I've linked a CodePen demo below!
+
+<iframe
+  height="600"
+  style="width: 100%;"
+  scrolling="no"
+  title="Chat Layout with TailwindCSS &amp; CSS Grid"
+  src="https://codepen.io/braydoncoyer/embed/preview/xxLKwYw?default-tab=result"
+  frameborder="no"
+  loading="lazy"
+  allowtransparency="true"
+  allowfullscreen="true"
+>
+  See the Pen{' '}
+  <a href="https://codepen.io/braydoncoyer/pen/xxLKwYw">
+    Chat Layout with TailwindCSS &amp; CSS Grid
+  </a>{' '}
+  by Braydon Coyer (<a href="https://codepen.io/braydoncoyer">@braydoncoyer</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
