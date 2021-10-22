@@ -1,4 +1,5 @@
 import { Client } from "@notionhq/client";
+import { CodeBlock } from "../../components/Codeblock";
 import { Fragment } from "react";
 import Link from 'next/link';
 import slugify from "slugify";
@@ -88,7 +89,39 @@ const renderBlock = (block) => {
         </figure>
       );
       case "code":
-            return <pre>{JSON.stringify(value.text[0].text.content)}</pre>
+            // return <pre>{JSON.stringify(value.text[0].text.content, null, 2)}</pre>
+            return (
+              <div>
+                <CodeBlock code={value.text[0].text.content}>
+                  {/* {JSON.stringify(value.text[0].text.content)} */}
+                </CodeBlock>
+              </div>
+            );
+            case "embed":
+              console.log(value.url);
+              return (
+                <div>
+                  <iframe
+                    height="300"
+                    className="w-full"
+                    scrolling="no"
+                    title="Postage from Bag End"
+                    src="https://codepen.io/braydoncoyer/embed/preview/ExjKQMa?default-tab=result"
+                    frameborder="no"
+                    loading="lazy"
+                    allowtransparency="true"
+                    allowfullscreen="true"
+                  >
+                    See the Pen{" "}
+                    <a href={value.url}>
+                      Postage from Bag End
+                    </a>{" "}
+                    by Braydon Coyer (
+                    <a href="https://codepen.io/braydoncoyer">@braydoncoyer</a>)
+                    on <a href="https://codepen.io">CodePen</a>.
+                  </iframe>
+                </div>
+              );
     default:
       return `❌ Unsupported block (${
         type === "unsupported" ? "unsupported by Notion API" : type
@@ -99,7 +132,7 @@ const renderBlock = (block) => {
 
 const ArticlePage = ({content}) => {
   return (
-    <article>
+    <article className="max-w-7xl mx-auto">
       <h1>
         {/* <Text text={page.properties.Name.title} /> */}
       </h1>
@@ -200,6 +233,8 @@ export const getStaticProps = async ({params: {slug}}) => {
     const blocks = await notion.blocks.children.list({
       block_id: page.id
     })
+
+    console.log(blocks);
 
   return {
     props: {

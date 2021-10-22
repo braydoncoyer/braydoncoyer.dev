@@ -39,6 +39,7 @@ package-lock.json
 /platforms
 /plugins
 /www
+.next
 
 # IDE specific
 .idea/
