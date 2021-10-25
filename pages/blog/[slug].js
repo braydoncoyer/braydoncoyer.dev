@@ -1,8 +1,20 @@
+import { Fragment, useEffect } from "react";
+
+import { AnchorLink } from "../../components/AnchorLink";
 import { Client } from "@notionhq/client";
 import { CodeBlock } from "../../components/Codeblock";
-import { Fragment } from "react";
 import Link from 'next/link';
+import PageViews from "../../components/PageViews";
+import Reactions from "../../components/Reactions";
+import siteMetadata from "../../data/siteMetadata";
 import slugify from "slugify";
+
+const postDateTemplate = {
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+};
 
 export const Text = ({ text }) => {
   if (!text) {
@@ -14,13 +26,19 @@ export const Text = ({ text }) => {
       text,
     } = value;
     return (
-      <span>
+      <span
+        className={[
+          bold ? "font-bold" : null,
+          italic ? "italic" : null,
+          strikethrough ? "line-through" : null,
+          underline ? "underline" : null,
+        ].join(" ")}
+      >
         {text.link ? <a href={text.link.url}>{text.content}</a> : text.content}
       </span>
     );
   });
 };
-
 const renderBlock = (block) => {
   const { type, id } = block;
   const value = block[type];
@@ -35,19 +53,25 @@ const renderBlock = (block) => {
     case "heading_1":
       return (
         <h1>
-          <Text text={value.text} />
+          <AnchorLink text={value.text[0].text.content}>
+            <Text text={value.text} />
+          </AnchorLink>
         </h1>
       );
     case "heading_2":
       return (
         <h2>
-          <Text text={value.text} />
+          <AnchorLink text={value.text[0].text.content}>
+            <Text text={value.text} />
+          </AnchorLink>
         </h2>
       );
     case "heading_3":
       return (
         <h3>
-          <Text text={value.text} />
+          <AnchorLink text={value.text[0].text.content}>
+            <Text text={value.text} />
+          </AnchorLink>
         </h3>
       );
     case "bulleted_list_item":
@@ -82,46 +106,54 @@ const renderBlock = (block) => {
     case "image":
       const src =
         value.type === "external" ? value.external.url : value.file.url;
-      // const caption = value.caption ? value.caption[0].plain_text : "";
+      const caption =
+        value.caption.length >= 1 ? value.caption[0].plain_text : "";
       return (
-        <figure>
-          <img src={src} />
+        <figure className="rounded-lg">
+          <img className="rounded-lg" src={src} />
+          {caption && (
+            <figcaption className='text-center'>{caption}</figcaption>
+          )}
         </figure>
       );
-      case "code":
-            // return <pre>{JSON.stringify(value.text[0].text.content, null, 2)}</pre>
-            return (
-              <div>
-                <CodeBlock code={value.text[0].text.content}>
-                  {/* {JSON.stringify(value.text[0].text.content)} */}
-                </CodeBlock>
-              </div>
-            );
-            case "embed":
-              console.log(value.url);
-              return (
-                <div>
-                  <iframe
-                    height="300"
-                    className="w-full"
-                    scrolling="no"
-                    title="Postage from Bag End"
-                    src="https://codepen.io/braydoncoyer/embed/preview/ExjKQMa?default-tab=result"
-                    frameborder="no"
-                    loading="lazy"
-                    allowtransparency="true"
-                    allowfullscreen="true"
-                  >
-                    See the Pen{" "}
-                    <a href={value.url}>
-                      Postage from Bag End
-                    </a>{" "}
-                    by Braydon Coyer (
-                    <a href="https://codepen.io/braydoncoyer">@braydoncoyer</a>)
-                    on <a href="https://codepen.io">CodePen</a>.
-                  </iframe>
-                </div>
-              );
+    case "code":
+      return (
+        <div>
+          <CodeBlock code={value.text[0].text.content}>
+            {/* {JSON.stringify(value.text[0].text.content)} */}
+          </CodeBlock>
+        </div>
+      );
+    case "callout":
+      return (
+        <div className="flex flex-start space-x-4">
+          {value.icon && <span>{value.icon.emoji}</span>}
+          <Text text={value.text} />
+        </div>
+      );
+    case "embed":
+      const codePenEmbedKey = value.url.slice(value.url.lastIndexOf("/") + 1);
+      return (
+        <div>
+          <iframe
+            height="600"
+            className="w-full"
+            scrolling="no"
+            title="Postage from Bag End"
+            src={`https://codepen.io/braydoncoyer/embed/preview/${codePenEmbedKey}?default-tab=result`}
+            frameBorder="no"
+            loading="lazy"
+            allowtransparency="true"
+            allowFullScreen={true}
+          >
+            See the Pen <a href={value.url}>Postage from Bag End</a> by Braydon
+            Coyer (<a href="https://codepen.io/braydoncoyer">@braydoncoyer</a>)
+            on <a href="https://codepen.io">CodePen</a>.
+          </iframe>
+        </div>
+      );
+      case 'table_of_contents':
+        return <div>TOC</div>
     default:
       return `❌ Unsupported block (${
         type === "unsupported" ? "unsupported by Notion API" : type
@@ -129,21 +161,39 @@ const renderBlock = (block) => {
   }
 };
 
+const ArticlePage = ({content, title, slug, publishedDate, lastEditedAt}) => {
 
-const ArticlePage = ({content}) => {
+  useEffect(() => {
+    fetch(`/api/views/${slug}`, {
+      method: 'POST'
+    });
+  }, [slug])
+
   return (
     <article className="max-w-7xl mx-auto">
-      <h1>
-        {/* <Text text={page.properties.Name.title} /> */}
-      </h1>
-      <section>
+      <PageViews slug={slug} />
+      <Reactions slug={slug} />
+      <article className="prose-lg">
+        <h1>{title}</h1>
+        <h4>Published {' '}
+           {new Date(publishedDate).toLocaleDateString(
+            siteMetadata.locale,
+            postDateTemplate
+          )}
+        </h4>
+        <h4>Last edited{' '}
+           {new Date(lastEditedAt).toLocaleDateString(
+            siteMetadata.locale,
+            postDateTemplate
+          )}
+        </h4>
         {content.map((block) => (
           <Fragment key={block.id}>{renderBlock(block)}</Fragment>
         ))}
-        <Link href="/">
-          <a>← Go home</a>
+        <Link href="/blog">
+          <a>← Back to the blog</a>
         </Link>
-      </section>
+      </article>
     </article>
   );
 };
@@ -187,7 +237,6 @@ export const getStaticPaths = async () => {
     }
   });
 
-  // console.log(paths);
 
   return {
     paths,
@@ -196,6 +245,11 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({params: {slug}}) => {
+    let content = [];
+    let articleTitle = "";
+    let publishedDate = null;
+    let lastEditedAt = null;
+
     const notion = new Client({
       auth: process.env.NOTION_SECRET,
     });
@@ -220,25 +274,42 @@ export const getStaticProps = async ({params: {slug}}) => {
       },
     });
 
+    
+
     const page = data.results.find((result) => {
       if(result.object === "page") {
-        const resultSlug = slugify(
-          result.properties.Name.title[0].plain_text
-        ).toLowerCase();
+        articleTitle = result.properties.Name.title[0].plain_text;
+        const resultSlug = slugify(articleTitle).toLowerCase();
         return resultSlug === slug
       }
       return false;
     });
 
-    const blocks = await notion.blocks.children.list({
+    publishedDate = page.properties.Published.date.start;
+    lastEditedAt = page.properties.LastEdited.last_edited_time;
+
+    let blocks = await notion.blocks.children.list({
       block_id: page.id
     })
 
-    console.log(blocks);
+    content = [...blocks.results];
+
+    while(blocks.has_more) {
+      blocks = await notion.blocks.children.list({
+        block_id: page.id,
+        start_cursor: blocks.next_cursor,
+      });
+
+      content = [...content, ...blocks.results];
+    }
 
   return {
     props: {
-      content: blocks.results
+      content,
+      title: articleTitle,
+      publishedDate,
+      lastEditedAt,
+      slug
     }
   }
 };

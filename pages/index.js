@@ -12,14 +12,7 @@ export default function Home({ articles }) {
       </Head>
 
       <main>
-        {articles &&
-          articles.map((article) => (
-            <p key={article.title}>
-              <Link href={`/blog/${slugify(article.title).toLowerCase()}`}>
-                <a>{article.title}</a>
-              </Link>
-            </p>
-          ))}
+        Welcome to my new Portfolio
       </main>
 
       <footer className="flex items-center justify-center w-full h-24 border-t">
@@ -35,42 +28,4 @@ export default function Home({ articles }) {
       </footer>
     </div>
   );
-}
-
-export const getStaticProps = async () => {
-  const notion = new Client({
-    auth: process.env.NOTION_SECRET,
-  });
-
-  const data = await notion.databases.query({
-    database_id: process.env.BLOG_DATABASE_ID,
-    filter: {
-      and: [
-        {
-          property: "Status",
-          select: {
-            equals: "✅ Published",
-          },
-        },
-        {
-          property: "Type",
-          select: {
-            equals: "Personal"
-          }
-        }
-      ],
-    },
-  });
-
-  const articles = data.results.map(article => ({
-    title: article.properties.Name.title[0].plain_text
-  }));
-
-  console.log(data.results);
-
-  return {
-    props: {
-      articles,
-    },
-  };
 }

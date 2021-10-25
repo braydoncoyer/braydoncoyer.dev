@@ -1,6 +1,6 @@
 # Specifies intentionally untracked files to ignore when using Git
 # http://git-scm.com/docs/gitignore
-
+.next
 *~
 *.sw[mnpcod]
 .tmp
@@ -39,7 +39,7 @@ package-lock.json
 /platforms
 /plugins
 /www
-.next
+/.next/*
 
 # IDE specific
 .idea/
