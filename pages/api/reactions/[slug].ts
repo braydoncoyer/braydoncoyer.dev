@@ -2,7 +2,10 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { SupabaseAdmin } from '@/lib/supabase';
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   if (req.method === 'POST') {
     const body = JSON.parse(req.body);
     // Call our stored procedure with the page_slug set by the request params slug
@@ -79,4 +82,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   return res.status(400).json({
     message: 'Unsupported Request'
   });
-};
+}

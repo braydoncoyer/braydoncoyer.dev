@@ -27,6 +27,7 @@ export const Text = ({ text }) => {
     } = value;
     return (
       <span
+        key={text}
         className={[
           bold ? 'font-bold' : null,
           italic ? 'italic' : null,
