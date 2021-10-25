@@ -15,6 +15,7 @@ const siteMetadata = {
   twitter: 'https://twitter.com/BraydonCoyer',
   codepen: 'https://codepen.io/braydoncoyer',
   linkedin: 'https://www.linkedin.com/in/braydon-coyer/',
+  newsletter: 'https://www.getrevue.co/profile/braydoncoyer',
   locale: 'en-US',
   analytics: {
     plausibleDataDomain: 'braydoncoyer.dev' // e.g. tailwind-nextjs-starter-blog.vercel.app

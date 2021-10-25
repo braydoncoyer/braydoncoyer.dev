@@ -1,3 +1,5 @@
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next';
+
 import { ArticleCard } from '@/components/ArticleCard';
 import { Client } from '@notionhq/client';
 import Head from 'next/head';
@@ -36,7 +38,7 @@ export default function Blog({ articles }) {
   );
 }
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const notion = new Client({
     auth: process.env.NOTION_SECRET
   });
@@ -61,7 +63,7 @@ export const getStaticProps = async () => {
     }
   });
 
-  const articles = data.results.map((article) => {
+  const articles = data.results.map((article: any) => {
     return {
       title: article.properties.Name.title[0].plain_text,
       coverImage:
@@ -73,6 +75,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       articles
-    }
+    },
+    revalidate: 30
   };
 };
