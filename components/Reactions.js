@@ -1,4 +1,4 @@
-import useArticleReactions from "../lib/hooks/useArticleReactions";
+import useArticleReactions from "@/hooks/useArticleReactions";
 
 const Reactions = ({ slug }) => {
     const { hasLiked, hasLoved, hasClapped, hasPartied,

@@ -1,7 +1,4 @@
-import {Client} from '@notionhq/client'
 import Head from 'next/head'
-import Link from 'next/link'
-import slugify from 'slugify';
 
 export default function Home({ articles }) {
   return (

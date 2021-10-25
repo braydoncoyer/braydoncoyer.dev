@@ -1,6 +1,8 @@
-import { SupabaseAdmin } from "../../../lib/supabase";
+import type { NextApiRequest, NextApiResponse } from "next";
 
-export default async (req, res) => {
+import { SupabaseAdmin } from "@/lib/supabase";
+
+export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
     // Call our stored procedure with the page_slug set by the request params slug
     await SupabaseAdmin.rpc("increment_page_view", {

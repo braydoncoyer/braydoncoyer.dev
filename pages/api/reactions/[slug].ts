@@ -1,20 +1,22 @@
-import { SupabaseAdmin } from "../../../lib/supabase";
+import type { NextApiRequest, NextApiResponse } from "next";
 
-export default async (req, res) => {
+import { SupabaseAdmin } from "@/lib/supabase";
+
+export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
-      const body = JSON.parse(req.body);
+    const body = JSON.parse(req.body);
     // Call our stored procedure with the page_slug set by the request params slug
     const { reaction, type } = body;
-    if(reaction === "like_count") {
-        if(type === "increment") {
-            await SupabaseAdmin.rpc("increment_like_count", {
-              page_slug: req.query.slug,
-            });
-        } else if (type === "decrement") {
-            await SupabaseAdmin.rpc("decrement_like_count", {
-              page_slug: req.query.slug,
-            });
-        }
+    if (reaction === "like_count") {
+      if (type === "increment") {
+        await SupabaseAdmin.rpc("increment_like_count", {
+          page_slug: req.query.slug,
+        });
+      } else if (type === "decrement") {
+        await SupabaseAdmin.rpc("decrement_like_count", {
+          page_slug: req.query.slug,
+        });
+      }
     }
 
     if (reaction === "love_count") {
@@ -52,7 +54,7 @@ export default async (req, res) => {
         });
       }
     }
-    
+
     return res.status(200).json({
       message: `Successfully performed reaction for: ${req.query.slug}`,
     });

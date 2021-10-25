@@ -1,6 +1,8 @@
+import type { NextApiRequest, NextApiResponse } from "next";
+
 export default async function handler(
-  req,
-  res
+  req: NextApiRequest,
+  res: NextApiResponse
 ) {
   const result = await fetch("https://www.getrevue.co/api/v2/subscribers", {
     method: "GET",
@@ -8,7 +10,7 @@ export default async function handler(
       Authorization: `Token ${process.env.REVUE_API_KEY}`,
     },
   });
-  
+
   const data = await result.json();
 
   if (!result.ok) {

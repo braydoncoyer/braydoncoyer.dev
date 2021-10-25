@@ -1,7 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import slugify from "slugify";
-import { useIsArticleRead } from "../lib/useIsArticleRead";
+import { useIsArticleRead } from "@/hooks/useIsArticleRead";
 import { useRouter } from "next/dist/client/router";
 
 export function ArticleCard({ article }) {

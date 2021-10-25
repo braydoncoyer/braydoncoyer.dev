@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { formatHashLink } from "../lib/formatHashLink";
+import { formatHashLink } from "@/lib/formatHashLink";
 
 export function AnchorLink({children, text}) {
     const [hashLink, setHashLink] = useState();

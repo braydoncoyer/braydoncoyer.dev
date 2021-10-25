@@ -1,4 +1,4 @@
-import { ArticleCard } from "../../components/ArticleCard";
+import { ArticleCard } from "@/components/ArticleCard";
 import { Client } from "@notionhq/client";
 import Head from "next/head";
 

@@ -17,8 +17,10 @@
     "swr": "^1.0.1"
   },
   "devDependencies": {
+    "@types/react": "^17.0.32",
     "autoprefixer": "^10.2.6",
     "postcss": "^8.3.5",
-    "tailwindcss": "^2.2.4"
+    "tailwindcss": "^2.2.4",
+    "typescript": "^4.4.4"
   }
 }

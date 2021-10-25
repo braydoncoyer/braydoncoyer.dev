@@ -1,12 +1,12 @@
 import { Fragment, useEffect } from "react";
 
-import { AnchorLink } from "../../components/AnchorLink";
+import { AnchorLink } from "@/components/AnchorLink";
 import { Client } from "@notionhq/client";
-import { CodeBlock } from "../../components/Codeblock";
+import { CodeBlock } from "@/components/Codeblock";
 import Link from 'next/link';
-import PageViews from "../../components/PageViews";
-import Reactions from "../../components/Reactions";
-import siteMetadata from "../../data/siteMetadata";
+import PageViews from "@/components/PageViews";
+import Reactions from "@/components/Reactions";
+import siteMetadata from "@/data/siteMetadata";
 import slugify from "slugify";
 
 const postDateTemplate = {
