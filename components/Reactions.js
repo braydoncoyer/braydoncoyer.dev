@@ -1,26 +1,11 @@
-import { useEffect, useState } from "react";
-
 import useArticleReactions from "../lib/hooks/useArticleReactions";
-import useSWR from "swr";
-
-const fetcher = async (input) => {
-  const res = await fetch(input);
-  return await res.json();
-};
-
-
-// State that reflects if the current user has already selected a reaction for a specific blog post
-const initialReactionState = {
-  like_count: false,
-  love_count: false,
-  clap_count: false,
-  party_count: false,
-  has_read: false
-};
 
 const Reactions = ({ slug }) => {
-    const [hasLiked, hasLoved, reactions, handleIncrementLike, handleDecrementLike, handleIncrementLove, handleDecrementLove] =
-      useArticleReactions(slug);
+    const { hasLiked, hasLoved, hasClapped, hasPartied,
+      reactions, handleIncrementLike, handleDecrementLike,
+      handleIncrementLove, handleDecrementLove, handleIncrementClap,
+      handleDecrementClap, handleIncrementParty, handleDecrementParty
+    } = useArticleReactions(slug);
 
   return (
     <div>
@@ -31,7 +16,7 @@ const Reactions = ({ slug }) => {
       )}
       {reactions?.like_count}
 
-      <br/>
+      <br />
 
       {hasLoved ? (
         <button onClick={() => handleDecrementLove()}>Un love</button>
@@ -39,6 +24,24 @@ const Reactions = ({ slug }) => {
         <button onClick={() => handleIncrementLove()}>Love ❤️</button>
       )}
       {reactions?.love_count}
+
+      <br />
+
+      {hasClapped ? (
+        <button onClick={() => handleDecrementClap()}>Un clap</button>
+      ) : (
+        <button onClick={() => handleIncrementClap()}>Clap 👏</button>
+      )}
+      {reactions?.clap_count}
+
+      <br />
+
+      {hasPartied ? (
+        <button onClick={() => handleDecrementParty()}>Un party</button>
+      ) : (
+        <button onClick={() => handleIncrementParty()}>Party 🎉</button>
+      )}
+      {reactions?.party_count}
     </div>
   );
 };
