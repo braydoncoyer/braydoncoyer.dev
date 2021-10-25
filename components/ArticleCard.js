@@ -1,22 +1,25 @@
-import Image from "next/image";
-import slugify from "slugify";
-import { useIsArticleRead } from "@/hooks/useIsArticleRead";
-import { useRouter } from "next/dist/client/router";
+import Image from 'next/image';
+import slugify from 'slugify';
+import { useIsArticleRead } from '@/hooks/useIsArticleRead';
+import { useRouter } from 'next/dist/client/router';
 
 export function ArticleCard({ article }) {
-    const router = useRouter();
-    const slug = slugify(article.title).toLowerCase();
+  const router = useRouter();
+  const slug = slugify(article.title).toLowerCase();
 
-    const [hasRead] = useIsArticleRead(slug);
+  const [hasRead] = useIsArticleRead(slug);
 
-    function handleArticleClicked() {
-        const localData = JSON.parse(localStorage.getItem(slug));
-        if (typeof window !== "undefined") {
-          localStorage.setItem(slug, JSON.stringify({...localData, has_read: true}));
-        }
-
-        router.push(`/blog/${slug}`);
+  function handleArticleClicked() {
+    const localData = JSON.parse(localStorage.getItem(slug));
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(
+        slug,
+        JSON.stringify({ ...localData, has_read: true })
+      );
     }
+
+    router.push(`/blog/${slug}`);
+  }
   return (
     <div>
       <button onClick={handleArticleClicked}>
@@ -30,7 +33,7 @@ export function ArticleCard({ article }) {
           height={400}
         />
         <p>
-          {article.title} {!hasRead && "- UNREAD"}
+          {article.title} {!hasRead && '- UNREAD'}
         </p>
       </button>
     </div>

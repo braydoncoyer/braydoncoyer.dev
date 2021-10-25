@@ -1,6 +1,6 @@
-import { ArticleCard } from "@/components/ArticleCard";
-import { Client } from "@notionhq/client";
-import Head from "next/head";
+import { ArticleCard } from '@/components/ArticleCard';
+import { Client } from '@notionhq/client';
+import Head from 'next/head';
 
 export default function Blog({ articles }) {
   return (
@@ -11,7 +11,7 @@ export default function Blog({ articles }) {
       </Head>
 
       <main>
-        <ul className='space-y-12'>
+        <ul className="space-y-12">
           {articles &&
             articles.map((article) => (
               <li key={article.title}>
@@ -28,7 +28,7 @@ export default function Blog({ articles }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{" "}
+          Powered by{' '}
           <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
         </a>
       </footer>
@@ -38,7 +38,7 @@ export default function Blog({ articles }) {
 
 export const getStaticProps = async () => {
   const notion = new Client({
-    auth: process.env.NOTION_SECRET,
+    auth: process.env.NOTION_SECRET
   });
 
   const data = await notion.databases.query({
@@ -46,33 +46,33 @@ export const getStaticProps = async () => {
     filter: {
       and: [
         {
-          property: "Status",
+          property: 'Status',
           select: {
-            equals: "✅ Published",
-          },
+            equals: '✅ Published'
+          }
         },
         {
-          property: "Type",
+          property: 'Type',
           select: {
-            equals: "Personal",
-          },
-        },
-      ],
-    },
+            equals: 'Personal'
+          }
+        }
+      ]
+    }
   });
-
 
   const articles = data.results.map((article) => {
     return {
       title: article.properties.Name.title[0].plain_text,
-      coverImage: article.properties?.coverImage?.files[0]?.file.url || 'https://via.placeholder.com/600x400.png'
+      coverImage:
+        article.properties?.coverImage?.files[0]?.file.url ||
+        'https://via.placeholder.com/600x400.png'
     };
   });
 
-
   return {
     props: {
-      articles,
-    },
+      articles
+    }
   };
 };

@@ -1,11 +1,21 @@
-import useArticleReactions from "@/hooks/useArticleReactions";
+import useArticleReactions from '@/hooks/useArticleReactions';
 
 const Reactions = ({ slug }) => {
-    const { hasLiked, hasLoved, hasClapped, hasPartied,
-      reactions, handleIncrementLike, handleDecrementLike,
-      handleIncrementLove, handleDecrementLove, handleIncrementClap,
-      handleDecrementClap, handleIncrementParty, handleDecrementParty
-    } = useArticleReactions(slug);
+  const {
+    hasLiked,
+    hasLoved,
+    hasClapped,
+    hasPartied,
+    reactions,
+    handleIncrementLike,
+    handleDecrementLike,
+    handleIncrementLove,
+    handleDecrementLove,
+    handleIncrementClap,
+    handleDecrementClap,
+    handleIncrementParty,
+    handleDecrementParty
+  } = useArticleReactions(slug);
 
   return (
     <div>
