@@ -40,6 +40,7 @@ package-lock.json
 /plugins
 /www
 /.next/*
+.vercel
 
 # IDE specific
 .idea/

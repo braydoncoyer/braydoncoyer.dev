@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Head from 'next/head';
 
 export default function Home({ articles }) {
   return (
@@ -8,9 +8,7 @@ export default function Home({ articles }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        Welcome to my new Portfolio
-      </main>
+      <main>Welcome to my new Portfolio</main>
 
       <footer className="flex items-center justify-center w-full h-24 border-t">
         <a
@@ -19,7 +17,7 @@ export default function Home({ articles }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{" "}
+          Powered by{' '}
           <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
         </a>
       </footer>

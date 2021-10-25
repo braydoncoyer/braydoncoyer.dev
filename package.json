@@ -3,7 +3,14 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "check-types": "tsc --pretty --noEmit",
+    "check-format": "prettier --check .",
+    "check-lint": "eslint . --ext ts --ext tsx --ext js",
+    "format": "prettier --write .",
+    "test-all": "npm run check-format && npm run check-lint && npm run check-types && npm run build",
+    "prepare": "husky install",
+    "lint": "next lint"
   },
   "dependencies": {
     "@notionhq/client": "^0.4.4",
@@ -19,8 +26,18 @@
   "devDependencies": {
     "@types/react": "^17.0.32",
     "autoprefixer": "^10.2.6",
+    "eslint": "^8.1.0",
+    "eslint-config-next": "^11.1.2",
     "postcss": "^8.3.5",
+    "prettier": "^2.4.1",
     "tailwindcss": "^2.2.4",
-    "typescript": "^4.4.4"
+    "typescript": "^4.4.4",
+    "husky": "^7.0.0"
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "none"
   }
 }
