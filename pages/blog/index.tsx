@@ -4,7 +4,7 @@ import { ArticleCard } from '@/components/ArticleCard';
 import { Client } from '@notionhq/client';
 import Head from 'next/head';
 
-export default function Blog({ articles }) {
+export default function Blog({ articles, tags }) {
   return (
     <div className="min-h-screen py-2">
       <Head>
@@ -13,6 +13,17 @@ export default function Blog({ articles }) {
       </Head>
 
       <main>
+        {JSON.stringify(tags)}
+        <h2>Tags</h2>
+        <ul className="space-y-4">
+          {tags &&
+            tags.map((tag) => (
+              <li key={tag}>
+                <p>{tag}</p>
+              </li>
+            ))}
+        </ul>
+        <h2>Articles</h2>
         <ul className="space-y-12">
           {articles &&
             articles.map((article) => (
@@ -39,6 +50,7 @@ export default function Blog({ articles }) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  let tags: string[] = [];
   const notion = new Client({
     auth: process.env.NOTION_SECRET
   });
@@ -66,6 +78,13 @@ export const getStaticProps: GetStaticProps = async () => {
   const articles = data.results.map((article: any) => {
     return {
       title: article.properties.Name.title[0].plain_text,
+      tags: article.properties.tags.multi_select.map((tag) => {
+        if (!tags.includes(tag.name)) {
+          const newList = [...tags, tag.name];
+          tags = newList;
+        }
+        return { name: tag.name, id: tag.id };
+      }),
       coverImage:
         article.properties?.coverImage?.files[0]?.file.url ||
         'https://via.placeholder.com/600x400.png'
@@ -74,7 +93,8 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      articles
+      articles,
+      tags
     },
     revalidate: 30
   };
