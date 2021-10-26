@@ -6,10 +6,12 @@ import { LoadingSpinner } from './LoadingSpinner';
 import { SuccessMessage } from './SuccessMessage';
 import { fetcher } from '@/lib/fetcher';
 import siteMetadata from '@/data/siteMetadata';
+import { usePlausible } from 'next-plausible';
 import useSWR from 'swr';
 
 export function Subscribe() {
   const [form, setForm] = useState<FormState>({ state: Form.Initial });
+  const plausible = usePlausible();
   const inputEl = useRef(null);
   const { data: subData } = useSWR<Subscribers>('/api/subscribers', fetcher);
   const { data: issueData } = useSWR<Subscribers>('/api/issues', fetcher);
@@ -39,6 +41,8 @@ export function Subscribe() {
       });
       return;
     }
+
+    plausible('Subscribe');
 
     inputEl.current.value = '';
     setForm({

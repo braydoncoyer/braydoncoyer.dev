@@ -1,5 +1,6 @@
 import { Fragment, useEffect } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { LinkedinShareButton, TwitterShareButton } from 'react-share';
 
 import { AnchorLink } from '@/components/AnchorLink';
 import { Client } from '@notionhq/client';
@@ -8,8 +9,10 @@ import Link from 'next/link';
 import PageViews from '@/components/PageViews';
 import Reactions from '@/components/Reactions';
 import { Subscribe } from '@/components/Subscribe';
+import { getArticlePublicUrl } from '@/lib/getArticlePublicUrl';
 import siteMetadata from '@/data/siteMetadata';
 import slugify from 'slugify';
+import { useCopyUrlToClipboard } from '@/lib/hooks/useCopyToClipboard';
 
 export const Text = ({ text }) => {
   if (!text) {
@@ -155,6 +158,9 @@ const renderBlock = (block) => {
 };
 
 const ArticlePage = ({ content, title, slug, publishedDate, lastEditedAt }) => {
+  const [isCopied, handleCopy] = useCopyUrlToClipboard();
+  const pubilcUrl = getArticlePublicUrl(slug);
+
   useEffect(() => {
     fetch(`/api/views/${slug}`, {
       method: 'POST'
@@ -189,6 +195,17 @@ const ArticlePage = ({ content, title, slug, publishedDate, lastEditedAt }) => {
           <Fragment key={block.id}>{renderBlock(block)}</Fragment>
         ))}
         <Subscribe />
+        <TwitterShareButton
+          url={getArticlePublicUrl(slug)}
+          title={title}
+          via={'BraydonCoyer'}
+        >
+          Tweet this article
+        </TwitterShareButton>
+        <LinkedinShareButton title={title} url={getArticlePublicUrl(slug)}>
+          Share this article on LinkedIn
+        </LinkedinShareButton>
+        <button onClick={() => handleCopy()}>Copy Article URL</button>
         <Link href="/blog">
           <a>← Back to the blog</a>
         </Link>
