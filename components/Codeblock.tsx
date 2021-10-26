@@ -1,12 +1,15 @@
 import Highlight, { defaultProps } from 'prism-react-renderer';
 
+import { Language } from '@/lib/types';
+
 type Props = {
   code: string;
+  language: Language;
 };
 
-export const CodeBlock = ({ code }: Props) => {
+export const CodeBlock = ({ code, language }: Props) => {
   return (
-    <Highlight {...defaultProps} code={code} language="jsx">
+    <Highlight {...defaultProps} code={code} language={language}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre className={className} style={style}>
           {tokens.map((line, i) => (

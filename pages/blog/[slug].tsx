@@ -118,7 +118,10 @@ const renderBlock = (block) => {
     case 'code':
       return (
         <div>
-          <CodeBlock code={value.text[0].text.content} />
+          <CodeBlock
+            language={value.language}
+            code={value.text[0].text.content}
+          />
         </div>
       );
     case 'callout':

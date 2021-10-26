@@ -1,10 +1,28 @@
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next';
+import { useEffect, useState } from 'react';
 
 import { ArticleCard } from '@/components/ArticleCard';
 import { Client } from '@notionhq/client';
 import Head from 'next/head';
 
 export default function Blog({ articles, tags }) {
+  const [selectedTag, setSelectedTag] = useState<string>('');
+  const [searchValue, setSearchValue] = useState('');
+  const [criteria, setCriteria] = useState([]);
+
+  const filteredArticles = articles
+    .sort((a, b) => Number(new Date(b.publishedDate)))
+    .filter((post) => {
+      return (
+        post.title.toLowerCase().includes(searchValue.toLowerCase()) ||
+        post.tags.includes(searchValue.toLowerCase())
+      );
+    });
+
+  useEffect(() => {
+    setSearchValue(selectedTag);
+  }, [selectedTag]);
+
   return (
     <div className="min-h-screen py-2">
       <Head>
@@ -13,24 +31,40 @@ export default function Blog({ articles, tags }) {
       </Head>
 
       <main>
-        {JSON.stringify(tags)}
+        <div>
+          <input
+            type="text"
+            onChange={(e) => setSearchValue(e.target.value)}
+            value={searchValue}
+            placeholder="Search articles"
+          />
+        </div>
         <h2>Tags</h2>
-        <ul className="space-y-4">
+        <ul className="space-y-4 flex space-x-4">
           {tags &&
             tags.map((tag) => (
               <li key={tag}>
-                <p>{tag}</p>
+                <button onClick={() => setSelectedTag(tag)}>
+                  <span>{tag}</span>
+                </button>
               </li>
             ))}
         </ul>
         <h2>Articles</h2>
         <ul className="space-y-12">
-          {articles &&
+          {!filteredArticles.length && <p>No articles found.</p>}
+          {filteredArticles.map((article) => (
+            <li key={article.title}>
+              <ArticleCard article={article} />
+            </li>
+          ))}
+
+          {/* {articles &&
             articles.map((article) => (
               <li key={article.title}>
                 <ArticleCard article={article} />
               </li>
-            ))}
+            ))} */}
         </ul>
       </main>
 
@@ -72,7 +106,13 @@ export const getStaticProps: GetStaticProps = async () => {
           }
         }
       ]
-    }
+    },
+    sorts: [
+      {
+        property: 'Published',
+        direction: 'descending'
+      }
+    ]
   });
 
   const articles = data.results.map((article: any) => {
@@ -86,8 +126,10 @@ export const getStaticProps: GetStaticProps = async () => {
         return { name: tag.name, id: tag.id };
       }),
       coverImage:
-        article.properties?.coverImage?.files[0]?.file.url ||
-        'https://via.placeholder.com/600x400.png'
+        article.properties?.coverImage?.files[0]?.file?.url ||
+        article.properties.coverImage?.files[0]?.external?.url ||
+        'https://via.placeholder.com/600x400.png',
+      publishedDate: article.properties.Published.date.start
     };
   });
 
