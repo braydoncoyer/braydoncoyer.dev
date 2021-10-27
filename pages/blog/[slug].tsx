@@ -1,17 +1,24 @@
 import { Fragment, useEffect } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { LinkedinShareButton, TwitterShareButton } from 'react-share';
+import {
+  getArticlePage,
+  getMoreArticlesToSuggest,
+  getPublishedArticles
+} from '@/lib/notion';
 
 import { AnchorLink } from '@/components/AnchorLink';
 import { ArticleList } from '@/components/ArticleList';
 import { Client } from '@notionhq/client';
 import { CodeBlock } from '@/components/Codeblock';
+import Image from 'next/image';
 import Link from 'next/link';
 import PageViews from '@/components/PageViews';
 import Reactions from '@/components/Reactions';
 import { Subscribe } from '@/components/Subscribe';
+import { YoutubeEmbed } from '@/components/YoutubeEmbed';
 import { getArticlePublicUrl } from '@/lib/getArticlePublicUrl';
-import { shuffleArray } from '@/lib/shuffleArray';
+import { getTwitterProfilePicture } from '@/lib/twitter';
 import siteMetadata from '@/data/siteMetadata';
 import slugify from 'slugify';
 import { useCopyUrlToClipboard } from '@/lib/hooks/useCopyToClipboard';
@@ -31,11 +38,21 @@ export const Text = ({ text }) => {
         className={[
           bold ? 'font-bold' : null,
           italic ? 'italic' : null,
+          code
+            ? 'bg-indigo-50 py-0.5 px-2 text-indigo-500 rounded mx-1 inline-block align-middle tracking-tight text-base'
+            : null,
           strikethrough ? 'line-through' : null,
           underline ? 'underline' : null
         ].join(' ')}
+        style={color !== 'default' ? { color } : {}}
       >
-        {text.link ? <a href={text.link.url}>{text.content}</a> : text.content}
+        {text.link ? (
+          <a className="text-indigo-500" href={text.link.url}>
+            {text.content}
+          </a>
+        ) : (
+          text.content
+        )}
       </span>
     );
   });
@@ -128,9 +145,11 @@ const renderBlock = (block) => {
       );
     case 'callout':
       return (
-        <div className="flex flex-start space-x-4">
+        <div className="flex space-x-4 bg-gray-50 rounded-lg p-3">
           {value.icon && <span>{value.icon.emoji}</span>}
-          <Text text={value.text} />
+          <div>
+            <Text text={value.text} />
+          </div>
         </div>
       );
     case 'embed':
@@ -155,6 +174,24 @@ const renderBlock = (block) => {
       );
     case 'table_of_contents':
       return <div>TOC</div>;
+    case 'video':
+      const embedId = value.external.url.slice(
+        value.external.url.lastIndexOf('=') + 1
+      );
+      return <YoutubeEmbed embedId={embedId} />;
+
+    case 'quote':
+      return (
+        <div className="flex space-x-4 bg-gray-50 p-3 border-l-2 border-gray-600 rounded-r-lg">
+          <div>
+            <Text text={value.text} />
+          </div>
+        </div>
+      );
+    case 'divider':
+      return (
+        <hr className="my-16 w-full border-none text-center h-10 before:content-['∿∿∿'] before:text-[#D1D5DB] before:text-2xl"></hr>
+      );
     default:
       return `❌ Unsupported block (${
         type === 'unsupported' ? 'unsupported by Notion API' : type
@@ -165,9 +202,11 @@ const renderBlock = (block) => {
 const ArticlePage = ({
   content,
   title,
+  coverImage,
   slug,
   publishedDate,
   lastEditedAt,
+  profilePicture,
   moreArticles
 }) => {
   const [isCopied, handleCopy] = useCopyUrlToClipboard();
@@ -185,6 +224,14 @@ const ArticlePage = ({
       <Reactions slug={slug} />
       <article className="prose-lg">
         <h1>{title}</h1>
+        <Image
+          objectFit="contain"
+          src={coverImage}
+          width={1080}
+          height={810}
+          alt={'article cover'}
+          priority
+        />
         <h4>
           Published{' '}
           {new Date(publishedDate).toLocaleDateString(siteMetadata.locale, {
@@ -203,18 +250,22 @@ const ArticlePage = ({
             day: 'numeric'
           })}
         </h4>
+        <Image
+          className="rounded-full"
+          src={profilePicture}
+          width={32}
+          height={32}
+          alt={'author'}
+          priority
+        />
         {content.map((block) => (
           <Fragment key={block.id}>{renderBlock(block)}</Fragment>
         ))}
         <Subscribe />
-        <TwitterShareButton
-          url={getArticlePublicUrl(slug)}
-          title={title}
-          via={'BraydonCoyer'}
-        >
+        <TwitterShareButton url={pubilcUrl} title={title} via={'BraydonCoyer'}>
           Tweet this article
         </TwitterShareButton>
-        <LinkedinShareButton title={title} url={getArticlePublicUrl(slug)}>
+        <LinkedinShareButton title={title} url={pubilcUrl}>
           Share this article on LinkedIn
         </LinkedinShareButton>
         <button onClick={() => handleCopy()}>Copy Article URL</button>
@@ -234,23 +285,10 @@ const ArticlePage = ({
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const notion = new Client({
-    auth: process.env.NOTION_SECRET
-  });
-
-  const data: any = await notion.databases.query({
-    database_id: process.env.BLOG_DATABASE_ID,
-    filter: {
-      property: 'Status',
-      select: {
-        equals: '✅ Published'
-      }
-    }
-  });
-
   const paths = [];
+  const data: any = await getPublishedArticles(process.env.BLOG_DATABASE_ID);
 
-  data.results.forEach((result) => {
+  data.forEach((result) => {
     if (result.object === 'page') {
       paths.push({
         params: {
@@ -273,67 +311,29 @@ export const getStaticProps: GetStaticProps = async ({ params: { slug } }) => {
   let articleTitle = '';
   let publishedDate = null;
   let lastEditedAt = null;
+  let coverImage = null;
+  const profilePicture = await getTwitterProfilePicture();
 
   const notion = new Client({
     auth: process.env.NOTION_SECRET
   });
 
-  const data: any = await notion.databases.query({
-    database_id: process.env.BLOG_DATABASE_ID,
-    filter: {
-      property: 'Status',
-      select: {
-        equals: '✅ Published'
-      }
-    }
-  });
+  const data: any = await getPublishedArticles(process.env.BLOG_DATABASE_ID);
 
-  const page: any = data.results.find((result) => {
-    if (result.object === 'page') {
-      articleTitle = result.properties.Name.title[0].plain_text;
-      const resultSlug = slugify(articleTitle).toLowerCase();
-      return resultSlug === slug;
-    }
-    return false;
-  });
+  const page: any = getArticlePage(data, slug);
 
+  articleTitle = page.properties.Name.title[0].plain_text;
   publishedDate = page.properties.Published.date.start;
   lastEditedAt = page.properties.LastEdited.last_edited_time;
+  coverImage =
+    page.properties?.coverImage?.files[0]?.file?.url ||
+    page.properties.coverImage?.files[0]?.external?.url ||
+    'https://via.placeholder.com/600x400.png';
 
-  const moreArticlesData: any = await notion.databases.query({
-    database_id: process.env.BLOG_DATABASE_ID,
-    filter: {
-      and: [
-        {
-          property: 'Status',
-          select: {
-            equals: '✅ Published'
-          }
-        },
-        {
-          property: 'Name',
-          text: {
-            does_not_equal: articleTitle
-          }
-        }
-      ]
-    }
-  });
-
-  let moreArticles = moreArticlesData.results.map((article: any) => {
-    return {
-      title: article.properties.Name.title[0].plain_text,
-      coverImage:
-        article.properties?.coverImage?.files[0]?.file?.url ||
-        article.properties.coverImage?.files[0]?.external?.url ||
-        'https://via.placeholder.com/600x400.png',
-      publishedDate: article.properties.Published.date.start,
-      summary: article.properties?.Summary.rich_text[0]?.plain_text
-    };
-  });
-
-  shuffleArray(moreArticles);
-  moreArticles = moreArticles.slice(0, 2);
+  const moreArticles: any = await getMoreArticlesToSuggest(
+    process.env.BLOG_DATABASE_ID,
+    articleTitle
+  );
 
   let blocks = await notion.blocks.children.list({
     block_id: page.id
@@ -357,6 +357,8 @@ export const getStaticProps: GetStaticProps = async ({ params: { slug } }) => {
       publishedDate,
       lastEditedAt,
       slug,
+      profilePicture,
+      coverImage,
       moreArticles
     },
     revalidate: 30

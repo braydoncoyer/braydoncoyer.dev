@@ -1,4 +1,5 @@
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next';
+import { convertToArticleList, getPublishedArticles } from '@/lib/notion';
 import { useEffect, useState } from 'react';
 
 import { ArticleCard } from '@/components/ArticleCard';
@@ -73,45 +74,8 @@ export default function Blog({ articles, tags }) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  let tags: string[] = [];
-  const notion = new Client({
-    auth: process.env.NOTION_SECRET
-  });
-
-  const data = await notion.databases.query({
-    database_id: process.env.BLOG_DATABASE_ID,
-    filter: {
-      property: 'Status',
-      select: {
-        equals: '✅ Published'
-      }
-    },
-    sorts: [
-      {
-        property: 'Published',
-        direction: 'descending'
-      }
-    ]
-  });
-
-  const articles = data.results.map((article: any) => {
-    return {
-      title: article.properties.Name.title[0].plain_text,
-      tags: article.properties.tags.multi_select.map((tag) => {
-        if (!tags.includes(tag.name)) {
-          const newList = [...tags, tag.name];
-          tags = newList;
-        }
-        return { name: tag.name, id: tag.id };
-      }),
-      coverImage:
-        article.properties?.coverImage?.files[0]?.file?.url ||
-        article.properties.coverImage?.files[0]?.external?.url ||
-        'https://via.placeholder.com/600x400.png',
-      publishedDate: article.properties.Published.date.start,
-      summary: article.properties?.Summary.rich_text[0]?.plain_text
-    };
-  });
+  const data = await getPublishedArticles(process.env.BLOG_DATABASE_ID);
+  const { articles, tags } = convertToArticleList(data);
 
   return {
     props: {
