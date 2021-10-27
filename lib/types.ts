@@ -20,7 +20,11 @@ export type Views = {
 
 export type Article = {
   title: string;
+  tags?: string[];
   coverImage: string;
+  summary: string;
+  publishedDate?: any;
+  lastUpdatedDate?: any;
 };
 
 export type Reactions = {

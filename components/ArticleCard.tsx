@@ -41,6 +41,7 @@ export function ArticleCard({ article }: Props) {
         <p>
           {article.title} {!hasRead && '- UNREAD'}
         </p>
+        <p>{article.summary}</p>
       </button>
     </div>
   );

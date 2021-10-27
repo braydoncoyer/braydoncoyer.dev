@@ -2,20 +2,20 @@ import { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next';
 import { useEffect, useState } from 'react';
 
 import { ArticleCard } from '@/components/ArticleCard';
+import { ArticleList } from '@/components/ArticleList';
 import { Client } from '@notionhq/client';
 import Head from 'next/head';
 
 export default function Blog({ articles, tags }) {
   const [selectedTag, setSelectedTag] = useState<string>('');
   const [searchValue, setSearchValue] = useState('');
-  const [criteria, setCriteria] = useState([]);
 
   const filteredArticles = articles
     .sort((a, b) => Number(new Date(b.publishedDate)))
     .filter((post) => {
       return (
         post.title.toLowerCase().includes(searchValue.toLowerCase()) ||
-        post.tags.includes(searchValue.toLowerCase())
+        post.summary.toLowerCase().includes(searchValue.toLowerCase())
       );
     });
 
@@ -53,18 +53,7 @@ export default function Blog({ articles, tags }) {
         <h2>Articles</h2>
         <ul className="space-y-12">
           {!filteredArticles.length && <p>No articles found.</p>}
-          {filteredArticles.map((article) => (
-            <li key={article.title}>
-              <ArticleCard article={article} />
-            </li>
-          ))}
-
-          {/* {articles &&
-            articles.map((article) => (
-              <li key={article.title}>
-                <ArticleCard article={article} />
-              </li>
-            ))} */}
+          <ArticleList articles={filteredArticles} />
         </ul>
       </main>
 
@@ -92,20 +81,10 @@ export const getStaticProps: GetStaticProps = async () => {
   const data = await notion.databases.query({
     database_id: process.env.BLOG_DATABASE_ID,
     filter: {
-      and: [
-        {
-          property: 'Status',
-          select: {
-            equals: '✅ Published'
-          }
-        },
-        {
-          property: 'Type',
-          select: {
-            equals: 'Personal'
-          }
-        }
-      ]
+      property: 'Status',
+      select: {
+        equals: '✅ Published'
+      }
     },
     sorts: [
       {
@@ -129,7 +108,8 @@ export const getStaticProps: GetStaticProps = async () => {
         article.properties?.coverImage?.files[0]?.file?.url ||
         article.properties.coverImage?.files[0]?.external?.url ||
         'https://via.placeholder.com/600x400.png',
-      publishedDate: article.properties.Published.date.start
+      publishedDate: article.properties.Published.date.start,
+      summary: article.properties?.Summary.rich_text[0]?.plain_text
     };
   });
 
