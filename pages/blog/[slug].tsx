@@ -11,6 +11,7 @@ import { AnchorLink } from '@/components/AnchorLink';
 import { ArticleList } from '@/components/ArticleList';
 import { Client } from '@notionhq/client';
 import { CodeBlock } from '@/components/Codeblock';
+import { Container } from 'layouts/Container';
 import Image from 'next/image';
 import Link from 'next/link';
 import PageViews from '@/components/PageViews';
@@ -219,68 +220,74 @@ const ArticlePage = ({
   }, [slug]);
 
   return (
-    <article className="max-w-7xl mx-auto">
-      <PageViews slug={slug} />
-      <Reactions slug={slug} />
-      <article className="prose-lg">
-        <h1>{title}</h1>
-        <Image
-          objectFit="contain"
-          src={coverImage}
-          width={1080}
-          height={810}
-          alt={'article cover'}
-          priority
-        />
-        <h4>
-          Published{' '}
-          {new Date(publishedDate).toLocaleDateString(siteMetadata.locale, {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-          })}
-        </h4>
-        <h4>
-          Last edited{' '}
-          {new Date(lastEditedAt).toLocaleDateString(siteMetadata.locale, {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-          })}
-        </h4>
-        <Image
-          className="rounded-full"
-          src={profilePicture}
-          width={32}
-          height={32}
-          alt={'author'}
-          priority
-        />
-        {content.map((block) => (
-          <Fragment key={block.id}>{renderBlock(block)}</Fragment>
-        ))}
-        <Subscribe />
-        <TwitterShareButton url={pubilcUrl} title={title} via={'BraydonCoyer'}>
-          Tweet this article
-        </TwitterShareButton>
-        <LinkedinShareButton title={title} url={pubilcUrl}>
-          Share this article on LinkedIn
-        </LinkedinShareButton>
-        <button onClick={() => handleCopy()}>Copy Article URL</button>
-
+    <Container>
+      <article className="max-w-7xl mx-auto">
+        <PageViews slug={slug} />
+        <Reactions slug={slug} />
         <div>
-          <h2 className="text-xl text-gray-900">More articles</h2>
-          <ul>
-            <ArticleList articles={moreArticles} />
-          </ul>
+          <h1>{title}</h1>
+          <Image
+            objectFit="contain"
+            src={coverImage}
+            width={1080}
+            height={810}
+            alt={'article cover'}
+            priority
+          />
+          <h4>
+            Published{' '}
+            {new Date(publishedDate).toLocaleDateString(siteMetadata.locale, {
+              weekday: 'long',
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })}
+          </h4>
+          <h4>
+            Last edited{' '}
+            {new Date(lastEditedAt).toLocaleDateString(siteMetadata.locale, {
+              weekday: 'long',
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })}
+          </h4>
+          <Image
+            className="rounded-full"
+            src={profilePicture}
+            width={32}
+            height={32}
+            alt={'author'}
+            priority
+          />
+          {content.map((block) => (
+            <Fragment key={block.id}>{renderBlock(block)}</Fragment>
+          ))}
+          <Subscribe />
+          <TwitterShareButton
+            url={pubilcUrl}
+            title={title}
+            via={'BraydonCoyer'}
+          >
+            Tweet this article
+          </TwitterShareButton>
+          <LinkedinShareButton title={title} url={pubilcUrl}>
+            Share this article on LinkedIn
+          </LinkedinShareButton>
+          <button onClick={() => handleCopy()}>Copy Article URL</button>
+
+          <div>
+            <h2 className="text-xl text-gray-900">More articles</h2>
+            <ul>
+              <ArticleList articles={moreArticles} />
+            </ul>
+          </div>
+          <Link href="/blog">
+            <a>← Back to the blog</a>
+          </Link>
         </div>
-        <Link href="/blog">
-          <a>← Back to the blog</a>
-        </Link>
       </article>
-    </article>
+    </Container>
   );
 };
 
