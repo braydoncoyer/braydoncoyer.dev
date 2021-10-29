@@ -47,7 +47,7 @@ export function Container(props) {
           </svg>
         )}
       </button>
-      <main className="flex flex-col justify-center px-8 bg-white dark:bg-[#111827] prose prose-lg dark:prose-dark">
+      <main className="flex flex-col mx-auto max-w-6xl justify-center px-4 bg-white dark:bg-[#111827] prose prose-lg dark:prose-dark">
         {children}
       </main>
     </div>

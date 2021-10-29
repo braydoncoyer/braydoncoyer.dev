@@ -129,7 +129,17 @@ const renderBlock = (block) => {
         value.caption.length >= 1 ? value.caption[0].plain_text : '';
       return (
         <figure className="rounded-lg">
-          <img className="rounded-lg" src={src} />
+          <Image
+            objectFit="contain"
+            width={1080}
+            height={810}
+            alt={
+              caption
+                ? caption
+                : 'A visual depiction of what is being written about'
+            }
+            src={src}
+          />
           {caption && (
             <figcaption className="text-center">{caption}</figcaption>
           )}
@@ -221,72 +231,66 @@ const ArticlePage = ({
 
   return (
     <Container>
-      <article className="max-w-7xl mx-auto">
-        <PageViews slug={slug} />
+      <PageViews slug={slug} />
+      <div>
+        <h1>{title}</h1>
+        <Image
+          objectFit="contain"
+          src={coverImage}
+          width={1080}
+          height={810}
+          alt={'article cover'}
+          priority
+        />
+        <h4>
+          Published{' '}
+          {new Date(publishedDate).toLocaleDateString(siteMetadata.locale, {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          })}
+        </h4>
+        <h4>
+          Last edited{' '}
+          {new Date(lastEditedAt).toLocaleDateString(siteMetadata.locale, {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          })}
+        </h4>
+        <Image
+          className="rounded-full"
+          src={profilePicture}
+          width={32}
+          height={32}
+          alt={'author'}
+          priority
+        />
+        {content.map((block) => (
+          <Fragment key={block.id}>{renderBlock(block)}</Fragment>
+        ))}
         <Reactions slug={slug} />
-        <div>
-          <h1>{title}</h1>
-          <Image
-            objectFit="contain"
-            src={coverImage}
-            width={1080}
-            height={810}
-            alt={'article cover'}
-            priority
-          />
-          <h4>
-            Published{' '}
-            {new Date(publishedDate).toLocaleDateString(siteMetadata.locale, {
-              weekday: 'long',
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric'
-            })}
-          </h4>
-          <h4>
-            Last edited{' '}
-            {new Date(lastEditedAt).toLocaleDateString(siteMetadata.locale, {
-              weekday: 'long',
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric'
-            })}
-          </h4>
-          <Image
-            className="rounded-full"
-            src={profilePicture}
-            width={32}
-            height={32}
-            alt={'author'}
-            priority
-          />
-          {content.map((block) => (
-            <Fragment key={block.id}>{renderBlock(block)}</Fragment>
-          ))}
-          <Subscribe />
-          <TwitterShareButton
-            url={pubilcUrl}
-            title={title}
-            via={'BraydonCoyer'}
-          >
-            Tweet this article
-          </TwitterShareButton>
-          <LinkedinShareButton title={title} url={pubilcUrl}>
-            Share this article on LinkedIn
-          </LinkedinShareButton>
-          <button onClick={() => handleCopy()}>Copy Article URL</button>
+        <Subscribe />
+        <TwitterShareButton url={pubilcUrl} title={title} via={'BraydonCoyer'}>
+          Tweet this article
+        </TwitterShareButton>
+        <LinkedinShareButton title={title} url={pubilcUrl}>
+          Share this article on LinkedIn
+        </LinkedinShareButton>
+        <button onClick={() => handleCopy()}>Copy Article URL</button>
 
-          <div>
-            <h2 className="text-xl text-gray-900">More articles</h2>
-            <ul>
-              <ArticleList articles={moreArticles} />
-            </ul>
-          </div>
-          <Link href="/blog">
-            <a>← Back to the blog</a>
-          </Link>
+        <div>
+          <h2 className="text-xl text-gray-900">More articles</h2>
+          <ul>
+            <ArticleList articles={moreArticles} />
+          </ul>
         </div>
-      </article>
+        <Link href="/blog">
+          <a>← Back to the blog</a>
+        </Link>
+      </div>
     </Container>
   );
 };

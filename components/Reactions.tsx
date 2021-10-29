@@ -18,40 +18,56 @@ const Reactions = ({ slug }) => {
   } = useArticleReactions(slug);
 
   return (
-    <div>
-      {hasLiked ? (
-        <button onClick={() => handleDecrementLike()}>Un Like</button>
-      ) : (
-        <button onClick={() => handleIncrementLike()}>Like 👍</button>
-      )}
-      {reactions?.like_count}
+    <div className="flex justify-between items-center">
+      <div
+        role="button"
+        onClick={
+          hasLiked ? () => handleDecrementLike() : () => handleIncrementLike()
+        }
+        className="bg-[#F8FAFC] px-8 py-4 rounded-lg flex flex-col items-center"
+      >
+        <span className="text-4xl">👍</span>
+        <span className="text-xl font-semibold">{reactions?.like_count}</span>
+        <span className="text-sm">LIKE</span>
+      </div>
 
-      <br />
+      <div
+        role="button"
+        onClick={
+          hasLoved ? () => handleDecrementLove() : () => handleIncrementLove()
+        }
+        className="bg-[#F8FAFC] px-8 py-4 rounded-lg flex flex-col items-center"
+      >
+        <span className="text-4xl">❤️</span>
+        <span className="text-xl font-semibold">{reactions?.love_count}</span>
+        <span className="text-sm uppercase">LOVE</span>
+      </div>
 
-      {hasLoved ? (
-        <button onClick={() => handleDecrementLove()}>Un love</button>
-      ) : (
-        <button onClick={() => handleIncrementLove()}>Love ❤️</button>
-      )}
-      {reactions?.love_count}
+      <div
+        role="button"
+        onClick={
+          hasClapped ? () => handleDecrementClap() : () => handleIncrementClap()
+        }
+        className="bg-[#F8FAFC] px-8 py-4 rounded-lg flex flex-col items-center"
+      >
+        <span className="text-4xl">👏</span>
+        <span className="text-xl font-semibold">{reactions?.clap_count}</span>
+        <span className="text-sm uppercase">CLAP</span>
+      </div>
 
-      <br />
-
-      {hasClapped ? (
-        <button onClick={() => handleDecrementClap()}>Un clap</button>
-      ) : (
-        <button onClick={() => handleIncrementClap()}>Clap 👏</button>
-      )}
-      {reactions?.clap_count}
-
-      <br />
-
-      {hasPartied ? (
-        <button onClick={() => handleDecrementParty()}>Un party</button>
-      ) : (
-        <button onClick={() => handleIncrementParty()}>Party 🎉</button>
-      )}
-      {reactions?.party_count}
+      <div
+        role="button"
+        onClick={
+          hasPartied
+            ? () => handleDecrementParty()
+            : () => handleIncrementParty()
+        }
+        className="bg-[#F8FAFC] px-8 py-4 rounded-lg flex flex-col items-center"
+      >
+        <span className="text-4xl">🎉</span>
+        <span className="text-xl font-semibold">{reactions?.party_count}</span>
+        <span className="text-sm uppercase">PARTY</span>
+      </div>
     </div>
   );
 };

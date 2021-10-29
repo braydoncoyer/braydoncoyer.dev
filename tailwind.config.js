@@ -13,42 +13,56 @@ module.exports = {
     extend: {
       colors: {
         orange: colors.orange,
+        teal: colors.teal,
+        midnight: '#111827',
         emerald: colors.emerald,
-        fuchsia: colors.fuchsia,
-        'th-background': 'var(--background)',
-        'th-background-secondary': 'var(--background-secondary)',
-        'th-foreground': 'var(--foreground)',
-        'th-primary-dark': 'var(--primary-dark)',
-        'th-primary-medium': 'var(--primary-medium)',
-        'th-primary-light': 'var(--primary-light)',
-        'th-accent-dark': 'var(--accent-dark)',
-        'th-accent-medium': 'var(--accent-medium)',
-        'th-accent-light': 'var(--accent-light)'
+        fuchsia: colors.fuchsia
       },
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            color: theme('colors.gray.700'),
+            color: theme('colors.gray.600'),
             a: {
-              color: theme('colors.blue.500'),
+              color: theme('colors.teal.500'),
               '&:hover': {
-                color: theme('colors.blue.700')
+                color: theme('colors.teal.600')
               },
               code: { color: theme('colors.blue.400') }
             },
-            h1: {
-              color: theme('colors.gray.600')
+            blockquote: {
+              borderLeftColor: theme('colors.teal.500'),
+              backgroundColor: theme('colors.gray.50'),
+              color: theme('colors.gray.700')
             },
-            h2: {
-              color: theme('colors.gray.600')
+            'h1,h2,h3,h4': {
+              color: theme('colors.gray.900')
             },
-            'h2,h3,h4': {
-              'scroll-margin-top': spacing[32]
+            hr: { borderColor: theme('colors.gray.700') },
+            ol: {
+              li: {
+                '&:before': { color: theme('colors.gray.500') }
+              }
             },
+            ul: {
+              li: {
+                '&:before': { backgroundColor: theme('colors.teal.500') }
+              }
+            },
+            strong: { color: theme('colors.gray.700') },
             thead: {
-              borderBottomColor: theme('colors.gray.200')
+              color: theme('colors.gray.100'),
+              borderBottomColor: theme('colors.gray.600')
             },
-            code: { color: theme('colors.pink.500') },
+            tbody: {
+              tr: {
+                borderBottomColor: theme('colors.gray.700')
+              }
+            },
+            hr: {
+              color: theme('colors.gray.200'),
+              '&before': { content: '∿∿∿' }
+            },
+            code: { color: theme('colors.indigo.500') },
             'blockquote p:first-of-type::before': false,
             'blockquote p:last-of-type::after': false
           }

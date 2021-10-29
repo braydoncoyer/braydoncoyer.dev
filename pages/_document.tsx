@@ -35,7 +35,7 @@ export default function Document(props) {
           name="msapplication-config"
         />
       </Head>
-      <body className="bg-white dark:bg-[#111827]">
+      <body className="bg-white dark:bg-midnight">
         <Main />
         <NextScript />
       </body>

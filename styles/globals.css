@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr min(65ch, calc(100% - 32px)) 1fr;
+  /* column-gap: 16px; */
+}
+.wrapper > * {
+  grid-column: 2;
+}
+.full-bleed {
+  width: 100%;
+  grid-column: 1 / 4;
+}
