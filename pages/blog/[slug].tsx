@@ -9,6 +9,7 @@ import {
 
 import { AnchorLink } from '@/components/AnchorLink';
 import { ArticleList } from '@/components/ArticleList';
+import { Callout } from '@/components/Callout';
 import { Client } from '@notionhq/client';
 import { CodeBlock } from '@/components/Codeblock';
 import { Container } from 'layouts/Container';
@@ -23,7 +24,6 @@ import { getTwitterProfilePicture } from '@/lib/twitter';
 import siteMetadata from '@/data/siteMetadata';
 import slugify from 'slugify';
 import { useCopyUrlToClipboard } from '@/lib/hooks/useCopyToClipboard';
-import { Callout } from '@/components/Callout';
 
 export const Text = ({ text }) => {
   if (!text) {
@@ -243,7 +243,7 @@ const ArticlePage = ({
   }, [slug]);
 
   return (
-    <Container>
+    <Container articlePage={true}>
       <div>
         <h1 className="text-3xl md:text-5xl text-center">{title}</h1>
         <div className="text-center">
