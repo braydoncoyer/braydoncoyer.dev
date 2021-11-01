@@ -1,0 +1,153 @@
+.prose pre,
+.language-tab pre[class*='language-']::before {
+  /* Large code blocks */
+  @apply bg-gray-100 dark:bg-midnight;
+}
+
+code[class*='language-'],
+pre[class*='language-'] {
+  /* Overall text color */
+  @apply text-blueGray-500 dark:text-gray-300;
+}
+
+.prose pre code {
+  /* TODO */
+  @apply text-blueGray-500 dark:text-gray-300;
+}
+
+.prose code {
+  /* Inline code blocks */
+  @apply bg-indigo-50 dark:bg-indigo-900 dark:bg-opacity-50 text-indigo-500 dark:text-indigo-200 py-0.5 px-2 rounded mx-1 inline-block align-middle tracking-tight text-base;
+}
+
+.prose img {
+  /* Don't apply styles to next/image */
+  @apply m-0;
+}
+
+.prose > :first-child {
+  /* Override removing top margin, causing layout shift */
+  margin-top: 1.25em !important;
+  margin-bottom: 1.25em !important;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  @apply text-gray-400 dark:text-blueGray-500;
+}
+
+.token.punctuation {
+  @apply text-blueGray-500 dark:text-coolGray-300;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  @apply text-teal-400 dark:text-emerald-400;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  @apply text-purple-500 dark:text-purple-400;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  @apply text-amber-500 dark:text-amber-400;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  @apply text-sky-500;
+}
+
+.token.function,
+.token.class-name {
+  @apply text-pink-500;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  @apply text-yellow-500;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
+}
+
+pre {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.highlight-line {
+  @apply block px-4 -mx-4 bg-gray-100 border-l-4 border-blue-500 dark:bg-gray-800;
+}
+
+/* Remove Safari input shadow on mobile */
+input[type='text'],
+input[type='email'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Show appropriate flavor of code block */
+.language-tab {
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+}
+.language-tab pre[class*='language-'] {
+  -webkit-overflow-scrolling: touch;
+}
+
+.language-tab pre[class*='language-']::before {
+  @apply rounded-t-lg text-blueGray-500 dark:text-gray-300 text-sm absolute right-4 -top-5 text-right uppercase py-1 px-4;
+}
+
+.language-tab pre[class~='language-jsx']::before {
+  content: 'jsx';
+}
+
+.language-tab pre[class~='language-tsx']::before {
+  content: 'tsx';
+}
+
+.language-tab pre[class~='language-typescript']::before {
+  content: 'ts';
+}
+
+.language-tab pre[class~='language-javascript']::before {
+  content: 'js';
+}
+
+.language-tab pre[class~='language-html']::before {
+  content: 'html';
+}
+
+.language-tab pre[class~='language-css']::before {
+  content: 'css';
+}
+
+.language-tab pre[class~='language-scss']::before {
+  content: 'scss';
+}
+
+.language-tab pre[class~='language-bash']::before {
+  content: 'bash';
+}

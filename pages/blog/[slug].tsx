@@ -23,6 +23,7 @@ import { getTwitterProfilePicture } from '@/lib/twitter';
 import siteMetadata from '@/data/siteMetadata';
 import slugify from 'slugify';
 import { useCopyUrlToClipboard } from '@/lib/hooks/useCopyToClipboard';
+import { Callout } from '@/components/Callout';
 
 export const Text = ({ text }) => {
   if (!text) {
@@ -40,20 +41,14 @@ export const Text = ({ text }) => {
           bold ? 'font-bold' : null,
           italic ? 'italic' : null,
           code
-            ? 'bg-indigo-50 py-0.5 px-2 text-indigo-500 rounded mx-1 inline-block align-middle tracking-tight text-base'
+            ? 'bg-indigo-50 dark:bg-indigo-900 dark:bg-opacity-50 text-indigo-500 dark:text-indigo-200 py-0.5 px-2 rounded mx-1 inline-block align-middle tracking-tight text-base'
             : null,
           strikethrough ? 'line-through' : null,
           underline ? 'underline' : null
         ].join(' ')}
         style={color !== 'default' ? { color } : {}}
       >
-        {text.link ? (
-          <a className="text-indigo-500" href={text.link.url}>
-            {text.content}
-          </a>
-        ) : (
-          text.content
-        )}
+        {text.link ? <a href={text.link.url}>{text.content}</a> : text.content}
       </span>
     );
   });
@@ -156,12 +151,12 @@ const renderBlock = (block) => {
       );
     case 'callout':
       return (
-        <div className="flex space-x-4 bg-gray-50 rounded-lg p-3">
+        <Callout>
           {value.icon && <span>{value.icon.emoji}</span>}
           <div>
             <Text text={value.text} />
           </div>
-        </div>
+        </Callout>
       );
     case 'embed':
       const codePenEmbedKey = value.url.slice(value.url.lastIndexOf('/') + 1);
@@ -223,6 +218,24 @@ const ArticlePage = ({
   const [isCopied, handleCopy] = useCopyUrlToClipboard();
   const pubilcUrl = getArticlePublicUrl(slug);
 
+  const publishedOn = new Date(publishedDate).toLocaleDateString(
+    siteMetadata.locale,
+    {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }
+  );
+
+  const modifiedDate = new Date(lastEditedAt).toLocaleDateString(
+    siteMetadata.locale,
+    {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }
+  );
+
   useEffect(() => {
     fetch(`/api/views/${slug}`, {
       method: 'POST'
@@ -231,9 +244,21 @@ const ArticlePage = ({
 
   return (
     <Container>
-      <PageViews slug={slug} />
       <div>
-        <h1>{title}</h1>
+        <h1 className="text-3xl md:text-5xl text-center">{title}</h1>
+        <div className="text-center">
+          <div className="flex justify-center items-center space-x-2 text-lg mb-2">
+            <p className="m-0">{publishedOn}</p>
+            <p className="m-0">•</p>
+            <PageViews slug={slug} />
+          </div>
+          {publishedOn !== modifiedDate && (
+            <p className="text-sm mt-0 text-gray-400 dark:text-gray-600">
+              (Updated on {modifiedDate})
+            </p>
+          )}
+        </div>
+
         <Image
           objectFit="contain"
           src={coverImage}
@@ -242,32 +267,7 @@ const ArticlePage = ({
           alt={'article cover'}
           priority
         />
-        <h4>
-          Published{' '}
-          {new Date(publishedDate).toLocaleDateString(siteMetadata.locale, {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-          })}
-        </h4>
-        <h4>
-          Last edited{' '}
-          {new Date(lastEditedAt).toLocaleDateString(siteMetadata.locale, {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-          })}
-        </h4>
-        <Image
-          className="rounded-full"
-          src={profilePicture}
-          width={32}
-          height={32}
-          alt={'author'}
-          priority
-        />
+
         {content.map((block) => (
           <Fragment key={block.id}>{renderBlock(block)}</Fragment>
         ))}

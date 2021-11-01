@@ -5,30 +5,60 @@ import { Language } from '@/lib/types';
 type Props = {
   code: string;
   language: Language;
+  metastring?: string;
 };
 
-export const CodeBlock = ({ code, language }: Props) => {
+const RE = /{([\d,-]+)}/;
+
+const calculateLinesToHighlight = (meta) => {
+  if (!RE.test(meta)) {
+    return () => false;
+  }
+  const lineNumbers = RE.exec(meta)[1]
+    .split(`,`)
+    .map((v) => v.split(`-`).map((x) => parseInt(x, 10)));
+  return (index) => {
+    const lineNumber = index + 1;
+    const inRange = lineNumbers.some(([start, end]) =>
+      end ? lineNumber >= start && lineNumber <= end : lineNumber === start
+    );
+    return inRange;
+  };
+};
+
+export const CodeBlock = ({ code, language, metastring }: Props) => {
+  const shouldHighlightLine = calculateLinesToHighlight(metastring);
+
   return (
-    <Highlight {...defaultProps} code={code} language={language}>
+    <Highlight
+      {...defaultProps}
+      code={code}
+      language={language}
+      theme={undefined}
+    >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre className={className} style={style}>
-          {tokens.map((line, i) => (
-            <div
-              className="table-row"
-              key={i}
-              {...getLineProps({ line, key: i })}
-            >
-              <div className="table-cell text-right pr-4 select-none opacity-50">
-                {i + 1}
-              </div>
-              <div className="table-cell">
-                {line.map((token, key) => (
-                  <span key={key} {...getTokenProps({ token, key })} />
-                ))}
-              </div>
-            </div>
-          ))}
-        </pre>
+        <div className="language-tab my-12" data-language={language}>
+          <pre className={className} style={style}>
+            {tokens.map((line, i) => {
+              const lineProps = getLineProps({ line, key: i });
+
+              if (shouldHighlightLine(i)) {
+                lineProps.className = `${lineProps.className} highlight-line`;
+              }
+
+              return (
+                <div key={i} {...lineProps}>
+                  <span className="select-none opacity-30 inline-block w-8 ml-4 py-2">
+                    {i + 1}
+                  </span>
+                  {line.map((token, key) => (
+                    <span key={key} {...getTokenProps({ token, key })} />
+                  ))}
+                </div>
+              );
+            })}
+          </pre>
+        </div>
       )}
     </Highlight>
   );

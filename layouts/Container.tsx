@@ -14,7 +14,7 @@ export function Container(props) {
   const { children, ...customMeta } = props;
 
   return (
-    <div className="bg-white dark:bg-[#111827]">
+    <div className="bg-white dark:bg-dark">
       <button
         aria-label="Toggle Dark Mode"
         type="button"
@@ -47,7 +47,7 @@ export function Container(props) {
           </svg>
         )}
       </button>
-      <main className="flex flex-col mx-auto max-w-6xl justify-center px-4 bg-white dark:bg-[#111827] prose prose-lg dark:prose-dark">
+      <main className="flex flex-col mx-auto max-w-4xl justify-center px-4 bg-white dark:bg-dark prose md:prose-lg dark:prose-dark">
         {children}
       </main>
     </div>

@@ -28,7 +28,17 @@ export default function Document(props) {
           href="/static/favicons/safari-pinned-tab.svg"
           rel="mask-icon"
         />
-        <meta content="#ffffff" name="theme-color" />
+        {/* <meta content="#ffffff" name="theme-color" /> */}
+        <meta
+          name="theme-color"
+          content="#111827"
+          media="(prefers-color-scheme: light)"
+        />
+        <meta
+          name="theme-color"
+          content="#111827"
+          media="(prefers-color-scheme: dark)"
+        />
         <meta content="#ffffff" name="msapplication-TileColor" />
         <meta
           content="/static/favicons/browserconfig.xml"

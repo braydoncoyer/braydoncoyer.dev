@@ -9,14 +9,20 @@ module.exports = {
     './layouts/**/*.tsx'
   ],
   darkMode: 'class', // or 'media' or 'class'
+  important: true,
   theme: {
     extend: {
       colors: {
         orange: colors.orange,
+        blueGray: colors.blueGray,
+        coolGray: colors.coolGray,
         teal: colors.teal,
-        midnight: '#111827',
+        dark: '#111827',
+        midnight: '#1e293b',
         emerald: colors.emerald,
-        fuchsia: colors.fuchsia
+        fuchsia: colors.fuchsia,
+        amber: colors.amber,
+        sky: colors.sky
       },
       typography: (theme) => ({
         DEFAULT: {
@@ -38,16 +44,6 @@ module.exports = {
               color: theme('colors.gray.900')
             },
             hr: { borderColor: theme('colors.gray.700') },
-            ol: {
-              li: {
-                '&:before': { color: theme('colors.gray.500') }
-              }
-            },
-            ul: {
-              li: {
-                '&:before': { backgroundColor: theme('colors.teal.500') }
-              }
-            },
             strong: { color: theme('colors.gray.700') },
             thead: {
               color: theme('colors.gray.100'),
@@ -64,41 +60,41 @@ module.exports = {
             },
             code: { color: theme('colors.indigo.500') },
             'blockquote p:first-of-type::before': false,
-            'blockquote p:last-of-type::after': false
+            'blockquote p:last-of-type::after': false,
+            pre: {
+              backgroundColor: theme('colors.gray.100')
+            }
           }
         },
         dark: {
           css: {
-            color: theme('colors.gray.200'),
+            color: theme('colors.gray.400'),
             a: {
-              color: theme('colors.blue.400'),
+              color: theme('colors.emerald.400'),
               '&:hover': {
-                color: theme('colors.blue.600')
+                color: theme('colors.emerald.500')
               },
               code: { color: theme('colors.blue.400') }
             },
             blockquote: {
-              borderLeftColor: theme('colors.gray.700'),
-              color: theme('colors.gray.300')
+              borderLeftColor: theme('colors.emerald.500'),
+              backgroundColor: theme('colors.blueGray.800'),
+              color: theme('colors.gray.400')
             },
-            h1: {
-              color: theme('colors.gray.50')
+            'h1,h2,h3,h4': {
+              color: theme('colors.white')
             },
-            'h2,h3,h4': {
-              color: theme('colors.gray.100'),
-              'scroll-margin-top': spacing[32]
-            },
-            hr: { borderColor: theme('colors.gray.700') },
-            ol: {
-              li: {
-                '&:before': { color: theme('colors.gray.500') }
-              }
-            },
-            ul: {
-              li: {
-                '&:before': { backgroundColor: theme('colors.gray.500') }
-              }
-            },
+            hr: { borderColor: theme('colors.gray.600') },
+            // ol: {
+            //   li: {
+            //     '&:before': { color: theme('colors.gray.400') }
+            //   }
+            // },
+            // ul: {
+            //   li: {
+            //     '&:before': { backgroundColor: theme('colors.emerald.500') }
+            //   }
+            // },
             strong: { color: theme('colors.gray.100') },
             thead: {
               color: theme('colors.gray.100'),
@@ -108,6 +104,10 @@ module.exports = {
               tr: {
                 borderBottomColor: theme('colors.gray.700')
               }
+            },
+            code: { color: theme('colors.indigo.200') },
+            pre: {
+              backgroundColor: theme('colors.midnight')
             }
           }
         }

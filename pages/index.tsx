@@ -21,7 +21,7 @@ export default function Home() {
         Now I'm just writing placeholder content to try out the different blocks
         available. How about <a href="#">a link</a>, <strong>bold text</strong>,{' '}
         <s>strikethrough text</s>,<i>italic text</i> and{' '}
-        <code className="bg-indigo-50 py-0.5 px-2 text-indigo-500 rounded mx-1 inline-block align-middle tracking-tight text-base">
+        <code className="bg-indigo-50 dark:bg-indigo-900 py-0.5 px-2 rounded mx-1 inline-block align-middle tracking-tight text-base">
           code
         </code>
         ?

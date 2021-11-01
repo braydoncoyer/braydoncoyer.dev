@@ -31,7 +31,6 @@ export function ArticleCard({ article }: Props) {
         <Image
           objectFit="cover"
           src={article.coverImage}
-          layout="fixed"
           placeholder="blur"
           blurDataURL={article.coverImage}
           width={600}
