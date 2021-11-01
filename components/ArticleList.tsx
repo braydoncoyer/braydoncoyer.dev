@@ -6,9 +6,11 @@ type Props = {
 };
 
 export function ArticleList({ articles }) {
-  return articles.map((article) => (
-    <li key={article.title}>
-      <ArticleCard article={article} />
-    </li>
-  ));
+  return (
+    <div className="space-y-12 list-none grid grid-cols-1 md:grid-cols-2 gap-8">
+      {articles.map((article) => (
+        <ArticleCard key={article.title} article={article} />
+      ))}
+    </div>
+  );
 }

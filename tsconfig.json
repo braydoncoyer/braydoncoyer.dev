@@ -19,7 +19,8 @@
       "@/data/*": ["data/*"],
       "@/lib/*": ["lib/*"],
       "@/hooks/*": ["lib/hooks/*"]
-    }
+    },
+    "incremental": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
