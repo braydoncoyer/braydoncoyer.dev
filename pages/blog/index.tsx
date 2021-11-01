@@ -5,8 +5,8 @@ import { useEffect, useState } from 'react';
 import { ArticleCard } from '@/components/ArticleCard';
 import { ArticleList } from '@/components/ArticleList';
 import { Client } from '@notionhq/client';
-import Head from 'next/head';
 import { Container } from 'layouts/Container';
+import Head from 'next/head';
 
 export default function Blog({ articles, tags }) {
   const [selectedTag, setSelectedTag] = useState<string>('');
@@ -36,7 +36,7 @@ export default function Blog({ articles, tags }) {
         />
       </div>
       <h2>Tags</h2>
-      <ul className="space-y-4 flex items-center justify-start flex-wrap space-x-4 list-none !important">
+      <ul className="flex items-center justify-start flex-wrap space-x-4 list-none !important">
         {tags &&
           tags.map((tag) => (
             <button key={tag} onClick={() => setSelectedTag(tag)}>
