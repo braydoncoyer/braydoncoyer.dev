@@ -19,6 +19,7 @@ module.exports = {
         teal: colors.teal,
         dark: '#111827',
         midnight: '#1e293b',
+        'midnight-hover': '#334155',
         emerald: colors.emerald,
         fuchsia: colors.fuchsia,
         amber: colors.amber,
@@ -85,16 +86,6 @@ module.exports = {
               color: theme('colors.white')
             },
             hr: { borderColor: theme('colors.gray.600') },
-            // ol: {
-            //   li: {
-            //     '&:before': { color: theme('colors.gray.400') }
-            //   }
-            // },
-            // ul: {
-            //   li: {
-            //     '&:before': { backgroundColor: theme('colors.emerald.500') }
-            //   }
-            // },
             strong: { color: theme('colors.gray.100') },
             thead: {
               color: theme('colors.gray.100'),
