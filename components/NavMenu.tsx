@@ -13,7 +13,7 @@ const links = [
     name: 'Home',
     description:
       'Get a better understanding of where your traffic is coming from.',
-    href: '#',
+    href: '/',
     icon: () => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +34,7 @@ const links = [
   {
     name: 'About',
     description: 'Speak directly to your customers in a more meaningful way.',
-    href: '#',
+    href: '/about',
     icon: () => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -55,7 +55,7 @@ const links = [
   {
     name: 'Projects',
     description: "Your customers' data will be safe and secure.",
-    href: '#',
+    href: '/projects',
     icon: () => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -76,7 +76,7 @@ const links = [
   {
     name: 'Blog',
     description: "Connect with third-party tools that you're already using.",
-    href: '#',
+    href: '/blog',
     icon: () => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +98,7 @@ const links = [
     name: 'Activity',
     description:
       'Build strategic funnels that will drive your customers to convert',
-    href: '#',
+    href: '/activity',
     icon: () => (
       <svg
         xmlns="http://www.w3.org/2000/svg"

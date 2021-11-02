@@ -1,5 +1,4 @@
 import { NavMenu } from '@/components/NavMenu';
-
 export function Container(props) {
   const { children, ...customMeta } = props;
 
