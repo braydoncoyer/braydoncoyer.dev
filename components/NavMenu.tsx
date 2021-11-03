@@ -129,7 +129,7 @@ function NavItem({ href, text }) {
           isActive
             ? 'font-bold text-gray-900 dark:text-gray-200'
             : 'font-normal text-gray-600 dark:text-gray-400'
-        } 'hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-midnight transition-all`}
+        } 'hidden md:inline-block p-1 sm:px-6 sm:py-2 rounded-full hover:bg-gray-100 dark:hover:bg-midnight transition-all`}
       >
         <span
           className={`${
@@ -184,7 +184,7 @@ export function NavMenu({}) {
             </svg>
           </Popover.Button>
         </div>
-        <nav className="hidden md:flex space-x-10 text-lg">
+        <nav className="hidden md:flex space-x-6 text-lg">
           <NavItem href="/" text="Home" />
           <NavItem href="/about" text="About" />
           <NavItem href="/projects" text="Projects" />

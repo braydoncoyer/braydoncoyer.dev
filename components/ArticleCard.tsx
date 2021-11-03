@@ -29,18 +29,22 @@ export function ArticleCard({ article }: Props) {
     <div>
       <button onClick={handleArticleClicked}>
         <Image
-          objectFit="cover"
+          className="rounded-xl"
+          objectFit="fill"
           src={article.coverImage}
           placeholder="blur"
           blurDataURL={article.coverImage}
-          width={600}
-          height={400}
+          width={1200}
+          height={684}
+          layout="intrinsic"
           alt={'article cover'}
         />
-        <p>
-          {article.title} {!hasRead && '- UNREAD'}
-        </p>
-        <p>{article.summary}</p>
+        <div className="text-left w-full">
+          <h3 className="mt-2">
+            {article.title} {!hasRead && '- UNREAD'}
+          </h3>
+          <p>{article.summary}</p>
+        </div>
       </button>
     </div>
   );

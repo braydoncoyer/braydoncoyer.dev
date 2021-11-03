@@ -123,11 +123,12 @@ const renderBlock = (block) => {
       const caption =
         value.caption.length >= 1 ? value.caption[0].plain_text : '';
       return (
-        <figure className="rounded-lg">
+        <figure className="mt-0">
           <Image
-            objectFit="contain"
-            width={1080}
-            height={810}
+            className="rounded-xl"
+            objectFit="fill"
+            width={1200}
+            height={684}
             alt={
               caption
                 ? caption
@@ -248,26 +249,27 @@ const ArticlePage = ({
         <h1 className="text-3xl md:text-5xl text-center">{title}</h1>
         <div className="text-center">
           <div className="flex justify-center items-center space-x-2 text-lg mb-2">
-            <p className="m-0">{publishedOn}</p>
+            <p className="m-0 text-lg md:text-xl">{publishedOn}</p>
             <p className="m-0">•</p>
             <PageViews slug={slug} />
           </div>
           {publishedOn !== modifiedDate && (
-            <p className="text-sm mt-0 text-gray-400 dark:text-gray-600">
+            <p className="text-sm md:text-base mt-0 text-gray-400 dark:text-gray-600">
               (Updated on {modifiedDate})
             </p>
           )}
         </div>
-
-        <Image
-          objectFit="contain"
-          src={coverImage}
-          width={1080}
-          height={810}
-          alt={'article cover'}
-          priority
-        />
-
+        <div className="my-12">
+          <Image
+            className="rounded-xl"
+            objectFit="fill"
+            src={coverImage}
+            width={1200}
+            height={684}
+            alt={'article cover'}
+            priority
+          />
+        </div>
         {content.map((block) => (
           <Fragment key={block.id}>{renderBlock(block)}</Fragment>
         ))}
@@ -280,7 +282,6 @@ const ArticlePage = ({
           Share this article on LinkedIn
         </LinkedinShareButton>
         <button onClick={() => handleCopy()}>Copy Article URL</button>
-
         <div>
           <h2 className="text-xl text-gray-900">More articles</h2>
           <ul>
