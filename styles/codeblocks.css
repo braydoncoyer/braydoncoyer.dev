@@ -117,7 +117,7 @@ input[type='email'] {
 }
 
 .language-tab pre[class*='language-']::before {
-  @apply rounded-t-lg text-blueGray-500 dark:text-gray-300 text-sm absolute right-4 -top-5 text-right uppercase py-1 px-4;
+  @apply rounded-t-lg text-blueGray-500 dark:text-gray-300 text-sm absolute right-0 -top-6 text-right uppercase py-1 px-4;
 }
 
 .language-tab pre[class~='language-jsx']::before {

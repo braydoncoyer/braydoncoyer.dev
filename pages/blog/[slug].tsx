@@ -23,7 +23,7 @@ import { getArticlePublicUrl } from '@/lib/getArticlePublicUrl';
 import { getTwitterProfilePicture } from '@/lib/twitter';
 import siteMetadata from '@/data/siteMetadata';
 import slugify from 'slugify';
-import { useCopyUrlToClipboard } from '@/lib/hooks/useCopyToClipboard';
+import { useCopyToClipboard } from '@/lib/hooks/useCopyToClipboard';
 
 export const Text = ({ text }) => {
   if (!text) {
@@ -216,7 +216,7 @@ const ArticlePage = ({
   profilePicture,
   moreArticles
 }) => {
-  const [isCopied, handleCopy] = useCopyUrlToClipboard();
+  const [isCopied, handleCopy] = useCopyToClipboard();
   const pubilcUrl = getArticlePublicUrl(slug);
 
   const publishedOn = new Date(publishedDate).toLocaleDateString(
