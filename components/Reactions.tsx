@@ -18,13 +18,13 @@ const Reactions = ({ slug }) => {
   } = useArticleReactions(slug);
 
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex justify-between items-center space-x-6">
       <div
         role="button"
         onClick={
           hasLiked ? () => handleDecrementLike() : () => handleIncrementLike()
         }
-        className="bg-[#F8FAFC] dark:bg-midnight px-8 py-4 rounded-lg flex flex-col items-center"
+        className="bg-[#F8FAFC] dark:bg-midnight flex-1 py-4 rounded-lg flex flex-col items-center hover:ring-2 ring-midnight dark:ring-gray-100 transition-all"
       >
         <span className="text-4xl">👍</span>
         <span className="text-xl font-semibold">{reactions?.like_count}</span>
@@ -36,7 +36,7 @@ const Reactions = ({ slug }) => {
         onClick={
           hasLoved ? () => handleDecrementLove() : () => handleIncrementLove()
         }
-        className="bg-[#F8FAFC] dark:bg-midnight px-8 py-4 rounded-lg flex flex-col items-center"
+        className="bg-[#F8FAFC] dark:bg-midnight flex-1 py-4 rounded-lg flex flex-col items-center hover:ring-2 ring-midnight dark:ring-gray-100 transition-all"
       >
         <span className="text-4xl">❤️</span>
         <span className="text-xl font-semibold">{reactions?.love_count}</span>
@@ -48,7 +48,7 @@ const Reactions = ({ slug }) => {
         onClick={
           hasClapped ? () => handleDecrementClap() : () => handleIncrementClap()
         }
-        className="bg-[#F8FAFC] dark:bg-midnight px-8 py-4 rounded-lg flex flex-col items-center"
+        className="bg-[#F8FAFC] dark:bg-midnight flex-1 py-4 rounded-lg flex flex-col items-center hover:ring-2 ring-midnight dark:ring-gray-100 transition-all"
       >
         <span className="text-4xl">👏</span>
         <span className="text-xl font-semibold">{reactions?.clap_count}</span>
@@ -62,7 +62,7 @@ const Reactions = ({ slug }) => {
             ? () => handleDecrementParty()
             : () => handleIncrementParty()
         }
-        className="bg-[#F8FAFC] dark:bg-midnight px-8 py-4 rounded-lg flex flex-col items-center"
+        className="bg-[#F8FAFC] dark:bg-midnight flex-1 py-4 rounded-lg flex flex-col items-center hover:ring-2 ring-midnight dark:ring-gray-100 transition-all"
       >
         <span className="text-4xl">🎉</span>
         <span className="text-xl font-semibold">{reactions?.party_count}</span>

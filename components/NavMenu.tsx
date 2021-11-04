@@ -240,7 +240,7 @@ export function NavMenu({}) {
       >
         <Popover.Panel
           focus
-          className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
+          className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden z-50"
         >
           <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white dark:bg-midnight divide-y-2 divide-gray-200 dark:divide-gray-600">
             <div className="pt-5 pb-6 px-5">
