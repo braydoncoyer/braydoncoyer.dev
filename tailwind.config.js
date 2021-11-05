@@ -18,6 +18,7 @@ module.exports = {
         coolGray: colors.coolGray,
         teal: colors.teal,
         dark: '#111827',
+        darker: '#0d131f',
         midnight: '#1e293b',
         'midnight-hover': '#334155',
         emerald: colors.emerald,
