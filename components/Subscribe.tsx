@@ -92,7 +92,10 @@ export function Subscribe() {
       </p>
       <p>No spam - unsubscribe at any time!</p>
 
-      <form className="my-4 flex" onSubmit={subscribe}>
+      <form
+        className="my-4 space-y-4 md:space-y-0 md:flex"
+        onSubmit={subscribe}
+      >
         <input
           ref={inputEl}
           placeholder="bobloblaw@gmail.com"
@@ -102,7 +105,7 @@ export function Subscribe() {
           className="bg-white dark:bg-midnight py-3 md:py-4 px-8 mr-4 shadow-sm focus:ring-midnight dark:focus:ring-gray-100 block w-full sm:text-sm md:text-lg border-gray-300 dark:border-gray-400 rounded-full"
         />
         <button
-          className="inline-flex items-center justify-center px-6 md:px-6 font-medium bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-full hover:ring-2 ring-midnight dark:ring-gray-100 transition-all"
+          className="md:inline-flex w-full md:w-auto py-2 items-center justify-center px-6 font-medium bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-full hover:ring-2 ring-midnight dark:ring-gray-100 transition-all"
           type="submit"
         >
           {form.state === Form.Loading ? <LoadingSpinner /> : 'Subscribe'}

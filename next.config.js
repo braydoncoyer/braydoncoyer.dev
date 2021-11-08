@@ -7,7 +7,8 @@ module.exports = {
       'pbs.twimg.com', // Twitter Profile Picture
       'dwgyu36up6iuz.cloudfront.net',
       'cdn.hashnode.com',
-      'res.craft.do'
+      'res.craft.do',
+      'res.cloudinary.com'
     ]
   }
 };
