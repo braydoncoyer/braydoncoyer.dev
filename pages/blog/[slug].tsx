@@ -191,11 +191,9 @@ const renderBlock = (block) => {
 
     case 'quote':
       return (
-        <div className="flex space-x-4 bg-gray-50 p-3 border-l-2 border-gray-600 rounded-r-lg">
-          <div>
-            <Text text={value.text} />
-          </div>
-        </div>
+        <blockquote className="p-4 rounded-r-lg">
+          <Text text={value.text} />
+        </blockquote>
       );
     case 'divider':
       return (
@@ -260,6 +258,8 @@ const ArticlePage = ({
       imageUrl={socialImageConf}
       date={new Date(publishedDate).toISOString()}
       type={PageType.ARTICLE}
+      sponsoredArticle={sponsoredArticleUrl !== null}
+      sponsoredUrl={sponsoredArticleUrl}
     >
       <div className="space-y-12">
         <div>

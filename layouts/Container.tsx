@@ -11,9 +11,12 @@ export function Container(props) {
   const meta = {
     title: siteMetadata.title,
     description: siteMetadata.description,
-    imageUrl: 'https://leerob.io/static/images/banner.png',
+    imageUrl: siteMetadata.socialBanner,
     type: PageType.WEBSITE,
     twitterHandle: siteMetadata.twitterHandle,
+    canonicalUrl: customMeta.sponsoredArticle
+      ? customMeta.sponsoredUrl
+      : `${siteMetadata.siteUrl}${router.asPath}`,
     ...customMeta
   };
 
@@ -27,10 +30,7 @@ export function Container(props) {
           property="og:url"
           content={`${siteMetadata.siteUrl}${router.asPath}`}
         />
-        <link
-          rel="canonical"
-          href={`${siteMetadata.siteUrl}${router.asPath}`}
-        />
+        <link rel="canonical" href={meta.canonicalUrl} />
         <meta property="og:type" content={meta.type} />
         <meta property="og:site_name" content="Braydon Coyer" />
         <meta property="og:description" content={meta.description} />
