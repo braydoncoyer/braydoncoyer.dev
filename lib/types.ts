@@ -5,6 +5,11 @@ export enum Form {
   Error
 }
 
+export enum PageType {
+  WEBSITE = 'website',
+  ARTICLE = 'article'
+}
+
 export type FormState = {
   state: Form;
   message?: string;

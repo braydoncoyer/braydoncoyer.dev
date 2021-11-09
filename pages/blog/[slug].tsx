@@ -15,10 +15,12 @@ import { CodeBlock } from '@/components/Codeblock';
 import { Container } from 'layouts/Container';
 import Image from 'next/image';
 import Link from 'next/link';
+import { PageType } from '@/lib/types';
 import PageViews from '@/components/PageViews';
 import Reactions from '@/components/Reactions';
 import { Subscribe } from '@/components/Subscribe';
 import { YoutubeEmbed } from '@/components/YoutubeEmbed';
+import generateSocialImage from '@/lib/generateSocialImage';
 import { getArticlePublicUrl } from '@/lib/getArticlePublicUrl';
 import { getTwitterProfilePicture } from '@/lib/twitter';
 import siteMetadata from '@/data/siteMetadata';
@@ -214,6 +216,7 @@ const ArticlePage = ({
   publishedDate,
   lastEditedAt,
   sponsoredArticleUrl,
+  summary,
   moreArticles
 }) => {
   const [isCopied, handleCopy] = useCopyToClipboard(1500);
@@ -237,6 +240,13 @@ const ArticlePage = ({
     }
   );
 
+  const socialImageConf = generateSocialImage({
+    title,
+    underlayImage: coverImage.slice(coverImage.lastIndexOf('/') + 1),
+    cloudName: 'braydoncoyer',
+    imagePublicID: 'og_social_large.png'
+  });
+
   useEffect(() => {
     fetch(`/api/views/${slug}`, {
       method: 'POST'
@@ -244,7 +254,13 @@ const ArticlePage = ({
   }, [slug]);
 
   return (
-    <Container articlePage={true}>
+    <Container
+      title={`${title} - Braydon Coyer`}
+      description={summary}
+      imageUrl={socialImageConf}
+      date={new Date(publishedDate).toISOString()}
+      type={PageType.ARTICLE}
+    >
       <div className="space-y-12">
         <div>
           <h1 className="text-3xl md:text-5xl text-center">{title}</h1>
@@ -470,6 +486,8 @@ export const getStaticProps: GetStaticProps = async ({ params: { slug } }) => {
   let lastEditedAt = null;
   let coverImage = null;
   let sponsoredArticleUrl = null;
+  let summary = null;
+
   const profilePicture = await getTwitterProfilePicture();
 
   const notion = new Client({
@@ -484,6 +502,7 @@ export const getStaticProps: GetStaticProps = async ({ params: { slug } }) => {
   publishedDate = page.properties.Published.date.start;
   lastEditedAt = page.properties.LastEdited.last_edited_time;
   sponsoredArticleUrl = page.properties.canonicalUrl?.url;
+  summary = page.properties.Summary?.rich_text[0]?.plain_text;
   coverImage =
     page.properties?.coverImage?.files[0]?.file?.url ||
     page.properties.coverImage?.files[0]?.external?.url ||
@@ -518,6 +537,7 @@ export const getStaticProps: GetStaticProps = async ({ params: { slug } }) => {
       slug,
       profilePicture,
       coverImage,
+      summary,
       moreArticles,
       sponsoredArticleUrl
     },

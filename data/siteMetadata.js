@@ -5,7 +5,7 @@ const siteMetadata = {
   description:
     "I'm Braydon. I'm a senior full stack engineer specializing in the front-end. Welcome to my corner of the internet. I'm glad you're here!",
   language: 'en-us',
-  siteUrl: 'https://www.braydoncoyer.dev',
+  siteUrl: 'https://braydoncoyer.dev',
   siteRepo: 'https://github.com/braydoncoyer/braydoncoyer.dev',
   //   siteLogo: "/static/images/bundle_logo.svg",
   //   image: "/static/images/avatar.png",
@@ -13,6 +13,7 @@ const siteMetadata = {
   email: 'mailto:braydon@coyer.net',
   github: 'https://github.com/braydoncoyer',
   twitter: 'https://twitter.com/BraydonCoyer',
+  twitterHandle: '@BraydonCoyer',
   codepen: 'https://codepen.io/braydoncoyer',
   linkedin: 'https://www.linkedin.com/in/braydon-coyer/',
   newsletter: 'https://www.getrevue.co/profile/braydoncoyer',
