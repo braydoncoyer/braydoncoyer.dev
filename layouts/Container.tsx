@@ -1,3 +1,4 @@
+import { Footer } from '@/components/Footer';
 import Head from 'next/head';
 import { NavMenu } from '@/components/NavMenu';
 import { PageType } from '@/lib/types';
@@ -21,7 +22,7 @@ export function Container(props) {
   };
 
   return (
-    <div className="bg-white dark:bg-dark">
+    <div className="bg-white dark:bg-dark min-h-screen">
       <Head>
         <title>{meta.title}</title>
         <meta name="robots" content="follow, index" />
@@ -52,6 +53,7 @@ export function Container(props) {
         } justify-center px-4 bg-white dark:bg-dark prose prose-lg md:prose-xl dark:prose-dark`}
       >
         {children}
+        <Footer />
       </main>
     </div>
   );

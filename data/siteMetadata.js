@@ -8,7 +8,8 @@ const siteMetadata = {
   siteUrl: 'https://braydoncoyer.dev',
   siteRepo: 'https://github.com/braydoncoyer/braydoncoyer.dev',
   //   siteLogo: "/static/images/bundle_logo.svg",
-  // image: "/static/images/avatar.png",
+  avatarImage:
+    'https://res.cloudinary.com/braydoncoyer/image/upload/v1636553710/avatar.jpg',
   socialBanner:
     'https://res.cloudinary.com/braydoncoyer/image/upload/v1636471067/portfolio_banner.png',
   email: 'mailto:braydon@coyer.net',

@@ -13,6 +13,7 @@ Thumbs.db
 UserInterfaceState.xcuserstate
 $RECYCLE.BIN/
 config.xml
+tsconfig.tsbuildinfo
 
 *.log
 log.txt

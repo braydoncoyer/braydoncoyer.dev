@@ -73,7 +73,7 @@ function ReactionCard({ isActive, incrementCB, decrementCB, children }) {
         isActive
           ? 'bg-gray-300 dark:bg-darker'
           : 'bg-blueGray-100 dark:bg-midnight'
-      } flex-1 py-4 rounded-lg flex flex-col items-center hover:ring-2 ring-midnight dark:ring-gray-100 transition-all`}
+      } flex-1 py-4 rounded-lg flex flex-col items-center general-ring-state`}
     >
       {children}
     </div>

@@ -8,48 +8,14 @@ import { fetcher } from '@/lib/fetcher';
 import siteMetadata from '@/data/siteMetadata';
 import { usePlausible } from 'next-plausible';
 import useSWR from 'swr';
+import { useSubscribeToNewsletter } from '@/lib/hooks/useSubscribeToNewsletter';
 
 export function Subscribe() {
-  const [form, setForm] = useState<FormState>({ state: Form.Initial });
-  const plausible = usePlausible();
-  const inputEl = useRef(null);
+  const { form, subscribe, inputEl } = useSubscribeToNewsletter();
   const { data: subData } = useSWR<Subscribers>('/api/subscribers', fetcher);
   const { data: issueData } = useSWR<Subscribers>('/api/issues', fetcher);
   const subscriberCount = new Number(subData?.count);
   const issuesCount = new Number(issueData?.count);
-
-  async function subscribe(e) {
-    e.preventDefault();
-    setForm({ state: Form.Loading });
-
-    const res = await fetch(`/api/subscribe`, {
-      body: JSON.stringify({
-        email: inputEl.current.value
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      method: 'POST'
-    });
-
-    const { error } = await res.json();
-
-    if (error) {
-      setForm({
-        state: Form.Error,
-        message: error
-      });
-      return;
-    }
-
-    plausible('Subscribe');
-
-    inputEl.current.value = '';
-    setForm({
-      state: Form.Success,
-      message: `Success! You've been added to the list!`
-    });
-  }
 
   return (
     <div className="border border-gray-200 rounded-lg p-6 my-4 w-full dark:border-gray-700 bg-[#F8FAFC] dark:bg-midnight">
@@ -105,7 +71,7 @@ export function Subscribe() {
           className="bg-white dark:bg-midnight py-3 md:py-4 px-8 mr-4 shadow-sm focus:ring-midnight dark:focus:ring-gray-100 block w-full sm:text-sm md:text-lg border-gray-300 dark:border-gray-400 rounded-full"
         />
         <button
-          className="md:inline-flex w-full md:w-auto py-2 items-center justify-center px-6 font-medium bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-full hover:ring-2 ring-midnight dark:ring-gray-100 transition-all"
+          className="md:inline-flex w-full md:w-auto py-2 items-center justify-center px-6 font-medium bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-full general-ring-state"
           type="submit"
         >
           {form.state === Form.Loading ? <LoadingSpinner /> : 'Subscribe'}

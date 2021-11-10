@@ -14,3 +14,11 @@
   width: 100%;
   grid-column: 1 / 4;
 }
+
+.article-ring-state {
+  @apply hover:ring ring-teal-500 dark:ring-emerald-400 hover:ring-offset-4 hover:ring-offset-white dark:hover:ring-offset-dark transition-all;
+}
+
+.general-ring-state {
+  @apply hover:ring ring-midnight dark:ring-gray-100 hover:ring-offset-4 hover:ring-offset-white dark:hover:ring-offset-dark transition-all;
+}

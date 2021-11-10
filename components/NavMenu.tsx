@@ -5,6 +5,7 @@ import { Fragment } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import NextLink from 'next/link';
+import siteMetadata from '@/data/siteMetadata';
 import { useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
 
@@ -170,12 +171,14 @@ export function NavMenu({}) {
             alt="Braydon Coyer"
             height={48}
             width={48}
-            src="/avatar.jpeg"
+            src={siteMetadata.avatarImage}
+            placeholder="blur"
+            blurDataURL={siteMetadata.avatarImage}
             className="rounded-full"
           />
         </div>
         <div className="-mr-2 -my-2 md:hidden">
-          <Popover.Button className="bg-gray-200 dark:bg-midnight text-gray-600 dark:text-gray-300 rounded-full p-3.5 inline-flex items-center justify-center hover:text-gray-700 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500">
+          <Popover.Button className="bg-gray-200 dark:bg-midnight text-gray-600 dark:text-gray-300 rounded-full p-3.5 inline-flex items-center justify-center hover:text-gray-700 hover:bg-gray-300 focus:outline-none general-ring-state">
             <span className="sr-only">Open menu</span>
             <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
               <path
@@ -213,7 +216,7 @@ export function NavMenu({}) {
           <button
             aria-label="Toggle Dark Mode"
             type="button"
-            className="w-12 h-12 rounded-full bg-gray-200 dark:bg-midnight flex items-center justify-center  hover:ring-2 ring-gray-300  transition-all"
+            className="w-12 h-12 rounded-full bg-gray-200 dark:bg-midnight flex items-center justify-center general-ring-state"
             onClick={() =>
               setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
             }
@@ -338,7 +341,7 @@ export function NavMenu({}) {
                   />
                 </div>
                 <div className="-mr-2">
-                  <Popover.Button className="bg-gray-200 dark:bg-midnight text-gray-600 dark:text-gray-300 rounded-full p-3.5 inline-flex items-center justify-center hover:text-gray-700 hover:bg-gray-300 dark:hover:bg-midnight-hover focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500">
+                  <Popover.Button className="bg-gray-200 dark:bg-midnight text-gray-600 dark:text-gray-300 rounded-full p-3.5 inline-flex items-center justify-center focus:outline-none general-ring-state">
                     <span className="sr-only">Close menu</span>
                     <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
                       <path
@@ -381,7 +384,7 @@ export function NavMenu({}) {
                 <button
                   aria-label="Toggle Dark Mode"
                   type="button"
-                  className="w-full py-4 rounded-full bg-gray-200 dark:bg-midnight-hover flex items-center justify-center  hover:ring-2 ring-gray-300  transition-all"
+                  className="w-full py-4 rounded-full bg-gray-200 dark:bg-midnight-hover flex items-center justify-center general-ring-state"
                   onClick={() =>
                     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
                   }
