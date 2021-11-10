@@ -336,7 +336,9 @@ export function NavMenu({}) {
                     alt="Braydon Coyer"
                     height={48}
                     width={48}
-                    src="/avatar.jpeg"
+                    src={siteMetadata.avatarImage}
+                    placeholder="blur"
+                    blurDataURL={siteMetadata.avatarImage}
                     className="rounded-full"
                   />
                 </div>

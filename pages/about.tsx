@@ -4,8 +4,8 @@ import Link from 'next/link';
 const workExperience = [
   {
     company: 'Cognizant',
-    title: 'Senior Full-Stack Engineer',
-    duration: '2019 - present'
+    title: 'Sr Full-Stack Engineer',
+    duration: '2019 - Present'
   },
   {
     company: 'projekt202',
@@ -14,7 +14,7 @@ const workExperience = [
   },
   {
     company: 'Major 4 Apps',
-    title: 'Founder / Developer',
+    title: 'Founder',
     duration: '2011 - 2018'
   }
 ];
@@ -54,11 +54,11 @@ export default function About() {
         <p className="col-span-2 m-0 text-2xl md:text-xl font-semibold text-gray-900 dark:text-white">
           Work experience
         </p>
-        <div className="col-span-10 space-y-2">
+        <div className="col-span-10 space-y-2 text-sm md:text-xl">
           {workExperience.map((workItem) => (
             <div
               key={workItem.company}
-              className="flex items-center space-x-8 group"
+              className="flex items-center space-x-3 group"
             >
               <span className="flex-none gover-hover:underline text-gray-900 dark:text-gray-400">
                 {workItem.company}

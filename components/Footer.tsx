@@ -257,8 +257,7 @@ export function Footer() {
             ))}
           </div>
           <p className="mt-8 text-base  md:mt-0 md:order-1">
-            &copy; {new Date().getFullYear()} {siteMetadata.author}. All rights
-            reserved.
+            &copy; {new Date().getFullYear()} {siteMetadata.author}
           </p>
         </div>
       </footer>

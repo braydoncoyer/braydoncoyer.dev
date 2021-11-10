@@ -68,34 +68,6 @@ export default function Blog({ featuredArticle, articles, tags }) {
             }
             className="rounded-xl bg-gray-100 dark:bg-midnight p-8 hover:cursor-pointer space-y-6 article-ring-state"
           >
-            <div className="flex items-center md:justify-end">
-              <p className="m-0 text-lg font-semibold">Featured article</p>
-              <svg
-                className="w-7 h-7"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M17.25 10C17.25 12.8995 14.8995 15.25 12 15.25C9.10051 15.25 6.75 12.8995 6.75 10C6.75 7.10051 9.10051 4.75 12 4.75C14.8995 4.75 17.25 7.10051 17.25 10Z"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></path>
-                <path
-                  d="M8.75 14.75L7.75 19.25L12 17.75L16.25 19.25L15.25 14.75"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></path>
-              </svg>
-              <span className="flex h-3 w-3">
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-teal-500"></span>
-                <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-teal-400 opacity-75"></span>
-              </span>
-            </div>
             <div className="grid grid-cols-1 md:grid-cols-12 gap-x-10">
               <div className="col-span-7">
                 <Image
@@ -111,6 +83,34 @@ export default function Blog({ featuredArticle, articles, tags }) {
                 />
               </div>
               <div className="col-span-5 text-left">
+                <div className="flex items-center md:justify-end mt-4">
+                  <p className="m-0 text-lg font-semibold">Featured article</p>
+                  <svg
+                    className="w-7 h-7"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M17.25 10C17.25 12.8995 14.8995 15.25 12 15.25C9.10051 15.25 6.75 12.8995 6.75 10C6.75 7.10051 9.10051 4.75 12 4.75C14.8995 4.75 17.25 7.10051 17.25 10Z"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></path>
+                    <path
+                      d="M8.75 14.75L7.75 19.25L12 17.75L16.25 19.25L15.25 14.75"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></path>
+                  </svg>
+                  <span className="flex h-3 w-3">
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-teal-500"></span>
+                    <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-teal-400 opacity-75"></span>
+                  </span>
+                </div>
                 <h3>{featuredArticle.title}</h3>
                 <p>{featuredArticle.summary}</p>
               </div>
