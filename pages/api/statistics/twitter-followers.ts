@@ -16,10 +16,9 @@ export default async function handler(
   );
 
   let data = await response.json();
+  followerCount += data.meta?.result_count;
 
   while (data.meta?.next_token) {
-    console.log('INSIDE LOOP');
-    followerCount += data.meta?.result_count;
     response = await fetch(
       `https://api.twitter.com/2/users/2568921814/followers?max_results=1000&pagination_token=${data.meta.next_token}`,
       {
@@ -29,9 +28,8 @@ export default async function handler(
       }
     );
     data = await response.json();
+    followerCount += data.meta?.result_count;
   }
-
-  console.log(followerCount);
 
   return res.status(200).json({ followerCount });
 }
