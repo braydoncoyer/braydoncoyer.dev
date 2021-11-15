@@ -14,7 +14,7 @@ const navigation = {
   ],
   specifics: [
     { name: 'Activity', href: '/activity' },
-    { name: 'Statistics', href: '/statistics' },
+    { name: 'Statistics', href: '/stats' },
     { name: 'Toolbox', href: '/toolbox' },
     {
       name: 'Snippets',

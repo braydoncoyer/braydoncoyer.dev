@@ -15,6 +15,10 @@ export type FormState = {
   message?: string;
 };
 
+export type SocialFollowers = {
+  followers: number;
+};
+
 export type Subscribers = {
   count: number;
 };

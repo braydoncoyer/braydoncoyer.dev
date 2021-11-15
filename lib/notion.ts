@@ -25,6 +25,20 @@ export const getPublishedArticles = async (databaseId) => {
   return response.results;
 };
 
+export const getSponsoredArticles = async (databaseId) => {
+  const response = await notion.databases.query({
+    database_id: databaseId,
+    filter: {
+      property: 'Sponsor',
+      relation: {
+        is_not_empty: true
+      }
+    }
+  });
+
+  return response.results;
+};
+
 export const convertToArticleList = (tableData: any) => {
   let tags: string[] = [];
   const articles = tableData.map((article: any) => {
