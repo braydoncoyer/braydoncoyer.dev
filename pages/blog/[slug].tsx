@@ -100,8 +100,17 @@ const renderBlock = (block) => {
     case 'to_do':
       return (
         <div>
-          <label htmlFor={id}>
-            <input type="checkbox" id={id} defaultChecked={value.checked} />{' '}
+          <label
+            htmlFor={id}
+            className="flex items-center justify-start space-x-3"
+          >
+            <input
+              id={id}
+              aria-describedby={value.text}
+              name={id}
+              type="checkbox"
+              className="focus:ring-teal-500 h-4 w-4 text-teal-500 border-gray-300 rounded"
+            />
             <Text text={value.text} />
           </label>
         </div>

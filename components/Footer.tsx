@@ -244,19 +244,19 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-12 flex justify-between items-center">
-          <div className="flex items-center space-x-6 md:order-2">
+          <div className="flex items-center space-x-6 order-2">
             {navigation.social.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="text-white important"
+                className="text-gray-600 dark:text-white important"
               >
                 <span className="sr-only">{item.name}</span>
                 <item.icon className="h-6 w-6" aria-hidden="true" />
               </a>
             ))}
           </div>
-          <p className="mt-8 text-base  md:mt-0 md:order-1">
+          <p className="text-base order-1">
             &copy; {new Date().getFullYear()} {siteMetadata.author}
           </p>
         </div>
