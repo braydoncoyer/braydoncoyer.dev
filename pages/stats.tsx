@@ -1,30 +1,28 @@
 import { Container } from 'layouts/Container';
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
+import { NewsletterSubs } from '@/components/stats/Newslettersubs';
+import { Pageviews } from '@/components/stats/Pageviews';
+import { SocialFollowers } from '@/components/stats/SocialFollowers';
+import { SponsoredArticles } from '@/components/stats/SponsoredArticles';
+import { TotalArticles } from '@/components/stats/TotalArticles';
+import { TotalReactions } from '@/components/stats/TotalReactions';
+import { Visitors } from '@/components/stats/Visitors';
 import { fetcher } from '@/lib/fetcher';
+import { getGitHubFollowers } from '@/lib/getGitHubFollowers';
+import { getTwitterFollowers } from '@/lib/getTwitterFollowers';
 import useSWR from 'swr';
 
-export default function Stats() {
+export default function Stats({ twitterFollowers, githubFollowers }) {
   const { data: totalArticles } = useSWR<any>(
     '/api/statistics/total-articles',
     fetcher
   );
-  const { data: totalPageviews } = useSWR<any>(
-    '/api/statistics/total-pageviews',
-    fetcher
-  );
-
-  const { data: liveVisitors } = useSWR<any>(
-    '/api/statistics/visitors',
-    fetcher
-  );
-
-  const { data: newsletterSubs } = useSWR<any>('/api/subscribers', fetcher);
 
   let internationalNumberFormat = new Intl.NumberFormat('en-US');
   return (
     <Container>
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
+      {/* <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
         <div className="col-span-12 md:col-span-6">
           <div className="grid grid-cols-6 gap-4">
             <h4 className="col-span-6 m-0">Site stats</h4>
@@ -114,22 +112,50 @@ export default function Stats() {
             </div>
           </div>
         </div>
+      </div> */}
+
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6 mb-1">
+        <div className="grid grid-cols-2 gap-2 md:gap-6">
+          <div className="col-span-2">
+            <h2 className="mb-0 text-base uppercase">Site Stats</h2>
+          </div>
+          <Visitors />
+          <Pageviews />
+          <NewsletterSubs />
+        </div>
+        <div className="grid grid-cols-2 gap-2 md:gap-6">
+          <div className="col-span-2">
+            <h2 className="mb-0 text-base uppercase">Article Stats</h2>
+          </div>
+          <TotalArticles />
+          <SponsoredArticles />
+          <TotalReactions />
+        </div>
+      </div>
+      <div className="md:col-span-2 grid grid-cols-2 gap-2 md:gap-6 mb-1">
+        <div className="sm:col-span-2">
+          <h2 className="mb-0 text-base uppercase">Social Stats</h2>
+        </div>
+        <div className="col-span-2 md:col-span-1 justify-center text-center bg-gray-100 dark:bg-midnight rounded-lg flex flex-col items-center">
+          <SocialFollowers siteName="Twitter" followers={twitterFollowers} />
+        </div>
+        <div className="col-span-2 md:col-span-1 justify-center text-center bg-gray-100 dark:bg-midnight rounded-lg flex flex-col items-center">
+          <SocialFollowers siteName="GitHub" followers={githubFollowers} />
+        </div>
       </div>
     </Container>
   );
 }
 
-// export const getStaticProps: GetStaticProps = async () => {
-//   const twitterFollowers = await fetch('/api/statistics/twitter-followers');
-//   const githubFollowers = await fetch('/api/statistics/github-followers');
+export const getStaticProps: GetStaticProps = async () => {
+  const twitterFollowers = await getTwitterFollowers();
+  const githubFollowers = await getGitHubFollowers();
 
-//   console.log(twitterFollowers, githubFollowers);
-
-//   return {
-//     props: {
-//       twitterFollowers,
-//       githubFollowers
-//     },
-//     revalidate: 60
-//   };
-// };
+  return {
+    props: {
+      twitterFollowers,
+      githubFollowers
+    },
+    revalidate: 10000
+  };
+};
