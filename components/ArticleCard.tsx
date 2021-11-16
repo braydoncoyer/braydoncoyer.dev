@@ -1,6 +1,7 @@
 import { Article } from '@/lib/types';
 import Image from 'next/image';
 import { handleArticleClicked } from '@/lib/handleArticleClick';
+import siteMetadata from '@/data/siteMetadata';
 import slugify from 'slugify';
 import { useIsArticleRead } from '@/hooks/useIsArticleRead';
 import { useRouter } from 'next/dist/client/router';
@@ -20,20 +21,30 @@ export function ArticleCard({ article }: Props) {
       <button onClick={() => handleArticleClicked(slug)}>
         <Image
           className="rounded-xl"
-          objectFit="fill"
+          objectFit="cover"
           src={article.coverImage}
           placeholder="blur"
           blurDataURL={article.coverImage}
-          width={1200}
-          height={684}
+          width={684}
+          height={800}
           layout="intrinsic"
           alt={'article cover'}
         />
         <div className="text-left w-full">
-          <h3 className="mt-2">
-            {article.title}{' '}
+          <h3 className="mt-2 text-2xl">{article.title}</h3>
+          {/* {JSON.stringify(article)} */}
+          {/* <p>{article.summary}</p> */}
+          <span className="text-base font-semibold flex items-center">
+            {new Date(article.publishedDate).toLocaleDateString(
+              siteMetadata.locale,
+              {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              }
+            )}{' '}
             {hasRead && (
-              <span className="text-sm inline-flex items-center text-teal-600 opacity-75 dark:text-teal-800">
+              <span className="text-sm inline-flex items-center text-teal-600 dark:text-teal-800 opacity-75 ml-3">
                 <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
                   <path
                     stroke="currentColor"
@@ -46,8 +57,7 @@ export function ArticleCard({ article }: Props) {
                 <span>read</span>
               </span>
             )}
-          </h3>
-          <p>{article.summary}</p>
+          </span>
         </div>
       </button>
     </div>

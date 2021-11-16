@@ -19,6 +19,8 @@ const siteMetadata = {
   codepen: 'https://codepen.io/braydoncoyer',
   linkedin: 'https://www.linkedin.com/in/braydon-coyer/',
   newsletter: 'https://www.getrevue.co/profile/braydoncoyer',
+  carbonCode: 'CESDE27N',
+  carbonPlacement: 'braydoncoyerdev',
   locale: 'en-US',
   analytics: {
     plausibleDataDomain: 'braydoncoyer.dev' // e.g. tailwind-nextjs-starter-blog.vercel.app

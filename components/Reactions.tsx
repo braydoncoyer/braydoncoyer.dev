@@ -18,7 +18,7 @@ const Reactions = ({ slug }) => {
   } = useArticleReactions(slug);
 
   return (
-    <div className="flex justify-between items-center space-x-6">
+    <div className="grid grid-cols-4 md:grid-cols-2 gap-6 justify-between items-center">
       <ReactionCard
         isActive={hasLiked}
         incrementCB={handleIncrementLike}

@@ -111,7 +111,7 @@ export const getMoreArticlesToSuggest = async (
 
   shuffleArray(moreArticles);
 
-  return moreArticles.slice(0, 2);
+  return moreArticles.slice(0, 3);
 };
 
 export const getArticlePage = (data, slug) => {
