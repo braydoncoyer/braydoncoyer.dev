@@ -6,6 +6,8 @@ import { ArticleList } from '@/components/ArticleList';
 import { Container } from 'layouts/Container';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
+import { Subscribe } from '@/components/Subscribe';
+import { SubscribeSize } from '@/lib/types';
 import { Tag } from '@/components/Tag';
 import { handleArticleClicked } from '@/lib/handleArticleClick';
 import siteMetadata from '@/data/siteMetadata';
@@ -93,7 +95,7 @@ export default function Blog({ featuredArticle, articles, tags }) {
         </button>
         <div className="col-span-4 w-full space-y-12">
           <div className="hidden md:block">
-            <h3 className="text-sm my-0 font-semibold tracking-wider uppercase">
+            {/* <h3 className="text-sm my-0 font-semibold tracking-wider uppercase">
               Newsletter
             </h3>
             <p className="mt-4 text-base ">
@@ -116,11 +118,12 @@ export default function Blog({ featuredArticle, articles, tags }) {
               >
                 Subscribe
               </button>
-            </form>
+            </form> */}
+            <Subscribe size={SubscribeSize.SMALL} />
           </div>
           <div className="hidden md:block">
             <h3 className="text-sm mb-4 font-semibold tracking-wider uppercase">
-              Social
+              Connect with Me
             </h3>
             <div className="flex items-center space-x-6 order-2">
               <a

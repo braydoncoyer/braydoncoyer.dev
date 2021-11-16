@@ -22,7 +22,14 @@ const workExperience = [
 export default function About() {
   return (
     <Container>
-      <h1>About Me</h1>
+      <h1>
+        <span className="block text-base text-center text-teal-500 dark:text-teal-400 font-semibold tracking-wide uppercase">
+          About me
+        </span>
+        <span className="mt-2 block text-4xl text-center leading-10 font-bold sm:text-5xl max-w-2xl mx-auto">
+          Here's my story.
+        </span>
+      </h1>
       <p>
         I’m Braydon, a senior full-stack engineer, creative coder and
         self-proclaimed designer who has a passion for the front-end spectrum. I

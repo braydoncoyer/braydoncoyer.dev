@@ -1,6 +1,8 @@
+import { Form, SubscribeSize } from '@/lib/types';
+
 import { ErrorMessage } from './ErrorMessage';
-import { Form } from '@/lib/types';
 import { LoadingSpinner } from './LoadingSpinner';
+import { Subscribe } from './Subscribe';
 import { SuccessMessage } from './SuccessMessage';
 import siteMetadata from '@/data/siteMetadata';
 import { useSubscribeToNewsletter } from '@/lib/hooks/useSubscribeToNewsletter';
@@ -202,45 +204,7 @@ export function Footer() {
             </div>
           </div>
           <div className="mt-8 xl:mt-0 col-span-2">
-            <h3 className="text-sm font-semibold tracking-wider uppercase">
-              Subscribe to my newsletter
-            </h3>
-            <p className="mt-4 text-base ">
-              A periodic update about my life, recent blog posts, how-tos, and
-              discoveries.
-            </p>
-            <form className="mt-4 sm:flex sm:max-w-md" onSubmit={subscribe}>
-              <label htmlFor="email-address" className="sr-only">
-                Email address
-              </label>
-              <input
-                ref={inputEl}
-                type="email"
-                name="email-address"
-                id="email-address"
-                autoComplete="email"
-                required
-                className="appearance-none min-w-0 w-full bg-gray-200 dark:bg-midnight border border-transparent rounded-full py-3 px-4 text-base  placeholder-gray-600 dark:placeholder-gray-400 focus:outline-none shadow-sm focus:ring-midnight dark:focus:ring-gray-100 "
-                placeholder="bobloblaw@gmail.com"
-              />
-              <div className="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-                <button
-                  type="submit"
-                  className="w-full bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-full general-ring-state border border-transparent py-3 px-4 flex items-center justify-center text-base font-medium general-ring-state"
-                >
-                  {form.state === Form.Loading ? (
-                    <LoadingSpinner />
-                  ) : (
-                    'Subscribe'
-                  )}
-                </button>
-              </div>
-            </form>
-            {form.state === Form.Error ? (
-              <ErrorMessage>{form.message}</ErrorMessage>
-            ) : form.state === Form.Success ? (
-              <SuccessMessage>{form.message}</SuccessMessage>
-            ) : null}
+            <Subscribe size={SubscribeSize.SMALL} />
           </div>
         </div>
         <div className="mt-12 flex justify-between items-center">
@@ -249,7 +213,7 @@ export function Footer() {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-gray-600 dark:text-white important"
+                className="text-gray-600 dark:text-gray-400 important"
               >
                 <span className="sr-only">{item.name}</span>
                 <item.icon className="h-6 w-6" aria-hidden="true" />
