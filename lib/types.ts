@@ -15,6 +15,11 @@ export type FormState = {
   message?: string;
 };
 
+export enum SubscribeSize {
+  SMALL = 'small',
+  LARGE = 'large'
+}
+
 export type SocialFollowers = {
   followers: number;
 };
