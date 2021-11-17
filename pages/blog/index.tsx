@@ -22,7 +22,7 @@ export default function Blog({ featuredArticle, articles, tags }) {
     .filter((post) => {
       return (
         post.title.toLowerCase().includes(searchValue.toLowerCase()) ||
-        post.summary.toLowerCase().includes(searchValue.toLowerCase())
+        post.tags.some((el) => el.name === searchValue.toLocaleLowerCase())
       );
     });
 
@@ -45,11 +45,11 @@ export default function Blog({ featuredArticle, articles, tags }) {
           onClick={() =>
             handleArticleClicked(slugify(featuredArticle.title).toLowerCase())
           }
-          className="hover:cursor-pointer space-y-2 col-span-8 text-left"
+          className="hover:cursor-pointer space-y-2 col-span-8 text-left group"
         >
           <div>
             <Image
-              className="rounded-xl"
+              className="rounded-xl group-hover:opacity-75"
               objectFit="fill"
               src={featuredArticle.coverImage}
               placeholder="blur"
@@ -59,7 +59,7 @@ export default function Blog({ featuredArticle, articles, tags }) {
               layout="intrinsic"
               alt={'article cover'}
             />
-            <div>
+            <div className="">
               <div className="flex items-center md:justify-start mt-4">
                 <p className="m-0 text-lg font-semibold">Featured article</p>
                 <svg
@@ -95,30 +95,6 @@ export default function Blog({ featuredArticle, articles, tags }) {
         </button>
         <div className="col-span-4 w-full space-y-12">
           <div className="hidden md:block">
-            {/* <h3 className="text-sm my-0 font-semibold tracking-wider uppercase">
-              Newsletter
-            </h3>
-            <p className="mt-4 text-base ">
-              Get new articles delivered to your inbox!
-            </p>
-            <form className="my-4 space-y-0 flex relative">
-              <label htmlFor="email-address" className="sr-only">
-                Email address
-              </label>
-              <input
-                placeholder="bobloblaw@gmail.com"
-                type="email"
-                autoComplete="email"
-                required
-                className="bg-white dark:bg-dark md:py-3 px-8 shadow-sm focus:ring-midnight dark:focus:ring-gray-100 block w-full sm:text-sm md:text-base border-gray-300 dark:border-gray-400 rounded-full"
-              />
-              <button
-                className="absolute  right-[5px] top-[5px] py-0.5 items-center justify-center px-4 bg-indigo-500 hover:bg-indigo-600 dark:bg-indigo-500 dark:hover:bg-indigo-400 text-white rounded-full"
-                type="submit"
-              >
-                Subscribe
-              </button>
-            </form> */}
             <Subscribe size={SubscribeSize.SMALL} />
           </div>
           <div className="hidden md:block">
@@ -244,12 +220,6 @@ export default function Blog({ featuredArticle, articles, tags }) {
           </div>
           <div>
             <Ad />
-            {/* <h3 className="text-sm mb-3 font-semibold tracking-wider uppercase">
-              Sponsor
-            </h3>
-            <div className="w-full h-[135px] bg-gray-50 dark:bg-midnight rounded-lg flex items-center justify-center">
-              
-            </div> */}
           </div>
         </div>
       </div>
@@ -268,30 +238,6 @@ export default function Blog({ featuredArticle, articles, tags }) {
             ))}
         </ul>
       </div>
-      {/* <div className="relative">
-        <input
-          className="bg-white dark:bg-midnight py-3 px-8 shadow-sm focus:ring-midnight dark:focus:ring-gray-100 block w-full sm:text-sm md:text-lg border-gray-300 dark:border-midnight-hover rounded-full"
-          type="text"
-          onChange={(e) => setSearchValue(e.target.value)}
-          value={searchValue}
-          placeholder={`Search ${articles.length} articles`}
-        />
-        <svg
-          className="absolute top-[13px] md:top-3.5 right-[20px]"
-          width="24"
-          height="24"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="1.5"
-            d="M19.25 19.25L15.5 15.5M4.75 11C4.75 7.54822 7.54822 4.75 11 4.75C14.4518 4.75 17.25 7.54822 17.25 11C17.25 14.4518 14.4518 17.25 11 17.25C7.54822 17.25 4.75 14.4518 4.75 11Z"
-          ></path>
-        </svg>
-      </div> */}
       <div className="space-y-12 min-h-screen">
         {!filteredArticles.length && (
           <div className="w-full mx-auto rounded-lg bg-[#F8FAFC] dark:bg-midnight p-4">

@@ -1,6 +1,7 @@
 import { Form, SubscribeSize } from '@/lib/types';
 
 import { ErrorMessage } from './ErrorMessage';
+import Link from 'next/link';
 import { LoadingSpinner } from './LoadingSpinner';
 import { Subscribe } from './Subscribe';
 import { SuccessMessage } from './SuccessMessage';
@@ -9,7 +10,7 @@ import { useSubscribeToNewsletter } from '@/lib/hooks/useSubscribeToNewsletter';
 
 const navigation = {
   general: [
-    { name: 'Home', href: '/home' },
+    { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Projects', href: '/projects' },
     { name: 'Blog', href: '/blog' }
@@ -17,17 +18,11 @@ const navigation = {
   specifics: [
     { name: 'Activity', href: '/activity' },
     { name: 'Statistics', href: '/stats' },
-    { name: 'Toolbox', href: '/toolbox' },
-    {
-      name: 'Snippets',
-      href: 'https://www.notion.so/9f35162787e0448094188b66304cf9f6?v=1b9c4e146edf46148fe7b1c5346cbea4'
-    }
+    { name: 'Toolbox', href: '/toolbox' }
   ],
   extra: [
-    { name: 'Newsletter', href: '#' },
     { name: 'Changelog', href: '#' },
-    { name: 'Books', href: '/books' },
-    { name: 'Resume', href: '#' }
+    { name: 'Books', href: '/books' }
   ],
   social: [
     {
@@ -154,14 +149,11 @@ export function Footer() {
                 </h3>
                 <div role="list" className="mt-4 space-y-4">
                   {navigation.general.map((item) => (
-                    <div key={item.name}>
-                      <a
-                        href={item.href}
-                        className="text-base text-gray-600 hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 no-underline hover:underline"
-                      >
+                    <Link key={item.name} href={item.href}>
+                      <a className="block text-base text-gray-600 hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 no-underline hover:underline">
                         {item.name}
                       </a>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -171,15 +163,20 @@ export function Footer() {
                 </h3>
                 <div role="list" className="mt-4 space-y-4">
                   {navigation.specifics.map((item) => (
-                    <div key={item.name}>
-                      <a
-                        href={item.href}
-                        className="text-base text-gray-600 hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 no-underline hover:underline"
-                      >
+                    <Link key={item.name} href={item.href}>
+                      <a className="block text-base text-gray-600 hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 no-underline hover:underline">
                         {item.name}
                       </a>
-                    </div>
+                    </Link>
                   ))}
+                  <a
+                    target="_blank"
+                    href={siteMetadata.snippets}
+                    className="block text-base text-gray-600 hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 no-underline hover:underline"
+                    rel="noreferrer"
+                  >
+                    Snippets
+                  </a>
                 </div>
               </div>
             </div>
@@ -190,15 +187,28 @@ export function Footer() {
                 </h3>
                 <div role="list" className="mt-4 space-y-4">
                   {navigation.extra.map((item) => (
-                    <div key={item.name}>
-                      <a
-                        href={item.href}
-                        className="text-base text-gray-600 hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 no-underline hover:underline"
-                      >
+                    <Link key={item.name} href={item.href}>
+                      <a className="block text-base text-gray-600 hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 no-underline hover:underline">
                         {item.name}
                       </a>
-                    </div>
+                    </Link>
                   ))}
+                  <a
+                    target="_blank"
+                    href={siteMetadata.newsletter}
+                    className="block text-base text-gray-600 hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 no-underline hover:underline"
+                    rel="noreferrer"
+                  >
+                    Newsletter
+                  </a>
+                  <a
+                    target="_blank"
+                    href={siteMetadata.resume}
+                    className="block text-base text-gray-600 hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 no-underline hover:underline"
+                    rel="noreferrer"
+                  >
+                    Resume
+                  </a>
                 </div>
               </div>
             </div>
