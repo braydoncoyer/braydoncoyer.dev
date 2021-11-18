@@ -20,9 +20,22 @@ export default function Stats() {
 
   return (
     <Container>
+      <h1>
+        <span className="block text-base text-center text-teal-500 dark:text-teal-400 font-semibold tracking-wide uppercase">
+          Stats
+        </span>
+        <span className="mt-2 block text-4xl text-center leading-10 font-bold sm:text-5xl max-w-2xl mx-auto">
+          Interested in numbers? I've got you covered.
+        </span>
+      </h1>
       <div className="grid grid-cols-4 gap-2 md:gap-6">
         <div className="col-span-4">
-          <h2 className="mb-0 text-base uppercase">Site Stats</h2>
+          <h2 className="mb-0 text-base uppercase flex items-center">
+            Site Stats{' '}
+            <span className="text-xs ml-4 text-gray-400 dark:text-gray-600">
+              (updated every 60 seconds)
+            </span>
+          </h2>
         </div>
         <Visitors />
         <Pageviews />
@@ -30,7 +43,12 @@ export default function Stats() {
       </div>
       <div className="grid grid-cols-4 gap-2 md:gap-6">
         <div className="col-span-4">
-          <h2 className="mb-0 text-base uppercase">Article Stats</h2>
+          <h2 className="mb-0 text-base uppercase flex items-center">
+            Article Stats{' '}
+            <span className="text-xs ml-4 text-gray-400 dark:text-gray-600">
+              (updated every 60 seconds)
+            </span>
+          </h2>
         </div>
         <TotalArticles />
         <SponsoredArticles />

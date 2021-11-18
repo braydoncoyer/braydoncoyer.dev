@@ -104,10 +104,10 @@ const links = [
     )
   },
   {
-    name: 'Activity',
+    name: 'Stats',
     description:
       'Build strategic funnels that will drive your customers to convert',
-    href: '/activity',
+    href: '/stats',
     icon: () => (
       <svg
         width="24"
@@ -210,7 +210,7 @@ export function NavMenu({}) {
           <NavItem href="/about" text="About" />
           <NavItem href="/projects" text="Projects" />
           <NavItem href="/blog" text="Blog" />
-          <NavItem href="/activity" text="Activity" />
+          <NavItem href="/stats" text="Stats" />
         </nav>
         <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
           <button
