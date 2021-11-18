@@ -21,7 +21,7 @@ const navigation = {
     { name: 'Toolbox', href: '/toolbox' }
   ],
   extra: [
-    { name: 'Changelog', href: '#' },
+    { name: 'Changelog', href: '/changelog' },
     { name: 'Books', href: '/books' }
   ],
   social: [
