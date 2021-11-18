@@ -16,11 +16,6 @@ export default async function handler(
     'like_count, love_count, clap_count, party_count'
   );
 
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=1200, stale-while-revalidate=600'
-  );
-
   data.forEach((item) => {
     likeCount += item.like_count;
     loveCount += item.love_count;
@@ -29,6 +24,11 @@ export default async function handler(
     totalReactions +=
       item.like_count + item.love_count + item.clap_count + item.party_count;
   });
+
+  res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=1200, stale-while-revalidate=600'
+  );
 
   return res.status(200).json({
     likeCount,
