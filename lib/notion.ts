@@ -25,6 +25,14 @@ export const getPublishedArticles = async (databaseId) => {
   return response.results;
 };
 
+export const getToolboxInfo = async (pageId) => {
+  const response = await notion.blocks.children.list({
+    block_id: pageId
+  });
+
+  return response.results;
+};
+
 export const getSponsoredArticles = async (databaseId) => {
   const response = await notion.databases.query({
     database_id: databaseId,
