@@ -9,8 +9,8 @@ import Link from 'next/link';
 const workExperience = [
   {
     company: 'Cognizant',
-    title: 'Sr Full-Stack Engineer',
-    duration: '2019 - Present'
+    title: 'Full-Stack Engineer',
+    duration: '2019 - Now'
   },
   {
     company: 'projekt202',
@@ -36,16 +36,27 @@ export default function About({ mostRecentArticles }) {
         </span>
       </h1>
       <p>
-        I’m Braydon, a developer, creative coder, blogger and self-proclaimed
-        designer who specializes in front-end development. My mission is to
-        translate user-focussed designs into pixel-perfect websites or
-        applications that run blazing fast.
+        I’m Braydon, a developer,{' '}
+        <a href="https://codepen.io/braydoncoyer">creative coder</a>,{' '}
+        <Link href="/blog">
+          <a>blogger</a>
+        </Link>{' '}
+        and self-proclaimed designer who specializes in front-end development.
+        My mission is to translate user-focussed designs into pixel-perfect
+        websites or applications that run blazing fast.
       </p>
       <p>
-        I’m currently working as a senior full-stack engineer at Cognizant where
-        I help architect and develop full-stack RESTful microservices, train and
+        I’m currently working as a senior full-stack engineer at{' '}
+        <a href="https://www.cognizant.com/us/en">Cognizant</a> where I help
+        architect and develop full-stack RESTful microservices, train and
         prepare developers for delivery, and assist in leading the front-end
         practice in a lab-based working environment.
+      </p>
+      <p>
+        Before Cognizant, I worked as a UI Developer for{' '}
+        <a href="https://www.projekt202.com">projekt202</a> helping craft design
+        systems and building reusable component libraries for multi-million
+        dollar companies.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-0 md:gap-x-5">
         <div className="col-span-1">
@@ -62,57 +73,47 @@ export default function About({ mostRecentArticles }) {
           />
         </div>
         <div className="col-span-3">
-          <p className="my-8 md:m-0">
-            Before Cognizant, I worked as a UI Developer for projekt202 helping
-            craft design systems and building reusable component libraries for
-            multi-million dollar companies.
-          </p>
-          <p>
+          <p className="">
             In a past life, I was an indie mobile developer making mobile games
-            for iOS and Android.
+            for iOS and Android, with one of my games outselling Angry Birds.
           </p>
           <p>
-            I always like learning new things. I often write about my findings
-            on my{' '}
+            You can find me on{' '}
+            <a href="https://twitter.com/BraydonCoyer">Twitter</a> where I share
+            tech-related tidbits and build in public, or you can follow me on{' '}
+            <a href="https://github.com/braydoncoyer">GitHub</a>. I often write
+            about my findings on my{' '}
             <Link href="/blog">
               <a>blog</a>
-            </Link>
-            , and post helpful tech-related tidbits on{' '}
-            <a href="https://twitter.com/BraydonCoyer">Twitter</a>. I love
-            creating, whether those things are web applications,{' '}
-            <a href="https://codepen.io/braydoncoyer">CodePen creations</a>,
-            mobile apps, <a href="https://anchor.fm/florida-man">podcasts</a>,
-            or tinkering around in Photoshop or Illustrator.
+            </Link>{' '}
+            and create cool things over on{' '}
+            <a href="https://codepen.io/braydoncoyer">CodePen</a>. I also help
+            run a mediocre <a href="https://anchor.fm/florida-man">podcast</a>.
           </p>
         </div>
       </div>
       <hr className="my-16 w-full border-none text-center h-10 before:content-['∿∿∿'] before:text-[#D1D5DB] before:text-2xl"></hr>
-      <div className="grid items-start grid-cols-1 md:grid-cols-12 mt-12 space-y-6 md:space-y-0">
-        <h2 className="col-span-2 m-0 text-2xl md:text-xl font-semibold text-gray-900 dark:text-white">
-          Work experience
-        </h2>
-        <div className="col-span-10 space-y-2 text-sm md:text-xl">
+      <div className="mt-12 space-y-6">
+        <h2 className="m-0 text-gray-900 dark:text-white">Work experience</h2>
+        <p>Here's a brief rundown of my most recent experiences.</p>
+        <div className="space-y-2">
           {workExperience.map((workItem) => (
             <div
               key={workItem.company}
               className="flex items-center space-x-3 group"
             >
-              <span className="flex-none gover-hover:underline text-gray-900 dark:text-gray-400">
+              <span className="flex-none gover-hover:underline text-gray-900 dark:text-white">
                 {workItem.company}
               </span>
               <span className="flex-shrink w-full border-t border-gray-300 border-dashed dark:border-gray-700"></span>
-              <span className="flex-none text-gray-400 dark:text-gray-600">
-                {workItem.title}
-              </span>
-              <span className="flex-none text-gray-400 dark:text-gray-600">
-                {workItem.duration}
-              </span>
+              <span className="flex-none">{workItem.title}</span>
+              <span className="flex-none">{workItem.duration}</span>
             </div>
           ))}
         </div>
       </div>
       <hr className="my-16 w-full border-none text-center h-10 before:content-['∿∿∿'] before:text-[#D1D5DB] before:text-2xl"></hr>
-      <div>
+      <div className="mb-12">
         <h2>I love to share my knowledge by writing.</h2>
         <p>Check out a few of my most recent publishings.</p>
         <ArticleList articles={mostRecentArticles} />
@@ -120,7 +121,7 @@ export default function About({ mostRecentArticles }) {
       <hr className="my-16 w-full border-none text-center h-10 before:content-['∿∿∿'] before:text-[#D1D5DB] before:text-2xl"></hr>
       <div className="grid grid-cols-1 md:grid-cols-5 gap-y-8 md:gap-x-12">
         <div className="col-span-3">
-          <h2>Want to know what I use day to day?</h2>
+          <h2>Interested in my gear?</h2>
           <p>
             I keep a list of software, applications, extensions, hardware and a
             list of supplies I've used to set up my office for those who are
