@@ -24,7 +24,7 @@ export default async function handler(
 
   res.setHeader(
     'Cache-Control',
-    'public, s-maxage=120, stale-while-revalidate=120'
+    'public, s-maxage=60, stale-while-revalidate=60'
   );
 
   return res.status(200).json({ visitors: data });
