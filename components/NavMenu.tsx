@@ -144,7 +144,7 @@ function NavItem({ href, text }) {
         <span
           className={`${
             isActive
-              ? 'py-1 border-b-2 border-teal-400 dark:border-emerald-500'
+              ? 'py-1 border-b-2 border-teal-400 dark:border-teal-500'
               : 'capsize'
           }`}
         >
