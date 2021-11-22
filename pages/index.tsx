@@ -1,52 +1,79 @@
-import { Container } from 'layouts/Container';
+import { convertToArticleList, getPublishedArticles } from '@/lib/notion';
 
-export default function Home() {
+import { ArticleList } from '@/components/ArticleList';
+import { Container } from 'layouts/Container';
+import { GetStaticProps } from 'next';
+import Image from 'next/image';
+import { Subscribe } from '@/components/Subscribe';
+import { SubscribeSize } from '@/lib/types';
+import siteMetadata from '@/data/siteMetadata';
+import { useRouter } from 'next/router';
+
+export default function Home({ recentArticles }) {
+  const { push } = useRouter();
   return (
     <Container>
-      <h1>
-        <span className="block text-base text-center text-orange-600 dark:text-pink-500 font-semibold tracking-wide uppercase">
-          Introducing
-        </span>
-        <span className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">
-          Braydon's New Portfolio
-        </span>
-      </h1>
-      <p className="mt-8 leading-8">
-        Aliquet nec orci mattis amet quisque ullamcorper neque, nibh sem. At
-        arcu, sit dui mi, nibh dui, diam eget aliquam. Quisque id at vitae
-        feugiat egestas ac. Diam nulla orci at in viverra scelerisque eget.
-        Eleifend egestas fringilla sapien.
-      </p>
-      <p>
-        Now I'm just writing placeholder content to try out the different blocks
-        available. How about <a href="#">a link</a>, <strong>bold text</strong>,{' '}
-        <s>strikethrough text</s>,<i>italic text</i> and{' '}
-        <code className="bg-indigo-50 dark:bg-indigo-900 py-0.5 px-2 rounded mx-1 inline-block align-middle tracking-tight text-base">
-          code
-        </code>
-        ?
-      </p>
-      <h1>Heading 1</h1>
-      <h2>Heading 2</h2>
-      <h3>Heading 3</h3>
-      <h4>Heading 4</h4>
-      <img
-        className="full-bleed"
-        src="https://dwgyu36up6iuz.cloudfront.net/heru80fdn/image/upload/c_fill,d_placeholder_cntraveler.png,fl_progressive,g_face,h_450,q_80,w_800/v1467328944/cntraveler_visiting-the-shire-by-drone.jpg"
-        alt="The Shire"
-      />
-      <ul>
-        <li>Bullet list 1</li>
-        <li>Bullet list 2</li>
-        <li>Bullet list 3</li>
-      </ul>
-      <ol>
-        <li>Numbered list 1</li>
-        <li>Numbered list 2</li>
-        <li>Numbered list 3</li>
-      </ol>
-      <input type="checkbox" />
-      <blockquote>Testing a quote here! Isn't this nice?</blockquote>
+      <div>
+        <div>
+          <div className="mt-24 grid grid-cols-1 md:grid-cols-6 items-center">
+            <h1 className="leading-tight md:leading-normal col-span-5">
+              I'm{' '}
+              <span className="text-teal-500 dark:text-teal-400">Braydon</span>.
+              I'm a developer, blogger and designer working at Cognizant.
+            </h1>
+            <Image
+              alt="Braydon Coyer"
+              height={180}
+              width={180}
+              src={siteMetadata.avatarImage}
+              placeholder="blur"
+              blurDataURL={siteMetadata.avatarImage}
+              className="rounded-full col-span-1"
+              layout="fixed"
+            />
+          </div>
+          <div className="space-y-6 md:space-y-0 md:space-x-4">
+            <button
+              aria-label="Toggle Dark Mode"
+              type="button"
+              className="w-full md:w-auto md:inline-flex py-3 px-12 rounded-full bg-midnight text-white dark:bg-gray-200 dark:text-midnight items-center justify-center general-ring-state"
+              onClick={() => push('/blog')}
+            >
+              Read the blog
+            </button>
+            <button
+              aria-label="Toggle Dark Mode"
+              type="button"
+              className="w-full md:w-auto md:inline-flex py-3 px-12 rounded-full bg-gray-200 dark:bg-midnight items-center justify-center general-ring-state"
+              onClick={() => push('/about')}
+            >
+              More about me
+            </button>
+          </div>
+        </div>
+        <hr className="my-16 w-full border-none text-center h-10 before:content-['∿∿∿'] before:text-[#D1D5DB] before:text-2xl"></hr>
+        <div>
+          <h2>I love to share my knowledge by writing.</h2>
+          <p>Check out a few of my most recent publishings.</p>
+          <ArticleList articles={recentArticles} />
+          <div className="mt-12">
+            <Subscribe size={SubscribeSize.LARGE} />
+          </div>
+        </div>
+        <hr className="my-16 w-full border-none text-center h-10 before:content-['∿∿∿'] before:text-[#D1D5DB] before:text-2xl"></hr>
+      </div>
     </Container>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const data = await getPublishedArticles(process.env.BLOG_DATABASE_ID);
+  const { articles } = convertToArticleList(data);
+
+  return {
+    props: {
+      recentArticles: articles.slice(0, 3)
+    },
+    revalidate: 120
+  };
+};

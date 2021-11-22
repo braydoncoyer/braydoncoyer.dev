@@ -198,7 +198,7 @@ function turnIntoChangelogItem(item: any, array: any[]) {
     {
       title: item.properties.Name.title[0].plain_text,
       description: item.properties.Description.rich_text[0].plain_text,
-      date: item.properties.Date.date.start
+      date: item.properties.Date?.date?.start
     }
   ];
   return updatedChangelogList;
