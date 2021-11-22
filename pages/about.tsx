@@ -24,7 +24,7 @@ const workExperience = [
   }
 ];
 
-export default function About({ mostRecentArticles }) {
+export default function About({ recentArticles }) {
   return (
     <Container>
       <h1>
@@ -116,7 +116,7 @@ export default function About({ mostRecentArticles }) {
       <div className="mb-12">
         <h2>I love to share my knowledge by writing.</h2>
         <p>Check out a few of my most recent publishings.</p>
-        <ArticleList articles={mostRecentArticles} />
+        <ArticleList articles={recentArticles} />
       </div>
       <hr className="my-16 w-full border-none text-center h-10 before:content-['∿∿∿'] before:text-[#D1D5DB] before:text-2xl"></hr>
       <div className="grid grid-cols-1 md:grid-cols-5 gap-y-8 md:gap-x-12">
@@ -173,7 +173,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      mostRecentArticles: articles.slice(0, 3)
+      recentArticles: articles.slice(0, 3)
     },
     revalidate: 120
   };
