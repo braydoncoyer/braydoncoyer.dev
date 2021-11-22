@@ -15,22 +15,24 @@ export default function Home({ recentArticles }) {
     <Container>
       <div>
         <div>
-          <div className="mt-24 grid grid-cols-1 md:grid-cols-6 items-center">
-            <h1 className="leading-tight md:leading-normal col-span-5">
+          <div className="mt-12 md:mt-24 text-center md:text-left grid grid-cols-1 md:grid-cols-6 items-center">
+            <h1 className="leading-tight md:leading-normal col-span-5 order-2 md:order-1">
               I'm{' '}
               <span className="text-teal-500 dark:text-teal-400">Braydon</span>.
               I'm a developer, blogger and designer working at Cognizant.
             </h1>
-            <Image
-              alt="Braydon Coyer"
-              height={180}
-              width={180}
-              src={siteMetadata.avatarImage}
-              placeholder="blur"
-              blurDataURL={siteMetadata.avatarImage}
-              className="rounded-full col-span-1"
-              layout="fixed"
-            />
+            <div className="order-1 md:order-2">
+              <Image
+                alt="Braydon Coyer"
+                height={180}
+                width={180}
+                src={siteMetadata.avatarImage}
+                placeholder="blur"
+                blurDataURL={siteMetadata.avatarImage}
+                className="rounded-full col-span-1"
+                layout="fixed"
+              />
+            </div>
           </div>
           <div className="space-y-6 md:space-y-0 md:space-x-4">
             <button
