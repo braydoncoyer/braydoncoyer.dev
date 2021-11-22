@@ -152,7 +152,7 @@ const ArticlePage = ({
             </div>
           </div>
         </article>
-        <aside className="hidden lg:inline-block md:sticky md:top-[175px] md:self-start col-span-3 space-y-8">
+        <aside className="hidden w-full lg:inline-block md:sticky md:top-[175px] md:self-start col-span-3 space-y-8">
           <h3 className="text-sm m-0 font-semibold tracking-wider uppercase text-center">
             Article Reactions
           </h3>

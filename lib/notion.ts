@@ -1,9 +1,48 @@
 import { Client } from '@notionhq/client';
+import { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints';
 import slugify from 'slugify';
 
 const notion = new Client({
   auth: process.env.NOTION_SECRET
 });
+
+export const getChangelogData = async (databaseId) => {
+  const response: QueryDatabaseResponse = await notion.databases.query({
+    database_id: databaseId,
+    sorts: [
+      {
+        property: 'Date',
+        direction: 'descending'
+      }
+    ]
+  });
+
+  let completed = [],
+    active = [],
+    backlog = [];
+
+  response.results.forEach((item: any) => {
+    switch (item.properties.Status.select.name) {
+      case 'Completed':
+        completed = turnIntoChangelogItem(item, completed);
+        break;
+      case 'Backlog':
+        backlog = turnIntoChangelogItem(item, backlog);
+        break;
+      case 'Active':
+        active = turnIntoChangelogItem(item, active);
+        break;
+      default:
+        break;
+    }
+  });
+
+  return {
+    completed,
+    active,
+    backlog
+  };
+};
 
 export const getPublishedArticles = async (databaseId) => {
   const response = await notion.databases.query({
@@ -151,4 +190,16 @@ export function shuffleArray(array: Array<any>) {
     ];
   }
   return array;
+}
+
+function turnIntoChangelogItem(item: any, array: any[]) {
+  const updatedChangelogList = [
+    ...array,
+    {
+      title: item.properties.Name.title[0].plain_text,
+      description: item.properties.Description.rich_text[0].plain_text,
+      date: item.properties.Date.date.start
+    }
+  ];
+  return updatedChangelogList;
 }

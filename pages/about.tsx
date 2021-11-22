@@ -5,6 +5,7 @@ import { Container } from 'layouts/Container';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import siteMetadata from '@/data/siteMetadata';
 
 const workExperience = [
   {
@@ -37,7 +38,7 @@ export default function About({ recentArticles }) {
       </h1>
       <p>
         I’m Braydon, a developer,{' '}
-        <a href="https://codepen.io/braydoncoyer">creative coder</a>,{' '}
+        <a href={siteMetadata.codepen}>creative coder</a>,{' '}
         <Link href="/blog">
           <a>blogger</a>
         </Link>{' '}
@@ -78,17 +79,16 @@ export default function About({ recentArticles }) {
             for iOS and Android, with one of my games outselling Angry Birds.
           </p>
           <p>
-            You can find me on{' '}
-            <a href="https://twitter.com/BraydonCoyer">Twitter</a> where I share
-            tech-related tidbits and build in public, or you can follow me on{' '}
-            <a href="https://github.com/braydoncoyer">GitHub</a>. I often write
-            about my findings on my{' '}
+            You can find me on <a href={siteMetadata.twitter}>Twitter</a> where
+            I share tech-related tidbits and build in public, or you can follow
+            me on <a href={siteMetadata.github}>GitHub</a>. I often write about
+            my findings on my{' '}
             <Link href="/blog">
               <a>blog</a>
             </Link>{' '}
             and create cool things over on{' '}
-            <a href="https://codepen.io/braydoncoyer">CodePen</a>. I also help
-            run a mediocre <a href="https://anchor.fm/florida-man">podcast</a>.
+            <a href={siteMetadata.codepen}>CodePen</a>. I also help run a
+            mediocre <a href="https://anchor.fm/florida-man">podcast</a>.
           </p>
         </div>
       </div>

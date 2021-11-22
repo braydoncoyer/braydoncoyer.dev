@@ -128,7 +128,7 @@ function InlineSubscribe({ handleSubscribe, form, inputRef }) {
           type="email"
           autoComplete="email"
           required
-          className="bg-white dark:bg-dark md:py-3 px-8 shadow-sm focus:ring-midnight dark:focus:ring-gray-100 block w-full sm:text-sm md:text-base border-gray-300 dark:border-gray-400 rounded-full"
+          className="bg-white dark:bg-dark md:py-3 px-5 shadow-sm focus:ring-midnight dark:focus:ring-gray-100 block w-full sm:text-sm md:text-base border-gray-300 dark:border-gray-400 rounded-full"
         />
         <button
           className="absolute  right-[3px] top-[3px] md:right-[5px] md:top-[5px] py-0.5 items-center justify-center px-4 bg-indigo-500 hover:bg-indigo-600 dark:bg-indigo-500 dark:hover:bg-indigo-400 text-white rounded-full"

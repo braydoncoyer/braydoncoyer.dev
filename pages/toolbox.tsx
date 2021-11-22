@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 
-import { Ad } from '@/components/Ad';
 import { Container } from 'layouts/Container';
 import { GetStaticProps } from 'next';
+import { StickyColumn } from 'layouts/StickyColumn';
 import { getToolboxInfo } from '@/lib/notion';
 import { renderBlocks } from '@/lib/renderBlocks';
 
@@ -17,7 +17,7 @@ export default function Toolbox({ toolboxContent }) {
           Here's what I use on the daily.
         </span>
       </h1>
-      <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-8">
+      <StickyColumn>
         <div className="col-span-8 mt-12">
           <div className="space-y-16">
             {toolboxContent.map((block) => (
@@ -25,10 +25,7 @@ export default function Toolbox({ toolboxContent }) {
             ))}
           </div>
         </div>
-        <aside className="hidden lg:inline-block md:sticky md:top-[365px] md:self-start col-span-4 space-y-8">
-          <Ad />
-        </aside>
-      </div>
+      </StickyColumn>
     </Container>
   );
 }

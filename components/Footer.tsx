@@ -1,12 +1,7 @@
-import { Form, SubscribeSize } from '@/lib/types';
-
-import { ErrorMessage } from './ErrorMessage';
 import Link from 'next/link';
-import { LoadingSpinner } from './LoadingSpinner';
 import { Subscribe } from './Subscribe';
-import { SuccessMessage } from './SuccessMessage';
+import { SubscribeSize } from '@/lib/types';
 import siteMetadata from '@/data/siteMetadata';
-import { useSubscribeToNewsletter } from '@/lib/hooks/useSubscribeToNewsletter';
 
 const navigation = {
   general: [
@@ -16,13 +11,13 @@ const navigation = {
     { name: 'Blog', href: '/blog' }
   ],
   specifics: [
-    { name: 'Activity', href: '/activity' },
+    // { name: 'Activity', href: '/activity' },
     { name: 'Statistics', href: '/stats' },
     { name: 'Toolbox', href: '/toolbox' }
   ],
   extra: [
-    { name: 'Changelog', href: '/changelog' },
-    { name: 'Books', href: '/books' }
+    { name: 'Changelog', href: '/changelog' }
+    // { name: 'Books', href: '/books' }
   ],
   social: [
     {
@@ -135,7 +130,6 @@ const navigation = {
 };
 
 export function Footer() {
-  const { form, subscribe, inputEl } = useSubscribeToNewsletter();
   return (
     <>
       <footer>
