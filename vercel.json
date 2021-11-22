@@ -16,14 +16,6 @@
     {
       "source": "/newsletter",
       "destination": "https://www.getrevue.co/profile/braydoncoyer"
-    },
-    {
-      "source": "/blog/how-i-define-mvp",
-      "destination": "/blog/setting-yourself-up-for-success-how-i-define-mvp-(minimal-viable-product)"
-    },
-    {
-      "source": "/blog/the-kdb-html-tag",
-      "destination": "/blog/the-kbd-html-tag"
     }
   ]
 }
