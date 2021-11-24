@@ -41,7 +41,7 @@ export function Container(props) {
         <meta name="twitter:site" content={meta.twitterHandle} />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
-        <meta name="twitter:image" content={meta.image} />
+        <meta name="twitter:image" content={meta.imageUrl} />
         {meta.date && (
           <meta property="article:published_time" content={meta.date} />
         )}
