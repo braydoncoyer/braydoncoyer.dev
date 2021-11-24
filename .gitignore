@@ -32,6 +32,7 @@ package-lock.json
 /coverage
 /dist
 .env.development
+.env.local
 /public
 .netlify
 /node_modules
