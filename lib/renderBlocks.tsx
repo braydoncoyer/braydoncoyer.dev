@@ -22,7 +22,7 @@ export const Text = ({ text }) => {
           bold ? 'font-bold' : null,
           italic ? 'italic' : null,
           code
-            ? 'bg-indigo-50 dark:bg-indigo-900 dark:bg-opacity-50 text-indigo-500 dark:text-indigo-200 py-0.5 px-2 rounded mx-1 inline-block align-middle tracking-tight text-base'
+            ? 'bg-indigo-200 dark:bg-indigo-900 dark:bg-opacity-50 text-indigo-500 dark:text-indigo-200 py-0.5 px-2 rounded mx-1 inline-block align-middle tracking-tight text-base'
             : null,
           strikethrough ? 'line-through' : null,
           underline ? 'underline' : null

@@ -34,11 +34,11 @@ export default function Document(props) {
           content="#111827"
           media="(prefers-color-scheme: light)"
         />
-        <meta
+        {/* <meta
           name="theme-color"
           content="#111827"
           media="(prefers-color-scheme: dark)"
-        />
+        /> */}
         <meta content="#ffffff" name="msapplication-TileColor" />
         <meta
           content="/static/favicons/browserconfig.xml"
