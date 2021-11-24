@@ -16,7 +16,7 @@ export default function Home({ recentArticles }) {
       <div>
         <div>
           <div className="mt-12 md:mt-24 text-center md:text-left grid grid-cols-1 md:grid-cols-6 items-center">
-            <h1 className="leading-tight md:leading-normal col-span-5 order-2 md:order-1">
+            <h1 className="leading-tight md:leading-normal col-span-5 order-2 md:order-1 text-4xl sm:text-5xl">
               I'm{' '}
               <span className="text-teal-500 dark:text-teal-400">Braydon</span>.
               I'm a developer, blogger and designer working at Cognizant.
