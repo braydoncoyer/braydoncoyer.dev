@@ -18,7 +18,8 @@ export function Container(props) {
     canonicalUrl: customMeta.sponsoredArticle
       ? customMeta.sponsoredUrl
       : `${siteMetadata.siteUrl}${router.asPath}`,
-    ...customMeta
+    date: null
+    // ...customMeta
   };
 
   return (
@@ -48,9 +49,7 @@ export function Container(props) {
       </Head>
       <NavMenu />
       <main
-        className={`flex flex-col mx-auto ${
-          meta.type === PageType.ARTICLE ? 'max-w-6xl' : 'max-w-6xl'
-        } justify-center px-4 bg-white dark:bg-dark prose prose-lg md:prose-xl dark:prose-dark`}
+        className={`flex flex-col mx-auto max-w-6xl justify-center px-4 bg-white dark:bg-dark prose prose-lg md:prose-xl dark:prose-dark`}
       >
         {children}
         <Footer />

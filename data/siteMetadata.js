@@ -11,7 +11,8 @@ const siteMetadata = {
   avatarImage:
     'https://res.cloudinary.com/braydoncoyer/image/upload/v1636553710/avatar.jpg',
   socialBanner:
-    'https://res.cloudinary.com/braydoncoyer/image/upload/v1636471067/portfolio_banner.png',
+    'https://techcrunch.com/wp-content/uploads/2021/11/FDSQYWzVgAA0cEV.jpeg',
+  // 'https://res.cloudinary.com/braydoncoyer/image/upload/v1636471067/portfolio_banner.png',
   email: 'mailto:braydon@coyer.net',
   github: 'https://github.com/braydoncoyer',
   twitter: 'https://twitter.com/BraydonCoyer',
