@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+.circle-obj {
+  background: radial-gradient(
+    closest-side,
+    rgba(45, 212, 191, 1),
+    rgba(233, 168, 2, 0)
+  );
+  animation: traverse-up-left 10s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+.circle-obj2 {
+  background: radial-gradient(
+    closest-side,
+    rgba(99, 102, 241, 1),
+    rgba(233, 168, 2, 0)
+  );
+  animation: traverse-up-right 12s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
 .wrapper {
   display: grid;
   grid-template-columns: 1fr min(65ch, calc(100% - 32px)) 1fr;
@@ -83,4 +103,22 @@
 .no-scrollbar {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+
+@keyframes traverse-up-left {
+  0% {
+  }
+
+  100% {
+    transform: translateY(-200px) translateX(-350px) rotate(180deg);
+  }
+}
+
+@keyframes traverse-up-right {
+  0% {
+  }
+
+  100% {
+    transform: translateY(-200px) translateX(200px) rotate(90deg);
+  }
 }

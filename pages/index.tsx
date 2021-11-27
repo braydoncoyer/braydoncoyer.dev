@@ -12,7 +12,7 @@ import { useRouter } from 'next/router';
 export default function Home({ recentArticles }) {
   const { push } = useRouter();
   return (
-    <Container>
+    <Container showCircles>
       <div>
         <div>
           <div className="mt-12 md:mt-24 text-center md:text-left grid grid-cols-1 md:grid-cols-6 items-center">

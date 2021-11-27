@@ -163,7 +163,7 @@ export function NavMenu({}) {
   useEffect(() => setMounted(true), []);
 
   return (
-    <Popover className="relative text-gray-900 bg-white  dark:bg-dark bg-opacity-60 dark:text-gray-100">
+    <Popover className="relative text-gray-900 dark:text-gray-100 z-50">
       <div className="max-w-6xl px-4 mx-auto flex justify-between items-center py-6 sm:px-6 md:space-x-10">
         <div className="flex justify-start lg:w-0 lg:flex-1">
           <span className="sr-only">Profile Picture</span>
