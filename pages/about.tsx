@@ -1,11 +1,14 @@
 import { convertToArticleList, getPublishedArticles } from '@/lib/notion';
 
 import { ArticleList } from '@/components/ArticleList';
+import { Button } from '@/components/Button';
+import { ButtonType } from '@/lib/types';
 import { Container } from 'layouts/Container';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import siteMetadata from '@/data/siteMetadata';
+import { useRouter } from 'next/router';
 
 const workExperience = [
   {
@@ -26,6 +29,7 @@ const workExperience = [
 ];
 
 export default function About({ recentArticles }) {
+  const { push } = useRouter();
   return (
     <Container>
       <h1>
@@ -127,27 +131,12 @@ export default function About({ recentArticles }) {
             list of supplies I've used to set up my office for those who are
             interested.
           </p>
-          <Link href="/toolbox">
-            <a className="flex items-center">
-              Check out my toolbox{' '}
-              <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="1.5"
-                  d="M13.75 6.75L19.25 12L13.75 17.25"
-                ></path>
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="1.5"
-                  d="M19 12H4.75"
-                ></path>
-              </svg>
-            </a>
-          </Link>
+          <Button
+            buttonType={ButtonType.PRIMARY}
+            onButtonClick={() => push('/toolbox')}
+          >
+            Check out my toolbox
+          </Button>
         </div>
         <div className="col-span-2">
           <Image

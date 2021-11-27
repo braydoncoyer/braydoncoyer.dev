@@ -1,11 +1,12 @@
+import { ButtonType, SubscribeSize } from '@/lib/types';
 import { convertToArticleList, getPublishedArticles } from '@/lib/notion';
 
 import { ArticleList } from '@/components/ArticleList';
+import { Button } from '@/components/Button';
 import { Container } from 'layouts/Container';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import { Subscribe } from '@/components/Subscribe';
-import { SubscribeSize } from '@/lib/types';
 import siteMetadata from '@/data/siteMetadata';
 import { useRouter } from 'next/router';
 
@@ -24,8 +25,8 @@ export default function Home({ recentArticles }) {
             <div className="order-1 md:order-2">
               <Image
                 alt="Braydon Coyer"
-                height={180}
-                width={180}
+                height={160}
+                width={160}
                 src={siteMetadata.avatarImage}
                 placeholder="blur"
                 blurDataURL={siteMetadata.avatarImage}
@@ -35,22 +36,18 @@ export default function Home({ recentArticles }) {
             </div>
           </div>
           <div className="space-y-6 md:space-y-0 md:space-x-4">
-            <button
-              aria-label="Toggle Dark Mode"
-              type="button"
-              className="w-full md:w-auto md:inline-flex py-3 px-12 rounded-full bg-midnight text-white dark:bg-gray-200 dark:text-midnight items-center justify-center general-ring-state"
-              onClick={() => push('/blog')}
+            <Button
+              buttonType={ButtonType.PRIMARY}
+              onButtonClick={() => push('/blog')}
             >
               Read the blog
-            </button>
-            <button
-              aria-label="Toggle Dark Mode"
-              type="button"
-              className="w-full md:w-auto md:inline-flex py-3 px-12 rounded-full bg-gray-200 dark:bg-midnight items-center justify-center general-ring-state"
-              onClick={() => push('/about')}
+            </Button>
+            <Button
+              buttonType={ButtonType.SECONDARY}
+              onButtonClick={() => push('/about')}
             >
               More about me
-            </button>
+            </Button>
           </div>
         </div>
         <hr className="my-16 w-full border-none text-center h-10 before:content-['∿∿∿'] before:text-[#D1D5DB] before:text-2xl"></hr>
@@ -58,7 +55,15 @@ export default function Home({ recentArticles }) {
           <h2>I love to share my knowledge by writing.</h2>
           <p>Check out a few of my most recent publishings.</p>
           <ArticleList articles={recentArticles} />
-          <div className="mt-12">
+          <div className="my-16">
+            <Button
+              buttonType={ButtonType.PRIMARY}
+              onButtonClick={() => push('/blog')}
+            >
+              See all articles
+            </Button>
+          </div>
+          <div className="mt-16">
             <Subscribe size={SubscribeSize.LARGE} />
           </div>
         </div>

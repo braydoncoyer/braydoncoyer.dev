@@ -23,7 +23,11 @@ export function Container(props) {
   };
 
   return (
-    <div className="bg-white dark:bg-dark min-h-screen">
+    <div
+      className={`bg-white dark:bg-dark min-h-screen ${
+        props.showCircles && 'overflow-hidden' // This conditional will hide the overflow on the main page with the circles. If overflow is active on blog pages, sticky sidebar doesn't work
+      }`}
+    >
       <Head>
         <title>{meta.title}</title>
         <meta name="robots" content="follow, index" />
@@ -53,11 +57,11 @@ export function Container(props) {
       >
         {props.showCircles && (
           <div className="absolute top-0 left-0 right-0">
-            <div className="opacity-50 dark:opacity-30 absolute top-0 left-28 overflow-visible">
+            <div className="opacity-50 dark:opacity-30 absolute top-0 left-16 overflow-visible">
               <div className="mix-blend-multiply absolute w-[700px] h-[900px] rounded-[40rem] circle-obj"></div>
             </div>
 
-            <div className="opacity-50 dark:opacity-30 absolute top-28 left-96 overflow-visible">
+            <div className="opacity-50 dark:opacity-30 absolute top-28 left-52 overflow-visible">
               <div className="mix-blend-multiply absolute w-[600px] h-[600px] rounded-[40rem] circle-obj2"></div>
             </div>
           </div>

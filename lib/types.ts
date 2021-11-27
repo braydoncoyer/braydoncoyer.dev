@@ -32,6 +32,12 @@ export type Views = {
   total: number;
 };
 
+export enum ButtonType {
+  PRIMARY = 'primary',
+  SECONDARY = 'secondary',
+  TERTIARY = 'tertiary'
+}
+
 export type Article = {
   title: string;
   tags?: string[];

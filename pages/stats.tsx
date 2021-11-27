@@ -1,3 +1,4 @@
+import { Ad } from '@/components/Ad';
 import { ClapCount } from '@/components/stats/ClapCount';
 import { Container } from 'layouts/Container';
 import { LikeCount } from '@/components/stats/LikeCount';
@@ -40,6 +41,9 @@ export default function Stats() {
         <Visitors />
         <Pageviews />
         <NewsletterSubs />
+      </div>
+      <div className="my-8 flex justify-center items-center">
+        <Ad />
       </div>
       <div className="grid grid-cols-4 gap-2 md:gap-6">
         <div className="col-span-4">

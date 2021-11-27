@@ -119,6 +119,6 @@
   }
 
   100% {
-    transform: translateY(-200px) translateX(200px) rotate(90deg);
+    transform: translateY(-300px) translateX(300px) rotate(360deg);
   }
 }

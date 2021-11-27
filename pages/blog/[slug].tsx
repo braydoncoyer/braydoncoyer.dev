@@ -1,6 +1,6 @@
+import { ButtonType, PageType, SubscribeSize } from '@/lib/types';
 import { Fragment, useEffect } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { PageType, SubscribeSize } from '@/lib/types';
 import {
   getArticlePage,
   getMoreArticlesToSuggest,
@@ -10,12 +10,12 @@ import {
 import { Ad } from '@/components/Ad';
 import { AnchorLink } from '@/components/AnchorLink';
 import { ArticleList } from '@/components/ArticleList';
+import { Button } from '@/components/Button';
 import { Callout } from '@/components/Callout';
 import { Client } from '@notionhq/client';
 import { CodeBlock } from '@/components/Codeblock';
 import { Container } from 'layouts/Container';
 import Image from 'next/image';
-import Link from 'next/link';
 import PageViews from '@/components/PageViews';
 import Reactions from '@/components/Reactions';
 import { ShareArticle } from '@/components/ShareArticle';
@@ -25,6 +25,7 @@ import generateSocialImage from '@/lib/generateSocialImage';
 import { getTwitterProfilePicture } from '@/lib/twitter';
 import siteMetadata from '@/data/siteMetadata';
 import slugify from 'slugify';
+import { useRouter } from 'next/router';
 
 export const Text = ({ text }) => {
   if (!text) {
@@ -226,6 +227,7 @@ const ArticlePage = ({
   summary,
   moreArticles
 }) => {
+  const { push } = useRouter();
   const publishedOn = new Date(publishedDate).toLocaleDateString(
     siteMetadata.locale,
     {
@@ -322,10 +324,13 @@ const ArticlePage = ({
                 </div>
               </Callout>
             )}
-            <div className="flex justify-between items-center">
-              <Link href="/blog">
-                <a>← Back to the blog</a>
-              </Link>
+            <div className="flex justify-between space-x-4 items-center">
+              <Button
+                buttonType={ButtonType.PRIMARY}
+                onButtonClick={() => push('/blog')}
+              >
+                Back to the blog
+              </Button>
               <div className="md:hidden">
                 <ShareArticle title={title} slug={slug} />
               </div>

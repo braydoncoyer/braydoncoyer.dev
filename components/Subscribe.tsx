@@ -1,12 +1,10 @@
-import { Form, FormState, SubscribeSize, Subscribers } from '@/lib/types';
-import React, { useRef, useState } from 'react';
+import { Form, SubscribeSize, Subscribers } from '@/lib/types';
 
 import { ErrorMessage } from './ErrorMessage';
 import { LoadingSpinner } from './LoadingSpinner';
 import { SuccessMessage } from './SuccessMessage';
 import { fetcher } from '@/lib/fetcher';
 import siteMetadata from '@/data/siteMetadata';
-import { usePlausible } from 'next-plausible';
 import useSWR from 'swr';
 import { useSubscribeToNewsletter } from '@/lib/hooks/useSubscribeToNewsletter';
 
@@ -62,27 +60,13 @@ function SubscribeCard({
         className="my-4 space-y-4 md:space-y-0 md:flex relative"
         onSubmit={handleSubscribe}
       >
-        {/* <input
-          ref={inputEl}
-          placeholder="bobloblaw@gmail.com"
-          type="email"
-          autoComplete="email"
-          required
-          className="bg-white dark:bg-midnight py-3 md:py-4 px-8 mr-4 shadow-sm focus:ring-midnight dark:focus:ring-gray-100 block w-full sm:text-sm md:text-lg border-gray-300 dark:border-gray-400 rounded-full"
-        />
-        <button
-          className="md:inline-flex w-full md:w-auto py-2 items-center justify-center px-6 font-medium bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-full general-ring-state"
-          type="submit"
-        >
-          
-        </button> */}
         <input
           ref={inputRef}
           placeholder="bobloblaw@gmail.com"
           type="email"
           autoComplete="email"
           required
-          className="bg-white dark:bg-dark md:py-3 px-8 shadow-sm focus:ring-midnight dark:focus:ring-gray-100 block w-full sm:text-sm md:text-base border-gray-300 dark:border-gray-400 rounded-full"
+          className="bg-white dark:bg-dark md:py-3 px-4 shadow-sm focus:ring-midnight dark:focus:ring-gray-100 block w-full sm:text-sm md:text-base border-gray-300 dark:border-gray-400 rounded-full"
         />
         <button
           className="absolute top-[-13px] right-[3px] md:right-[5px] md:top-[5px] py-0.5 items-center justify-center px-4 bg-indigo-500 hover:bg-indigo-600 dark:bg-indigo-500 dark:hover:bg-indigo-400 text-white rounded-full"
