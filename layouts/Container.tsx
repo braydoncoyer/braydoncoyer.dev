@@ -49,9 +49,20 @@ export function Container(props) {
       </Head>
       <NavMenu />
       <main
-        className={`flex flex-col mx-auto max-w-6xl justify-center px-4 bg-white dark:bg-dark prose prose-lg md:prose-xl dark:prose-dark`}
+        className={`flex flex-col mx-auto max-w-6xl justify-center px-4 bg-white dark:bg-dark prose prose-lg md:prose-xl dark:prose-dark relative`}
       >
-        {children}
+        {props.showCircles && (
+          <div className="absolute top-0 left-0 right-0">
+            <div className="opacity-50 dark:opacity-30 absolute top-0 left-28 overflow-visible">
+              <div className="mix-blend-multiply absolute w-[700px] h-[900px] rounded-[40rem] circle-obj"></div>
+            </div>
+
+            <div className="opacity-50 dark:opacity-30 absolute top-28 left-96 overflow-visible">
+              <div className="mix-blend-multiply absolute w-[600px] h-[600px] rounded-[40rem] circle-obj2"></div>
+            </div>
+          </div>
+        )}
+        <div className="z-10">{children}</div>
         <Footer />
       </main>
     </div>
