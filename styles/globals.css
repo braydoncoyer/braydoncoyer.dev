@@ -36,11 +36,15 @@
 }
 
 .article-ring-state {
-  @apply hover:ring ring-teal-500 dark:ring-emerald-400 hover:ring-offset-4 hover:ring-offset-white dark:hover:ring-offset-dark transition-all;
+  @apply transition-all hover:ring ring-teal-500 dark:ring-emerald-400 hover:ring-offset-4 hover:ring-offset-white dark:hover:ring-offset-dark;
+}
+
+.hr {
+  @apply my-16 w-full border-none text-center h-10 before:content-['∿∿∿'] before:text-[#D1D5DB] before:text-2xl;
 }
 
 .general-ring-state {
-  @apply hover:ring ring-midnight dark:ring-gray-100 hover:ring-offset-4 hover:ring-offset-white dark:hover:ring-offset-dark transition-all;
+  @apply transition-all hover:ring ring-midnight dark:ring-gray-100 hover:ring-offset-4 hover:ring-offset-white dark:hover:ring-offset-dark;
 }
 
 #carbonads {

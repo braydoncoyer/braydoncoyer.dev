@@ -16,8 +16,8 @@ export default function Home({ recentArticles }) {
     <Container showCircles>
       <div>
         <div>
-          <div className="mt-12 md:mt-24 text-center md:text-left grid grid-cols-1 md:grid-cols-6 items-center">
-            <h1 className="leading-tight md:leading-normal col-span-5 order-2 md:order-1 text-4xl sm:text-5xl">
+          <div className="grid items-center grid-cols-1 mt-12 text-center md:mt-24 md:text-left md:grid-cols-6">
+            <h1 className="order-2 col-span-5 text-4xl leading-tight md:leading-normal md:order-1 sm:text-5xl">
               I'm{' '}
               <span className="text-teal-500 dark:text-teal-400">Braydon</span>.
               I'm a developer, blogger and designer working at Cognizant.
@@ -30,7 +30,7 @@ export default function Home({ recentArticles }) {
                 src={siteMetadata.avatarImage}
                 placeholder="blur"
                 blurDataURL={siteMetadata.avatarImage}
-                className="rounded-full col-span-1"
+                className="col-span-1 rounded-full"
                 layout="fixed"
               />
             </div>
@@ -50,7 +50,7 @@ export default function Home({ recentArticles }) {
             </Button>
           </div>
         </div>
-        <hr className="my-16 w-full border-none text-center h-10 before:content-['∿∿∿'] before:text-[#D1D5DB] before:text-2xl"></hr>
+        <hr className="hr"></hr>
         <div>
           <h2>I love to share my knowledge by writing.</h2>
           <p>Check out a few of my most recent publishings.</p>
@@ -67,7 +67,7 @@ export default function Home({ recentArticles }) {
             <Subscribe size={SubscribeSize.LARGE} />
           </div>
         </div>
-        <hr className="my-16 w-full border-none text-center h-10 before:content-['∿∿∿'] before:text-[#D1D5DB] before:text-2xl"></hr>
+        <hr className="hr"></hr>
       </div>
     </Container>
   );
