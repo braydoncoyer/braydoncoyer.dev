@@ -25,12 +25,13 @@ export default function Projects() {
         <div className="col-span-1">
           <h2 className="mt-0">Pomegradient</h2>
           <p>
-            Pomegradient is a web-based gradient solutiuon that allows you to
-            find, save and craft gradients with a creative community!
+            Pomegradient is a web-based gradient solutiuon currently in beta
+            that allows you to find, save and craft gradients with a creative
+            community!
           </p>
           <a
             className="items-center justify-center w-full px-12 py-3 font-medium text-white no-underline rounded-full cursor-pointer md:w-auto md:inline-flex bg-midnight dark:bg-gray-200 dark:text-midnight general-ring-state"
-            href="https://www.npmjs.com/package/ng-limeade"
+            href="https://www.pomegradient.com"
             target="_blank"
             rel="noreferrer"
           >

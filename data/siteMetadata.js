@@ -20,15 +20,14 @@ const siteMetadata = {
   codepen: 'https://codepen.io/braydoncoyer',
   linkedin: 'https://www.linkedin.com/in/braydon-coyer/',
   newsletter: 'https://www.getrevue.co/profile/braydoncoyer',
-  resume:
-    'https://obsidian-adapter-bb6.notion.site/Resume-395af92748204ac6a7078cce24132331',
+  resume: '/static/braydoncoyer_resume.pdf',
   snippets:
     'https://www.notion.so/9f35162787e0448094188b66304cf9f6?v=1b9c4e146edf46148fe7b1c5346cbea4',
   carbonCode: 'CESDE27N',
   carbonPlacement: 'braydoncoyerdev',
   locale: 'en-US',
   analytics: {
-    plausibleDataDomain: 'braydoncoyer.dev' // e.g. tailwind-nextjs-starter-blog.vercel.app
+    plausibleDataDomain: 'braydoncoyer.dev'
   }
 };
 

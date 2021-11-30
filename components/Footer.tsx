@@ -12,7 +12,7 @@ const navigation = {
   ],
   specifics: [
     // { name: 'Activity', href: '/activity' },
-    { name: 'Statistics', href: '/stats' },
+    { name: 'Stats', href: '/stats' },
     { name: 'Toolbox', href: '/toolbox' }
   ],
   extra: [
@@ -138,13 +138,13 @@ export function Footer() {
           <div className="grid grid-cols-2 gap-8 xl:col-span-2">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-sm font-semibold  tracking-wider uppercase">
+                <h3 className="text-sm font-semibold tracking-wider uppercase">
                   General
                 </h3>
                 <div role="list" className="mt-4 space-y-4">
                   {navigation.general.map((item) => (
                     <Link key={item.name} href={item.href}>
-                      <a className="block text-base text-gray-600 hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 no-underline hover:underline">
+                      <a className="block text-base text-gray-600 no-underline hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 hover:underline">
                         {item.name}
                       </a>
                     </Link>
@@ -152,13 +152,13 @@ export function Footer() {
                 </div>
               </div>
               <div className="mt-12 md:mt-0">
-                <h3 className="text-sm font-semibold  tracking-wider uppercase">
+                <h3 className="text-sm font-semibold tracking-wider uppercase">
                   Specifics
                 </h3>
                 <div role="list" className="mt-4 space-y-4">
                   {navigation.specifics.map((item) => (
                     <Link key={item.name} href={item.href}>
-                      <a className="block text-base text-gray-600 hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 no-underline hover:underline">
+                      <a className="block text-base text-gray-600 no-underline hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 hover:underline">
                         {item.name}
                       </a>
                     </Link>
@@ -166,7 +166,7 @@ export function Footer() {
                   <a
                     target="_blank"
                     href={siteMetadata.snippets}
-                    className="block text-base text-gray-600 hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 no-underline hover:underline"
+                    className="block text-base text-gray-600 no-underline hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 hover:underline"
                     rel="noreferrer"
                   >
                     Snippets
@@ -176,13 +176,13 @@ export function Footer() {
             </div>
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-sm font-semibold  tracking-wider uppercase">
+                <h3 className="text-sm font-semibold tracking-wider uppercase">
                   Extra
                 </h3>
                 <div role="list" className="mt-4 space-y-4">
                   {navigation.extra.map((item) => (
                     <Link key={item.name} href={item.href}>
-                      <a className="block text-base text-gray-600 hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 no-underline hover:underline">
+                      <a className="block text-base text-gray-600 no-underline hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 hover:underline">
                         {item.name}
                       </a>
                     </Link>
@@ -190,7 +190,7 @@ export function Footer() {
                   <a
                     target="_blank"
                     href={siteMetadata.newsletter}
-                    className="block text-base text-gray-600 hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 no-underline hover:underline"
+                    className="block text-base text-gray-600 no-underline hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 hover:underline"
                     rel="noreferrer"
                   >
                     Newsletter
@@ -198,7 +198,7 @@ export function Footer() {
                   <a
                     target="_blank"
                     href={siteMetadata.resume}
-                    className="block text-base text-gray-600 hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 no-underline hover:underline"
+                    className="block text-base text-gray-600 no-underline hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 hover:underline"
                     rel="noreferrer"
                   >
                     Resume
@@ -207,12 +207,12 @@ export function Footer() {
               </div>
             </div>
           </div>
-          <div className="mt-8 xl:mt-0 col-span-2">
+          <div className="col-span-2 mt-8 xl:mt-0">
             <Subscribe size={SubscribeSize.SMALL} />
           </div>
         </div>
-        <div className="mt-12 flex justify-between items-center">
-          <div className="flex items-center space-x-6 order-2">
+        <div className="flex items-center justify-between mt-12">
+          <div className="flex items-center order-2 space-x-6">
             {navigation.social.map((item) => (
               <a
                 key={item.name}
@@ -220,11 +220,11 @@ export function Footer() {
                 className="text-gray-600 dark:text-gray-400 important"
               >
                 <span className="sr-only">{item.name}</span>
-                <item.icon className="h-6 w-6" aria-hidden="true" />
+                <item.icon className="w-6 h-6" aria-hidden="true" />
               </a>
             ))}
           </div>
-          <p className="text-base order-1">
+          <p className="order-1 text-base">
             &copy; {new Date().getFullYear()} {siteMetadata.author}
           </p>
         </div>
