@@ -4,7 +4,7 @@ export default function Document(props) {
   return (
     <Html lang="en">
       <Head>
-        <link href="/static/favicons/favicon.ico" rel="shortcut icon" />
+        {/* <link href="/static/favicons/favicon.ico" rel="shortcut icon" />
         <link href="/static/favicons/site.webmanifest" rel="manifest" />
         <link
           href="/static/favicons/apple-touch-icon.png"
@@ -28,22 +28,22 @@ export default function Document(props) {
           href="/static/favicons/safari-pinned-tab.svg"
           rel="mask-icon"
         />
-        {/* <meta content="#ffffff" name="theme-color" /> */}
         <meta
           name="theme-color"
           content="#111827"
           media="(prefers-color-scheme: light)"
         />
+        <meta content="#ffffff" name="msapplication-TileColor" />
+        <meta
+          content="/static/favicons/browserconfig.xml"
+          name="msapplication-config"
+        /> */}
+        {/* <meta content="#ffffff" name="theme-color" /> */}
         {/* <meta
           name="theme-color"
           content="#111827"
           media="(prefers-color-scheme: dark)"
         /> */}
-        <meta content="#ffffff" name="msapplication-TileColor" />
-        <meta
-          content="/static/favicons/browserconfig.xml"
-          name="msapplication-config"
-        />
       </Head>
       <body className="bg-white dark:bg-midnight">
         <Main />
