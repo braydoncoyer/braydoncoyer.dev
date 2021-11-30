@@ -18,8 +18,8 @@ export function Container(props) {
     canonicalUrl: customMeta.sponsoredArticle
       ? customMeta.sponsoredUrl
       : `${siteMetadata.siteUrl}${router.asPath}`,
-    date: null
-    // ...customMeta
+    date: null,
+    ...customMeta
   };
 
   return (
@@ -57,11 +57,11 @@ export function Container(props) {
       >
         {props.showCircles && (
           <div className="absolute top-0 left-0 right-0">
-            <div className="opacity-50 dark:opacity-30 absolute top-0 left-16 overflow-visible">
+            <div className="absolute top-0 overflow-visible opacity-50 dark:opacity-30 left-16">
               <div className="mix-blend-multiply absolute w-[700px] h-[900px] rounded-[40rem] circle-obj"></div>
             </div>
 
-            <div className="opacity-50 dark:opacity-30 absolute top-28 left-52 overflow-visible">
+            <div className="absolute overflow-visible opacity-50 dark:opacity-30 top-28 left-52">
               <div className="mix-blend-multiply absolute w-[600px] h-[600px] rounded-[40rem] circle-obj2"></div>
             </div>
           </div>

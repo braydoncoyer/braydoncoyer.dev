@@ -117,7 +117,7 @@ input[type='email'] {
 }
 
 .language-tab pre[class*='language-']::before {
-  @apply rounded-t-lg text-blueGray-500 dark:text-gray-300 text-sm absolute right-0 -top-6 text-right uppercase py-1 px-4;
+  @apply absolute right-0 px-4 py-1 text-sm text-right uppercase rounded-t-lg text-blueGray-500 dark:text-gray-300 -top-6;
 }
 
 .language-tab pre[class~='language-jsx']::before {
@@ -140,6 +140,10 @@ input[type='email'] {
   content: 'html';
 }
 
+.language-tab pre[class~='language-swift']::before {
+  content: 'swift';
+}
+
 .language-tab pre[class~='language-css']::before {
   content: 'css';
 }
@@ -150,4 +154,8 @@ input[type='email'] {
 
 .language-tab pre[class~='language-bash']::before {
   content: 'bash';
+}
+
+.language-tab pre[class~='language-markdown']::before {
+  content: 'markdown';
 }

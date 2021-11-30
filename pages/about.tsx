@@ -31,12 +31,12 @@ const workExperience = [
 export default function About({ recentArticles }) {
   const { push } = useRouter();
   return (
-    <Container>
+    <Container title="About Me">
       <h1>
-        <span className="block text-base text-center text-teal-500 dark:text-teal-400 font-semibold tracking-wide uppercase">
+        <span className="block text-base font-semibold tracking-wide text-center text-teal-500 uppercase dark:text-teal-400">
           About me
         </span>
-        <span className="mt-2 block text-4xl text-center leading-10 font-bold sm:text-5xl max-w-2xl mx-auto">
+        <span className="block max-w-2xl mx-auto mt-2 text-4xl font-bold leading-10 text-center sm:text-5xl">
           Here's my story.
         </span>
       </h1>
@@ -63,7 +63,7 @@ export default function About({ recentArticles }) {
         systems and building reusable component libraries for multi-million
         dollar companies.
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-0 md:gap-x-5">
+      <div className="grid grid-cols-1 gap-0 md:grid-cols-4 md:gap-x-5">
         <div className="col-span-1">
           <Image
             className="rounded-xl group-hover:opacity-75"
@@ -106,7 +106,7 @@ export default function About({ recentArticles }) {
               key={workItem.company}
               className="flex items-center space-x-3 group"
             >
-              <span className="flex-none gover-hover:underline text-gray-900 dark:text-white">
+              <span className="flex-none text-gray-900 gover-hover:underline dark:text-white">
                 {workItem.company}
               </span>
               <span className="flex-shrink w-full border-t border-gray-300 border-dashed dark:border-gray-700"></span>
