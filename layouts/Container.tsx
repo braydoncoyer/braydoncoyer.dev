@@ -23,10 +23,14 @@ export function Container(props) {
   // };
 
   const meta = {
-    title: 'Lee Robinson – Developer, writer, creator.',
-    description: `Front-end developer, JavaScript enthusiast, and course creator.`,
-    image: 'https://leerob.io/static/images/banner.png',
-    type: 'website',
+    title: siteMetadata.title,
+    description: siteMetadata.description,
+    imageUrl: siteMetadata.socialBanner,
+    type: PageType.WEBSITE,
+    twitterHandle: siteMetadata.twitterHandle,
+    canonicalUrl: customMeta.sponsoredArticle
+      ? customMeta.sponsoredUrl
+      : `${siteMetadata.siteUrl}${router.asPath}`,
     ...customMeta
   };
 
@@ -38,7 +42,7 @@ export function Container(props) {
     >
       <Head>
         {/* <title>{meta.title}</title> */}
-        {/* <title>Braydon Coyer's Test</title>
+        <title>Braydon Coyer's Test</title>
         <meta name="robots" content="follow, index" />
         <meta content={meta.description} name="description" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -60,24 +64,6 @@ export function Container(props) {
         />
 
         <link rel="canonical" href={meta.canonicalUrl} />
-        {meta.date && (
-          <meta property="article:published_time" content={meta.date} />
-        )} */}
-        <title>{meta.title}</title>
-        <meta name="robots" content="follow, index" />
-        <meta content={meta.description} name="description" />
-        <meta property="og:url" content={`https://leerob.io${router.asPath}`} />
-        <link rel="canonical" href={`https://leerob.io${router.asPath}`} />
-        <meta property="og:type" content={meta.type} />
-        <meta property="og:site_name" content="Lee Robinson" />
-        <meta property="og:description" content={meta.description} />
-        <meta property="og:title" content={meta.title} />
-        <meta property="og:image" content={meta.image} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@leeerob" />
-        <meta name="twitter:title" content={meta.title} />
-        <meta name="twitter:description" content={meta.description} />
-        <meta name="twitter:image" content={meta.image} />
         {meta.date && (
           <meta property="article:published_time" content={meta.date} />
         )}

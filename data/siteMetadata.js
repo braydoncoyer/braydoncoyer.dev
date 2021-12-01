@@ -5,7 +5,7 @@ const siteMetadata = {
   description:
     "I'm Braydon. I'm a senior full stack engineer specializing in the front-end. Welcome to my corner of the internet. I'm glad you're here!",
   language: 'en-us',
-  siteUrl: 'https://braydoncoyer-dev.vercel.app',
+  siteUrl: 'https://braydoncoyer.dev',
   siteRepo: 'https://github.com/braydoncoyer/braydoncoyer.dev',
   //   siteLogo: "/static/images/bundle_logo.svg",
   avatarImage:
