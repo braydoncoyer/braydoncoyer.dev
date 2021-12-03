@@ -28,9 +28,9 @@ export function Container(props) {
         props.showCircles && 'overflow-hidden' // This conditional will hide the overflow on the main page with the circles. If overflow is active on blog pages, sticky sidebar doesn't work
       }`}
     >
-      <Head>
-        <title>{meta.title}</title>
-        <meta name="robots" content="follow, index" />
+      {/* <Head> */}
+      {/* <title>{meta.title}</title> */}
+      {/* <meta name="robots" content="follow, index" />
         <meta content={meta.description} name="description" />
         <meta
           property="og:url"
@@ -49,8 +49,8 @@ export function Container(props) {
         <meta name="twitter:image" content={meta.imageUrl} />
         {meta.date && (
           <meta property="article:published_time" content={meta.date} />
-        )}
-      </Head>
+        )} */}
+      {/* </Head> */}
       <NavMenu />
       <main
         className={`flex flex-col mx-auto max-w-6xl justify-center px-4 bg-white dark:bg-dark prose prose-lg md:prose-xl dark:prose-dark relative`}

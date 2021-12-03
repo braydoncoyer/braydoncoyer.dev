@@ -33,10 +33,10 @@ export default function Blog({ featuredArticle, articles, tags }) {
   return (
     <Container>
       <h1>
-        <span className="block text-base text-center text-teal-500 dark:text-teal-400 font-semibold tracking-wide uppercase">
+        <span className="block text-base font-semibold tracking-wide text-center text-teal-500 uppercase dark:text-teal-400">
           My Blog
         </span>
-        <span className="mt-2 block text-4xl text-center leading-10 font-bold sm:text-5xl max-w-2xl mx-auto">
+        <span className="block max-w-2xl mx-auto mt-2 text-4xl font-bold leading-10 text-center sm:text-5xl">
           Insightful and helpful content curated for you.
         </span>
       </h1>
@@ -45,7 +45,7 @@ export default function Blog({ featuredArticle, articles, tags }) {
           onClick={() =>
             handleArticleClicked(slugify(featuredArticle.title).toLowerCase())
           }
-          className="hover:cursor-pointer space-y-2 col-span-8 text-left group"
+          className="col-span-8 space-y-2 text-left hover:cursor-pointer group"
         >
           <div>
             <Image
@@ -60,7 +60,7 @@ export default function Blog({ featuredArticle, articles, tags }) {
               alt={'article cover'}
             />
             <div className="">
-              <div className="flex items-center md:justify-start mt-4">
+              <div className="flex items-center mt-4 md:justify-start">
                 <p className="m-0 text-lg font-semibold">Featured article</p>
                 <svg
                   className="w-7 h-7"
@@ -83,9 +83,9 @@ export default function Blog({ featuredArticle, articles, tags }) {
                     strokeLinejoin="round"
                   ></path>
                 </svg>
-                <span className="flex h-3 w-3">
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-teal-500"></span>
-                  <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-teal-400 opacity-75"></span>
+                <span className="flex w-3 h-3">
+                  <span className="relative inline-flex w-3 h-3 bg-teal-500 rounded-full"></span>
+                  <span className="absolute inline-flex w-3 h-3 bg-teal-400 rounded-full opacity-75 animate-ping"></span>
                 </span>
               </div>
               <h2 className="my-4 text-5xl">{featuredArticle.title}</h2>
@@ -93,15 +93,15 @@ export default function Blog({ featuredArticle, articles, tags }) {
             </div>
           </div>
         </button>
-        <div className="col-span-4 w-full space-y-12">
+        <div className="w-full col-span-4 space-y-12">
           <div className="hidden md:block">
             <Subscribe size={SubscribeSize.SMALL} />
           </div>
           <div className="hidden md:block">
-            <h3 className="text-sm mb-4 font-semibold tracking-wider uppercase">
+            <h3 className="mb-4 text-sm font-semibold tracking-wider uppercase">
               Connect with Me
             </h3>
-            <div className="flex items-center space-x-6 order-2">
+            <div className="flex items-center order-2 space-x-6">
               <a
                 href={siteMetadata.twitter}
                 target="_blank"
@@ -218,13 +218,13 @@ export default function Blog({ featuredArticle, articles, tags }) {
               </a>
             </div>
           </div>
-          <div>
+          {/* <div>
             <Ad />
-          </div>
+          </div> */}
         </div>
       </div>
-      <div className="my-8 border-t border-b border-gray-200 dark:border-gray-600 py-3 overflow-x-auto no-scrollbar">
-        <ul className="flex items-center w-full justify-start">
+      <div className="py-3 my-8 overflow-x-auto border-t border-b border-gray-200 dark:border-gray-600 no-scrollbar">
+        <ul className="flex items-center justify-start w-full">
           {/* Initial tag for all topics */}
           <Tag activeTag={selectedTag} tag="" cb={() => setSelectedTag('')} />
           {tags &&
@@ -238,13 +238,13 @@ export default function Blog({ featuredArticle, articles, tags }) {
             ))}
         </ul>
       </div>
-      <div className="space-y-12 min-h-screen">
+      <div className="min-h-screen space-y-12">
         {!filteredArticles.length && (
           <div className="w-full mx-auto rounded-lg bg-[#F8FAFC] dark:bg-midnight p-4">
-            <p className="text-2xl flex items-center justify-center">
+            <p className="flex items-center justify-center text-2xl">
               No articles found{' '}
               <span>
-                <svg className="w-7 h-7 ml-3" fill="none" viewBox="0 0 24 24">
+                <svg className="ml-3 w-7 h-7" fill="none" viewBox="0 0 24 24">
                   <path
                     stroke="currentColor"
                     strokeLinecap="round"

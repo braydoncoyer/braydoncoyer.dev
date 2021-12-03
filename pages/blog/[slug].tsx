@@ -110,7 +110,7 @@ export function renderBlocks(block) {
               aria-describedby={value.text}
               name={id}
               type="checkbox"
-              className="focus:ring-teal-500 h-4 w-4 text-teal-500 border-gray-300 rounded"
+              className="w-4 h-4 text-teal-500 border-gray-300 rounded focus:ring-teal-500"
             />
             <Text text={value.text} />
           </label>
@@ -273,15 +273,15 @@ const ArticlePage = ({
         <article className="col-span-9 mt-12">
           <div className="space-y-12">
             <div>
-              <h1 className="text-3xl md:text-5xl text-center">{title}</h1>
+              <h1 className="text-3xl text-center md:text-5xl">{title}</h1>
               <div className="text-center">
-                <div className="flex justify-center items-center space-x-2 text-lg mb-2">
+                <div className="flex items-center justify-center mb-2 space-x-2 text-lg">
                   <p className="m-0 text-lg md:text-xl">{publishedOn}</p>
                   <p className="m-0">•</p>
                   <PageViews slug={slug} />
                 </div>
                 {publishedOn !== modifiedDate && (
-                  <p className="text-sm md:text-base mt-0 text-gray-400 dark:text-gray-600">
+                  <p className="mt-0 text-sm text-gray-400 md:text-base dark:text-gray-600">
                     (Updated on {modifiedDate})
                   </p>
                 )}
@@ -324,7 +324,7 @@ const ArticlePage = ({
                 </div>
               </Callout>
             )}
-            <div className="flex justify-between space-x-4 items-center">
+            <div className="flex items-center justify-between space-x-4">
               <Button
                 buttonType={ButtonType.PRIMARY}
                 onButtonClick={() => push('/blog')}
@@ -349,15 +349,15 @@ const ArticlePage = ({
           </div>
         </article>
         <aside className="hidden w-full lg:inline-block md:sticky md:top-[175px] md:self-start col-span-3 space-y-8">
-          <h3 className="text-sm m-0 font-semibold tracking-wider uppercase text-center">
+          <h3 className="m-0 text-sm font-semibold tracking-wider text-center uppercase">
             Article Reactions
           </h3>
           <Reactions slug={slug} />
-          <h3 className="text-sm m-0 font-semibold tracking-wider uppercase text-center">
+          <h3 className="m-0 text-sm font-semibold tracking-wider text-center uppercase">
             Share Article
           </h3>
           <ShareArticle title={title} slug={slug} />
-          <Ad />
+          {/* <Ad /> */}
         </aside>
       </div>
     </Container>

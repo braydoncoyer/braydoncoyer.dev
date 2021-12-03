@@ -13,7 +13,7 @@ import { useRouter } from 'next/router';
 export default function Home({ recentArticles }) {
   const { push } = useRouter();
   return (
-    <Container showCircles>
+    <Container showCircles title="Home - Braydon Coyer">
       <div>
         <div>
           <div className="grid items-center grid-cols-1 mt-12 text-center md:mt-24 md:text-left md:grid-cols-6">
