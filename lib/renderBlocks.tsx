@@ -89,7 +89,7 @@ export function renderBlocks(block) {
               aria-describedby={value.text}
               name={id}
               type="checkbox"
-              className="focus:ring-teal-500 h-4 w-4 text-teal-500 border-gray-300 rounded"
+              className="w-4 h-4 text-teal-500 border-gray-300 rounded focus:ring-teal-500"
             />
             <Text text={value.text} />
           </label>
@@ -173,11 +173,7 @@ export function renderBlocks(block) {
     case 'table_of_contents':
       return <div>TOC</div>;
     case 'video':
-      const embedId = value.external.url.slice(
-        value.external.url.lastIndexOf('=') + 1
-      );
-      return <YoutubeEmbed embedId={embedId} />;
-
+      return <YoutubeEmbed url={value.external.url} />;
     case 'quote':
       return (
         <blockquote className="p-4 rounded-r-lg">
