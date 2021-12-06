@@ -123,7 +123,7 @@ export default function Projects() {
             </div>
           </div>
         </div>
-        <div className="col-span-1">
+        {/* <div className="col-span-1">
           <h2 className="mt-0">The Office API</h2>
           <p>
             A fun side-project originally built with Spring Boot and MonogDb,
@@ -155,7 +155,7 @@ export default function Projects() {
               />
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </Container>
   );
