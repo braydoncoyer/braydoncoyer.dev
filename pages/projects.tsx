@@ -12,7 +12,7 @@ import { useRouter } from 'next/router';
 export default function Projects() {
   const { push } = useRouter();
   return (
-    <Container>
+    <Container title="Porjects - Braydon Coyer">
       <h1>
         <span className="block text-base font-semibold tracking-wide text-center text-teal-500 uppercase dark:text-teal-400">
           Projects

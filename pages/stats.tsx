@@ -20,20 +20,20 @@ export default function Stats() {
   );
 
   return (
-    <Container>
+    <Container title="Stats - Braydon Coyer">
       <h1>
-        <span className="block text-base text-center text-teal-500 dark:text-teal-400 font-semibold tracking-wide uppercase">
+        <span className="block text-base font-semibold tracking-wide text-center text-teal-500 uppercase dark:text-teal-400">
           Stats
         </span>
-        <span className="mt-2 block text-4xl text-center leading-10 font-bold sm:text-5xl max-w-2xl mx-auto">
+        <span className="block max-w-2xl mx-auto mt-2 text-4xl font-bold leading-10 text-center sm:text-5xl">
           Interested in numbers? I've got you covered.
         </span>
       </h1>
       <div className="grid grid-cols-4 gap-2 md:gap-6">
         <div className="col-span-4">
-          <h2 className="mb-0 text-base uppercase flex items-center">
+          <h2 className="flex items-center mb-0 text-base uppercase">
             Site Stats{' '}
-            <span className="text-xs ml-4 text-gray-400 dark:text-gray-600">
+            <span className="ml-4 text-xs text-gray-400 dark:text-gray-600">
               (updated every 60 seconds)
             </span>
           </h2>
@@ -42,14 +42,14 @@ export default function Stats() {
         <Pageviews />
         <NewsletterSubs />
       </div>
-      <div className="my-8 flex justify-center items-center">
+      <div className="flex items-center justify-center my-8">
         <Ad />
       </div>
       <div className="grid grid-cols-4 gap-2 md:gap-6">
         <div className="col-span-4">
-          <h2 className="mb-0 text-base uppercase flex items-center">
+          <h2 className="flex items-center mb-0 text-base uppercase">
             Article Stats{' '}
-            <span className="text-xs ml-4 text-gray-400 dark:text-gray-600">
+            <span className="ml-4 text-xs text-gray-400 dark:text-gray-600">
               (updated every 60 seconds)
             </span>
           </h2>
