@@ -5,14 +5,13 @@ const siteMetadata = {
   description:
     "I'm Braydon. I'm a senior full stack engineer specializing in the front-end. Welcome to my corner of the internet. I'm glad you're here!",
   language: 'en-us',
-  siteUrl: 'https://braydoncoyer-dev.vercel.app',
+  siteUrl: 'https://braydoncoyer.dev',
   siteRepo: 'https://github.com/braydoncoyer/braydoncoyer.dev',
   //   siteLogo: "/static/images/bundle_logo.svg",
   avatarImage:
     'https://res.cloudinary.com/braydoncoyer/image/upload/v1636553710/avatar.jpg',
   socialBanner:
-    'https://techcrunch.com/wp-content/uploads/2021/11/FDSQYWzVgAA0cEV.jpeg',
-  // 'https://res.cloudinary.com/braydoncoyer/image/upload/v1636471067/portfolio_banner.png',
+    'https://res.cloudinary.com/braydoncoyer/image/upload/v1638884997/default-social-image.png',
   email: 'mailto:braydon@coyer.net',
   github: 'https://github.com/braydoncoyer',
   twitter: 'https://twitter.com/BraydonCoyer',
