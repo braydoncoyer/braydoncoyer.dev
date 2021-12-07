@@ -1,6 +1,7 @@
 import { Footer } from '@/components/Footer';
 import Head from 'next/head';
 import { NavMenu } from '@/components/NavMenu';
+import { PageTransition } from '@/components/PageTransition';
 import { PageType } from '@/lib/types';
 import siteMetadata from '@/data/siteMetadata';
 import { useRouter } from 'next/router';
@@ -66,7 +67,9 @@ export function Container(props) {
             </div>
           </div>
         )}
-        <div className="z-10">{children}</div>
+        <div className="z-10">
+          <PageTransition>{children}</PageTransition>
+        </div>
         <Footer />
       </main>
     </div>

@@ -6,6 +6,7 @@ import { ButtonType } from '@/lib/types';
 import { Container } from 'layouts/Container';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Parallax } from '@/components/Parallax';
 import siteMetadata from '@/data/siteMetadata';
 import { useRouter } from 'next/router';
 
@@ -41,17 +42,19 @@ export default function Projects() {
         <div className="col-span-2">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-5">
             <div className="relative col-span-5 overflow-hidden bg-gray-100 rounded-lg dark:bg-midnight h-[450px]">
-              <Image
-                className="absolute top-0 left-0"
-                objectFit="fill"
-                src="https://res.cloudinary.com/braydoncoyer/image/upload/v1638225420/pomegradient_ipadpro_vhapql.png"
-                placeholder="blur"
-                blurDataURL="https://res.cloudinary.com/braydoncoyer/image/upload/v1638225420/pomegradient_ipadpro_vhapql.png"
-                width={1978}
-                height={1713}
-                layout="intrinsic"
-                alt={'NgLimeade on an iPad'}
-              />
+              <Parallax>
+                <Image
+                  className="absolute top-0 left-0"
+                  objectFit="fill"
+                  src="https://res.cloudinary.com/braydoncoyer/image/upload/v1638225420/pomegradient_ipadpro_vhapql.png"
+                  placeholder="blur"
+                  blurDataURL="https://res.cloudinary.com/braydoncoyer/image/upload/v1638225420/pomegradient_ipadpro_vhapql.png"
+                  width={1978}
+                  height={1713}
+                  layout="intrinsic"
+                  alt={'NgLimeade on an iPad'}
+                />
+              </Parallax>
             </div>
           </div>
         </div>
@@ -76,17 +79,19 @@ export default function Projects() {
         <div className="col-span-2">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-5">
             <div className="relative col-span-5 overflow-hidden bg-gray-100 rounded-lg dark:bg-midnight md:h-[450px] h-[350px]">
-              <Image
-                className="absolute top-5 left-1 md:right-[-340px]"
-                objectFit="fill"
-                src="https://res.cloudinary.com/braydoncoyer/image/upload/v1638221102/mbpro_bundle_site_zg8jbe.png"
-                placeholder="blur"
-                blurDataURL="https://res.cloudinary.com/braydoncoyer/image/upload/v1638221102/mbpro_bundle_site_zg8jbe.png"
-                width={5110}
-                height={3139}
-                layout="intrinsic"
-                alt={'Bundle, LLC on a Macbook Pro'}
-              />
+              <Parallax>
+                <Image
+                  className="absolute top-5 left-1 md:right-[-340px]"
+                  objectFit="fill"
+                  src="https://res.cloudinary.com/braydoncoyer/image/upload/v1638221102/mbpro_bundle_site_zg8jbe.png"
+                  placeholder="blur"
+                  blurDataURL="https://res.cloudinary.com/braydoncoyer/image/upload/v1638221102/mbpro_bundle_site_zg8jbe.png"
+                  width={5110}
+                  height={3139}
+                  layout="intrinsic"
+                  alt={'Bundle, LLC on a Macbook Pro'}
+                />
+              </Parallax>
             </div>
           </div>
         </div>
@@ -109,17 +114,19 @@ export default function Projects() {
         <div className="col-span-2">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-5">
             <div className="relative col-span-5 overflow-hidden bg-gray-100 rounded-lg dark:bg-midnight h-[450px]">
-              <Image
-                className="absolute top-0 left-[-150px] md:top-[-150px] md:left-[-300px]"
-                objectFit="fill"
-                src="https://res.cloudinary.com/braydoncoyer/image/upload/v1638226232/nglimeade_ipadpro_blliap.png"
-                placeholder="blur"
-                blurDataURL="https://res.cloudinary.com/braydoncoyer/image/upload/v1638226232/nglimeade_ipadpro_blliap.png"
-                width={1201}
-                height={1788}
-                layout="intrinsic"
-                alt={'NgLimeade on an iPad'}
-              />
+              <Parallax>
+                <Image
+                  className="absolute top-0 left-[-150px] md:top-[-150px] md:left-[-300px]"
+                  objectFit="fill"
+                  src="https://res.cloudinary.com/braydoncoyer/image/upload/v1638226232/nglimeade_ipadpro_blliap.png"
+                  placeholder="blur"
+                  blurDataURL="https://res.cloudinary.com/braydoncoyer/image/upload/v1638226232/nglimeade_ipadpro_blliap.png"
+                  width={1201}
+                  height={1788}
+                  layout="intrinsic"
+                  alt={'NgLimeade on an iPad'}
+                />
+              </Parallax>
             </div>
           </div>
         </div>
