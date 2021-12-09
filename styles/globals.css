@@ -47,6 +47,10 @@
   @apply transition-all hover:ring ring-midnight dark:ring-gray-100 hover:ring-offset-4 hover:ring-offset-white dark:hover:ring-offset-dark;
 }
 
+.outbound-link-button {
+  @apply items-center justify-center w-full px-4 py-3 text-sm font-medium text-center text-white no-underline rounded-full md:text-xl md:px-12 bg-midnight dark:bg-gray-200 dark:text-midnight;
+}
+
 #carbonads {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', Helvetica, Arial,

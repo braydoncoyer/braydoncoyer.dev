@@ -42,7 +42,10 @@ export default function About({ recentArticles }) {
       </h1>
       <p>
         I’m Braydon, a developer,{' '}
-        <a href={siteMetadata.codepen}>creative coder</a>,{' '}
+        <a href={siteMetadata.codepen} className="decoration-wavy">
+          creative coder
+        </a>
+        ,{' '}
         <Link href="/blog">
           <a>blogger</a>
         </Link>{' '}
@@ -109,11 +112,21 @@ export default function About({ recentArticles }) {
               <span className="flex-none text-gray-900 gover-hover:underline dark:text-white">
                 {workItem.company}
               </span>
-              <span className="flex-shrink w-full border-t border-gray-300 border-dashed dark:border-gray-700"></span>
+              <span className="w-full border-t border-gray-300 border-dashed shrink dark:border-gray-700"></span>
               <span className="flex-none">{workItem.title}</span>
               <span className="flex-none">{workItem.duration}</span>
             </div>
           ))}
+        </div>
+        <div className="inline-flex w-full md:w-auto ">
+          <a
+            className="outbound-link-button general-ring-state"
+            href={siteMetadata.resume}
+            target="_blank"
+            rel="noreferrer"
+          >
+            View my resume
+          </a>
         </div>
       </div>
       <hr className="my-16 w-full border-none text-center h-10 before:content-['∿∿∿'] before:text-[#D1D5DB] before:text-2xl"></hr>

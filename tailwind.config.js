@@ -1,20 +1,20 @@
 const colors = require('tailwindcss/colors');
 
 module.exports = {
-  mode: 'jit',
-  purge: [
+  content: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
-    './layouts/**/*.tsx'
+    './layouts/**/*.tsx',
+    './lib/**/*.tsx'
   ],
-  darkMode: 'class', // or 'media' or 'class'
+  darkMode: 'class',
   important: true,
   theme: {
     extend: {
       colors: {
         orange: colors.orange,
-        blueGray: colors.blueGray,
-        coolGray: colors.coolGray,
+        blueGray: colors.slate,
+        coolGray: colors.gray,
         teal: colors.teal,
         dark: '#111827',
         darker: '#0d131f',
@@ -79,7 +79,7 @@ module.exports = {
             },
             blockquote: {
               borderLeftColor: theme('colors.emerald.500'),
-              backgroundColor: theme('colors.blueGray.800'),
+              backgroundColor: theme('colors.slate.800'),
               color: theme('colors.gray.400')
             },
             'h1,h2,h3,h4': {
@@ -105,9 +105,5 @@ module.exports = {
       })
     }
   },
-  variants: {
-    typography: ['dark']
-  },
-  // important: '#app',
   plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')]
 };
