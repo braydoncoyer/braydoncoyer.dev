@@ -1,29 +1,35 @@
-# Next.js + Tailwind CSS Example
+![A preview of my revamped blogfolio](https://res.cloudinary.com/braydoncoyer/image/upload/v1639000556/new_blogfolio_igoj09.png)
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v2.2)](https://blog.tailwindcss.com/tailwindcss-2-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+# braydoncoyer.dev
 
-It uses the new [`Just-in-Time Mode`](https://tailwindcss.com/docs/just-in-time-mode) for Tailwind CSS.
+- **Framework**: [Next.js](https://nextjs.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Content**: [Notion API](https://developers.notion.com)
+- **Database**: [Supabase](https://supabase.com)
+- **Open Graph Images**: [Cloudinary](https://cloudinary.com)
+- **Newsletter**: [Revue](https://www.getrevue.co)
+- **Deployment**: [Vercel](https://vercel.com)
 
-## Preview
+## Project Overview
 
-Preview the example live on [StackBlitz](http://stackblitz.com/):
+- `components/*` - Various components used throughout the site.
+- `layouts/*` - The different layout options available to use on each page.
+- `lib/*` - Short for "library", a collection of helpful utilities or code for external services.
+- `pages/api/*` - [API routes](https://nextjs.org/docs/api-routes/introduction) powering article reactions, article views, [`/stats`](https://braydoncoyer.dev/stats), newsletter subscription, and to generate a sitemap.
+- `pages/blog/*` - Static pre-rendered blog pages that fetch information from the Notion API.
+- `pages/stats` - [Site statistics](https://braydoncoyer.dev/stats) about my website.
+- `pages/*` - All other static pages.
+- `public/*` - Static assets including robots.txt
+- `styles/*` - A handful of global styles, and reusable classes utilzing @apply with Tailwind.
+- `data/*` - a simple object containing global data about the site.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
-
-## Deploy your own
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+## Running Locally
 
 ```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
+$ git clone https://github.com/braydoncoyer/braydoncoyer.dev.git
+$ cd braydoncoyer.dev
+$ npm install
+$ npm run dev
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+Create a `.env` file similar to `.env.example` and include the appropriate keys.
