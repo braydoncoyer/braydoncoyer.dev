@@ -277,7 +277,7 @@ const ArticlePage = ({
                   <PageViews slug={slug} />
                 </div>
                 {publishedOn !== modifiedDate && (
-                  <p className="mt-0 text-sm text-gray-400 md:text-base dark:text-gray-600">
+                  <p className="mt-0 text-sm text-slate-500 md:text-base dark:text-slate-500">
                     (Updated on {modifiedDate})
                   </p>
                 )}
@@ -338,9 +338,7 @@ const ArticlePage = ({
               <p className="mb-12">
                 If you enjoyed this article, you'll find these insightful too!
               </p>
-              <ul>
-                <ArticleList articles={moreArticles} />
-              </ul>
+              <ArticleList articles={moreArticles} />
             </div>
           </div>
         </article>

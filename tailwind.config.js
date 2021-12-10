@@ -1,20 +1,20 @@
 const colors = require('tailwindcss/colors');
 
 module.exports = {
-  mode: 'jit',
-  purge: [
+  content: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
-    './layouts/**/*.tsx'
+    './layouts/**/*.tsx',
+    './lib/**/*.tsx'
   ],
-  darkMode: 'class', // or 'media' or 'class'
+  darkMode: 'class',
   important: true,
   theme: {
     extend: {
       colors: {
         orange: colors.orange,
-        blueGray: colors.blueGray,
-        coolGray: colors.coolGray,
+        blueGray: colors.slate,
+        coolGray: colors.gray,
         teal: colors.teal,
         dark: '#111827',
         darker: '#0d131f',
@@ -28,12 +28,13 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            color: theme('colors.gray.600'),
+            color: theme('colors.slate.700'),
             a: {
-              color: theme('colors.teal.500'),
-              '&:hover': {
-                color: theme('colors.teal.600')
-              },
+              color: theme('colors.slate.900'),
+              '&:hover': {},
+              textDecorationColor: theme('colors.teal.500'),
+              textUnderlineOffset: '3px',
+              textDecorationStyle: 'decoration-solid',
               code: { color: theme('colors.blue.400') }
             },
             blockquote: {
@@ -69,17 +70,20 @@ module.exports = {
         },
         dark: {
           css: {
-            color: theme('colors.gray.400'),
+            color: theme('colors.slate.300'),
             a: {
-              color: theme('colors.emerald.400'),
+              color: theme('colors.slate.50'),
               '&:hover': {
-                color: theme('colors.emerald.500')
+                color: theme('colors.teal.500')
               },
+              textDecorationColor: theme('colors.teal.400'),
+              textUnderlineOffset: '3px',
+              textDecorationStyle: 'decoration-solid',
               code: { color: theme('colors.blue.400') }
             },
             blockquote: {
-              borderLeftColor: theme('colors.emerald.500'),
-              backgroundColor: theme('colors.blueGray.800'),
+              borderLeftColor: theme('colors.teal.500'),
+              backgroundColor: theme('colors.slate.800'),
               color: theme('colors.gray.400')
             },
             'h1,h2,h3,h4': {
@@ -105,9 +109,5 @@ module.exports = {
       })
     }
   },
-  variants: {
-    typography: ['dark']
-  },
-  // important: '#app',
   plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')]
 };
