@@ -42,10 +42,7 @@ export default function About({ recentArticles }) {
       </h1>
       <p>
         I’m Braydon, a developer,{' '}
-        <a href={siteMetadata.codepen} className="decoration-wavy">
-          creative coder
-        </a>
-        ,{' '}
+        <a href={siteMetadata.codepen}>creative coder</a>,{' '}
         <Link href="/blog">
           <a>blogger</a>
         </Link>{' '}
@@ -120,7 +117,7 @@ export default function About({ recentArticles }) {
         </div>
         <div className="inline-flex w-full md:w-auto ">
           <a
-            className="outbound-link-button general-ring-state"
+            className="items-center justify-center w-full px-4 py-3 text-sm font-medium text-center text-white no-underline rounded-full md:text-xl md:px-12 bg-midnight dark:bg-gray-200 dark:text-midnight general-ring-state"
             href={siteMetadata.resume}
             target="_blank"
             rel="noreferrer"

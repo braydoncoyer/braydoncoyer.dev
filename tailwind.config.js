@@ -28,12 +28,13 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            color: theme('colors.gray.600'),
+            color: theme('colors.slate.700'),
             a: {
-              color: theme('colors.teal.500'),
-              '&:hover': {
-                color: theme('colors.teal.600')
-              },
+              color: theme('colors.slate.900'),
+              '&:hover': {},
+              textDecorationColor: theme('colors.teal.500'),
+              textUnderlineOffset: '3px',
+              textDecorationStyle: 'decoration-solid',
               code: { color: theme('colors.blue.400') }
             },
             blockquote: {
@@ -69,16 +70,19 @@ module.exports = {
         },
         dark: {
           css: {
-            color: theme('colors.gray.400'),
+            color: theme('colors.slate.300'),
             a: {
-              color: theme('colors.emerald.400'),
+              color: theme('colors.slate.50'),
               '&:hover': {
-                color: theme('colors.emerald.500')
+                color: theme('colors.teal.500')
               },
+              textDecorationColor: theme('colors.teal.400'),
+              textUnderlineOffset: '3px',
+              textDecorationStyle: 'decoration-solid',
               code: { color: theme('colors.blue.400') }
             },
             blockquote: {
-              borderLeftColor: theme('colors.emerald.500'),
+              borderLeftColor: theme('colors.teal.500'),
               backgroundColor: theme('colors.slate.800'),
               color: theme('colors.gray.400')
             },
