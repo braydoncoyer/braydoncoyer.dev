@@ -7,21 +7,6 @@ module.exports = {
       }
     ];
   },
-  async redirects() {
-    return [
-      {
-        source: '/blog/the-kdb-html-tag',
-        destination: '/blog/the-kbd-html-tag',
-        permanent: true
-      },
-      {
-        source: '/blog/how-i-define-mvp',
-        destination:
-          '/blog/setting-yourself-up-for-success-how-i-define-mvp-(minimal-viable-product)',
-        permanent: true
-      }
-    ];
-  },
   images: {
     domains: [
       's3.us-west-2.amazonaws.com', // Images coming from Notion
