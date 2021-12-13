@@ -1,4 +1,4 @@
-import { convertToArticleList, getPublishedArticles } from '@/lib/notion';
+import { convertToArticleList, getPublishedArticles } from '../lib/notion';
 
 import RSS from 'rss';
 import slugify from 'slugify';
