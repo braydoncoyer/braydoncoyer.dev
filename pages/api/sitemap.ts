@@ -5,7 +5,6 @@ import slugify from 'slugify';
 export default async function handler(req, res) {
   const resp = await getPublishedArticles(process.env.BLOG_DATABASE_ID);
   const articles = await convertToArticleList(resp);
-  console.log(articles);
 
   const routes = articles.articles.map(
     (post) => `/blog/${slugify(post.title).toLocaleLowerCase()}`
