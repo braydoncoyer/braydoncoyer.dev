@@ -1,19 +1,11 @@
-import { convertToArticleList, getPublishedArticles } from '@/lib/notion';
-
-import { ArticleList } from '@/components/ArticleList';
-import { Button } from '@/components/Button';
-import { ButtonType } from '@/lib/types';
 import { Container } from 'layouts/Container';
 import Image from 'next/image';
-import Link from 'next/link';
 import { Parallax } from '@/components/Parallax';
-import siteMetadata from '@/data/siteMetadata';
 import { useRouter } from 'next/router';
 
 export default function Projects() {
-  const { push } = useRouter();
   return (
-    <Container title="Porjects - Braydon Coyer">
+    <Container title="Projects - Braydon Coyer">
       <h1>
         <span className="block text-base font-semibold tracking-wide text-center text-teal-500 uppercase dark:text-teal-400">
           Projects
