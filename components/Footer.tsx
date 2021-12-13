@@ -22,7 +22,7 @@ const navigation = {
   social: [
     {
       name: 'Twitter',
-      href: '#',
+      href: siteMetadata.twitter,
       icon: (props) => (
         <svg
           className="w-7 h-7 transform hover:rotate-[-4deg] transition"
@@ -42,7 +42,7 @@ const navigation = {
     },
     {
       name: 'LinkedIn',
-      href: '#',
+      href: siteMetadata.linkedin,
       icon: (props) => (
         <svg
           className="w-7 h-7 transform hover:rotate-[-4deg] transition"
@@ -90,7 +90,7 @@ const navigation = {
     },
     {
       name: 'GitHub',
-      href: '#',
+      href: siteMetadata.github,
       icon: (props) => (
         <svg
           className="w-7 h-7 transform hover:rotate-[-4deg] transition"
@@ -110,7 +110,7 @@ const navigation = {
     },
     {
       name: 'CodePen',
-      href: '#',
+      href: siteMetadata.codepen,
       icon: (props) => (
         <svg
           stroke="currentColor"
