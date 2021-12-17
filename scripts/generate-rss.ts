@@ -4,7 +4,7 @@ import RSS from 'rss';
 import slugify from 'slugify';
 import { writeFileSync } from 'fs';
 
-async function generate() {
+export async function generateRssFeed() {
   const resp = await getPublishedArticles(process.env.BLOG_DATABASE_ID);
   const articles = await convertToArticleList(resp);
 
@@ -27,5 +27,3 @@ async function generate() {
 
   writeFileSync('./public/rss.xml', feed.xml({ indent: true }));
 }
-
-generate();
