@@ -48,8 +48,6 @@ export default function generateSocialImage({
     )}`
   ].join(',');
 
-  const ex = `braydoncoyer.dev%252blog%252`;
-
   // combine all the pieces required to generate a Cloudinary URL
   const urlParts = [
     cloudinaryUrlBase,

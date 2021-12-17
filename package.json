@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.mjs",
+    "postbuild": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.ts",
     "start": "next start",
     "check-types": "tsc --pretty --noEmit",
     "check-format": "prettier --check .",
