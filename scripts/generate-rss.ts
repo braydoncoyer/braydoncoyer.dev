@@ -1,8 +1,8 @@
 import { convertToArticleList, getPublishedArticles } from '../lib/notion';
+import { mkdirSync, writeFileSync } from 'fs';
 
 import RSS from 'rss';
 import slugify from 'slugify';
-import { writeFileSync } from 'fs';
 
 export async function generateRssFeed() {
   const resp = await getPublishedArticles(process.env.BLOG_DATABASE_ID);
@@ -25,5 +25,6 @@ export async function generateRssFeed() {
     });
   });
 
-  writeFileSync('./public/rss.xml', feed.xml({ indent: true }));
+  mkdirSync('./public/rss', { recursive: true });
+  writeFileSync('./public/rss/feed.xml', feed.xml({ indent: true }));
 }
