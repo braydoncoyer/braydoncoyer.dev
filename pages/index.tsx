@@ -7,6 +7,7 @@ import { Container } from 'layouts/Container';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import { Subscribe } from '@/components/Subscribe';
+import { generateRssFeed } from 'scripts/generate-rss';
 import siteMetadata from '@/data/siteMetadata';
 import { useRouter } from 'next/router';
 
@@ -76,6 +77,7 @@ export default function Home({ recentArticles }) {
 export const getStaticProps: GetStaticProps = async () => {
   const data = await getPublishedArticles(process.env.BLOG_DATABASE_ID);
   const { articles } = convertToArticleList(data);
+  await generateRssFeed();
 
   return {
     props: {

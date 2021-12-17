@@ -23,7 +23,8 @@ npm-debug.log*
 yarn.lock
 package-lock.json
 
-
+public/sitemap.xml
+public/feed.xml
 /.cache/
 /.ionic
 /.sass-cache
