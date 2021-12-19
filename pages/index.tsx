@@ -77,7 +77,7 @@ export default function Home({ recentArticles }) {
 export const getStaticProps: GetStaticProps = async () => {
   const data = await getPublishedArticles(process.env.BLOG_DATABASE_ID);
   const { articles } = convertToArticleList(data);
-  // await generateRssFeed();
+  await generateRssFeed();
 
   return {
     props: {
