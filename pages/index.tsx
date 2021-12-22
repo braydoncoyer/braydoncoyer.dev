@@ -83,6 +83,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       recentArticles: articles.slice(0, 3)
     },
-    revalidate: 120
+    revalidate: 30
   };
 };
