@@ -3,7 +3,7 @@ const siteMetadata = {
   author: 'Braydon Coyer',
   headerTitle: "Braydon's Portfolio",
   description:
-    "I'm Braydon. I'm a senior full stack engineer specializing in the front-end. Welcome to my corner of the internet. I'm glad you're here!",
+    "I'm Braydon. I'm a senior front end developer, blogger and designer. Welcome to my corner of the internet. I'm glad you're here!",
   language: 'en-us',
   siteUrl: 'https://braydoncoyer.dev',
   siteRepo: 'https://github.com/braydoncoyer/braydoncoyer.dev',

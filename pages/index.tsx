@@ -21,7 +21,7 @@ export default function Home({ recentArticles }) {
             <h1 className="order-2 col-span-5 text-4xl leading-tight md:leading-normal md:order-1 sm:text-5xl">
               I'm{' '}
               <span className="text-teal-500 dark:text-teal-400">Braydon</span>.
-              I'm a developer, blogger and designer working at Cognizant.
+              I'm a developer, blogger and designer working at LogicGate.
             </h1>
             <div className="order-1 md:order-2">
               <Image
