@@ -12,9 +12,14 @@ import { useRouter } from 'next/router';
 
 const workExperience = [
   {
+    company: 'LogicGate',
+    title: 'Front End Developer',
+    duration: '2022 -'
+  },
+  {
     company: 'Cognizant',
     title: 'Full-Stack Engineer',
-    duration: '2019 - Now'
+    duration: '2019 - 2021'
   },
   {
     company: 'projekt202',
@@ -51,8 +56,15 @@ export default function About({ recentArticles }) {
         websites or applications that run blazing fast.
       </p>
       <p>
-        I’m currently working as a senior full-stack engineer at{' '}
-        <a href="https://www.cognizant.com/us/en">Cognizant</a> where I help
+        I’m currently working as a senior front end developer at{' '}
+        <a href="https://www.logicgate.com">LogicGate</a> where I help develop
+        an agile GRC cloud solution that combines powerful functionality with
+        intuitive design to enhance enterprise GRC programs.
+      </p>
+
+      <p>
+        Prior to LogicGate, I worked as a senior full-stack engineer at{' '}
+        <a href="https://www.cognizant.com/us/en">Cognizant</a> where I helped
         architect and develop full-stack RESTful microservices, train and
         prepare developers for delivery, and assist in leading the front-end
         practice in a lab-based working environment.
