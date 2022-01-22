@@ -19,6 +19,7 @@
     "copy-to-clipboard": "^3.3.1",
     "framer-motion": "^5.4.1",
     "next": "^12.0.4",
+    "preact": "^10.6.4",
     "next-plausible": "^3.0.0",
     "next-themes": "0.0.15",
     "prism-react-renderer": "^1.2.1",
