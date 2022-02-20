@@ -1,4 +1,4 @@
-import { convertToArticleList, getPublishedArticles } from '@/lib/notion';
+import { convertToArticleList, getAllArticles } from '@/lib/notion';
 import { useEffect, useState } from 'react';
 
 import { Ad } from '@/components/Ad';
@@ -272,16 +272,22 @@ export default function Blog({ featuredArticle, articles, tags }) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const data = await getPublishedArticles(process.env.BLOG_DATABASE_ID);
+export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
+  const data = await getAllArticles(process.env.BLOG_DATABASE_ID);
   const { articles, tags } = convertToArticleList(data);
 
-  const featuredArticle = articles[0];
+  let blogArticles = articles;
+
+  if (!preview || preview === undefined) {
+    blogArticles = blogArticles.filter((article) => article.isPublic === true);
+  }
+
+  const featuredArticle = blogArticles[0];
 
   return {
     props: {
       featuredArticle,
-      articles: articles.slice(1),
+      articles: blogArticles.slice(1),
       tags
     },
     revalidate: 30
