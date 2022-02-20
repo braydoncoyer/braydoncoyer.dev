@@ -44,13 +44,43 @@ export const getChangelogData = async (databaseId) => {
   };
 };
 
+export const getAllArticles = async (databaseId) => {
+  const response = await notion.databases.query({
+    database_id: databaseId,
+    filter: {
+      or: [
+        {
+          property: 'Status',
+          select: {
+            equals: '✅ Published'
+          }
+        },
+        {
+          property: 'Status',
+          select: {
+            equals: '✏️ Draft'
+          }
+        }
+      ]
+    },
+    sorts: [
+      {
+        property: 'Published',
+        direction: 'descending'
+      }
+    ]
+  });
+
+  return response.results;
+};
+
 export const getPublishedArticles = async (databaseId) => {
   const response = await notion.databases.query({
     database_id: databaseId,
     filter: {
       property: 'Status',
-      select: {
-        equals: '✅ Published'
+      checkbox: {
+        equals: true
       }
     },
     sorts: [
@@ -102,8 +132,11 @@ export const convertToArticleList = (tableData: any) => {
         article.properties?.coverImage?.files[0]?.file?.url ||
         article.properties.coverImage?.files[0]?.external?.url ||
         'https://via.placeholder.com/600x400.png',
-      publishedDate: article.properties.Published.date.start,
-      summary: article.properties?.Summary.rich_text[0]?.plain_text
+      publishedDate: article.properties.Published?.date?.start,
+      summary:
+        article.properties?.Summary.rich_text[0]?.plain_text ??
+        'Placeholder summary',
+      isPublic: article.properties?.Public.checkbox
     };
   });
 

@@ -2,9 +2,9 @@ import { ButtonType, PageType, SubscribeSize } from '@/lib/types';
 import { Fragment, useEffect } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import {
+  getAllArticles,
   getArticlePage,
-  getMoreArticlesToSuggest,
-  getPublishedArticles
+  getMoreArticlesToSuggest
 } from '@/lib/notion';
 
 import { Ad } from '@/components/Ad';
@@ -360,7 +360,7 @@ const ArticlePage = ({
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = [];
-  const data: any = await getPublishedArticles(process.env.BLOG_DATABASE_ID);
+  const data: any = await getAllArticles(process.env.BLOG_DATABASE_ID);
 
   data.forEach((result) => {
     if (result.object === 'page') {
@@ -395,7 +395,7 @@ export const getStaticProps: GetStaticProps = async ({ params: { slug } }) => {
     auth: process.env.NOTION_SECRET
   });
 
-  const data: any = await getPublishedArticles(process.env.BLOG_DATABASE_ID);
+  const data: any = await getAllArticles(process.env.BLOG_DATABASE_ID);
 
   const page: any = getArticlePage(data, slug);
 
