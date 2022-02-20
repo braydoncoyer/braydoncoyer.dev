@@ -78,7 +78,7 @@ export const getPublishedArticles = async (databaseId) => {
   const response = await notion.databases.query({
     database_id: databaseId,
     filter: {
-      property: 'Status',
+      property: 'Public',
       checkbox: {
         equals: true
       }
