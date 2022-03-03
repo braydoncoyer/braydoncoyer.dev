@@ -1,7 +1,5 @@
 import { Container } from 'layouts/Container';
 import Image from 'next/image';
-import { Parallax } from '@/components/Parallax';
-import { useRouter } from 'next/router';
 
 export default function Projects() {
   return (
@@ -15,6 +13,40 @@ export default function Projects() {
         </span>
       </h1>
       <div className="grid grid-cols-1 gap-x-12 gap-y-24 md:grid-cols-3">
+        <div className="col-span-1">
+          <h2 className="mt-0">CSS Art Challenge</h2>
+          <p>
+            I created CSS Art Challenge to help people discover that CSS can be
+            fun and more than just creating basic layouts by competing in
+            monthly challenges and winning prizes!
+          </p>
+          <a
+            className="items-center justify-center w-full px-12 py-3 font-medium text-white no-underline rounded-full cursor-pointer md:w-auto md:inline-flex bg-midnight dark:bg-gray-200 dark:text-midnight general-ring-state"
+            href="https://www.cssartchallenge.com"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Visit CSS Art Challenge
+          </a>
+        </div>
+        <div className="col-span-2">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-5">
+            <div className="relative col-span-5 overflow-hidden bg-gray-100 rounded-lg dark:bg-midnight md:h-[450px] h-auto">
+              <Image
+                className="absolute left-[200px]"
+                objectFit="fill"
+                src="https://res.cloudinary.com/braydoncoyer/image/upload/v1646346494/mbpro_css_art_challenge_thh7yw.png"
+                placeholder="blur"
+                blurDataURL="https://res.cloudinary.com/braydoncoyer/image/upload/v1646346494/mbpro_css_art_challenge_thh7yw.png"
+                width={5110}
+                height={3139}
+                layout="intrinsic"
+                alt={'Bundle, LLC on a Macbook Pro'}
+              />
+            </div>
+          </div>
+        </div>
+
         <div className="col-span-1">
           <h2 className="mt-0">Pomegradient</h2>
           <p>
@@ -33,20 +65,18 @@ export default function Projects() {
         </div>
         <div className="col-span-2">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-5">
-            <div className="relative col-span-5 overflow-hidden bg-gray-100 rounded-lg dark:bg-midnight h-[450px]">
-              <Parallax>
-                <Image
-                  className="absolute top-0 left-0"
-                  objectFit="fill"
-                  src="https://res.cloudinary.com/braydoncoyer/image/upload/v1638225420/pomegradient_ipadpro_vhapql.png"
-                  placeholder="blur"
-                  blurDataURL="https://res.cloudinary.com/braydoncoyer/image/upload/v1638225420/pomegradient_ipadpro_vhapql.png"
-                  width={1978}
-                  height={1713}
-                  layout="intrinsic"
-                  alt={'NgLimeade on an iPad'}
-                />
-              </Parallax>
+            <div className="relative h-auto col-span-5 overflow-hidden bg-gray-100 rounded-lg dark:bg-midnight">
+              <Image
+                className="absolute top-0 left-0"
+                objectFit="fill"
+                src="https://res.cloudinary.com/braydoncoyer/image/upload/v1638225420/pomegradient_ipadpro_vhapql.png"
+                placeholder="blur"
+                blurDataURL="https://res.cloudinary.com/braydoncoyer/image/upload/v1638225420/pomegradient_ipadpro_vhapql.png"
+                width={1978}
+                height={1713}
+                layout="intrinsic"
+                alt={'NgLimeade on an iPad'}
+              />
             </div>
           </div>
         </div>
@@ -70,20 +100,18 @@ export default function Projects() {
         </div>
         <div className="col-span-2">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-5">
-            <div className="relative col-span-5 overflow-hidden bg-gray-100 rounded-lg dark:bg-midnight md:h-[450px] h-[350px]">
-              <Parallax>
-                <Image
-                  className="absolute top-5 left-1 md:right-[-340px]"
-                  objectFit="fill"
-                  src="https://res.cloudinary.com/braydoncoyer/image/upload/v1638221102/mbpro_bundle_site_zg8jbe.png"
-                  placeholder="blur"
-                  blurDataURL="https://res.cloudinary.com/braydoncoyer/image/upload/v1638221102/mbpro_bundle_site_zg8jbe.png"
-                  width={5110}
-                  height={3139}
-                  layout="intrinsic"
-                  alt={'Bundle, LLC on a Macbook Pro'}
-                />
-              </Parallax>
+            <div className="relative col-span-5 overflow-hidden bg-gray-100 rounded-lg dark:bg-midnight md:h-[450px] h-auto">
+              <Image
+                className="absolute top-5 md:top-0 -left-[250px]"
+                objectFit="fill"
+                src="https://res.cloudinary.com/braydoncoyer/image/upload/v1638221102/mbpro_bundle_site_zg8jbe.png"
+                placeholder="blur"
+                blurDataURL="https://res.cloudinary.com/braydoncoyer/image/upload/v1638221102/mbpro_bundle_site_zg8jbe.png"
+                width={5110}
+                height={3139}
+                layout="intrinsic"
+                alt={'Bundle, LLC on a Macbook Pro'}
+              />
             </div>
           </div>
         </div>
@@ -105,56 +133,21 @@ export default function Projects() {
         </div>
         <div className="col-span-2">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-5">
-            <div className="relative col-span-5 overflow-hidden bg-gray-100 rounded-lg dark:bg-midnight h-[450px]">
-              <Parallax>
-                <Image
-                  className="absolute top-0 left-[-150px] md:top-[-150px] md:left-[-300px]"
-                  objectFit="fill"
-                  src="https://res.cloudinary.com/braydoncoyer/image/upload/v1638226232/nglimeade_ipadpro_blliap.png"
-                  placeholder="blur"
-                  blurDataURL="https://res.cloudinary.com/braydoncoyer/image/upload/v1638226232/nglimeade_ipadpro_blliap.png"
-                  width={1201}
-                  height={1788}
-                  layout="intrinsic"
-                  alt={'NgLimeade on an iPad'}
-                />
-              </Parallax>
-            </div>
-          </div>
-        </div>
-        {/* <div className="col-span-1">
-          <h2 className="mt-0">The Office API</h2>
-          <p>
-            A fun side-project originally built with Spring Boot and MonogDb,
-            rebuilt with with Node.js, Express, Mongoose and MongoDb. Deployed
-            with Heroku.
-          </p>
-          <a
-            className="items-center justify-center w-full px-12 py-3 font-medium text-white no-underline rounded-full cursor-pointer md:w-auto md:inline-flex bg-midnight dark:bg-gray-200 dark:text-midnight general-ring-state"
-            href="https://www.npmjs.com/package/ng-limeade"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Check it out
-          </a>
-        </div>
-        <div className="col-span-2">
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-5">
-            <div className="relative col-span-5  bg-gray-100 rounded-lg dark:bg-midnight h-[350px] md:h-[450px]">
+            <div className="relative col-span-5 overflow-hidden bg-gray-100 rounded-lg h-2/5 dark:bg-midnight">
               <Image
-                className="absolute top-12 right-[-100px] md:top-12 md:right-[-300px]"
+                className="absolute top-0 left-[-150px] md:left-[-300px]"
                 objectFit="fill"
-                src="https://res.cloudinary.com/braydoncoyer/image/upload/v1638224157/mbpro_officeapi_vsgd9y.png"
+                src="https://res.cloudinary.com/braydoncoyer/image/upload/v1638226232/nglimeade_ipadpro_blliap.png"
                 placeholder="blur"
-                blurDataURL="https://res.cloudinary.com/braydoncoyer/image/upload/v1638224157/mbpro_officeapi_vsgd9y.png"
-                width={5239}
-                height={2896}
+                blurDataURL="https://res.cloudinary.com/braydoncoyer/image/upload/v1638226232/nglimeade_ipadpro_blliap.png"
+                width={1201}
+                height={1788}
                 layout="intrinsic"
-                alt={'The Office API'}
+                alt={'NgLimeade on an iPad'}
               />
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </Container>
   );
