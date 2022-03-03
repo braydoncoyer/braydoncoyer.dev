@@ -7,6 +7,16 @@ module.exports = {
       },
     ];
   },
+  async redirects() {
+    return [
+      // portfolio archives
+      {
+        source: '/archives/v1',
+        destination: 'https://wizardly-payne-b3707b.netlify.app/',
+        permanent: true
+      }
+    ];
+  },
   images: {
     domains: [
       's3.us-west-2.amazonaws.com', // Images coming from Notion
