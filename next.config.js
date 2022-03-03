@@ -3,8 +3,8 @@ module.exports = {
     return [
       {
         source: '/sitemap.xml',
-        destination: '/api/sitemap',
-      },
+        destination: '/api/sitemap'
+      }
     ];
   },
   async redirects() {
@@ -26,8 +26,8 @@ module.exports = {
       'dwgyu36up6iuz.cloudfront.net',
       'cdn.hashnode.com',
       'res.craft.do',
-      'res.cloudinary.com',
-    ],
+      'res.cloudinary.com'
+    ]
   },
   webpack: (config, { dev, isServer }) => {
     // Replace React with Preact only in client production build.
@@ -37,10 +37,10 @@ module.exports = {
         react: 'preact/compat',
         'react-dom/test-utils': 'preact/test-utils',
         'react-dom': 'preact/compat',
-        'react/jsx-runtime': 'preact/jsx-runtime',
+        'react/jsx-runtime': 'preact/jsx-runtime'
       });
     }
 
     return config;
-  },
+  }
 };
