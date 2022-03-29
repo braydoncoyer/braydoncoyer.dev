@@ -240,7 +240,7 @@ export default function Blog({ featuredArticle, articles, tags }) {
             ></path>
             <path
               d="M3 5s.35-.47 1.25-.828m9.516-.422c2.078.593 3.484 1.5 3.484 1.5"
-              className="stroke-slate-400 dark:stroke-sky-400"
+              className="stroke-teal-400"
             ></path>
           </svg>
           <p className="text-sm font-medium text-slate-700 dark:text-slate-200">
@@ -268,8 +268,8 @@ export default function Blog({ featuredArticle, articles, tags }) {
         </ul>
 
         {/* gradient fades */}
-        <div className="absolute w-8 h-16 top-[40px] left-0 bg-gradient-to-r from-white"></div>
-        <div className="absolute w-8 h-16 top-[40px] right-0 bg-gradient-to-l from-white"></div>
+        <div className="absolute w-8 h-16 top-[40px] left-0 bg-gradient-to-r from-white dark:from-dark"></div>
+        <div className="absolute w-8 h-16 top-[40px] right-0 bg-gradient-to-l from-white dark:from-dark"></div>
       </div>
       <div className="min-h-screen space-y-12">
         {!filteredArticles.length && (
