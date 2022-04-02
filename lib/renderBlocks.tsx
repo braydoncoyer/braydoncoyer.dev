@@ -117,9 +117,10 @@ export function renderBlocks(block) {
         <figure className="mt-0">
           <Image
             className="rounded-xl"
-            objectFit="fill"
-            width={1200}
-            height={684}
+            layout='responsive'
+            width='100%'
+            height='100%'
+            objectFit='contain'
             alt={
               caption
                 ? caption
