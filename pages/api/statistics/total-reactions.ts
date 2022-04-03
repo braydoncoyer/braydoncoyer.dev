@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { SupabaseAdmin } from '@/lib/supabase';
+import { supabaseClient } from '@/lib/hooks/useSupabase';
 
 export default async function handler(
   req: NextApiRequest,
@@ -12,9 +12,9 @@ export default async function handler(
     partyCount = 0,
     totalReactions = 0;
 
-  const { data } = await SupabaseAdmin.from('reactions').select(
-    'like_count, love_count, clap_count, party_count'
-  );
+  const { data } = await supabaseClient
+    .from('reactions')
+    .select('like_count, love_count, clap_count, party_count');
 
   data.forEach((item) => {
     likeCount += item.like_count;

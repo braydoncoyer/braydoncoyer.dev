@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { SupabaseAdmin } from '@/lib/supabase';
+import { supabaseClient } from '@/lib/hooks/useSupabase';
 
 export default async function handler(
   req: NextApiRequest,
@@ -12,11 +12,11 @@ export default async function handler(
     const { reaction, type } = body;
     if (reaction === 'like_count') {
       if (type === 'increment') {
-        await SupabaseAdmin.rpc('increment_like_count', {
+        await supabaseClient.rpc('increment_like_count', {
           page_slug: req.query.slug
         });
       } else if (type === 'decrement') {
-        await SupabaseAdmin.rpc('decrement_like_count', {
+        await supabaseClient.rpc('decrement_like_count', {
           page_slug: req.query.slug
         });
       }
@@ -24,11 +24,11 @@ export default async function handler(
 
     if (reaction === 'love_count') {
       if (type === 'increment') {
-        await SupabaseAdmin.rpc('increment_love_count', {
+        await supabaseClient.rpc('increment_love_count', {
           page_slug: req.query.slug
         });
       } else if (type === 'decrement') {
-        await SupabaseAdmin.rpc('decrement_love_count', {
+        await supabaseClient.rpc('decrement_love_count', {
           page_slug: req.query.slug
         });
       }
@@ -36,11 +36,11 @@ export default async function handler(
 
     if (reaction === 'clap_count') {
       if (type === 'increment') {
-        await SupabaseAdmin.rpc('increment_clap_count', {
+        await supabaseClient.rpc('increment_clap_count', {
           page_slug: req.query.slug
         });
       } else if (type === 'decrement') {
-        await SupabaseAdmin.rpc('decrement_clap_count', {
+        await supabaseClient.rpc('decrement_clap_count', {
           page_slug: req.query.slug
         });
       }
@@ -48,11 +48,11 @@ export default async function handler(
 
     if (reaction === 'party_count') {
       if (type === 'increment') {
-        await SupabaseAdmin.rpc('increment_party_count', {
+        await supabaseClient.rpc('increment_party_count', {
           page_slug: req.query.slug
         });
       } else if (type === 'decrement') {
-        await SupabaseAdmin.rpc('decrement_party_count', {
+        await supabaseClient.rpc('decrement_party_count', {
           page_slug: req.query.slug
         });
       }
@@ -65,7 +65,8 @@ export default async function handler(
 
   if (req.method === 'GET') {
     // Query the pages table in the database where slug equals the request params slug.
-    const { data } = await SupabaseAdmin.from('reactions')
+    const { data } = await supabaseClient
+      .from('reactions')
       .select('like_count, love_count, clap_count, party_count')
       .filter('slug', 'eq', req.query.slug);
 

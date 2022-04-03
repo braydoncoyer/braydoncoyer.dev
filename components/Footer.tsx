@@ -13,6 +13,7 @@ const navigation = {
   specifics: [
     // { name: 'Activity', href: '/activity' },
     { name: 'Stats', href: '/stats' },
+    { name: 'Community wall', href: '/community-wall' },
     { name: 'Toolbox', href: '/toolbox' }
   ],
   extra: [
