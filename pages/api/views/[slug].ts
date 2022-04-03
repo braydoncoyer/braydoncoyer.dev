@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { SupabaseAdmin } from '@/lib/supabase';
+import { supabaseClient } from '@/lib/hooks/useSupabase';
 
 export default async function handler(
   req: NextApiRequest,
@@ -8,7 +8,7 @@ export default async function handler(
 ) {
   if (req.method === 'POST') {
     // Call our stored procedure with the page_slug set by the request params slug
-    await SupabaseAdmin.rpc('increment_page_view', {
+    await supabaseClient.rpc('increment_page_view', {
       page_slug: req.query.slug
     });
     return res.status(200).json({
@@ -18,7 +18,8 @@ export default async function handler(
 
   if (req.method === 'GET') {
     // Query the pages table in the database where slug equals the request params slug.
-    const { data } = await SupabaseAdmin.from('pages')
+    const { data } = await supabaseClient
+      .from('pages')
       .select('view_count')
       .filter('slug', 'eq', req.query.slug);
 
