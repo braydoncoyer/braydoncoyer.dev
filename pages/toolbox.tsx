@@ -10,11 +10,11 @@ export default function Toolbox({ toolboxContent }) {
   return (
     <Container>
       <h1>
-        <span className="block text-base text-center text-teal-500 dark:text-teal-400 font-semibold tracking-wide uppercase">
+        <span className="block text-base font-semibold tracking-wide text-center text-teal-500 uppercase dark:text-teal-400">
           Toolbox
         </span>
-        <span className="mt-2 block text-4xl text-center leading-10 font-bold sm:text-5xl max-w-2xl mx-auto">
-          Here's what I use on the daily.
+        <span className="block max-w-2xl mx-auto mt-2 text-4xl font-bold leading-10 text-center sm:text-5xl">
+          Here's what I use daily.
         </span>
       </h1>
       <StickyColumn>

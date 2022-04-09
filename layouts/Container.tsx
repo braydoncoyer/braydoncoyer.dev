@@ -146,7 +146,7 @@ export function Container(props) {
       </Head>
       <NavMenu />
       <main
-        className={`flex flex-col mx-auto max-w-6xl justify-center px-4 bg-white dark:bg-dark prose prose-lg md:prose-xl dark:prose-dark relative`}
+        className={`flex flex-col mx-auto max-w-6xl justify-center px-4 bg-white dark:bg-dark prose prose-lg dark:prose-dark relative`}
       >
         {props.showCircles && (
           <div className="absolute top-0 left-0 right-0">
