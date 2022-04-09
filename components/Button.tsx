@@ -14,7 +14,7 @@ export const Button: React.FC<Props> = ({
     <button
       aria-label="button"
       type="button"
-      className={`text-sm md:text-xl md:w-auto md:inline-flex py-3 px-2 md:px-12 rounded-full w-full ${
+      className={`md:w-auto md:inline-flex py-3 px-2 md:px-12 rounded-full w-full ${
         buttonType === ButtonType.PRIMARY
           ? 'bg-midnight text-white dark:bg-gray-200 dark:text-midnight'
           : buttonType === ButtonType.SECONDARY

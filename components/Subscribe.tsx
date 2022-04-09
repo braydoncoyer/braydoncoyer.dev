@@ -17,7 +17,7 @@ function SubscribeCard({
 }) {
   return (
     <div className="border border-gray-200 rounded-lg p-6 my-4 w-full dark:border-gray-700 bg-[#F8FAFC] dark:bg-midnight">
-      <p className="flex items-center mt-2 font-bold text-gray-900 textLg md:text-2xl dark:text-gray-100">
+      <h3 className="flex items-center mt-2 font-bold text-gray-900 md:text-2xl dark:text-gray-100">
         Updates delivered to your inbox!
         <span>
           <svg
@@ -41,7 +41,7 @@ function SubscribeCard({
             ></path>
           </svg>
         </span>
-      </p>
+      </h3>
 
       <p className="mb-0">
         A periodic update about my life, recent blog posts, how-tos, and
@@ -69,7 +69,7 @@ function SubscribeCard({
           className="block w-full px-4 bg-white border-gray-300 rounded-full shadow-sm dark:bg-dark md:py-3 focus:ring-midnight dark:focus:ring-gray-100 sm:text-sm md:text-base dark:border-gray-400"
         />
         <button
-          className="absolute top-[-13px] right-[3px] md:right-[5px] md:top-[5px] py-0.5 items-center justify-center px-4 bg-indigo-500 hover:bg-indigo-600 dark:bg-indigo-500 dark:hover:bg-indigo-400 text-white rounded-full"
+          className="absolute top-[-13px] right-[3px] md:right-[5px] md:top-[5px] py-0.5 md:py-1 items-center justify-center px-4 bg-indigo-500 hover:bg-indigo-600 dark:bg-indigo-500 dark:hover:bg-indigo-400 text-white rounded-full"
           type="submit"
         >
           {form.state === Form.Loading ? <LoadingSpinner /> : 'Subscribe'}
@@ -115,7 +115,7 @@ function InlineSubscribe({ handleSubscribe, form, inputRef }) {
           className="block w-full px-5 bg-white border-gray-300 rounded-full shadow-sm dark:bg-dark md:py-3 focus:ring-midnight dark:focus:ring-gray-100 sm:text-sm md:text-base dark:border-gray-400"
         />
         <button
-          className="absolute  right-[3px] top-[3px] md:right-[5px] md:top-[5px] py-0.5 items-center justify-center px-4 bg-indigo-500 hover:bg-indigo-600 dark:bg-indigo-500 dark:hover:bg-indigo-400 text-white rounded-full"
+          className="absolute right-[3px] top-[3px] md:right-[5px] md:top-[5px] py-0.5 md:py-1 items-center justify-center px-4 bg-indigo-500 hover:bg-indigo-600 dark:bg-indigo-500 dark:hover:bg-indigo-400 text-white rounded-full"
           type="submit"
         >
           {form.state === Form.Loading ? <LoadingSpinner /> : 'Subscribe'}
