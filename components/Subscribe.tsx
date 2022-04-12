@@ -49,8 +49,8 @@ function SubscribeCard({
       </p>
       <p className="mt-0">
         As a thank you, I'll also send you a{' '}
-        <span className="italic font-semibold text-indigo-500 dark:text-indigo-400">
-          FREE CSS
+        <span className="text-indigo-500 font-fancy dark:text-indigo-400">
+          Free CSS
         </span>{' '}
         tutorial!
       </p>
