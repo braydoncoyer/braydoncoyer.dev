@@ -110,8 +110,11 @@ export const CodeBlock = ({ code, language, metastring }: Props) => {
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <div className="relative not-prose">
-            <pre className={`rounded-xl ${className}`} style={style}>
-              <div className="relative flex text-xs leading-6 text-slate-400">
+            <pre
+              className={`rounded-xl relative overflow-hidden ${className}`}
+              style={style}
+            >
+              <div className="relative flex text-xs leading-6 ">
                 <div className="flex items-center flex-none px-4 py-1 mt-2 text-teal-400 border-t border-b border-t-transparent border-b-teal-400">
                   {JSON.stringify(language).replace(/['"]+/g, '').toUpperCase()}
                 </div>
@@ -122,7 +125,7 @@ export const CodeBlock = ({ code, language, metastring }: Props) => {
                   <div className="relative flex -mr-2">{CopyCodeButton}</div>
                 </div>
               </div>
-              <div className="w-auto p-5 overflow-auto prose">
+              <div className="relative w-auto p-5 overflow-auto prose text-gray-300 prose-full-width">
                 <span>
                   {tokens.map((line, i) => {
                     const lineProps = getLineProps({ line, key: i });
@@ -141,6 +144,8 @@ export const CodeBlock = ({ code, language, metastring }: Props) => {
                   })}
                 </span>
               </div>
+              {/* Show fade on side of codeblock if content overflows */}
+              <div className="absolute w-8 top-[45px] right-0 bg-gradient-to-l from-midnight code-fade"></div>
             </pre>
           </div>
         )}
