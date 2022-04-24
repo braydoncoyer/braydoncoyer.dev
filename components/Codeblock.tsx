@@ -112,32 +112,34 @@ export const CodeBlock = ({ code, language, metastring }: Props) => {
           <div className="relative not-prose">
             <pre className={`rounded-xl ${className}`} style={style}>
               <div className="relative flex text-xs leading-6 text-slate-400">
-                <div className="flex flex-auto pt-2 overflow-hidden rounded-tr-xl">
-                  <div className="flex-auto -ml-px border rounded-tr bg-slate-700/50 border-slate-500/30"></div>
-                </div>
                 <div className="flex items-center flex-none px-4 py-1 mt-2 text-teal-400 border-t border-b border-t-transparent border-b-teal-400">
                   {JSON.stringify(language).replace(/['"]+/g, '').toUpperCase()}
                 </div>
-                <div className="absolute flex items-center h-8 pl-4 right-28 top-[9px]">
+                <div className="flex flex-auto pt-2 overflow-hidden rounded-tr-xl">
+                  <div className="flex-auto -mr-px border rounded-tl bg-slate-700/50 border-slate-500/30"></div>
+                </div>
+                <div className="absolute flex items-center h-8 pl-4 right-5 top-[9px]">
                   <div className="relative flex -mr-2">{CopyCodeButton}</div>
                 </div>
               </div>
-              <div className="w-auto px-5 pb-5 overflow-auto prose">
-                {tokens.map((line, i) => {
-                  const lineProps = getLineProps({ line, key: i });
+              <div className="w-auto p-5 overflow-auto prose">
+                <span>
+                  {tokens.map((line, i) => {
+                    const lineProps = getLineProps({ line, key: i });
 
-                  if (shouldHighlightLine(i)) {
-                    lineProps.className = `${lineProps.className} highlight-line`;
-                  }
+                    if (shouldHighlightLine(i)) {
+                      lineProps.className = `${lineProps.className} highlight-line`;
+                    }
 
-                  return (
-                    <div key={i} {...lineProps}>
-                      {line.map((token, key) => (
-                        <span key={key} {...getTokenProps({ token, key })} />
-                      ))}
-                    </div>
-                  );
-                })}
+                    return (
+                      <div key={i} {...lineProps}>
+                        {line.map((token, key) => (
+                          <span key={key} {...getTokenProps({ token, key })} />
+                        ))}
+                      </div>
+                    );
+                  })}
+                </span>
               </div>
             </pre>
           </div>
