@@ -1,6 +1,6 @@
 export function Callout({ children }) {
   return (
-    <div className="flex space-x-4 bg-gray-50 dark:bg-midnight rounded-lg p-3">
+    <div className="flex p-3 space-x-4 bg-gray-100 rounded-lg dark:bg-midnight">
       {children}
     </div>
   );

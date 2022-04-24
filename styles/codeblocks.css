@@ -1,7 +1,17 @@
+.code-fade {
+  height: calc(100% - 55px);
+}
+
+.prose-full-width {
+  max-width: 100%;
+}
+
 .prose pre,
 .language-tab pre[class*='language-']::before {
   /* Large code blocks */
-  @apply bg-gray-100 dark:bg-midnight;
+  /* @apply bg-gray-100 dark:bg-midnight;
+   */
+  background-color: #1e293b;
 }
 
 code[class*='language-'],
@@ -118,44 +128,4 @@ input[type='email'] {
 
 .language-tab pre[class*='language-']::before {
   @apply absolute right-0 px-4 py-1 text-sm text-right uppercase rounded-t-lg text-blueGray-500 dark:text-gray-300 -top-6;
-}
-
-.language-tab pre[class~='language-jsx']::before {
-  content: 'jsx';
-}
-
-.language-tab pre[class~='language-tsx']::before {
-  content: 'tsx';
-}
-
-.language-tab pre[class~='language-typescript']::before {
-  content: 'ts';
-}
-
-.language-tab pre[class~='language-javascript']::before {
-  content: 'js';
-}
-
-.language-tab pre[class~='language-html']::before {
-  content: 'html';
-}
-
-.language-tab pre[class~='language-swift']::before {
-  content: 'swift';
-}
-
-.language-tab pre[class~='language-css']::before {
-  content: 'css';
-}
-
-.language-tab pre[class~='language-scss']::before {
-  content: 'scss';
-}
-
-.language-tab pre[class~='language-bash']::before {
-  content: 'bash';
-}
-
-.language-tab pre[class~='language-markdown']::before {
-  content: 'markdown';
 }

@@ -1,9 +1,10 @@
-import { AuthButon } from './AuthButton';
-import { useRef, useState } from 'react';
-import { useSWRConfig } from 'swr';
-import { SuccessMessage } from './SuccessMessage';
 import { Form, FormState } from '@/lib/types';
+import { useRef, useState } from 'react';
+
+import { AuthButon } from './AuthButton';
 import { ErrorMessage } from './ErrorMessage';
+import { SuccessMessage } from './SuccessMessage';
+import { useSWRConfig } from 'swr';
 
 export function CommunityForm({ loggedIn, supabase, session }) {
   const { mutate } = useSWRConfig();
@@ -68,7 +69,7 @@ export function CommunityForm({ loggedIn, supabase, session }) {
                 className="block w-full px-5 py-1.5 bg-white border-gray-300 rounded-full shadow-sm dark:bg-dark md:py-3 focus:ring-midnight dark:focus:ring-gray-100 sm:text-sm md:text-base dark:border-gray-400"
               />
               <button
-                className="absolute top-[-12px] right-[4px] md:right-[5px] md:top-[4px] py-0.5 items-center justify-center px-4 bg-indigo-500 hover:bg-indigo-600 dark:bg-indigo-500 dark:hover:bg-indigo-400 text-white rounded-full"
+                className="absolute top-[-14px] right-[2px] md:right-[4px] md:top-[4px] py-1 items-center justify-center px-6 bg-indigo-500 hover:bg-indigo-600 dark:bg-indigo-500 dark:hover:bg-indigo-400 text-white rounded-full"
                 type="submit"
               >
                 Send

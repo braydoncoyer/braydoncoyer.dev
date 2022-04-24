@@ -33,7 +33,7 @@ export const CodeBlock = ({ code, language, metastring }: Props) => {
 
   const CopyCodeButton = (
     <button
-      className={`absolute right-2 top-[10px] hidden md:inline-block group ${
+      className={`hidden md:inline-block group ${
         isCopied ? 'text-teal-500' : 'text-gray-400'
       }`}
       onClick={() => handleCopy()}
@@ -109,27 +109,43 @@ export const CodeBlock = ({ code, language, metastring }: Props) => {
         theme={undefined}
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <div className="relative my-12 language-tab" data-language={language}>
-            {CopyCodeButton}
-            <pre className={className} style={style}>
-              {tokens.map((line, i) => {
-                const lineProps = getLineProps({ line, key: i });
+          <div className="relative not-prose">
+            <pre
+              className={`rounded-xl relative overflow-hidden ${className}`}
+              style={style}
+            >
+              <div className="relative flex text-xs leading-6 ">
+                <div className="flex items-center flex-none px-4 py-1 mt-2 text-teal-400 border-t border-b border-t-transparent border-b-teal-400">
+                  {JSON.stringify(language).replace(/['"]+/g, '').toUpperCase()}
+                </div>
+                <div className="flex flex-auto pt-2 overflow-hidden rounded-tr-xl">
+                  <div className="flex-auto -mr-px border rounded-tl bg-slate-700/50 border-slate-500/30"></div>
+                </div>
+                <div className="absolute flex items-center h-8 pl-4 right-5 top-[9px]">
+                  <div className="relative flex -mr-2">{CopyCodeButton}</div>
+                </div>
+              </div>
+              <div className="relative w-auto p-5 overflow-auto prose text-gray-300 prose-full-width">
+                <span>
+                  {tokens.map((line, i) => {
+                    const lineProps = getLineProps({ line, key: i });
 
-                if (shouldHighlightLine(i)) {
-                  lineProps.className = `${lineProps.className} highlight-line`;
-                }
+                    if (shouldHighlightLine(i)) {
+                      lineProps.className = `${lineProps.className} highlight-line`;
+                    }
 
-                return (
-                  <div key={i} {...lineProps}>
-                    <span className="inline-block w-8 py-2 ml-4 select-none opacity-30">
-                      {i + 1}
-                    </span>
-                    {line.map((token, key) => (
-                      <span key={key} {...getTokenProps({ token, key })} />
-                    ))}
-                  </div>
-                );
-              })}
+                    return (
+                      <div key={i} {...lineProps}>
+                        {line.map((token, key) => (
+                          <span key={key} {...getTokenProps({ token, key })} />
+                        ))}
+                      </div>
+                    );
+                  })}
+                </span>
+              </div>
+              {/* Show fade on side of codeblock if content overflows */}
+              <div className="absolute w-8 top-[45px] right-0 bg-gradient-to-l from-midnight code-fade"></div>
             </pre>
           </div>
         )}
