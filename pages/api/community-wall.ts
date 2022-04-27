@@ -12,7 +12,9 @@ export default async function handler(
       .select(
         `
         content,
+        id,
         created_at,
+        user_id,
         user (
             name
         )
@@ -36,6 +38,17 @@ export default async function handler(
     ]);
 
     return res.status(201).json({});
+  }
+
+  if (req.method === 'DELETE') {
+    const { message } = req.body;
+
+    const { data, error } = await supabaseClient
+      .from('message')
+      .delete()
+      .match({ id: message.id });
+
+    if (!error) return res.status(200).json({});
   }
 
   return res.status(400).json({
