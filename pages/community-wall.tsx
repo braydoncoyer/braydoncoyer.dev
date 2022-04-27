@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 
+import { CommunityEntry } from '@/components/CommunityEntry';
 import { CommunityForm } from '@/components/CommunityForm';
 import { Container } from 'layouts/Container';
 import { GetStaticProps } from 'next';
+import { fetcher } from '@/lib/fetcher';
 import { supabaseClient } from '@/lib/hooks/useSupabase';
 import useSWR from 'swr';
-import { fetcher } from '@/lib/fetcher';
-import { CommunityEntry } from '@/components/CommunityEntry';
 
 export default function CommunityWall({ session, supabase, messages }) {
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
@@ -40,11 +40,7 @@ export default function CommunityWall({ session, supabase, messages }) {
       <div className="mt-12">
         {entries.messages?.map((message) => (
           <div className="mt-8" key={message.id}>
-            <CommunityEntry
-              content={message.content}
-              name={message.user.name}
-              created_at={message.created_at}
-            />
+            <CommunityEntry message={message} session={session} />
           </div>
         ))}
       </div>
@@ -55,7 +51,9 @@ export default function CommunityWall({ session, supabase, messages }) {
 export const getStaticProps: GetStaticProps = async () => {
   let { data: messages, error } = await supabaseClient.from('message').select(`
         content,
+        id,
         created_at,
+        user_id,
         user (
             name
         )
