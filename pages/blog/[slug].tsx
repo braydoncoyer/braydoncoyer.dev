@@ -7,7 +7,8 @@ import {
   getMoreArticlesToSuggest
 } from '@/lib/notion';
 
-import { Ad } from '@/components/Ad';
+import Adsense from '@/components/Adsense';
+// import { Ad } from '@/components/Ad';
 import { AnchorLink } from '@/components/AnchorLink';
 import { ArticleList } from '@/components/ArticleList';
 import { Button } from '@/components/Button';
@@ -351,7 +352,8 @@ const ArticlePage = ({
             Share Article
           </h3>
           <ShareArticle title={title} slug={slug} />
-          <Ad />
+          <Adsense />
+          {/* <Ad /> */}
         </aside>
       </div>
     </Container>
