@@ -5,6 +5,12 @@ export enum Form {
   Error
 }
 
+export enum AdType {
+  DEFAULT,
+  ARTICLE,
+  VERTICAL
+}
+
 export enum PageType {
   WEBSITE = 'website',
   ARTICLE = 'article'

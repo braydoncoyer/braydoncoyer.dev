@@ -8,17 +8,8 @@ export default function Document(props) {
         {/* google adsense */}
         <script
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-        (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "ca-pub-4264459124014608",
-            enable_page_level_ads: true
-            });
-            `
-          }}
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE}`}
+          crossOrigin="anonymous"
         />
         <link
           href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&display=swap"
