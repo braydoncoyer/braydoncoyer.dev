@@ -1,4 +1,4 @@
-import { ButtonType, PageType, SubscribeSize } from '@/lib/types';
+import { AdType, ButtonType, PageType, SubscribeSize } from '@/lib/types';
 import { Fragment, useEffect } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import {
@@ -352,7 +352,7 @@ const ArticlePage = ({
             Share Article
           </h3>
           <ShareArticle title={title} slug={slug} />
-          <Adsense />
+          <Adsense variant={AdType.VERTICAL} />
           {/* <Ad /> */}
         </aside>
       </div>
