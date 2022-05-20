@@ -35,6 +35,7 @@ public/feed.xml
 /dist
 .env.local
 .env.development
+.env.local
 /public
 .netlify
 /node_modules
