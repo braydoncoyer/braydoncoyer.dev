@@ -354,7 +354,6 @@ const ArticlePage = ({
           </h3>
           <ShareArticle title={title} slug={slug} />
           <Adsense variant={AdType.RESPONSIVE} />
-          {/* <Ad /> */}
         </aside>
       </div>
     </Container>
