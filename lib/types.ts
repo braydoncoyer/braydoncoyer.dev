@@ -6,9 +6,8 @@ export enum Form {
 }
 
 export enum AdType {
-  DEFAULT,
   ARTICLE,
-  VERTICAL
+  RESPONSIVE
 }
 
 export enum PageType {

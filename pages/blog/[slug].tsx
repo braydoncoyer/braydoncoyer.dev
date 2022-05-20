@@ -340,6 +340,7 @@ const ArticlePage = ({
                 If you enjoyed this article, you'll find these insightful too!
               </p>
               <ArticleList articles={moreArticles} />
+              <Adsense variant={AdType.ARTICLE} />
             </div>
           </div>
         </article>
@@ -352,7 +353,7 @@ const ArticlePage = ({
             Share Article
           </h3>
           <ShareArticle title={title} slug={slug} />
-          <Adsense variant={AdType.VERTICAL} />
+          <Adsense variant={AdType.RESPONSIVE} />
           {/* <Ad /> */}
         </aside>
       </div>

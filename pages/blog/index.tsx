@@ -1,13 +1,13 @@
+import { AdType, SubscribeSize } from '@/lib/types';
 import { convertToArticleList, getAllArticles } from '@/lib/notion';
 import { useEffect, useState } from 'react';
 
-import { Ad } from '@/components/Ad';
+import Adsense from '@/components/Adsense';
 import { ArticleList } from '@/components/ArticleList';
 import { Container } from 'layouts/Container';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import { Subscribe } from '@/components/Subscribe';
-import { SubscribeSize } from '@/lib/types';
 import { Tag } from '@/components/Tag';
 import { handleArticleClicked } from '@/lib/handleArticleClick';
 import siteMetadata from '@/data/siteMetadata';
@@ -219,7 +219,7 @@ export default function Blog({ featuredArticle, articles, tags }) {
             </div>
           </div>
           <div>
-            <Ad />
+            <Adsense variant={AdType.RESPONSIVE} />
           </div>
         </div>
       </div>

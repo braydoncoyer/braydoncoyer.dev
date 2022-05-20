@@ -8,17 +8,12 @@ interface GoogleAdProps {
 }
 
 const adUnitProps: Record<AdType, any> = {
-  [AdType.DEFAULT]: {
-    'data-ad-slot': '9317596940',
-    'data-ad-format': 'auto',
-    'data-full-width-responsive': 'true'
-  },
   [AdType.ARTICLE]: {
     'data-ad-slot': '4448413641',
     'data-ad-format': 'fluid',
     'data-ad-layout': 'in-article'
   },
-  [AdType.VERTICAL]: {
+  [AdType.RESPONSIVE]: {
     'data-ad-slot': '6270020953',
     'data-ad-format': 'auto',
     'data-full-width-responsive': 'true'
