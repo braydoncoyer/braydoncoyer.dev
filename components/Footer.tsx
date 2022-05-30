@@ -17,7 +17,8 @@ const navigation = {
     { name: 'Toolbox', href: '/toolbox' }
   ],
   extra: [
-    { name: 'Changelog', href: '/changelog' }
+    { name: 'Changelog', href: '/changelog' },
+    { name: 'Meet up', href: '/meetup' }
     // { name: 'Books', href: '/books' }
   ],
   social: [
