@@ -7,8 +7,7 @@ import {
   getMoreArticlesToSuggest
 } from '@/lib/notion';
 
-import Adsense from '@/components/Adsense';
-// import { Ad } from '@/components/Ad';
+import { Ad } from '@/components/Ad';
 import { AnchorLink } from '@/components/AnchorLink';
 import { ArticleList } from '@/components/ArticleList';
 import { Button } from '@/components/Button';
@@ -340,7 +339,6 @@ const ArticlePage = ({
                 If you enjoyed this article, you'll find these insightful too!
               </p>
               <ArticleList articles={moreArticles} />
-              <Adsense variant={AdType.ARTICLE} />
             </div>
           </div>
         </article>
@@ -353,7 +351,7 @@ const ArticlePage = ({
             Share Article
           </h3>
           <ShareArticle title={title} slug={slug} />
-          <Adsense variant={AdType.RESPONSIVE} />
+          <Ad />
         </aside>
       </div>
     </Container>

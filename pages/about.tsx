@@ -1,7 +1,6 @@
-import { AdType, ButtonType } from '@/lib/types';
+import { ButtonType } from '@/lib/types';
 import { convertToArticleList, getPublishedArticles } from '@/lib/notion';
 
-import Adsense from '@/components/Adsense';
 import { ArticleList } from '@/components/ArticleList';
 import { Button } from '@/components/Button';
 import { Container } from 'layouts/Container';
@@ -10,6 +9,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import siteMetadata from '@/data/siteMetadata';
 import { useRouter } from 'next/router';
+import { Ad } from '@/components/Ad';
 
 const workExperience = [
   {
@@ -110,8 +110,8 @@ export default function About({ recentArticles }) {
         </div>
       </div>
       <hr className="my-16 w-full border-none text-center h-10 before:content-['∿∿∿'] before:text-[#D1D5DB] before:text-2xl"></hr>
-      <div>
-        <Adsense variant={AdType.RESPONSIVE} />
+      <div className="flex justify-center">
+        <Ad />
       </div>
       <div className="mt-12 space-y-6">
         <h2 className="m-0 text-gray-900 dark:text-white">Work experience</h2>

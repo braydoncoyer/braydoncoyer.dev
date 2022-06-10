@@ -1,8 +1,7 @@
-import { AdType, SubscribeSize } from '@/lib/types';
+import { SubscribeSize } from '@/lib/types';
 import { convertToArticleList, getAllArticles } from '@/lib/notion';
 import { useEffect, useState } from 'react';
 
-import Adsense from '@/components/Adsense';
 import { ArticleList } from '@/components/ArticleList';
 import { Container } from 'layouts/Container';
 import { GetStaticProps } from 'next';
@@ -12,6 +11,7 @@ import { Tag } from '@/components/Tag';
 import { handleArticleClicked } from '@/lib/handleArticleClick';
 import siteMetadata from '@/data/siteMetadata';
 import slugify from 'slugify';
+import { Ad } from '@/components/Ad';
 
 export default function Blog({ featuredArticle, articles, tags }) {
   const [selectedTag, setSelectedTag] = useState<string>('');
@@ -219,7 +219,7 @@ export default function Blog({ featuredArticle, articles, tags }) {
             </div>
           </div>
           <div>
-            <Adsense variant={AdType.RESPONSIVE} />
+            <Ad />
           </div>
         </div>
       </div>
