@@ -1,4 +1,5 @@
 import useArticleReactions from '@/hooks/useArticleReactions';
+import { useDebounce } from '@/lib/hooks/useDebounce';
 
 const Reactions = ({ slug }) => {
   const {
@@ -65,15 +66,19 @@ const Reactions = ({ slug }) => {
 export default Reactions;
 
 function ReactionCard({ isActive, incrementCB, decrementCB, children }) {
+  const handleClick = useDebounce(
+    isActive ? () => decrementCB() : () => incrementCB(),
+    300
+  );
   return (
     <div
       role="button"
-      onClick={isActive ? () => decrementCB() : () => incrementCB()}
+      onClick={handleClick}
       className={`${
         isActive
           ? 'bg-gray-300 dark:bg-darker'
           : 'bg-blueGray-100 dark:bg-midnight'
-      } flex-1 py-4 rounded-lg flex flex-col items-center general-ring-state`}
+      } flex-1 py-4 rounded-lg flex flex-col items-center general-ring-state select-none`}
     >
       {children}
     </div>
