@@ -59,6 +59,14 @@ export type Reactions = {
   party_count: number;
 };
 
+export type WorkTimeline = {
+  title: string;
+  duration: string;
+  company: string;
+  company_link?: string;
+  content: any;
+};
+
 export type Language =
   | 'markup'
   | 'bash'

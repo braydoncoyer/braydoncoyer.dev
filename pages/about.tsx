@@ -1,38 +1,16 @@
-import { ButtonType } from '@/lib/types';
 import { convertToArticleList, getPublishedArticles } from '@/lib/notion';
 
+import { Ad } from '@/components/Ad';
 import { ArticleList } from '@/components/ArticleList';
 import { Button } from '@/components/Button';
+import { ButtonType } from '@/lib/types';
 import { Container } from 'layouts/Container';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { WorkTimeline } from '@/components/WorkTimeline';
 import siteMetadata from '@/data/siteMetadata';
 import { useRouter } from 'next/router';
-import { Ad } from '@/components/Ad';
-
-const workExperience = [
-  {
-    company: 'LogicGate',
-    title: 'Front End Developer',
-    duration: '2022 -'
-  },
-  {
-    company: 'Cognizant',
-    title: 'Full-Stack Engineer',
-    duration: '2019 - 2021'
-  },
-  {
-    company: 'projekt202',
-    title: 'UI Developer',
-    duration: '2018 - 2019'
-  },
-  {
-    company: 'Major 4 Apps',
-    title: 'Founder',
-    duration: '2011 - 2018'
-  }
-];
 
 export default function About({ recentArticles }) {
   const { push } = useRouter();
@@ -116,22 +94,8 @@ export default function About({ recentArticles }) {
       <div className="mt-12 space-y-6">
         <h2 className="m-0 text-gray-900 dark:text-white">Work experience</h2>
         <p>Here's a brief rundown of my most recent experiences.</p>
-        <div className="space-y-2">
-          {workExperience.map((workItem) => (
-            <div
-              key={workItem.company}
-              className="flex items-center space-x-3 group"
-            >
-              <span className="flex-none text-gray-900 gover-hover:underline dark:text-white">
-                {workItem.company}
-              </span>
-              <span className="w-full border-t border-gray-300 border-dashed shrink dark:border-gray-700"></span>
-              <span className="flex-none">{workItem.title}</span>
-              <span className="flex-none">{workItem.duration}</span>
-            </div>
-          ))}
-        </div>
-        <div className="inline-flex w-full md:w-auto ">
+        <WorkTimeline />
+        <div className="inline-flex w-full md:w-auto">
           <a
             className="items-center justify-center w-full px-4 py-3 text-sm font-medium text-center text-white no-underline rounded-full md:text-xl md:px-12 bg-midnight dark:bg-gray-200 dark:text-midnight general-ring-state"
             href={siteMetadata.resume}
