@@ -39,7 +39,7 @@ export function WorkTimeline() {
             </div>
           </div>
           <div
-            className="relative pb-4 md:col-span-3"
+            className="relative pb-4 border-b border-gray-300 dark:border-gray-400 md:col-span-3"
             dangerouslySetInnerHTML={{ __html: workItem.content }}
           ></div>
         </article>
