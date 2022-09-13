@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 
+import DarkLogo from 'public/assets/bcoyerlogo_dark.svg';
 import { Dialog } from '@headlessui/react';
 import Image from 'next/image';
+import LightLogo from 'public/assets/bcoyerlogo_white.svg';
 import NextLink from 'next/link';
 import siteMetadata from '@/data/siteMetadata';
 import { useRouter } from 'next/router';
@@ -16,19 +18,11 @@ function NavItem({ href, text }) {
       <a
         className={`${
           isActive
-            ? 'font-bold text-gray-900 dark:text-gray-200'
-            : 'font-normal text-gray-600 dark:text-gray-400'
-        } 'hidden md:inline-block p-1 sm:px-6 sm:py-2 rounded-full hover:bg-gray-100 dark:hover:bg-midnight transition-all`}
+            ? 'font-bold text-teal-500 dark:text-teal-400'
+            : 'font-normal text-gray-500 dark:text-gray-400'
+        } 'hidden md:inline-block rounded-full hover:text-gray-900 dark:hover:text-gray-200 transition-all`}
       >
-        <span
-          className={`${
-            isActive
-              ? 'py-1 border-b-2 border-teal-400 dark:border-teal-500'
-              : 'capsize'
-          }`}
-        >
-          {text}
-        </span>
+        {text}
       </a>
     </NextLink>
   );
@@ -43,19 +37,34 @@ export function NavMenu({}) {
   useEffect(() => setMounted(true), []);
 
   return (
-    <div className="relative z-50 text-gray-900 dark:text-gray-100">
-      <div className="flex items-center justify-between max-w-6xl px-4 py-6 mx-auto sm:px-6 md:space-x-10">
+    <div className="fixed z-50 w-full text-gray-900 bg-white bg-opacity-50 dark:bg-dark dark:text-gray-100 backdrop-filter backdrop-blur-lg dark:bg-opacity-50">
+      <div className="flex items-center justify-between max-w-6xl px-4 py-3 mx-auto sm:px-6 md:space-x-10">
         <div className="flex justify-start lg:w-0 lg:flex-1">
           <span className="sr-only">Profile Picture</span>
-          <Image
-            alt="Braydon Coyer"
-            height={48}
-            width={48}
-            src={siteMetadata.avatarImage}
-            placeholder="blur"
-            blurDataURL={siteMetadata.avatarImage}
-            className="rounded-full"
-          />
+          <NextLink href="/">
+            <a className="block dark:hidden">
+              <Image
+                alt="Braydon Coyer"
+                height={38}
+                width={38}
+                src={DarkLogo}
+                blurDataURL={DarkLogo}
+                className="rounded-full"
+              />
+            </a>
+          </NextLink>
+          <NextLink href="/">
+            <a className="hidden dark:block">
+              <Image
+                alt="Braydon Coyer"
+                height={38}
+                width={38}
+                src={LightLogo}
+                blurDataURL={LightLogo}
+                className="rounded-full"
+              />
+            </a>
+          </NextLink>
         </div>
         <div className="-my-2 -mr-2 md:hidden" onClick={() => setIsOpen(true)}>
           <div className="bg-gray-200 dark:bg-midnight text-gray-600 dark:text-gray-300 rounded-full p-3.5 inline-flex items-center justify-center hover:text-gray-700 hover:bg-gray-300 cursor-pointer focus:outline-none general-ring-state">
@@ -85,7 +94,7 @@ export function NavMenu({}) {
             </svg>
           </div>
         </div>
-        <nav className="hidden space-x-6 text-lg md:flex">
+        <nav className="hidden space-x-8 text-lg md:flex">
           <NavItem href="/" text="Home" />
           <NavItem href="/about" text="About" />
           <NavItem href="/projects" text="Projects" />

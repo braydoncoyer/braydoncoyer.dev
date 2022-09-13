@@ -8,7 +8,7 @@
     rgba(45, 212, 191, 1),
     rgba(233, 168, 2, 0)
   );
-  animation: traverse-up-left 10s ease-in-out infinite alternate;
+  animation: fade-green 5s ease-in-out infinite alternate;
   z-index: -1;
 }
 
@@ -18,7 +18,7 @@
     rgba(99, 102, 241, 1),
     rgba(233, 168, 2, 0)
   );
-  animation: traverse-up-right 12s ease-in-out infinite alternate;
+  animation: fade-indigo 7s 3 ease-in-out infinite alternate;
   z-index: -1;
 }
 
@@ -109,20 +109,24 @@
   scrollbar-width: none; /* Firefox */
 }
 
-@keyframes traverse-up-left {
+@keyframes fade-green {
   0% {
+    opacity: 1;
   }
 
   100% {
-    transform: translateY(-200px) translateX(-350px) rotate(180deg);
+    /* transform: translateY(-200px) translateX(-350px) rotate(180deg); */
+    opacity: 0.5;
   }
 }
 
-@keyframes traverse-up-right {
+@keyframes fade-indigo {
   0% {
+    opacity: 1;
   }
 
   100% {
-    transform: translateY(-300px) translateX(300px) rotate(360deg);
+    /* transform: translateY(-200px) translateX(-350px) rotate(180deg); */
+    opacity: 0.2;
   }
 }

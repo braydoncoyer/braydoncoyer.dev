@@ -10,7 +10,7 @@ export function WorkTimeline() {
           className="relative grid md:grid-cols-5 md:gap-10 before:content-[''] mx-12 before:block before:h-full before:absolute before:left-[-25px] md:before:left-[-37px] before:border-l-2 before:border-gray-300 dark:before:border-gray-700 md:space-x-4"
         >
           <div className="relative pb-4 md:col-span-2">
-            <div className="sticky top-7">
+            <div className="sticky top-28">
               <svg
                 className="absolute left-[-38px] md:left-[-50px] color-bg-default color-fg-muted bg-white dark:bg-dark rounded-full dark:text-gray-500"
                 xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +39,7 @@ export function WorkTimeline() {
             </div>
           </div>
           <div
-            className="relative pb-4 border-b border-gray-300 dark:border-gray-400 md:col-span-3"
+            className="relative pb-4 md:border-b md:border-gray-300 md:dark:border-gray-400 md:col-span-3"
             dangerouslySetInnerHTML={{ __html: workItem.content }}
           ></div>
         </article>

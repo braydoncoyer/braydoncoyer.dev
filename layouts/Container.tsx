@@ -37,76 +37,6 @@ export function Container(props) {
           property="og:url"
           content={`${siteMetadata.siteUrl}${router.asPath}`}
         />
-        <link
-          rel="apple-touch-icon-precomposed"
-          sizes="57x57"
-          href="/assets/apple-touch-icon-57x57.png"
-        />
-        <link
-          rel="apple-touch-icon-precomposed"
-          sizes="114x114"
-          href="/assets/apple-touch-icon-114x114.png"
-        />
-        <link
-          rel="apple-touch-icon-precomposed"
-          sizes="72x72"
-          href="/assets/apple-touch-icon-72x72.png"
-        />
-        <link
-          rel="apple-touch-icon-precomposed"
-          sizes="144x144"
-          href="/assets/apple-touch-icon-144x144.png"
-        />
-        <link
-          rel="apple-touch-icon-precomposed"
-          sizes="60x60"
-          href="/assets/apple-touch-icon-60x60.png"
-        />
-        <link
-          rel="apple-touch-icon-precomposed"
-          sizes="120x120"
-          href="/assets/apple-touch-icon-120x120.png"
-        />
-        <link
-          rel="apple-touch-icon-precomposed"
-          sizes="76x76"
-          href="/assets/apple-touch-icon-76x76.png"
-        />
-        <link
-          rel="apple-touch-icon-precomposed"
-          sizes="152x152"
-          href="/assets/apple-touch-icon-152x152.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          href="/assets/favicon-196x196.png"
-          sizes="196x196"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          href="/assets/favicon-96x96.png"
-          sizes="96x96"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          href="/assets/favicon-32x32.png"
-          sizes="32x32"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          href="/assets/favicon-16x16.png"
-          sizes="16x16"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          href="/assets/favicon-128.png"
-          sizes="128x128"
-        />
         <meta name="application-name" content="&nbsp;" />
         <meta name="msapplication-TileColor" content="#FFFFFF" />
         <meta
@@ -146,19 +76,21 @@ export function Container(props) {
       </Head>
       <NavMenu />
       <main
-        className={`flex flex-col mx-auto max-w-6xl justify-center px-4 bg-white dark:bg-dark prose prose-lg dark:prose-dark relative`}
+        className={`flex flex-col mx-auto max-w-6xl justify-center px-4 bg-white dark:bg-dark prose prose-lg dark:prose-dark relative pt-24`}
       >
-        {props.showCircles && (
-          <div className="absolute top-0 left-0 right-0">
-            <div className="absolute top-0 overflow-visible opacity-50 dark:opacity-30 left-16">
-              <div className="mix-blend-multiply absolute w-[700px] h-[900px] rounded-[40rem] circle-obj"></div>
-            </div>
+        {/* {props.showCircles && (
+          
+        )} */}
 
-            <div className="absolute overflow-visible opacity-50 dark:opacity-30 top-28 left-52">
-              <div className="mix-blend-multiply absolute w-[600px] h-[600px] rounded-[40rem] circle-obj2"></div>
-            </div>
+        <div className="absolute top-0 left-0 md:left-[55px]">
+          <div className="absolute left-[-340px] overflow-visible top-[-500px] opacity-90 dark:opacity-50 md:left-[-45px]">
+            <div className="mix-blend-multiply absolute w-[700px] md:w-[900px] h-[900px] rounded-[40rem] circle-obj"></div>
           </div>
-        )}
+
+          <div className="absolute overflow-visible opacity-50 dark:opacity-30 top-[-300px] left-52 md:left-[200px] md:top-[-175px]">
+            <div className="mix-blend-multiply absolute w-[600px] md:w-[900px] h-[600px] rounded-[40rem] circle-obj2"></div>
+          </div>
+        </div>
         <div className="z-10">
           <PageTransition>{children}</PageTransition>
         </div>

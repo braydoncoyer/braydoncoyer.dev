@@ -8,10 +8,10 @@ export default function Toolbox({ completedItems, activeItems, backlogItems }) {
   return (
     <Container>
       <h1>
-        <span className="block text-base text-center text-teal-500 dark:text-teal-400 font-semibold tracking-wide uppercase">
+        <span className="block text-base font-semibold tracking-wide text-center text-indigo-500 uppercase dark:text-teal-400">
           Changelog
         </span>
-        <span className="mt-2 block text-4xl text-center leading-10 font-bold sm:text-5xl max-w-2xl mx-auto">
+        <span className="block max-w-2xl mx-auto mt-2 text-4xl font-bold leading-10 text-center sm:text-5xl">
           What's new and upcoming
         </span>
       </h1>
@@ -23,7 +23,7 @@ export default function Toolbox({ completedItems, activeItems, backlogItems }) {
                 <div className="relative pb-8">
                   {completedItems !== completedItems.length - 1 ? (
                     <span
-                      className="absolute top-5 left-5 -ml-px h-full w-1 bg-gray-200 dark:bg-midnight"
+                      className="absolute w-1 h-full -ml-px bg-gray-200 top-5 left-5 dark:bg-midnight"
                       aria-hidden="true"
                     />
                   ) : null}
@@ -39,18 +39,18 @@ export default function Toolbox({ completedItems, activeItems, backlogItems }) {
                             } ring-white dark:ring-dark flex items-center justify-center`}
                           >
                             {completedItemIndex === 0 && (
-                              <span className="flex h-3 w-3">
-                                <span className="relative inline-flex rounded-full h-3 w-3 bg-teal-400"></span>
-                                <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-teal-400 opacity-75"></span>
+                              <span className="flex w-3 h-3">
+                                <span className="relative inline-flex w-3 h-3 bg-teal-400 rounded-full"></span>
+                                <span className="absolute inline-flex w-3 h-3 bg-teal-400 rounded-full opacity-75 animate-ping"></span>
                               </span>
                             )}
                           </div>
                         </div>
                       </div>
-                      <div className="min-w-0 flex-1">
+                      <div className="flex-1 min-w-0">
                         <div>
                           <div className="text-lg">
-                            <h3 className="font-medium mt-0">
+                            <h3 className="mt-0 font-medium">
                               {completedItem.title}
                             </h3>
                           </div>

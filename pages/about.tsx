@@ -17,7 +17,7 @@ export default function About({ recentArticles }) {
   return (
     <Container title="About Me - Braydon Coyer">
       <h1>
-        <span className="block text-base font-semibold tracking-wide text-center text-teal-500 uppercase dark:text-teal-400">
+        <span className="block text-base font-semibold tracking-wide text-center text-indigo-500 uppercase dark:text-teal-400">
           About me
         </span>
         <span className="block max-w-2xl mx-auto mt-2 text-4xl font-bold leading-10 text-center sm:text-5xl">

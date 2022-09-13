@@ -1,17 +1,17 @@
-import { SubscribeSize } from '@/lib/types';
 import { convertToArticleList, getAllArticles } from '@/lib/notion';
 import { useEffect, useState } from 'react';
 
+import { Ad } from '@/components/Ad';
 import { ArticleList } from '@/components/ArticleList';
 import { Container } from 'layouts/Container';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import { Subscribe } from '@/components/Subscribe';
+import { SubscribeSize } from '@/lib/types';
 import { Tag } from '@/components/Tag';
 import { handleArticleClicked } from '@/lib/handleArticleClick';
 import siteMetadata from '@/data/siteMetadata';
 import slugify from 'slugify';
-import { Ad } from '@/components/Ad';
 
 export default function Blog({ featuredArticle, articles, tags }) {
   const [selectedTag, setSelectedTag] = useState<string>('');
@@ -33,7 +33,7 @@ export default function Blog({ featuredArticle, articles, tags }) {
   return (
     <Container title="Blog - Braydon Coyer">
       <h1>
-        <span className="block text-base font-semibold tracking-wide text-center text-teal-500 uppercase dark:text-teal-400">
+        <span className="block text-base font-semibold tracking-wide text-center text-indigo-500 uppercase dark:text-teal-400">
           My Blog
         </span>
         <span className="block max-w-2xl mx-auto mt-2 text-4xl font-bold leading-10 text-center sm:text-5xl">
