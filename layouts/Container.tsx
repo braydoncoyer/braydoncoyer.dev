@@ -1,8 +1,11 @@
+import BottomRays from 'public/assets/footer_rays.png';
 import { Footer } from '@/components/Footer';
 import Head from 'next/head';
+import Image from 'next/image';
 import { NavMenu } from '@/components/NavMenu';
 import { PageTransition } from '@/components/PageTransition';
 import { PageType } from '@/lib/types';
+import TopRays from 'public/assets/rays.png';
 import siteMetadata from '@/data/siteMetadata';
 import { useRouter } from 'next/router';
 
@@ -78,23 +81,31 @@ export function Container(props) {
       <main
         className={`flex flex-col mx-auto max-w-6xl justify-center px-4 bg-white dark:bg-dark prose prose-lg dark:prose-dark relative pt-24`}
       >
-        {/* {props.showCircles && (
-          
-        )} */}
-
-        <div className="absolute top-0 left-0 md:left-[55px]">
-          <div className="absolute left-[-340px] overflow-visible top-[-500px] opacity-90 dark:opacity-50 md:left-[-45px]">
-            <div className="mix-blend-multiply absolute w-[700px] md:w-[900px] h-[900px] rounded-[40rem] circle-obj"></div>
-          </div>
-
-          <div className="absolute overflow-visible opacity-50 dark:opacity-30 top-[-300px] left-52 md:left-[200px] md:top-[-175px]">
-            <div className="mix-blend-multiply absolute w-[600px] md:w-[900px] h-[600px] rounded-[40rem] circle-obj2"></div>
-          </div>
+        <div className="absolute overflow-hidden -top-32 md:-top-72 md:right-36">
+          <Image
+            className="absolute top-0 right-0"
+            src={TopRays}
+            alt=""
+            width={924}
+            height={718}
+            unoptimized
+          />
         </div>
+
         <div className="z-10">
           <PageTransition>{children}</PageTransition>
+          <Footer />
         </div>
-        <Footer />
+        <div className="absolute bottom-0 overflow-hidden">
+          <Image
+            className="absolute -right-44 -bottom-64 md:right-0 md:-bottom-96"
+            src={BottomRays}
+            alt=""
+            width={924}
+            height={718}
+            unoptimized
+          />
+        </div>
       </main>
     </div>
   );
