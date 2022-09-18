@@ -20,7 +20,7 @@
 - `pages/stats` - [Site statistics](https://braydoncoyer.dev/stats) about my website.
 - `pages/*` - All other static pages.
 - `public/*` - Static assets including robots.txt
-- `styles/*` - A handful of global styles, and reusable classes utilzing @apply with Tailwind.
+- `styles/*` - A handful of global styles, and reusable classes utilizing @apply with Tailwind.
 - `data/*` - a simple object containing global data about the site.
 
 ## Running Locally
