@@ -271,7 +271,7 @@ const ArticlePage = ({
                 {title}
               </h1>
               {/* <!-- Ezoic - under_page_title - under_page_title --> */}
-              <div id="ezoic-pub-ad-placeholder-122"> </div>
+              {/* <div id="ezoic-pub-ad-placeholder-122"> </div> */}
               {/* <!-- End Ezoic - under_page_title - under_page_title --> */}
               <div className="text-center">
                 <div className="flex items-center justify-center mb-2 space-x-2 text-lg">
@@ -305,7 +305,7 @@ const ArticlePage = ({
             </div>
             <Subscribe size={SubscribeSize.LARGE} />
             {/* <!-- Ezoic - bottom_of_page - bottom_of_page --> */}
-            <div id="ezoic-pub-ad-placeholder-110"> </div>
+            {/* <div id="ezoic-pub-ad-placeholder-110"> </div> */}
             {/* <!-- End Ezoic - bottom_of_page - bottom_of_page --> */}
             {/* Link to sponsor if applicable */}
             {sponsoredArticleUrl && (
@@ -359,7 +359,7 @@ const ArticlePage = ({
           <ShareArticle title={title} slug={slug} />
           <Ad />
           {/* <!-- Ezoic - sidebar - sidebar --> */}
-          <div id="ezoic-pub-ad-placeholder-112"> </div>
+          {/* <div id="ezoic-pub-ad-placeholder-112"> </div> */}
           {/* <!-- End Ezoic - sidebar - sidebar --> */}
         </aside>
       </div>
