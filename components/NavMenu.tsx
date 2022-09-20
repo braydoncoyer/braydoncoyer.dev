@@ -5,22 +5,8 @@ import { Dialog } from '@headlessui/react';
 import Image from 'next/image';
 import LightLogo from 'public/assets/bcoyerlogo_white.svg';
 import NextLink from 'next/link';
-import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
-
-const icon = {
-  hidden: {
-    opacity: 0,
-    pathLength: 0,
-    fill: 'rgba(255, 255, 255, 0)'
-  },
-  visible: {
-    opacity: 1,
-    pathLength: 1,
-    fill: 'rgba(255, 255, 255, 1)'
-  }
-};
 
 function NavItem({ href, text }) {
   const router = useRouter();
@@ -78,37 +64,6 @@ export function NavMenu({}) {
               />
             </a>
           </NextLink>
-          {/* <motion.svg
-            className="w-10 h-10 fill-midnight dark:fill-white"
-            fill="none"
-            id="a7977500-89f4-4386-9ea1-05208e4cd114"
-            data-name="Layer 1"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1285 1280"
-            initial="hidden"
-            animate="visible"
-            transition={{
-              default: { duration: 2, ease: 'easeInOut' },
-              fill: { duration: 2, ease: [1, 0, 0.8, 1] }
-            }}
-          >
-            <motion.path
-              className="stroke-midnight dark:stroke-white"
-              strokeWidth="30"
-              d="M731,817.7C646.6,730.6,559.9,645.8,474.2,560c-3.9-3.9-7.9-7.8-11.8-11.8-23.8-24.8-25.8-56.4-4.9-76.3,20.1-19.2,50.7-16.9,74.1,6.5C620.2,566.6,708,655.5,797,743.3c118.1,116.4,310.5,92.5,397.3-48.6,61.5-100,45.2-227.2-42.8-316C1064.7,291,977.4,203.8,780,6.6L707.5,79.1C908,278.1,997.6,368,1086.9,458.2c70.7,71.5,52,190.9-36.3,239.5-61.4,33.7-132.1,23.6-185.9-29.3C774.8,580,686.4,490.4,597,401.7c-58.6-58.1-152.4-58-210.2-.8-59.3,58.8-60.3,151.9-1.1,211.9,87.1,88.3,175.4,175.5,262.3,264,14.7,14.9,28.5,32.3,37.4,51.1,32.9,69.6,10.8,147.5-52.2,191.8-59,41.5-139.2,34.4-193.1-19-69.3-68.7-138-138-365.3-365.5l-73,73c228.7,229.1,299.3,299.3,371,368.5,98.4,94.9,251.7,93.1,348,3C823.4,1083.9,829,918.9,731,817.7Z"
-              variants={draw}
-              initial="hidden"
-              animate="visible"
-            />
-            <motion.path
-              className="stroke-midnight dark:stroke-white"
-              strokeWidth="30"
-              d="M529.9,1038.8c1.2.5,2.3,1,3.5,1.4,22.3,6.3,42.7.5,55.3-20.4,14.4-23.8,10-46-9.4-65.5-89.7-89.7-179.7-179.1-269-269.2C229.9,603.8,216,478.7,275,377.5c55.5-95.1,172.5-142.8,280.5-114.3,43.9,11.6,82,32.7,114.3,65.1,87.5,88,174.9,176.1,264.1,262.3,12.8,12.4,36,20.8,53.5,19.4,13.1-1,28.9-18.5,36.1-32.5,10.3-20.1-.4-38.9-16.1-54.6-89.8-89.5-179.3-179.5-269.2-269-44.3-44.2-97.8-72.1-158.1-88.2-140.5-37.5-300.3,21.2-379.6,139.8C116,432,115.8,601.7,207.9,716.2c10.6,13.2,21.8,25.9,33.4,38.3h0C277.7,798.9,392.3,909,466.1,979l53.6,53.6a21.79,21.79,0,0,0,4.2,3.3,44.34,44.34,0,0,0,5.4,2.6"
-              variants={draw}
-              initial="hidden"
-              animate="visible"
-            />
-          </motion.svg> */}
         </div>
         <div className="-my-2 -mr-2 md:hidden" onClick={() => setIsOpen(true)}>
           <div className="bg-gray-200 dark:bg-midnight text-gray-600 dark:text-gray-300 rounded-full p-3.5 inline-flex items-center justify-center hover:text-gray-700 hover:bg-gray-300 cursor-pointer focus:outline-none general-ring-state">
