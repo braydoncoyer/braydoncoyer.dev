@@ -100,6 +100,7 @@ export function NavMenu({}) {
           <NavItem href="/blog" text="Blog" />
           <NavItem href="/community-wall" text="Community wall" />
         </nav>
+
         <div className="items-center justify-end hidden md:flex md:flex-1 lg:w-0">
           <button
             aria-label="Toggle Dark Mode"
