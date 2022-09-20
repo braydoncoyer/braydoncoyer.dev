@@ -1,4 +1,3 @@
-import { WorkTimeline } from '@/lib/types';
 import { workTimelineData } from '@/data/workTimeline';
 
 export function WorkTimeline() {
