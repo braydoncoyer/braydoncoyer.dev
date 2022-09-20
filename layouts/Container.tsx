@@ -1,11 +1,11 @@
-import BottomRays from 'public/assets/footer_rays.png';
+// import BottomRays from 'public/assets/footer_rays.png';
 import { Footer } from '@/components/Footer';
 import Head from 'next/head';
 import Image from 'next/image';
 import { NavMenu } from '@/components/NavMenu';
 import { PageTransition } from '@/components/PageTransition';
 import { PageType } from '@/lib/types';
-import TopRays from 'public/assets/rays.png';
+// import TopRays from 'public/assets/rays.png';
 import siteMetadata from '@/data/siteMetadata';
 import { useRouter } from 'next/router';
 
@@ -81,7 +81,7 @@ export function Container(props) {
       <main
         className={`flex flex-col mx-auto max-w-6xl justify-center px-4 bg-white dark:bg-dark prose prose-lg dark:prose-dark relative pt-24`}
       >
-        <div className="absolute overflow-hidden -top-32 md:-top-72 md:right-36">
+        {/* <div className="absolute overflow-hidden -top-32 md:-top-72 md:right-36">
           <Image
             className="absolute top-0 right-0"
             src={TopRays}
@@ -90,13 +90,13 @@ export function Container(props) {
             height={718}
             unoptimized
           />
-        </div>
+        </div> */}
 
         <div className="z-10">
           <PageTransition>{children}</PageTransition>
           <Footer />
         </div>
-        <div className="absolute bottom-0 overflow-hidden">
+        {/* <div className="absolute bottom-0 overflow-hidden">
           <Image
             className="absolute -right-44 -bottom-64 md:right-0 md:-bottom-96"
             src={BottomRays}
@@ -105,7 +105,7 @@ export function Container(props) {
             height={718}
             unoptimized
           />
-        </div>
+        </div> */}
       </main>
     </div>
   );

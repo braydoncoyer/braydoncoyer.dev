@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import DarkLogo from 'public/assets/bcoyerlogo_dark.svg';
+// import DarkLogo from 'public/assets/bcoyerlogo_dark.svg';
 import { Dialog } from '@headlessui/react';
 import Image from 'next/image';
-import LightLogo from 'public/assets/bcoyerlogo_white.svg';
+// import LightLogo from 'public/assets/bcoyerlogo_white.svg';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
@@ -40,7 +40,7 @@ export function NavMenu({}) {
       <div className="flex items-center justify-between max-w-6xl px-4 py-3 mx-auto sm:px-6 md:space-x-10">
         <div className="flex justify-start lg:w-0 lg:flex-1">
           <span className="sr-only">Profile Picture</span>
-          <NextLink href="/">
+          {/* <NextLink href="/">
             <a className="block dark:hidden">
               <Image
                 alt="Braydon Coyer"
@@ -63,7 +63,7 @@ export function NavMenu({}) {
                 className="rounded-full"
               />
             </a>
-          </NextLink>
+          </NextLink> */}
         </div>
         <div className="-my-2 -mr-2 md:hidden" onClick={() => setIsOpen(true)}>
           <div className="bg-gray-200 dark:bg-midnight text-gray-600 dark:text-gray-300 rounded-full p-3.5 inline-flex items-center justify-center hover:text-gray-700 hover:bg-gray-300 cursor-pointer focus:outline-none general-ring-state">
