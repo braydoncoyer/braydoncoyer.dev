@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import { Container } from 'layouts/Container';
 import { GetStaticProps } from 'next';
 import { StickyColumn } from 'layouts/StickyColumn';
-import { getPageInfo } from '@/lib/notion';
+import { getToolboxInfo } from '@/lib/notion';
 import { renderBlocks } from '@/lib/renderBlocks';
 
 export default function Toolbox({ toolboxContent }) {
@@ -31,7 +31,7 @@ export default function Toolbox({ toolboxContent }) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await getPageInfo(process.env.TOOLBOX_PAGE_ID);
+  const data = await getToolboxInfo(process.env.TOOLBOX_PAGE_ID);
 
   return {
     props: {

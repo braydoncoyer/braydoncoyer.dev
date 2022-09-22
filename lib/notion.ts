@@ -94,7 +94,7 @@ export const getPublishedArticles = async (databaseId) => {
   return response.results;
 };
 
-export const getPageInfo = async (pageId) => {
+export const getToolboxInfo = async (pageId) => {
   const response = await notion.blocks.children.list({
     block_id: pageId
   });
