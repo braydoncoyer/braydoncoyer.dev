@@ -89,8 +89,6 @@ export function renderBlocks(block) {
               aria-describedby={value.text}
               name={id}
               type="checkbox"
-              checked={value?.checked}
-              readOnly
               className="w-4 h-4 text-teal-500 border-gray-300 rounded focus:ring-teal-500"
             />
             <Text text={value.text} />
