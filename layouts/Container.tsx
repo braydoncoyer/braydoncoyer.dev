@@ -37,7 +37,7 @@ export function Container(props) {
           property="og:url"
           content={`${siteMetadata.siteUrl}${router.asPath}`}
         />
-        <base href="http://braydoncoyer.dev/" />
+        {/* <base href="http://braydoncoyer.dev/" /> */}
         {/* <link
           rel="apple-touch-icon-precomposed"
           sizes="57x57"
