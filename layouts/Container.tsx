@@ -37,7 +37,7 @@ export function Container(props) {
           property="og:url"
           content={`${siteMetadata.siteUrl}${router.asPath}`}
         />
-        <link
+        {/* <link
           rel="apple-touch-icon-precomposed"
           sizes="57x57"
           href="/assets/apple-touch-icon-57x57.png"
@@ -106,10 +106,10 @@ export function Container(props) {
           type="image/png"
           href="/assets/favicon-128.png"
           sizes="128x128"
-        />
+        /> */}
         <meta name="application-name" content="&nbsp;" />
         <meta name="msapplication-TileColor" content="#FFFFFF" />
-        <meta
+        {/* <meta
           name="msapplication-TileImage"
           content="/assets/mstile-144x144.png"
         />
@@ -128,7 +128,7 @@ export function Container(props) {
         <meta
           name="msapplication-square310x310logo"
           content="/assets/mstile-310x310.png"
-        />
+        /> */}
         <link rel="canonical" href={meta.canonicalUrl} />
         <meta property="og:type" content={meta.type} />
         <meta property="og:site_name" content="Braydon Coyer" />
