@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import siteMetadata from '@/data/siteMetadata';
 import { useRouter } from 'next/router';
 
 export default function Home({ recentArticles }) {
@@ -13,18 +12,6 @@ export default function Home({ recentArticles }) {
             <span className="text-teal-500 dark:text-teal-400">Braydon</span>.
             I'm a developer, blogger and designer working at LogicGate.
           </h1>
-          <div className="order-1 md:order-2">
-            <Image
-              alt="Braydon Coyer"
-              height={160}
-              width={160}
-              src={siteMetadata.avatarImage}
-              placeholder="blur"
-              blurDataURL={siteMetadata.avatarImage}
-              className="col-span-1 rounded-full"
-              layout="fixed"
-            />
-          </div>
         </div>
       </div>
       <hr className="hr"></hr>
