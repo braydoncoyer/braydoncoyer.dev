@@ -1,12 +1,4 @@
 module.exports = {
-  async rewrites() {
-    return [
-      {
-        source: '/sitemap.xml',
-        destination: '/api/sitemap'
-      }
-    ];
-  },
   async redirects() {
     return [
       // portfolio archives
