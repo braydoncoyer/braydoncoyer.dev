@@ -231,28 +231,6 @@ export function NavMenu({}) {
                   </a>
                 </NextLink>
               </li>
-              <li>
-                <NextLink href="/about">
-                  <a className="hover:text-teal-400 dark:hover:text-teal-500">
-                    About
-                  </a>
-                </NextLink>
-              </li>
-              <li>
-                <NextLink href="/projects">
-                  <a className="hover:text-teal-400 dark:hover:text-teal-500">
-                    Projects
-                  </a>
-                </NextLink>
-              </li>
-
-              <li>
-                <NextLink href="/community-wall">
-                  <a className="hover:text-teal-400 dark:hover:text-teal-500">
-                    Community wall
-                  </a>
-                </NextLink>
-              </li>
             </ul>
             <div className="pt-6 mt-6 border-t border-gray-200 dark:border-gray-200/10">
               <button

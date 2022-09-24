@@ -142,7 +142,7 @@ export function Footer() {
                 <h3 className="text-sm font-semibold tracking-wider uppercase">
                   General
                 </h3>
-                <div role="list" className="mt-4 space-y-4">
+                {/* <div role="list" className="mt-4 space-y-4">
                   {navigation.general.map((item) => (
                     <Link key={item.name} href={item.href}>
                       <a className="block text-base text-gray-600 no-underline hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 hover:underline">
@@ -150,20 +150,20 @@ export function Footer() {
                       </a>
                     </Link>
                   ))}
-                </div>
+                </div> */}
               </div>
               <div className="mt-12 md:mt-0">
                 <h3 className="text-sm font-semibold tracking-wider uppercase">
                   Specifics
                 </h3>
                 <div role="list" className="mt-4 space-y-4">
-                  {navigation.specifics.map((item) => (
+                  {/* {navigation.specifics.map((item) => (
                     <Link key={item.name} href={item.href}>
                       <a className="block text-base text-gray-600 no-underline hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 hover:underline">
                         {item.name}
                       </a>
                     </Link>
-                  ))}
+                  ))} */}
                   <a
                     target="_blank"
                     href={siteMetadata.snippets}
@@ -181,13 +181,13 @@ export function Footer() {
                   Extra
                 </h3>
                 <div role="list" className="mt-4 space-y-4">
-                  {navigation.extra.map((item) => (
+                  {/* {navigation.extra.map((item) => (
                     <Link key={item.name} href={item.href}>
                       <a className="block text-base text-gray-600 no-underline hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 hover:underline">
                         {item.name}
                       </a>
                     </Link>
-                  ))}
+                  ))} */}
                   <a
                     target="_blank"
                     href={siteMetadata.newsletter}
