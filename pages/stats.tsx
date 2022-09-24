@@ -1,4 +1,3 @@
-import { Ad } from '@/components/Ad';
 import { ClapCount } from '@/components/stats/ClapCount';
 import { Container } from 'layouts/Container';
 import { LikeCount } from '@/components/stats/LikeCount';
@@ -42,9 +41,6 @@ export default function Stats() {
         <Pageviews />
         <NewsletterSubs />
       </div>
-      <div className="flex items-center justify-center my-8">
-        <Ad />
-      </div>
       <div className="grid grid-cols-4 gap-2 md:gap-6">
         <div className="col-span-4">
           <h2 className="flex items-center mb-0 text-base uppercase">
@@ -61,9 +57,6 @@ export default function Stats() {
         <ClapCount clapCount={totalReactions?.clapCount} />
         <PartyCount partyCount={totalReactions?.partyCount} />
         <TotalReactions />
-      </div>
-      <div className="flex items-center justify-center my-8">
-        <Ad />
       </div>
     </Container>
   );
