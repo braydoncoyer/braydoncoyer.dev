@@ -1,13 +1,9 @@
 import { ButtonType, SubscribeSize } from '@/lib/types';
-import { convertToArticleList, getPublishedArticles } from '@/lib/notion';
 
-import { ArticleList } from '@/components/ArticleList';
 import { Button } from '@/components/Button';
 import { Container } from 'layouts/Container';
-import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import { Subscribe } from '@/components/Subscribe';
-import { generateRssFeed } from 'scripts/generate-rss';
 import siteMetadata from '@/data/siteMetadata';
 import { useRouter } from 'next/router';
 
@@ -36,34 +32,19 @@ export default function Home({ recentArticles }) {
               />
             </div>
           </div>
-          <div className="space-y-6 md:space-y-0 md:space-x-4">
-            {/* <Button
-              buttonType={ButtonType.PRIMARY}
-              onButtonClick={() => push('/blog')}
-            >
-              Read the blog
-            </Button> */}
-            <Button
-              buttonType={ButtonType.SECONDARY}
-              onButtonClick={() => push('/about')}
-            >
-              More about me
-            </Button>
-          </div>
         </div>
         <hr className="hr"></hr>
         <div>
           <h2>I love to share my knowledge through writing.</h2>
           <p>Check out a few of my most recent publishings.</p>
-          <ArticleList articles={recentArticles} />
-          <div className="my-16">
+          {/* <div className="my-16">
             <Button
               buttonType={ButtonType.PRIMARY}
               onButtonClick={() => push('/blog')}
             >
               See all articles
             </Button>
-          </div>
+          </div> */}
           <div className="mt-16">
             <Subscribe size={SubscribeSize.LARGE} />
           </div>
@@ -72,16 +53,3 @@ export default function Home({ recentArticles }) {
     </Container>
   );
 }
-
-export const getStaticProps: GetStaticProps = async () => {
-  const data = await getPublishedArticles(process.env.BLOG_DATABASE_ID);
-  const { articles } = convertToArticleList(data);
-  await generateRssFeed();
-
-  return {
-    props: {
-      recentArticles: articles.slice(0, 3)
-    },
-    revalidate: 30
-  };
-};

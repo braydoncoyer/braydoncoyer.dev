@@ -85,12 +85,12 @@ export function NavMenu({}) {
             </svg>
           </div>
         </div>
-        <nav className="hidden space-x-6 text-lg md:flex">
+        {/* <nav className="hidden space-x-6 text-lg md:flex">
           <NavItem href="/" text="Home" />
           <NavItem href="/about" text="About" />
           <NavItem href="/projects" text="Projects" />
           <NavItem href="/community-wall" text="Community wall" />
-        </nav>
+        </nav> */}
         <div className="items-center justify-end hidden md:flex md:flex-1 lg:w-0">
           <button
             aria-label="Toggle Dark Mode"
