@@ -196,14 +196,14 @@ export function Footer() {
                   >
                     Newsletter
                   </a>
-                  <a
+                  {/* <a
                     target="_blank"
                     href={siteMetadata.resume}
                     className="block text-base text-gray-600 no-underline hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 hover:underline"
                     rel="noreferrer"
                   >
                     Resume
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </div>
