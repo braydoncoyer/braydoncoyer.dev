@@ -37,12 +37,12 @@ export default function Home({ recentArticles }) {
             </div>
           </div>
           <div className="space-y-6 md:space-y-0 md:space-x-4">
-            <Button
+            {/* <Button
               buttonType={ButtonType.PRIMARY}
               onButtonClick={() => push('/blog')}
             >
               Read the blog
-            </Button>
+            </Button> */}
             <Button
               buttonType={ButtonType.SECONDARY}
               onButtonClick={() => push('/about')}

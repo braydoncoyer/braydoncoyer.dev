@@ -89,7 +89,6 @@ export function NavMenu({}) {
           <NavItem href="/" text="Home" />
           <NavItem href="/about" text="About" />
           <NavItem href="/projects" text="Projects" />
-          <NavItem href="/blog" text="Blog" />
           <NavItem href="/community-wall" text="Community wall" />
         </nav>
         <div className="items-center justify-end hidden md:flex md:flex-1 lg:w-0">
@@ -246,13 +245,7 @@ export function NavMenu({}) {
                   </a>
                 </NextLink>
               </li>
-              <li>
-                <NextLink href="/blog">
-                  <a className="hover:text-teal-400 dark:hover:text-teal-500">
-                    Blog
-                  </a>
-                </NextLink>
-              </li>
+
               <li>
                 <NextLink href="/community-wall">
                   <a className="hover:text-teal-400 dark:hover:text-teal-500">

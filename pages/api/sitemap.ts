@@ -3,15 +3,15 @@ import { convertToArticleList, getPublishedArticles } from '@/lib/notion';
 import slugify from 'slugify';
 
 export default async function handler(req, res) {
-  const resp = await getPublishedArticles(process.env.BLOG_DATABASE_ID);
-  const articles = await convertToArticleList(resp);
+  // const resp = await getPublishedArticles(process.env.BLOG_DATABASE_ID);
+  // const articles = await convertToArticleList(resp);
 
-  const routes = articles.articles.map(
-    (post) => `/blog/${slugify(post.title).toLocaleLowerCase()}`
-  );
+  // const routes = articles.articles.map(
+  //   (post) => `/blog/${slugify(post.title).toLocaleLowerCase()}`
+  // );
   const localRoutes = [
     '/index',
-    '/blog',
+    // '/blog',
     '/newsletter',
     '/about',
     '/projects',
@@ -19,7 +19,7 @@ export default async function handler(req, res) {
   ];
 
   //   const pages = routes.concat(localRoutes);
-  const pages = [...routes, ...localRoutes];
+  const pages = [...localRoutes];
 
   const urlSet = pages
     .map((page) => {

@@ -1,15 +1,15 @@
-import { ButtonType } from '@/lib/types';
 import { convertToArticleList, getPublishedArticles } from '@/lib/notion';
 
+import { Ad } from '@/components/Ad';
 import { ArticleList } from '@/components/ArticleList';
 import { Button } from '@/components/Button';
+import { ButtonType } from '@/lib/types';
 import { Container } from 'layouts/Container';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import siteMetadata from '@/data/siteMetadata';
 import { useRouter } from 'next/router';
-import { Ad } from '@/components/Ad';
 
 const workExperience = [
   {
@@ -48,12 +48,9 @@ export default function About({ recentArticles }) {
       </h1>
       <p>
         I’m Braydon, a developer,{' '}
-        <a href={siteMetadata.codepen}>creative coder</a>,{' '}
-        <Link href="/blog">
-          <a>blogger</a>
-        </Link>{' '}
-        and self-proclaimed designer who specializes in front-end development.
-        My mission is to translate user-focussed designs into pixel-perfect
+        <a href={siteMetadata.codepen}>creative coder</a>, blogger and
+        self-proclaimed designer who specializes in front-end development. My
+        mission is to translate user-focussed designs into pixel-perfect
         websites or applications that run blazing fast.
       </p>
       <p>
