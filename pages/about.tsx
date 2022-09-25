@@ -1,15 +1,15 @@
-import { ButtonType } from '@/lib/types';
 import { convertToArticleList, getPublishedArticles } from '@/lib/notion';
 
+import { Ad } from '@/components/Ad';
 import { ArticleList } from '@/components/ArticleList';
 import { Button } from '@/components/Button';
+import { ButtonType } from '@/lib/types';
 import { Container } from 'layouts/Container';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import siteMetadata from '@/data/siteMetadata';
 import { useRouter } from 'next/router';
-import { Ad } from '@/components/Ad';
 
 const workExperience = [
   {
@@ -111,7 +111,9 @@ export default function About({ recentArticles }) {
       </div>
       <hr className="my-16 w-full border-none text-center h-10 before:content-['∿∿∿'] before:text-[#D1D5DB] before:text-2xl"></hr>
       <div className="flex justify-center">
-        <Ad />
+        {/* <!-- Ezoic - under_main_about - mid_content --> */}
+        <div id="ezoic-pub-ad-placeholder-116"> </div>
+        {/* <!-- End Ezoic - under_main_about - mid_content --> */}
       </div>
       <div className="mt-12 space-y-6">
         <h2 className="m-0 text-gray-900 dark:text-white">Work experience</h2>
@@ -130,6 +132,9 @@ export default function About({ recentArticles }) {
               <span className="flex-none">{workItem.duration}</span>
             </div>
           ))}
+          {/* <!-- Ezoic - under experience - long_content --> */}
+          <div id="ezoic-pub-ad-placeholder-117"> </div>
+          {/* <!-- End Ezoic - under experience - long_content --> */}
         </div>
         <div className="inline-flex w-full md:w-auto ">
           <a

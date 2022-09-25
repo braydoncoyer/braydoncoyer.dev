@@ -293,9 +293,15 @@ const ArticlePage = ({
                 priority
               />
             </div>
+            {/* <!-- Ezoic - under_page_title - under_page_title --> */}
+            <div id="ezoic-pub-ad-placeholder-122"> </div>
+            {/* <!-- End Ezoic - under_page_title - under_page_title --> */}
             {content.map((block) => (
               <Fragment key={block.id}>{renderBlocks(block)}</Fragment>
             ))}
+            {/* <!-- Ezoic - incontent_1 - mid_content --> */}
+            <div id="ezoic-pub-ad-placeholder-125"> </div>
+            {/* <!-- End Ezoic - incontent_1 - mid_content --> */}
             <div className="md:hidden">
               <Reactions slug={slug} />
             </div>
@@ -350,7 +356,10 @@ const ArticlePage = ({
             Share Article
           </h3>
           <ShareArticle title={title} slug={slug} />
-          <Ad />
+          {/* <Ad /> */}
+          {/* <!-- Ezoic - sidebar - sidebar --> */}
+          <div id="ezoic-pub-ad-placeholder-112"> </div>
+          {/* <!-- End Ezoic - sidebar - sidebar --> */}
         </aside>
       </div>
     </Container>
