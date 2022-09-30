@@ -55,7 +55,8 @@ export const getStaticProps: GetStaticProps = async () => {
         created_at,
         user_id,
         user (
-            name
+            name,
+            avatar_url
         )
     `);
 

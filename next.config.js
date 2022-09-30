@@ -24,6 +24,7 @@ module.exports = {
       'images.unsplash.com', // For blog posts that use an external cover ima ge
       'pbs.twimg.com', // Twitter Profile Picture
       'dwgyu36up6iuz.cloudfront.net',
+      'avatars.githubusercontent.com',
       'cdn.hashnode.com',
       'res.craft.do',
       'res.cloudinary.com'

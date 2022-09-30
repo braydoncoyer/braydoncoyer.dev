@@ -19,11 +19,13 @@ export function CommunityForm({ loggedIn, supabase, session }) {
       message: 'Sending note...'
     });
     const content = message.current.value;
+    console.log(session.user?.user_metadata.avatar_url);
     const res = await fetch('/api/community-wall', {
       body: JSON.stringify({
         message: {
           content,
-          userId: session.user.id
+          userId: session.user.id,
+          userPhoto: session.user?.user_metadata.avatar_url
         }
       }),
       headers: {
@@ -76,7 +78,8 @@ export function CommunityForm({ loggedIn, supabase, session }) {
               </button>
             </form>
             <p className="p-0 m-0 text-base opacity-60 no-prose">
-              Your information is only used to display your name.
+              Your information is only used to display your name & GitHub
+              profile picture.
             </p>
             {form.state === Form.Error ? (
               <ErrorMessage>{form.message}</ErrorMessage>

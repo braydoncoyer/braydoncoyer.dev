@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import dayjs from 'dayjs';
 import { useSWRConfig } from 'swr';
 
@@ -26,18 +27,44 @@ export function CommunityEntry({ session, message }) {
     mutate('/api/community-wall');
   }
   return (
-    <>
-      <p className="p-0 m-0 text-gray-900 dark:text-white">{message.content}</p>
-      <div className="flex items-center space-x-6 text-base">
-        <p>
-          {message.user.name} ∿ {dayjs(message.created_at).format('MM/DD/YYYY')}
-        </p>
-        {session && session.user.id === message.user_id ? (
-          <button onClick={handleDeleteMessage} className="text-rose-400">
-            Delete
-          </button>
-        ) : null}
+    <div className="px-6 py-4 rounded-xl bg-[#F8FAFC] dark:bg-midnight">
+      <div className="flex items-start justify-between mb-4 space-x-6">
+        <div className="flex space-x-6">
+          <img
+            className="flex-shrink-0 w-8 h-8 rounded-full "
+            src={
+              message.user.avatar_url
+                ? message.user.avatar_url
+                : `https://robohash.org/${message.user.name}.png`
+            }
+            alt="profile picture"
+          />
+          <div>
+            <h5 className="text-indigo-600 dark:text-indigo-500">
+              {message.user.name}
+            </h5>
+            <p className="flex items-start p-0 m-0 leading-7">
+              <span>{message.content}</span>
+            </p>
+            <div className="mt-4 text-base">
+              {session && session.user.id === message.user_id ? (
+                <button
+                  onClick={handleDeleteMessage}
+                  className="text-rose-400 hover:text-rose-500"
+                >
+                  Delete
+                </button>
+              ) : null}
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <p className="p-0 m-0 text-base text-slate-400 dark:text-slate-500">
+            {dayjs(message.created_at).format('MM/DD/YYYY')}
+          </p>
+        </div>
       </div>
-    </>
+    </div>
   );
 }

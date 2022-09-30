@@ -16,7 +16,8 @@ export default async function handler(
         created_at,
         user_id,
         user (
-            name
+            name,
+            avatar_url
         )
       `
       )
@@ -33,7 +34,8 @@ export default async function handler(
     await supabaseClient.from('message').insert([
       {
         content: message.content,
-        user_id: message.userId
+        user_id: message.userId,
+        user_photo: message.userPhoto
       }
     ]);
 
