@@ -17,6 +17,7 @@ export default function Document(props) {
           href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
           rel="stylesheet"
         />
+        <script src="//www.ezojs.com/ezoic/sa.min.js"></script>
       </Head>
       <body className="prose-headings:font-headings">
         <Main />

@@ -26,6 +26,8 @@ import siteMetadata from '@/data/siteMetadata';
 import slugify from 'slugify';
 import { useRouter } from 'next/router';
 
+declare const ezstandalone: any;
+
 export const Text = ({ text }) => {
   if (!text) {
     return null;
@@ -245,6 +247,18 @@ const ArticlePage = ({
     cloudName: 'braydoncoyer',
     imagePublicID: 'og_social_large.png'
   });
+
+  useEffect(() => {
+    /* tslint-disable no-return-assign, no-param-reassign */
+    ezstandalone.define(122, 125, 112);
+    if (!ezstandalone.enabled) {
+      ezstandalone.enable();
+      ezstandalone.display();
+    } else {
+      ezstandalone.refresh();
+      /* tslint-enable no-return-assign, no-param-reassign */
+    }
+  }, []);
 
   useEffect(() => {
     fetch(`/api/views/${slug}`, {
