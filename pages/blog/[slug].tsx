@@ -81,7 +81,7 @@ function renderContent(block, index) {
       <div>
         {renderBlocks(block)}
         {/* <!-- Ezoic - incontent_6 - incontent_6 --> */}
-        <div id="ezoic-pub-ad-placeholder-109"> </div>;
+        <div id="ezoic-pub-ad-placeholder-109"> </div>
         {/* <!-- End Ezoic - incontent_6 - incontent_6 --> */}
       </div>
     );

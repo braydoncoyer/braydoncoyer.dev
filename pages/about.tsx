@@ -9,7 +9,10 @@ import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import siteMetadata from '@/data/siteMetadata';
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+
+declare const ezstandalone: any;
 
 const workExperience = [
   {
@@ -36,6 +39,19 @@ const workExperience = [
 
 export default function About({ recentArticles }) {
   const { push } = useRouter();
+
+  useEffect(() => {
+    /* tslint-disable no-return-assign, no-param-reassign */
+    ezstandalone.define(117, 116);
+    if (!ezstandalone.enabled) {
+      ezstandalone.enable();
+      ezstandalone.display();
+    } else {
+      ezstandalone.refresh();
+      /* tslint-enable no-return-assign, no-param-reassign */
+    }
+  }, []);
+
   return (
     <Container title="About Me - Braydon Coyer">
       <h1>
@@ -108,6 +124,9 @@ export default function About({ recentArticles }) {
             mediocre <a href="https://anchor.fm/florida-man">podcast</a>.
           </p>
         </div>
+        {/* <!-- Ezoic - under_main_about - mid_content --> */}
+        <div id="ezoic-pub-ad-placeholder-116"> </div>
+        {/* <!-- End Ezoic - under_main_about - mid_content --> */}
       </div>
       <hr className="my-16 w-full border-none text-center h-10 before:content-['∿∿∿'] before:text-[#D1D5DB] before:text-2xl"></hr>
       <div className="flex justify-center">
@@ -136,6 +155,9 @@ export default function About({ recentArticles }) {
           <div id="ezoic-pub-ad-placeholder-117"> </div>
           {/* <!-- End Ezoic - under experience - long_content --> */}
         </div>
+        {/* <!-- Ezoic - under experience - long_content --> */}
+        <div id="ezoic-pub-ad-placeholder-117"> </div>
+        {/* <!-- End Ezoic - under experience - long_content --> */}
         <div className="inline-flex w-full md:w-auto ">
           <a
             className="items-center justify-center w-full px-4 py-3 text-sm font-medium text-center text-white no-underline rounded-full md:text-xl md:px-12 bg-midnight dark:bg-gray-200 dark:text-midnight general-ring-state"
