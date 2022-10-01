@@ -57,6 +57,48 @@ export const Text = ({ text }) => {
   });
 };
 
+function renderContent(block, index) {
+  if (index === 7) {
+    return (
+      <div>
+        {renderBlocks(block)}
+        {/* <!-- Ezoic - incontent_2 - mid_content --> */}
+        <div id="ezoic-pub-ad-placeholder-103"> </div>
+        {/* <!-- End Ezoic - incontent_2 - mid_content --> */}
+      </div>
+    );
+  } else if (index === 14) {
+    return (
+      <div>
+        {renderBlocks(block)}
+        {/* <!-- Ezoic - incontent_3 - longer_content --> */}
+        <div id="ezoic-pub-ad-placeholder-105"> </div>
+        {/* <!-- End Ezoic - incontent_3 - longer_content --> */}
+      </div>
+    );
+  } else if (index === 22) {
+    return (
+      <div>
+        {renderBlocks(block)}
+        {/* <!-- Ezoic - incontent_6 - incontent_6 --> */}
+        <div id="ezoic-pub-ad-placeholder-109"> </div>;
+        {/* <!-- End Ezoic - incontent_6 - incontent_6 --> */}
+      </div>
+    );
+  } else if (index === 32) {
+    return (
+      <div>
+        {renderBlocks(block)}
+        {/* // <!-- Ezoic - incontent_8 - incontent_8 --> */}
+        <div id="ezoic-pub-ad-placeholder-113"> </div>
+        {/* // <!-- End Ezoic - incontent_8 - incontent_8 --> */}
+      </div>
+    );
+  } else {
+    return renderBlocks(block);
+  }
+}
+
 export function renderBlocks(block) {
   const { type, id } = block;
   const value = block[type];
@@ -250,7 +292,7 @@ const ArticlePage = ({
 
   useEffect(() => {
     /* tslint-disable no-return-assign, no-param-reassign */
-    ezstandalone.define(122, 125, 112);
+    ezstandalone.define(103, 105, 109, 112, 113, 122, 125);
     if (!ezstandalone.enabled) {
       ezstandalone.enable();
       ezstandalone.display();
@@ -310,8 +352,8 @@ const ArticlePage = ({
             {/* <!-- Ezoic - under_page_title - under_page_title --> */}
             <div id="ezoic-pub-ad-placeholder-122"> </div>
             {/* <!-- End Ezoic - under_page_title - under_page_title --> */}
-            {content.map((block) => (
-              <Fragment key={block.id}>{renderBlocks(block)}</Fragment>
+            {content.map((block, index) => (
+              <Fragment key={block.id}>{renderContent(block, index)}</Fragment>
             ))}
             {/* <!-- Ezoic - incontent_1 - mid_content --> */}
             <div id="ezoic-pub-ad-placeholder-125"> </div>
