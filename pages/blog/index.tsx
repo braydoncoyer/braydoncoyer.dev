@@ -13,6 +13,8 @@ import { handleArticleClicked } from '@/lib/handleArticleClick';
 import siteMetadata from '@/data/siteMetadata';
 import slugify from 'slugify';
 
+declare const ezstandalone: any;
+
 export default function Blog({ featuredArticle, articles, tags }) {
   const [selectedTag, setSelectedTag] = useState<string>('');
   const [searchValue, setSearchValue] = useState('');
@@ -29,6 +31,16 @@ export default function Blog({ featuredArticle, articles, tags }) {
   useEffect(() => {
     setSearchValue(selectedTag);
   }, [selectedTag]);
+
+  useEffect(() => {
+    ezstandalone.define(114, 115);
+    if (!ezstandalone.enabled) {
+      ezstandalone.enable();
+      ezstandalone.display();
+    } else {
+      ezstandalone.refresh();
+    }
+  }, []);
 
   return (
     <Container title="Blog - Braydon Coyer">
@@ -91,6 +103,9 @@ export default function Blog({ featuredArticle, articles, tags }) {
               <h2 className="my-4 text-4xl">{featuredArticle.title}</h2>
               <p>{featuredArticle.summary}</p>
             </div>
+            {/* <!-- Ezoic - featured blog  - mid_content --> */}
+            <div id="ezoic-pub-ad-placeholder-115"> </div>
+            {/* <!-- End Ezoic - featured blog  - mid_content --> */}
           </div>
         </button>
         <div className="w-full col-span-4 space-y-12">
@@ -219,10 +234,9 @@ export default function Blog({ featuredArticle, articles, tags }) {
             </div>
           </div>
           <div>
-            {/* <Ad /> */}
-            {/* <!-- Ezoic - featured blog  - mid_content --> */}
-            <div id="ezoic-pub-ad-placeholder-115"> </div>
-            {/* <!-- End Ezoic - featured blog  - mid_content --> */}
+            {/* <!-- Ezoic - sidebar - sidebar --> */}
+            <div id="ezoic-pub-ad-placeholder-114"> </div>
+            {/* <!-- End Ezoic - sidebar - sidebar --> */}
           </div>
         </div>
       </div>

@@ -1,4 +1,3 @@
-import { Ad } from '@/components/Ad';
 import { ClapCount } from '@/components/stats/ClapCount';
 import { Container } from 'layouts/Container';
 import { LikeCount } from '@/components/stats/LikeCount';
@@ -11,13 +10,28 @@ import { TotalArticles } from '@/components/stats/TotalArticles';
 import { TotalReactions } from '@/components/stats/TotalReactions';
 import { Visitors } from '@/components/stats/Visitors';
 import { fetcher } from '@/lib/fetcher';
+import { useEffect } from 'react';
 import useSWR from 'swr';
+
+declare const ezstandalone: any;
 
 export default function Stats() {
   const { data: totalReactions } = useSWR<any>(
     '/api/statistics/total-reactions',
     fetcher
   );
+
+  useEffect(() => {
+    /* tslint-disable no-return-assign, no-param-reassign */
+    ezstandalone.define(118);
+    if (!ezstandalone.enabled) {
+      ezstandalone.enable();
+      ezstandalone.display();
+    } else {
+      ezstandalone.refresh();
+      /* tslint-enable no-return-assign, no-param-reassign */
+    }
+  }, []);
 
   return (
     <Container title="Stats - Braydon Coyer">
@@ -42,9 +56,9 @@ export default function Stats() {
         <Pageviews />
         <NewsletterSubs />
       </div>
-      <div className="flex items-center justify-center my-8">
-        <Ad />
-      </div>
+      {/* <!-- Ezoic - incontent_1 - mid_content --> */}
+      <div id="ezoic-pub-ad-placeholder-118"> </div>
+      {/* <!-- End Ezoic - incontent_1 - mid_content --> */}
       <div className="grid grid-cols-4 gap-2 md:gap-6">
         <div className="col-span-4">
           <h2 className="flex items-center mb-0 text-base uppercase">
@@ -61,9 +75,6 @@ export default function Stats() {
         <ClapCount clapCount={totalReactions?.clapCount} />
         <PartyCount partyCount={totalReactions?.partyCount} />
         <TotalReactions />
-      </div>
-      <div className="flex items-center justify-center my-8">
-        <Ad />
       </div>
     </Container>
   );
