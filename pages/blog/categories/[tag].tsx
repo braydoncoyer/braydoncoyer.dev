@@ -1,10 +1,14 @@
-import { convertToArticleList, getAllArticles } from '@/lib/notion';
-import { useEffect, useState } from 'react';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import {
+  convertToArticleList,
+  getAllArticleTags,
+  getAllArticles,
+  getAllArticlesByTag
+} from '@/lib/notion';
 
 import { Ad } from '@/components/Ad';
 import { ArticleList } from '@/components/ArticleList';
 import { Container } from 'layouts/Container';
-import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import { Subscribe } from '@/components/Subscribe';
 import { SubscribeSize } from '@/lib/types';
@@ -13,12 +17,13 @@ import { handleArticleClicked } from '@/lib/handleArticleClick';
 import siteMetadata from '@/data/siteMetadata';
 import slugify from 'slugify';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 
-export default function Blog({ featuredArticle, articles, tags }) {
+export default function Blog({ featuredArticle, articles, tags, tag }) {
   const router = useRouter();
 
   function navigateToTag(tag) {
-    router?.push(`blog/categories/${tag}`);
+    router?.push(`/blog/categories/${tag}`);
   }
 
   return (
@@ -241,15 +246,19 @@ export default function Blog({ featuredArticle, articles, tags }) {
         <ul className="flex w-full gap-6 py-8 overflow-x-auto snap-x">
           {/* Initial tag for all topics */}
           <div className="scroll-ml-6 snap-normal snap-start shrink-0">
-            <Tag activeTag="" tag="" cb={() => router?.push(`/blog`)} />
+            <Tag activeTag={tag} tag="" cb={() => router?.push(`/blog`)} />
           </div>
           {tags &&
-            tags.map((tag) => (
+            tags.map((tagItem) => (
               <div
-                key={tag}
+                key={tagItem}
                 className="scroll-ml-6 snap-normal snap-start shrink-0"
               >
-                <Tag activeTag="" tag={tag} cb={() => navigateToTag(tag)} />
+                <Tag
+                  activeTag={tag}
+                  tag={tagItem}
+                  cb={() => navigateToTag(tagItem)}
+                />
               </div>
             ))}
         </ul>
@@ -292,9 +301,43 @@ export default function Blog({ featuredArticle, articles, tags }) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-  const data = await getAllArticles(process.env.BLOG_DATABASE_ID);
-  const { articles, tags } = convertToArticleList(data);
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = [];
+  const data: any = await getAllArticles(process.env.BLOG_DATABASE_ID);
+  let tags = [];
+
+  data.forEach((result) => {
+    if (result.object === 'page') {
+      result.properties?.tags?.multi_select.forEach((tag) => {
+        if (!tags.includes(tag.name)) {
+          tags.push(tag.name);
+        }
+      });
+    }
+  });
+
+  tags.forEach((tag) => {
+    paths.push({
+      params: {
+        tag: tag,
+        tags
+      }
+    });
+  });
+
+  return {
+    paths,
+    fallback: false
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({
+  preview = false,
+  params: { tag }
+}) => {
+  const data = await getAllArticlesByTag(process.env.BLOG_DATABASE_ID, tag);
+  const { articles } = convertToArticleList(data);
+  const tags = await getAllArticleTags(process.env.BLOG_DATABASE_ID);
 
   let blogArticles = articles;
 
@@ -308,7 +351,8 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
     props: {
       featuredArticle,
       articles: blogArticles.slice(1),
-      tags
+      tags,
+      tag
     },
     revalidate: 30
   };

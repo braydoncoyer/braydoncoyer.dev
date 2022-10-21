@@ -74,6 +74,43 @@ export const getAllArticles = async (databaseId) => {
   return response.results;
 };
 
+export const getAllArticlesByTag = async (databaseId, tag) => {
+  const response = await notion.databases.query({
+    database_id: databaseId,
+    filter: {
+      property: 'tags',
+      multi_select: {
+        contains: tag
+      }
+    },
+    sorts: [
+      {
+        property: 'Published',
+        direction: 'descending'
+      }
+    ]
+  });
+
+  return response.results;
+};
+
+export const getAllArticleTags = async (databaseId) => {
+  let tags = [];
+  const articles: any = await getAllArticles(databaseId);
+
+  articles.forEach((article) => {
+    if (article.object === 'page') {
+      article.properties?.tags?.multi_select.forEach((tag) => {
+        if (!tags.includes(tag.name)) {
+          tags.push(tag.name);
+        }
+      });
+    }
+  });
+
+  return tags;
+};
+
 export const getPublishedArticles = async (databaseId) => {
   const response = await notion.databases.query({
     database_id: databaseId,
