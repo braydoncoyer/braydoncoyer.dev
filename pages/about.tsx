@@ -8,9 +8,11 @@ import { Container } from 'layouts/Container';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { WorkTimeline } from '@/components/WorkTimeline';
+import { TimelineItem } from '@/components/TimelineItem';
+import { TimelineList } from '@/components/TimelineList';
 import siteMetadata from '@/data/siteMetadata';
 import { useRouter } from 'next/router';
+import { workTimelineData } from '@/data/workTimeline';
 
 export default function About({ recentArticles }) {
   const { push } = useRouter();
@@ -94,7 +96,18 @@ export default function About({ recentArticles }) {
       <div className="mt-12 space-y-6">
         <h2 className="m-0 text-gray-900 dark:text-white">Work experience</h2>
         <p>Here's a brief rundown of my most recent experiences.</p>
-        <WorkTimeline />
+        <TimelineList>
+          {workTimelineData.map((workItem, index) => (
+            <TimelineItem
+              key={index}
+              title={workItem.title}
+              meta={workItem.company}
+              link={workItem.company_link}
+              meta_small={workItem.duration}
+              content={workItem.content}
+            />
+          ))}
+        </TimelineList>
         <Button
           onButtonClick={() => push(siteMetadata.resume)}
           buttonType={ButtonType.PRIMARY}

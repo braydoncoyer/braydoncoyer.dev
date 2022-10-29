@@ -12,10 +12,10 @@ export function ShareArticle({ slug, title }: Props) {
   const [isCopied, handleCopy] = useCopyToClipboard(1500);
   const pubilcUrl = getArticlePublicUrl(slug);
   return (
-    <div className="flex items-center space-x-3 m-0 justify-center">
+    <div className="flex items-center justify-center m-0 space-x-3">
       <TwitterShareButton url={pubilcUrl} title={title} via={'BraydonCoyer'}>
         <svg
-          className="w-9 h-9 md:w-8 md:h-8 hover:rotate-[-4deg]"
+          className="w-9 h-9 md:w-6 md:h-6 hover:rotate-[-4deg]"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +31,7 @@ export function ShareArticle({ slug, title }: Props) {
       </TwitterShareButton>
       <LinkedinShareButton title={title} url={pubilcUrl}>
         <svg
-          className="w-9 h-9 md:w-8 md:h-8 hover:rotate-[-4deg]"
+          className="w-9 h-9 md:w-6 md:h-6 hover:rotate-[-4deg]"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +82,7 @@ export function ShareArticle({ slug, title }: Props) {
           aria-hidden="true"
           viewBox="0 0 32 32"
           fill="none"
-          className="w-12 h-12 md:w-11 md:h-11 stroke-current transform group-hover:rotate-[-4deg] transition"
+          className="w-12 h-12 md:w-9 md:h-9 stroke-current transform group-hover:rotate-[-4deg] transition"
         >
           <path
             d="M12.9975 10.7499L11.7475 10.7499C10.6429 10.7499 9.74747 11.6453 9.74747 12.7499L9.74747 21.2499C9.74747 22.3544 10.6429 23.2499 11.7475 23.2499L20.2475 23.2499C21.352 23.2499 22.2475 22.3544 22.2475 21.2499L22.2475 12.7499C22.2475 11.6453 21.352 10.7499 20.2475 10.7499L18.9975 10.7499"

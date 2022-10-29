@@ -10,6 +10,7 @@ export const workTimelineData: WorkTimeline[] = [
         <p>Architect and lead frontend features for Risk Cloud users.</p>
         <p>Architect and lead frontend features for Risk Cloud users.</p>
         <p>Architect and lead frontend features for Risk Cloud users.</p>
+        
     `
   },
   {

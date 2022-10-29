@@ -25,6 +25,7 @@ module.exports = {
       'pbs.twimg.com', // Twitter Profile Picture
       'dwgyu36up6iuz.cloudfront.net',
       'avatars.githubusercontent.com',
+      'media.giphy.com',
       'cdn.hashnode.com',
       'res.craft.do',
       'res.cloudinary.com'

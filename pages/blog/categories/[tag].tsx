@@ -12,20 +12,12 @@ import { Container } from 'layouts/Container';
 import Image from 'next/image';
 import { Subscribe } from '@/components/Subscribe';
 import { SubscribeSize } from '@/lib/types';
-import { Tag } from '@/components/Tag';
+import { TagList } from '@/components/TagList';
 import { handleArticleClicked } from '@/lib/handleArticleClick';
 import siteMetadata from '@/data/siteMetadata';
 import slugify from 'slugify';
-import { useRouter } from 'next/router';
-import { useState } from 'react';
 
 export default function Blog({ featuredArticle, articles, tags, tag }) {
-  const router = useRouter();
-
-  function navigateToTag(tag) {
-    router?.push(`/blog/categories/${tag}`);
-  }
-
   return (
     <Container title="Blog - Braydon Coyer">
       <h1>
@@ -219,84 +211,8 @@ export default function Blog({ featuredArticle, articles, tags, tag }) {
           </div>
         </div>
       </div>
-      <div className="relative my-12 overflow-x-auto">
-        <div className="flex space-x-2 not-prose">
-          <svg
-            className="flex-none w-5 h-5"
-            viewBox="0 0 20 20"
-            fill="none"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-          >
-            <path
-              d="m9.813 9.25.346-5.138a1.276 1.276 0 0 0-2.54-.235L6.75 11.25 5.147 9.327a1.605 1.605 0 0 0-2.388-.085.018.018 0 0 0-.004.019l1.98 4.87a5 5 0 0 0 4.631 3.119h3.885a4 4 0 0 0 4-4v-1a3 3 0 0 0-3-3H9.813Z"
-              className="stroke-slate-400 dark:stroke-slate-300"
-            ></path>
-            <path
-              d="M3 5s.35-.47 1.25-.828m9.516-.422c2.078.593 3.484 1.5 3.484 1.5"
-              className="stroke-teal-400"
-            ></path>
-          </svg>
-          <p className="text-sm font-medium text-slate-700 dark:text-slate-200">
-            Scroll to view various categories
-          </p>
-        </div>
-        <ul className="flex w-full gap-6 py-8 overflow-x-auto snap-x">
-          {/* Initial tag for all topics */}
-          <div className="scroll-ml-6 snap-normal snap-start shrink-0">
-            <Tag activeTag={tag} tag="" cb={() => router?.push(`/blog`)} />
-          </div>
-          {tags &&
-            tags.map((tagItem) => (
-              <div
-                key={tagItem}
-                className="scroll-ml-6 snap-normal snap-start shrink-0"
-              >
-                <Tag
-                  activeTag={tag}
-                  tag={tagItem}
-                  cb={() => navigateToTag(tagItem)}
-                />
-              </div>
-            ))}
-        </ul>
-
-        {/* gradient fades */}
-        <div className="absolute w-8 h-16 top-[40px] left-0 bg-gradient-to-r from-white dark:from-dark"></div>
-        <div className="absolute w-8 h-16 top-[40px] right-0 bg-gradient-to-l from-white dark:from-dark"></div>
-      </div>
-      <div className="min-h-screen space-y-12">
-        {!articles.length && (
-          <div className="w-full mx-auto rounded-lg bg-[#F8FAFC] dark:bg-midnight p-4">
-            <p className="flex items-center justify-center text-2xl">
-              No articles found{' '}
-              <span>
-                <svg className="ml-3 w-7 h-7" fill="none" viewBox="0 0 24 24">
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="1.5"
-                    d="M8.75 4.75H15.25C17.4591 4.75 19.25 6.54086 19.25 8.75V15.25C19.25 17.4591 17.4591 19.25 15.25 19.25H8.75C6.54086 19.25 4.75 17.4591 4.75 15.25V8.75C4.75 6.54086 6.54086 4.75 8.75 4.75Z"
-                  ></path>
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="1.5"
-                    d="M7.75 15.25C7.75 15.25 9 12.75 12 12.75C15 12.75 16.25 15.25 16.25 15.25"
-                  ></path>
-                  <circle cx="14" cy="10" r="1" fill="currentColor"></circle>
-                  <circle cx="10" cy="10" r="1" fill="currentColor"></circle>
-                </svg>
-              </span>
-            </p>
-          </div>
-        )}
-        <ArticleList articles={articles} />
-      </div>
+      <TagList tag={tag} tags={tags} />
+      <ArticleList articles={articles} showEndMessage fullHeight />
     </Container>
   );
 }

@@ -1,14 +1,17 @@
-export function Tag({ tag, cb, activeTag }) {
+import Link from 'next/link';
+
+export function Tag({ tag, activeTag }) {
   return (
-    <button
-      onClick={() => cb()}
-      className={`mr-4 rounded-full px-6 py-1 ${
-        activeTag === tag && 'ring-2 ring-teal-500 text-teal-500'
-      } hover:ring-2 hover:ring-gray-300 `}
-    >
-      <span className="text-base font-medium uppercase">
-        {tag === '' ? 'all' : tag}
+    <Link href={tag ? `/blog/categories/${tag}` : '/blog'}>
+      <span
+        className={`mr-4 rounded-full px-6 py-1.5 cursor-pointer ${
+          activeTag === tag && 'bg-teal-500 text-white'
+        } hover:bg-slate-100 dark:hover:bg-midnight `}
+      >
+        <span className="text-base font-medium uppercase">
+          {tag === '' ? 'all' : tag}
+        </span>
       </span>
-    </button>
+    </Link>
   );
 }

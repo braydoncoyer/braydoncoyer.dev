@@ -135,12 +135,18 @@ export function renderBlocks(block) {
       const caption =
         value.caption.length >= 1 ? value.caption[0].plain_text : '';
       return (
-        <figure className="mt-0">
+        <figure
+          className="mt-0 aspect-video"
+          style={{
+            position: 'relative',
+            overflow: 'hidden'
+          }}
+        >
           <Image
             className="rounded-xl"
-            objectFit="fill"
-            width={1200}
-            height={684}
+            layout="fill"
+            sizes="100vw"
+            objectFit="cover"
             alt={
               caption
                 ? caption
@@ -263,17 +269,17 @@ const ArticlePage = ({
       sponsoredArticle={sponsoredArticleUrl !== null}
       sponsoredUrl={sponsoredArticleUrl}
     >
-      <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-8">
-        <article className="col-span-9 mt-12">
-          <div className="space-y-12">
+      <div className="grid justify-center grid-cols-1 lg:grid-cols-12 lg:gap-8">
+        <article className="col-span-12 mt-12">
+          <div className="space-y-16">
             <div>
-              <h1 className="text-3xl text-center font-headings md:text-5xl">
+              <h1 className="mb-5 text-3xl text-center font-headings md:text-5xl">
                 {title}
               </h1>
               <div className="text-center">
-                <div className="flex items-center justify-center mb-2 space-x-2 text-lg">
-                  <p className="m-0 text-lg md:text-xl">{publishedOn}</p>
-                  <p className="m-0">•</p>
+                <div className="flex items-center justify-center mb-2 space-x-2 text-base">
+                  <p className="m-0">{publishedOn}</p>
+                  <p className="m-0">|</p>
                   <PageViews slug={slug} />
                 </div>
                 {publishedOn !== modifiedDate && (
@@ -283,66 +289,81 @@ const ArticlePage = ({
                 )}
               </div>
             </div>
-            <div className="my-12">
-              <Image
-                className="rounded-xl"
-                objectFit="fill"
-                src={coverImage}
-                width={1200}
-                height={684}
-                alt={'article cover'}
-                priority
-              />
-            </div>
-            {content.map((block) => (
-              <Fragment key={block.id}>{renderBlocks(block)}</Fragment>
-            ))}
-            <div className="md:hidden">
-              <Reactions slug={slug} />
-            </div>
-            <Subscribe size={SubscribeSize.LARGE} />
-            {/* Link to sponsor if applicable */}
-            {sponsoredArticleUrl && (
-              <Callout>
-                <span>📣</span>
-                <div>
-                  <span>
-                    This article was originally published{' '}
-                    <a
-                      target="_blank"
-                      href={sponsoredArticleUrl}
-                      rel="noreferrer"
-                    >
-                      here
-                    </a>
-                    .
-                  </span>
-                </div>
-              </Callout>
-            )}
-            <div className="flex items-center justify-between space-x-4">
-              <Button
-                buttonType={ButtonType.PRIMARY}
-                onButtonClick={() => push('/blog')}
-              >
-                Back to the blog
-              </Button>
-              <div className="md:hidden">
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-base">Share this article</span>
                 <ShareArticle title={title} slug={slug} />
               </div>
-            </div>
-
-            <div>
-              <hr />
-              <h3>More articles</h3>
-              <p className="mb-12">
-                If you enjoyed this article, you'll find these insightful too!
-              </p>
-              <ArticleList articles={moreArticles} />
+              <div
+                className="aspect-video"
+                style={{ position: 'relative', overflow: 'hidden' }}
+              >
+                <Image
+                  className="rounded-xl"
+                  layout="fill"
+                  sizes="100vw"
+                  objectFit="cover"
+                  src={coverImage}
+                  alt={'article cover'}
+                  priority
+                />
+              </div>
             </div>
           </div>
         </article>
-        <aside className="hidden w-full lg:inline-block md:sticky md:top-[175px] md:self-start col-span-3 space-y-8">
+        <div className="lg:col-start-3 lg:col-end-11">
+          {content.map((block) => (
+            <Fragment key={block.id}>{renderBlocks(block)}</Fragment>
+          ))}
+          <div className="md:hidden">
+            <Reactions slug={slug} />
+          </div>
+          <div className="my-16">
+            <Subscribe size={SubscribeSize.LARGE} />
+          </div>
+          {/* Link to sponsor if applicable */}
+          {sponsoredArticleUrl && (
+            <Callout>
+              <span>📣</span>
+              <div>
+                <span>
+                  This article was originally published{' '}
+                  <a
+                    target="_blank"
+                    href={sponsoredArticleUrl}
+                    rel="noreferrer"
+                  >
+                    here
+                  </a>
+                  .
+                </span>
+              </div>
+            </Callout>
+          )}
+        </div>
+        <div className="col-span-12">
+          <div className="font-bold text-center">
+            <p className="text-base">Share this article</p>
+            <ShareArticle title={title} slug={slug} />
+          </div>
+          {/* <div className="flex items-center justify-between space-x-4">
+            <Button
+              buttonType={ButtonType.PRIMARY}
+              onButtonClick={() => push('/blog')}
+            >
+              Back to the blog
+            </Button>
+            <div className="md:hidden">
+              <ShareArticle title={title} slug={slug} />
+            </div>
+          </div> */}
+
+          <div>
+            <h3 className="mb-8">Related articles</h3>
+            <ArticleList articles={moreArticles} />
+          </div>
+        </div>
+        {/* <aside className="hidden w-full lg:inline-block md:sticky md:top-[175px] md:self-start col-span-3 space-y-8">
           <h3 className="m-0 text-sm font-semibold tracking-wider text-center uppercase">
             Article Reactions
           </h3>
@@ -352,7 +373,7 @@ const ArticlePage = ({
           </h3>
           <ShareArticle title={title} slug={slug} />
           <Ad />
-        </aside>
+        </aside> */}
       </div>
     </Container>
   );
