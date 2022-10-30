@@ -92,3 +92,9 @@ export type Language =
   | 'typescript'
   | 'wasm'
   | 'yaml';
+
+declare global {
+  interface Window {
+    ezstandalone: any;
+  }
+}

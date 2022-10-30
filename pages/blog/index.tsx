@@ -6,6 +6,7 @@ import { ArticleList } from '@/components/ArticleList';
 import { Container } from 'layouts/Container';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
+import Script from 'next/script';
 import { Subscribe } from '@/components/Subscribe';
 import { SubscribeSize } from '@/lib/types';
 import { Tag } from '@/components/Tag';
@@ -33,17 +34,23 @@ export default function Blog({ featuredArticle, articles, tags }) {
   }, [selectedTag]);
 
   useEffect(() => {
-    ezstandalone.define(114, 115);
-    if (!ezstandalone.enabled) {
-      ezstandalone.enable();
-      ezstandalone.display();
-    } else {
-      ezstandalone.refresh();
+    if (window.ezstandalone !== undefined) {
+      ezstandalone.define(114, 115);
+      if (!ezstandalone.enabled) {
+        ezstandalone.enable();
+        ezstandalone.display();
+      } else {
+        ezstandalone.refresh();
+      }
     }
   }, []);
 
   return (
     <Container title="Blog - Braydon Coyer">
+      <Script
+        src="//www.ezojs.com/ezoic/sa.min.js"
+        strategy="beforeInteractive"
+      />
       <h1>
         <span className="block text-base font-semibold tracking-wide text-center text-teal-500 uppercase dark:text-teal-400">
           My Blog
