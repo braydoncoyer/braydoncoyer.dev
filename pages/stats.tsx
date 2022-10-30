@@ -5,6 +5,7 @@ import { LoveCount } from '@/components/stats/LoveCount';
 import { NewsletterSubs } from '@/components/stats/Newslettersubs';
 import { Pageviews } from '@/components/stats/Pageviews';
 import { PartyCount } from '@/components/stats/PartyCount';
+import Script from 'next/script';
 import { SponsoredArticles } from '@/components/stats/SponsoredArticles';
 import { TotalArticles } from '@/components/stats/TotalArticles';
 import { TotalReactions } from '@/components/stats/TotalReactions';
@@ -28,7 +29,7 @@ export default function Stats() {
     if (adBlockDetected) {
       window.alert('ad block detected');
     }
-  }, []);
+  }, [adBlockDetected]);
 
   useEffect(() => {
     if (window.ezstandalone !== undefined) {
@@ -46,6 +47,10 @@ export default function Stats() {
 
   return (
     <Container title="Stats - Braydon Coyer">
+      <Script
+        src="//www.ezojs.com/ezoic/sa.min.js"
+        strategy="beforeInteractive"
+      />
       <h1>
         <span className="block text-base font-semibold tracking-wide text-center text-teal-500 uppercase dark:text-teal-400">
           Stats
