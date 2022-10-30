@@ -22,14 +22,16 @@ export default function Stats() {
   );
 
   useEffect(() => {
-    /* tslint-disable no-return-assign, no-param-reassign */
-    ezstandalone.define(118);
-    if (!ezstandalone.enabled) {
-      ezstandalone.enable();
-      ezstandalone.display();
-    } else {
-      ezstandalone.refresh();
-      /* tslint-enable no-return-assign, no-param-reassign */
+    if (window.ezstandalone !== undefined) {
+      /* tslint-disable no-return-assign, no-param-reassign */
+      ezstandalone.define(118);
+      if (!ezstandalone.enabled) {
+        ezstandalone.enable();
+        ezstandalone.display();
+      } else {
+        ezstandalone.refresh();
+        /* tslint-enable no-return-assign, no-param-reassign */
+      }
     }
   }, []);
 
