@@ -10,6 +10,7 @@ import { TotalArticles } from '@/components/stats/TotalArticles';
 import { TotalReactions } from '@/components/stats/TotalReactions';
 import { Visitors } from '@/components/stats/Visitors';
 import { fetcher } from '@/lib/fetcher';
+import { useDetectAdBlock } from 'adblock-detect-react';
 import { useEffect } from 'react';
 import useSWR from 'swr';
 
@@ -20,6 +21,14 @@ export default function Stats() {
     '/api/statistics/total-reactions',
     fetcher
   );
+
+  const adBlockDetected = useDetectAdBlock();
+
+  useEffect(() => {
+    if (adBlockDetected) {
+      window.alert('ad block detected');
+    }
+  }, []);
 
   useEffect(() => {
     if (window.ezstandalone !== undefined) {
