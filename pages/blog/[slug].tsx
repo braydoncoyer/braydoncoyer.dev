@@ -261,9 +261,9 @@ const ArticlePage = ({
 
   return (
     <Container
-      title={`${title} - Braydon Coyer`}
+      title={title}
       description={summary}
-      imageUrl={socialImageConf}
+      imageUrl={coverImage}
       date={new Date(publishedDate).toISOString()}
       type={PageType.ARTICLE}
       sponsoredArticle={sponsoredArticleUrl !== null}
