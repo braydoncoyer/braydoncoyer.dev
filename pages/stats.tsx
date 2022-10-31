@@ -11,8 +11,6 @@ import { TotalArticles } from '@/components/stats/TotalArticles';
 import { TotalReactions } from '@/components/stats/TotalReactions';
 import { Visitors } from '@/components/stats/Visitors';
 import { fetcher } from '@/lib/fetcher';
-import { useDetectAdBlock } from 'adblock-detect-react';
-import { useEffect } from 'react';
 import useSWR from 'swr';
 
 declare const ezstandalone: any;
@@ -23,33 +21,40 @@ export default function Stats() {
     fetcher
   );
 
-  const adBlockDetected = useDetectAdBlock();
+  // useEffect(() => {
+  //   if (adBlockDetected) {
+  //     window.alert('ad block detected');
+  //   }
+  // }, [adBlockDetected]);
 
-  useEffect(() => {
-    if (adBlockDetected) {
-      window.alert('ad block detected');
-    }
-  }, [adBlockDetected]);
-
-  useEffect(() => {
-    if (window.ezstandalone !== undefined) {
-      /* tslint-disable no-return-assign, no-param-reassign */
-      ezstandalone.define(118);
-      if (!ezstandalone.enabled) {
-        ezstandalone.enable();
-        ezstandalone.display();
-      } else {
-        ezstandalone.refresh();
-        /* tslint-enable no-return-assign, no-param-reassign */
-      }
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (window.ezstandalone !== undefined) {
+  //     /* tslint-disable no-return-assign, no-param-reassign */
+  //     ezstandalone.define(118);
+  //     if (!ezstandalone.enabled) {
+  //       ezstandalone.enable();
+  //       ezstandalone.display();
+  //     } else {
+  //       ezstandalone.refresh();
+  //       /* tslint-enable no-return-assign, no-param-reassign */
+  //     }
+  //   }
+  // }, []);
 
   return (
     <Container title="Stats - Braydon Coyer">
       <Script
         src="//www.ezojs.com/ezoic/sa.min.js"
-        strategy="beforeInteractive"
+        onReady={() => {
+          ezstandalone.define(118);
+          if (!ezstandalone.enabled) {
+            ezstandalone.enable();
+            ezstandalone.display();
+          } else {
+            ezstandalone.refresh();
+            /* tslint-enable no-return-assign, no-param-reassign */
+          }
+        }}
       />
       <h1>
         <span className="block text-base font-semibold tracking-wide text-center text-teal-500 uppercase dark:text-teal-400">
