@@ -21,7 +21,7 @@ export function ArticleCard({ article }: Props) {
       <button onClick={() => handleArticleClicked(slug)}>
         <div className="group">
           <Image
-            className="rounded-xl group-hover:opacity-75"
+            className="rounded-lg group-hover:opacity-75"
             objectFit="cover"
             src={article.coverImage}
             placeholder="blur"
@@ -31,11 +31,11 @@ export function ArticleCard({ article }: Props) {
             layout="intrinsic"
             alt={'article cover'}
           />
-          <div className="text-left w-full">
+          <div className="w-full text-left">
             <h3 className="mt-2 text-2xl">{article.title}</h3>
             {/* {JSON.stringify(article)} */}
             {/* <p>{article.summary}</p> */}
-            <span className="text-base font-semibold flex items-center">
+            <span className="flex items-center text-base font-semibold">
               {new Date(article.publishedDate).toLocaleDateString(
                 siteMetadata.locale,
                 {
@@ -45,7 +45,7 @@ export function ArticleCard({ article }: Props) {
                 }
               )}{' '}
               {hasRead && (
-                <span className="text-sm inline-flex items-center text-teal-600 dark:text-teal-800 opacity-75 ml-3">
+                <span className="inline-flex items-center ml-3 text-sm text-teal-600 opacity-75 dark:text-teal-800">
                   <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path
                       stroke="currentColor"

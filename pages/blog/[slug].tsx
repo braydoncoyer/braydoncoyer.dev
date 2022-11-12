@@ -299,7 +299,7 @@ const ArticlePage = ({
                 style={{ position: 'relative', overflow: 'hidden' }}
               >
                 <Image
-                  className="rounded-xl"
+                  className="rounded-lg"
                   layout="fill"
                   sizes="100vw"
                   objectFit="cover"

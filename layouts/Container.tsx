@@ -44,7 +44,9 @@ export function Container(props) {
           property="og:url"
           content={`${siteMetadata.siteUrl}/api/og?title=${encodeURIComponent(
             meta.title
-          )}&article&imgSrc=${meta.imageUrl}`}
+          )}&article&imgSrc=${meta.imageUrl}&description=${encodeURIComponent(
+            meta.description
+          )}`}
         />
         <meta name="application-name" content="&nbsp;" />
         <meta name="msapplication-TileColor" content="#FFFFFF" />

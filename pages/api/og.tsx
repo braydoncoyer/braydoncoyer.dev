@@ -1,14 +1,24 @@
-import Image from 'next/image';
 import { ImageResponse } from '@vercel/og';
-import LightLogo from 'public/bcoyerlogo_white.svg';
 import { NextRequest } from 'next/server';
-import bg from 'public/social_og_slanted_bg.png';
 
 export const config = {
   runtime: 'experimental-edge'
 };
 
-export default function handler(req: NextRequest) {
+const fontBold = fetch(
+  new URL('../../assets/Inter-Bold.ttf', import.meta.url)
+).then((res) => res.arrayBuffer());
+const fontRegular = fetch(
+  new URL('../../assets/Inter-Regular.ttf', import.meta.url)
+).then((res) => res.arrayBuffer());
+const fontMedium = fetch(
+  new URL('../../assets/Inter-Medium.ttf', import.meta.url)
+).then((res) => res.arrayBuffer());
+
+export default async function handler(req: NextRequest) {
+  const fontDataBold = await fontBold;
+  const fontDataRegular = await fontRegular;
+  const fontDataMedium = await fontMedium;
   try {
     const { searchParams } = new URL(req.url);
 
@@ -25,7 +35,10 @@ export default function handler(req: NextRequest) {
       ? searchParams.get('imgSrc')?.slice(0, 1000)
       : null;
 
-    console.log(imageSrc);
+    const hasDescription = searchParams.has('description');
+    const description = hasDescription
+      ? searchParams.get('description')?.slice(0, 1000)
+      : 'My default description';
 
     return new ImageResponse(
       (
@@ -37,26 +50,82 @@ export default function handler(req: NextRequest) {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: '#FFFFFF',
+            backgroundColor: '#121826',
             position: 'relative'
           }}
         >
           {isArticleLayout ? (
             <div tw="flex h-full">
-              <div tw="flex flex-col w-full py-12 px-4  p-8">
-                <img src={bg} tw="w-full" />
-                <img
-                  tw="w-full absolute -right-2/5 top-0"
+              <div tw="flex flex-col w-full p-12">
+                {/* Article Image */}
+                {/* <img
+                  tw="absolute top-[-235px] right-0"
+                  style={{
+                    objectFit: 'cover',
+                    width: '630px',
+                    height: '630px'
+                  }}
                   src={imageSrc}
-                  alt="image"
-                />
-                <h1 tw="text-slate-400 text-2xl">braydoncoyer.dev</h1>
-                <h2 tw="flex flex-col text-5xl tracking-tight text-gray-900 text-left max-w-3/5 text-white">
-                  {title}
-                </h2>
+                  alt="Article Cover"
+                /> */}
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: '0',
+                    right: '0',
+                    width: '530px',
+                    height: '630px',
+                    backgroundImage: `url(${imageSrc})`,
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: '1230px 630px'
+                  }}
+                ></div>
+                {/* Skewed portion */}
+                <div
+                  style={{
+                    transform: 'skewX(-8deg) rotate(90deg)'
+                  }}
+                  tw="bg-[#121826] absolute top-0 left-[-300px] h-[900px] w-full"
+                ></div>
+                {/* Skewed gradient line */}
+                <div
+                  style={{
+                    transform: 'skewX(-8deg) rotate(90deg)',
+                    backgroundImage:
+                      'linear-gradient(to left, trasparent, #818cf8 20%, transparent 70%)'
+                  }}
+                  tw="absolute top-[100px] left-[197px] h-[4px] w-full"
+                ></div>
+                {/* Rays */}
+                <div
+                  tw="absolute w-[1159px] h-[737px] left-[-350px] top-[-250px]"
+                  style={{
+                    backgroundImage: `url(https://res.cloudinary.com/braydoncoyer/image/upload/v1668200464/rays.png)`
+                  }}
+                ></div>
+                <div tw="text-white mt-27 flex flex-col">
+                  <h2
+                    tw="flex flex-col text-5xl tracking-tight text-left max-w-3/5"
+                    style={{ fontFamily: 'Inter-Bold', lineHeight: '55px' }}
+                  >
+                    {title}
+                  </h2>
+                  <p
+                    tw="mt-8 max-w-3/5 text-xl text-white leading-8 pr-4"
+                    style={{ fontFamily: 'Inter-Regular' }}
+                  >
+                    {description}
+                  </p>
+                </div>
                 <svg
-                  tw="h-13 w-13"
+                  style={{
+                    position: 'absolute',
+                    top: '50px',
+                    left: '50px'
+                  }}
                   fill="white"
+                  width="56"
+                  height="56"
                   version="1.1"
                   id="Layer_1"
                   xmlns="http://www.w3.org/2000/svg"
@@ -90,6 +159,12 @@ export default function handler(req: NextRequest) {
                     </g>
                   </g>
                 </svg>
+                <h1
+                  tw="absolute top-[530px] left-[50px] text-slate-300 text-2xl"
+                  style={{ fontFamily: 'Inter-Medium' }}
+                >
+                  braydoncoyer.dev
+                </h1>
               </div>
             </div>
           ) : (
@@ -99,7 +174,24 @@ export default function handler(req: NextRequest) {
       ),
       {
         width: 1200,
-        height: 630
+        height: 630,
+        fonts: [
+          {
+            name: 'Inter-Bold',
+            data: fontDataBold,
+            style: 'normal'
+          },
+          {
+            name: 'Inter-Regular',
+            data: fontDataRegular,
+            style: 'normal'
+          },
+          {
+            name: 'Inter-Medium',
+            data: fontDataMedium,
+            style: 'normal'
+          }
+        ]
       }
     );
   } catch (e: any) {
