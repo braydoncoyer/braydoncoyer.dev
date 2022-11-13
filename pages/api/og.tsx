@@ -58,16 +58,6 @@ export default async function handler(req: NextRequest) {
             <div tw="flex h-full">
               <div tw="flex flex-col w-full p-12">
                 {/* Article Image */}
-                {/* <img
-                  tw="absolute top-[-235px] right-0"
-                  style={{
-                    objectFit: 'cover',
-                    width: '630px',
-                    height: '630px'
-                  }}
-                  src={imageSrc}
-                  alt="Article Cover"
-                /> */}
                 <div
                   style={{
                     position: 'absolute',
@@ -77,7 +67,8 @@ export default async function handler(req: NextRequest) {
                     height: '630px',
                     backgroundImage: `url(${imageSrc})`,
                     backgroundRepeat: 'no-repeat',
-                    backgroundSize: '1230px 630px'
+                    backgroundSize: '1260px 630px',
+                    backgroundPosition: '-60% 100%'
                   }}
                 ></div>
                 {/* Skewed portion */}
