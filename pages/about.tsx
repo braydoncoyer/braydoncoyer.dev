@@ -10,8 +10,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { TimelineItem } from '@/components/TimelineItem';
 import { TimelineList } from '@/components/TimelineList';
+import { classNames } from '@/lib/classnames';
 import siteMetadata from '@/data/siteMetadata';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 import { workTimelineData } from '@/data/workTimeline';
 
 export default function About({ recentArticles }) {

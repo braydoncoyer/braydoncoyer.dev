@@ -14,7 +14,8 @@ const navigation = {
     // { name: 'Activity', href: '/activity' },
     { name: 'Stats', href: '/stats' },
     { name: 'Community wall', href: '/community-wall' },
-    { name: 'Toolbox', href: '/toolbox' }
+    { name: 'Toolbox', href: '/toolbox' },
+    { name: 'Speaking', href: '/speaking' }
   ],
   extra: [
     { name: 'Changelog', href: '/changelog' },
@@ -165,14 +166,6 @@ export function Footer() {
                       </a>
                     </Link>
                   ))}
-                  <a
-                    target="_blank"
-                    href={siteMetadata.snippets}
-                    className="block text-base text-gray-600 no-underline hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 hover:underline"
-                    rel="noreferrer"
-                  >
-                    Snippets
-                  </a>
                 </div>
               </div>
             </div>
@@ -204,6 +197,14 @@ export function Footer() {
                     rel="noreferrer"
                   >
                     Resume
+                  </a>
+                  <a
+                    target="_blank"
+                    href={siteMetadata.snippets}
+                    className="block text-base text-gray-600 no-underline hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 hover:underline"
+                    rel="noreferrer"
+                  >
+                    Snippets
                   </a>
                 </div>
               </div>

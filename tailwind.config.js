@@ -35,6 +35,9 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
+            table: false,
+            tbody: false,
+            thead: false,
             color: theme('colors.slate.700'),
             a: {
               color: theme('colors.slate.900'),
@@ -54,15 +57,6 @@ module.exports = {
             },
             hr: { borderColor: theme('colors.gray.700') },
             strong: { color: theme('colors.gray.700') },
-            thead: {
-              color: theme('colors.gray.100'),
-              borderBottomColor: theme('colors.gray.600')
-            },
-            tbody: {
-              tr: {
-                borderBottomColor: theme('colors.gray.700')
-              }
-            },
             hr: {
               color: theme('colors.gray.200'),
               '&before': { content: '∿∿∿' }

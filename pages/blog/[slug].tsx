@@ -290,10 +290,6 @@ const ArticlePage = ({
               </div>
             </div>
             <div>
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-base">Share this article</span>
-                <ShareArticle title={title} slug={slug} />
-              </div>
               <div
                 className="aspect-video"
                 style={{ position: 'relative', overflow: 'hidden' }}
