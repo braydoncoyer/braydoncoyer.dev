@@ -16,79 +16,60 @@ function SubscribeCard({
   issuesCount
 }) {
   return (
-    <div className="border border-gray-200 rounded-lg p-6 my-4 w-full dark:border-gray-700 bg-[#F8FAFC] dark:bg-midnight">
-      <h3 className="flex items-center mt-2 font-bold text-gray-900 md:text-2xl dark:text-gray-100">
-        Updates delivered to your inbox!
-        <span>
-          <svg
-            className="w-6 h-6 ml-1 md:w-7 md:h-7"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M17.25 12V10C17.25 7.1005 14.8995 4.75 12 4.75C9.10051 4.75 6.75 7.10051 6.75 10V12L4.75 16.25H19.25L17.25 12Z"
-            ></path>
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M9 16.75C9 16.75 9 19.25 12 19.25C15 19.25 15 16.75 15 16.75"
-            ></path>
-          </svg>
-        </span>
-      </h3>
-
-      <p className="mb-0">
-        A periodic update about my life, recent blog posts, how-tos, and
-        discoveries.
-      </p>
-      <p className="mt-0">
-        As a thank you, I'll also send you a{' '}
-        <span className="text-indigo-500 font-fancy dark:text-indigo-400">
-          Free CSS
-        </span>{' '}
-        tutorial!
-      </p>
-      <p>No spam - unsubscribe at any time!</p>
-
-      <form
-        className="relative my-4 space-y-4 md:space-y-0 md:flex"
-        onSubmit={handleSubscribe}
-      >
-        <input
-          ref={inputRef}
-          placeholder="bobloblaw@gmail.com"
-          type="email"
-          autoComplete="email"
-          required
-          className="block w-full px-4 bg-white border-gray-300 rounded-full shadow-sm dark:bg-dark md:py-3 focus:ring-midnight dark:focus:ring-gray-100 sm:text-sm md:text-base dark:border-gray-400"
-        />
-        <button
-          className="absolute top-[-13px] right-[3px] md:right-[5px] md:top-[5px] py-0.5 md:py-1 items-center justify-center px-4 bg-indigo-500 hover:bg-indigo-600 dark:bg-indigo-500 dark:hover:bg-indigo-400 text-white rounded-full"
-          type="submit"
-        >
-          {form.state === Form.Loading ? <LoadingSpinner /> : 'Subscribe'}
-        </button>
-      </form>
-      {form.state === Form.Error ? (
-        <ErrorMessage>{form.message}</ErrorMessage>
-      ) : form.state === Form.Success ? (
-        <SuccessMessage>{form.message}</SuccessMessage>
-      ) : (
-        <p className="mt-6 text-sm">
-          {`${
-            subscriberCount > 0 ? subscriberCount.toLocaleString() : '-'
-          } subscribers – `}
-          <a href={siteMetadata.newsletter}>{`${
-            issuesCount > 0 ? issuesCount.toLocaleString() : '-'
-          } issues`}</a>
-        </p>
-      )}
+    <div>
+      <div className="mx-auto max-w-7xl">
+        <div className="px-6 py-4 bg-[#F8FAFC] dark:bg-midnight rounded-3xl sm:py-8 sm:px-12 lg:flex lg:items-center lg:p-8 border border-slate-200 dark:border-slate-700">
+          <div className="lg:w-0 lg:flex-1">
+            <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
+              Updates delivered to your inbox!
+            </h2>
+            <p className="max-w-3xl mt-4 ">
+              A periodic update about my life, recent blog posts, how-tos, and
+              discoveries.
+            </p>
+            <p className="mt-6 mb-0 text-sm">
+              No spam - unsubscribe at any time!
+            </p>
+          </div>
+          <div className="mt-12 sm:w-full sm:max-w-md lg:mt-0 lg:ml-4 lg:flex-1">
+            <form className="sm:flex" onSubmit={handleSubscribe}>
+              <label htmlFor="email-address" className="sr-only">
+                Email address
+              </label>
+              <input
+                ref={inputRef}
+                id="email-address"
+                name="email-address"
+                placeholder="bobloblaw@gmail.com"
+                type="email"
+                autoComplete="email"
+                required
+                className="w-full px-5 py-3 bg-white dark:bg-dark border-gray-300 dark:border-gray-400 rounded-full placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:ring-offset-2 focus:ring-offset-[#F8FAFC] dark:focus:ring-offset-midnight"
+              />
+              <button
+                type="submit"
+                className="flex items-center justify-center w-full px-5 py-3 mt-3 text-base font-medium text-white bg-indigo-500 border border-transparent rounded-full hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-700 sm:mt-0 sm:ml-3 sm:w-auto sm:flex-shrink-0"
+              >
+                {form.state === Form.Loading ? <LoadingSpinner /> : 'Subscribe'}
+              </button>
+            </form>
+            {form.state === Form.Error ? (
+              <ErrorMessage>{form.message}</ErrorMessage>
+            ) : form.state === Form.Success ? (
+              <SuccessMessage>{form.message}</SuccessMessage>
+            ) : (
+              <p className="mt-6 mb-0 text-sm">
+                {`${
+                  subscriberCount > 0 ? subscriberCount.toLocaleString() : '-'
+                } subscribers – `}
+                <a href={siteMetadata.newsletter}>{`${
+                  issuesCount > 0 ? issuesCount.toLocaleString() : '-'
+                } issues`}</a>
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

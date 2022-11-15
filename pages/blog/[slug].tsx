@@ -1,16 +1,14 @@
-import { AdType, ButtonType, PageType, SubscribeSize } from '@/lib/types';
 import { Fragment, useEffect } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { PageType, SubscribeSize } from '@/lib/types';
 import {
   getAllArticles,
   getArticlePage,
   getMoreArticlesToSuggest
 } from '@/lib/notion';
 
-import { Ad } from '@/components/Ad';
 import { AnchorLink } from '@/components/AnchorLink';
 import { ArticleList } from '@/components/ArticleList';
-import { Button } from '@/components/Button';
 import { Callout } from '@/components/Callout';
 import { Client } from '@notionhq/client';
 import { CodeBlock } from '@/components/Codeblock';
@@ -21,7 +19,6 @@ import Reactions from '@/components/Reactions';
 import { ShareArticle } from '@/components/ShareArticle';
 import { Subscribe } from '@/components/Subscribe';
 import { YoutubeEmbed } from '@/components/YoutubeEmbed';
-import generateSocialImage from '@/lib/generateSocialImage';
 import { getTwitterProfilePicture } from '@/lib/twitter';
 import siteMetadata from '@/data/siteMetadata';
 import slugify from 'slugify';
@@ -246,13 +243,6 @@ const ArticlePage = ({
     }
   );
 
-  const socialImageConf = generateSocialImage({
-    title,
-    underlayImage: coverImage.slice(coverImage.lastIndexOf('/') + 1),
-    cloudName: 'braydoncoyer',
-    imagePublicID: 'og_social_large.png'
-  });
-
   useEffect(() => {
     fetch(`/api/views/${slug}`, {
       method: 'POST'
@@ -307,15 +297,14 @@ const ArticlePage = ({
             </div>
           </div>
         </article>
+        {/* Left Sticky */}
+        <div className="sticky w-full h-24 bg-red-500 lg:col-start-1 lg:col-end-3 top-24"></div>
         <div className="lg:col-start-3 lg:col-end-11">
           {content.map((block) => (
             <Fragment key={block.id}>{renderBlocks(block)}</Fragment>
           ))}
           <div className="md:hidden">
             <Reactions slug={slug} />
-          </div>
-          <div className="my-16">
-            <Subscribe size={SubscribeSize.LARGE} />
           </div>
           {/* Link to sponsor if applicable */}
           {sponsoredArticleUrl && (
@@ -337,6 +326,8 @@ const ArticlePage = ({
             </Callout>
           )}
         </div>
+        {/* Right Sticky */}
+        <div className="sticky w-full h-24 bg-red-500 lg:col-start-11 lg:col-end-13 top-24"></div>
         <div className="col-span-12">
           <div className="font-bold text-center">
             <p className="text-base">Share this article</p>
@@ -353,11 +344,6 @@ const ArticlePage = ({
               <ShareArticle title={title} slug={slug} />
             </div>
           </div> */}
-
-          <div>
-            <h3 className="mb-8">Related articles</h3>
-            <ArticleList articles={moreArticles} />
-          </div>
         </div>
         {/* <aside className="hidden w-full lg:inline-block md:sticky md:top-[175px] md:self-start col-span-3 space-y-8">
           <h3 className="m-0 text-sm font-semibold tracking-wider text-center uppercase">
@@ -370,6 +356,15 @@ const ArticlePage = ({
           <ShareArticle title={title} slug={slug} />
           <Ad />
         </aside> */}
+      </div>
+      <div>
+        <div className="my-16">
+          <Subscribe size={SubscribeSize.LARGE} />
+        </div>
+        <div>
+          <h3 className="mb-8">Related articles</h3>
+          <ArticleList articles={moreArticles} />
+        </div>
       </div>
     </Container>
   );

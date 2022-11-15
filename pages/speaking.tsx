@@ -41,7 +41,7 @@ export default function Talks() {
           Speaking
         </span>
         <span className="block max-w-2xl mx-auto mt-2 text-4xl font-bold leading-10 text-center sm:text-5xl">
-          Explore My Presentations
+          Explore My Presentations.
         </span>
       </h1>
       <div className="space-y-12">

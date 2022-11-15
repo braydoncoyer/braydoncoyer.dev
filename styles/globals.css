@@ -2,26 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.circle-obj {
-  background: radial-gradient(
-    closest-side,
-    rgba(45, 212, 191, 1),
-    rgba(233, 168, 2, 0)
-  );
-  animation: fade-green 5s ease-in-out infinite alternate;
-  z-index: -1;
-}
-
-.circle-obj2 {
-  background: radial-gradient(
-    closest-side,
-    rgba(99, 102, 241, 1),
-    rgba(233, 168, 2, 0)
-  );
-  animation: fade-indigo 7s 3 ease-in-out infinite alternate;
-  z-index: -1;
-}
-
 .wrapper {
   display: grid;
   grid-template-columns: 1fr min(65ch, calc(100% - 32px)) 1fr;
@@ -107,28 +87,6 @@
 .no-scrollbar {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
-}
-
-@keyframes fade-green {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
-    /* transform: translateY(-200px) translateX(-350px) rotate(180deg); */
-    opacity: 0.5;
-  }
-}
-
-@keyframes fade-indigo {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
-    /* transform: translateY(-200px) translateX(-350px) rotate(180deg); */
-    opacity: 0.2;
-  }
 }
 
 .item {
