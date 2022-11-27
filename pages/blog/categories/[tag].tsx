@@ -59,7 +59,7 @@ export default function Blog({ featuredArticle, articles, tags, tag }) {
               <p>{featuredArticle.summary}</p>
             </div>
             <Image
-              className="rounded-lg group-hover:opacity-75"
+              className="rounded-3xl group-hover:opacity-75"
               objectFit="fill"
               src={featuredArticle.coverImage}
               placeholder="blur"

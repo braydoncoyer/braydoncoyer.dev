@@ -54,7 +54,7 @@ export function CommunityForm({ loggedIn, supabase, session }) {
   }
   return (
     <>
-      <div className="border border-gray-200 rounded-lg p-6 my-4 w-full dark:border-gray-700 bg-[#F8FAFC] dark:bg-midnight">
+      <div className="border border-gray-200 rounded-3xl p-6 my-4 w-full dark:border-gray-700 bg-[#F8FAFC] dark:bg-midnight">
         <h3 className="p-0 mt-0">Leave a note</h3>
         <p>Share a message with me or another visitor of my site.</p>
         {loggedIn ? (

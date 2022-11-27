@@ -256,6 +256,7 @@ const ArticlePage = ({
       imageUrl={coverImage}
       date={new Date(publishedDate).toISOString()}
       type={PageType.ARTICLE}
+      isArticle={true}
       sponsoredArticle={sponsoredArticleUrl !== null}
       sponsoredUrl={sponsoredArticleUrl}
     >
@@ -281,11 +282,11 @@ const ArticlePage = ({
             </div>
             <div>
               <div
-                className="aspect-video"
+                className="aspect-video lg:aspect-[2/1]"
                 style={{ position: 'relative', overflow: 'hidden' }}
               >
                 <Image
-                  className="rounded-lg"
+                  className="rounded-3xl"
                   layout="fill"
                   sizes="100vw"
                   objectFit="cover"
@@ -298,14 +299,17 @@ const ArticlePage = ({
           </div>
         </article>
         {/* Left Sticky */}
-        <div className="sticky w-full h-24 bg-red-500 lg:col-start-1 lg:col-end-3 top-24"></div>
+        <div className="sticky hidden w-full h-24 bg-red-500 lg:col-start-1 lg:col-end-3 top-24 lg:block"></div>
         <div className="lg:col-start-3 lg:col-end-11">
           {content.map((block) => (
             <Fragment key={block.id}>{renderBlocks(block)}</Fragment>
           ))}
-          <div className="md:hidden">
+
+          {/* Reactions on Mobile */}
+          <div className="text-center md:hidden grid-flow-auto">
             <Reactions slug={slug} />
           </div>
+
           {/* Link to sponsor if applicable */}
           {sponsoredArticleUrl && (
             <Callout>
@@ -326,10 +330,14 @@ const ArticlePage = ({
             </Callout>
           )}
         </div>
-        {/* Right Sticky */}
-        <div className="sticky w-full h-24 bg-red-500 lg:col-start-11 lg:col-end-13 top-24"></div>
+
+        {/* Right Sticky -> Reactions on Desktop */}
+        {/* Height must be applied to extend height to length of article container */}
+        <div className="sticky hidden w-full h-1 lg:col-start-11 lg:col-end-13 top-24 lg:block">
+          <Reactions slug={slug} />
+        </div>
         <div className="col-span-12">
-          <div className="font-bold text-center">
+          <div className="mt-16 font-bold text-center">
             <p className="text-base">Share this article</p>
             <ShareArticle title={title} slug={slug} />
           </div>
@@ -349,7 +357,7 @@ const ArticlePage = ({
           <h3 className="m-0 text-sm font-semibold tracking-wider text-center uppercase">
             Article Reactions
           </h3>
-          <Reactions slug={slug} />
+          
           <h3 className="m-0 text-sm font-semibold tracking-wider text-center uppercase">
             Share Article
           </h3>
@@ -358,7 +366,7 @@ const ArticlePage = ({
         </aside> */}
       </div>
       <div>
-        <div className="my-16">
+        <div className="my-8 lg:mt-64">
           <Subscribe size={SubscribeSize.LARGE} />
         </div>
         <div>

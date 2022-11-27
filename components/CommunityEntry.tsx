@@ -27,7 +27,7 @@ export function CommunityEntry({ session, message }) {
     mutate('/api/community-wall');
   }
   return (
-    <div className="px-6 py-4 rounded-xl bg-[#F8FAFC] dark:bg-midnight">
+    <div className="p-6 rounded-3xl bg-[#F8FAFC] dark:bg-midnight">
       <div className="flex items-start justify-between mb-4 space-x-6">
         <div className="flex space-x-6">
           <img

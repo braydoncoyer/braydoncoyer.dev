@@ -7,7 +7,7 @@ export function Visitors() {
     fetcher
   );
   return (
-    <div className="col-span-4 h-32 justify-center text-center bg-gray-100 dark:bg-midnight rounded-lg p-6 flex flex-col items-center">
+    <div className="col-span-4 h-32 justify-center text-center bg-gray-100 dark:bg-midnight rounded-3xl p-6 flex flex-col items-center">
       <div className="flex items-center space-x-2">
         <h2 className="text-3xl font-bold m-0">
           {liveVisitors ? liveVisitors?.visitors : '--'} people

@@ -142,7 +142,7 @@ export default function Projects() {
           </div>
         </div>
 
-        <div className="relative w-full overflow-hidden border rounded-3xl bg-gradient-to-b from-emerald-50 dark:from-teal-900/50 dark:to-teal-600 to-teal-200 dark:border-slate-700 border-slate-100">
+        {/* <div className="relative w-full overflow-hidden border rounded-3xl bg-gradient-to-b from-emerald-50 dark:from-teal-900/50 dark:to-teal-600 to-teal-200 dark:border-slate-700 border-slate-100">
           <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-teal-300 dark:via-teal-600 to-transparent"></div>
           <div className="grid grid-cols-1 min-h-[500px] max-h-[500px] md:grid-cols-2">
             <div className="md:w-[650px] max-h-[500px]">
@@ -171,7 +171,7 @@ export default function Projects() {
               />
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </Container>
   );

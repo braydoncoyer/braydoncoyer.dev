@@ -19,15 +19,18 @@ const Reactions = ({ slug }) => {
   } = useArticleReactions(slug);
 
   return (
-    <div className="grid items-center justify-between grid-cols-4 gap-6 md:grid-cols-2">
+    <div className="flex flex-wrap gap-3">
       <ReactionCard
         isActive={hasLiked}
         incrementCB={handleIncrementLike}
         decrementCB={handleDecrementLike}
       >
-        <span className="text-4xl">👍</span>
-        <span className="text-xl font-semibold">{reactions?.like_count}</span>
-        <span className="text-sm">LIKE</span>
+        <p className="m-0">
+          <span className="mr-1.5 text-2xl">👍</span>{' '}
+          <span className="text-base font-black font-headings">
+            {reactions?.like_count}
+          </span>
+        </p>
       </ReactionCard>
 
       <ReactionCard
@@ -35,9 +38,12 @@ const Reactions = ({ slug }) => {
         incrementCB={handleIncrementLove}
         decrementCB={handleDecrementLove}
       >
-        <span className="text-4xl">❤️</span>
-        <span className="text-xl font-semibold">{reactions?.love_count}</span>
-        <span className="text-sm uppercase">LOVE</span>
+        <p className="m-0">
+          <span className="mr-1.5 text-2xl">❤️</span>{' '}
+          <span className="text-base font-black font-headings">
+            {reactions?.love_count}
+          </span>
+        </p>
       </ReactionCard>
 
       <ReactionCard
@@ -45,9 +51,12 @@ const Reactions = ({ slug }) => {
         incrementCB={handleIncrementClap}
         decrementCB={handleDecrementClap}
       >
-        <span className="text-4xl">👏</span>
-        <span className="text-xl font-semibold">{reactions?.clap_count}</span>
-        <span className="text-sm uppercase">CLAP</span>
+        <p className="m-0">
+          <span className="mr-1.5 text-2xl">👏</span>{' '}
+          <span className="text-base font-black font-headings">
+            {reactions?.clap_count}
+          </span>
+        </p>
       </ReactionCard>
 
       <ReactionCard
@@ -55,9 +64,12 @@ const Reactions = ({ slug }) => {
         incrementCB={handleIncrementParty}
         decrementCB={handleDecrementParty}
       >
-        <span className="text-4xl">🎉</span>
-        <span className="text-xl font-semibold">{reactions?.party_count}</span>
-        <span className="text-sm uppercase">PARTY</span>
+        <p className="m-0">
+          <span className="mr-1.5 text-2xl">🎉</span>{' '}
+          <span className="text-base font-black font-headings">
+            {reactions?.party_count}
+          </span>
+        </p>
       </ReactionCard>
     </div>
   );
@@ -76,9 +88,9 @@ function ReactionCard({ isActive, incrementCB, decrementCB, children }) {
       onClick={handleClick}
       className={`${
         isActive
-          ? 'bg-gray-300 dark:bg-darker'
+          ? 'bg-slate-300 dark:bg-darker'
           : 'bg-blueGray-100 dark:bg-midnight'
-      } flex-1 py-4 rounded-lg flex flex-col items-center general-ring-state select-none`}
+      }  w-full px-4 active:scale-x-90 active:scale-y-90 py-2 rounded-3xl select-none transition ease-in-out border border-slate-200 dark:border-slate-700`}
     >
       {children}
     </div>

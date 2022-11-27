@@ -16,15 +16,18 @@ export function Container(props) {
   const meta = {
     title: siteMetadata.title,
     description: siteMetadata.description,
-    imageUrl: siteMetadata.socialBanner,
+    imageUrl: null,
     type: PageType.WEBSITE,
     twitterHandle: siteMetadata.twitterHandle,
     canonicalUrl: customMeta.sponsoredArticle
       ? customMeta.sponsoredUrl
       : `${siteMetadata.siteUrl}${router.asPath}`,
     date: null,
+    isArticle: false,
     ...customMeta
   };
+
+  console.log(customMeta);
 
   return (
     <div className={`bg-white dark:bg-dark min-h-screen`}>
@@ -40,9 +43,9 @@ export function Container(props) {
           property="og:url"
           content={`${siteMetadata.siteUrl}/api/og?title=${encodeURIComponent(
             meta.title
-          )}&article&imgSrc=${meta.imageUrl}&description=${encodeURIComponent(
-            meta.description
-          )}`}
+          )}${meta.isArticle ? '&article' : ''}${
+            meta.imageUrl ? `&imgSrc=${meta.imageUrl}` : ''
+          }&description=${encodeURIComponent(meta.description)}`}
         />
         <meta name="application-name" content="&nbsp;" />
         <meta name="msapplication-TileColor" content="#FFFFFF" />

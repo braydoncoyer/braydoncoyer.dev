@@ -89,15 +89,17 @@ function InlineSubscribe({ handleSubscribe, form, inputRef }) {
         </label>
         <input
           ref={inputRef}
+          id="email-address"
+          name="email-address"
           placeholder="bobloblaw@gmail.com"
           type="email"
           autoComplete="email"
           required
-          className="block w-full px-5 bg-white border-gray-300 rounded-full shadow-sm dark:bg-dark md:py-3 focus:ring-midnight dark:focus:ring-gray-100 sm:text-sm md:text-base dark:border-gray-400"
+          className="w-full px-5 py-3 bg-white dark:bg-dark border-gray-300 dark:border-gray-400 rounded-full placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:ring-offset-2 focus:ring-offset-[#F8FAFC] dark:focus:ring-offset-midnight"
         />
         <button
-          className="absolute right-[3px] top-[3px] md:right-[5px] md:top-[5px] py-0.5 md:py-1 items-center justify-center px-4 bg-indigo-500 hover:bg-indigo-600 dark:bg-indigo-500 dark:hover:bg-indigo-400 text-white rounded-full"
           type="submit"
+          className="flex items-center justify-center w-full px-5 py-3 mt-3 text-base font-medium text-white bg-indigo-500 border border-transparent rounded-full hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-700 sm:mt-0 sm:ml-3 sm:w-auto sm:flex-shrink-0"
         >
           {form.state === Form.Loading ? <LoadingSpinner /> : 'Subscribe'}
         </button>

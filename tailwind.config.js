@@ -49,7 +49,7 @@ module.exports = {
             },
             blockquote: {
               borderLeftColor: theme('colors.teal.500'),
-              backgroundColor: theme('colors.gray.50'),
+              backgroundColor: theme('colors.slate.100'),
               color: theme('colors.gray.700')
             },
             'h1,h2,h3,h4': {
