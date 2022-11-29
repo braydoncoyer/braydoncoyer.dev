@@ -6,6 +6,31 @@ const notion = new Client({
   auth: process.env.NOTION_SECRET
 });
 
+export const getToolboxData = async (databaseId) => {
+  const response: QueryDatabaseResponse = await notion.databases.query({
+    database_id: databaseId,
+    sorts: [
+      {
+        property: 'Name',
+        direction: 'ascending'
+      }
+    ]
+  });
+
+  const results = [];
+
+  response.results.forEach((item: any) => {
+    results.push({
+      title: item.properties.Name.title[0].plain_text,
+      types: item.properties.Type.multi_select.map((x) => x.name),
+      description: item.properties.Description.rich_text[0].plain_text,
+      url: item.properties.URL?.url
+    });
+  });
+
+  return results;
+};
+
 export const getChangelogData = async (databaseId) => {
   const response: QueryDatabaseResponse = await notion.databases.query({
     database_id: databaseId,

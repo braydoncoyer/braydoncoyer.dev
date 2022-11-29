@@ -43,7 +43,7 @@ export default async function handler(req: NextRequest) {
 
     const isArticleOg = isArticleLayout && hasImageUrl && hasDescription;
 
-    console.log(isArticleOg);
+    // console.log(isArticleOg);
 
     return new ImageResponse(
       (

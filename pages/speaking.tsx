@@ -9,7 +9,7 @@ const talks = [
     type: 'Meetup',
     city: 'Virtual',
     date: '11-10-2022',
-    url: ''
+    url: 'https://youtu.be/65wXOrmIOK4?t=3695'
   }
 ];
 
