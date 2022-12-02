@@ -27,8 +27,6 @@ export function Container(props) {
     ...customMeta
   };
 
-  console.log(customMeta);
-
   return (
     <div className={`bg-white dark:bg-dark min-h-screen`}>
       <Head>
