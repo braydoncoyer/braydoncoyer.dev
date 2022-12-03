@@ -1,6 +1,7 @@
 import { getPageInfo, getToolboxData } from '@/lib/notion';
 
 import { Container } from 'layouts/Container';
+import CustomLink from '@/components/CustomLink';
 import { GetStaticProps } from 'next';
 
 export default function Toolbox({ software, hardware, thisSite }) {
@@ -18,8 +19,8 @@ export default function Toolbox({ software, hardware, thisSite }) {
         <div className="space-y-12">
           <h2>Software</h2>
           <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
-            {software?.map((item) => (
-              <div key={item.url}>
+            {software?.map((item, index) => (
+              <div key={`${item.url}${index}`}>
                 <h3 className="m-0 text-xl font-medium">{item.title}</h3>
                 <div className="block space-x-4">
                   {item.types.map((tag) => (
@@ -31,14 +32,9 @@ export default function Toolbox({ software, hardware, thisSite }) {
                 <div className="mt-4">
                   <p className="m-0 mb-3 text-base">{item.description}</p>
                   {item.url ? (
-                    <a
-                      className="text-base"
-                      href={item.url}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Check it out
-                    </a>
+                    <span className="text-base">
+                      <CustomLink href={item.url}>Check it out</CustomLink>
+                    </span>
                   ) : null}
                 </div>
               </div>
@@ -48,8 +44,8 @@ export default function Toolbox({ software, hardware, thisSite }) {
         <div className="space-y-12">
           <h2>Hardware</h2>
           <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
-            {hardware?.map((item) => (
-              <div key={item.url}>
+            {hardware?.map((item, index) => (
+              <div key={`${item.url}${index}`}>
                 <h3 className="m-0 text-xl font-medium">{item.title}</h3>
                 <div className="block space-x-4">
                   {item.types.map((tag) => (
@@ -61,14 +57,9 @@ export default function Toolbox({ software, hardware, thisSite }) {
                 <div className="mt-4">
                   <p className="m-0 mb-3 text-base">{item.description}</p>
                   {item.url ? (
-                    <a
-                      className="text-base"
-                      href={item.url}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Check it out
-                    </a>
+                    <span className="text-base">
+                      <CustomLink href={item.url}>Check it out</CustomLink>
+                    </span>
                   ) : null}
                 </div>
               </div>
@@ -78,8 +69,8 @@ export default function Toolbox({ software, hardware, thisSite }) {
         <div className="space-y-12">
           <h2>This Site</h2>
           <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
-            {thisSite?.map((item) => (
-              <div key={item.url}>
+            {thisSite?.map((item, index) => (
+              <div key={`${item.url}${index}`}>
                 <h3 className="m-0 text-xl font-medium">{item.title}</h3>
                 <div className="block space-x-4">
                   {item.types.map((tag) => (
@@ -91,14 +82,9 @@ export default function Toolbox({ software, hardware, thisSite }) {
                 <div className="mt-4">
                   <p className="m-0 mb-3 text-base">{item.description}</p>
                   {item.url ? (
-                    <a
-                      className="text-base"
-                      href={item.url}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Check it out
-                    </a>
+                    <span className="text-base">
+                      <CustomLink href={item.url}>Check it out</CustomLink>
+                    </span>
                   ) : null}
                 </div>
               </div>
@@ -107,13 +93,10 @@ export default function Toolbox({ software, hardware, thisSite }) {
         </div>
         <p className="text-base">
           Influenced by{' '}
-          <a href="https://wesbos.com/uses" target="_blank" rel="noreferrer">
-            Wes Bos
-          </a>{' '}
-          and{' '}
-          <a href="https://www.jason.af/uses/" target="_blank" rel="noreferrer">
+          <CustomLink href="https://wesbos.com/uses">Wes Bos</CustomLink> and{' '}
+          <CustomLink href="https://www.jason.af/uses/">
             Jason Lengstorf
-          </a>
+          </CustomLink>
           .
         </p>
       </div>
