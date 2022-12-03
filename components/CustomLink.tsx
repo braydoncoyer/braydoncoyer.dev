@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 export default function CustomLink({ children, href }) {
@@ -26,13 +27,11 @@ export default function CustomLink({ children, href }) {
     setIsHovering(inImagePreview);
   };
 
-  let handleFetchImage = async (url) => {
+  let handleFetchImage = async (url: string) => {
     const res = await fetch(
       `http://localhost:3000/api/link-preview?url=${url}`
     );
     const data = await res.json();
-    console.log(data);
-
     setImagePreview(data.image);
   };
 
@@ -57,20 +56,28 @@ export default function CustomLink({ children, href }) {
       {isHovering && (
         <a href={href}>
           <span
-            className="w-36 h-28 absolute -top-32 left-1/2 transform -translate-x-[4.5rem] translate-y-8 flex items-start justify-center"
+            className="w-48 h-42 absolute ease-in-out duration-300 -top-44 left-1/2 transform -translate-x-[6rem] translate-y-8 flex items-start justify-center"
             onMouseLeave={handleMouseLeaveImage}
             onMouseEnter={handleMouseEnterImage}
             onFocus={handleMouseEnterImage}
             onBlur={handleMouseLeaveImage}
           >
             {imagePreview ? (
-              <img
-                className="object-cover object-top h-24 bg-white rounded-md shadow-lg w-44"
+              <Image
+                className="object-cover object-top transition-opacity duration-700 ease-in shadow-xl opacity-100 rounded-xl"
+                style={{
+                  width: 'auto',
+                  height: 'auto',
+                  opacity: 0,
+                  objectFit: 'cover'
+                }}
                 src={`data:image/jpeg;base64, ${imagePreview}`}
+                width={200}
+                height={113}
                 alt={children}
               />
             ) : (
-              <span className="flex items-center justify-center h-24 bg-white rounded-md shadow-lg w-44">
+              <span className="flex items-center justify-center w-48 bg-white rounded-md shadow-xl h-36 dark:bg-midnight text-slate-900 dark:text-white">
                 Loading...
               </span>
             )}

@@ -4,7 +4,7 @@
         <description><![CDATA[Braydon Coyer]]></description>
         <link>https://braydoncoyer.dev</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 03 Dec 2022 17:46:52 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 03 Dec 2022 18:11:46 GMT</lastBuildDate>
         <atom:link href="https://braydoncoyer.dev/rss.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[How To Create an Animated Loading Spinner with Tailwind CSS]]></title>
