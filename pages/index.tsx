@@ -4,6 +4,7 @@ import { convertToArticleList, getPublishedArticles } from '@/lib/notion';
 import { ArticleList } from '@/components/ArticleList';
 import { Button } from '@/components/Button';
 import { Container } from 'layouts/Container';
+import CustomLink from '@/components/CustomLink';
 import { GetStaticProps } from 'next';
 import Image from 'next/legacy/image';
 import { Subscribe } from '@/components/Subscribe';
@@ -55,6 +56,15 @@ export default function Home({ recentArticles }) {
         <div>
           <h2>I love to share my knowledge through writing.</h2>
           <p>Check out a few of my most recent publishings.</p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut error
+            tempore eum reiciendis hic.{' '}
+            <CustomLink href="https://www.braydoncoyer.dev/">
+              Iusto neque quae commodi
+            </CustomLink>{' '}
+            veniam reprehenderit fugit assumenda atque dolorum recusandae, ut
+            quam! Eius, ea saepe!
+          </p>
           <ArticleList articles={recentArticles} />
           <div className="my-16">
             <Button

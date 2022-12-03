@@ -13,6 +13,7 @@ import { Callout } from '@/components/Callout';
 import { Client } from '@notionhq/client';
 import { CodeBlock } from '@/components/Codeblock';
 import { Container } from 'layouts/Container';
+import CustomLink from '@/components/CustomLink';
 import Image from 'next/legacy/image';
 import PageViews from '@/components/PageViews';
 import Reactions from '@/components/Reactions';
@@ -47,7 +48,11 @@ export const Text = ({ text }) => {
         ].join(' ')}
         style={color !== 'default' ? { color } : {}}
       >
-        {text.link ? <a href={text.link.url}>{text.content}</a> : text.content}
+        {text.link ? (
+          <CustomLink href={text.link.url}>{text.content}</CustomLink>
+        ) : (
+          text.content
+        )}
       </span>
     );
   });
