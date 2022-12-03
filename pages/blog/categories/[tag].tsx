@@ -8,7 +8,7 @@ import {
 
 import { ArticleList } from '@/components/ArticleList';
 import { Container } from 'layouts/Container';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { TagList } from '@/components/TagList';
 import { handleArticleClicked } from '@/lib/handleArticleClick';
 import slugify from 'slugify';

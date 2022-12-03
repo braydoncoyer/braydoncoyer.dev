@@ -146,10 +146,15 @@ export function Footer() {
                 </h3>
                 <div role="list" className="mt-4 space-y-4">
                   {navigation.general.map((item) => (
-                    <Link key={item.name} href={item.href}>
-                      <a className="block text-base text-gray-600 no-underline hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 hover:underline">
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      passHref
+                      legacyBehavior
+                    >
+                      <span className="block text-base text-gray-600 no-underline hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 hover:underline">
                         {item.name}
-                      </a>
+                      </span>
                     </Link>
                   ))}
                 </div>
@@ -160,10 +165,15 @@ export function Footer() {
                 </h3>
                 <div role="list" className="mt-4 space-y-4">
                   {navigation.specifics.map((item) => (
-                    <Link key={item.name} href={item.href}>
-                      <a className="block text-base text-gray-600 no-underline hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 hover:underline">
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      passHref
+                      legacyBehavior
+                    >
+                      <span className="block text-base text-gray-600 no-underline hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 hover:underline">
                         {item.name}
-                      </a>
+                      </span>
                     </Link>
                   ))}
                 </div>
@@ -176,10 +186,15 @@ export function Footer() {
                 </h3>
                 <div role="list" className="mt-4 space-y-4">
                   {navigation.extra.map((item) => (
-                    <Link key={item.name} href={item.href}>
-                      <a className="block text-base text-gray-600 no-underline hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 hover:underline">
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      passHref
+                      legacyBehavior
+                    >
+                      <span className="block text-base text-gray-600 no-underline hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 hover:underline">
                         {item.name}
-                      </a>
+                      </span>
                     </Link>
                   ))}
                   <a

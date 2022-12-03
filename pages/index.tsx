@@ -5,7 +5,7 @@ import { ArticleList } from '@/components/ArticleList';
 import { Button } from '@/components/Button';
 import { Container } from 'layouts/Container';
 import { GetStaticProps } from 'next';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { Subscribe } from '@/components/Subscribe';
 import { generateRssFeed } from 'scripts/generate-rss';
 import siteMetadata from '@/data/siteMetadata';

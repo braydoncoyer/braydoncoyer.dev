@@ -3,7 +3,7 @@ import { convertToArticleList, getAllArticles } from '@/lib/notion';
 import { ArticleList } from '@/components/ArticleList';
 import { Container } from 'layouts/Container';
 import { GetStaticProps } from 'next';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { TagList } from '@/components/TagList';
 import { handleArticleClicked } from '@/lib/handleArticleClick';
 import slugify from 'slugify';

@@ -1,5 +1,5 @@
 import { Container } from 'layouts/Container';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import siteMetadata from '@/data/siteMetadata';
 import { useState } from 'react';
 

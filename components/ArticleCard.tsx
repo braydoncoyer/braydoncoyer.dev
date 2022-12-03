@@ -1,5 +1,5 @@
 import { Article } from '@/lib/types';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { handleArticleClicked } from '@/lib/handleArticleClick';
 import siteMetadata from '@/data/siteMetadata';
 import slugify from 'slugify';

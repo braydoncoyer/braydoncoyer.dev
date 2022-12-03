@@ -1,7 +1,7 @@
 import BottomRays from 'public/footer_rays.png';
 import { Footer } from '@/components/Footer';
 import Head from 'next/head';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { NavMenu } from '@/components/NavMenu';
 import { PageTransition } from '@/components/PageTransition';
 import { PageType } from '@/lib/types';

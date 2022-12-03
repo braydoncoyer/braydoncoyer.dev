@@ -13,7 +13,7 @@ import { Callout } from '@/components/Callout';
 import { Client } from '@notionhq/client';
 import { CodeBlock } from '@/components/Codeblock';
 import { Container } from 'layouts/Container';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import PageViews from '@/components/PageViews';
 import Reactions from '@/components/Reactions';
 import { ShareArticle } from '@/components/ShareArticle';

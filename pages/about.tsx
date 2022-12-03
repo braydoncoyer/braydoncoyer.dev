@@ -6,7 +6,7 @@ import { Button } from '@/components/Button';
 import { ButtonType } from '@/lib/types';
 import { Container } from 'layouts/Container';
 import { GetStaticProps } from 'next';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import Link from 'next/link';
 import { TimelineItem } from '@/components/TimelineItem';
 import { TimelineList } from '@/components/TimelineList';
@@ -29,8 +29,8 @@ export default function About({ recentArticles }) {
       <p>
         I’m Braydon, a developer,{' '}
         <a href={siteMetadata.codepen}>creative coder</a>,{' '}
-        <Link href="/blog">
-          <a>blogger</a>
+        <Link href="/blog" legacyBehavior>
+          blogger
         </Link>{' '}
         and self-proclaimed designer who specializes in front-end development.
         My mission is to translate user-focussed designs into pixel-perfect
@@ -76,8 +76,8 @@ export default function About({ recentArticles }) {
           share tech-related tidbits and build in public, or you can follow me
           on <a href={siteMetadata.github}>GitHub</a>. I often write about my
           findings on my{' '}
-          <Link href="/blog">
-            <a>blog</a>
+          <Link href="/blog" legacyBehavior>
+            blog
           </Link>{' '}
           and create cool things over on{' '}
           <a href={siteMetadata.codepen}>CodePen</a>. I also help run a mediocre{' '}

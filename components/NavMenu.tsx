@@ -4,7 +4,7 @@ import DarkLogo from 'public/bcoyerlogo_dark.svg';
 import { Dialog } from '@headlessui/react';
 import Image from 'next/image';
 import LightLogo from 'public/bcoyerlogo_white.svg';
-import NextLink from 'next/link';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
 
@@ -13,8 +13,8 @@ function NavItem({ href, text }) {
   const isActive = router.asPath === href;
 
   return (
-    <NextLink href={href}>
-      <a
+    <Link href={href} passHref>
+      <span
         className={`${
           isActive
             ? 'font-bold text-teal-500 dark:text-teal-400'
@@ -22,8 +22,8 @@ function NavItem({ href, text }) {
         } 'hidden md:inline-block rounded-full hover:text-gray-900 dark:hover:text-gray-200 transition-all`}
       >
         {text}
-      </a>
-    </NextLink>
+      </span>
+    </Link>
   );
 }
 
@@ -40,8 +40,8 @@ export function NavMenu({}) {
       <div className="flex items-center justify-between max-w-6xl px-4 py-3 mx-auto sm:px-6 md:space-x-10">
         <div className="flex justify-start lg:w-0 lg:flex-1">
           <span className="sr-only">Profile Picture</span>
-          <NextLink href="/">
-            <a className="block dark:hidden">
+          <Link href="/" passHref>
+            <span className="block dark:hidden">
               <Image
                 alt="Braydon Coyer"
                 height={38}
@@ -50,10 +50,10 @@ export function NavMenu({}) {
                 blurDataURL={DarkLogo}
                 className="rounded-full"
               />
-            </a>
-          </NextLink>
-          <NextLink href="/">
-            <a className="hidden dark:block">
+            </span>
+          </Link>
+          <Link href="/" passHref>
+            <span className="hidden dark:block">
               <Image
                 alt="Braydon Coyer"
                 height={38}
@@ -62,8 +62,8 @@ export function NavMenu({}) {
                 blurDataURL={LightLogo}
                 className="rounded-full"
               />
-            </a>
-          </NextLink>
+            </span>
+          </Link>
         </div>
         <div className="-my-2 -mr-2 md:hidden" onClick={() => setIsOpen(true)}>
           <div className="bg-gray-200 dark:bg-midnight text-gray-600 dark:text-gray-300 rounded-full p-3.5 inline-flex items-center justify-center hover:text-gray-700 hover:bg-gray-300 cursor-pointer focus:outline-none general-ring-state">
@@ -235,39 +235,39 @@ export function NavMenu({}) {
             </button>
             <ul className="space-y-6">
               <li>
-                <NextLink href="/">
-                  <a className="hover:text-teal-400 dark:hover:text-teal-500">
+                <Link href="/" passHref>
+                  <span className="hover:text-teal-400 dark:hover:text-teal-500">
                     Home
-                  </a>
-                </NextLink>
+                  </span>
+                </Link>
               </li>
               <li>
-                <NextLink href="/about">
-                  <a className="hover:text-teal-400 dark:hover:text-teal-500">
+                <Link href="/about" passHref>
+                  <span className="hover:text-teal-400 dark:hover:text-teal-500">
                     About
-                  </a>
-                </NextLink>
+                  </span>
+                </Link>
               </li>
               <li>
-                <NextLink href="/projects">
-                  <a className="hover:text-teal-400 dark:hover:text-teal-500">
+                <Link href="/projects" passHref>
+                  <span className="hover:text-teal-400 dark:hover:text-teal-500">
                     Projects
-                  </a>
-                </NextLink>
+                  </span>
+                </Link>
               </li>
               <li>
-                <NextLink href="/blog">
-                  <a className="hover:text-teal-400 dark:hover:text-teal-500">
+                <Link href="/blog" passHref>
+                  <span className="hover:text-teal-400 dark:hover:text-teal-500">
                     Blog
-                  </a>
-                </NextLink>
+                  </span>
+                </Link>
               </li>
               <li>
-                <NextLink href="/community-wall">
-                  <a className="hover:text-teal-400 dark:hover:text-teal-500">
+                <Link href="/community-wall" passHref>
+                  <span className="hover:text-teal-400 dark:hover:text-teal-500">
                     Community wall
-                  </a>
-                </NextLink>
+                  </span>
+                </Link>
               </li>
             </ul>
             <div className="pt-6 mt-6 border-t border-gray-200 dark:border-gray-200/10">

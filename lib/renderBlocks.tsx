@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import { AnchorLink } from '@/components/AnchorLink';
 import { Callout } from '../components/Callout';
 import { CodeBlock } from '../components/Codeblock';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { YoutubeEmbed } from '../components/YoutubeEmbed';
 
 export const Text = ({ text }) => {
