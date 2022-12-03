@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 export default function CustomLink({ children, href }) {
@@ -42,7 +43,7 @@ export default function CustomLink({ children, href }) {
   return (
     <span>
       <span className="relative z-10 hidden md:inline-block">
-        <a
+        <Link
           href={href}
           className={`${isHovering && 'underline'}`}
           onMouseEnter={handleMouseEnterLink}
@@ -51,9 +52,9 @@ export default function CustomLink({ children, href }) {
           onBlur={handleMouseLeaveLink}
         >
           {children}
-        </a>
+        </Link>
         {isHovering && (
-          <a href={href}>
+          <Link href={href} passHref>
             <span
               className="w-56 h-44 absolute top-[-195px] left-1/2 transform -translate-x-[7rem] translate-y-8 flex items-start justify-center"
               onMouseLeave={handleMouseLeaveImage}
@@ -74,7 +75,7 @@ export default function CustomLink({ children, href }) {
                 </span>
               )}
             </span>
-          </a>
+          </Link>
         )}
       </span>
       <a
