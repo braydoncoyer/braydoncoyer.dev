@@ -1,9 +1,4 @@
-import { Article } from '@/lib/types';
 import { ArticleCard } from '@/components/ArticleCard';
-
-type Props = {
-  articles: Article[];
-};
 
 export function ArticleList({
   articles,

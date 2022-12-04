@@ -1,6 +1,7 @@
+import React, { useCallback } from 'react';
+
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
 
 export default function CustomLink({ children, href }) {
   let [imagePreview, setImagePreview] = React.useState('');
@@ -33,17 +34,20 @@ export default function CustomLink({ children, href }) {
     setIsHovering(inImagePreview);
   };
 
-  let handleFetchImage = async (url: string) => {
-    const res = await fetch(`${origin}/api/link-preview?url=${url}`);
-    const data = await res.json();
-    setImagePreview(data.image);
-  };
+  let handleFetchImage = useCallback(
+    async (url: string) => {
+      const res = await fetch(`${origin}/api/link-preview?url=${url}`);
+      const data = await res.json();
+      setImagePreview(data.image);
+    },
+    [origin]
+  );
 
   React.useEffect(() => {
     handleFetchImage(href);
 
     return () => setImagePreview('');
-  }, [href]);
+  }, [href, handleFetchImage]);
 
   return (
     <span>

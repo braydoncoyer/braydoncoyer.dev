@@ -7,7 +7,6 @@ const siteMetadata = {
   language: 'en-us',
   siteUrl: 'https://braydoncoyer.dev',
   siteRepo: 'https://github.com/braydoncoyer/braydoncoyer.dev',
-  //   siteLogo: "/static/images/bundle_logo.svg",
   avatarImage:
     'https://res.cloudinary.com/braydoncoyer/image/upload/v1636553710/avatar.jpg',
   socialBanner:

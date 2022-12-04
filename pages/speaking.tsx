@@ -5,16 +5,6 @@ import { getListOfTalksData } from '@/lib/notion';
 import siteMetadata from '@/data/siteMetadata';
 import { useState } from 'react';
 
-// const talks = [
-//   {
-//     name: 'Application Confidence - An Introduction to Testing React',
-//     type: 'Meetup',
-//     city: 'Virtual',
-//     date: '11-10-2022',
-//     url: 'https://youtu.be/65wXOrmIOK4?t=3695'
-//   }
-// ];
-
 const biography = [
   "Hi, I'm Braydon Coyer. I'm a Frontend Engineer at LogicGate where I work on a GRC automated platform. I live in Texas with my wife and daughter.",
   "Hi, I'm Braydon Coyer. I'm a Frontend Engineer at LogicGate where I work on a GRC automated platform. I'm a creative developer, blogger and self-proclaimed designer. My mission is to translate user-focussed designs into pixel-perfect websites or applications that run blazing fast. I live in Texas with my wife and daughter.",

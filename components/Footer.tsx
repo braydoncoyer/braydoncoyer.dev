@@ -11,7 +11,6 @@ const navigation = {
     { name: 'Blog', href: '/blog' }
   ],
   specifics: [
-    // { name: 'Activity', href: '/activity' },
     { name: 'Stats', href: '/stats' },
     { name: 'Community wall', href: '/community-wall' },
     { name: 'Toolbox', href: '/toolbox' },
@@ -20,13 +19,12 @@ const navigation = {
   extra: [
     { name: 'Changelog', href: '/changelog' },
     { name: 'Meet up', href: '/meetup' }
-    // { name: 'Books', href: '/books' }
   ],
   social: [
     {
       name: 'Twitter',
       href: siteMetadata.twitter,
-      icon: (props) => (
+      icon: () => (
         <svg
           className="w-7 h-7 transform hover:rotate-[-4deg] transition"
           viewBox="0 0 24 24"
@@ -46,7 +44,7 @@ const navigation = {
     {
       name: 'LinkedIn',
       href: siteMetadata.linkedin,
-      icon: (props) => (
+      icon: () => (
         <svg
           className="w-7 h-7 transform hover:rotate-[-4deg] transition"
           viewBox="0 0 24 24"
@@ -94,7 +92,7 @@ const navigation = {
     {
       name: 'GitHub',
       href: siteMetadata.github,
-      icon: (props) => (
+      icon: () => (
         <svg
           className="w-7 h-7 transform hover:rotate-[-4deg] transition"
           viewBox="0 0 24 24"
@@ -114,7 +112,7 @@ const navigation = {
     {
       name: 'CodePen',
       href: siteMetadata.codepen,
-      icon: (props) => (
+      icon: () => (
         <svg
           stroke="currentColor"
           fill="currentColor"
@@ -152,7 +150,7 @@ export function Footer() {
                       passHref
                       legacyBehavior
                     >
-                      <span className="block text-base text-gray-600 no-underline hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 hover:underline">
+                      <span className="block text-base text-gray-600 no-underline cursor-pointer hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 hover:underline">
                         {item.name}
                       </span>
                     </Link>
@@ -171,7 +169,7 @@ export function Footer() {
                       passHref
                       legacyBehavior
                     >
-                      <span className="block text-base text-gray-600 no-underline hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 hover:underline">
+                      <span className="block text-base text-gray-600 no-underline cursor-pointer hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 hover:underline">
                         {item.name}
                       </span>
                     </Link>
@@ -192,7 +190,7 @@ export function Footer() {
                       passHref
                       legacyBehavior
                     >
-                      <span className="block text-base text-gray-600 no-underline hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 hover:underline">
+                      <span className="block text-base text-gray-600 no-underline cursor-pointer hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 hover:underline">
                         {item.name}
                       </span>
                     </Link>
@@ -238,7 +236,7 @@ export function Footer() {
                 className="text-gray-600 dark:text-gray-400 important"
               >
                 <span className="sr-only">{item.name}</span>
-                <item.icon className="w-6 h-6" aria-hidden="true" />
+                <item.icon aria-hidden="true" />
               </a>
             ))}
           </div>

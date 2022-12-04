@@ -12,7 +12,6 @@ import { Container } from 'layouts/Container';
 import CustomLink from '@/components/CustomLink';
 import { GetStaticProps } from 'next';
 import Image from 'next/legacy/image';
-import Link from 'next/link';
 import { TimelineItem } from '@/components/TimelineItem';
 import { TimelineList } from '@/components/TimelineList';
 import siteMetadata from '@/data/siteMetadata';

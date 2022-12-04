@@ -141,37 +141,6 @@ export default function Projects() {
             </div>
           </div>
         </div>
-
-        {/* <div className="relative w-full overflow-hidden border rounded-3xl bg-gradient-to-b from-emerald-50 dark:from-teal-900/50 dark:to-teal-600 to-teal-200 dark:border-slate-700 border-slate-100">
-          <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-teal-300 dark:via-teal-600 to-transparent"></div>
-          <div className="grid grid-cols-1 min-h-[500px] max-h-[500px] md:grid-cols-2">
-            <div className="md:w-[650px] max-h-[500px]">
-              <Image
-                className="absolute bottom-20 md:bottom-0 md:-left-16"
-                objectFit="fill"
-                src="https://res.cloudinary.com/braydoncoyer/image/upload/v1638226232/nglimeade_ipadpro_blliap.png"
-                placeholder="blur"
-                blurDataURL="https://res.cloudinary.com/braydoncoyer/image/upload/v1638226232/nglimeade_ipadpro_blliap.png"
-                width={1978}
-                height={1713}
-                layout="intrinsic"
-                alt={'NgLimeade on an iPad'}
-              />
-            </div>
-            <div className="self-end order-first col-span-1 m-8 text-center md:order-last md:text-left">
-              <h2 className="mt-0">NgLimeade</h2>
-              <p>
-                NgLimeade is an Angular Toast Library that aims to get toast
-                notifications up and running in less than a minute! No joke!
-                Check it out for yourself!
-              </p>
-              <ButtonLink
-                text="Install NgLimeade"
-                href="https://www.npmjs.com/package/ng-limeade"
-              />
-            </div>
-          </div>
-        </div> */}
       </div>
     </Container>
   );

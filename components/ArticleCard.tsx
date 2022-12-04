@@ -4,16 +4,13 @@ import { handleArticleClicked } from '@/lib/handleArticleClick';
 import siteMetadata from '@/data/siteMetadata';
 import slugify from 'slugify';
 import { useIsArticleRead } from '@/hooks/useIsArticleRead';
-import { useRouter } from 'next/dist/client/router';
 
 type Props = {
   article: Article;
 };
 
 export function ArticleCard({ article }: Props) {
-  const router = useRouter();
   const slug = slugify(article.title).toLowerCase();
-
   const [hasRead] = useIsArticleRead(slug);
 
   return (
@@ -33,8 +30,6 @@ export function ArticleCard({ article }: Props) {
           />
           <div className="w-full text-left">
             <h3 className="mt-2 text-2xl">{article.title}</h3>
-            {/* {JSON.stringify(article)} */}
-            {/* <p>{article.summary}</p> */}
             <span className="flex items-center text-base font-semibold">
               {new Date(article.publishedDate).toLocaleDateString(
                 siteMetadata.locale,

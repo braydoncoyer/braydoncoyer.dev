@@ -346,29 +346,7 @@ const ArticlePage = ({
             <p className="text-base">Share this article</p>
             <ShareArticle title={title} slug={slug} />
           </div>
-          {/* <div className="flex items-center justify-between space-x-4">
-            <Button
-              buttonType={ButtonType.PRIMARY}
-              onButtonClick={() => push('/blog')}
-            >
-              Back to the blog
-            </Button>
-            <div className="md:hidden">
-              <ShareArticle title={title} slug={slug} />
-            </div>
-          </div> */}
         </div>
-        {/* <aside className="hidden w-full lg:inline-block md:sticky md:top-[175px] md:self-start col-span-3 space-y-8">
-          <h3 className="m-0 text-sm font-semibold tracking-wider text-center uppercase">
-            Article Reactions
-          </h3>
-          
-          <h3 className="m-0 text-sm font-semibold tracking-wider text-center uppercase">
-            Share Article
-          </h3>
-          <ShareArticle title={title} slug={slug} />
-          <Ad />
-        </aside> */}
       </div>
       <div>
         <div className="my-8 lg:mt-64">
