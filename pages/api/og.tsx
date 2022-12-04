@@ -7,20 +7,20 @@ export const config = {
   runtime: 'experimental-edge'
 };
 
-// const fontBold = fetch(new URL('../../assets/Inter-Bold.ttf')).then((res) =>
-//   res.arrayBuffer()
-// );
-// const fontRegular = fetch(new URL('../../assets/Inter-Regular.ttf')).then(
-//   (res) => res.arrayBuffer()
-// );
-// const fontMedium = fetch(new URL('../../assets/Inter-Medium.ttf')).then((res) =>
-//   res.arrayBuffer()
-// );
+const fontBold = fetch(new URL('../../assets/Inter-Bold.ttf')).then((res) =>
+  res.arrayBuffer()
+);
+const fontRegular = fetch(new URL('../../assets/Inter-Regular.ttf')).then(
+  (res) => res.arrayBuffer()
+);
+const fontMedium = fetch(new URL('../../assets/Inter-Medium.ttf')).then((res) =>
+  res.arrayBuffer()
+);
 
 export default async function handler(req: NextRequest) {
-  // const fontDataBold = await fontBold;
-  // const fontDataRegular = await fontRegular;
-  // const fontDataMedium = await fontMedium;
+  const fontDataBold = await fontBold;
+  const fontDataRegular = await fontRegular;
+  const fontDataMedium = await fontMedium;
   try {
     const { searchParams } = new URL(req.url);
 
@@ -275,24 +275,24 @@ export default async function handler(req: NextRequest) {
       ),
       {
         width: 1200,
-        height: 630
-        // fonts: [
-        //   {
-        //     name: 'Inter-Bold',
-        //     data: fontDataBold,
-        //     style: 'normal'
-        //   },
-        //   {
-        //     name: 'Inter-Regular',
-        //     data: fontDataRegular,
-        //     style: 'normal'
-        //   },
-        //   {
-        //     name: 'Inter-Medium',
-        //     data: fontDataMedium,
-        //     style: 'normal'
-        //   }
-        // ]
+        height: 630,
+        fonts: [
+          {
+            name: 'Inter-Bold',
+            data: fontDataBold,
+            style: 'normal'
+          },
+          {
+            name: 'Inter-Regular',
+            data: fontDataRegular,
+            style: 'normal'
+          },
+          {
+            name: 'Inter-Medium',
+            data: fontDataMedium,
+            style: 'normal'
+          }
+        ]
       }
     );
   } catch (e: any) {
