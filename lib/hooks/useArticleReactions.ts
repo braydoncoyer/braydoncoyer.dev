@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { Reactions } from '../types';
 import { fetcher } from '../fetcher';
@@ -31,6 +31,13 @@ export default function useArticleReactions(slug) {
       refreshInterval: 25000
     }
   );
+
+  const getReactionsFromLocalStorage = useCallback(() => {
+    if (typeof window !== 'undefined') {
+      return JSON.parse(localStorage.getItem(slug)) || initialReactionState;
+    }
+    return null;
+  }, [slug]);
 
   useEffect(() => {
     setHydrated(true);
@@ -176,12 +183,12 @@ export default function useArticleReactions(slug) {
     setReactionsToLocalStorage(updatedReactionState);
   }
 
-  function getReactionsFromLocalStorage() {
-    if (typeof window !== 'undefined') {
-      return JSON.parse(localStorage.getItem(slug)) || initialReactionState;
-    }
-    return null;
-  }
+  // function getReactionsFromLocalStorage() {
+  //   if (typeof window !== 'undefined') {
+  //     return JSON.parse(localStorage.getItem(slug)) || initialReactionState;
+  //   }
+  //   return null;
+  // }
 
   function setReactionsToLocalStorage(reactions) {
     if (typeof window !== 'undefined') {
