@@ -11,7 +11,7 @@ export function useCopyToClipboard(resetInterval = 3000, text = null) {
       copy(text ?? window.location.href);
       setCopied(true);
     }
-  }, []);
+  }, [text]);
 
   useEffect(() => {
     let timeout;
