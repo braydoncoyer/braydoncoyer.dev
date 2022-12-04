@@ -31,6 +31,58 @@ export const getToolboxData = async (databaseId) => {
   return results;
 };
 
+export const getWorkTimelineData = async (databaseId) => {
+  const response: QueryDatabaseResponse = await notion.databases.query({
+    database_id: databaseId,
+    sorts: [
+      {
+        property: 'Duration',
+        direction: 'descending'
+      }
+    ]
+  });
+
+  const results = [];
+
+  response.results.forEach((item: any) => {
+    results.push({
+      title: item.properties.Name.title[0].plain_text,
+      company: item.properties.Company.select.name,
+      description: item.properties.Description.rich_text[0].plain_text,
+      duration: item.properties.Duration.rich_text[0].text.content,
+      comapny_url: item.properties.CompanyUrl?.url
+    });
+  });
+
+  return results;
+};
+
+export const getListOfTalksData = async (databaseId) => {
+  const response: QueryDatabaseResponse = await notion.databases.query({
+    database_id: databaseId
+    // sorts: [
+    //   {
+    //     property: 'Duration',
+    //     direction: 'descending'
+    //   }
+    // ]
+  });
+
+  const results = [];
+
+  response.results.forEach((item: any) => {
+    results.push({
+      name: item.properties.Name.title[0].plain_text,
+      type: item.properties.Type.select.name,
+      city: item.properties.City.rich_text[0].plain_text,
+      date: item.properties.Date.date.start,
+      url: item.properties.URL?.url
+    });
+  });
+
+  return results;
+};
+
 export const getChangelogData = async (databaseId) => {
   const response: QueryDatabaseResponse = await notion.databases.query({
     database_id: databaseId,

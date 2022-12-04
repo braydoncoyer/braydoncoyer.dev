@@ -1,10 +1,15 @@
-import { convertToArticleList, getPublishedArticles } from '@/lib/notion';
+import {
+  convertToArticleList,
+  getPublishedArticles,
+  getWorkTimelineData
+} from '@/lib/notion';
 
 import { Ad } from '@/components/Ad';
 import { ArticleList } from '@/components/ArticleList';
 import { Button } from '@/components/Button';
 import { ButtonType } from '@/lib/types';
 import { Container } from 'layouts/Container';
+import CustomLink from '@/components/CustomLink';
 import { GetStaticProps } from 'next';
 import Image from 'next/legacy/image';
 import Link from 'next/link';
@@ -12,9 +17,8 @@ import { TimelineItem } from '@/components/TimelineItem';
 import { TimelineList } from '@/components/TimelineList';
 import siteMetadata from '@/data/siteMetadata';
 import { useRouter } from 'next/router';
-import { workTimelineData } from '@/data/workTimeline';
 
-export default function About({ recentArticles }) {
+export default function About({ recentArticles, workTimeline }) {
   const { push } = useRouter();
   return (
     <Container title="About Me - Braydon Coyer">
@@ -28,19 +32,17 @@ export default function About({ recentArticles }) {
       </h1>
       <p>
         I’m Braydon, a developer,{' '}
-        <a href={siteMetadata.codepen}>creative coder</a>,{' '}
-        <Link href="/blog" legacyBehavior>
-          blogger
-        </Link>{' '}
+        <CustomLink href={siteMetadata.codepen}>creative coder</CustomLink>,{' '}
+        <CustomLink href={`${siteMetadata.siteUrl}/blog`}>blogger</CustomLink>{' '}
         and self-proclaimed designer who specializes in front-end development.
         My mission is to translate user-focussed designs into pixel-perfect
         websites or applications that run blazing fast.
       </p>
       <p>
         I’m currently working as a senior front end developer at{' '}
-        <a href="https://www.logicgate.com">LogicGate</a> where I help develop
-        an agile GRC cloud solution that combines powerful functionality with
-        intuitive design to enhance enterprise GRC programs.
+        <CustomLink href="https://www.logicgate.com">LogicGate</CustomLink>{' '}
+        where I help develop an agile GRC cloud solution that combines powerful
+        functionality with intuitive design to enhance enterprise GRC programs.
       </p>
       <div>
         <div className="hidden md:block md:float-left">
@@ -56,16 +58,18 @@ export default function About({ recentArticles }) {
         </div>
         <p>
           Prior to LogicGate, I worked as a senior full-stack engineer at{' '}
-          <a href="https://www.cognizant.com/us/en">Cognizant</a> where I helped
-          architect and develop full-stack RESTful microservices, train and
-          prepare developers for delivery, and assist in leading the front-end
-          practice in a lab-based working environment.
+          <CustomLink href="https://www.cognizant.com/us/en">
+            Cognizant
+          </CustomLink>{' '}
+          where I helped architect and develop full-stack RESTful microservices,
+          train and prepare developers for delivery, and assist in leading the
+          front-end practice in a lab-based working environment.
         </p>
         <p>
           Before Cognizant, I worked as a UI Developer for{' '}
-          <a href="https://www.projekt202.com">projekt202</a> helping craft
-          design systems and building reusable component libraries for
-          multi-million dollar companies.
+          <CustomLink href="https://www.projekt202.com">projekt202</CustomLink>{' '}
+          helping craft design systems and building reusable component libraries
+          for multi-million dollar companies.
         </p>
         <p>
           In a past life, I was an indie mobile developer making mobile games
@@ -74,14 +78,13 @@ export default function About({ recentArticles }) {
         <p>
           You can find me on <a href={siteMetadata.twitter}>Twitter</a> where I
           share tech-related tidbits and build in public, or you can follow me
-          on <a href={siteMetadata.github}>GitHub</a>. I often write about my
-          findings on my{' '}
-          <Link href="/blog" legacyBehavior>
-            blog
-          </Link>{' '}
+          on <CustomLink href={siteMetadata.github}>GitHub</CustomLink>. I often
+          write about my findings on my{' '}
+          <CustomLink href={`${siteMetadata.siteUrl}/blog`}>blog</CustomLink>{' '}
           and create cool things over on{' '}
-          <a href={siteMetadata.codepen}>CodePen</a>. I also help run a mediocre{' '}
-          <a href="https://anchor.fm/florida-man">podcast</a>.
+          <CustomLink href={siteMetadata.codepen}>CodePen</CustomLink>. I also
+          help run a mediocre{' '}
+          <CustomLink href="https://anchor.fm/florida-man">podcast</CustomLink>.
         </p>
         <div></div>
       </div>
@@ -92,18 +95,20 @@ export default function About({ recentArticles }) {
       <div className="mt-12 space-y-6">
         <h2 className="m-0 text-gray-900 dark:text-white">Work experience</h2>
         <p>Here's a brief rundown of my most recent experiences.</p>
-        <TimelineList>
-          {workTimelineData.map((workItem, index) => (
-            <TimelineItem
-              key={index}
-              title={workItem.title}
-              meta={workItem.company}
-              link={workItem.company_link}
-              meta_small={workItem.duration}
-              content={workItem.content}
-            />
-          ))}
-        </TimelineList>
+        {workTimeline ? (
+          <TimelineList>
+            {workTimeline.map((workItem, index) => (
+              <TimelineItem
+                key={index}
+                title={workItem.title}
+                meta={workItem.company}
+                link={workItem.company_url}
+                meta_small={workItem.duration}
+                content={workItem.description}
+              />
+            ))}
+          </TimelineList>
+        ) : null}
         <Button
           onButtonClick={() => push(siteMetadata.resume)}
           buttonType={ButtonType.PRIMARY}
@@ -153,12 +158,14 @@ export default function About({ recentArticles }) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const data = await getPublishedArticles(process.env.BLOG_DATABASE_ID);
+  const workTimeline = await getWorkTimelineData(process.env.WORK_TIMELINE_DB);
   const { articles } = convertToArticleList(data);
 
   return {
     props: {
-      recentArticles: articles.slice(0, 3)
+      recentArticles: articles.slice(0, 3),
+      workTimeline
     },
-    revalidate: 120
+    revalidate: 200
   };
 };

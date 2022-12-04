@@ -10,6 +10,7 @@ import {
 import { AnchorLink } from '@/components/AnchorLink';
 import { ArticleList } from '@/components/ArticleList';
 import { Callout } from '@/components/Callout';
+import { CarbonAd } from '@/components/CarbonAd';
 import { Client } from '@notionhq/client';
 import { CodeBlock } from '@/components/Codeblock';
 import { Container } from 'layouts/Container';
@@ -304,7 +305,9 @@ const ArticlePage = ({
           </div>
         </article>
         {/* Left Sticky */}
-        <div className="sticky hidden w-full h-24 bg-red-500 lg:col-start-1 lg:col-end-3 top-24 lg:block"></div>
+        <div className="sticky hidden w-full h-24 lg:col-start-1 lg:col-end-3 top-24 lg:block">
+          <CarbonAd />
+        </div>
         <div className="lg:col-start-3 lg:col-end-11">
           {content.map((block) => (
             <Fragment key={block.id}>{renderBlocks(block)}</Fragment>

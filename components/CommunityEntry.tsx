@@ -1,4 +1,4 @@
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import dayjs from 'dayjs';
 import { useSWRConfig } from 'swr';
 
@@ -29,9 +29,11 @@ export function CommunityEntry({ session, message }) {
   return (
     <div className="p-6 rounded-3xl bg-[#F8FAFC] dark:bg-midnight">
       <div className="flex items-start justify-between mb-4 space-x-6">
-        <div className="flex space-x-6">
-          <img
-            className="flex-shrink-0 w-8 h-8 rounded-full "
+        <div className="flex items-start space-x-6">
+          <Image
+            width={32}
+            height={32}
+            className="flex-shrink-0 rounded-full"
             src={
               message.user.avatar_url
                 ? message.user.avatar_url

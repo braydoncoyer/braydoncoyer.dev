@@ -1,17 +1,19 @@
 import { Container } from 'layouts/Container';
+import { GetStaticProps } from 'next';
 import Image from 'next/legacy/image';
+import { getListOfTalksData } from '@/lib/notion';
 import siteMetadata from '@/data/siteMetadata';
 import { useState } from 'react';
 
-const talks = [
-  {
-    name: 'Application Confidence - An Introduction to Testing React',
-    type: 'Meetup',
-    city: 'Virtual',
-    date: '11-10-2022',
-    url: 'https://youtu.be/65wXOrmIOK4?t=3695'
-  }
-];
+// const talks = [
+//   {
+//     name: 'Application Confidence - An Introduction to Testing React',
+//     type: 'Meetup',
+//     city: 'Virtual',
+//     date: '11-10-2022',
+//     url: 'https://youtu.be/65wXOrmIOK4?t=3695'
+//   }
+// ];
 
 const biography = [
   "Hi, I'm Braydon Coyer. I'm a Frontend Engineer at LogicGate where I work on a GRC automated platform. I live in Texas with my wife and daughter.",
@@ -27,7 +29,7 @@ const biographyLength = [
   { id: '3rd-long', title: '3rd Person, Long', bio: biography[3] }
 ];
 
-export default function Talks() {
+export default function Talks({ talks }) {
   const [selectedLengthIndex, setSelectedLengthIndex] = useState(1);
 
   function handleOptionChange(index: number) {
@@ -236,3 +238,14 @@ export default function Talks() {
     </Container>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const talks = await getListOfTalksData(process.env.SPEAKING_DATA_DB);
+
+  return {
+    props: {
+      talks
+    },
+    revalidate: 200
+  };
+};

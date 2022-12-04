@@ -28,7 +28,8 @@ module.exports = {
       'media.giphy.com',
       'cdn.hashnode.com',
       'res.craft.do',
-      'res.cloudinary.com'
+      'res.cloudinary.com',
+      'robohash.org'
     ]
   }
 };
