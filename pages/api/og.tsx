@@ -7,15 +7,15 @@ export const config = {
   runtime: 'experimental-edge'
 };
 
-const fontBold = fetch(new URL('../../assets/Inter-Bold.ttf')).then((res) =>
-  res.arrayBuffer()
-);
-const fontRegular = fetch(new URL('../../assets/Inter-Regular.ttf')).then(
-  (res) => res.arrayBuffer()
-);
-const fontMedium = fetch(new URL('../../assets/Inter-Medium.ttf')).then((res) =>
-  res.arrayBuffer()
-);
+const fontBold = fetch(
+  new URL('../../assets/Inter-Bold.ttf', import.meta.url)
+).then((res) => res.arrayBuffer());
+const fontRegular = fetch(
+  new URL('../../assets/Inter-Regular.ttf', import.meta.url)
+).then((res) => res.arrayBuffer());
+const fontMedium = fetch(
+  new URL('../../assets/Inter-Medium.ttf', import.meta.url)
+).then((res) => res.arrayBuffer());
 
 export default async function handler(req: NextRequest) {
   const fontDataBold = await fontBold;
