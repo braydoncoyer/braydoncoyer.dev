@@ -8,6 +8,11 @@ export default function CustomLink({ children, href }) {
   let inImagePreview = false;
   let inLink = false;
 
+  const origin =
+    typeof window !== 'undefined' && window.location.origin
+      ? window.location.origin
+      : '';
+
   let handleMouseEnterImage = () => {
     inImagePreview = true;
     setIsHovering(true);
@@ -29,7 +34,7 @@ export default function CustomLink({ children, href }) {
   };
 
   let handleFetchImage = async (url: string) => {
-    const res = await fetch(`/api/link-preview?url=${url}`);
+    const res = await fetch(`${origin}/api/link-preview?url=${url}`);
     const data = await res.json();
     setImagePreview(data.image);
   };

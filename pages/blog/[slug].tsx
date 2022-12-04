@@ -306,7 +306,7 @@ const ArticlePage = ({
         </article>
         {/* Left Sticky */}
         <div className="sticky hidden w-full h-24 lg:col-start-1 lg:col-end-3 top-24 lg:block">
-          <CarbonAd />
+          {/* <CarbonAd /> */}
         </div>
         <div className="lg:col-start-3 lg:col-end-11">
           {content.map((block) => (
