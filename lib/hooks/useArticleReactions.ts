@@ -48,7 +48,7 @@ export default function useArticleReactions(slug) {
       setHasClapped(clapped);
       setHasPartied(partied);
     }
-  }, [hydrated, setReactionsToLocalStorage, getReactionsFromLocalStorage]);
+  }, [getReactionsFromLocalStorage, hydrated]);
 
   useEffect(() => {
     setReactions(data);
