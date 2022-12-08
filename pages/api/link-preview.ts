@@ -10,6 +10,8 @@ export default async function handler(req, res) {
       image
     });
   } catch (error) {
+    console.error(error);
+
     res.status(500).json({
       error: JSON.stringify(error)
     });

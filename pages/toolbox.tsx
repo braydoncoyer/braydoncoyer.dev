@@ -67,7 +67,7 @@ export default function Toolbox({ software, hardware, thisSite }) {
           </div>
         </div>
         <div className="space-y-12">
-          <h2>This Site</h2>
+          <h2>This Site & Blog</h2>
           <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
             {thisSite?.map((item, index) => (
               <div key={`${item.url}${index}`}>
