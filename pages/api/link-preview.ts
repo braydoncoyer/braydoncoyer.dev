@@ -1,28 +1,17 @@
-import puppeteer from 'puppeteer';
+import mql from '@microlink/mql';
 
 export default async function handler(req, res) {
   try {
     let { url } = req.query;
-
-    let image = await getImageBase64(url);
-
+    const { status, data } = await mql(url, {
+      screenshot: true
+    });
     res.status(200).json({
-      image
+      image: data?.screenshot?.url
     });
   } catch (error) {
-    console.error(error);
-
     res.status(500).json({
       error: JSON.stringify(error)
     });
   }
 }
-
-const getImageBase64 = async (url) => {
-  let browser = await puppeteer.launch();
-  let page = await browser.newPage();
-  await page.goto(url, { waitUntil: 'load' });
-  let image = await page.screenshot({ encoding: 'base64' });
-  await browser.close();
-  return image;
-};

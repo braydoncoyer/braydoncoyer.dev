@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.4.1",
+    "@microlink/mql": "^0.10.31",
     "@notionhq/client": "^0.4.4",
     "@supabase/supabase-js": "^1.25.0",
     "@vercel/og": "^0.0.20",

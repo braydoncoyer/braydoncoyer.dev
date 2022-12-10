@@ -34,7 +34,8 @@ module.exports = {
       'cdn.hashnode.com',
       'res.craft.do',
       'res.cloudinary.com',
-      'robohash.org'
+      'robohash.org',
+      'iad.microlink.io' // link preview
     ]
   }
 };

@@ -75,7 +75,7 @@ export default function CustomLink({ children, href }) {
                 <Image
                   fill
                   className="object-cover object-top w-56 h-40 bg-white rounded-md shadow-lg hover:ring-4 hover:ring-emerald-400"
-                  src={`data:image/jpeg;base64, ${imagePreview}`}
+                  src={imagePreview}
                   alt={children}
                 />
               ) : (
