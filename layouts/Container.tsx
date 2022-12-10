@@ -37,14 +37,6 @@ export function Container(props) {
           property="og:url"
           content={`${siteMetadata.siteUrl}${router.asPath}`}
         />
-        <meta
-          property="og:url"
-          content={`${siteMetadata.siteUrl}/api/og?title=${encodeURIComponent(
-            meta.title
-          )}${meta.isArticle ? '&article' : ''}${
-            meta.imageUrl ? `&imgSrc=${meta.imageUrl}` : ''
-          }&description=${encodeURIComponent(meta.description)}`}
-        />
         <meta name="application-name" content="&nbsp;" />
         <meta name="msapplication-TileColor" content="#FFFFFF" />
         <meta
@@ -72,12 +64,26 @@ export function Container(props) {
         <meta property="og:site_name" content="Braydon Coyer" />
         <meta property="og:description" content={meta.description} />
         <meta property="og:title" content={meta.title} />
-        <meta property="og:image" content={meta.imageUrl} />
+        <meta
+          property="og:image"
+          content={`${siteMetadata.siteUrl}/api/og?title=${encodeURIComponent(
+            meta.title
+          )}${meta.isArticle ? '&article' : ''}${
+            meta.imageUrl ? `&imgSrc=${meta.imageUrl}` : ''
+          }&description=${encodeURIComponent(meta.description)}`}
+        />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content={meta.twitterHandle} />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
-        <meta name="twitter:image" content={meta.imageUrl} />
+        <meta
+          name="twitter:image"
+          content={`${siteMetadata.siteUrl}/api/og?title=${encodeURIComponent(
+            meta.title
+          )}${meta.isArticle ? '&article' : ''}${
+            meta.imageUrl ? `&imgSrc=${meta.imageUrl}` : ''
+          }&description=${encodeURIComponent(meta.description)}`}
+        />
         {meta.date && (
           <meta property="article:published_time" content={meta.date} />
         )}
