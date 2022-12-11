@@ -2,12 +2,14 @@ import React, { useCallback } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePlausible } from 'next-plausible';
 
 export default function CustomLink({ children, href }) {
   let [imagePreview, setImagePreview] = React.useState('');
   let [isHovering, setIsHovering] = React.useState(false);
   let inImagePreview = false;
   let inLink = false;
+  const plausible = usePlausible();
 
   const origin =
     typeof window !== 'undefined' && window.location.origin
@@ -39,6 +41,7 @@ export default function CustomLink({ children, href }) {
       const res = await fetch(`${origin}/api/link-preview?url=${url}`);
       const data = await res.json();
       setImagePreview(data.image);
+      plausible('Link Preview');
     },
     [origin]
   );

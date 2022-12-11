@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+import { Ad } from '@/components/Ad';
 import { CommunityEntry } from '@/components/CommunityEntry';
 import { CommunityForm } from '@/components/CommunityForm';
 import { Container } from 'layouts/Container';
@@ -37,6 +38,9 @@ export default function CommunityWall({ session, supabase, messages }) {
         supabase={supabase}
         session={session}
       />
+      <div className="flex justify-center">
+        <Ad />
+      </div>
       <div className="mt-12">
         {entries.messages?.map((message) => (
           <div className="mt-8" key={message.id}>

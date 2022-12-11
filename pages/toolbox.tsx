@@ -1,5 +1,6 @@
 import { getPageInfo, getToolboxData } from '@/lib/notion';
 
+import { Ad } from '@/components/Ad';
 import { Container } from 'layouts/Container';
 import CustomLink from '@/components/CustomLink';
 import { GetStaticProps } from 'next';
@@ -40,6 +41,9 @@ export default function Toolbox({ software, hardware, thisSite }) {
               </div>
             ))}
           </div>
+        </div>
+        <div className="flex justify-center">
+          <Ad />
         </div>
         <div className="space-y-12">
           <h2>Hardware</h2>

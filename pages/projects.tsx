@@ -1,3 +1,4 @@
+import { Ad } from '@/components/Ad';
 import { Container } from 'layouts/Container';
 import Image from 'next/legacy/image';
 
@@ -76,6 +77,10 @@ export default function Projects() {
 
         <br />
         <br />
+
+        <div className="flex justify-center">
+          <Ad />
+        </div>
 
         <div className="relative w-full overflow-hidden border rounded-3xl bg-gradient-to-b from-purple-50 dark:from-purple-900/50 dark:to-fuchsia-700 to-fuchsia-300 dark:border-slate-700 border-slate-100">
           <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-fuchsia-300 dark:via-fuchsia-600 to-transparent"></div>
