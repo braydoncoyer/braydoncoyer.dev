@@ -14,14 +14,14 @@ import { useRouter } from 'next/router';
 export default function Home({ recentArticles }) {
   const { push } = useRouter();
   return (
-    <Container showCircles>
+    <Container>
       <div>
         <div>
           <div className="grid items-center grid-cols-1 mt-12 text-center md:mt-24 md:text-left md:grid-cols-6">
             <h1 className="order-2 col-span-5 text-4xl leading-tight md:leading-normal md:order-1 sm:text-5xl">
               I'm{' '}
               <span className="text-teal-500 dark:text-teal-400">Braydon</span>.
-              I'm a developer, blogger and designer working at LogicGate.
+              I'm a developer, blogger and speaker working at LogicGate.
             </h1>
             <div className="order-1 md:order-2">
               <Image
@@ -36,7 +36,7 @@ export default function Home({ recentArticles }) {
               />
             </div>
           </div>
-          <div className="space-y-6 md:space-y-0 md:space-x-4">
+          <div className="space-y-6 text-center md:text-left md:space-y-0 md:space-x-4">
             <Button
               buttonType={ButtonType.PRIMARY}
               onButtonClick={() => push('/blog')}

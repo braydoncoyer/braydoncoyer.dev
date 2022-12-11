@@ -43,8 +43,8 @@ export function TagList({ tag, tags }) {
       </ul>
 
       {/* gradient fades */}
-      <div className="absolute w-12 h-16 top-[40px] left-0 bg-gradient-to-r from-white dark:from-dark"></div>
-      <div className="absolute w-12 h-16 top-[40px] right-0 bg-gradient-to-l from-white dark:from-dark"></div>
+      <div className="absolute w-12 h-16 top-[50px] left-0 bg-gradient-to-r from-white dark:from-dark"></div>
+      <div className="absolute w-12 h-16 top-[50px] right-0 bg-gradient-to-l from-white dark:from-dark"></div>
     </div>
   );
 }

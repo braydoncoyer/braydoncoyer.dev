@@ -79,7 +79,7 @@ export default function CustomLink({ children, href }) {
                   alt={children}
                 />
               ) : (
-                <span className="flex items-center justify-center w-56 h-40 bg-white rounded-md shadow-lg">
+                <span className="flex items-center justify-center w-56 h-40 bg-white rounded-md shadow-lg text-slate-800">
                   Loading...
                 </span>
               )}
