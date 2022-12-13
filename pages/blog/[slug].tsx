@@ -7,6 +7,7 @@ import {
   getMoreArticlesToSuggest
 } from '@/lib/notion';
 
+import { Ad } from '@/components/Ad';
 import { AnchorLink } from '@/components/AnchorLink';
 import { ArticleList } from '@/components/ArticleList';
 import { Callout } from '@/components/Callout';
@@ -304,7 +305,9 @@ const ArticlePage = ({
           </div>
         </article>
         {/* Left Sticky */}
-        <div className="sticky hidden w-full h-24 lg:col-start-1 lg:col-end-3 top-24 lg:block"></div>
+        <div className="sticky hidden w-full h-24 lg:col-start-1 lg:col-end-3 top-24 lg:block">
+          <Ad />
+        </div>
         <div className="lg:col-start-3 lg:col-end-11">
           {content.map((block) => (
             <Fragment key={block.id}>{renderBlocks(block)}</Fragment>

@@ -62,7 +62,7 @@ export function CommunityEntry({ session, message }) {
         </div>
 
         <div>
-          <p className="p-0 m-0 text-base text-slate-400 dark:text-slate-500">
+          <p className="hidden p-0 m-0 text-base md:block text-slate-400 dark:text-slate-500">
             {dayjs(message.created_at).format('MM/DD/YYYY')}
           </p>
         </div>

@@ -4,8 +4,15 @@
         <description><![CDATA[Braydon Coyer]]></description>
         <link>https://braydoncoyer.dev</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 10 Dec 2022 23:49:57 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 13 Dec 2022 02:01:28 GMT</lastBuildDate>
         <atom:link href="https://braydoncoyer.dev/rss.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Blogfolio V3 - Update 2022]]></title>
+            <description><![CDATA[I am excited to announce the launch of my annual blogfolio update, featuring a sleek new logo, subtle design changes, and a convenient link preview popup feature. Let’s take an in-depth look at what’s new!]]></description>
+            <link>https://braydoncoyer.dev/blog/blogfolio-v3-update-2022</link>
+            <guid isPermaLink="true">https://braydoncoyer.dev/blog/blogfolio-v3-update-2022</guid>
+            <pubDate>Tue, 13 Dec 2022 13:00:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[How To Create an Animated Loading Spinner with Tailwind CSS]]></title>
             <description><![CDATA[Tailwind CSS has built-in animation utility classes which enable you to add or create your own custom loading spinners in minutes!]]></description>

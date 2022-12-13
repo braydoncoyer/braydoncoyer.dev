@@ -62,9 +62,6 @@ export default function Stats() {
         <PartyCount partyCount={totalReactions?.partyCount} />
         <TotalReactions />
       </div>
-      <div className="flex items-center justify-center my-8">
-        <Ad />
-      </div>
     </Container>
   );
 }
