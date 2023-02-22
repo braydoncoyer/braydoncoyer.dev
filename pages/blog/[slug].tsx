@@ -70,9 +70,9 @@ export function renderBlocks(block, linksMetadata) {
   switch (type) {
     case 'paragraph':
       return (
-        <p>
+        <span>
           <Text linksMetadata={linksMetadata} text={value.text} />
-        </p>
+        </span>
       );
     case 'heading_1':
       return (
