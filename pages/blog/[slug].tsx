@@ -2,6 +2,7 @@ import { Fragment, useEffect } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { PageType, SubscribeSize } from '@/lib/types';
 import {
+  findAllArticleLinks,
   getAllArticles,
   getArticlePage,
   getMoreArticlesToSuggest
@@ -21,12 +22,12 @@ import Reactions from '@/components/Reactions';
 import { ShareArticle } from '@/components/ShareArticle';
 import { Subscribe } from '@/components/Subscribe';
 import { YoutubeEmbed } from '@/components/YoutubeEmbed';
+import { getLinksMeta } from '@/lib/metaLinks';
 import { getTwitterProfilePicture } from '@/lib/twitter';
 import siteMetadata from '@/data/siteMetadata';
 import slugify from 'slugify';
-import { useRouter } from 'next/router';
 
-export const Text = ({ text }) => {
+export const Text = ({ text, linksMetadata }) => {
   if (!text) {
     return null;
   }
@@ -50,7 +51,10 @@ export const Text = ({ text }) => {
         style={color !== 'default' ? { color } : {}}
       >
         {text.link ? (
-          <CustomLink href={text.link.url}>{text.content}</CustomLink>
+          <CustomLink linksMetadata={linksMetadata} href={text.link.url}>
+            {' '}
+            {text.content}{' '}
+          </CustomLink>
         ) : (
           text.content
         )}
@@ -59,7 +63,7 @@ export const Text = ({ text }) => {
   });
 };
 
-export function renderBlocks(block) {
+export function renderBlocks(block, linksMetadata) {
   const { type, id } = block;
   const value = block[type];
 
@@ -67,14 +71,14 @@ export function renderBlocks(block) {
     case 'paragraph':
       return (
         <p>
-          <Text text={value.text} />
+          <Text linksMetadata={linksMetadata} text={value.text} />
         </p>
       );
     case 'heading_1':
       return (
         <h1>
           <AnchorLink text={value.text[0].text.content}>
-            <Text text={value.text} />
+            <Text linksMetadata={linksMetadata} text={value.text} />
           </AnchorLink>
         </h1>
       );
@@ -82,7 +86,7 @@ export function renderBlocks(block) {
       return (
         <h2>
           <AnchorLink text={value.text[0].text.content}>
-            <Text text={value.text} />
+            <Text linksMetadata={linksMetadata} text={value.text} />
           </AnchorLink>
         </h2>
       );
@@ -90,7 +94,7 @@ export function renderBlocks(block) {
       return (
         <h3>
           <AnchorLink text={value.text[0].text.content}>
-            <Text text={value.text} />
+            <Text linksMetadata={linksMetadata} text={value.text} />
           </AnchorLink>
         </h3>
       );
@@ -98,7 +102,7 @@ export function renderBlocks(block) {
     case 'numbered_list_item':
       return (
         <li>
-          <Text text={value.text} />
+          <Text linksMetadata={linksMetadata} text={value.text} />
         </li>
       );
     case 'to_do':
@@ -115,7 +119,7 @@ export function renderBlocks(block) {
               type="checkbox"
               className="w-4 h-4 text-teal-500 border-gray-300 rounded focus:ring-teal-500"
             />
-            <Text text={value.text} />
+            <Text linksMetadata={linksMetadata} text={value.text} />
           </label>
         </div>
       );
@@ -123,10 +127,12 @@ export function renderBlocks(block) {
       return (
         <details>
           <summary>
-            <Text text={value.text} />
+            <Text linksMetadata={linksMetadata} text={value.text} />
           </summary>
           {value.children?.map((block) => (
-            <Fragment key={block.id}>{renderBlocks(block)}</Fragment>
+            <Fragment key={block.id}>
+              {renderBlocks(block, linksMetadata)}
+            </Fragment>
           ))}
         </details>
       );
@@ -174,7 +180,7 @@ export function renderBlocks(block) {
         <Callout>
           {value.icon && <span>{value.icon.emoji}</span>}
           <div>
-            <Text text={value.text} />
+            <Text linksMetadata={linksMetadata} text={value.text} />
           </div>
         </Callout>
       );
@@ -205,7 +211,7 @@ export function renderBlocks(block) {
     case 'quote':
       return (
         <blockquote className="p-4 rounded-r-lg">
-          <Text text={value.text} />
+          <Text linksMetadata={linksMetadata} text={value.text} />
         </blockquote>
       );
     case 'divider':
@@ -222,6 +228,7 @@ export function renderBlocks(block) {
 const ArticlePage = ({
   content,
   title,
+  linksMetadata,
   coverImage,
   slug,
   publishedDate,
@@ -230,7 +237,6 @@ const ArticlePage = ({
   summary,
   moreArticles
 }) => {
-  const { push } = useRouter();
   const publishedOn = new Date(publishedDate).toLocaleDateString(
     siteMetadata.locale,
     {
@@ -310,7 +316,9 @@ const ArticlePage = ({
         </div>
         <div className="lg:col-start-3 lg:col-end-11">
           {content.map((block) => (
-            <Fragment key={block.id}>{renderBlocks(block)}</Fragment>
+            <Fragment key={block.id}>
+              {renderBlocks(block, linksMetadata)}
+            </Fragment>
           ))}
 
           {/* Reactions on Mobile */}
@@ -435,10 +443,26 @@ export const getStaticProps: GetStaticProps = async ({ params: { slug } }) => {
     content = [...content, ...blocks.results];
   }
 
+  /**
+   * Find all links for link previews
+   */
+  const links = await findAllArticleLinks(content);
+  let filteredLinks = await getLinksMeta(links);
+
+  // Filter out any undefined items so that the page can render.
+  filteredLinks = filteredLinks.map((item) => {
+    if (item.title === undefined && item.imgUrl === undefined) {
+      return { href: item.href, title: '', imgUrl: '' };
+    }
+
+    return item;
+  });
+
   return {
     props: {
       content,
       title: articleTitle,
+      linksMetadata: filteredLinks,
       publishedDate,
       lastEditedAt,
       slug,
