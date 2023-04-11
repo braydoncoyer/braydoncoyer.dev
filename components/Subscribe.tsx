@@ -4,17 +4,10 @@ import { ErrorMessage } from './ErrorMessage';
 import { LoadingSpinner } from './LoadingSpinner';
 import { SuccessMessage } from './SuccessMessage';
 import { fetcher } from '@/lib/fetcher';
-import siteMetadata from '@/data/siteMetadata';
 import useSWR from 'swr';
 import { useSubscribeToNewsletter } from '@/lib/hooks/useSubscribeToNewsletter';
 
-function SubscribeCard({
-  handleSubscribe,
-  form,
-  inputRef,
-  subscriberCount,
-  issuesCount
-}) {
+function SubscribeCard({ handleSubscribe, form, inputRef }) {
   return (
     <div>
       <div className="mx-auto max-w-7xl">
@@ -55,18 +48,10 @@ function SubscribeCard({
             </form>
             {form.state === Form.Error ? (
               <ErrorMessage>{form.message}</ErrorMessage>
-            ) : form.state === Form.Success ? (
+            ) : null}
+            {form.state === Form.Success ? (
               <SuccessMessage>{form.message}</SuccessMessage>
-            ) : (
-              <p className="mt-6 mb-0 text-sm">
-                {`${
-                  subscriberCount > 0 ? subscriberCount.toLocaleString() : '-'
-                } subscribers – `}
-                <a href={siteMetadata.newsletter}>{`${
-                  issuesCount > 0 ? issuesCount.toLocaleString() : '-'
-                } issues`}</a>
-              </p>
-            )}
+            ) : null}
           </div>
         </div>
       </div>
@@ -120,9 +105,6 @@ type Props = {
 export function Subscribe({ size }: Props) {
   const { form, subscribe, inputEl } = useSubscribeToNewsletter();
   const { data: subData } = useSWR<Subscribers>('/api/subscribers', fetcher);
-  const { data: issueData } = useSWR<Subscribers>('/api/issues', fetcher);
-  const subscriberCount = new Number(subData?.count);
-  const issuesCount = new Number(issueData?.count);
 
   if (size === SubscribeSize.SMALL) {
     return (
@@ -135,12 +117,6 @@ export function Subscribe({ size }: Props) {
   }
 
   return (
-    <SubscribeCard
-      handleSubscribe={subscribe}
-      form={form}
-      inputRef={inputEl}
-      subscriberCount={subscriberCount}
-      issuesCount={issuesCount}
-    />
+    <SubscribeCard handleSubscribe={subscribe} form={form} inputRef={inputEl} />
   );
 }

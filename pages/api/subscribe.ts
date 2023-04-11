@@ -10,13 +10,13 @@ export default async function handler(
     return res.status(400).json({ error: 'Email is required' });
   }
 
-  const result = await fetch('https://www.getrevue.co/api/v2/subscribers', {
+  const result = await fetch('https://api.buttondown.email/v1/subscribers', {
     method: 'POST',
     headers: {
-      Authorization: `Token ${process.env.REVUE_API_KEY}`,
+      Authorization: `Token ${process.env.NEXT_BUTTONDOWN_API_KEY}`,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ email, double_opt_in: false })
+    body: JSON.stringify({ email })
   });
 
   const data = await result.json();
