@@ -10,10 +10,10 @@ export default async function handler(
     return res.status(400).json({ error: 'Email is required' });
   }
 
-  const result = await fetch('https://api.buttondown.email/v1/subscribers', {
+  const result = await fetch('https://app.loops.so/api/v1/contacts/create', {
     method: 'POST',
     headers: {
-      Authorization: `Token ${process.env.NEXT_BUTTONDOWN_API_KEY}`,
+      Authorization: `Bearer ${process.env.NEXT_LOOPS_API_KEY}`,
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ email })
