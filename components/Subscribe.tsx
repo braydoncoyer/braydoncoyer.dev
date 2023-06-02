@@ -3,8 +3,6 @@ import { Form, SubscribeSize, Subscribers } from '@/lib/types';
 import { ErrorMessage } from './ErrorMessage';
 import { LoadingSpinner } from './LoadingSpinner';
 import { SuccessMessage } from './SuccessMessage';
-import { fetcher } from '@/lib/fetcher';
-import useSWR from 'swr';
 import { useSubscribeToNewsletter } from '@/lib/hooks/useSubscribeToNewsletter';
 
 function SubscribeCard({ handleSubscribe, form, inputRef }) {
@@ -104,7 +102,6 @@ type Props = {
 
 export function Subscribe({ size }: Props) {
   const { form, subscribe, inputEl } = useSubscribeToNewsletter();
-  const { data: subData } = useSWR<Subscribers>('/api/subscribers', fetcher);
 
   if (size === SubscribeSize.SMALL) {
     return (
