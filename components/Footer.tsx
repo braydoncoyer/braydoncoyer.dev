@@ -197,14 +197,6 @@ export function Footer() {
                   ))}
                   <a
                     target="_blank"
-                    href={siteMetadata.newsletter}
-                    className="block text-base text-gray-600 no-underline hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 hover:underline"
-                    rel="noreferrer"
-                  >
-                    Newsletter
-                  </a>
-                  <a
-                    target="_blank"
                     href={siteMetadata.resume}
                     className="block text-base text-gray-600 no-underline hover:text-gray-800 dark:hover:text-gray-300 dark:text-gray-400 hover:underline"
                     rel="noreferrer"
