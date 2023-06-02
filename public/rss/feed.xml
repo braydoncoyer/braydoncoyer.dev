@@ -4,8 +4,22 @@
         <description><![CDATA[Braydon Coyer]]></description>
         <link>https://braydoncoyer.dev</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Tue, 13 Dec 2022 02:01:28 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 22 Feb 2023 02:11:43 GMT</lastBuildDate>
         <atom:link href="https://braydoncoyer.dev/rss.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Checking if the URL Contains a Given String in Angular: A Comparison of Three Approaches]]></title>
+            <description><![CDATA[This article discusses three different approaches for checking if a URL contains a given string in Angular, including using the Location service, the JavaScript includes() method, and regular expressions.]]></description>
+            <link>https://braydoncoyer.dev/blog/checking-if-the-url-contains-a-given-string-in-angular:-a-comparison-of-three-approaches</link>
+            <guid isPermaLink="true">https://braydoncoyer.dev/blog/checking-if-the-url-contains-a-given-string-in-angular:-a-comparison-of-three-approaches</guid>
+            <pubDate>Tue, 20 Dec 2022 08:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Effective Use of beforeEach and afterEach in Angular Unit Tests]]></title>
+            <description><![CDATA[Let’s discuss the importance and common use cases for the beforeEach and afterEach lifecycle methods in Angular unit tests, including mocking out external services, resetting the application state, and setting up test data.]]></description>
+            <link>https://braydoncoyer.dev/blog/effective-use-of-beforeeach-and-aftereach-in-angular-unit-tests</link>
+            <guid isPermaLink="true">https://braydoncoyer.dev/blog/effective-use-of-beforeeach-and-aftereach-in-angular-unit-tests</guid>
+            <pubDate>Tue, 20 Dec 2022 06:00:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[Blogfolio V3 - Update 2022]]></title>
             <description><![CDATA[I am excited to announce the launch of my annual blogfolio update, featuring a sleek new logo, subtle design changes, and a convenient link preview popup feature. Let’s take an in-depth look at what’s new!]]></description>
@@ -19,13 +33,6 @@
             <link>https://braydoncoyer.dev/blog/how-to-create-an-animated-loading-spinner-with-tailwind-css</link>
             <guid isPermaLink="true">https://braydoncoyer.dev/blog/how-to-create-an-animated-loading-spinner-with-tailwind-css</guid>
             <pubDate>Tue, 04 Oct 2022 11:00:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Do Interview Kickstart Courses Live Up to the Cost?]]></title>
-            <description><![CDATA[Interview Kickstart is a technical interview prep platform, but is it worth the cost?]]></description>
-            <link>https://braydoncoyer.dev/blog/do-interview-kickstart-courses-live-up-to-the-cost</link>
-            <guid isPermaLink="true">https://braydoncoyer.dev/blog/do-interview-kickstart-courses-live-up-to-the-cost</guid>
-            <pubDate>Sat, 24 Sep 2022 12:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[5 Basic Tips for Angular Unit Testing]]></title>

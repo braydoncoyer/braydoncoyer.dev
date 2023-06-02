@@ -151,6 +151,45 @@ export const getAllArticles = async (databaseId) => {
   return response.results;
 };
 
+export const findAllArticleLinks = (content) => {
+  const allLinks = [];
+
+  const findLinks = (obj) => {
+    let links = [];
+    for (let key in obj) {
+      if (typeof obj[key] === 'object') {
+        if (key === 'paragraph' && obj.type === 'paragraph') {
+          if (Array.isArray(obj[key].text)) {
+            for (let i = 0; i < obj[key].text.length; i++) {
+              if (obj[key].text[i].hasOwnProperty('href')) {
+                links.push(obj[key].text[i].href);
+              } else {
+                links = links.concat(findLinks(obj[key].text[i]));
+              }
+            }
+          }
+        } else {
+          links = links.concat(findLinks(obj[key]));
+        }
+      } else if (
+        key === 'link' &&
+        obj[key] !== null &&
+        obj[key].hasOwnProperty('url')
+      ) {
+        links.push(obj[key]?.url);
+      }
+    }
+    return links;
+  };
+
+  for (let i = 0; i < content.length; i++) {
+    const objLinks = findLinks(content[i]);
+    allLinks.push(...objLinks);
+  }
+
+  return allLinks.filter((link) => link !== null);
+};
+
 export const getAllArticlesByTag = async (databaseId, tag) => {
   const response = await notion.databases.query({
     database_id: databaseId,

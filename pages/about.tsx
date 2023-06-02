@@ -9,7 +9,6 @@ import { ArticleList } from '@/components/ArticleList';
 import { Button } from '@/components/Button';
 import { ButtonType } from '@/lib/types';
 import { Container } from 'layouts/Container';
-import CustomLink from '@/components/CustomLink';
 import { GetStaticProps } from 'next';
 import Image from 'next/legacy/image';
 import { TimelineItem } from '@/components/TimelineItem';
@@ -31,17 +30,17 @@ export default function About({ recentArticles, workTimeline }) {
       </h1>
       <p>
         I’m Braydon, a developer,{' '}
-        <CustomLink href={siteMetadata.codepen}>creative coder</CustomLink>,{' '}
-        <CustomLink href={`${siteMetadata.siteUrl}/blog`}>blogger</CustomLink>{' '}
-        and self-proclaimed designer who specializes in front-end development.
-        My mission is to translate user-focussed designs into pixel-perfect
-        websites or applications that run blazing fast.
+        <a href={siteMetadata.codepen}>creative coder</a>,{' '}
+        <a href={`${siteMetadata.siteUrl}/blog`}>blogger</a> and self-proclaimed
+        designer who specializes in front-end development. My mission is to
+        translate user-focussed designs into pixel-perfect websites or
+        applications that run blazing fast.
       </p>
       <p>
         I’m currently working as a senior front end developer at{' '}
-        <CustomLink href="https://www.logicgate.com">LogicGate</CustomLink>{' '}
-        where I help develop an agile GRC cloud solution that combines powerful
-        functionality with intuitive design to enhance enterprise GRC programs.
+        <a href="https://www.logicgate.com">LogicGate</a> where I help develop
+        an agile GRC cloud solution that combines powerful functionality with
+        intuitive design to enhance enterprise GRC programs.
       </p>
       <div>
         <div className="hidden md:block md:float-left">
@@ -57,18 +56,16 @@ export default function About({ recentArticles, workTimeline }) {
         </div>
         <p>
           Prior to LogicGate, I worked as a senior full-stack engineer at{' '}
-          <CustomLink href="https://www.cognizant.com/us/en">
-            Cognizant
-          </CustomLink>{' '}
-          where I helped architect and develop full-stack RESTful microservices,
-          train and prepare developers for delivery, and assist in leading the
-          front-end practice in a lab-based working environment.
+          <a href="https://www.cognizant.com/us/en">Cognizant</a> where I helped
+          architect and develop full-stack RESTful microservices, train and
+          prepare developers for delivery, and assist in leading the front-end
+          practice in a lab-based working environment.
         </p>
         <p>
           Before Cognizant, I worked as a UI Developer for{' '}
-          <CustomLink href="https://www.projekt202.com">projekt202</CustomLink>{' '}
-          helping craft design systems and building reusable component libraries
-          for multi-million dollar companies.
+          <a href="https://www.projekt202.com">projekt202</a> helping craft
+          design systems and building reusable component libraries for
+          multi-million dollar companies.
         </p>
         <p>
           In a past life, I was an indie mobile developer making mobile games
@@ -77,13 +74,11 @@ export default function About({ recentArticles, workTimeline }) {
         <p>
           You can find me on <a href={siteMetadata.twitter}>Twitter</a> where I
           share tech-related tidbits and build in public, or you can follow me
-          on <CustomLink href={siteMetadata.github}>GitHub</CustomLink>. I often
-          write about my findings on my{' '}
-          <CustomLink href={`${siteMetadata.siteUrl}/blog`}>blog</CustomLink>{' '}
-          and create cool things over on{' '}
-          <CustomLink href={siteMetadata.codepen}>CodePen</CustomLink>. I also
-          help run a mediocre{' '}
-          <CustomLink href="https://anchor.fm/florida-man">podcast</CustomLink>.
+          on <a href={siteMetadata.github}>GitHub</a>. I often write about my
+          findings on my <a href={`${siteMetadata.siteUrl}/blog`}>blog</a> and
+          create cool things over on <a href={siteMetadata.codepen}>CodePen</a>.
+          I also help run a mediocre{' '}
+          <a href="https://anchor.fm/florida-man">podcast</a>.
         </p>
         <div></div>
       </div>

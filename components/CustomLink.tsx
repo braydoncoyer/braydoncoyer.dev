@@ -1,105 +1,44 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { usePlausible } from 'next-plausible';
+export default function CustomLink({ children, href, linksMetadata }) {
+  const metadata = linksMetadata.find((link) => link.href === href);
 
-export default function CustomLink({ children, href }) {
-  let [imagePreview, setImagePreview] = React.useState('');
-  let [isHovering, setIsHovering] = React.useState(false);
-  let inImagePreview = false;
-  let inLink = false;
-  const plausible = usePlausible();
+  if (metadata === undefined) {
+    return <a href={href}>{children}</a>;
+  }
 
-  const origin =
-    typeof window !== 'undefined' && window.location.origin
-      ? window.location.origin
-      : '';
+  return <LinkWithPreview metadata={metadata} linkText={children} />;
+}
 
-  let handleMouseEnterImage = () => {
-    inImagePreview = true;
-    setIsHovering(true);
-  };
-
-  let handleMouseLeaveImage = () => {
-    inImagePreview = false;
-    setIsHovering(inLink);
-  };
-
-  let handleMouseEnterLink = () => {
-    inLink = true;
-    setIsHovering(true);
-  };
-
-  let handleMouseLeaveLink = () => {
-    inLink = false;
-    setIsHovering(inImagePreview);
-  };
-
-  let handleFetchImage = useCallback(
-    async (url: string) => {
-      const res = await fetch(`${origin}/api/link-preview?url=${url}`);
-      const data = await res.json();
-      setImagePreview(data.image);
-      plausible('Link Preview');
-    },
-    [origin]
-  );
-
-  React.useEffect(() => {
-    handleFetchImage(href);
-
-    return () => setImagePreview('');
-  }, [href, handleFetchImage]);
+const LinkWithPreview = ({ linkText, metadata }) => {
+  const { title, imgUrl, href } = metadata;
 
   return (
-    <span>
-      <span className="relative z-10 hidden md:inline-block">
-        <Link
-          href={href}
-          className={`${isHovering && 'underline'}`}
-          onMouseEnter={handleMouseEnterLink}
-          onMouseLeave={handleMouseLeaveLink}
-          onFocus={handleMouseEnterLink}
-          onBlur={handleMouseLeaveLink}
-        >
-          {children}
-        </Link>
-        {isHovering && (
-          <Link href={href} passHref>
-            <span
-              className="w-56 h-44 absolute top-[-195px] left-1/2 transform -translate-x-[7rem] translate-y-8 flex items-start justify-center"
-              onMouseLeave={handleMouseLeaveImage}
-              onMouseEnter={handleMouseEnterImage}
-              onFocus={handleMouseEnterImage}
-              onBlur={handleMouseLeaveImage}
-            >
-              {imagePreview ? (
-                <Image
-                  fill
-                  className="object-cover object-top w-56 h-40 bg-white rounded-md shadow-lg hover:ring-4 hover:ring-emerald-400"
-                  src={imagePreview}
-                  alt={children}
-                />
-              ) : (
-                <span className="flex items-center justify-center w-56 h-40 bg-white rounded-md shadow-lg text-slate-800">
-                  Loading...
-                </span>
-              )}
-            </span>
-          </Link>
-        )}
-      </span>
-      <a
-        href={href}
-        className={`${isHovering && 'underline'} md:hidden`}
-        onMouseEnter={handleMouseEnterLink}
-        onMouseLeave={handleMouseLeaveLink}
-        onFocus={handleMouseEnterLink}
-        onBlur={handleMouseLeaveLink}
-      >
-        {children}
+    <div className="relative inline-block">
+      <a className="underline peer" href={href}>
+        {linkText}
       </a>
-    </span>
+      <div className="whitespace-normal absolute top-10 z-[100] invisible p-4 transition-opacity duration-300 delay-200 opacity-0 w-72 bg-white/[10%] rounded-2xl peer-hover:visible peer-hover:opacity-100 backdrop-blur-lg backdrop-saturate-200 backdrop-brightness-100 border-b border-white/[10%] shadow-xl shadow-slate-900/[20%]">
+        {imgUrl ? (
+          <>
+            <img
+              src={imgUrl}
+              className="object-cover w-full rounded-xl h-36"
+              loading="lazy"
+              alt={`A preview picture of ${linkText}`}
+            />
+            <div className="mt-2">
+              <span className="flex flex-wrap items-center text-base leading-tight">
+                {title}
+              </span>
+            </div>
+          </>
+        ) : (
+          <span className="flex flex-wrap items-center text-base leading-tight">
+            No preview available
+          </span>
+        )}
+      </div>
+    </div>
   );
-}
+};
