@@ -21,7 +21,6 @@ import Reactions from '@/components/Reactions';
 import { ShareArticle } from '@/components/ShareArticle';
 import { Subscribe } from '@/components/Subscribe';
 import { YoutubeEmbed } from '@/components/YoutubeEmbed';
-import { getTwitterProfilePicture } from '@/lib/twitter';
 import siteMetadata from '@/data/siteMetadata';
 import slugify from 'slugify';
 import { useRouter } from 'next/router';
@@ -395,8 +394,6 @@ export const getStaticProps: GetStaticProps = async ({ params: { slug } }) => {
   let sponsoredArticleUrl = null;
   let summary = null;
 
-  const profilePicture = await getTwitterProfilePicture();
-
   const notion = new Client({
     auth: process.env.NOTION_SECRET
   });
@@ -442,7 +439,6 @@ export const getStaticProps: GetStaticProps = async ({ params: { slug } }) => {
       publishedDate,
       lastEditedAt,
       slug,
-      profilePicture,
       coverImage,
       summary,
       moreArticles,
