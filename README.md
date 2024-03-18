@@ -1,39 +1,36 @@
-![A preview of my revamped blogfolio](https://res.cloudinary.com/braydoncoyer/image/upload/v1639000556/new_blogfolio_igoj09.png)
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-# braydoncoyer.dev
+## Getting Started
 
-- **Framework**: [Next.js](https://nextjs.org/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Content**: [Notion API](https://developers.notion.com)
-- **Database**: [Supabase](https://supabase.com)
-- **Open Graph Images**: [Cloudinary](https://cloudinary.com)
-- **Newsletter**: [Revue](https://www.getrevue.co)
-- **Deployment**: [Vercel](https://vercel.com)
-
-## Project Overview
-
-- `components/*` - Various components used throughout the site.
-- `layouts/*` - The different layout options available to use on each page.
-- `lib/*` - Short for "library", a collection of helpful utilities or code for external services.
-- `pages/api/*` - [API routes](https://nextjs.org/docs/api-routes/introduction) powering article reactions, article views, [`/stats`](https://braydoncoyer.dev/stats), newsletter subscription, and to generate a sitemap.
-- `pages/blog/*` - Static pre-rendered blog pages that fetch information from the Notion API.
-- `pages/stats` - [Site statistics](https://braydoncoyer.dev/stats) about my website.
-- `pages/*` - All other static pages.
-- `public/*` - Static assets including robots.txt
-- `styles/*` - A handful of global styles, and reusable classes utilzing @apply with Tailwind.
-- `data/*` - a simple object containing global data about the site.
-
-## Running Locally
+First, run the development server:
 
 ```bash
-$ git clone https://github.com/braydoncoyer/braydoncoyer.dev.git
-$ cd braydoncoyer.dev
-$ npm install
-$ npm run dev
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-Create a `.env` file similar to `.env.example` and include the appropriate keys.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Notion Article Template
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-Duplicate [the following Notion database](https://www.notion.so/0d3e00c6bbe54231897b9fcbc7747f78?v=4d7f0006d9a144b5bd8b9251f2ec39cd), grab the database ID and add it to the environment variables in the `.env` file.
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

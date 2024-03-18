@@ -1,52 +1,36 @@
-# Specifies intentionally untracked files to ignore when using Git
-# http://git-scm.com/docs/gitignore
-.next
-*~
-*.sw[mnpcod]
-.tmp
-*.tmp
-*.tmp.*
-*.sublime-project
-*.sublime-workspace
-.DS_Store
-Thumbs.db
-UserInterfaceState.xcuserstate
-$RECYCLE.BIN/
-config.xml
-tsconfig.tsbuildinfo
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-*.log
-log.txt
-npm-debug.log*
-
-# lock files
-yarn.lock
-package-lock.json
-
-public/sitemap.xml
-public/feed.xml
-/.cache/
-/.ionic
-/.sass-cache
-/.sourcemaps
-/.versions
-/.vscode
-/coverage
-/dist
-.env.local
-.env.development
-.env.local
-.netlify
+# dependencies
 /node_modules
-/platforms
-/plugins
-/www
-/.next/*
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env*.local
+
+# vercel
 .vercel
 
-# IDE specific
-.idea/
-.vscode/
-*.sw*
-
-/resources
+# typescript
+*.tsbuildinfo
+next-env.d.ts
