@@ -1,0 +1,134 @@
+---
+title: 'Use Named Exports over Default Exports in JavaScript'
+publishedAt: 2021-09-02 13:32:14
+summary: Named exports provide a handful of benefits over default exports. Here's why.
+coverImage: ../../static/images/use-named-exports-over-default-exports-in-javascript/javascript_named_exports_banner.png
+imageName: javascript_named_exports_banner.png
+canonicalUrl: https://www.bundleapps.io/blog/use-named-exports-over-default-exports-in-javascript
+---
+
+If you were like me when I started learning JavaScript and diving into tools like React and NodeJS, you may have been confused when importing functions or components and found yourself blindly guessing how to import them at the top of your files. Sometimes I'd throw some curly braces around the name of the function I wanted to import, while other times I'd feel lucky and forgo the curlys altogether.
+
+More times than not, I'd wait for the compiler to let me know if it could find that function or component in the external file. If I saw a red squiggly, I'd simply try the other way of importing.
+
+I know, I know - not really ideal.
+
+I never really understood the difference between the two importing approaches. When should I use the curly braces and when should I just use the value of the function or component I want to import?
+
+More importantly, though, _why_ would someone choose one way over the other?
+
+What I learned, after the frustration pushed me to investigate these two approaches, is that named exports — functions or components you import with curly braces — provide a handful of benefits over default exports.
+
+## Default Exports vs Named Exports
+
+The export statement is used when creating JavaScript modules and you want to share objects, functions, or variables with other files.
+
+### What are Default Exports, anyway?
+
+A default export can only export a single object, function, or variable and curly braces are omitted when importing in various files.
+
+```tsx
+export default function greeting() {
+	console.log('Hello, World!');
+}
+
+// in another file
+import greeting from './greeting';
+
+greeting(); // Output: 'Hello, World!'
+```
+
+<Ideaquote>
+  Here's something cool! Did you know that default exports DO NOT require a
+  specific value to be used when importing?
+</Ideaquote>
+
+In the example above, the default exported `greeting` function does not need to be imported by the same name. While this flexibility is neat, it has its flaws which I'll touch on a bit later.
+
+Here's an example of importing a function and applying a non-related name.
+
+```tsx
+export default function greeting() {
+	console.log('Hello, World!');
+}
+
+// in another file
+import anyNameWillWork from './greeting';
+
+anyNameWillWork(); // Output: 'Hello, World!'
+```
+
+### What are Named Exports?
+
+Named exports allow us to share multiple objects, functions or variables from a single file and were introduced with the release of ES2015.
+
+Named exports are imported with curly braces in various files and _must_ be imported using the name of the object, function or variable that was exported. This distinction is extremely important and is one of the benefits which I'll explain in a minute.
+
+```tsx
+export function greeting() {
+	console.log('Hello, World!');
+}
+
+// more than one export
+export const bestMovieSeries = 'The Lord of the Rings Trilogy';
+
+// importing in another file
+import { greeting, bestMovieSeries } from './greeting';
+
+greeting(); // Output: 'Hello, World!'
+
+console.log(bestMovieSeries); // Output: 'The Lord of the Rings Trilogy'
+```
+
+Named exports can be exported individually, as seen in the example above, or batched together and exported at the bottom of a file. I prefer to export everything at the bottom of the module.
+
+```tsx
+function greeting() {
+	console.log('Hello, World!');
+}
+
+const bestMovieSeries = 'The Lord of the Rings Trilogy';
+
+export { greeting, bestMovieSeries }
+```
+
+## The Benefits of Named Exports
+
+Named exports have a handful of benefits over default exported data.
+
+Here are a few highlights.
+
+As you can imagine, this is a huge improvement that becomes more apparent as your application gets larger over time.
+
+### Explicit over implicit
+
+Default exports don't associate any name with the item being exported, meaning that any name can be applied during import. At first, this may sound really neat, but we've all seen the guy who imports a function with a non-descriptive name.
+
+```tsx
+import x from './greeting';
+
+// yuck
+x();
+```
+
+Named exports are explicit, forcing the consumer to import with the names the original author intended and removing any ambiguity.
+
+### Refactoring actually works
+
+Because named exports require you to use the name of the object, function or variable that was exported from a module, refactoring works across the board! If you need to refactor and rename a function, the change will be effective across each file that imports it.
+
+### Codebase look-up
+
+Similar to the benefit above, searching for specific imported functions or variables becomes trivial with named exports.
+
+Because default exports can have any name applied to them, it's almost impossible to perform a look-up in your codebase, especially if a naming convention isn't put in place.
+
+### Better Tree Shaking
+
+Instead of exporting a single bloated object with properties you may or may not need, named exports permit you to import individual pieces from a module, excluding unused code from the bundle during the build process.
+
+## Conclusion
+
+My hope is that after reading this article you now know when to use curly braces when importing various things in your projects and you understand the benefits of using named exports in your modules.
+
+There are cases where default exports make sense, but for the most part, named exports should be your default choice.
