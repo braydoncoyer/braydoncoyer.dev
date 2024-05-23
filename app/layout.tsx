@@ -15,9 +15,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="flex flex-col max-w-5xl mx-4 mt-8 mb-40 md:flex-row lg:mx-auto">
-        {children}
+    <html lang="en" className="bg-bg-primary">
+      {/* <head>Test</head> */}
+      <body className="flex flex-col max-w-6xl mx-4 mt-8 mb-40 md:flex-row lg:mx-auto">
+        <main className={inter.className}>
+          {/* Nav to go here */}
+          {children}
+        </main>
       </body>
     </html>
   );

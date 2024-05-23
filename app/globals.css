@@ -28,14 +28,14 @@
     --sh-string: #0fa295;
   }
   html {
-    color-scheme: dark;
+    /* color-scheme: dark; */
   }
 }
 
 html {
   min-width: 360px;
 }
-
+/* 
 .prose .anchor {
   @apply absolute invisible no-underline;
 
@@ -65,7 +65,7 @@ html {
 
 .prose pre {
   @apply overflow-x-auto border rounded-lg bg-neutral-50 dark:bg-emerald-900 border-neutral-200 dark:border-green-900;
-}
+} */
 
 .prose code {
   @apply px-1 py-0.5 rounded-lg;
