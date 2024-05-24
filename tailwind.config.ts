@@ -36,5 +36,5 @@ export default {
   future: {
     hoverOnlyWhenSupported: true,
   },
-  plugins: [typography],
+  plugins: [typography, require('tailwindcss-full-bleed')],
 } satisfies Config;

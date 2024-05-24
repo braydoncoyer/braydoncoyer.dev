@@ -4,17 +4,17 @@ import { BorderCard } from "app/components/BorderCard";
 import { SectionTitlePill } from "app/components/SectionTitlePill";
 import { NewsletterSignUp } from "app/components/NewsletterSignUp";
 import { PageTitle } from "app/components/PageTitle";
-import { hardwareData, softwareData } from "app/lib/toolbox";
+import { hardwareData, softwareData } from "app/data/toolbox";
 
 export default function ToolboxPage() {
   return (
-    <div className="space-y-[80px]">
+    <div className="space-y-[80px] mt-[100px]">
       <PageTitle title="Hardware and software I use on a daily basis." />
 
       {/* Applications */}
       <SectionTitlePill title="Applications" />
       {/* List */}
-      <div className="grid grid-cols-8 grid-rows-2 gap-6">
+      <div className="grid grid-cols-8 grid-rows-2 gap-6 place-items-center">
         {softwareData.map((item) => (
           <a
             key={item.title}
