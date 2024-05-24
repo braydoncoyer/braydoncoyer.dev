@@ -22,13 +22,17 @@ export default function RootLayout({
     <html lang="en" className="bg-bg-primary">
       {/* <head>Test</head> */}
 
-      <body className="flex flex-col max-w-6xl mx-4 mb-40 md:flex-row lg:mx-auto">
+      <body className="max-w-7xl md:flex-row lg:mx-auto">
         <main
-          className={cx("border-x border-border-primary/50", inter.className)}
+          className={cx(
+            "border-x border-border-primary/50 relative",
+            inter.className
+          )}
         >
           <Navbar />
-          {/* Nav to go here */}
-          {children}
+          <div className="flex flex-col lg:mx-auto max-w-6xl mx-4">
+            {children}
+          </div>
         </main>
       </body>
     </html>

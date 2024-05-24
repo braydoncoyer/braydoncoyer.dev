@@ -4,6 +4,11 @@ import { siteMetadata } from "app/data/siteMetadata";
 const Navbar: React.FC = () => {
   return (
     <nav className="w-full flex items-center justify-between h-16 px-4 bleed-border-b bleed-border-primary/50">
+      <div className="w-2 h-px bg-slate-400 absolute right-[-4.25px] top-[63px] z-10"></div>
+      <div className="w-px h-2 bg-slate-400 absolute right-[-1px] top-[59.6px] z-10"></div>
+
+      <div className="w-2 h-px bg-slate-400 absolute left-[-4.50px] top-[63px] z-10"></div>
+      <div className="w-px h-2 bg-slate-400 absolute left-[-1px] top-[59.6px] z-10"></div>
       <div className="w-[104px]">
         {/* Need to match the size of the social bar so that everything correctly centers */}
         <Link href="/">
@@ -37,7 +42,7 @@ const Navbar: React.FC = () => {
       <div className="bg-dark-primary rounded-full flex place-items-center px-3 py-1.5 space-x-1">
         <a href={siteMetadata.twitter}>
           <svg
-            className="w-6 h-6 text-gray-500 hover:text-gray-300"
+            className="w-6 h-6 text-gray-400 hover:text-gray-300"
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -50,10 +55,11 @@ const Navbar: React.FC = () => {
               strokeLinejoin="round"
             ></path>
           </svg>
+          <span className="sr-only">Twitter</span>
         </a>
         <a href={siteMetadata.linkedin}>
           <svg
-            className="w-6 h-6 text-gray-500 hover:text-gray-300"
+            className="w-6 h-6 text-gray-400 hover:text-gray-300"
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -94,10 +100,11 @@ const Navbar: React.FC = () => {
               strokeLinejoin="round"
             ></path>
           </svg>
+          <span className="sr-only">LinkedIn</span>
         </a>
         <a href={siteMetadata.github}>
           <svg
-            className="w-6 h-6 text-gray-500 hover:text-gray-300"
+            className="w-6 h-6 text-gray-400 hover:text-gray-300"
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -110,6 +117,7 @@ const Navbar: React.FC = () => {
               strokeLinejoin="round"
             ></path>
           </svg>
+          <span className="sr-only">GitHub</span>
         </a>
       </div>
     </nav>

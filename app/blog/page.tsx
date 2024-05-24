@@ -3,6 +3,7 @@ import { Suspense } from "react";
 // import ViewCounter from "./view-counter";
 // import { getViewsCount } from "app/db/queries";
 import { getBlogPosts } from "app/db/blog";
+import { PageTitle } from "app/components/PageTitle";
 
 export const metadata = {
   title: "Blog",
@@ -13,10 +14,8 @@ export default function BlogPage() {
   let allBlogs = getBlogPosts();
 
   return (
-    <section>
-      <h1 className="mb-8 text-2xl font-medium tracking-tighter">
-        read my blog
-      </h1>
+    <div className="space-y-[80px] mt-[100px] w-full">
+      <PageTitle title="Insightful and helpful content curated for you." />
       {allBlogs
         .sort((a, b) => {
           if (
@@ -33,16 +32,13 @@ export default function BlogPage() {
             href={`/blog/${post.slug}`}
           >
             <div className="flex flex-col w-full">
-              <p className="tracking-tight text-neutral-900 dark:text-neutral-100">
+              <p className="tracking-tight text-slate-900">
                 {post.metadata.title}
               </p>
-              <Suspense fallback={<p className="h-6" />}>
-                {/* <Views slug={post.slug} /> */}
-              </Suspense>
             </div>
           </Link>
         ))}
-    </section>
+    </div>
   );
 }
 

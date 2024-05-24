@@ -8,7 +8,7 @@ import { hardwareData, softwareData } from "app/data/toolbox";
 
 export default function ToolboxPage() {
   return (
-    <div className="space-y-[80px] mt-[100px]">
+    <div className="space-y-[80px] mt-[100px] border-x  border-border-primary/50">
       <PageTitle title="Hardware and software I use on a daily basis." />
 
       {/* Applications */}
