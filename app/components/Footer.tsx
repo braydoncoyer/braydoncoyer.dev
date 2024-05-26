@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { HorizontalLine } from "./HorizontalLine";
+import { SocialPill } from "./SocialPill";
+import { BgSectionTag, TagType } from "./BgSectionTag";
 
 export function Footer() {
   return (
@@ -7,23 +9,28 @@ export function Footer() {
       <div className="max-w-7xl border-border-primary/50 relative">
         <HorizontalLine />
         <div className="max-w-6xl lg:mx-auto flex divide-x">
-          <div className="flex flex-col text-xs w-full py-6">
-            <div className="space-y-6 flex-grow">
-              <Link className="inline-block" href="/">
-                <img
-                  className="w-10 h-10"
-                  src="/bcoyerlogo_dark.svg"
-                  alt="Braydon's Logo"
-                />
-              </Link>
-              <p className="w-60 text-gray-500">
-                I’m Braydon - a senior front-end developer, blogger and public
-                speaker. Thanks for checking out my site!
+          <div className="flex text-xs w-full py-6">
+            <div>
+              <div className="space-y-6 flex-grow">
+                <Link className="inline-block" href="/">
+                  <img
+                    className="w-10 h-10"
+                    src="/bcoyerlogo_dark.svg"
+                    alt="Braydon's Logo"
+                  />
+                </Link>
+                <p className="w-60 text-gray-500">
+                  I’m Braydon - a senior front-end developer, blogger and public
+                  speaker. Thanks for checking out my site!
+                </p>
+              </div>
+              <p className="mt-6 text-gray-500">
+                © {new Date().getFullYear()} Braydon Coyer
               </p>
             </div>
-            <p className="mt-6 text-gray-500">
-              © {new Date().getFullYear()} Braydon Coyer
-            </p>
+            <div className="flex items-end w-full justify-end pr-16">
+              <SocialPill />
+            </div>
           </div>
           <div className="flex flex-col text-xs w-full py-6 items-end pl-16">
             <div className="flex w-full justify-between">
@@ -92,7 +99,11 @@ export function Footer() {
         </div>
         <HorizontalLine />
       </div>
-      <div className="h-16 w-full"></div>
+      <div className="h-20 w-full relative">
+        <span className="absolute -right-[56px] top-5">
+          <BgSectionTag tagType={TagType.FOOTER} />
+        </span>
+      </div>
     </>
   );
 }

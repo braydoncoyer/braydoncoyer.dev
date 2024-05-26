@@ -21,8 +21,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="bg-bg-primary">
-      {/* <head>Test</head> */}
-
       <body className="max-w-7xl md:flex-row lg:mx-auto">
         <main
           className={cx(
