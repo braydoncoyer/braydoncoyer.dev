@@ -216,24 +216,23 @@ export default function ToolboxPage() {
           <HorizontalLine />
           <div className="grid grid-cols-3 grid-rows-2 gap-2">
             {hardwareData.map((item) => (
-              <BorderCard key={item.title}>
-                <div className="flex flex-col space-y-3">
-                  <p className="text-base leading-5 text-text-primary font-semibold">
-                    {item.title}
-                  </p>
-                  <p className="text-gray-500 text-xs leading-4">
-                    {item.description}
-                  </p>
-                </div>
-                <span className="inline-block text-right">
-                  <a
-                    className="text-purple-primary/50 hover:text-purple-primary text-sm"
-                    href={item.link}
-                  >
-                    Learn more
-                  </a>
-                </span>
-              </BorderCard>
+              <a href={item.link} className="group" key={item.title}>
+                <BorderCard>
+                  <div className="flex flex-col space-y-3">
+                    <p className="text-base leading-5 text-text-primary font-semibold">
+                      {item.title}
+                    </p>
+                    <p className="text-gray-500 text-xs leading-4">
+                      {item.description}
+                    </p>
+                  </div>
+                  <span className="inline-block text-right">
+                    <span className="text-purple-primary/50 group-hover:text-purple-primary text-sm">
+                      Learn more
+                    </span>
+                  </span>
+                </BorderCard>
+              </a>
             ))}
           </div>
 

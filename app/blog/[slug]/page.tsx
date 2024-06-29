@@ -7,6 +7,9 @@ import { getBlogPosts } from "app/db/blog";
 // import ViewCounter from "../view-counter";
 // import { increment } from "app/db/actions";
 import { unstable_noStore as noStore } from "next/cache";
+import { SectionTitlePill } from "app/components/SectionTitlePill";
+import { HorizontalLine } from "app/components/HorizontalLine";
+import { NewsletterSignUp } from "app/components/NewsletterSignUp";
 
 export async function generateMetadata({
   params,
@@ -87,6 +90,8 @@ function formatDate(date: string) {
 export default function Blog({ params }) {
   let post = getBlogPosts().find((post) => post.slug === params.slug);
 
+  console.log(post);
+
   if (!post) {
     notFound();
   }
@@ -115,22 +120,43 @@ export default function Blog({ params }) {
           }),
         }}
       />
-      <h1 className="title font-medium text-2xl tracking-tighter max-w-[650px]">
-        {post.metadata.title}
-      </h1>
-      <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]">
-        <Suspense fallback={<p className="h-5" />}>
-          <p className="text-sm text-neutral-600 dark:text-neutral-400">
-            {formatDate(post.metadata.publishedAt)}
-          </p>
-        </Suspense>
-        <Suspense fallback={<p className="h-5" />}>
-          {/* <Views slug={post.slug} /> */}
-        </Suspense>
+
+      <div className="mb-7 pt-[90px]">
+        <SectionTitlePill title="Category" />
       </div>
-      <article className="prose prose-quoteless prose-neutral dark:prose-invert">
+      <div className="text-center mb-12 space-y-4">
+        <h1 className="font-semibold text-3xl tracking-tighter text-balance leading-9 text-text-primary">
+          {post.metadata.title}
+        </h1>
+        <p className="text-base text-text-secondary">
+          {formatDate(post.metadata.publishedAt)}
+        </p>
+
+        {/* View count goes here */}
+        {/* <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]">
+          <Suspense fallback={<p className="h-5" />}></Suspense>
+          <Suspense fallback={<p className="h-5" />}>
+            <Views slug={post.slug} />
+          </Suspense>
+        </div> */}
+      </div>
+      {/* Image */}
+      <div className="relative">
+        <span className="absolute top-0 inset-x-0">
+          <HorizontalLine />
+        </span>
+        <img
+          src="https://m.media-amazon.com/images/M/MV5BNDUwNjBkMmUtZjM2My00NmM4LTlmOWQtNWE5YTdmN2Y2MTgxXkEyXkFqcGdeQXRyYW5zY29kZS13b3JrZmxvdw@@._V1_.jpg"
+          className="w-full h-96 object-cover rounded-3xl mb-16"
+        />
+        <span className="absolute bottom-0 inset-x-0">
+          <HorizontalLine />
+        </span>
+      </div>
+      <article className=" w-full mb-24">
         <CustomMDX source={post.content} />
       </article>
+      <NewsletterSignUp />
     </section>
   );
 }

@@ -4,6 +4,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 // import { TweetComponent } from "./tweet";
 import { highlight } from "sugar-high";
 import React from "react";
+import { HorizontalLine } from "./HorizontalLine";
 // import { LiveCode } from "./sandpack";
 
 function Table({ data }) {
@@ -47,7 +48,17 @@ function CustomLink(props) {
 }
 
 function RoundedImage(props) {
-  return <Image alt={props.alt} className="rounded-lg" {...props} />;
+  return (
+    <div className="relative">
+      <span className="absolute top-0 inset-x-0">
+        <HorizontalLine />
+      </span>
+      <img src={props.src} alt={props.alt} className="rounded-3xl" />
+      <span className="absolute bottom-0 inset-x-0">
+        <HorizontalLine />
+      </span>
+    </div>
+  );
 }
 
 function Callout(props) {
@@ -115,7 +126,13 @@ function ConsCard({ title, cons }) {
 
 function Code({ children, ...props }) {
   let codeHTML = highlight(children);
-  return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
+  return (
+    <code
+      className="mb-8"
+      dangerouslySetInnerHTML={{ __html: codeHTML }}
+      {...props}
+    />
+  );
 }
 
 function slugify(str) {
@@ -135,17 +152,26 @@ function createHeading(level) {
     let slug = slugify(children);
     return React.createElement(
       `h${level}`,
-      { id: slug },
+      {
+        id: slug,
+        className: "text-2xl text-text-primary font-semibold leading-8 mb-6",
+      },
       [
         React.createElement("a", {
           href: `#${slug}`,
           key: `link-${slug}`,
-          className: "anchor",
+          className: "anchor ",
         }),
       ],
       children
     );
   };
+}
+
+function paragraph({ children }) {
+  return (
+    <p className="text-base text-text-secondary mb-8 leading-7">{children}</p>
+  );
 }
 
 let components = {
@@ -156,6 +182,7 @@ let components = {
   h5: createHeading(5),
   h6: createHeading(6),
   Image: RoundedImage,
+  img: RoundedImage,
   a: CustomLink,
   Callout,
   ProsCard,
@@ -163,6 +190,7 @@ let components = {
   //   StaticTweet: TweetComponent,
   code: Code,
   Table,
+  p: paragraph,
   //   LiveCode,
 };
 
