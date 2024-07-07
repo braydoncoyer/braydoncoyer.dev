@@ -16,28 +16,48 @@ export default function BlogPage() {
   return (
     <div className="space-y-[80px] mt-[100px] w-full">
       <PageTitle title="Insightful and helpful content curated for you." />
-      {allBlogs
-        .sort((a, b) => {
-          if (
-            new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)
-          ) {
-            return -1;
-          }
-          return 1;
-        })
-        .map((post) => (
-          <Link
-            key={post.slug}
-            className="flex flex-col mb-4 space-y-1"
-            href={`/blog/${post.slug}`}
-          >
-            <div className="flex flex-col w-full">
-              <p className="tracking-tight text-slate-900">
-                {post.metadata.title}
-              </p>
-            </div>
-          </Link>
-        ))}
+      <div className="grid grid-cols-3 gap-6">
+        {allBlogs
+          .sort((a, b) => {
+            if (
+              new Date(a.metadata.publishedAt) >
+              new Date(b.metadata.publishedAt)
+            ) {
+              return -1;
+            }
+            return 1;
+          })
+          .map((post, index) => (
+            <Link
+              key={post.slug}
+              className="flex flex-col mb-4 space-y-1 border border-border-primary rounded-2xl"
+              href={`/blog/${post.slug}`}
+            >
+              <img
+                src={
+                  post.metadata.image ??
+                  "https://image.isu.pub/190918160849-8822f46c79620853d26cb2aad7175839/jpg/page_1_thumb_large.jpg"
+                }
+                alt=""
+                className="rounded-t-2xl"
+              />
+              <div className="flex flex-col w-full space-y-4 p-6">
+                <h2 className="tracking-tight text-slate-900 text-2xl font-bold leading-8 text-balance">
+                  {post.metadata.title}
+                </h2>
+                <p className="leading-6 text-text-secondary">
+                  {post.metadata.summary}
+                </p>
+
+                {index === 0 ? (
+                  <div className="px-3 py-2 text-xs text-white leading-3 bg-[#6C47FF]/25 rounded-full">
+                    <span>Latest article</span>
+                  </div>
+                ) : null}
+              </div>
+            </Link>
+          ))}
+      </div>
     </div>
   );
 }
