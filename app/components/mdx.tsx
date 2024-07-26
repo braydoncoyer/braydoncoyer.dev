@@ -1,11 +1,13 @@
-import Link from "next/link";
-import Image from "next/image";
-import { MDXRemote } from "next-mdx-remote/rsc";
-// import { TweetComponent } from "./tweet";
-import { highlight } from "sugar-high";
 import React from "react";
+import * as runtime from "react/jsx-runtime";
+import { highlight } from "sugar-high";
 import { HorizontalLine } from "./HorizontalLine";
-// import { LiveCode } from "./sandpack";
+
+interface MDXProps {
+  code: string;
+  components?: Record<string, React.ComponentType>;
+  [key: string]: any;
+}
 
 function Table({ data }) {
   let headers = data.headers.map((header, index) => (
@@ -174,7 +176,7 @@ function paragraph({ children }) {
   );
 }
 
-let components = {
+const sharedComponents = {
   h1: createHeading(1),
   h2: createHeading(2),
   h3: createHeading(3),
@@ -194,11 +196,14 @@ let components = {
   //   LiveCode,
 };
 
-export function CustomMDX(props) {
+const useMDXComponent = (code: string) => {
+  const fn = new Function(code);
+  return fn({ ...runtime }).default;
+};
+
+export const MDXContent = ({ code, components, ...props }: MDXProps) => {
+  const Component = useMDXComponent(code);
   return (
-    <MDXRemote
-      {...props}
-      components={{ ...components, ...(props.components || {}) }}
-    />
+    <Component components={{ ...sharedComponents, ...components }} {...props} />
   );
-}
+};

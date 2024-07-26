@@ -20,6 +20,10 @@
         "name": "next"
       }
     ],
+    "paths": {
+      "@/*": ["./*"],
+      "#site/content": ["./.velite"]
+    },
     "strictNullChecks": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
