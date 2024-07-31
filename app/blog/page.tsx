@@ -4,6 +4,8 @@ import { PageTitle } from "app/components/PageTitle";
 import { Blog, posts } from "#site/content";
 import { notFound } from "next/navigation";
 import { ArticleCarousel } from "../components/ArticleCarousel";
+import { SectionTitlePill } from "../components/SectionTitlePill";
+import { HorizontalLine } from "../components/HorizontalLine";
 
 // export const metadata = {
 //   title: "Blog",
@@ -34,6 +36,8 @@ function extractUniqueCategories(posts: Blog[]): Set<string> {
 
 export default async function BlogPage() {
   const allPublishedBlogPosts = await fetchAndSortPosts();
+  const featuredArticles = allPublishedBlogPosts.slice(0, 3);
+  const otherArticles = allPublishedBlogPosts.slice(3);
   const categories = extractUniqueCategories(allPublishedBlogPosts);
 
   return (
@@ -201,6 +205,48 @@ export default async function BlogPage() {
         </defs>
       </svg>
 
+      {/* Featured Articles */}
+      <SectionTitlePill title="Featured" />
+      <ul className="grid grid-cols-3 gap-6">
+        <HorizontalLine />
+        {featuredArticles.length > 0 ? (
+          <>
+            {featuredArticles.slice(0, 3).map((post, index) => {
+              return (
+                <li
+                  key={post.slug}
+                  className="flex flex-col h-full border border-border-primary rounded-3xl p-2 bg-gradient-to-t from-white to-transparent"
+                >
+                  <Link
+                    key={post.slug}
+                    className="flex flex-col rounded-2xl h-full"
+                    href={`/blog/${post.slug}`}
+                  >
+                    <img
+                      src="https://image.isu.pub/190918160849-8822f46c79620853d26cb2aad7175839/jpg/page_1_thumb_large.jpg"
+                      alt=""
+                      className="rounded-2xl h-[225px] object-cover"
+                    />
+                    <div className="mt-4 flex flex-col w-full space-y-4 px-4 flex-grow">
+                      <h2 className="tracking-tight text-slate-900 text-lg font-bold leading-7">
+                        {post.title}
+                      </h2>
+                      <p className="leading-6 text-text-secondary flex-grow">
+                        {post.summary}
+                      </p>
+                      {/* Ensure other elements here are properly aligned */}
+                    </div>
+                  </Link>
+                </li>
+              );
+            })}
+          </>
+        ) : (
+          <p>Nothing to see here yet...</p>
+        )}
+      </ul>
+      {/* <HorizontalLine /> */}
+
       {/* Categories */}
 
       <div>
@@ -210,33 +256,56 @@ export default async function BlogPage() {
           })}
         </ul>
       </div>
-      {/* Articles */}
-      <ul className="grid grid-cols-3 gap-6">
-        {allPublishedBlogPosts.length > 0 ? (
+
+      {/* Other Articles */}
+      <SectionTitlePill title="All articles" />
+      <ul className="flex flex-col gap-6">
+        {otherArticles.length > 0 ? (
           <>
-            {allPublishedBlogPosts.map((post, index) => {
+            {otherArticles.map((post, index) => {
               return (
-                <li key={post.slug} className="flex flex-col h-full">
-                  <Link
+                <li key={post.slug}>
+                  <HorizontalLine />
+                  <div
                     key={post.slug}
-                    className="flex flex-col mb-4 space-y-1 border border-border-primary rounded-2xl h-full"
-                    href={`/blog/${post.slug}`}
+                    className="grid grid-cols-12 rounded-2xl h-full py-8"
                   >
-                    <img
+                    {/* <img
                       src="https://image.isu.pub/190918160849-8822f46c79620853d26cb2aad7175839/jpg/page_1_thumb_large.jpg"
                       alt=""
-                      className="rounded-t-2xl h-[180px] object-cover"
-                    />
-                    <div className="flex flex-col w-full space-y-4 p-6 flex-grow">
-                      <h2 className="tracking-tight text-slate-900 text-2xl font-bold leading-8 text-balance">
+                      className="rounded-2xl object-cover col-span-2 col-start-1"
+                    /> */}
+                    <div className="space-y-2 col-span-2 col-start-1">
+                      <div className="font-medium leading-none text-sm">
+                        <time dateTime={post.publishedAt}>
+                          {new Date(post.publishedAt).toLocaleDateString(
+                            "en-US",
+                            {
+                              month: "long",
+                              day: "numeric",
+                              year: "numeric",
+                            }
+                          )}
+                        </time>
+                      </div>
+                      <p className="text-sm text-text-secondary">1,352 reads</p>
+                    </div>
+                    <div className="flex flex-col w-full space-y-3 flex-grow col-span-8 col-start-5">
+                      <h2 className="tracking-tight text-slate-900 text-lg font-bold leading-none">
                         {post.title}
                       </h2>
-                      <p className="leading-6 text-text-secondary flex-grow">
+                      <p className="leading-6 text-text-secondary flex-grow text-base">
                         {post.summary}
                       </p>
-                      {/* Ensure other elements here are properly aligned */}
+                      <Link
+                        className="text-sm leading-6 text-indigo-700/50 hover:text-indigo-500"
+                        href={`/blog/${post.slug}`}
+                      >
+                        Read More
+                      </Link>
                     </div>
-                  </Link>
+                  </div>
+                  <HorizontalLine />
                 </li>
               );
             })}
