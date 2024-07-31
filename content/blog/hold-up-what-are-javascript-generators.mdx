@@ -4,6 +4,7 @@ publishedAt: 2021-07-16
 summary: A generator function can be paused at any given point and continue where it left off when told to do so. Pretty crazy, right? Let's take a look!
 coverImage: ../../static/images/hold-up-what-are-javascript-generators/generator_banner.jpg
 imageName: generator_banner.jpg
+categories: ["programming", "javascript"]
 ---
 
 We learned JavaScript knowing that functions execute from top-to-bottom, just like we read English from left-to-right. That all changed when ES6 was released in June of 2016, bringing with it the ability to pause functions in the middle of execution.
@@ -20,10 +21,10 @@ Generator functions in JavaScript are created much like any other function, exce
 
 ```js
 function* tacoIngredients() {
-  yield 'Shell';
-  yield 'Meat';
-  yield 'Lettuce';
-  yield 'Cheese';
+  yield "Shell";
+  yield "Meat";
+  yield "Lettuce";
+  yield "Cheese";
 }
 ```
 
@@ -48,10 +49,10 @@ If we wanted to get the data in the `tacoIngredients` function defined in the ex
 
 ```js
 function* tacoIngredients() {
-  yield 'Shell';
-  yield 'Meat';
-  yield 'Lettuce';
-  yield 'Cheese';
+  yield "Shell";
+  yield "Meat";
+  yield "Lettuce";
+  yield "Cheese";
 }
 
 const taco = tacoIngredients();
@@ -63,10 +64,10 @@ Each time we call the `next()` method, an object is returned in the shape mentio
 
 ```js
 function* tacoIngredients() {
-  yield 'Shell';
-  yield 'Meat';
-  yield 'Lettuce';
-  yield 'Cheese';
+  yield "Shell";
+  yield "Meat";
+  yield "Lettuce";
+  yield "Cheese";
 }
 
 const taco = tacoIngredients();
@@ -97,10 +98,10 @@ Want a real-world example? Here's a CodePen demo I made that calculates the Fibo
   allowtransparency="true"
   allowfullscreen="true"
 >
-  See the Pen{' '}
+  See the Pen{" "}
   <a href="https://codepen.io/braydoncoyer/pen/vYOOobg">
     Fibonacci - JavaScript Generators
-  </a>{' '}
+  </a>{" "}
   by Braydon Coyer (<a href="https://codepen.io/braydoncoyer">@braydoncoyer</a>)
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>

@@ -1,9 +1,10 @@
 ---
-title: 'How to Unit Test an HTTP Service in Angular'
+title: "How to Unit Test an HTTP Service in Angular"
 publishedAt: 2021-09-20 07:32:14
 summary: By the time we wrap up this addition to the series, not only will you understand how to write valuable tests, but you'll also understand what to test in an HTTP Service.
 coverImage: ../../static/images/how-to-unit-test-an-http-service-in-angular/TestingAngularPart3Banner.png
 imageName: TestingAngularPart3Banner.png
+categories: ["angular", "programming", "javascript"]
 ---
 
 We now understand the importance of testing in isolation and I want to shift our focus to testing an HTTP Service. By the time we wrap up this addition to the series, not only will you understand how to write valuable tests, but you'll also understand _what_ to test - something I feel a lot of newcomers to unit testing struggle to wrap their minds around.
@@ -38,13 +39,13 @@ I have created a very simplistic HTTP service with all of the CRUD operations. T
 
 ```ts
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class BooksService {
-  url = 'localhost:3000/';
+  url = "localhost:3000/";
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ "Content-Type": "application/json" }),
   };
 
   constructor(private http: HttpClient) {}
@@ -52,7 +53,7 @@ export class BooksService {
   getAllBooks(): Observable<Book[]> {
     return this.http
       .get<Book[]>(`${this.url}/books`)
-      .pipe(catchError(this.handleError<Book[]>('getAllBooks', [])));
+      .pipe(catchError(this.handleError<Book[]>("getAllBooks", [])));
   }
 
   getBookById(id: number): Observable<Book> {
@@ -79,7 +80,7 @@ export class BooksService {
       .pipe(catchError(this.handleError<Book>(`deleteBook`)));
   }
 
-  private handleError<T>(operation = 'operation', result?: T) {
+  private handleError<T>(operation = "operation", result?: T) {
     return (error: any): Observable<T> => {
       console.error(`${operation} failed: ${error.message}`);
 
@@ -279,11 +280,11 @@ Everything else is familiar - we still check that the request method is `GET` an
 Now let's look at the `updateBook` function. The same patterns apply here, but the request method is different. Don't let that scare you! Take note of what argument(s) the function requires, and what the expected output, then write the test.
 
 ```ts
-it('should call updateBook and return the updated book from the API', () => {
+it("should call updateBook and return the updated book from the API", () => {
   const updatedBook: Book = {
-    id: '1',
-    title: 'New title',
-    author: 'Author 1'
+    id: "1",
+    title: "New title",
+    author: "Author 1",
   };
 
   service.updateBook(mockBook1).subscribe((data) => {
@@ -291,8 +292,8 @@ it('should call updateBook and return the updated book from the API', () => {
   });
 
   const req = httpController.expectOne({
-    method: 'PUT',
-    url: `${url}/books`
+    method: "PUT",
+    url: `${url}/books`,
   });
 
   req.flush(updatedBook);

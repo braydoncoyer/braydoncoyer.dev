@@ -1,10 +1,11 @@
 ---
-title: 'Use Named Exports over Default Exports in JavaScript'
+title: "Use Named Exports over Default Exports in JavaScript"
 publishedAt: 2021-09-02 13:32:14
 summary: Named exports provide a handful of benefits over default exports. Here's why.
 coverImage: ../../static/images/use-named-exports-over-default-exports-in-javascript/javascript_named_exports_banner.png
 imageName: javascript_named_exports_banner.png
 canonicalUrl: https://www.bundleapps.io/blog/use-named-exports-over-default-exports-in-javascript
+categories: ["javascript", "programming"]
 ---
 
 If you were like me when I started learning JavaScript and diving into tools like React and NodeJS, you may have been confused when importing functions or components and found yourself blindly guessing how to import them at the top of your files. Sometimes I'd throw some curly braces around the name of the function I wanted to import, while other times I'd feel lucky and forgo the curlys altogether.
@@ -29,11 +30,11 @@ A default export can only export a single object, function, or variable and curl
 
 ```tsx
 export default function greeting() {
-	console.log('Hello, World!');
+  console.log("Hello, World!");
 }
 
 // in another file
-import greeting from './greeting';
+import greeting from "./greeting";
 
 greeting(); // Output: 'Hello, World!'
 ```
@@ -49,11 +50,11 @@ Here's an example of importing a function and applying a non-related name.
 
 ```tsx
 export default function greeting() {
-	console.log('Hello, World!');
+  console.log("Hello, World!");
 }
 
 // in another file
-import anyNameWillWork from './greeting';
+import anyNameWillWork from "./greeting";
 
 anyNameWillWork(); // Output: 'Hello, World!'
 ```
@@ -66,14 +67,14 @@ Named exports are imported with curly braces in various files and _must_ be impo
 
 ```tsx
 export function greeting() {
-	console.log('Hello, World!');
+  console.log("Hello, World!");
 }
 
 // more than one export
-export const bestMovieSeries = 'The Lord of the Rings Trilogy';
+export const bestMovieSeries = "The Lord of the Rings Trilogy";
 
 // importing in another file
-import { greeting, bestMovieSeries } from './greeting';
+import { greeting, bestMovieSeries } from "./greeting";
 
 greeting(); // Output: 'Hello, World!'
 
@@ -84,12 +85,12 @@ Named exports can be exported individually, as seen in the example above, or bat
 
 ```tsx
 function greeting() {
-	console.log('Hello, World!');
+  console.log("Hello, World!");
 }
 
-const bestMovieSeries = 'The Lord of the Rings Trilogy';
+const bestMovieSeries = "The Lord of the Rings Trilogy";
 
-export { greeting, bestMovieSeries }
+export { greeting, bestMovieSeries };
 ```
 
 ## The Benefits of Named Exports
@@ -105,7 +106,7 @@ As you can imagine, this is a huge improvement that becomes more apparent as you
 Default exports don't associate any name with the item being exported, meaning that any name can be applied during import. At first, this may sound really neat, but we've all seen the guy who imports a function with a non-descriptive name.
 
 ```tsx
-import x from './greeting';
+import x from "./greeting";
 
 // yuck
 x();

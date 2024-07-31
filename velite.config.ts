@@ -18,6 +18,8 @@ export const posts = defineCollection({
       return meta.basename?.replace(/\.mdx$/, "") || "";
     }),
     code: s.mdx(),
+    canonicalUrl: s.string().optional(),
+    draft: s.boolean().default(false),
   })
   .transform(computedFields),
 });

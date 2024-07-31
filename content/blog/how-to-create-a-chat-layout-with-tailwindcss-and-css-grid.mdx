@@ -1,9 +1,10 @@
 ---
-title: 'How to Create a Chat Layout with TailwindCSS and CSS Grid'
+title: "How to Create a Chat Layout with TailwindCSS and CSS Grid"
 publishedAt: 2021-10-08 07:32:14
 summary: In this brief article, I'll show you how easy it is to build a chat layout with TailwindCSS using their CSS Grid utility classes.
 coverImage: ../../static/images/how-to-create-a-chat-layout-with-tailwindcss-and-css-grid/chat_layout_banner.png
 imageName: chat_layout_banner.png
+categories: ["html", "programming", "tailwind", "css"]
 ---
 
 TailwindCSS provides utility classes that enable rapid development and styling of your websites and applications.
@@ -109,7 +110,7 @@ Remember the `isMessageFromUser` helper function we created above? This will com
 ```jsx
 <div
   className={`${
-    isMessageFromUser() ? 'place-self-end' : 'place-self-start'
+    isMessageFromUser() ? "place-self-end" : "place-self-start"
   } space-y-2`}
 >
   <div className={`bg-white p-5 rounded-2xl`}>{message.message}</div>
@@ -125,12 +126,12 @@ To add the finishing touches, let's add the message feet to help reinforce which
 ```jsx
 <div
   className={`${
-    isMessageFromUser() ? 'place-self-end' : 'place-self-start'
+    isMessageFromUser() ? "place-self-end" : "place-self-start"
   } space-y-2`}
 >
   <div
     className={`bg-white p-5 rounded-2xl ${
-      isMessageFromUser() ? 'rounded-tr-none' : 'rounded-tl-none'
+      isMessageFromUser() ? "rounded-tr-none" : "rounded-tl-none"
     }`}
   >
     {message.message}
@@ -159,10 +160,10 @@ If you'd like to check out a final version, I've linked a CodePen demo below!
   allowtransparency="true"
   allowfullscreen="true"
 >
-  See the Pen{' '}
+  See the Pen{" "}
   <a href="https://codepen.io/braydoncoyer/pen/xxLKwYw">
     Chat Layout with TailwindCSS &amp; CSS Grid
-  </a>{' '}
+  </a>{" "}
   by Braydon Coyer (<a href="https://codepen.io/braydoncoyer">@braydoncoyer</a>)
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>

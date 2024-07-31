@@ -4,6 +4,23 @@ publishedAt: 2021-03-12
 summary: March is off to a great start with the coming and going of GatsbyConf 2021 and the big announcement of Gatsby v3.0! There are many things to digest here, but perhaps the most exciting for me is the newly revamped Gatsby Plugin Image! Let's talk about what's new.
 coverImage: ../../static/images/gatsbyconf-2021-gatsby-v3-and-the-new-gatsby-image/Gatsbyv3PluginImageBanner.png
 imageName: Gatsbyv3PluginImageBanner.png
+categories:
+  [
+    "html",
+    "angular",
+    "productivity",
+    "programming",
+    "testing",
+    "personal",
+    "tailwind",
+    "css",
+    "javascript",
+    "career",
+    "devlops",
+    "react",
+    "design",
+  ]
+draft: true
 ---
 
 2021 seems to be flying by quickly. March is off to a great start with the coming and going of GatsbyConf 2021 and the big announcement of Gatsby v3.0! There are many reasons to love Gatsby and v3.0 brings with it many new features and changes:
@@ -30,7 +47,7 @@ Rebuilt from the ground-up, Gatsby Plugin Image provides two new components for 
 For static images that will always be the same, the new `<StaticImage />` component should be utilized. Here's an example taken from [official documentation](https://www.gatsbyjs.com/plugins/gatsby-plugin-image/).
 
 ```jsx
-import { StaticImage } from 'gatsby-plugin-image';
+import { StaticImage } from "gatsby-plugin-image";
 
 export function Dino() {
   return <StaticImage src="../images/dino.png" alt="A dinosaur" />;
@@ -40,8 +57,8 @@ export function Dino() {
 As applications become more complex, it’s not uncommon for images to be dynamically sourced. In situations like this, the revamped plugin provides a component called `<GatsbyImage />`. This component works very similarly to the old plugin. Here's an example.
 
 ```jsx
-import { graphql } from 'gatsby';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { graphql } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 function BlogPost({ data }) {
   const image = getImage(data.blogPost.avatar);
