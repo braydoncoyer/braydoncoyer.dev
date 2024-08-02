@@ -156,7 +156,8 @@ function createHeading(level) {
       `h${level}`,
       {
         id: slug,
-        className: "text-2xl text-text-primary font-semibold leading-8 mb-6",
+        className:
+          "text-2xl text-text-primary font-semibold leading-8 mb-6 text-balance",
       },
       [
         React.createElement("a", {
@@ -176,6 +177,39 @@ function paragraph({ children }) {
   );
 }
 
+function IdeaQuote({ children }) {
+  return (
+    <div>
+      <div>
+        <p>IdeaQuote</p>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+function InfoQuote({ children }) {
+  return (
+    <div>
+      <div>
+        <p>InfoQuote</p>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+function ThoughtQuote({ children }) {
+  return (
+    <div>
+      <div>
+        <p>ThoughtQuote</p>
+        {children}
+      </div>
+    </div>
+  );
+}
+
 const sharedComponents = {
   h1: createHeading(1),
   h2: createHeading(2),
@@ -189,6 +223,9 @@ const sharedComponents = {
   Callout,
   ProsCard,
   ConsCard,
+  Ideaquote: IdeaQuote,
+  Infoquote: InfoQuote,
+  Thoughtquote: ThoughtQuote,
   //   StaticTweet: TweetComponent,
   code: Code,
   Table,

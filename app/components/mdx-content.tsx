@@ -176,6 +176,11 @@ function paragraph({ children }) {
   );
 }
 
+function OrderedList({ children }) {
+  console.log("Here");
+  return <ol className="list-decimal list-inside mb-8">{children}</ol>;
+}
+
 const sharedComponents = {
   h1: createHeading(1),
   h2: createHeading(2),
@@ -186,6 +191,8 @@ const sharedComponents = {
   Image: RoundedImage,
   img: RoundedImage,
   a: CustomLink,
+  ol: OrderedList,
+  ul: OrderedList,
   Callout,
   ProsCard,
   ConsCard,

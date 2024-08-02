@@ -40,6 +40,8 @@ export default async function BlogPage() {
   const otherArticles = allPublishedBlogPosts.slice(3);
   const categories = extractUniqueCategories(allPublishedBlogPosts);
 
+  console.log(featuredArticles[0]);
+
   return (
     <div className="space-y-[80px] mt-[100px] w-full">
       <PageTitle title="Insightful and helpful content curated for you." />
@@ -65,7 +67,7 @@ export default async function BlogPage() {
       </div> */}
 
       <svg
-        className="absolute top-0 w-full inset-x-0 left-1/2 transform -translate-x-1/2"
+        className="absolute top-0 w-full inset-x-0 left-1/2 transform -translate-x-1/2 pointer-events-none"
         viewBox="0 0 1440 379"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -223,7 +225,10 @@ export default async function BlogPage() {
                     href={`/blog/${post.slug}`}
                   >
                     <img
-                      src="https://image.isu.pub/190918160849-8822f46c79620853d26cb2aad7175839/jpg/page_1_thumb_large.jpg"
+                      src={
+                        `/blog/${post.imageName}` ||
+                        "https://image.isu.pub/190918160849-8822f46c79620853d26cb2aad7175839/jpg/page_1_thumb_large.jpg"
+                      }
                       alt=""
                       className="rounded-2xl h-[225px] object-cover"
                     />
@@ -247,6 +252,9 @@ export default async function BlogPage() {
       </ul>
       {/* <HorizontalLine /> */}
 
+      {/* Other Articles */}
+      <SectionTitlePill title="All articles" />
+
       {/* Categories */}
 
       <div>
@@ -257,8 +265,6 @@ export default async function BlogPage() {
         </ul>
       </div>
 
-      {/* Other Articles */}
-      <SectionTitlePill title="All articles" />
       <ul className="flex flex-col gap-6">
         {otherArticles.length > 0 ? (
           <>
