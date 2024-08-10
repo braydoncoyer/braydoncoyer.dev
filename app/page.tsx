@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { BgGradient } from "./components/BgGradient";
 import { BgSectionTag, TagType } from "./components/BgSectionTag";
@@ -5,6 +7,7 @@ import { HorizontalLine } from "./components/HorizontalLine";
 import { Button } from "./components/Button";
 import { PageTitle } from "./components/PageTitle";
 import { ShadowBox } from "./components/ShadowBox";
+import { SectionTitlePill } from "./components/SectionTitlePill";
 
 export default function Home() {
   return (
@@ -380,7 +383,58 @@ export default function Home() {
         </div>
       </div>
       <HorizontalLine />
-      <div>asdf</div>
+      <div className="space-y-4 py-16">
+        <SectionTitlePill title="About" />
+        <h2 className="mx-auto text-text-primary text-center text-balance font-semibold text-3xl tracking-tighter max-w-lg leading-10">
+          Here's what sets me apart and makes me unique.
+        </h2>
+      </div>
+      {/* About Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-2 grid-rows-[14]">
+        <div className="p-6 rounded-2xl col-span-5 row-span-6 h-[220px] border border-border-primary flex flex-col overflow-hidden">
+          <div className="flex gap-8 flex-grow overflow-hidden">
+            <div className="flex flex-col flex-grow">
+              <div className="flex-grow">
+                <h2 className="text-base font-semibold mb-4">
+                  Learn more about me
+                </h2>
+                <p className="text-text-secondary text-xs">
+                  I'm Braydon - an experienced Frontend Developer...
+                </p>
+              </div>
+              <Button
+                label="Read more about me"
+                clicked={() => {
+                  console.log("Clicked");
+                }}
+              />
+            </div>
+            <div className="relative flex-shrink-0">
+              <ShadowBox width={188} height={278}></ShadowBox>
+              <img
+                className="w-[180px] h-auto max-h-full rounded-lg object-cover absolute top-2 left-1 rotate-[8deg] shadow"
+                src="/braydon_headshot_1.jpeg"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="p-6 rounded-2xl col-span-7 row-span-8 h-[300px] border border-border-primary">
+          <h2 className="text-xl font-semibold mb-4">Connections</h2>
+          <p>An ever-evolving list of people I have met and wish to meet.</p>
+        </div>
+
+        <div className="p-6 rounded-2xl col-span-5 row-span-7 h-[300px] border border-border-primary">
+          <h2 className="text-xl font-semibold mb-4">Connections</h2>
+          <p>An ever-evolving list of people I have met and wish to meet.</p>
+        </div>
+
+        <div className="p-6 rounded-2xl col-span-7 row-span-5 h-[220px] border border-border-primary">
+          <h2 className="text-xl font-semibold mb-4">Connections</h2>
+          <p>An ever-evolving list of people I have met and wish to meet.</p>
+        </div>
+      </div>
     </section>
   );
 }
