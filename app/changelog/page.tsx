@@ -1,22 +1,16 @@
-import Link from "next/link";
 import { PageTitle } from "app/components/PageTitle";
 
-import { Blog, posts } from "#site/content";
+import { Changelog, changelogItems } from "#site/content";
 import { notFound } from "next/navigation";
-import { ArticleCarousel } from "../components/ArticleCarousel";
-import { SectionTitlePill } from "../components/SectionTitlePill";
 import { HorizontalLine } from "../components/HorizontalLine";
+import { MDXContent } from "@/app/components/mdx";
+import { NewsletterSignUp } from "../components/NewsletterSignUp";
 
-// export const metadata = {
-//   title: "Blog",
-//   description: "Read my thoughts on software development, design, and more.",
-// };
-
-export async function fetchAndSortPosts(): Promise<Blog[]> {
+export async function fetchAndSortPosts(): Promise<Changelog[]> {
   try {
-    const allPosts = await posts; // Assuming 'posts' is a promise or async call
-    return allPosts
-      .filter((post) => !post.draft)
+    const allChangelogItems = await changelogItems;
+    return allChangelogItems
+      .filter((item) => !item.draft)
       .sort(
         (a, b) =>
           new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
@@ -26,47 +20,14 @@ export async function fetchAndSortPosts(): Promise<Blog[]> {
   }
 }
 
-function extractUniqueCategories(posts: Blog[]): Set<string> {
-  const categories = new Set<string>();
-  posts.forEach((post) => {
-    post.categories.forEach((category) => categories.add(category));
-  });
-  return categories;
-}
-
-export default async function BlogPage() {
-  const allPublishedBlogPosts = await fetchAndSortPosts();
-  const featuredArticles = allPublishedBlogPosts.slice(0, 3);
-  const otherArticles = allPublishedBlogPosts.slice(3);
-  const categories = extractUniqueCategories(allPublishedBlogPosts);
-
-  console.log(featuredArticles[0]);
+export default async function ChangelogPage() {
+  const allChangelogItems = await fetchAndSortPosts();
 
   return (
     <div className="space-y-[80px] mt-[100px] w-full">
       <div className="max-w-2xl mx-auto">
-        <PageTitle title="Insightful and helpful content curated for you." />
+        <PageTitle title="Here's what's new on my site." />
       </div>
-
-      {/* <div className="inset-x-0 absolute">
-        <div className="flex space-x-8">
-          <img
-            src="https://image.isu.pub/190918160849-8822f46c79620853d26cb2aad7175839/jpg/page_1_thumb_large.jpg"
-            alt=""
-            className="rounded-2xl h-[300px] object-cover aspect-video"
-          />
-          <img
-            src="https://image.isu.pub/190918160849-8822f46c79620853d26cb2aad7175839/jpg/page_1_thumb_large.jpg"
-            alt=""
-            className="rounded-2xl h-[300px] object-cover aspect-video"
-          />
-          <img
-            src="https://image.isu.pub/190918160849-8822f46c79620853d26cb2aad7175839/jpg/page_1_thumb_large.jpg"
-            alt=""
-            className="rounded-2xl h-[300px] object-cover aspect-video"
-          />
-        </div>
-      </div> */}
 
       <svg
         className="absolute top-0 w-full inset-x-0 left-1/2 transform -translate-x-1/2 pointer-events-none"
@@ -209,68 +170,10 @@ export default async function BlogPage() {
         </defs>
       </svg>
 
-      {/* Featured Articles */}
-      <SectionTitlePill title="Featured" />
-      <ul className="grid grid-cols-3 gap-2">
-        <HorizontalLine />
-        {featuredArticles.length > 0 ? (
-          <>
-            {featuredArticles.slice(0, 3).map((post, index) => {
-              return (
-                <li
-                  key={post.slug}
-                  className="flex flex-col h-full border border-border-primary rounded-3xl p-2 bg-gradient-to-t from-white to-transparent"
-                >
-                  <Link
-                    key={post.slug}
-                    className="flex flex-col rounded-2xl h-full"
-                    href={`/blog/${post.slug}`}
-                  >
-                    <img
-                      src={
-                        `/blog/${post.imageName}` ||
-                        "https://image.isu.pub/190918160849-8822f46c79620853d26cb2aad7175839/jpg/page_1_thumb_large.jpg"
-                      }
-                      alt=""
-                      className="rounded-2xl h-[225px] object-cover"
-                    />
-                    <div className="my-4 flex flex-col w-full space-y-4 px-4 flex-grow">
-                      <h2 className="tracking-tight text-slate-900 text-lg font-bold leading-7">
-                        {post.title}
-                      </h2>
-                      <p className="leading-6 text-text-secondary flex-grow">
-                        {post.summary}
-                      </p>
-                      {/* Ensure other elements here are properly aligned */}
-                    </div>
-                  </Link>
-                </li>
-              );
-            })}
-          </>
-        ) : (
-          <p>Nothing to see here yet...</p>
-        )}
-      </ul>
-      {/* <HorizontalLine /> */}
-
-      {/* Other Articles */}
-      <SectionTitlePill title="All articles" />
-
-      {/* Categories */}
-
-      <div>
-        <ul className="flex gap-3 justify-center">
-          {Array.from(categories).map((category) => {
-            return <li key={category}>{category}</li>;
-          })}
-        </ul>
-      </div>
-
       <ul className="flex flex-col gap-6">
-        {otherArticles.length > 0 ? (
+        {allChangelogItems.length > 0 ? (
           <>
-            {otherArticles.map((post, index) => {
+            {allChangelogItems.map((post, index) => {
               return (
                 <li key={post.slug}>
                   <HorizontalLine />
@@ -278,11 +181,6 @@ export default async function BlogPage() {
                     key={post.slug}
                     className="grid grid-cols-12 rounded-2xl h-full py-8"
                   >
-                    {/* <img
-                      src="https://image.isu.pub/190918160849-8822f46c79620853d26cb2aad7175839/jpg/page_1_thumb_large.jpg"
-                      alt=""
-                      className="rounded-2xl object-cover col-span-2 col-start-1"
-                    /> */}
                     <div className="space-y-2 col-span-2 col-start-1">
                       <div className="font-medium leading-none text-sm">
                         <time dateTime={post.publishedAt}>
@@ -296,21 +194,17 @@ export default async function BlogPage() {
                           )}
                         </time>
                       </div>
-                      <p className="text-sm text-text-secondary">1,352 reads</p>
                     </div>
-                    <div className="flex flex-col w-full space-y-3 flex-grow col-span-8 col-start-5 col-end-12">
-                      <h2 className="tracking-tight text-slate-900 text-lg font-bold leading-none">
+                    <div className="flex flex-col w-full flex-grow col-span-8 col-start-4">
+                      <h2 className="tracking-tight text-slate-900 text-2xl font-semibold leading-none mb-8">
                         {post.title}
                       </h2>
-                      <p className="leading-6 text-text-secondary flex-grow text-base">
-                        {post.summary}
-                      </p>
-                      <Link
-                        className="text-sm leading-6 text-indigo-700/50 hover:text-indigo-500"
-                        href={`/blog/${post.slug}`}
-                      >
-                        Read More
-                      </Link>
+                      <img
+                        className="w-full h-96 object-cover rounded-3xl mb-8"
+                        src="https://framerusercontent.com/images/qtKbMR65zAX0Ziafg98khJkdQ.webp?scale-down-to=2048"
+                        alt=""
+                      />
+                      <MDXContent code={post.code} />
                     </div>
                   </div>
                   <HorizontalLine />
@@ -322,12 +216,8 @@ export default async function BlogPage() {
           <p>Nothing to see here yet...</p>
         )}
       </ul>
+
+      <NewsletterSignUp />
     </div>
   );
 }
-
-// async function Views({ slug }: { slug: string }) {
-//   let views = await getViewsCount();
-
-//   return <ViewCounter allViews={views} slug={slug} />;
-// }
