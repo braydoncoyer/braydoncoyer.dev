@@ -1,44 +1,18 @@
 import Link from "next/link";
 import { PageTitle } from "app/components/PageTitle";
 
-import { Blog, posts } from "#site/content";
-import { notFound } from "next/navigation";
-import { ArticleCarousel } from "../components/ArticleCarousel";
 import { SectionTitlePill } from "../components/SectionTitlePill";
 import { HorizontalLine } from "../components/HorizontalLine";
-
-// export const metadata = {
-//   title: "Blog",
-//   description: "Read my thoughts on software development, design, and more.",
-// };
-
-export async function fetchAndSortPosts(): Promise<Blog[]> {
-  try {
-    const allPosts = await posts; // Assuming 'posts' is a promise or async call
-    return allPosts
-      .filter((post) => !post.draft)
-      .sort(
-        (a, b) =>
-          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-      );
-  } catch (error) {
-    notFound();
-  }
-}
-
-function extractUniqueCategories(posts: Blog[]): Set<string> {
-  const categories = new Set<string>();
-  posts.forEach((post) => {
-    post.categories.forEach((category) => categories.add(category));
-  });
-  return categories;
-}
+import {
+  extractUniqueBlogCategories,
+  fetchAndSortBlogPosts,
+} from "../lib/utils";
 
 export default async function BlogPage() {
-  const allPublishedBlogPosts = await fetchAndSortPosts();
+  const allPublishedBlogPosts = await fetchAndSortBlogPosts();
   const featuredArticles = allPublishedBlogPosts.slice(0, 3);
   const otherArticles = allPublishedBlogPosts.slice(3);
-  const categories = extractUniqueCategories(allPublishedBlogPosts);
+  const categories = extractUniqueBlogCategories(allPublishedBlogPosts);
 
   console.log(featuredArticles[0]);
 
@@ -325,9 +299,3 @@ export default async function BlogPage() {
     </div>
   );
 }
-
-// async function Views({ slug }: { slug: string }) {
-//   let views = await getViewsCount();
-
-//   return <ViewCounter allViews={views} slug={slug} />;
-// }

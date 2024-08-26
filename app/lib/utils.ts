@@ -1,4 +1,6 @@
+import { Blog, Changelog, changelogItems, posts } from "#site/content";
 import { unstable_noStore as noStore } from "next/cache";
+import { notFound } from "next/navigation";
 
 export const formatDate = (date: string) => {
   noStore();
@@ -31,4 +33,40 @@ export const formatDate = (date: string) => {
   });
 
   return `${fullDate} (${formattedDate})`;
+};
+
+export function fetchAndSortChangelogEntrees(): Changelog[] {
+  try {
+    const allChangelogItems = changelogItems;
+    return allChangelogItems
+      .filter((item) => !item.draft)
+      .sort(
+        (a, b) =>
+          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+      );
+  } catch (error) {
+    notFound();
+  }
+}
+
+export function fetchAndSortBlogPosts(): Blog[] {
+  try {
+    const allPosts =  posts; // Assuming 'posts' is a promise or async call
+    return allPosts
+      .filter((post) => !post.draft)
+      .sort(
+        (a, b) =>
+          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+      );
+  } catch (error) {
+    notFound();
+  }
+}
+
+export function extractUniqueBlogCategories(posts: Blog[]): Set<string> {
+  const categories = new Set<string>();
+  posts.forEach((post) => {
+    post.categories.forEach((category) => categories.add(category));
+  });
+  return categories;
 }

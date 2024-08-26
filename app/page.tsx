@@ -6,12 +6,13 @@ import { Button } from "./components/Button";
 import { PageTitle } from "./components/PageTitle";
 import { ShadowBox } from "./components/ShadowBox";
 import { SectionTitlePill } from "./components/SectionTitlePill";
-import { fetchAndSortPosts } from "./blog/page";
 import Link from "next/link";
 import { NewsletterSignUp } from "./components/NewsletterSignUp";
+import { ChangelogBento } from "./components/ChangelogBento";
+import { fetchAndSortBlogPosts } from "./lib/utils";
 
 export default async function Home() {
-  const allPublishedBlogPosts = await fetchAndSortPosts();
+  const allPublishedBlogPosts = await fetchAndSortBlogPosts();
   const featuredArticles = allPublishedBlogPosts.slice(0, 3);
 
   return (
@@ -249,9 +250,9 @@ export default async function Home() {
           </clipPath>
         </defs>
       </svg>
-      {/* <span className="absolute left-36">
+      <span className="absolute left-36">
         <BgGradient />
-      </span> */}
+      </span>
       <div className="relative mt-9">
         <svg
           className="mx-auto"
@@ -853,7 +854,7 @@ export default async function Home() {
         <HorizontalLine />
         {featuredArticles.length > 0 ? (
           <>
-            {featuredArticles.slice(0, 3).map((post, index) => {
+            {featuredArticles.slice(0, 3).map((post) => {
               return (
                 <li
                   key={post.slug}
@@ -902,16 +903,7 @@ export default async function Home() {
       {/* Site */}
       <HorizontalLine />
       <section className="grid grid-cols-1 md:grid-cols-3 gap-2">
-        <div className="p-6 rounded-2xl col-span-1 h-[276px] border border-border-primary flex flex-col bg-gradient-to-tl hover:from-violet-100 hover:to-white hover:to-50% transition-all duration-200 group">
-          <div className="grid grid-cols-2 grid-rows-2 gap-8 h-full items-end">
-            <div className="col-1 row-start-2">
-              <h2 className="font-semibold mb-2">Changelog</h2>
-              <p className="text-text-secondary">
-                Here's what's new on my site
-              </p>
-            </div>
-          </div>
-        </div>
+        <ChangelogBento />
 
         <div className="p-6 rounded-2xl col-span-1 h-[276px] border border-border-primary flex flex-col bg-gradient-to-tl hover:from-violet-100 hover:to-white hover:to-50% transition-all duration-200 group">
           <div className="grid grid-cols-2 grid-rows-2 gap-8 h-full items-end">

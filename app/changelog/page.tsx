@@ -182,7 +182,7 @@ export default async function ChangelogPage() {
                     className="grid grid-cols-12 rounded-2xl h-full py-8"
                   >
                     <div className="space-y-2 col-span-2 col-start-1">
-                      <div className="font-medium leading-none text-sm">
+                      <div className="leading-none text-sm">
                         <time dateTime={post.publishedAt}>
                           {new Date(post.publishedAt).toLocaleDateString(
                             "en-US",
