@@ -12,6 +12,7 @@ import { ChangelogBento } from "./components/ChangelogBento";
 import { fetchAndSortBlogPosts } from "./lib/utils";
 import { SpeakingBento } from "./components/SpeakingBento";
 import { CommunityWallBento } from "./components/CommunityWallBento";
+import { CurrentlyPlaying } from "./components/CurrentlyPlaying";
 
 export default async function Home() {
   const allPublishedBlogPosts = await fetchAndSortBlogPosts();
@@ -627,6 +628,9 @@ export default async function Home() {
         {/* Newsletter Section */}
         <section>
           <NewsletterSignUp />
+        </section>
+        <section>
+          <CurrentlyPlaying />
         </section>
       </div>
     </section>
