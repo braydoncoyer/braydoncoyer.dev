@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { HorizontalLine } from "./HorizontalLine";
 
 type NewsletterSignUpProps = {
@@ -11,6 +14,48 @@ export function NewsletterSignUp({
   description = "A periodic update about my life, recent blog posts, how-tos, and discoveries.",
   buttonText = "Subscribe",
 }: NewsletterSignUpProps) {
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setMessage("");
+    setIsSuccess(false);
+    setIsLoading(true);
+
+    if (!email) {
+      setMessage("Please provide an email address.");
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/create-contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.ok) {
+        setMessage("You're signed up!");
+        setIsSuccess(true);
+        setEmail("");
+      } else {
+        setMessage("Something went wrong. :(");
+        setIsSuccess(false);
+      }
+    } catch (error) {
+      setMessage("Something went wrong. :(");
+      setIsSuccess(false);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="pb-16 relative">
       <HorizontalLine />
@@ -29,19 +74,40 @@ export function NewsletterSignUp({
           <p className="text-gray-300 text-base w-[336px] mb-12">
             {description}
           </p>
-          <div className="relative inline-block">
-            <label htmlFor="email" className="sr-only">
-              Email
-            </label>
-            <input
-              id="email"
-              type="email"
-              placeholder="bobloblaw@gmail.com"
-              className="w-[425px] mb-[59px] px-5 py-3 bg-transparent border border-gray-400 rounded-full placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-slate-100 focus:ring-offset-2 focus:ring-offset-dark-primary"
-            />
-            <button className="absolute w-28 bg-white hover:bg-slate-200 rounded-full h-[42px] right-1 top-1 text-xs text-slate-900">
-              {buttonText}
-            </button>
+          <div className="space-y-4 mb-4">
+            <form onSubmit={handleSubmit} className="relative inline-block">
+              <label htmlFor="email" className="sr-only">
+                Email
+              </label>
+              <input
+                id="email"
+                type="email"
+                placeholder="bobloblaw@gmail.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-[425px] px-5 py-3 bg-transparent border border-gray-400 rounded-full placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-slate-100 focus:ring-offset-2 focus:ring-offset-dark-primary text-white"
+                disabled={isLoading}
+              />
+              <button
+                type="submit"
+                className="absolute w-28 bg-white hover:bg-slate-200 rounded-full h-[42px] right-1 top-1 text-xs text-slate-900"
+                disabled={isLoading}
+              >
+                {isLoading ? "Loading..." : buttonText}
+              </button>
+            </form>
+            {/* Set minimum height to prevent layout shift */}
+            <div className="min-h-[30px]">
+              {message && (
+                <p
+                  className={`text-sm ${
+                    isSuccess ? "text-emerald-400" : "text-rose-400"
+                  }`}
+                >
+                  {message}
+                </p>
+              )}
+            </div>
           </div>
           <p className="text-gray-300 text-base">
             <span className="font-bold text-white">NO SPAM.</span> I never send
