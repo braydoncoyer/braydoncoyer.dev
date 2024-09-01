@@ -9,6 +9,9 @@ export async function fetchSpotifyData() {
       cache: "no-store",
     }
   );
-  if (!res.ok) throw new Error("Failed to fetch Spotify data");
+  if (!res.ok) {
+    console.error("Failed to fetch Spotify data:", res.status, res.statusText);
+    throw new Error("Failed to fetch Spotify data");
+  };
   return res.json();
 }

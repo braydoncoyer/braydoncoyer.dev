@@ -12,7 +12,7 @@ import { ChangelogBento } from "./components/ChangelogBento";
 import { fetchAndSortBlogPosts } from "./lib/utils";
 import { SpeakingBento } from "./components/SpeakingBento";
 import { CommunityWallBento } from "./components/CommunityWallBento";
-import { CurrentlyPlaying } from "./components/CurrentlyPlaying";
+import { CurrentlyPlayingBento } from "./components/CurrentlyPlayingBento";
 
 export default async function Home() {
   const allPublishedBlogPosts = await fetchAndSortBlogPosts();
@@ -96,34 +96,7 @@ export default async function Home() {
           <div>
             <HorizontalLine />
             <div className="grid grid-cols-1 md:grid-cols-12 gap-2 grid-rows-[14]">
-              <div className="p-6 rounded-2xl col-span-5 row-span-6 h-[220px] border border-border-primary flex flex-col bg-gradient-to-tl hover:from-violet-100 hover:to-white hover:to-50% transition-all duration-200 group">
-                <div className="grid grid-cols-2 gap-8 content-center">
-                  <div className="flex flex-col">
-                    <div className="flex-grow">
-                      <h2 className="text-base font-semibold mb-4">
-                        Learn more about me
-                      </h2>
-                      <p className="text-text-secondary leading-6">
-                        I'm Braydon - an experienced Frontend Developer...
-                      </p>
-                    </div>
-                    {/* <Button
-                label="Read more about me"
-                clicked={() => {
-                  console.log("Clicked");
-                }}
-              /> */}
-                  </div>
-                  <div className="relative flex-shrink-0 justify-self-center">
-                    <ShadowBox width={160} height={160}></ShadowBox>
-                    <img
-                      className="w-[160px] h-auto max-h-full rounded-lg object-cover absolute top-2 left-1 rotate-[8deg] group-hover:rotate-[5deg] group-hover:top-1 group-hover:left-0 transition-all shadow"
-                      src="/braydon_headshot_1.jpeg"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </div>
+              <CurrentlyPlayingBento />
 
               <div className="p-6 rounded-2xl col-span-7 row-span-8 h-[300px] border border-border-primary flex flex-col bg-gradient-to-tl hover:from-violet-100 hover:to-white hover:to-50% transition-all duration-200 group relative">
                 <div className="grid grid-cols-2 gap-8 content-center">
@@ -630,7 +603,7 @@ export default async function Home() {
           <NewsletterSignUp />
         </section>
         <section>
-          <CurrentlyPlaying />
+          <CurrentlyPlayingBento />
         </section>
       </div>
     </section>
