@@ -3,17 +3,15 @@ import { PageTitle } from "app/components/PageTitle";
 import { SectionTitlePill } from "app/components/SectionTitlePill";
 import { BgGradient } from "app/components/BgGradient";
 
-type BlogLayoutProps = {
-  children: ReactNode;
-  title: string;
-  sectionTitle?: string;
-};
-
 export default function BlogLayout({
   children,
   title,
   sectionTitle,
-}: BlogLayoutProps) {
+}: Readonly<{
+  children: ReactNode;
+  title: string;
+  sectionTitle?: string;
+}>) {
   return (
     <div className="space-y-[80px] mt-[100px] w-full">
       <svg
