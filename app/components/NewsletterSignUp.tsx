@@ -139,9 +139,9 @@ export function NewsletterSignUp({
                 width="501"
                 height="503"
                 filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
+                colorInterpolationFilters="sRGB"
               >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feBlend
                   mode="normal"
                   in="SourceGraphic"
@@ -180,8 +180,8 @@ export function NewsletterSignUp({
                 y2="501"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stop-color="#4B4B4F" />
-                <stop offset="1" stop-color="#3C3C3F" stop-opacity="0" />
+                <stop stopColor="#4B4B4F" />
+                <stop offset="1" stopColor="#3C3C3F" stopOpacity="0" />
               </linearGradient>
               <linearGradient
                 id="paint1_linear_185_3161"
@@ -191,8 +191,8 @@ export function NewsletterSignUp({
                 y2="418.249"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stop-color="#4B4B4F" />
-                <stop offset="1" stop-color="#3C3C3F" />
+                <stop stopColor="#4B4B4F" />
+                <stop offset="1" stopColor="#3C3C3F" />
               </linearGradient>
             </defs>
           </svg>
@@ -242,9 +242,9 @@ export function NewsletterSignUp({
               width="24"
               height="9.5"
               filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
+              colorInterpolationFilters="sRGB"
             >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
               <feBlend
                 mode="normal"
                 in="SourceGraphic"

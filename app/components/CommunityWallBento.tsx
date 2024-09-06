@@ -15,7 +15,7 @@ export function CommunityWallBento() {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <g clip-path="url(#clip0_1_2784)">
+          <g clipPath="url(#clip0_1_2784)">
             <g filter="url(#filter0_d_1_2784)">
               <g filter="url(#filter1_i_1_2784)">
                 <rect
@@ -29,7 +29,7 @@ export function CommunityWallBento() {
                 />
               </g>
               <g opacity="0.75">
-                <g clip-path="url(#clip1_1_2784)">
+                <g clipPath="url(#clip1_1_2784)">
                   <rect
                     width="125.899"
                     height="124.298"
@@ -149,9 +149,9 @@ export function CommunityWallBento() {
               width="165.451"
               height="188.558"
               filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
+              colorInterpolationFilters="sRGB"
             >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
               <feColorMatrix
                 in="SourceAlpha"
                 type="matrix"
@@ -183,9 +183,9 @@ export function CommunityWallBento() {
               width="157.451"
               height="182.058"
               filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
+              colorInterpolationFilters="sRGB"
             >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
               <feBlend
                 mode="normal"
                 in="SourceGraphic"
@@ -223,9 +223,9 @@ export function CommunityWallBento() {
               width="190.04"
               height="190.04"
               filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
+              colorInterpolationFilters="sRGB"
             >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
               <feBlend
                 mode="normal"
                 in="SourceGraphic"
@@ -244,9 +244,9 @@ export function CommunityWallBento() {
               width="205.646"
               height="205.645"
               filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
+              colorInterpolationFilters="sRGB"
             >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
               <feBlend
                 mode="normal"
                 in="SourceGraphic"
@@ -265,9 +265,9 @@ export function CommunityWallBento() {
               width="231.267"
               height="231.266"
               filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
+              colorInterpolationFilters="sRGB"
             >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
               <feBlend
                 mode="normal"
                 in="SourceGraphic"
@@ -286,9 +286,9 @@ export function CommunityWallBento() {
               width="155.296"
               height="151.225"
               filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
+              colorInterpolationFilters="sRGB"
             >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
               <feBlend
                 mode="normal"
                 in="SourceGraphic"
@@ -307,9 +307,9 @@ export function CommunityWallBento() {
               width="217.902"
               height="217.902"
               filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
+              colorInterpolationFilters="sRGB"
             >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
               <feBlend
                 mode="normal"
                 in="SourceGraphic"
@@ -358,7 +358,7 @@ export function CommunityWallBento() {
               />
             </g>
             <g opacity="0.75">
-              <g clip-path="url(#clip0_1_2773)">
+              <g clipPath="url(#clip0_1_2773)">
                 <rect
                   width="125.899"
                   height="124.298"
@@ -431,9 +431,9 @@ export function CommunityWallBento() {
               width="221.451"
               height="244.558"
               filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
+              colorInterpolationFilters="sRGB"
             >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
               <feColorMatrix
                 in="SourceAlpha"
                 type="matrix"
@@ -483,9 +483,9 @@ export function CommunityWallBento() {
               width="157.451"
               height="182.058"
               filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
+              colorInterpolationFilters="sRGB"
             >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
               <feBlend
                 mode="normal"
                 in="SourceGraphic"
@@ -524,8 +524,8 @@ export function CommunityWallBento() {
               y2="120.596"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#FFD2ED" />
-              <stop offset="1" stop-color="#C691FF" />
+              <stop stopColor="#FFD2ED" />
+              <stop offset="1" stopColor="#C691FF" />
             </linearGradient>
             <clipPath id="clip0_1_2773">
               <rect

@@ -29,7 +29,7 @@ export default function ToolboxPage() {
               cy="14.5"
               r="11.5"
               stroke="#EDEEF2"
-              stroke-width="6"
+              strokeWidth="6"
             />
           </g>
           <defs>
@@ -40,9 +40,9 @@ export default function ToolboxPage() {
               width="29"
               height="30.5"
               filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
+              colorInterpolationFilters="sRGB"
             >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
               <feBlend
                 mode="normal"
                 in="SourceGraphic"
@@ -79,9 +79,9 @@ export default function ToolboxPage() {
       <span className="absolute right-4 top-14">
         <BgSectionTag width={250} tagType={TagType.TOOLBOX} />
       </span>
-      <span className="absolute left-36">
+      {/* <span className="absolute left-36">
         <BgGradient />
-      </span>
+      </span> */}
       <div className="space-y-[80px] relative">
         <div className="pt-[90px] max-w-2xl mx-auto">
           <PageTitle title="Hardware and software I keep in my toolbox." />
@@ -106,11 +106,11 @@ export default function ToolboxPage() {
             >
               <g filter="url(#filter0_i_185_3011)">
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M2.73721e-07 22.9537C2.86893e-07 24.0583 0.900245 24.9403 1.99645 25.076C8.91996 25.9331 14.1015 31.1905 15.0193 37.4613C15.1793 38.5542 16.06 39.4548 17.1645 39.4548L38.1645 39.4548C39.2691 39.4548 40.1699 38.5582 40.1144 37.455C39.0853 16.9813 22.338 0.99127 1.99962 0.00227915C0.896353 -0.0513691 1.01271e-08 0.849178 2.3299e-08 1.95375L2.73721e-07 22.9537Z"
                   fill="#EDEEF0"
-                  fill-opacity="0.5"
+                  fillOpacity="0.5"
                 />
               </g>
               <defs>
@@ -121,9 +121,9 @@ export default function ToolboxPage() {
                   width="40.1167"
                   height="40.9548"
                   filterUnits="userSpaceOnUse"
-                  color-interpolation-filters="sRGB"
+                  colorInterpolationFilters="sRGB"
                 >
-                  <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <feFlood floodOpacity="0" result="BackgroundImageFix" />
                   <feBlend
                     mode="normal"
                     in="SourceGraphic"
@@ -272,9 +272,9 @@ export default function ToolboxPage() {
                     width="24"
                     height="8.5"
                     filterUnits="userSpaceOnUse"
-                    color-interpolation-filters="sRGB"
+                    colorInterpolationFilters="sRGB"
                   >
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feBlend
                       mode="normal"
                       in="SourceGraphic"

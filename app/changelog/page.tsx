@@ -45,11 +45,11 @@ export default async function ChangelogPage() {
         />
         <g filter="url(#filter1_i_38_2862)">
           <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             d="M90 246.954C90 248.058 90.9002 248.94 91.9964 249.076C98.92 249.933 104.102 255.19 105.019 261.461C105.179 262.554 106.06 263.455 107.165 263.455L128.165 263.455C129.269 263.455 130.17 262.558 130.114 261.455C129.085 240.981 112.338 224.991 91.9996 224.002C90.8964 223.949 90 224.849 90 225.954L90 246.954Z"
             fill="#EDEEF0"
-            fill-opacity="0.5"
+            fillOpacity="0.5"
           />
         </g>
         <g opacity="0.5" filter="url(#filter2_i_38_2862)">
@@ -58,7 +58,7 @@ export default async function ChangelogPage() {
             cy="233.5"
             r="11.5"
             stroke="#EDEEF2"
-            stroke-width="6"
+            strokeWidth="6"
           />
         </g>
         <defs>
@@ -69,9 +69,9 @@ export default async function ChangelogPage() {
             width="24"
             height="9.5"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feBlend
               mode="normal"
               in="SourceGraphic"
@@ -104,9 +104,9 @@ export default async function ChangelogPage() {
             width="40.1168"
             height="40.9548"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feBlend
               mode="normal"
               in="SourceGraphic"
@@ -139,9 +139,9 @@ export default async function ChangelogPage() {
             width="29"
             height="30.5"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feBlend
               mode="normal"
               in="SourceGraphic"

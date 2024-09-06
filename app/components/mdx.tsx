@@ -2,6 +2,7 @@ import React from "react";
 import * as runtime from "react/jsx-runtime";
 import { highlight } from "sugar-high";
 import { HorizontalLine } from "./HorizontalLine";
+import Link from "next/link";
 
 interface MDXProps {
   code: string;
@@ -115,7 +116,7 @@ function ConsCard({ title, cons }) {
                 fill="currentColor"
                 className="w-4 h-4 text-red-500"
               >
-                <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+                <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
               </svg>
             </div>
             <span>{con}</span>
@@ -172,6 +173,18 @@ function createHeading(level) {
 }
 
 function paragraph({ children }) {
+  // Check if children contains any block-level elements
+  const hasBlockElements = React.Children.toArray(children).some(
+    (child) =>
+      React.isValidElement(child) && /^(div|p|ul|ol|h[1-6])$/i.test(child.type)
+  );
+
+  // If there are block-level elements, render without wrapping p tag
+  if (hasBlockElements) {
+    return <>{children}</>;
+  }
+
+  // Otherwise, wrap in a p tag as before
   return (
     <p className="text-base text-text-secondary mb-8 leading-7">{children}</p>
   );
@@ -179,34 +192,28 @@ function paragraph({ children }) {
 
 function IdeaQuote({ children }) {
   return (
-    <div>
-      <div>
-        <p>IdeaQuote</p>
-        {children}
-      </div>
-    </div>
+    <blockquote className="idea-quote mb-8">
+      <p className="font-bold">Idea</p>
+      {children}
+    </blockquote>
   );
 }
 
 function InfoQuote({ children }) {
   return (
-    <div>
-      <div>
-        <p>InfoQuote</p>
-        {children}
-      </div>
-    </div>
+    <blockquote className="info-quote mb-8">
+      <p className="font-bold">Info</p>
+      {children}
+    </blockquote>
   );
 }
 
 function ThoughtQuote({ children }) {
   return (
-    <div>
-      <div>
-        <p>ThoughtQuote</p>
-        {children}
-      </div>
-    </div>
+    <blockquote className="thought-quote mb-8">
+      <p className="font-bold">Thought</p>
+      {children}
+    </blockquote>
   );
 }
 

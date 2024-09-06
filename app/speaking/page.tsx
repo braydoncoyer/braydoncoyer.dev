@@ -113,14 +113,11 @@ const presentationList: PresentationList = {
 export default function SpeakingPage() {
   return (
     <div className="relative">
-      <span className="absolute left-36">
-        <BgGradient />
-      </span>
       <div className="space-y-[80px] relative">
         <span className="absolute -right-[120px] top-[260px] z-10">
           <BgSectionTag tagType={TagType.SECTION} />
         </span>
-        <div className="pt-[90px]">
+        <div>
           <PageTitle title="I present on web development at conferences globally and across the web." />
         </div>
         <span className="absolute top-40 inset-x-0">
@@ -182,9 +179,9 @@ export default function SpeakingPage() {
                   width="24"
                   height="8.5"
                   filterUnits="userSpaceOnUse"
-                  color-interpolation-filters="sRGB"
+                  colorInterpolationFilters="sRGB"
                 >
-                  <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <feFlood floodOpacity="0" result="BackgroundImageFix" />
                   <feBlend
                     mode="normal"
                     in="SourceGraphic"
@@ -235,9 +232,9 @@ export default function SpeakingPage() {
                         <path
                           d="M4 4L4.00002 1000"
                           stroke="#D6DADE"
-                          stroke-opacity="0.24"
-                          stroke-width="8"
-                          stroke-linecap="round"
+                          strokeOpacity="0.24"
+                          strokeWidth="8"
+                          strokeLinecap="round"
                         />
                       </g>
                       <defs>
@@ -247,10 +244,10 @@ export default function SpeakingPage() {
                           x="0"
                           y="0"
                           filterUnits="userSpaceOnUse"
-                          color-interpolation-filters="sRGB"
+                          colorInterpolationFilters="sRGB"
                         >
                           <feFlood
-                            flood-opacity="0"
+                            floodOpacity="0"
                             result="BackgroundImageFix"
                           />
                           <feBlend
@@ -360,7 +357,7 @@ export default function SpeakingPage() {
                         cy="14.5"
                         r="11.5"
                         stroke="#EDEEF2"
-                        stroke-width="6"
+                        strokeWidth="6"
                       />
                     </g>
                     <defs>
@@ -371,12 +368,9 @@ export default function SpeakingPage() {
                         width="29"
                         height="30.5"
                         filterUnits="userSpaceOnUse"
-                        color-interpolation-filters="sRGB"
+                        colorInterpolationFilters="sRGB"
                       >
-                        <feFlood
-                          flood-opacity="0"
-                          result="BackgroundImageFix"
-                        />
+                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
                         <feBlend
                           mode="normal"
                           in="SourceGraphic"
@@ -481,9 +475,9 @@ export default function SpeakingPage() {
                 width="24"
                 height="9.5"
                 filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
+                colorInterpolationFilters="sRGB"
               >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feBlend
                   mode="normal"
                   in="SourceGraphic"

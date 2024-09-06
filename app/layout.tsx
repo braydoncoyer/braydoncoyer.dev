@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "app/components/Navbar";
 import { siteMetadata } from "app/data/siteMetadata";
 import { Footer } from "./components/Footer";
+import { BgGradient } from "./components/BgGradient";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,7 +32,10 @@ export default function RootLayout({
           <Navbar />
           <div className="grid grid-cols-[32px_1fr_32px]">
             <div className="column border-r border-border-primary/50"></div>
-            <div className="col-span-1">{children}</div>
+            <div className="col-span-1 relative">
+              <BgGradient />
+              {children}
+            </div>
             <div className=" column border-l border-border-primary/50"></div>
           </div>
           <Footer />

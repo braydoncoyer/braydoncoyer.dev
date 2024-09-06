@@ -72,7 +72,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
   return (
     <article>
-      <svg
+      {/* <svg
         className="absolute top-[65px] w-full inset-x-0 left-1/2 transform -translate-x-1/2 pointer-events-none"
         height="auto"
         width="auto"
@@ -85,11 +85,11 @@ export default async function BlogPage({ params }: BlogPageProps) {
         />
         <g filter="url(#filter0_i_0_1)">
           <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             d="M97 202.954C97 204.058 97.9002 204.94 98.9964 205.076C105.92 205.933 111.102 211.19 112.019 217.461C112.179 218.554 113.06 219.455 114.165 219.455L135.165 219.455C136.269 219.455 137.17 218.558 137.114 217.455C136.085 196.981 119.338 180.991 98.9996 180.002C97.8964 179.949 97 180.849 97 181.954L97 202.954Z"
             fill="#EDEEF0"
-            fill-opacity="0.5"
+            fillOpacity="0.5"
           />
         </g>
         <g opacity="0.5" filter="url(#filter1_i_0_1)">
@@ -98,7 +98,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
             cy="269.5"
             r="11.5"
             stroke="#EDEEF2"
-            stroke-width="6"
+            strokeWidth="6"
           />
         </g>
         <g filter="url(#filter2_i_0_1)">
@@ -115,9 +115,9 @@ export default async function BlogPage({ params }: BlogPageProps) {
             width="40.1168"
             height="40.9548"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feBlend
               mode="normal"
               in="SourceGraphic"
@@ -150,9 +150,9 @@ export default async function BlogPage({ params }: BlogPageProps) {
             width="29"
             height="30.5"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feBlend
               mode="normal"
               in="SourceGraphic"
@@ -185,9 +185,9 @@ export default async function BlogPage({ params }: BlogPageProps) {
             width="70"
             height="9.5"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feBlend
               mode="normal"
               in="SourceGraphic"
@@ -220,9 +220,9 @@ export default async function BlogPage({ params }: BlogPageProps) {
             width="35"
             height="9.5"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feBlend
               mode="normal"
               in="SourceGraphic"
@@ -249,13 +249,13 @@ export default async function BlogPage({ params }: BlogPageProps) {
             />
           </filter>
         </defs>
-      </svg>
+      </svg> */}
       <div className="max-w-4xl mx-auto">
-        <div className="mb-7 pt-[90px]">
+        <div className="mb-7">
           <SectionTitlePill title={post.categories[0]} />
         </div>
         <div className="text-center mb-12 space-y-4">
-          <h1 className="font-semibold text-4xl tracking-tighter text-balance leading-9 text-text-primary">
+          <h1 className="font-semibold text-5xl tracking-tighter text-balance leading-[55px] text-text-primary">
             {post.title}
           </h1>
           <p className="text-base text-text-secondary">

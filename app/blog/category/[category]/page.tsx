@@ -33,8 +33,6 @@ export default async function CategoryPage({
         <PageTitle title={`Articles about ${category || "Unknown Category"}`} />
       </div>
 
-      <SectionTitlePill title={`${category || "Unknown Category"} Articles`} />
-
       {/* Categories */}
       <div>
         <ul className="flex gap-3 justify-center">
