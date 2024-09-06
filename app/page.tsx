@@ -30,13 +30,14 @@ export default async function Home() {
         <section>
           <div className="relative">
             <h1 className="mx-auto text-text-primary text-center text-balance font-bold text-6xl leading-[72px] tracking-tighter max-w-2xl">
-              Hey, I'm Braydon! <br /> Welcome to my corner of the internet!
+              Hey, I&apos;m Braydon! <br /> Welcome to my corner of the
+              internet!
             </h1>
             <div className="mt-8 text-center text-balance">
               <p className="text-text-secondary">
-                I'm an experienced front-end developer with a passion for design
-                and a knack for tinkering. Web development is my playground,
-                where I push boundaries and chase new horizons.
+                I&apos;m an experienced front-end developer with a passion for
+                design and a knack for tinkering. Web development is my
+                playground, where I push boundaries and chase new horizons.
               </p>
             </div>
           </div>
@@ -88,7 +89,7 @@ export default async function Home() {
           <div className="space-y-4">
             <SectionTitlePill title="About" />
             <h2 className="mx-auto text-text-primary text-center text-balance font-semibold text-3xl tracking-tighter max-w-lg leading-10">
-              Here's what sets me apart and makes me unique
+              Here&apos;s what sets me apart and makes me unique
             </h2>
           </div>
 

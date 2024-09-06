@@ -2,6 +2,7 @@ import React from "react";
 import * as runtime from "react/jsx-runtime";
 import { highlight } from "sugar-high";
 import { HorizontalLine } from "./HorizontalLine";
+import Link from "next/link";
 
 interface MDXProps {
   code: string;
