@@ -3,11 +3,11 @@ import { PageTitle } from "app/components/PageTitle";
 import { SectionTitlePill } from "app/components/SectionTitlePill";
 import { BgGradient } from "app/components/BgGradient";
 
-interface BlogLayoutProps {
+type BlogLayoutProps = {
   children: ReactNode;
   title: string;
   sectionTitle?: string;
-}
+};
 
 export default function BlogLayout({
   children,
