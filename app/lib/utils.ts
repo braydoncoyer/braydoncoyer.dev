@@ -63,6 +63,20 @@ export function fetchAndSortBlogPosts(): Blog[] {
   }
 }
 
+export async function fetchAndSortChangelogPosts(): Promise<Changelog[]> {
+  try {
+    const allChangelogItems = await changelogItems;
+    return allChangelogItems
+      .filter((item) => !item.draft)
+      .sort(
+        (a, b) =>
+          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+      );
+  } catch (error) {
+    notFound();
+  }
+}
+
 export function extractUniqueBlogCategories(posts: Blog[]): Set<string> {
   const categories = new Set<string>();
   posts.forEach((post) => {

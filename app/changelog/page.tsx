@@ -5,23 +5,10 @@ import { notFound } from "next/navigation";
 import { HorizontalLine } from "../components/HorizontalLine";
 import { MDXContent } from "@/app/components/mdx";
 import { NewsletterSignUp } from "../components/NewsletterSignUp";
-
-export async function fetchAndSortPosts(): Promise<Changelog[]> {
-  try {
-    const allChangelogItems = await changelogItems;
-    return allChangelogItems
-      .filter((item) => !item.draft)
-      .sort(
-        (a, b) =>
-          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-      );
-  } catch (error) {
-    notFound();
-  }
-}
+import { fetchAndSortChangelogPosts } from "../lib/utils";
 
 export default async function ChangelogPage() {
-  const allChangelogItems = await fetchAndSortPosts();
+  const allChangelogItems = await fetchAndSortChangelogPosts();
 
   return (
     <div className="space-y-[80px] mt-[100px] w-full">
