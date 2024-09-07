@@ -31,10 +31,13 @@ export default {
           colors: "text-secondary",
         },
       },
+      animation: {
+        "spin-slow": "spin 7s linear infinite",
+      },
     },
   },
   future: {
     hoverOnlyWhenSupported: true,
   },
-  plugins: [typography, require('tailwindcss-full-bleed')],
+  plugins: [typography, require("tailwindcss-full-bleed")],
 } satisfies Config;

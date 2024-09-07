@@ -7,6 +7,7 @@ import {
 import { NewsletterSignUp } from "@/app/components/NewsletterSignUp";
 import { BlogPostList } from "@/app/components/BlogPostList";
 import Link from "next/link";
+import { BlogPageHeader } from "@/app/components/BlogPageHeader";
 
 export default async function CategoryPage({
   params,
@@ -29,9 +30,9 @@ export default async function CategoryPage({
 
   return (
     <div className="space-y-[80px] mt-[100px] w-full">
-      <div className="max-w-2xl mx-auto">
-        <PageTitle title={`Articles about ${category || "Unknown Category"}`} />
-      </div>
+      <BlogPageHeader
+        title={`Articles about ${category || "Unknown Category"}`}
+      />
 
       {/* Categories */}
       <div>

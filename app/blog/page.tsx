@@ -9,6 +9,7 @@ import {
 } from "../lib/utils";
 import { NewsletterSignUp } from "../components/NewsletterSignUp";
 import { BlogPostList } from "../components/BlogPostList";
+import { BlogPageHeader } from "../components/BlogPageHeader";
 
 export default async function BlogPage() {
   const allPublishedBlogPosts = await fetchAndSortBlogPosts();
@@ -17,16 +18,17 @@ export default async function BlogPage() {
   const categories = extractUniqueBlogCategories(allPublishedBlogPosts);
 
   return (
-    <BlogLayout
-      title="Insightful and helpful content curated for you."
-      sectionTitle="Featured"
-    >
+    <BlogLayout>
+      <BlogPageHeader
+        title="Insightful and helpful content curated for you"
+        sectionTitle="Featured"
+      />
       <div className="space-y-[80px] mt-[100px] w-full">
         <ul className="grid grid-cols-3 gap-2">
           <HorizontalLine />
           {featuredArticles.length > 0 ? (
             <>
-              {featuredArticles.slice(0, 3).map((post, index) => {
+              {featuredArticles.slice(0, 3).map((post) => {
                 return (
                   <li
                     key={post.slug}
