@@ -176,7 +176,9 @@ function paragraph({ children }) {
   // Check if children contains any block-level elements
   const hasBlockElements = React.Children.toArray(children).some(
     (child) =>
-      React.isValidElement(child) && /^(div|p|ul|ol|h[1-6])$/i.test(child.type)
+      React.isValidElement(child) &&
+      typeof child.type === "string" &&
+      /^(div|p|ul|ol|h[1-6])$/i.test(child.type)
   );
 
   // If there are block-level elements, render without wrapping p tag
