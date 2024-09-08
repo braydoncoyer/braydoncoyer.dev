@@ -1,9 +1,5 @@
-import Image from "next/image";
 import { BgGradient } from "./components/BgGradient";
-import { BgSectionTag, TagType } from "./components/BgSectionTag";
 import { HorizontalLine } from "./components/HorizontalLine";
-import { Button } from "./components/Button";
-import { PageTitle } from "./components/PageTitle";
 import { ShadowBox } from "./components/ShadowBox";
 import { SectionTitlePill } from "./components/SectionTitlePill";
 import Link from "next/link";
@@ -13,6 +9,7 @@ import { fetchAndSortBlogPosts } from "./lib/utils";
 import { SpeakingBento } from "./components/SpeakingBento";
 import { CommunityWallBento } from "./components/CommunityWallBento";
 import { CurrentlyPlayingBento } from "./components/CurrentlyPlayingBento";
+import { CalendarBento } from "./components/CalendarBento";
 
 export default async function Home() {
   const allPublishedBlogPosts = await fetchAndSortBlogPosts();
@@ -22,10 +19,6 @@ export default async function Home() {
     <section>
       <HeaderPattern />
       <ProfilePicture />
-      {/* <span className="absolute left-1/2 -translate-x-1/2 top-0">
-        <BgGradient />
-      </span> */}
-
       <div className="space-y-16">
         <section>
           <div className="relative">
@@ -504,12 +497,7 @@ export default async function Home() {
                 </p>
               </div>
 
-              <div className="p-6 rounded-2xl col-span-7 row-span-5 h-[220px] border border-border-primary bg-white">
-                <h2 className="text-xl font-semibold mb-4">Connections</h2>
-                <p>
-                  An ever-evolving list of people I have met and wish to meet.
-                </p>
-              </div>
+              <CalendarBento />
             </div>
             <HorizontalLine />
           </div>
