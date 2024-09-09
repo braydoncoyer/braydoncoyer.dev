@@ -72,7 +72,14 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
   return (
     <article>
-      <div className="max-w-4xl mx-auto">
+      <div className="absolute top-0 left-0 w-full h-[300px] -z-10">
+        <img
+          className="w-full h-full object-cover absolute inset-0"
+          src={`/blog/${post.imageName}`}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#F7F7F8] via-[#F7F7F8]/7 to-transparent"></div>
+      </div>
+      <div className="max-w-4xl mx-auto z-10">
         <div className="mb-7">
           <SectionTitlePill title={post.categories[0]} />
         </div>
@@ -90,7 +97,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
           </div>
         </div>
         {/* Article Banner Image */}
-        <div className="relative">
+        {/* <div className="relative">
           <span className="absolute top-0 inset-x-0">
             <HorizontalLine />
           </span>
@@ -114,7 +121,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
           <span className="absolute bottom-0 inset-x-0">
             <HorizontalLine />
           </span>
-        </div>
+        </div> */}
 
         <MDXContent code={post.code} />
       </div>
