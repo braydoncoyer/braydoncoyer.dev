@@ -1,10 +1,8 @@
 import { ReactNode } from "react";
-import { PageTitle } from "app/components/PageTitle";
-import { SectionTitlePill } from "app/components/SectionTitlePill";
 
 export default function BlogLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="space-y-[80px] mt-[100px] w-full">
+    <div>
       <svg
         className="absolute top-5 w-full inset-x-0 left-1/2 transform -translate-x-1/2 pointer-events-none"
         viewBox="0 0 1440 379"

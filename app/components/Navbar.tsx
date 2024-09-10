@@ -40,11 +40,11 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="w-full flex items-center justify-between h-16 px-4 bleed-border-b bleed-border-primary/50">
-      <div className="w-2 h-px bg-slate-400 absolute right-[-4.25px] top-[63px] z-10"></div>
-      <div className="w-px h-2 bg-slate-400 absolute right-[-1px] top-[59.6px] z-10"></div>
+      <span className="w-2 h-px bg-slate-400 absolute right-[-4.25px] top-[63px] z-10"></span>
+      <span className="w-px h-2 bg-slate-400 absolute right-[-1px] top-[59.6px] z-10"></span>
 
-      <div className="w-2 h-px bg-slate-400 absolute left-[-4.50px] top-[63px] z-10"></div>
-      <div className="w-px h-2 bg-slate-400 absolute left-[-1px] top-[59.6px] z-10"></div>
+      <span className="w-2 h-px bg-slate-400 absolute left-[-4.50px] top-[63px] z-10"></span>
+      <span className="w-px h-2 bg-slate-400 absolute left-[-1px] top-[59.6px] z-10"></span>
       <div className="w-[104px]">
         {/* Need to match the size of the social bar so that everything correctly centers */}
         <Link href="/">

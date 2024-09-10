@@ -10,6 +10,7 @@ import { SpeakingBento } from "./components/SpeakingBento";
 import { CommunityWallBento } from "./components/CommunityWallBento";
 import { CurrentlyPlayingBento } from "./components/CurrentlyPlayingBento";
 import { CalendarBento } from "./components/CalendarBento";
+import { FeaturedBlogCard } from "./components/FeaturedBlogCard";
 
 export default async function Home() {
   const allPublishedBlogPosts = await fetchAndSortBlogPosts();
@@ -520,38 +521,15 @@ export default async function Home() {
               <HorizontalLine />
               {featuredArticles.length > 0 ? (
                 <>
-                  {featuredArticles.slice(0, 3).map((post) => {
-                    return (
-                      <li
-                        key={post.slug}
-                        className="flex flex-col h-full border border-border-primary rounded-3xl p-2 bg-gradient-to-t from-white to-transparent"
-                      >
-                        <Link
-                          key={post.slug}
-                          className="flex flex-col rounded-2xl h-full"
-                          href={`/blog/${post.slug}`}
-                        >
-                          <img
-                            src={
-                              `/blog/${post.imageName}` ||
-                              "https://image.isu.pub/190918160849-8822f46c79620853d26cb2aad7175839/jpg/page_1_thumb_large.jpg"
-                            }
-                            alt=""
-                            className="rounded-2xl h-[225px] object-cover"
-                          />
-                          <div className="my-4 flex flex-col w-full space-y-4 px-4 flex-grow">
-                            <h2 className="tracking-tight text-slate-900 text-lg font-bold leading-7">
-                              {post.title}
-                            </h2>
-                            <p className="leading-6 text-text-secondary flex-grow">
-                              {post.summary}
-                            </p>
-                            {/* Ensure other elements here are properly aligned */}
-                          </div>
-                        </Link>
-                      </li>
-                    );
-                  })}
+                  {featuredArticles.slice(0, 3).map((post) => (
+                    <FeaturedBlogCard
+                      key={post.slug}
+                      slug={post.slug}
+                      imageName={post.imageName}
+                      title={post.title}
+                      summary={post.summary}
+                    />
+                  ))}
                 </>
               ) : (
                 <p>Nothing to see here yet...</p>
@@ -584,9 +562,6 @@ export default async function Home() {
         {/* Newsletter Section */}
         <section>
           <NewsletterSignUp />
-        </section>
-        <section>
-          <CurrentlyPlayingBento />
         </section>
       </div>
     </section>
