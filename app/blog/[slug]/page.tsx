@@ -164,23 +164,23 @@ export default async function BlogPage({ params }: BlogPageProps) {
                 <path
                   d="M5.75 4.75H18.25M6.75 4.75H17.25V6C17.25 8.89949 14.8995 11.25 12 11.25C9.10051 11.25 6.75 8.8995 6.75 6V4.75Z"
                   stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 ></path>
                 <path
                   d="M9 10H15"
                   stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 ></path>
                 <path
                   d="M5.75 19.25H18.25M6.75 19.25H17.25V17.5C17.25 14.6005 14.8995 12.25 12 12.25C9.10051 12.25 6.75 14.6005 6.75 17.5V19.25Z"
                   stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 ></path>
               </svg>
               <p>9 min read</p>
@@ -213,13 +213,6 @@ export default async function BlogPage({ params }: BlogPageProps) {
           </div>
         </div>
       </div>
-      {/* <div className="absolute top-0 left-0 w-full h-[300px] -z-10">
-        <img
-          className="w-full h-full object-cover absolute inset-0"
-          src={`/blog/${post.imageName}`}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#F7F7F8] via-[#F7F7F8]/7 to-transparent"></div>
-      </div> */}
       <div className="max-w-3xl mx-auto z-10">
         <svg
           className="absolute bottom-10 right-[-100px]"
