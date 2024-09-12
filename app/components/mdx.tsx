@@ -37,17 +37,24 @@ function CustomLink(props) {
 
   if (href.startsWith("/")) {
     return (
-      <Link href={href} {...props}>
+      <Link className="text-underline text-indigo-500" href={href} {...props}>
         {props.children}
       </Link>
     );
   }
 
   if (href.startsWith("#")) {
-    return <a {...props} />;
+    return <a className="text-underline text-red-300" {...props} />;
   }
 
-  return <a target="_blank" rel="noopener noreferrer" {...props} />;
+  return (
+    <a
+      className="text-underline text-emerald-300"
+      target="_blank"
+      rel="noopener noreferrer"
+      {...props}
+    />
+  );
 }
 
 function RoundedImage(props) {
@@ -192,30 +199,44 @@ function paragraph({ children }) {
   );
 }
 
+function FullWidthCallout({ children }) {
+  return (
+    <blockquote className="full-bleed mb-8 py-8 border-y border-border-primary opacity-75 [background-image:linear-gradient(45deg,theme(colors.border-primary)_12.50%,transparent_12.50%,transparent_50%,theme(colors.border-primary)_50%,theme(colors.border-primary)_62.50%,transparent_62.50%,transparent_100%)] [background-size:5px_5px]">
+      <div className="p-6 blog-container mx-auto bg-bg-primary">{children}</div>
+    </blockquote>
+  );
+}
+
 function IdeaQuote({ children }) {
   return (
-    <blockquote className="idea-quote mb-8">
-      <p className="font-bold">Idea</p>
+    <FullWidthCallout>
+      <span className="inline-flex uppercase items-center rounded-full bg-yellow-50 px-4 py-1 text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20 mb-2">
+        Idea
+      </span>
       {children}
-    </blockquote>
+    </FullWidthCallout>
   );
 }
 
 function InfoQuote({ children }) {
   return (
-    <blockquote className="info-quote mb-8">
-      <p className="font-bold">Info</p>
+    <FullWidthCallout>
+      <span className="inline-flex uppercase items-center rounded-full bg-blue-50 px-4 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10 mb-2">
+        Info
+      </span>
       {children}
-    </blockquote>
+    </FullWidthCallout>
   );
 }
 
 function ThoughtQuote({ children }) {
   return (
-    <blockquote className="thought-quote mb-8">
-      <p className="font-bold">Thought</p>
+    <FullWidthCallout>
+      <span className="inline-flex uppercase items-center rounded-full bg-indigo-50 px-4 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10 mb-2">
+        Thought
+      </span>
       {children}
-    </blockquote>
+    </FullWidthCallout>
   );
 }
 

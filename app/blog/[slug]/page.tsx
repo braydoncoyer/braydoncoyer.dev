@@ -213,7 +213,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
           </div>
         </div>
       </div>
-      <div className="max-w-3xl mx-auto z-10">
+      <div className="wrapper z-10">
         <svg
           className="absolute bottom-10 right-[-100px]"
           width="24"

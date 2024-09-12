@@ -2,12 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-.column {
-  background-image: repeating-linear-gradient(
-    -45deg,
-    transparent 12px 19px,
-    #d6dade80 19px 20px
-  );
+.wrapper {
+  display: grid;
+  grid-template-columns:
+    1fr
+    min(65ch, 100%)
+    1fr;
+}
+
+.blog-container {
+  width: min(65ch, 100%);
+}
+
+.wrapper > * {
+  grid-column: 2;
+}
+
+.full-bleed {
+  width: 100%;
+  grid-column: 1 / 4;
 }
 
 ::selection {
@@ -154,4 +167,8 @@ table {
 
 .title {
   text-wrap: balance;
+}
+
+blockquote p {
+  margin: 0 !important;
 }

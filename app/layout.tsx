@@ -31,12 +31,12 @@ export default function RootLayout({
         >
           <Navbar />
           <div className="grid grid-cols-[32px_1fr_32px]">
-            <div className="column border-r border-border-primary/50"></div>
+            <div className="w-full border-r border-border-primary opacity-75 [background-image:linear-gradient(45deg,theme(colors.border-primary)_12.50%,transparent_12.50%,transparent_50%,theme(colors.border-primary)_50%,theme(colors.border-primary)_62.50%,transparent_62.50%,transparent_100%)] [background-size:5px_5px]"></div>
             <div className="col-span-1 relative">
               <BgGradient />
               {children}
             </div>
-            <div className=" column border-l border-border-primary/50"></div>
+            <div className="w-full border-l border-border-primary opacity-75 [background-image:linear-gradient(45deg,theme(colors.border-primary)_12.50%,transparent_12.50%,transparent_50%,theme(colors.border-primary)_50%,theme(colors.border-primary)_62.50%,transparent_62.50%,transparent_100%)] [background-size:5px_5px]"></div>
           </div>
           <Footer />
         </main>
