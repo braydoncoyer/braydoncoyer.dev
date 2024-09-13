@@ -35,6 +35,8 @@ export const formatDate = (date: string) => {
   return `${fullDate} (${formattedDate})`;
 };
 
+export const cx = (...classes) => classes.filter(Boolean).join(" ");
+
 export function fetchAndSortChangelogEntrees(): Changelog[] {
   try {
     const allChangelogItems = changelogItems;

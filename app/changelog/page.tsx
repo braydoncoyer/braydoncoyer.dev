@@ -157,13 +157,12 @@ export default async function ChangelogPage() {
         </defs>
       </svg>
 
-      <ul className="flex flex-col gap-6">
+      <ul className="flex flex-col">
         {allChangelogItems.length > 0 ? (
           <>
             {allChangelogItems.map((post, index) => {
               return (
                 <li key={post.slug}>
-                  <HorizontalLine />
                   <div
                     key={post.slug}
                     className="grid grid-cols-12 rounded-2xl h-full py-8"
@@ -194,7 +193,7 @@ export default async function ChangelogPage() {
                       <MDXContent code={post.code} />
                     </div>
                   </div>
-                  <HorizontalLine />
+                  <div className="h-6 w-full border-y border-border-primary [background-image:linear-gradient(45deg,theme(colors.border-primary)_12.50%,transparent_12.50%,transparent_50%,theme(colors.border-primary)_50%,theme(colors.border-primary)_62.50%,transparent_62.50%,transparent_100%)] [background-size:5px_5px]"></div>
                 </li>
               );
             })}

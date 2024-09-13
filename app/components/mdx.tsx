@@ -3,6 +3,7 @@ import * as runtime from "react/jsx-runtime";
 import { highlight } from "sugar-high";
 import { HorizontalLine } from "./HorizontalLine";
 import Link from "next/link";
+import { BgGradient } from "./BgGradient";
 
 interface MDXProps {
   code: string;
@@ -201,7 +202,10 @@ function paragraph({ children }) {
 
 function FullWidthCallout({ children }) {
   return (
-    <blockquote className="full-bleed mb-8 py-8 border-y border-border-primary opacity-75 [background-image:linear-gradient(45deg,theme(colors.border-primary)_12.50%,transparent_12.50%,transparent_50%,theme(colors.border-primary)_50%,theme(colors.border-primary)_62.50%,transparent_62.50%,transparent_100%)] [background-size:5px_5px]">
+    <blockquote className="full-bleed relative overflow-clip mb-8 py-8 border-y border-border-primary [background-image:linear-gradient(45deg,theme(colors.border-primary)_12.50%,transparent_12.50%,transparent_50%,theme(colors.border-primary)_50%,theme(colors.border-primary)_62.50%,transparent_62.50%,transparent_100%)] [background-size:5px_5px]">
+      <span className="-z-10 absolute -top-1/2 left-1/2 -translate-x-1/2 opacity-50">
+        <BgGradient />
+      </span>
       <div className="p-6 blog-container mx-auto bg-bg-primary">{children}</div>
     </blockquote>
   );
@@ -210,7 +214,7 @@ function FullWidthCallout({ children }) {
 function IdeaQuote({ children }) {
   return (
     <FullWidthCallout>
-      <span className="inline-flex uppercase items-center rounded-full bg-yellow-50 px-4 py-1 text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20 mb-2">
+      <span className="inline-flex tracking-widest uppercase items-center rounded-full bg-yellow-50 px-4 py-1 text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20 mb-3.5">
         Idea
       </span>
       {children}
@@ -221,7 +225,7 @@ function IdeaQuote({ children }) {
 function InfoQuote({ children }) {
   return (
     <FullWidthCallout>
-      <span className="inline-flex uppercase items-center rounded-full bg-blue-50 px-4 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10 mb-2">
+      <span className="inline-flex uppercase items-center rounded-full bg-blue-50 px-4 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10 mb-3.5">
         Info
       </span>
       {children}
@@ -232,7 +236,7 @@ function InfoQuote({ children }) {
 function ThoughtQuote({ children }) {
   return (
     <FullWidthCallout>
-      <span className="inline-flex uppercase items-center rounded-full bg-indigo-50 px-4 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10 mb-2">
+      <span className="inline-flex uppercase items-center rounded-full bg-indigo-50 px-4 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10 mb-3.5">
         Thought
       </span>
       {children}

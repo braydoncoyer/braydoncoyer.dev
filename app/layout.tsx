@@ -5,6 +5,7 @@ import Navbar from "app/components/Navbar";
 import { siteMetadata } from "app/data/siteMetadata";
 import { Footer } from "./components/Footer";
 import { BgGradient } from "./components/BgGradient";
+import { cx } from "./lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,8 +13,6 @@ export const metadata: Metadata = {
   title: siteMetadata.title,
   description: siteMetadata.description,
 };
-
-const cx = (...classes) => classes.filter(Boolean).join(" ");
 
 export default function RootLayout({
   children,

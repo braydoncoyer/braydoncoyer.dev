@@ -2,7 +2,6 @@ import { BgGradient } from "./components/BgGradient";
 import { HorizontalLine } from "./components/HorizontalLine";
 import { ShadowBox } from "./components/ShadowBox";
 import { SectionTitlePill } from "./components/SectionTitlePill";
-import Link from "next/link";
 import { NewsletterSignUp } from "./components/NewsletterSignUp";
 import { ChangelogBento } from "./components/ChangelogBento";
 import { fetchAndSortBlogPosts } from "./lib/utils";
