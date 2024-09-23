@@ -19,7 +19,7 @@ export function Footer() {
                     alt="Braydon's Logo"
                   />
                 </Link>
-                <p className="w-60 text-gray-500">
+                <p className="w-60 text-gray-500 leading-6">
                   I’m Braydon - a senior front-end developer, blogger and public
                   speaker. Thanks for checking out my site!
                 </p>
@@ -35,7 +35,7 @@ export function Footer() {
           <div className="flex flex-col text-xs w-full py-6 items-end pl-16">
             <div className="flex w-full justify-between">
               <div>
-                <span className="text-base font-semibold mb-4 inline-block  text-text-primary">
+                <span className="text-base font-medium mb-4 inline-block  text-text-primary">
                   General
                 </span>
                 <ul className="text-xs space-y-2 text-gray-500">
@@ -54,7 +54,7 @@ export function Footer() {
                 </ul>
               </div>
               <div>
-                <span className="text-base font-semibold mb-4 inline-block  text-text-primary">
+                <span className="text-base font-medium mb-4 inline-block  text-text-primary">
                   Specifics
                 </span>
                 <ul className="text-xs space-y-2 text-gray-500">
@@ -76,7 +76,7 @@ export function Footer() {
                 </ul>
               </div>
               <div>
-                <span className="text-base font-semibold mb-4 inline-block text-text-primary">
+                <span className="text-base font-medium mb-4 inline-block text-text-primary">
                   Extra
                 </span>
                 <ul className="text-xs space-y-2 text-gray-500">

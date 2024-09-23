@@ -14,13 +14,12 @@ interface BlogPostListProps {
 
 export function BlogPostList({ posts }: BlogPostListProps) {
   return (
-    <ul className="flex flex-col gap-6">
+    <ul className="flex flex-col">
       {posts.length > 0 ? (
         <>
           {posts.map((post) => (
             <Link key={post.slug} href={`/blog/${post.slug}`}>
               <article>
-                <HorizontalLine />
                 <div className="grid grid-cols-12 rounded-2xl h-full py-4 group">
                   <div className="space-y-2 col-span-2 col-start-1 p-4">
                     <div className="font-medium leading-none text-sm">
@@ -37,10 +36,9 @@ export function BlogPostList({ posts }: BlogPostListProps) {
                     </div>
                     <p className="text-sm text-text-secondary">1,352 reads</p>
                   </div>
-                  <div className="flex flex-col w-full flex-grow col-span-8 col-start-5 col-end-12 p-4 relative group">
-                    <span className="absolute -inset-y-1.5 -inset-x-2 md:-inset-y-2 md:-inset-x-3 sm:rounded-2xl group-hover:bg-indigo-50/50 rounded-xl"></span>
+                  <div className="flex flex-col w-full flex-grow col-span-8 col-start-5 col-end-12 p-4 group">
                     <div className="z-10">
-                      <h2 className="tracking-tight text-slate-900 text-lg font-bold leading-none mb-3">
+                      <h2 className="tracking-tight text-slate-900 text-lg font-medium leading-none mb-3">
                         {post.title}
                       </h2>
                       <p className="leading-6 text-text-secondary flex-grow text-base mb-3">
@@ -68,7 +66,7 @@ export function BlogPostList({ posts }: BlogPostListProps) {
                     </div>
                   </div>
                 </div>
-                <HorizontalLine />
+                <div className="h-6 w-full border-y border-border-primary [background-image:linear-gradient(45deg,theme(colors.border-primary)_12.50%,transparent_12.50%,transparent_50%,theme(colors.border-primary)_50%,theme(colors.border-primary)_62.50%,transparent_62.50%,transparent_100%)] [background-size:5px_5px]"></div>
               </article>
             </Link>
           ))}

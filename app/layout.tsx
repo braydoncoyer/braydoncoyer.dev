@@ -21,13 +21,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="bg-bg-primary">
-      <body className="max-w-7xl md:flex-row lg:mx-auto">
-        <main
-          className={cx(
-            "border-x border-border-primary/50 relative",
-            inter.className
-          )}
-        >
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://api.fontshare.com/css?f%5B%5D=switzer@400,500,600,700&amp;display=swap"
+        />
+      </head>
+      <body className="max-w-7xl md:flex-row lg:mx-auto font-sans">
+        <main className={cx("border-x border-border-primary/50 relative")}>
           <Navbar />
           <div className="grid grid-cols-[32px_1fr_32px]">
             <div className="w-full border-r border-border-primary opacity-75 [background-image:linear-gradient(45deg,theme(colors.border-primary)_12.50%,transparent_12.50%,transparent_50%,theme(colors.border-primary)_50%,theme(colors.border-primary)_62.50%,transparent_62.50%,transparent_100%)] [background-size:5px_5px]"></div>

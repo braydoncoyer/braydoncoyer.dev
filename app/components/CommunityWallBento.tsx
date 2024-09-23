@@ -541,7 +541,7 @@ export function CommunityWallBento() {
 
         <div className="grid grid-cols-2 grid-rows-2 gap-8 h-full items-end">
           <div className="col-1 row-start-2">
-            <h2 className="font-semibold mb-2">Community Wall</h2>
+            <h2 className="font-medium mb-2">Community Wall</h2>
             <p className="text-text-secondary">
               Let everyone know you were here
             </p>

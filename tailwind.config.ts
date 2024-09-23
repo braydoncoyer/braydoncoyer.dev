@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-geist-sans)"],
+        sans: "Switzer, system-ui, sans-serif",
         mono: ["var(--font-geist-mono)"],
       },
       colors: {
@@ -39,5 +39,5 @@ export default {
   future: {
     hoverOnlyWhenSupported: true,
   },
-  plugins: [typography, require("tailwindcss-full-bleed")],
+  plugins: [],
 } satisfies Config;

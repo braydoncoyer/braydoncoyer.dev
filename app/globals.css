@@ -88,6 +88,20 @@ html {
   @apply overflow-x-auto border rounded-lg bg-neutral-50 dark:bg-emerald-900 border-neutral-200 dark:border-green-900;
 } */
 
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee linear infinite;
+  animation-play-state: paused;
+}
+
 .prose code {
   @apply px-1 py-0.5 rounded-lg;
 }

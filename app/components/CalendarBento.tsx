@@ -62,7 +62,7 @@ export function CalendarBento() {
     <div className="p-6 rounded-2xl col-span-7 row-span-5 h-[220px] border border-border-primary flex flex-col hover:bg-white group overflow-clip">
       <div className="grid grid-cols-12 gap-5 h-full">
         <div className="col-span-3 text-balance">
-          <h2 className="text-base font-semibold mb-4">Book a call with me</h2>
+          <h2 className="text-base font-medium mb-4">Book a call with me</h2>
           <p className="mb-2 text-text-secondary">
             I&apos;d love to chat even if there&apos;s no agenda!
           </p>
@@ -85,7 +85,7 @@ export function CalendarBento() {
                     <span className="text-text-tertiary">{currentYear}</span>
                   </p>
                   <span className="h-1 w-1 rounded-full bg-text-tertiary">
-                    ⋅
+                    &nbsp;
                   </span>
                   <p className="text-text-tertiary text-xs">30 min call</p>
                 </div>

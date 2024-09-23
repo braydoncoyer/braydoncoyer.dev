@@ -3,7 +3,7 @@ type PageTitleProps = {
 };
 export function PageTitle({ title }: PageTitleProps) {
   return (
-    <h1 className="mx-auto text-text-primary text-center text-balance font-bold text-6xl leading-[72px] tracking-tighter">
+    <h1 className="mx-auto text-text-primary text-center text-balance font-medium text-6xl leading-[64px] tracking-tighter">
       {title}
     </h1>
   );

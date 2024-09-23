@@ -25,10 +25,10 @@ export function FeaturedBlogCard({
           className="rounded-2xl h-[225px] object-cover"
         />
         <div className="my-4 flex flex-col w-full space-y-4 px-4 flex-grow text-balance">
-          <h2 className="tracking-tight text-slate-900 text-lg font-bold leading-7">
+          <h2 className="tracking-tight text-slate-900 text-lg font-medium leading-7">
             {title}
           </h2>
-          <p className="leading-6 text-text-secondary flex-grow">{summary}</p>
+          <p className="leading-7 text-text-secondary flex-grow">{summary}</p>
         </div>
       </Link>
     </li>

@@ -70,8 +70,8 @@ export function NewsletterSignUp({
           <div className="w-2 h-px bg-zinc-300 absolute left-[44.5px] right-0 top-[48px] z-20"></div>
           <div className="w-px h-2 bg-zinc-300 absolute left-[48px] right-0 top-[44.5px] z-20"></div>
 
-          <h2 className="text-3xl text-slate-50 mb-4 semibold">{title}</h2>
-          <p className="text-gray-300 text-base w-[336px] mb-12">
+          <h2 className="text-3xl text-slate-50 mb-4 font-medium">{title}</h2>
+          <p className="text-gray-300 text-base w-[336px] mb-12 leading-8">
             {description}
           </p>
           <div className="space-y-4 mb-4">
@@ -90,7 +90,7 @@ export function NewsletterSignUp({
               />
               <button
                 type="submit"
-                className="absolute w-28 bg-white hover:bg-slate-200 rounded-full h-[42px] right-1 top-1 text-xs text-slate-900"
+                className="absolute w-28 bg-white hover:bg-slate-200 rounded-full h-[42px] right-1 top-1 text-sm text-slate-900"
                 disabled={isLoading}
               >
                 {isLoading ? "Loading..." : buttonText}

@@ -25,7 +25,7 @@ export function SpeakingBento() {
         <div className="w-full h-full bg-gradient-to-t from-white absolute inset-0"></div>
         <div className="grid grid-cols-2 grid-rows-2 gap-8 h-full items-end z-10">
           <div className="col-1 row-start-2">
-            <h2 className="font-semibold mb-2">Speaking</h2>
+            <h2 className="font-medium mb-2">Speaking</h2>
             <p className="text-text-secondary">
               Talks, podcasts, tutorials and more
             </p>

@@ -10,6 +10,9 @@ import { CommunityWallBento } from "./components/CommunityWallBento";
 import { CurrentlyPlayingBento } from "./components/CurrentlyPlayingBento";
 import { CalendarBento } from "./components/CalendarBento";
 import { FeaturedBlogCard } from "./components/FeaturedBlogCard";
+import { ToolboxBento } from "./components/ToolboxBento";
+import ConnectionsBento from "./components/ConnectionsBento";
+import { ProfilePicture } from "./components/ProfilePicture";
 
 export default async function Home() {
   const allPublishedBlogPosts = await fetchAndSortBlogPosts();
@@ -22,12 +25,12 @@ export default async function Home() {
       <div className="space-y-16">
         <section>
           <div className="relative">
-            <h1 className="mx-auto text-text-primary text-center text-balance font-bold text-6xl leading-[72px] tracking-tighter max-w-2xl">
+            <h1 className="mx-auto text-text-primary text-center text-balance font-medium text-6xl leading-[64px] tracking-tighter max-w-2xl">
               Hey, I&apos;m Braydon! <br /> Welcome to my corner of the
               internet!
             </h1>
             <div className="mt-8 text-center text-balance">
-              <p className="text-text-secondary">
+              <p className="text-text-secondary leading-8">
                 I&apos;m an experienced front-end developer with a passion for
                 design and a knack for tinkering. Web development is my
                 playground, where I push boundaries and chase new horizons.
@@ -81,7 +84,7 @@ export default async function Home() {
         <section className="space-y-16">
           <div className="space-y-4">
             <SectionTitlePill title="About" />
-            <h2 className="mx-auto text-text-primary text-center text-balance font-semibold text-3xl tracking-tighter max-w-lg leading-10">
+            <h2 className="mx-auto text-text-primary text-center text-balance font-medium text-3xl tracking-tight max-w-lg leading-10">
               Here&apos;s what sets me apart and makes me unique
             </h2>
           </div>
@@ -92,410 +95,9 @@ export default async function Home() {
             <div className="grid grid-cols-1 md:grid-cols-12 gap-2 grid-rows-[14]">
               <CurrentlyPlayingBento />
 
-              <div className="p-6 rounded-2xl col-span-7 row-span-8 h-[300px] border border-border-primary flex flex-col bg-gradient-to-tl hover:from-violet-100 hover:to-white hover:to-50% transition-all duration-200 group relative">
-                <div className="grid grid-cols-2 gap-8 content-center">
-                  <svg
-                    className="absolute w-full h-full inset-0"
-                    width="637"
-                    height="300"
-                    viewBox="0 0 637 300"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g filter="url(#filter0_i_79_2925)">
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M-24.5145 182.237C5.95935 212.744 55.3673 212.744 85.8412 182.237C116.315 151.731 116.315 102.269 85.8412 71.7626C55.3673 41.2558 5.95935 41.2558 -24.5145 71.7626L-79.6924 127L-24.5145 182.237ZM-30.1683 66.1027L-85.3462 121.34L-91 127L-85.3462 132.66L-30.1683 187.897C3.42807 221.53 57.8986 221.53 91.495 187.897C102.486 176.894 109.882 163.654 113.681 149.641C117.481 163.654 124.876 176.894 135.868 187.897C169.464 221.53 223.935 221.53 257.531 187.897L312.709 132.66L318.363 127L312.709 121.34L257.531 66.1027C223.935 32.47 169.464 32.47 135.868 66.1027C124.876 77.106 117.481 90.3459 113.681 104.359C109.882 90.3459 102.486 77.106 91.495 66.1027C57.8986 32.47 3.42807 32.47 -30.1683 66.1027ZM251.877 182.237C221.403 212.744 171.995 212.744 141.522 182.237C111.048 151.731 111.048 102.269 141.522 71.7626C171.995 41.2558 221.403 41.2558 251.877 71.7626L307.055 127L251.877 182.237ZM385.118 182.237C415.592 212.744 465 212.744 495.474 182.237C525.948 151.731 525.948 102.269 495.474 71.7626C465 41.2558 415.592 41.2558 385.118 71.7626L329.94 127L385.118 182.237ZM379.464 66.1027L324.287 121.34L318.633 127L324.287 132.66L379.464 187.897C413.061 221.53 467.531 221.53 501.128 187.897C511.657 177.356 518.887 164.762 522.816 151.403C526.746 164.762 533.975 177.356 544.505 187.897C578.101 221.53 632.572 221.53 666.168 187.897L721.346 132.66L727 127L721.346 121.34L666.168 66.1027C632.572 32.47 578.101 32.47 544.505 66.1027C533.975 76.6438 526.746 89.2376 522.816 102.597C518.887 89.2376 511.657 76.6438 501.128 66.1027C467.531 32.47 413.061 32.47 379.464 66.1027ZM550.159 182.237C580.633 212.744 630.041 212.744 660.514 182.237L715.692 127L660.514 71.7626C630.041 41.2558 580.633 41.2558 550.159 71.7626C519.685 102.269 519.685 151.731 550.159 182.237Z"
-                        fill="#D6DADE"
-                        fillOpacity="0.24"
-                      />
-                    </g>
-                    <mask id="path-2-inside-1_79_2925" fill="white">
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M530.935 69.0924C527.084 74.0776 518.876 74.0706 515.032 69.0796C512.556 65.8646 509.846 62.772 506.902 59.8249C469.842 22.725 409.756 22.725 372.696 59.8249L362.342 70.1907C359.509 73.0262 355.041 73.2786 351.611 71.2065C341.932 65.3606 330.605 62 318.5 62C306.004 62 294.338 65.581 284.458 71.7802C281.014 73.9409 276.466 73.7264 273.593 70.8501L262.942 60.1878C226.082 23.2884 166.321 23.2884 129.462 60.1878C126.674 62.9787 124.097 65.9007 121.73 68.9341C117.882 73.8675 109.765 73.8619 105.928 68.9195C88.6146 46.6164 61.5624 32.266 31.1621 32.266C-21.1017 32.266 -63.4698 74.6799 -63.4698 127C-63.4698 179.32 -21.1017 221.734 31.1621 221.734C61.5623 221.734 88.6146 207.384 105.928 185.081C109.765 180.138 117.882 180.133 121.73 185.066C124.097 188.099 126.674 191.021 129.462 193.812C166.321 230.712 226.082 230.712 262.942 193.812L273.593 183.15C276.466 180.274 281.014 180.059 284.458 182.22C294.338 188.419 306.004 192 318.5 192C330.605 192 341.932 188.639 351.611 182.793C355.041 180.721 359.509 180.974 362.342 183.809L372.696 194.175C409.756 231.275 469.842 231.275 506.902 194.175C509.846 191.228 512.556 188.135 515.032 184.92C518.876 179.929 527.084 179.922 530.935 184.908C548.243 207.309 575.356 221.734 605.835 221.734C658.099 221.734 700.467 179.32 700.467 127C700.467 74.6799 658.099 32.266 605.835 32.266C575.356 32.266 548.243 46.6906 530.935 69.0924Z"
-                      />
-                    </mask>
-                    <path
-                      d="M506.902 59.8249L506.194 60.5316L506.194 60.5316L506.902 59.8249ZM372.696 59.8249L371.989 59.1181L371.989 59.1181L372.696 59.8249ZM262.942 60.1878L262.234 60.8945L262.234 60.8945L262.942 60.1878ZM129.462 60.1878L128.754 59.4811L128.754 59.4811L129.462 60.1878ZM129.462 193.812L128.754 194.519L128.754 194.519L129.462 193.812ZM262.942 193.812L262.234 193.106L262.234 193.106L262.942 193.812ZM372.696 194.175L371.989 194.882L371.989 194.882L372.696 194.175ZM506.902 194.175L507.609 194.882L507.609 194.882L506.902 194.175ZM515.032 184.92L515.824 185.531L515.032 184.92ZM530.935 184.908L531.726 184.296L530.935 184.908ZM351.611 182.793L352.128 183.649L351.611 182.793ZM362.342 183.809L363.049 183.103L362.342 183.809ZM273.593 183.15L272.885 182.443L273.593 183.15ZM284.458 182.22L283.926 183.067L284.458 182.22ZM515.032 69.0796L515.824 68.4694L515.032 69.0796ZM530.935 69.0924L531.726 69.7038L530.935 69.0924ZM105.928 185.081L105.138 184.467L105.928 185.081ZM121.73 185.066L122.519 184.451L121.73 185.066ZM284.458 71.7802L284.989 72.6273L284.458 71.7802ZM273.593 70.8501L274.3 70.1433L273.593 70.8501ZM105.928 68.9195L106.718 68.3063L105.928 68.9195ZM362.342 70.1907L363.049 70.8975L362.342 70.1907ZM351.611 71.2065L352.128 70.3506L351.611 71.2065ZM507.609 59.1181C510.583 62.0957 513.322 65.2206 515.824 68.4694L514.24 69.6898C511.79 66.5087 509.108 63.4483 506.194 60.5316L507.609 59.1181ZM371.989 59.1181C409.439 21.6273 470.159 21.6273 507.609 59.1181L506.194 60.5316C469.525 23.8228 410.073 23.8228 373.404 60.5316L371.989 59.1181ZM361.634 69.484L371.989 59.1181L373.404 60.5316L363.049 70.8975L361.634 69.484ZM318.5 61C330.793 61 342.297 64.4132 352.128 70.3506L351.094 72.0625C341.566 66.308 330.418 63 318.5 63V61ZM283.926 70.9331C293.961 64.6371 305.81 61 318.5 61V63C306.198 63 294.715 66.5249 284.989 72.6273L283.926 70.9331ZM263.649 59.4811L274.3 70.1433L272.885 71.5568L262.234 60.8945L263.649 59.4811ZM128.754 59.4811C166.004 22.1906 226.399 22.1906 263.649 59.4811L262.234 60.8945C225.766 24.3861 166.638 24.3861 130.169 60.8945L128.754 59.4811ZM120.942 68.3191C123.333 65.2536 125.937 62.3009 128.754 59.4811L130.169 60.8945C127.41 63.6565 124.86 66.5479 122.519 69.5492L120.942 68.3191ZM31.1621 31.266C61.8846 31.266 89.2234 45.7699 106.718 68.3063L105.138 69.5327C88.0058 47.4629 61.2402 33.266 31.1621 33.266V31.266ZM-64.4698 127C-64.4698 74.1286 -21.655 31.266 31.1621 31.266V33.266C-20.5484 33.266 -62.4698 75.2311 -62.4698 127H-64.4698ZM31.1621 222.734C-21.655 222.734 -64.4698 179.871 -64.4698 127H-62.4698C-62.4698 178.769 -20.5484 220.734 31.1621 220.734V222.734ZM106.718 185.694C89.2234 208.23 61.8846 222.734 31.1621 222.734V220.734C61.2401 220.734 88.0058 206.537 105.138 184.467L106.718 185.694ZM128.754 194.519C125.937 191.699 123.333 188.746 120.942 185.681L122.519 184.451C124.86 187.452 127.41 190.344 130.169 193.106L128.754 194.519ZM263.649 194.519C226.399 231.809 166.004 231.809 128.754 194.519L130.169 193.106C166.638 229.614 225.766 229.614 262.234 193.106L263.649 194.519ZM274.3 183.857L263.649 194.519L262.234 193.106L272.885 182.443L274.3 183.857ZM318.5 193C305.81 193 293.961 189.363 283.926 183.067L284.989 181.373C294.715 187.475 306.198 191 318.5 191V193ZM352.128 183.649C342.297 189.587 330.793 193 318.5 193V191C330.418 191 341.566 187.692 351.094 181.937L352.128 183.649ZM371.989 194.882L361.634 184.516L363.049 183.103L373.404 193.468L371.989 194.882ZM507.609 194.882C470.159 232.373 409.439 232.373 371.989 194.882L373.404 193.468C410.073 230.177 469.525 230.177 506.194 193.468L507.609 194.882ZM515.824 185.531C513.322 188.779 510.583 191.904 507.609 194.882L506.194 193.468C509.108 190.552 511.79 187.491 514.24 184.31L515.824 185.531ZM605.835 222.734C575.033 222.734 547.632 208.155 530.144 185.519L531.726 184.296C548.853 206.464 575.679 220.734 605.835 220.734V222.734ZM701.467 127C701.467 179.871 658.652 222.734 605.835 222.734V220.734C657.545 220.734 699.467 178.769 699.467 127H701.467ZM605.835 31.266C658.652 31.266 701.467 74.1286 701.467 127H699.467C699.467 75.2311 657.545 33.266 605.835 33.266V31.266ZM530.144 68.481C547.632 45.8448 575.033 31.266 605.835 31.266V33.266C575.679 33.266 548.853 47.5363 531.726 69.7038L530.144 68.481ZM514.24 184.31C518.484 178.8 527.474 178.792 531.726 184.296L530.144 185.519C526.693 181.053 519.269 181.059 515.824 185.531L514.24 184.31ZM351.094 181.937C354.862 179.662 359.847 179.897 363.049 183.103L361.634 184.516C359.171 182.051 355.221 181.781 352.128 183.649L351.094 181.937ZM272.885 182.443C276.134 179.191 281.207 179 284.989 181.373L283.926 183.067C280.82 181.118 276.798 181.356 274.3 183.857L272.885 182.443ZM515.824 68.4694C519.269 72.9413 526.693 72.9475 530.144 68.481L531.726 69.7038C527.474 75.2078 518.484 75.1999 514.24 69.6898L515.824 68.4694ZM105.138 184.467C109.375 179.009 118.27 179.004 122.519 184.451L120.942 185.681C117.494 181.261 110.154 181.267 106.718 185.694L105.138 184.467ZM284.989 72.6273C281.207 75.0001 276.134 74.8087 272.885 71.5568L274.3 70.1433C276.798 72.6441 280.82 72.8818 283.926 70.9331L284.989 72.6273ZM122.519 69.5492C118.27 74.996 109.375 74.9906 105.138 69.5327L106.718 68.3063C110.154 72.7332 117.494 72.739 120.942 68.3191L122.519 69.5492ZM363.049 70.8975C359.847 74.103 354.862 74.3383 351.094 72.0625L352.128 70.3506C355.221 72.2188 359.171 71.9494 361.634 69.484L363.049 70.8975Z"
-                      fill="#A5AEB8"
-                      fillOpacity="0.12"
-                      mask="url(#path-2-inside-1_79_2925)"
-                    />
-                    <g filter="url(#filter1_i_79_2925)">
-                      <rect
-                        x="261"
-                        y="70"
-                        width="116"
-                        height="116"
-                        rx="58"
-                        fill="#F7F7F8"
-                      />
-                      <rect
-                        x="261.75"
-                        y="70.75"
-                        width="114.5"
-                        height="114.5"
-                        rx="57.25"
-                        stroke="#D6DADE"
-                        strokeOpacity="0.5"
-                        strokeWidth="1.5"
-                      />
-                    </g>
-                    <rect
-                      x="269"
-                      y="78"
-                      width="100"
-                      height="100"
-                      rx="50"
-                      fill="url(#pattern0_79_2925)"
-                    />
-                    <ellipse
-                      cx="239"
-                      cy="56"
-                      rx="24"
-                      ry="24"
-                      transform="rotate(90 239 56)"
-                      fill="#EDEEF0"
-                    />
-                    <g clipPath="url(#clip0_79_2925)">
-                      <path
-                        d="M219 56C219 44.9543 227.954 36 239 36V36C250.046 36 259 44.9543 259 56V56C259 67.0457 250.046 76 239 76V76C227.954 76 219 67.0457 219 56V56Z"
-                        fill="url(#pattern1_79_2925)"
-                      />
-                      <path
-                        d="M219 56C219 44.9543 227.954 36 239 36V36C250.046 36 259 44.9543 259 56V56C259 67.0457 250.046 76 239 76V76C227.954 76 219 67.0457 219 56V56Z"
-                        fill="url(#pattern2_79_2925)"
-                      />
-                    </g>
-                    <path
-                      d="M214.5 56C214.5 69.531 225.469 80.5 239 80.5C252.531 80.5 263.5 69.531 263.5 56C263.5 42.469 252.531 31.5 239 31.5C225.469 31.5 214.5 42.469 214.5 56Z"
-                      stroke="#A5AEB8"
-                      strokeOpacity="0.24"
-                    />
-                    <ellipse
-                      cx="172"
-                      cy="202"
-                      rx="24"
-                      ry="24"
-                      transform="rotate(90 172 202)"
-                      fill="#EDEEF0"
-                    />
-                    <g clipPath="url(#clip1_79_2925)">
-                      <path
-                        d="M152 202C152 190.954 160.954 182 172 182V182C183.046 182 192 190.954 192 202V202C192 213.046 183.046 222 172 222V222C160.954 222 152 213.046 152 202V202Z"
-                        fill="url(#pattern3_79_2925)"
-                      />
-                      <path
-                        d="M152 202C152 190.954 160.954 182 172 182V182C183.046 182 192 190.954 192 202V202C192 213.046 183.046 222 172 222V222C160.954 222 152 213.046 152 202V202Z"
-                        fill="url(#pattern4_79_2925)"
-                      />
-                    </g>
-                    <path
-                      d="M147.5 202C147.5 215.531 158.469 226.5 172 226.5C185.531 226.5 196.5 215.531 196.5 202C196.5 188.469 185.531 177.5 172 177.5C158.469 177.5 147.5 188.469 147.5 202Z"
-                      stroke="#A5AEB8"
-                      strokeOpacity="0.24"
-                    />
-                    <ellipse
-                      cx="74"
-                      cy="56"
-                      rx="20"
-                      ry="20"
-                      transform="rotate(90 74 56)"
-                      fill="#EDEEF0"
-                    />
-                    <path
-                      d="M58 56C58 47.1634 65.1634 40 74 40V40C82.8366 40 90 47.1634 90 56V56C90 64.8366 82.8366 72 74 72V72C65.1634 72 58 64.8366 58 56V56Z"
-                      fill="url(#pattern5_79_2925)"
-                    />
-                    <path
-                      d="M53.5 56C53.5 67.3218 62.6782 76.5 74 76.5C85.3218 76.5 94.5 67.3218 94.5 56C94.5 44.6782 85.3218 35.5 74 35.5C62.6782 35.5 53.5 44.6782 53.5 56Z"
-                      stroke="#A5AEB8"
-                      strokeOpacity="0.24"
-                    />
-                    <ellipse
-                      cx="551"
-                      cy="68"
-                      rx="20"
-                      ry="20"
-                      transform="rotate(90 551 68)"
-                      fill="#EDEEF0"
-                    />
-                    <g clipPath="url(#clip2_79_2925)">
-                      <path
-                        d="M535 68C535 59.1634 542.163 52 551 52V52C559.837 52 567 59.1634 567 68V68C567 76.8366 559.837 84 551 84V84C542.163 84 535 76.8366 535 68V68Z"
-                        fill="url(#pattern6_79_2925)"
-                      />
-                      <path
-                        d="M535 68C535 59.1634 542.163 52 551 52V52C559.837 52 567 59.1634 567 68V68C567 76.8366 559.837 84 551 84V84C542.163 84 535 76.8366 535 68V68Z"
-                        fill="url(#pattern7_79_2925)"
-                      />
-                    </g>
-                    <path
-                      d="M530.5 68C530.5 79.3218 539.678 88.5 551 88.5C562.322 88.5 571.5 79.3218 571.5 68C571.5 56.6782 562.322 47.5 551 47.5C539.678 47.5 530.5 56.6782 530.5 68Z"
-                      stroke="#A5AEB8"
-                      strokeOpacity="0.24"
-                    />
-                    <ellipse
-                      cx="473"
-                      cy="196"
-                      rx="32"
-                      ry="32"
-                      transform="rotate(90 473 196)"
-                      fill="#EDEEF0"
-                    />
-                    <g clipPath="url(#clip3_79_2925)">
-                      <path
-                        d="M446.333 196C446.333 181.272 458.273 169.333 473 169.333V169.333C487.728 169.333 499.667 181.272 499.667 196V196C499.667 210.728 487.728 222.667 473 222.667V222.667C458.273 222.667 446.333 210.728 446.333 196V196Z"
-                        fill="url(#pattern8_79_2925)"
-                      />
-                      <path
-                        d="M446 196C446 181.088 458.088 169 473 169V169C487.912 169 500 181.088 500 196V196C500 210.912 487.912 223 473 223V223C458.088 223 446 210.912 446 196V196Z"
-                        fill="url(#pattern9_79_2925)"
-                      />
-                    </g>
-                    <path
-                      d="M440.5 196C440.5 213.949 455.051 228.5 473 228.5C490.949 228.5 505.5 213.949 505.5 196C505.5 178.051 490.949 163.5 473 163.5C455.051 163.5 440.5 178.051 440.5 196Z"
-                      stroke="#A5AEB8"
-                      strokeOpacity="0.24"
-                    />
-                    <rect
-                      width="200"
-                      height="300"
-                      fill="url(#paint0_linear_79_2925)"
-                    />
-                    <rect
-                      width="200"
-                      height="300"
-                      transform="matrix(-1 0 0 1 637 0)"
-                      fill="url(#paint1_linear_79_2925)"
-                    />
-                    <defs>
-                      <filter
-                        id="filter0_i_79_2925"
-                        x="-91"
-                        y="40.8782"
-                        width="818"
-                        height="173.744"
-                        filterUnits="userSpaceOnUse"
-                        colorInterpolationFilters="sRGB"
-                      >
-                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                        <feBlend
-                          mode="normal"
-                          in="SourceGraphic"
-                          in2="BackgroundImageFix"
-                          result="shape"
-                        />
-                        <feColorMatrix
-                          in="SourceAlpha"
-                          type="matrix"
-                          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                          result="hardAlpha"
-                        />
-                        <feOffset dy="2" />
-                        <feGaussianBlur stdDeviation="0.75" />
-                        <feComposite
-                          in2="hardAlpha"
-                          operator="arithmetic"
-                          k2="-1"
-                          k3="1"
-                        />
-                        <feColorMatrix
-                          type="matrix"
-                          values="0 0 0 0 0.647059 0 0 0 0 0.682353 0 0 0 0 0.721569 0 0 0 0.32 0"
-                        />
-                        <feBlend
-                          mode="normal"
-                          in2="shape"
-                          result="effect1_innerShadow_79_2925"
-                        />
-                      </filter>
-                      <filter
-                        id="filter1_i_79_2925"
-                        x="261"
-                        y="68"
-                        width="116"
-                        height="118"
-                        filterUnits="userSpaceOnUse"
-                        colorInterpolationFilters="sRGB"
-                      >
-                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                        <feBlend
-                          mode="normal"
-                          in="SourceGraphic"
-                          in2="BackgroundImageFix"
-                          result="shape"
-                        />
-                        <feColorMatrix
-                          in="SourceAlpha"
-                          type="matrix"
-                          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                          result="hardAlpha"
-                        />
-                        <feOffset dy="-2" />
-                        <feGaussianBlur stdDeviation="1" />
-                        <feComposite
-                          in2="hardAlpha"
-                          operator="arithmetic"
-                          k2="-1"
-                          k3="1"
-                        />
-                        <feColorMatrix
-                          type="matrix"
-                          values="0 0 0 0 0.647059 0 0 0 0 0.682353 0 0 0 0 0.721569 0 0 0 0.5 0"
-                        />
-                        <feBlend
-                          mode="normal"
-                          in2="shape"
-                          result="effect1_innerShadow_79_2925"
-                        />
-                      </filter>
-                      <pattern
-                        id="pattern0_79_2925"
-                        patternContentUnits="objectBoundingBox"
-                        width="1"
-                        height="1"
-                      >
-                        <use transform="translate(0.00109985 -0.00194824) scale(0.00277778)" />
-                      </pattern>
-                      <pattern
-                        id="pattern1_79_2925"
-                        patternContentUnits="objectBoundingBox"
-                        width="1"
-                        height="1"
-                      >
-                        <use transform="translate(0 -0.0185185) scale(0.00259259)" />
-                      </pattern>
-                      <pattern
-                        id="pattern2_79_2925"
-                        patternContentUnits="objectBoundingBox"
-                        width="1"
-                        height="1"
-                      >
-                        <use transform="scale(0.0025)" />
-                      </pattern>
-                      <pattern
-                        id="pattern3_79_2925"
-                        patternContentUnits="objectBoundingBox"
-                        width="1"
-                        height="1"
-                      >
-                        <use transform="translate(0 -0.0185185) scale(0.00259259)" />
-                      </pattern>
-                      <pattern
-                        id="pattern4_79_2925"
-                        patternContentUnits="objectBoundingBox"
-                        width="1"
-                        height="1"
-                      >
-                        <use transform="scale(0.0025)" />
-                      </pattern>
-                      <pattern
-                        id="pattern5_79_2925"
-                        patternContentUnits="objectBoundingBox"
-                        width="1"
-                        height="1"
-                      >
-                        <use transform="translate(0 -0.0185185) scale(0.00259259)" />
-                      </pattern>
-                      <pattern
-                        id="pattern6_79_2925"
-                        patternContentUnits="objectBoundingBox"
-                        width="1"
-                        height="1"
-                      >
-                        <use transform="translate(0 -0.0185185) scale(0.00259259)" />
-                      </pattern>
-                      <pattern
-                        id="pattern7_79_2925"
-                        patternContentUnits="objectBoundingBox"
-                        width="1"
-                        height="1"
-                      >
-                        <use transform="scale(0.00250627)" />
-                      </pattern>
-                      <pattern
-                        id="pattern8_79_2925"
-                        patternContentUnits="objectBoundingBox"
-                        width="1"
-                        height="1"
-                      >
-                        <use transform="translate(0 -0.0185185) scale(0.00259259)" />
-                      </pattern>
-                      <pattern
-                        id="pattern9_79_2925"
-                        patternContentUnits="objectBoundingBox"
-                        width="1"
-                        height="1"
-                      >
-                        <use transform="scale(0.00195312)" />
-                      </pattern>
-                      <linearGradient
-                        id="paint0_linear_79_2925"
-                        x1="200"
-                        y1="58.125"
-                        x2="-1.48974e-06"
-                        y2="58.125"
-                        gradientUnits="userSpaceOnUse"
-                      >
-                        <stop stopColor="#F7F7F8" stopOpacity="0" />
-                        <stop offset="1" stopColor="#F7F7F8" />
-                      </linearGradient>
-                      <linearGradient
-                        id="paint1_linear_79_2925"
-                        x1="200"
-                        y1="58.125"
-                        x2="-1.48974e-06"
-                        y2="58.125"
-                        gradientUnits="userSpaceOnUse"
-                      >
-                        <stop stopColor="#F7F7F8" stopOpacity="0" />
-                        <stop offset="1" stopColor="#F7F7F8" />
-                      </linearGradient>
-                      <clipPath id="clip0_79_2925">
-                        <path
-                          d="M219 56C219 44.9543 227.954 36 239 36V36C250.046 36 259 44.9543 259 56V56C259 67.0457 250.046 76 239 76V76C227.954 76 219 67.0457 219 56V56Z"
-                          fill="white"
-                        />
-                      </clipPath>
-                      <clipPath id="clip1_79_2925">
-                        <path
-                          d="M152 202C152 190.954 160.954 182 172 182V182C183.046 182 192 190.954 192 202V202C192 213.046 183.046 222 172 222V222C160.954 222 152 213.046 152 202V202Z"
-                          fill="white"
-                        />
-                      </clipPath>
-                      <clipPath id="clip2_79_2925">
-                        <path
-                          d="M535 68C535 59.1634 542.163 52 551 52V52C559.837 52 567 59.1634 567 68V68C567 76.8366 559.837 84 551 84V84C542.163 84 535 76.8366 535 68V68Z"
-                          fill="white"
-                        />
-                      </clipPath>
-                      <clipPath id="clip3_79_2925">
-                        <path
-                          d="M446.333 196C446.333 181.272 458.273 169.333 473 169.333V169.333C487.728 169.333 499.667 181.272 499.667 196V196C499.667 210.728 487.728 222.667 473 222.667V222.667C458.273 222.667 446.333 210.728 446.333 196V196Z"
-                          fill="white"
-                        />
-                      </clipPath>
-                      <image id="image0_79_2925" width="360" height="540" />
-                      <image id="image1_79_2925" width="400" height="400" />
-                      <image id="image2_79_2925" width="400" height="400" />
-                      <image id="image3_79_2925" width="400" height="400" />
-                      <image id="image4_79_2925" width="399" height="399" />
-                      <image id="image5_79_2925" width="512" height="512" />
-                    </defs>
-                  </svg>
-                </div>
-              </div>
+              <ConnectionsBento />
 
-              <div className="p-6 rounded-2xl col-span-5 row-span-7 h-[300px] border border-border-primary bg-white">
-                <h2 className="text-xl font-semibold mb-4">Connections</h2>
-                <p>
-                  An ever-evolving list of people I have met and wish to meet.
-                </p>
-              </div>
+              <ToolboxBento />
 
               <CalendarBento />
             </div>
@@ -510,7 +112,7 @@ export default async function Home() {
               <BgGradient />
             </span>
             <SectionTitlePill title="Blog" />
-            <h2 className="mx-auto text-text-primary text-center text-balance font-semibold text-3xl tracking-tighter max-w-lg leading-10">
+            <h2 className="mx-auto text-text-primary text-center text-balance font-medium text-3xl tracking-tighter max-w-lg leading-10">
               I like sharing my experiments and knowledge with others
             </h2>
           </div>
@@ -542,7 +144,7 @@ export default async function Home() {
         <section className="space-y-16">
           <div className="space-y-4">
             <SectionTitlePill title="My Site" />
-            <h2 className="mx-auto text-text-primary text-center text-balance font-semibold text-3xl tracking-tighter max-w-lg leading-10">
+            <h2 className="mx-auto text-text-primary text-center text-balance font-medium text-3xl tracking-tighter max-w-lg leading-10">
               My site is a playful sandbox. Explore, experiment, and say hello
             </h2>
           </div>
@@ -802,77 +404,5 @@ function HeaderPattern() {
         </clipPath>
       </defs>
     </svg>
-  );
-}
-
-function ProfilePicture() {
-  return (
-    <div className="relative mt-9">
-      <svg
-        className="mx-auto"
-        width="148"
-        height="148"
-        viewBox="0 0 148 148"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <circle cx="74" cy="74" r="73.5" stroke="#D6DADE" strokeOpacity="0.5" />
-        <g filter="url(#filter0_i_0_1)">
-          <rect x="16" y="16" width="116" height="116" rx="58" fill="#F7F7F8" />
-          <rect
-            x="16.75"
-            y="16.75"
-            width="114.5"
-            height="114.5"
-            rx="57.25"
-            stroke="#D6DADE"
-            strokeOpacity="0.5"
-            strokeWidth="1.5"
-          />
-        </g>
-        <defs>
-          <filter
-            id="filter0_i_0_1"
-            x="16"
-            y="14"
-            width="116"
-            height="118"
-            filterUnits="userSpaceOnUse"
-            colorInterpolationFilters="sRGB"
-          >
-            <feFlood floodOpacity="0" result="BackgroundImageFix" />
-            <feBlend
-              mode="normal"
-              in="SourceGraphic"
-              in2="BackgroundImageFix"
-              result="shape"
-            />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha"
-            />
-            <feOffset dy="-2" />
-            <feGaussianBlur stdDeviation="1" />
-            <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 0.647059 0 0 0 0 0.682353 0 0 0 0 0.721569 0 0 0 0.5 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="shape"
-              result="effect1_innerShadow_0_1"
-            />
-          </filter>
-        </defs>
-      </svg>
-      <img
-        className="h-[100px] w-[100px] rounded-full absolute left-1/2 transform -translate-x-1/2 top-1/2 -translate-y-1/2"
-        src="/braydon_headshot_1.jpeg"
-        alt=""
-      />
-    </div>
   );
 }

@@ -108,10 +108,10 @@ export default async function BlogPage({ params }: BlogPageProps) {
             <span>#{post.categories[0]}</span>
           </div>
           <div className="space-y-4">
-            <h1 className="font-semibold text-5xl tracking-tighter text-balance leading-[55px] text-white">
+            <h1 className="font-medium text-5xl tracking-tight text-balance leading-[64px] text-white">
               {post.title}
             </h1>
-            <p className="text-slate-200 leading-7">{post.summary}</p>
+            <p className="text-slate-200 leading-8">{post.summary}</p>
           </div>
 
           {/* View Count */}

@@ -182,7 +182,7 @@ export default async function ChangelogPage() {
                       </div>
                     </div>
                     <div className="flex flex-col w-full flex-grow col-span-8 col-start-4">
-                      <h2 className="tracking-tight text-slate-900 text-2xl font-semibold leading-none mb-8">
+                      <h2 className="tracking-tight text-slate-900 text-2xl font-medium leading-none mb-8">
                         {post.title}
                       </h2>
                       <img

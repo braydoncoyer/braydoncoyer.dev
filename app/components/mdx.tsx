@@ -166,7 +166,7 @@ function createHeading(level) {
       {
         id: slug,
         className:
-          "text-2xl text-text-primary font-semibold leading-8 mb-6 text-balance",
+          "text-2xl text-text-primary font-medium leading-8 mb-6 text-balance",
       },
       [
         React.createElement("a", {
@@ -196,7 +196,7 @@ function paragraph({ children }) {
 
   // Otherwise, wrap in a p tag as before
   return (
-    <p className="text-base text-text-secondary mb-8 leading-7">{children}</p>
+    <p className="text-base text-text-secondary mb-8 leading-8">{children}</p>
   );
 }
 
@@ -206,7 +206,9 @@ function FullWidthCallout({ children }) {
       <span className="-z-10 absolute -top-1/2 left-1/2 -translate-x-1/2 opacity-50">
         <BgGradient />
       </span>
-      <div className="p-6 blog-container mx-auto bg-bg-primary">{children}</div>
+      <div className="p-6 blog-container mx-auto bg-bg-primary rounded-md">
+        {children}
+      </div>
     </blockquote>
   );
 }
