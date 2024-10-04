@@ -1,6 +1,5 @@
 import { Changelog } from "@/.velite";
-import { fetchAndSortChangelogEntrees } from "../lib/utils";
-import { HorizontalLine } from "./HorizontalLine";
+import { fetchAndSortChangelogEntrees } from "app/lib/utils";
 import Link from "next/link";
 
 export function ChangelogBento() {

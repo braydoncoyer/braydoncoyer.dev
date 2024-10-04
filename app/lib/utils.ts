@@ -35,6 +35,19 @@ export const formatDate = (date: string) => {
   return `${fullDate} (${formattedDate})`;
 };
 
+export const getTimeOfDayGreeting = () => {
+  const now = new Date();
+  const hours = now.getHours();
+  
+  if (hours < 12) {
+    return "Good morning!";
+  } else if (hours < 17) {
+    return "Good afternoon!";
+  } else {
+    return "Good evening!";
+  }
+}
+
 export const cx = (...classes) => classes.filter(Boolean).join(" ");
 
 export function fetchAndSortChangelogEntrees(): Changelog[] {

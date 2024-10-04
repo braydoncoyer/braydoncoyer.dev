@@ -2,7 +2,10 @@ import "server-only";
 
 export type CurrentlyPlaying = {
   albumImageUrl: string;
+  albumName: string;
+  albumId: string;
   artist: string;
+  artistId: string
   isPlaying: boolean;
   songUrl: string;
   title: string;
@@ -45,15 +48,21 @@ export async function getCurrentlyPlaying() {
 
   const song = await response.json();
   const albumImageUrl = song.item.album.images[0].url;
+  const albumName = song.item.album.name;
+  const albumId = song.item.album.id;
   // @ts-ignore
   const artist = song.item.artists.map((_artist) => _artist.name).join(", ");
+  const artistId = song.item.artists[0]?.id || "";
   const isPlaying = song.is_playing;
   const songUrl = song.item.external_urls.spotify;
   const title = song.item.name;
 
   return {
     albumImageUrl,
+    albumName,
+    albumId,
     artist,
+    artistId,
     isPlaying,
     songUrl,
     title,

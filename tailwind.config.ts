@@ -1,13 +1,15 @@
 import type { Config } from "tailwindcss";
-import typography from "@tailwindcss/typography";
 import colors from "tailwindcss/colors";
 
 export default {
   content: ["./app/**/*.{ts,tsx}", "./content/**/*.mdx", "./public/**/*.svg"],
   theme: {
     extend: {
+      boxShadow: {
+        'code-shadow': '0 0 0 1px rgba(14, 22, 34, 0.1), 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
+      },
       fontFamily: {
-        sans: "Switzer, system-ui, sans-serif",
+        sans: "var(--font-geist-sans), system-ui, sans-serif",
         mono: ["var(--font-geist-mono)"],
       },
       colors: {
@@ -32,7 +34,7 @@ export default {
         },
       },
       animation: {
-        "spin-slow": "spin 7s linear infinite",
+        "spin-slow": "spin 14s linear infinite",
       },
     },
   },

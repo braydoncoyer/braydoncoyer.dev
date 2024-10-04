@@ -1,8 +1,10 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import * as runtime from "react/jsx-runtime";
 import { highlight } from "sugar-high";
 import { HorizontalLine } from "./HorizontalLine";
 import Link from "next/link";
+import { GeistMono } from "geist/font/mono";
 import { BgGradient } from "./BgGradient";
 
 interface MDXProps {
@@ -36,21 +38,23 @@ function Table({ data }) {
 function CustomLink(props) {
   let href = props.href;
 
+  const styles = `font-medium border-b border-indigo-400 hover:border-b-2 text-slate-900 transition-all duration-75`;
+
   if (href.startsWith("/")) {
     return (
-      <Link className="text-underline text-indigo-500" href={href} {...props}>
+      <Link className={styles} href={href} {...props}>
         {props.children}
       </Link>
     );
   }
 
   if (href.startsWith("#")) {
-    return <a className="text-underline text-red-300" {...props} />;
+    return <a className={styles} {...props} />;
   }
 
   return (
     <a
-      className="text-underline text-emerald-300"
+      className={styles}
       target="_blank"
       rel="noopener noreferrer"
       {...props}
@@ -60,14 +64,8 @@ function CustomLink(props) {
 
 function RoundedImage(props) {
   return (
-    <div className="relative">
-      <span className="absolute top-0 inset-x-0">
-        <HorizontalLine />
-      </span>
+    <div className="full-bleed overflow-clip mb-8 py-8 border-y border-border-primary [background-image:linear-gradient(45deg,theme(colors.border-primary)_12.50%,transparent_12.50%,transparent_50%,theme(colors.border-primary)_50%,theme(colors.border-primary)_62.50%,transparent_62.50%,transparent_100%)] [background-size:5px_5px]">
       <img src={props.src} alt={props.alt} className="rounded-3xl" />
-      <span className="absolute bottom-0 inset-x-0">
-        <HorizontalLine />
-      </span>
     </div>
   );
 }
@@ -137,12 +135,90 @@ function ConsCard({ title, cons }) {
 
 function Code({ children, ...props }) {
   let codeHTML = highlight(children);
+  const isMultiLine = children.includes("\n");
+  const [isCopied, setIsCopied] = useState(false);
+
+  const copyToClipboard = () => {
+    navigator.clipboard
+      .writeText(children)
+      .then(() => {
+        console.log("Code copied to clipboard");
+        setIsCopied(true);
+        setTimeout(() => setIsCopied(false), 3000);
+      })
+      .catch((err) => {
+        console.error("Failed to copy code: ", err);
+      });
+  };
+
   return (
-    <code
-      className="mb-8"
-      dangerouslySetInnerHTML={{ __html: codeHTML }}
-      {...props}
-    />
+    <>
+      {isMultiLine ? (
+        <>
+          <div className="code-frame font-mono relative">
+            <div className="frame-controls">
+              <div className="frame-control"></div>
+              <div className="frame-control"></div>
+              <div className="frame-control"></div>
+            </div>
+            <button onClick={copyToClipboard}>
+              {isCopied ? (
+                <svg
+                  className="w-5 h-5 text-emerald-400"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M10.25 16.25L9.6397 16.6859C9.80873 16.9226 10.0993 17.0402 10.3854 16.9877C10.6714 16.9352 10.9013 16.7221 10.9753 16.4409L10.25 16.25ZM16.7147 8.33866C17.0398 8.082 17.0953 7.61038 16.8387 7.28527C16.582 6.96016 16.1104 6.90467 15.7853 7.16134L16.7147 8.33866ZM8.3603 12.3141C8.11954 11.977 7.65113 11.8989 7.31407 12.1397C6.97701 12.3805 6.89894 12.8489 7.1397 13.1859L8.3603 12.3141ZM10.9753 16.4409C11.5574 14.2291 12.971 12.2079 14.2825 10.7134C14.9328 9.97242 15.5456 9.37472 15.9949 8.96321C16.2192 8.7577 16.4021 8.59926 16.5275 8.49327C16.5902 8.44029 16.6385 8.40046 16.6704 8.37446C16.6863 8.36146 16.6982 8.35192 16.7056 8.34593C16.7094 8.34293 16.712 8.34082 16.7136 8.3396C16.7143 8.339 16.7148 8.33861 16.715 8.33846C16.7151 8.33838 16.7151 8.33835 16.7151 8.33839C16.7151 8.33841 16.715 8.33847 16.715 8.33848C16.7149 8.33857 16.7147 8.33866 16.25 7.75C15.7853 7.16134 15.7851 7.16146 15.7849 7.1616C15.7848 7.16167 15.7847 7.16182 15.7845 7.16195C15.7842 7.16222 15.7838 7.16254 15.7833 7.16292C15.7823 7.16367 15.7811 7.16466 15.7796 7.16587C15.7765 7.1683 15.7723 7.17164 15.767 7.17588C15.7565 7.18436 15.7415 7.19646 15.7223 7.21209C15.684 7.24333 15.629 7.28871 15.5594 7.34755C15.4202 7.46519 15.2222 7.63683 14.9817 7.8571C14.5013 8.29716 13.8485 8.93383 13.155 9.72406C11.779 11.2921 10.1926 13.5209 9.52469 16.0591L10.9753 16.4409ZM7.1397 13.1859L9.6397 16.6859L10.8603 15.8141L8.3603 12.3141L7.1397 13.1859Z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+              ) : (
+                <svg
+                  className="w-5 h-5 text-slate-400 hover:text-[#64758B]"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="1.5"
+                    d="M6.5 15.25V15.25C5.5335 15.25 4.75 14.4665 4.75 13.5V6.75C4.75 5.64543 5.64543 4.75 6.75 4.75H13.5C14.4665 4.75 15.25 5.5335 15.25 6.5V6.5"
+                  ></path>
+                  <rect
+                    width="10.5"
+                    height="10.5"
+                    x="8.75"
+                    y="8.75"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="1.5"
+                    rx="2"
+                  ></rect>
+                </svg>
+              )}
+            </button>
+          </div>
+          <div className="code-container relative">
+            <div className="absolute bottom-0 left-0 rounded-full h-px w-full bg-gradient-to-r from-pink-300/0 via-indigo-300 to-sky-300/0"></div>
+            <code
+              className={isMultiLine ? "mb-8" : ""}
+              dangerouslySetInnerHTML={{ __html: codeHTML }}
+              {...props}
+            />
+          </div>
+        </>
+      ) : (
+        <code
+          className={isMultiLine ? "mb-8" : ""}
+          dangerouslySetInnerHTML={{ __html: codeHTML }}
+          {...props}
+        />
+      )}
+    </>
   );
 }
 
@@ -197,6 +273,20 @@ function paragraph({ children }) {
   // Otherwise, wrap in a p tag as before
   return (
     <p className="text-base text-text-secondary mb-8 leading-8">{children}</p>
+  );
+}
+
+function OrderedList({ children }) {
+  return <ol className="list-decimal pl-8 mb-8">{children}</ol>;
+}
+
+function UnorderedList({ children }) {
+  return <ul className="list-disc pl-8 mb-8">{children}</ul>;
+}
+
+function ListItem({ children }) {
+  return (
+    <li className="text-base text-text-secondary mb-4 leading-8">{children}</li>
   );
 }
 
@@ -266,7 +356,9 @@ const sharedComponents = {
   code: Code,
   Table,
   p: paragraph,
-  //   LiveCode,
+  ol: OrderedList,
+  ul: UnorderedList,
+  li: ListItem,
 };
 
 const useMDXComponent = (code: string) => {

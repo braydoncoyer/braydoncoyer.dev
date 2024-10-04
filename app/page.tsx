@@ -11,8 +11,9 @@ import { CurrentlyPlayingBento } from "./components/CurrentlyPlayingBento";
 import { CalendarBento } from "./components/CalendarBento";
 import { FeaturedBlogCard } from "./components/FeaturedBlogCard";
 import { ToolboxBento } from "./components/ToolboxBento";
-import ConnectionsBento from "./components/ConnectionsBento";
+import { ConnectionsBento } from "./components/ConnectionsBento";
 import { ProfilePicture } from "./components/ProfilePicture";
+import { AboutSection } from "./components/AboutSection";
 
 export default async function Home() {
   const allPublishedBlogPosts = await fetchAndSortBlogPosts();
@@ -80,6 +81,8 @@ export default async function Home() {
           </div>
         </section>
 
+        {/* <AboutSection /> */}
+
         {/* About Section */}
         <section className="space-y-16">
           <div className="space-y-4">
@@ -93,9 +96,10 @@ export default async function Home() {
           <div>
             <HorizontalLine />
             <div className="grid grid-cols-1 md:grid-cols-12 gap-2 grid-rows-[14]">
-              <CurrentlyPlayingBento />
+              <div className="p-6 rounded-2xl col-span-5 row-span-6 h-[220px] border border-border-primary flex flex-col hover:bg-white group relative overflow-hidden"></div>
 
               <ConnectionsBento />
+              {/* <div className="p-6 rounded-2xl col-span-7 row-span-8 border border-border-primary group hover:bg-white relative overflow-hidden"></div> */}
 
               <ToolboxBento />
 

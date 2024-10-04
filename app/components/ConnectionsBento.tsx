@@ -1,81 +1,84 @@
 "use client";
 
+import { BentoCard } from "./BentoCard";
 import { ProfilePicture } from "./ProfilePicture";
 import { motion, useAnimation } from "framer-motion";
 
-export default function ConnectionsBento() {
+export function ConnectionsBento(): React.ReactNode {
   const controls = useAnimation();
 
   return (
-    <div
-      className="p-6 rounded-2xl col-span-7 row-span-8 h-[300px] border border-border-primary flex flex-col group hover:bg-white relative overflow-hidden"
-      onMouseEnter={() => controls.start("active")}
-      onMouseLeave={() => controls.start("idle")}
-    >
-      <div className="absolute left-0 inset-y-0 w-1/3 bg-gradient-to-r from-bg-primary group-hover:from-bg-white to-transparent z-20"></div>
-      <div className="absolute right-0 inset-y-0 w-1/3 bg-gradient-to-l from-bg-primary group-hover:from-bg-white to-transparent z-20"></div>
-      <div className="text-center w-full mt-auto z-20">
-        <h2 className="text-base font-medium">Connections</h2>
-        <p className="mt-1 text-text-secondary">
-          An ever-evolving list of people I have met and wish to meet.
-        </p>
+    <BentoCard height="h-[300px]" colSpan={7} rowSpan={8}>
+      <div
+        className="flex flex-col h-full"
+        onMouseEnter={() => controls.start("active")}
+        onMouseLeave={() => controls.start("idle")}
+      >
+        <div className="absolute left-0 inset-y-0 w-1/3 bg-gradient-to-r from-bg-primary group-hover:from-bg-white to-transparent z-20"></div>
+        <div className="absolute right-0 inset-y-0 w-1/3 bg-gradient-to-l from-bg-primary group-hover:from-bg-white to-transparent z-20"></div>
+        <div>
+          <BackgroundPattern />
+          <span className="absolute left-1/2 -translate-x-1/2 top-2.5">
+            <ProfilePicture />
+          </span>
+
+          {/* Amy */}
+          <AnimatedConnectionCircle
+            src="/amy_dutton.jpg"
+            top="55%"
+            left="23%"
+            delay={0.1}
+            sizeClass="w-12 h-12"
+            controls={controls}
+          />
+
+          {/* James Q Quick */}
+          <AnimatedConnectionCircle
+            src="/james_q_quick.jpg"
+            top="53%"
+            left="67%"
+            delay={0.3}
+            controls={controls}
+          />
+
+          {/* Colby */}
+          <AnimatedConnectionCircle
+            src="/colby_fayock.jpg"
+            top="4%"
+            left="32%"
+            delay={0.2}
+            sizeClass="w-14 h-14"
+            controls={controls}
+          />
+
+          {/* Sarah */}
+          <AnimatedConnectionCircle
+            src="/sarah_drasner.jpg"
+            top="15%"
+            left="78%"
+            delay={0.4}
+            sizeClass="w-10 h-10"
+            controls={controls}
+          />
+
+          {/* Shashi */}
+          <AnimatedConnectionCircle
+            src="/shashi_lo.jpg"
+            top="5%"
+            left="7%"
+            delay={0.5}
+            sizeClass="w-9 h-9"
+            controls={controls}
+          />
+        </div>
+        <div className="text-center w-full mt-auto z-20">
+          <h2 className="text-base font-medium">Connections</h2>
+          <p className="mt-1 text-text-secondary">
+            An ever-evolving list of people I have met and wish to meet.
+          </p>
+        </div>
       </div>
-      <div>
-        <BackgroundPattern />
-        <span className="absolute left-1/2 -translate-x-1/2 top-2.5">
-          <ProfilePicture />
-        </span>
-
-        {/* Amy */}
-        <AnimatedConnectionCircle
-          src="/amy_dutton.jpg"
-          top="55%"
-          left="23%"
-          delay={0.1}
-          sizeClass="w-12 h-12"
-          controls={controls}
-        />
-
-        {/* James Q Quick */}
-        <AnimatedConnectionCircle
-          src="/james_q_quick.jpg"
-          top="53%"
-          left="67%"
-          delay={0.3}
-          controls={controls}
-        />
-
-        {/* Colby */}
-        <AnimatedConnectionCircle
-          src="/colby_fayock.jpg"
-          top="4%"
-          left="32%"
-          delay={0.2}
-          sizeClass="w-14 h-14"
-          controls={controls}
-        />
-
-        {/* Sarah */}
-        <AnimatedConnectionCircle
-          src="/sarah_drasner.jpg"
-          top="15%"
-          left="78%"
-          delay={0.4}
-          sizeClass="w-10 h-10"
-          controls={controls}
-        />
-
-        {/* Shashi */}
-        <AnimatedConnectionCircle
-          src="/shashi_lo.jpg"
-          top="5%"
-          left="7%"
-          delay={0.5}
-          sizeClass="w-9 h-9"
-          controls={controls}
-        />
-      </div>
-    </div>
+    </BentoCard>
   );
 }
 

@@ -4,9 +4,14 @@ import useSWR from "swr";
 
 import { type CurrentlyPlaying } from "app/db/spotify";
 import Link from "next/link";
+import { BentoCard } from "./BentoCard";
+import { CirclePattern } from "./SpeakingBento";
 
 const favorite: CurrentlyPlaying = {
   artist: "Bear McCreary",
+  albumName: "The Lord of the Rings: The Rings of Power",
+  albumId: "2Oe6kYDU9YQhun0YrXL9eV",
+  artistId: "2ifvIECHAlEgPMBuBOJ0lG",
   title: "The Sun Yet Shines",
   albumImageUrl:
     "https://i.scdn.co/image/ab67616d0000b2735cf2a1df961de6e7d7d3c113",
@@ -37,36 +42,209 @@ export function CurrentlyPlayingBento() {
   }
 
   return (
-    <div className="p-6 rounded-2xl col-span-5 row-span-6 h-[220px] border border-border-primary flex flex-col hover:bg-white group relative overflow-hidden">
-      {isCurrentlyPlaying ? (
-        <img
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-auto h-auto max-w-none animate-pulse z-0"
-          src="/record_player_waves.png"
-          alt="Music waves"
-        />
-      ) : null}
-      <div className="grid grid-cols-2 gap-4 h-full relative z-10">
-        <div className="flex flex-col justify-center">
+    <BentoCard colSpan={3} rowSpan={6} height="h-[300px]">
+      <div className="flex flex-col ">
+        <div className="h-full z-10">
           <div className="flex flex-col h-full justify-between">
-            <h2 className="text-base font-medium">
+            <h2 className="text-base font-medium mb-2">
               {isCurrentlyPlaying ? "Currently Playing" : "Recent Favorite"}
             </h2>
-            <div>
-              <TrackLink track={currentTrack} />
-              <p className="mt-1 text-sm text-text-secondary">
-                {currentTrack.artist}
-              </p>
-            </div>
+            <p className="text-base text-text-secondary max-h-[150px] overflow-hidden">
+              <span className="line-clamp-4 text-ellipsis">
+                I&apos;m listening to{" "}
+                <a
+                  className="underline font-medium"
+                  href={currentTrack.songUrl}
+                >
+                  {currentTrack.title}
+                </a>{" "}
+                by{" "}
+                <a
+                  className="underline font-medium"
+                  href={`https://open.spotify.com/artist/${currentTrack.artistId}`}
+                >
+                  {currentTrack.artist}
+                </a>{" "}
+                from the album{" "}
+                <a
+                  className="underline font-medium"
+                  href={`https://open.spotify.com/album/${currentTrack.albumId}`}
+                >
+                  {currentTrack.albumName}
+                </a>
+              </span>
+            </p>
+          </div>
+          <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 group-hover:-bottom-1 transition-all duration-300 user-select-none pointer-events-none">
+            <Record
+              albumImageUrl={currentTrack.albumImageUrl}
+              isPlaying={isCurrentlyPlaying}
+            />
+          </div>
+          <div className="absolute -bottom-32 left-1/2 -translate-x-1/2">
+            <div
+              className="h-[210px] w-[210px] bg-cover bg-center rounded-sm shadow-md"
+              style={{ backgroundImage: `url(${currentTrack.albumImageUrl})` }}
+            ></div>
           </div>
         </div>
-        <div className="flex items-center justify-end">
-          <RecordPlayer
-            albumImageUrl={currentTrack.albumImageUrl}
-            isPlaying={isCurrentlyPlaying}
-          />
-        </div>
+        <span className="absolute left-1/2 -translate-x-1/2 -bottom-32">
+          <CirclePattern />
+        </span>
       </div>
-    </div>
+    </BentoCard>
+  );
+}
+
+function Record({
+  albumImageUrl,
+  isPlaying,
+}: {
+  albumImageUrl: string;
+  isPlaying: boolean;
+}) {
+  return (
+    <svg
+      width="179"
+      height="171"
+      viewBox="0 0 179 171"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="89.5" cy="104.5" r="89.5" fill="#3C3C3F" />
+      <circle
+        cx="89.501"
+        cy="104.5"
+        r="87.06"
+        stroke="#6C6D70"
+        stroke-width="1.3"
+      />
+      <circle
+        cx="89.4992"
+        cy="104.5"
+        r="80.3"
+        stroke="#4D4E52"
+        stroke-width="0.5"
+      />
+      <circle
+        cx="89.4995"
+        cy="104.5"
+        r="69.56"
+        stroke="#4D4E52"
+        stroke-width="0.5"
+      />
+      <circle
+        cx="89.4995"
+        cy="104.5"
+        r="65.98"
+        stroke="#4D4E52"
+        stroke-width="0.5"
+      />
+      <circle
+        cx="89.4999"
+        cy="104.5"
+        r="49.87"
+        stroke="#4D4E52"
+        stroke-width="0.5"
+      />
+      <g
+        className={isPlaying ? "animate-spin-slow" : ""}
+        style={{ transformOrigin: "89.5001px 104.5px" }}
+      >
+        <circle
+          cx="89.5001"
+          cy="104.5"
+          r="39.13"
+          fill="#4D4E52"
+          stroke="#4D4E52"
+          strokeWidth="0.5"
+        />
+        <clipPath id="albumClip">
+          <circle cx="89.5001" cy="104.5" r="35" />
+        </clipPath>
+        <image
+          href={albumImageUrl}
+          x="54.5001"
+          y="69.5"
+          width="70"
+          height="70"
+          clipPath="url(#albumClip)"
+        />
+      </g>
+      <circle cx="89.5009" cy="104.5" r="3.58" fill="#4D4E52" />
+      <circle
+        cx="89.5009"
+        cy="104.5"
+        r="3.33"
+        stroke="white"
+        stroke-opacity="0.3"
+        stroke-width="0.5"
+      />
+      <g filter="url(#filter0_f_161_134)">
+        <path
+          d="M88.5 97L46 26C84.8 5.60003 121.833 18.5 135.5 27.5L88.5 97Z"
+          fill="white"
+          fill-opacity="0.15"
+          style={{ mixBlendMode: "soft-light" }}
+        />
+      </g>
+      <path
+        d="M60 22.5C69.6667 18.6667 95.1 13.3 119.5 22.5"
+        stroke="url(#paint0_linear_161_134)"
+      />
+      <path
+        d="M59 46C73.5 38.5 96 34 118.5 45.5"
+        stroke="url(#paint1_linear_161_134)"
+        stroke-opacity="0.3"
+      />
+      <defs>
+        <filter
+          id="filter0_f_161_134"
+          x="31"
+          y="0.119873"
+          width="119.5"
+          height="111.88"
+          filterUnits="userSpaceOnUse"
+          color-interpolation-filters="sRGB"
+        >
+          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="7.5"
+            result="effect1_foregroundBlur_161_134"
+          />
+        </filter>
+        <linearGradient
+          id="paint0_linear_161_134"
+          x1="60"
+          y1="19.9601"
+          x2="119.5"
+          y2="19.9601"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="white" stop-opacity="0" />
+          <stop offset="0.51" stop-color="white" />
+          <stop offset="1" stop-color="white" stop-opacity="0" />
+        </linearGradient>
+        <linearGradient
+          id="paint1_linear_161_134"
+          x1="60"
+          y1="40.9601"
+          x2="119.5"
+          y2="40.9601"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="white" stop-opacity="0" />
+          <stop offset="0.51" stop-color="white" />
+          <stop offset="1" stop-color="white" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+    </svg>
   );
 }
 
@@ -89,16 +267,7 @@ function RecordPlayer({
   isPlaying,
 }: Pick<CurrentlyPlaying, "albumImageUrl" | "isPlaying">) {
   return (
-    <div className="w-[172px] h-[172px] rounded-lg border-2 border-border-primary p-3 relative">
-      {/* Dot Pattern */}
-      <span className="absolute -z-10">
-        <img
-          src="/record_player_dots.png"
-          alt="Dot Pattern"
-          width={114}
-          height={114}
-        />
-      </span>
+    <div>
       {/* Record */}
       <div
         className={`bg-dark-primary ring-1 ring-inset ring-[#6C6D70] rounded-full w-28 h-28 flex items-center justify-center shadow-md ${
@@ -113,24 +282,6 @@ function RecordPlayer({
           <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
         </div>
       </div>
-
-      {/* Arm */}
-      <img
-        className={`absolute top-6 right-2 ${
-          !isPlaying ? "-rotate-[30deg] -right-2" : ""
-        }`}
-        src="/record_player_arm.png"
-        alt="Record player arm"
-        width={58}
-        height={68}
-      />
-
-      {/* Volume */}
-      <div className="absolute bottom-3 right-3 w-1 h-11 bg-[#D9D9D9] rounded-full"></div>
-      <div className="absolute bottom-8 right-2.5 rounded-full w-2 h-2 bg-dark-primary"></div>
-
-      {/* Spotify Logo */}
-      <SpotifyLogo />
     </div>
   );
 }

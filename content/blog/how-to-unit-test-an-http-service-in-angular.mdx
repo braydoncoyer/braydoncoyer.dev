@@ -105,7 +105,7 @@ With this basic Service in play, now is a good time to address the elephant in t
 
 All functions we create, whether that's in a Component or Service, should have supporting test cases.
 
-To help identify what to test, let's briefly turn our attention to a simple metaphor from a previous article I wrote called [The Gumball Machine: How To Quickly Identify Unit Test Cases](https://braydoncoyer.dev/blog/the-gumball-machine-how-to-quickly-identify-unit-test-cases/).
+To help identify what to test, let's briefly turn our attention to a simple metaphor from a previous article I wrote called [The Gumball Machine: How To Quickly Identify Unit Test Cases](/blog/the-gumball-machine-how-to-quickly-identify-unit-test-cases/).
 
 ### The Gumball Machine
 
@@ -142,10 +142,12 @@ Here's what I came up with:
 Running the tests at this point produces an error. Can you guess why?
 
 ```bash
-Chrome Headless 92.0.4515.159 (Mac OS 10.15.7) BooksService should be created FAILED
-        NullInjectorError: R3InjectorError(DynamicTestModule)[BooksService -> HttpClient -> HttpClient]:
-          NullInjectorError: No provider for HttpClient!
-        error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'BooksService', 'HttpClient', 'HttpClient' ] })
+Chrome Headless 92.0.4515.159 (Mac OS 10.15.7) BooksService should be created FAILED...
+  NullInjectorError: R3InjectorError(DynamicTestModule)[BooksService -> HttpClient -> HttpClient]:
+  NullInjectorError: No provider for HttpClient!
+  error properties: Object({ ngTempTokenPath: null, ngTokenPath:
+    [ 'BooksService', 'HttpClient', 'HttpClient' ]
+  })
 ...
 ```
 
@@ -156,11 +158,11 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 ...
 
 beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule]
-    });
-    service = TestBed.inject(BooksService);
+  TestBed.configureTestingModule({
+    imports: [HttpClientTestingModule]
   });
+  service = TestBed.inject(BooksService);
+});
 ```
 
 The test should pass now. Great!

@@ -6,7 +6,7 @@
   display: grid;
   grid-template-columns:
     1fr
-    min(65ch, 100%)
+    min(75ch, 100%)
     1fr;
 }
 
@@ -30,63 +30,20 @@
 
 /* styles.css */
 :root {
-  --sh-class: #2d5e9d;
-  --sh-identifier: #354150;
-  --sh-sign: #8996a3;
-  --sh-property: #0550ae;
-  --sh-entity: #249a97;
+  --sh-class: #0d9488;
+  --sh-identifier: #2252d9;
+  --sh-sign: #334155;
+  --sh-property: #0d9488;
+  --sh-entity: #0885c7;
   --sh-jsxliterals: #6266d1;
   --sh-string: #00a99a;
-  --sh-keyword: #f47067;
-  --sh-comment: #a19595;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --sh-class: #4c97f8;
-    --sh-identifier: white;
-    --sh-keyword: #f47067;
-    --sh-string: #0fa295;
-  }
-  html {
-    /* color-scheme: dark; */
-  }
+  --sh-keyword: #7e3ced;
+  --sh-comment: #64758b;
 }
 
 html {
   min-width: 360px;
 }
-/* 
-.prose .anchor {
-  @apply absolute invisible no-underline;
-
-  margin-left: -1em;
-  padding-right: 0.5em;
-  width: 80%;
-  max-width: 700px;
-  cursor: pointer;
-}
-
-.anchor:hover {
-  @apply visible;
-}
-
-.prose a {
-  @apply transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
-}
-
-.prose .anchor:after {
-  @apply text-neutral-300 dark:text-neutral-700;
-  content: "#";
-}
-
-.prose *:hover > .anchor {
-  @apply visible;
-}
-
-.prose pre {
-  @apply overflow-x-auto border rounded-lg bg-neutral-50 dark:bg-emerald-900 border-neutral-200 dark:border-green-900;
-} */
 
 @keyframes marquee {
   from {
@@ -102,23 +59,75 @@ html {
   animation-play-state: paused;
 }
 
-.prose code {
-  @apply px-1 py-0.5 rounded-lg;
+/* This addresses the issue of the iframe being too close to the bottom of the article pages or other elements */
+iframe {
+  margin-bottom: 2rem;
 }
 
-.prose pre code {
-  @apply p-0;
-  border: initial;
-  line-height: 1.5;
+pre {
+  @apply rounded-lg shadow-code-shadow ring-1 ring-inset ring-[#F1FBFF] mb-8;
+}
+
+.code-frame {
+  @apply border-b border-[#E2E3E5] overflow-scroll h-9 px-4 flex items-center justify-between;
+}
+
+.code-container {
+  @apply p-6 overflow-scroll;
+}
+
+.frame-controls {
+  @apply flex items-center justify-start h-full space-x-1.5;
+}
+
+.frame-control {
+  @apply w-[10px] h-[10px] bg-[#E2E3E5] rounded-full;
+}
+
+pre code {
+  @apply py-0.5 leading-7;
   counter-reset: sh-line-number;
+  letter-spacing: 0.1em;
 }
 
-.sh__line::before {
+code:not(pre code) {
+  /* @apply bg-indigo-100 rounded-md px-1.5 py-0.5 whitespace-nowrap font-mono; */
+  /* --sh-class: #4f46e5;
+  --sh-identifier: #4f46e5;
+  --sh-sign: #4f46e5;
+  --sh-property: #4f46e5;
+  --sh-entity: #4f46e5;
+  --sh-jsxliterals: #4f46e5;
+  --sh-string: #4f46e5;
+  --sh-keyword: #4f46e5;
+  --sh-comment: #4f46e5; */
+
+  font-size: 14px;
+  font-variant-ligatures: none;
+
+  --sh-class: #0f172a;
+  --sh-identifier: #0f172a;
+  --sh-sign: #0f172a;
+  --sh-property: #0f172a;
+  --sh-entity: #0f172a;
+  --sh-jsxliterals: #0f172a;
+  --sh-string: #0f172a;
+  --sh-keyword: #0f172a;
+  --sh-comment: #0f172a;
+}
+
+code:not(pre code)::before,
+code:not(pre code)::after {
+  content: "`";
+}
+
+pre code .sh__line::before {
   counter-increment: sh-line-number 1;
   content: counter(sh-line-number);
   margin-right: 24px;
   text-align: right;
-  color: #a4a4a4;
+  color: #cccccc;
+  font-size: 14px;
 }
 
 .prose code span {

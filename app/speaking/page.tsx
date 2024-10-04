@@ -39,7 +39,7 @@ const presentationList: PresentationList = {
         title: "The Power of a Second Brain in a Developer's Workflow",
         description:
           "Instead of using AI to solve a problem and forgetting the solution moments later, use a Second Brain to enhance memory retention and discover related information in context of your past experiences. ",
-        link: "https:",
+        link: "https://gitnation.com/contents/the-power-of-a-second-brain-in-a-developers-workflow",
         buttonLabel: "Watch Video",
       },
       {
@@ -125,27 +125,8 @@ export default function SpeakingPage() {
         </span>
 
         <div className="text-center">
-          <Button
-            label="Have me speak at your event"
-            clicked={() => {
-              console.log("Clicked");
-            }}
-          />
+          <Button>Have me speak at your event</Button>
         </div>
-
-        {/* <div className="absolute top-0 inset-0">
-          <svg
-            viewBox="0 0 1440 379"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              opacity="0.5"
-              d="M1447.63 88.9956L1222.5 88.9951M-1.37466 88.9957L381.999 88.9957M1222.5 88.9951L1201.97 109.527C1200.47 111.027 1199.63 113.062 1199.63 115.184L1199.63 192.685M1222.5 88.9951L537 88.9952M157.375 339.245L93.6254 339.245L-2.37464 339.245M157.375 339.245L287.687 339.245C289.808 339.245 291.843 338.402 293.343 336.902L311.578 318.667C313.051 317.194 313.891 315.205 313.92 313.122L315.387 207.857C315.449 203.395 311.85 199.745 307.388 199.745L118.125 199.745M157.375 339.245L157.375 242.309C157.375 240.187 156.533 238.152 155.032 236.652L118.125 199.745M118.125 199.745L-2.37465 199.745M1447.63 273.5L1280.44 273.5M1199.63 192.685L1272.44 192.685C1276.86 192.685 1280.44 196.267 1280.44 200.685L1280.44 273.5M1199.63 192.685L1199.63 265.5C1199.63 269.918 1203.21 273.5 1207.63 273.5L1280.44 273.5M1280.44 273.5L1280.44 379M1121.38 35.5581L1121.38 61.8701C1121.38 66.2884 1117.79 69.8701 1113.38 69.8701L1060.75 69.8702C1056.33 69.8702 1052.75 66.2884 1052.75 61.8702L1052.75 35.5581L1052.75 9.24808C1052.75 4.8298 1056.33 1.24808 1060.75 1.24808L1113.38 1.24808C1117.79 1.24808 1121.38 4.8298 1121.38 9.24808L1121.38 35.5581ZM389.999 70.9957L529 70.9957C533.419 70.9957 537 74.5774 537 78.9957L537 98.9957C537 103.414 533.419 106.996 529 106.996L389.999 106.996C385.581 106.996 381.999 103.414 381.999 98.9957L381.999 78.9957C381.999 74.5774 385.581 70.9957 389.999 70.9957Z"
-              stroke="#A5AEB8"
-            />
-          </svg>
-        </div> */}
 
         <div className="space-y-32 relative">
           <span className="absolute left-0 top-[400px]">
@@ -302,7 +283,9 @@ export default function SpeakingPage() {
                             rel="noopener noreferrer"
                           >
                             {/* Extra focus is applied due to the anchor tag. Come back and fix this. */}
-                            <Button label={talk.buttonLabel} />
+                            <Button variant="secondary" href={talk.link}>
+                              {talk.buttonLabel}
+                            </Button>
                           </a>
                         )}
                       </div>
@@ -329,8 +312,8 @@ export default function SpeakingPage() {
                   </h2>
                 </div>
                 <div className="flex space-x-4">
-                  <Button label="First person" />
-                  <Button label="Third person" />
+                  <Button variant="secondary">First person</Button>
+                  <Button variant="secondary">Second person</Button>
                 </div>
                 <div className="w-full h-px bg-[#A5AEB81F]/50 rounded-full"></div>
                 <div>

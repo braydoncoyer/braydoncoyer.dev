@@ -36,7 +36,7 @@ export function SpeakingBento() {
   );
 }
 
-function CirclePattern() {
+export function CirclePattern() {
   return (
     <svg
       className="w-[400px] h-full"
