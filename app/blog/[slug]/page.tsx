@@ -10,6 +10,9 @@ import { SectionTitlePill } from "app/components/SectionTitlePill";
 import { HorizontalLine } from "app/components/HorizontalLine";
 import { NewsletterSignUp } from "app/components/NewsletterSignUp";
 import { posts } from "#site/content";
+import { getBlogPostsByCategory } from "@/app/lib/utils";
+import { FeaturedBlogCard } from "@/app/components/FeaturedBlogCard";
+import { BgGradient } from "@/app/components/BgGradient";
 
 interface BlogPageProps {
   params: {
@@ -65,13 +68,18 @@ export async function generateStaticParams(): Promise<
 
 export default async function BlogPage({ params }: BlogPageProps) {
   let post = await getPostFromParams(params);
+  let similarPosts = post?.categories[0]
+    ? getBlogPostsByCategory(post.categories[0])
+        .filter((p) => p.slug !== post.slug)
+        .slice(0, 3)
+    : [];
 
   if (!post) {
     notFound();
   }
 
   return (
-    <article>
+    <article className="space-y-12">
       {/* Article Banner Image */}
       <div className="relative">
         {/* Lines */}
@@ -101,11 +109,18 @@ export default async function BlogPage({ params }: BlogPageProps) {
           className="w-full h-[600px] object-cover rounded-2xl mb-16"
           alt={post.title}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-dark-primary to-transparent rounded-2xl"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-indigo-500/85 to-transparent rounded-2xl"></div>
 
         <div className="text-left space-y-6 absolute bottom-16 left-16 max-w-3xl text-balance">
-          <div className="inline-flex text-center text-xs text-white rounded-full uppercase border border-border-primary px-2 py-px">
-            <span>#{post.categories[0]}</span>
+          <div className="flex flex-wrap gap-2">
+            {post.categories.slice(0, 3).map((category, index) => (
+              <div
+                key={index}
+                className="inline-flex text-center text-xs text-white rounded-full uppercase border border-border-primary px-2 py-px"
+              >
+                <span>#{category}</span>
+              </div>
+            ))}
           </div>
           <div className="space-y-4">
             <h1 className="font-medium text-5xl tracking-tight text-balance leading-[64px] text-white">
@@ -228,6 +243,41 @@ export default async function BlogPage({ params }: BlogPageProps) {
         </svg>
         <MDXContent code={post.code} />
       </div>
+
+      {/* Similar Posts */}
+      <section className="space-y-16">
+        <div className="space-y-4 relative">
+          <span className="absolute left-1/2 -translate-x-1/2 top-0 pointer-events-none">
+            <BgGradient />
+          </span>
+          <SectionTitlePill title="Similar Posts" />
+          <h2 className="mx-auto text-text-primary text-center text-balance font-medium text-3xl tracking-tighter max-w-lg leading-10">
+            You may also find value in these other similar articles.
+          </h2>
+        </div>
+
+        <div className="z-10">
+          <ul className="grid grid-cols-3 gap-2">
+            <HorizontalLine />
+            {similarPosts.length > 0 ? (
+              <>
+                {similarPosts.slice(0, 3).map((post) => (
+                  <FeaturedBlogCard
+                    key={post.slug}
+                    slug={post.slug}
+                    imageName={post.imageName}
+                    title={post.title}
+                    summary={post.summary}
+                  />
+                ))}
+              </>
+            ) : (
+              <p>Nothing to see here yet...</p>
+            )}
+          </ul>
+          <HorizontalLine />
+        </div>
+      </section>
       <NewsletterSignUp />
     </article>
   );

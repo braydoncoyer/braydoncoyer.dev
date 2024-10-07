@@ -88,6 +88,7 @@ pre code {
   @apply py-0.5 leading-7;
   counter-reset: sh-line-number;
   letter-spacing: 0.1em;
+  font-size: 15px;
 }
 
 code:not(pre code) {

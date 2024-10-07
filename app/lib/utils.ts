@@ -78,6 +78,11 @@ export function fetchAndSortBlogPosts(): Blog[] {
   }
 }
 
+export function getBlogPostsByCategory(category: string): Blog[] {
+  const allPosts = fetchAndSortBlogPosts();
+  return allPosts.filter((post) => post.categories.includes(category));
+}
+
 export async function fetchAndSortChangelogPosts(): Promise<Changelog[]> {
   try {
     const allChangelogItems = await changelogItems;

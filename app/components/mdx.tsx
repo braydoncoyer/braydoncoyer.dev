@@ -164,7 +164,7 @@ function Code({ children, ...props }) {
             <button onClick={copyToClipboard}>
               {isCopied ? (
                 <svg
-                  className="w-5 h-5 text-emerald-400"
+                  className="w-5 h-5 text-indigo-400"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -272,7 +272,7 @@ function paragraph({ children }) {
 
   // Otherwise, wrap in a p tag as before
   return (
-    <p className="text-base text-text-secondary mb-8 leading-8">{children}</p>
+    <p className="text-base text-text-secondary mb-6 leading-8">{children}</p>
   );
 }
 
