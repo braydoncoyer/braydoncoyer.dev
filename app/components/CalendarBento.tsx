@@ -1,4 +1,5 @@
 import React from "react";
+import { BentoCard } from "./BentoCard";
 
 const dayNames = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
@@ -59,18 +60,13 @@ export function CalendarBento() {
   };
 
   return (
-    <div className="p-6 rounded-2xl col-span-7 row-span-5 h-[220px] border border-border-primary flex flex-col hover:bg-white group overflow-clip">
+    <BentoCard height="h-[220px]" linkTo={bookingLink}>
       <div className="grid grid-cols-12 gap-5 h-full">
         <div className="col-span-3 text-balance">
           <h2 className="text-base font-medium mb-4">Book a call with me</h2>
           <p className="mb-2 text-text-secondary">
             I&apos;d love to chat even if there&apos;s no agenda!
           </p>
-          <a href={bookingLink} target="_blank">
-            <span className="text-purple-primary/50 group-hover:text-purple-primary text-sm">
-              Book a call
-            </span>
-          </a>
         </div>
         <div className="col-span-9 relative">
           <div className="group">
@@ -81,8 +77,9 @@ export function CalendarBento() {
               >
                 <div className="flex space-x-2 items-center">
                   <p className="text-gray-500 text-sm">
-                    <span className="font-medium">{currentMonth}</span>,{" "}
-                    <span className="text-text-tertiary">{currentYear}</span>
+                    <span className="font-medium">
+                      {currentMonth}, {currentYear}
+                    </span>
                   </p>
                   <span className="h-1 w-1 rounded-full bg-text-tertiary">
                     &nbsp;
@@ -97,6 +94,6 @@ export function CalendarBento() {
           </div>
         </div>
       </div>
-    </div>
+    </BentoCard>
   );
 }

@@ -11,6 +11,7 @@ import { ToolboxBento } from "../components/ToolboxBento";
 import { CalendarBento } from "../components/CalendarBento";
 import { BentoCard } from "../components/BentoCard";
 import { Scrapbook } from "../components/Scrapbook";
+import { ShadowBox } from "../components/ShadowBox";
 
 const experienceList = [
   {
@@ -232,6 +233,152 @@ export default function ToolboxPage() {
               doing.
             </h2>
           </div>
+          <div className="relative overflow-hidden w-full h-[1880px]">
+            <div className="absolute top-0 left-[455px] w-full">
+              <AboutTrackPattern />
+            </div>
+            {/* Section 1 */}
+            <div className="flex w-full justify-center px-14 pt-32">
+              <div className="flex-1">
+                <div className="flex justify-start items-center">
+                  <div className="relative w-fit ml-20">
+                    <ShadowBox width={188} height={278}></ShadowBox>
+                    <img
+                      className="w-[180px] h-[270px] absolute left-0 top-0 rotate-[-8deg] object-cover rounded-lg shadow"
+                      src="/braydon_headshot_1.jpeg"
+                      alt="A headshot"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="text-left flex-1">
+                <h2
+                  className="w-full text-text-primary text-balance font-medium text-3xl leading-[40px]
+            tracking-tighter mb-6"
+                >
+                  I started my creative journey developing apps for iOS and
+                  Android
+                </h2>
+                <p className="text-base text-text-secondary mb-6 leading-8">
+                  When the iPad was launched in 2010, I felt a strong desire to
+                  create interactive content for its stunning 1024x768 screen.
+                </p>
+
+                <p className="text-base text-text-secondary mb-6 leading-8">
+                  I delved into mobile development and successfully released
+                  numerous games and applications, with one of my games even
+                  surpassing Angry Birds in popularity.
+                </p>
+              </div>
+            </div>
+
+            {/* Section 2 */}
+            <div className="flex w-full justify-center px-14 pt-44">
+              <div className="text-left flex-1">
+                <h2
+                  className="w-full text-text-primary text-balance font-medium text-3xl leading-[40px]
+            tracking-tighter mb-6"
+                >
+                  The leap over to web development.
+                </h2>
+                <p className="text-base text-text-secondary mb-6 leading-8">
+                  I decided to explore web development before too long. Given my
+                  inclination towards visual expression and design, I naturally
+                  gravitated towards frontend development.
+                </p>
+
+                <p className="text-base text-text-secondary mb-6 leading-8">
+                  So, I started learning HTML, CSS, and JavaScript. In 2016, I
+                  got into React. Not long after that, I nailed my first
+                  full-time gig as a web developer.
+                </p>
+              </div>
+              <div className="flex-1">
+                <div className="flex justify-end items-center">
+                  <div className="relative w-fit mr-20">
+                    <ShadowBox width={188} height={278}></ShadowBox>
+                    <img
+                      className="w-[180px] h-[270px] absolute left-0 top-0 rotate-[8deg] object-cover rounded-lg shadow"
+                      src="/braydon_headshot_1.jpeg"
+                      alt="A headshot"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Section 3 */}
+            <div className="flex w-full justify-center px-14 pt-52">
+              <div className="flex-1">
+                <div className="flex justify-start items-center">
+                  <div className="relative w-fit ml-20">
+                    <ShadowBox width={188} height={278}></ShadowBox>
+                    <img
+                      className="w-[180px] h-[270px] absolute left-0 top-0 rotate-[-8deg] object-cover rounded-lg shadow"
+                      src="/braydon_headshot_1.jpeg"
+                      alt="A headshot"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="text-left flex-1">
+                <h2
+                  className="w-full text-text-primary text-balance font-medium text-3xl leading-[40px]
+            tracking-tighter mb-6"
+                >
+                  What I truly value in life.
+                </h2>
+                <p className="text-base text-text-secondary mb-6 leading-8">
+                  I believed I had sufficient job security to propose to the
+                  love of my life and get married. However, COVID-19 struck, and
+                  we had a small yet delightful wedding in 2020.
+                </p>
+
+                <p className="text-base text-text-secondary mb-6 leading-8">
+                  Our first daughter, ElizaJane, was born in 2021, followed by
+                  our second child, Renny, in 2023.
+                </p>
+              </div>
+            </div>
+
+            {/* Section 4 */}
+            <div className="flex w-full justify-center px-14 pt-44">
+              <div className="text-left flex-1">
+                <h2
+                  className="w-full text-text-primary text-balance font-medium text-3xl leading-[40px]
+            tracking-tighter mb-6"
+                >
+                  What I’m doing now.
+                </h2>
+                <p className="text-base text-text-secondary mb-6 leading-8">
+                  These days, I work for LogicGate as a Senior Frontend
+                  Developer, helping lead teams to create some pretty cool
+                  stuff.
+                </p>
+
+                <p className="text-base text-text-secondary mb-6 leading-8">
+                  In my free time, I enjoy creative coding, blogging, playing
+                  games with friends and spending time with my family.
+                </p>
+
+                <p className="text-base text-text-secondary mb-6 leading-8">
+                  Thanks for checking out my corner of the web.
+                </p>
+              </div>
+              <div className="flex-1">
+                <div className="flex justify-end items-center">
+                  <div className="relative w-fit mr-32">
+                    <ShadowBox width={188} height={278}></ShadowBox>
+                    <img
+                      className="w-[180px] h-[270px] absolute left-0 top-0 rotate-[8deg] object-cover rounded-lg shadow"
+                      src="/braydon_headshot_1.jpeg"
+                      alt="A headshot"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* About */}
@@ -304,5 +451,65 @@ export default function ToolboxPage() {
         <NewsletterSignUp />
       </div>
     </div>
+  );
+}
+
+function AboutTrackPattern() {
+  return (
+    <svg
+      className="user-select-none pointer-events-none"
+      width="380"
+      height="1777"
+      viewBox="0 0 380 1777"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g filter="url(#filter0_i_395_898)">
+        <path
+          d="M145 0.49999L145 43C145 51.8365 137.836 59 129 59L19.9999 59C11.1633 59 3.99987 66.1634 3.99987 75L3.99962 515C3.99961 523.837 11.163 531 19.9996 531L256 531C264.836 531 272 538.163 272 547L272 830.373C272 834.616 270.314 838.686 267.314 841.686L78.6861 1030.31C75.6855 1033.31 71.6158 1035 67.3724 1035L19.9996 1035C11.163 1035 3.99959 1042.16 3.99959 1051L3.99963 1471C3.99963 1479.84 11.1631 1487 19.9996 1487L256 1487C264.836 1487 272 1494.16 272 1503L272 1757C272 1765.84 279.163 1773 288 1773L380 1773"
+          stroke="#D6DADE"
+          stroke-opacity="0.24"
+          stroke-width="8"
+          stroke-linejoin="round"
+        />
+      </g>
+      <defs>
+        <filter
+          id="filter0_i_395_898"
+          x="0"
+          y="0.5"
+          width="380"
+          height="1778"
+          filterUnits="userSpaceOnUse"
+          color-interpolation-filters="sRGB"
+        >
+          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dy="2" />
+          <feGaussianBlur stdDeviation="0.75" />
+          <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0.647059 0 0 0 0 0.682353 0 0 0 0 0.721569 0 0 0 0.32 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="shape"
+            result="effect1_innerShadow_395_898"
+          />
+        </filter>
+      </defs>
+    </svg>
   );
 }

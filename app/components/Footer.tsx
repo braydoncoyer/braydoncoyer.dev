@@ -99,11 +99,7 @@ export function Footer() {
         </div>
         <HorizontalLine />
       </div>
-      <div className="h-20 w-full relative [background-image:linear-gradient(45deg,theme(colors.border-primary)_12.50%,transparent_12.50%,transparent_50%,theme(colors.border-primary)_50%,theme(colors.border-primary)_62.50%,transparent_62.50%,transparent_100%)] [background-size:5px_5px]">
-        <span className="absolute -right-[56px] top-5">
-          <BgSectionTag tagType={TagType.FOOTER} />
-        </span>
-      </div>
+      <div className="h-8 w-full relative [background-image:linear-gradient(45deg,theme(colors.border-primary)_12.50%,transparent_12.50%,transparent_50%,theme(colors.border-primary)_50%,theme(colors.border-primary)_62.50%,transparent_62.50%,transparent_100%)] [background-size:5px_5px]"></div>
     </>
   );
 }

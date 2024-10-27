@@ -64,16 +64,33 @@ iframe {
   margin-bottom: 2rem;
 }
 
+.drama-shadow {
+  @apply shadow-md ring-1 ring-indigo-500/15 relative;
+}
+
+.drama-shadow::after {
+  @apply absolute inset-0 rounded-[inherit] shadow-[inset_0_0_2px_1px_#ffffff4d] pointer-events-none;
+  content: "";
+}
+
 pre {
-  @apply rounded-lg shadow-code-shadow ring-1 ring-inset ring-[#F1FBFF] mb-8;
+  @apply rounded-xl mb-12 drama-shadow;
 }
 
 .code-frame {
-  @apply border-b border-[#E2E3E5] overflow-scroll h-9 px-4 flex items-center justify-between;
+  @apply border-b border-[#E2E3E5] bg-white rounded-t-xl overflow-scroll h-9 px-4 flex items-center justify-between;
+}
+
+.code-frame-content {
+  @apply flex items-center justify-start w-full space-x-3;
+}
+
+.code-frame-filename {
+  @apply text-sm text-slate-400 truncate max-w-[50%] font-mono;
 }
 
 .code-container {
-  @apply p-6 overflow-scroll;
+  @apply p-6 overflow-scroll bg-white rounded-b-xl;
 }
 
 .frame-controls {
@@ -103,7 +120,7 @@ code:not(pre code) {
   --sh-keyword: #4f46e5;
   --sh-comment: #4f46e5; */
 
-  font-size: 14px;
+  font-size: 15px;
   font-variant-ligatures: none;
 
   --sh-class: #0f172a;

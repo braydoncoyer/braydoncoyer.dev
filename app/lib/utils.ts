@@ -1,7 +1,8 @@
 import { Blog, Changelog, changelogItems, posts } from "#site/content";
 import { unstable_noStore as noStore } from "next/cache";
 import { notFound } from "next/navigation";
-
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 export const formatDate = (date: string) => {
   noStore();
   let currentDate = new Date();
@@ -49,6 +50,10 @@ export const getTimeOfDayGreeting = () => {
 }
 
 export const cx = (...classes) => classes.filter(Boolean).join(" ");
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
 
 export function fetchAndSortChangelogEntrees(): Changelog[] {
   try {

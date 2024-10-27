@@ -29,7 +29,6 @@ export default async function BlogPage() {
         />
         <div className="space-y-[80px] mt-[100px] w-full">
           <ul className="grid grid-cols-3 gap-2">
-            <HorizontalLine />
             {featuredArticles.length > 0 ? (
               <>
                 {featuredArticles.slice(0, 3).map((post) => (
@@ -46,7 +45,6 @@ export default async function BlogPage() {
               <p>Nothing to see here yet...</p>
             )}
           </ul>
-          {/* <HorizontalLine /> */}
 
           {/* Categories */}
           <div>

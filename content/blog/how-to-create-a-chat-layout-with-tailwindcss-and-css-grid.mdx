@@ -26,7 +26,7 @@ Let's turn our attention to the markup of the chat application layout. The entir
 
 A top-level component is needed to be responsible for holding the messages and rendering the list on the page. In the code below, I've created a component called `MessageList` which queries the database for the messages and lists them on the page in an unordered list, passing each message down to an individual `Message` component.
 
-```jsx
+```jsx:MessageList.tsx
 export const MessageList = () => {
   const { messages } = useFeed(); // Retrieve messages from database
 
@@ -42,7 +42,7 @@ export const MessageList = () => {
 
 The `Message` component simply displays the content passed to it by props and will be styled accordingly.
 
-```jsx
+```jsx:Message.tsx
 export const Message = ({ message }) => {
   const { user } = useAuth(); // the currently logged in user
 
@@ -90,7 +90,7 @@ Simple, right? Here's a graphic to help reinforce what's going to happen.
 
 Following the plan above, all we need to do is target the `ul` element and apply the following utility classes:
 
-```jsx
+```jsx:MessageList.tsx
 <ul className="space-y-12 grid grid-cols-1">
   {messages && messages?.map((message) => <Message message={message} />)}
 </ul>
@@ -106,7 +106,7 @@ This component requires styles to be applied dynamically; if the user sent a mes
 
 Remember the `isMessageFromUser` helper function we created above? This will come in handy so we can make some conditional checks inline and apply utility classes based on the evaluation
 
-```jsx
+```jsx:Message.tsx
 <div
   className={`${
     isMessageFromUser() ? "place-self-end" : "place-self-start"
@@ -122,7 +122,7 @@ With that, each message should now align properly!
 
 To add the finishing touches, let's add the message feet to help reinforce which side the message is coming from. Once again, we ca the helper function to assist with the styling.
 
-```jsx
+```jsx:Message.tsx
 <div
   className={`${
     isMessageFromUser() ? "place-self-end" : "place-self-start"

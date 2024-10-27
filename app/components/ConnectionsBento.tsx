@@ -4,11 +4,15 @@ import { BentoCard } from "./BentoCard";
 import { ProfilePicture } from "./ProfilePicture";
 import { motion, useAnimation } from "framer-motion";
 
-export function ConnectionsBento(): React.ReactNode {
+export function ConnectionsBento({
+  linkTo,
+}: {
+  linkTo?: string;
+}): React.ReactNode {
   const controls = useAnimation();
 
   return (
-    <BentoCard height="h-[300px]" colSpan={7} rowSpan={8}>
+    <BentoCard height="h-[300px]" linkTo={linkTo}>
       <div
         className="flex flex-col h-full"
         onMouseEnter={() => controls.start("active")}

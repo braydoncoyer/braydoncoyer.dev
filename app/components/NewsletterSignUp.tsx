@@ -60,7 +60,7 @@ export function NewsletterSignUp({
     <div className="pb-16 relative">
       <HorizontalLine />
       <div className="relative overflow-x-clip">
-        <div className="bg-dark-primary p-[100px] rounded-2xl">
+        <div className="bg-dark-primary p-[100px] rounded-2xl drama-shadow">
           <div className="w-2 h-px bg-zinc-300 absolute right-[44.5px] top-[48px] z-20"></div>
           <div className="w-px h-2 bg-zinc-300 absolute right-[48px] top-[44.5px] z-20"></div>
 

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { softwareData } from "../data/toolbox";
 import Marquee from "./Marque";
 import { ShadowBox } from "./ShadowBox";
+import { BentoCard } from "./BentoCard";
 
 const items = softwareData.map((item) => (
   <a
@@ -22,14 +23,10 @@ const items = softwareData.map((item) => (
   </a>
 ));
 
-export function ToolboxBento() {
+export function ToolboxBento({ linkTo }: { linkTo?: string }) {
   const [isHovered, setIsHovered] = useState(false);
   return (
-    <div
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className="p-6 rounded-2xl col-span-5 row-span-7 h-[300px] border border-border-primary flex flex-col hover:bg-white group relative overflow-hidden"
-    >
+    <BentoCard linkTo={linkTo}>
       <div className="text-center">
         <h2 className="text-base font-medium">Toolbox</h2>
         <p className="mt-1 text-text-secondary">
@@ -45,12 +42,12 @@ export function ToolboxBento() {
           itemSize={160}
           gap={20}
           items={items}
-          speed={100}
+          speed={5}
           bgColorStart="rgba(255, 255, 255, 1)"
           bgColorEnd="rgba(255, 255, 255, 0)"
           shadowWidth={200}
         />
       </div>
-    </div>
+    </BentoCard>
   );
 }

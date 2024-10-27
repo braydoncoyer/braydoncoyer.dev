@@ -26,7 +26,7 @@ If you'd like to follow along, feel free to clone down [this repo](https://githu
 
 When you run `ng test` in a new Angular project, the Karma report will be opened in a new Chrome tab. I prefer to have my test results shown in the terminal. To make this change, alter the `browsers` property in your `karma.config.js` file.
 
-```ts {4}
+```ts:karma.config.ts {4}
 module.exports = function(config) {
 	config.set({
 	...
@@ -39,7 +39,7 @@ module.exports = function(config) {
 
 I have created a very simplistic HTTP service with all of the CRUD operations. Take a look below.
 
-```ts
+```ts:book.service.ts
 @Injectable({
   providedIn: "root",
 })
@@ -153,7 +153,7 @@ Chrome Headless 92.0.4515.159 (Mac OS 10.15.7) BooksService should be created FA
 
 The error message actually gives us a hint. We aren't testing this Service in isolation - is has an injected dependency: the HTTP Client. In order for the default test to pass in the Service, we need to bring in the `HttpClientTestingModule` - a module that provides all of the tools that we need to properly test Angular HTTP Services.
 
-```ts
+```ts:book.service.spec.ts
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 ...
 
@@ -187,7 +187,7 @@ Let's focus on the first piece of code in the HTTP service - the `getAllBooks` f
 
 With this in mind, let's create a new test and add the following test logic:
 
-```ts
+```ts:book.service.spec.ts
 import {
   HttpClientTestingModule,
   HttpTestingController,
@@ -252,7 +252,7 @@ This function is similar to the first. Can you come up with test criteria?
 
 Here's how I'm testing this function:
 
-```ts
+```ts:book.service.spec.ts
 import { mockBook1, mockBookArray } from 'src/mocks/mockBooks';
 ...
 it('should call getBookById and return the appropriate Book', () => {
@@ -283,7 +283,7 @@ Everything else is familiar - we still check that the request method is `GET` an
 
 Now let's look at the `updateBook` function. The same patterns apply here, but the request method is different. Don't let that scare you! Take note of what argument(s) the function requires, and what the expected output, then write the test.
 
-```ts
+```ts:book.service.spec.ts
 it("should call updateBook and return the updated book from the API", () => {
   const updatedBook: Book = {
     id: "1",
