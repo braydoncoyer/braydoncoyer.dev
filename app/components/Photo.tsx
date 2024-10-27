@@ -8,11 +8,13 @@ import { cn } from "../lib/utils";
 import { getRandomNumberInRange } from "@/app/lib/getRandomNumberInRange";
 
 const MotionImage = motion(
-  forwardRef((props: ImageProps, ref: Ref<HTMLImageElement>) => (
-    <Image ref={ref} {...props} />
-  ))
+  forwardRef(function MotionImage(
+    props: ImageProps,
+    ref: Ref<HTMLImageElement>
+  ) {
+    return <Image ref={ref} {...props} />;
+  })
 );
-
 type Direction = "left" | "right";
 
 export const Photo = ({
