@@ -117,35 +117,35 @@ function Record({
         cy="104.5"
         r="87.06"
         stroke="#6C6D70"
-        stroke-width="1.3"
+        strokeWidth="1.3"
       />
       <circle
         cx="89.4992"
         cy="104.5"
         r="80.3"
         stroke="#4D4E52"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <circle
         cx="89.4995"
         cy="104.5"
         r="69.56"
         stroke="#4D4E52"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <circle
         cx="89.4995"
         cy="104.5"
         r="65.98"
         stroke="#4D4E52"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <circle
         cx="89.4999"
         cy="104.5"
         r="49.87"
         stroke="#4D4E52"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <g
         className={isPlaying ? "animate-spin-slow" : ""}
@@ -177,8 +177,8 @@ function Record({
         cy="104.5"
         r="3.33"
         stroke="white"
-        stroke-opacity="0.3"
-        stroke-width="0.5"
+        strokeOpacity="0.3"
+        strokeWidth="0.5"
       />
       <g filter="url(#filter0_f_161_134)">
         <path
@@ -195,7 +195,7 @@ function Record({
       <path
         d="M59 46C73.5 38.5 96 34 118.5 45.5"
         stroke="url(#paint1_linear_161_134)"
-        stroke-opacity="0.3"
+        strokeOpacity="0.3"
       />
       <defs>
         <filter
