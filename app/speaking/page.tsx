@@ -321,12 +321,12 @@ export default function SpeakingPage() {
                   <TabPanels className="mt-8">
                     <TabPanel id="first-person">
                       <p className="text-base text-text-secondary leading-7">
-                        I'm a Frontend Engineer at LogicGate where I help build
-                        a GRC automated platform. I'm a creative developer,
-                        blogger and designer. My mission is to translate
-                        user-focussed designs into pixel-perfect websites or
-                        applications that run blazing fast. I live in Texas with
-                        my wife and two daughters.
+                        I&apos;m a Frontend Engineer at LogicGate where I help
+                        build a GRC automated platform. I&apos;m a creative
+                        developer, blogger and designer. My mission is to
+                        translate user-focussed designs into pixel-perfect
+                        websites or applications that run blazing fast. I live
+                        in Texas with my wife and two daughters.
                       </p>
                     </TabPanel>
                     <TabPanel id="third-person">
