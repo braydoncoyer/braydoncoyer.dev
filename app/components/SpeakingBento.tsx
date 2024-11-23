@@ -78,7 +78,7 @@ export function SpeakingBento() {
   );
 }
 
-export function CirclePattern({ isHovered }: { isHovered: boolean }) {
+export function CirclePattern({ isHovered }: { isHovered?: boolean }) {
   const rings = [
     { width: 195, height: 195, x: 86.5, y: 108.5, delay: 0 }, // innermost
     { width: 267, height: 267, x: 50.5, y: 72.5, delay: 0.2 }, // inner middle
