@@ -19,9 +19,9 @@ export function Footer() {
                     alt="Braydon's Logo"
                   />
                 </Link>
-                <p className="w-60 text-gray-500 leading-6">
-                  I’m Braydon - a senior front-end developer, blogger and public
-                  speaker. Thanks for checking out my site!
+                <p className="w-60 text-gray-500 leading-5">
+                  I&apos;m Braydon - a senior front-end developer, blogger and
+                  public speaker. Thanks for checking out my site!
                 </p>
               </div>
               <p className="mt-6 text-gray-500">

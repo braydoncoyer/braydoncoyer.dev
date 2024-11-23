@@ -1,19 +1,76 @@
-import Link from "next/link";
+"use client";
+import { BentoCard } from "./BentoCard";
+import { motion } from "framer-motion";
+
+const lineVariants = {
+  initial: {
+    opacity: 0.5,
+  },
+  hover: {
+    opacity: [0.5, 0.8, 0.5],
+    transition: {
+      duration: 2,
+      repeat: Infinity,
+      ease: "easeInOut",
+    },
+  },
+};
+
+const card1Variants = {
+  initial: {
+    rotate: -8,
+    y: -15,
+    transition: {
+      duration: 0.3,
+      ease: "easeOut",
+    },
+  },
+  hover: {
+    rotate: 0,
+    y: 0,
+    transition: {
+      duration: 0.3,
+      ease: "easeOut",
+    },
+  },
+};
+
+const card2Variants = {
+  initial: {
+    rotate: 8,
+    y: -5,
+    transition: {
+      duration: 0.3,
+      ease: "easeOut",
+    },
+  },
+  hover: {
+    rotate: 0,
+    y: 0,
+    transition: {
+      duration: 0.3,
+      ease: "easeOut",
+      delay: 0.15,
+    },
+  },
+};
 
 export function CommunityWallBento() {
   return (
-    <Link href="/community-wall">
-      <div className="p-6 rounded-2xl col-span-1 h-[276px] border border-border-primary flex flex-col group overflow-hidden relative">
+    <motion.div initial="initial" whileHover="hover">
+      <BentoCard linkTo="/community-wall" height="h-[276px]">
         {/* Dots */}
-        <div className="absolute h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_2px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+        <div className="absolute top-0 h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_2px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+
         {/* Card 1 */}
-        <svg
+        <motion.svg
           className="absolute top-0"
           width="171"
           height="152"
           viewBox="0 0 171 152"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          variants={card1Variants}
         >
           <g clipPath="url(#clip0_1_2784)">
             <g filter="url(#filter0_d_1_2784)">
@@ -83,7 +140,7 @@ export function CommunityWallBento() {
                       fill="#E38079"
                     />
                   </g>
-                  <rect
+                  <motion.rect
                     opacity="0.5"
                     x="32.8682"
                     y="22.5352"
@@ -92,8 +149,9 @@ export function CommunityWallBento() {
                     rx="4"
                     transform="rotate(-12 32.8682 22.5352)"
                     fill="white"
+                    variants={lineVariants}
                   />
-                  <rect
+                  <motion.rect
                     opacity="0.5"
                     x="39.5215"
                     y="53.8359"
@@ -102,8 +160,9 @@ export function CommunityWallBento() {
                     rx="4"
                     transform="rotate(-12 39.5215 53.8359)"
                     fill="white"
+                    variants={lineVariants}
                   />
-                  <rect
+                  <motion.rect
                     opacity="0.5"
                     x="97.4263"
                     y="8.81303"
@@ -112,22 +171,25 @@ export function CommunityWallBento() {
                     rx="4"
                     transform="rotate(-12 97.4263 8.81303)"
                     fill="white"
+                    variants={lineVariants}
                   />
-                  <rect
+                  <motion.rect
                     opacity="0.5"
                     width="58"
                     height="8"
                     rx="4"
                     transform="matrix(-0.978148 0.207912 0.207912 0.978148 116.403 21.1368)"
                     fill="white"
+                    variants={lineVariants}
                   />
-                  <rect
+                  <motion.rect
                     opacity="0.5"
                     width="16"
                     height="8"
                     rx="4"
                     transform="matrix(-0.978148 0.207912 0.207912 0.978148 51.8452 34.859)"
                     fill="white"
+                    variants={lineVariants}
                   />
                 </g>
               </g>
@@ -334,16 +396,17 @@ export function CommunityWallBento() {
               />
             </clipPath>
           </defs>
-        </svg>
+        </motion.svg>
 
         {/* Card 2 */}
-        <svg
+        <motion.svg
           className="absolute right-0 top-0"
           width="214"
           height="223"
           viewBox="0 0 214 223"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          variants={card2Variants}
         >
           <g filter="url(#filter0_dd_1_2773)">
             <g filter="url(#filter1_i_1_2773)">
@@ -366,7 +429,7 @@ export function CommunityWallBento() {
                   transform="matrix(-0.978148 -0.207912 -0.207912 0.978148 182.226 41.6919)"
                   fill="url(#paint0_linear_1_2773)"
                 />
-                <rect
+                <motion.rect
                   opacity="0.5"
                   x="78.4663"
                   y="58.4864"
@@ -375,8 +438,9 @@ export function CommunityWallBento() {
                   rx="4"
                   transform="rotate(12 78.4663 58.4864)"
                   fill="white"
+                  variants={lineVariants}
                 />
-                <rect
+                <motion.rect
                   opacity="0.5"
                   x="71.8135"
                   y="89.7871"
@@ -385,8 +449,9 @@ export function CommunityWallBento() {
                   rx="4"
                   transform="rotate(12 71.8135 89.7871)"
                   fill="white"
+                  variants={lineVariants}
                 />
-                <rect
+                <motion.rect
                   opacity="0.5"
                   x="143.024"
                   y="72.2085"
@@ -395,22 +460,25 @@ export function CommunityWallBento() {
                   rx="4"
                   transform="rotate(12 143.024 72.2085)"
                   fill="white"
+                  variants={lineVariants}
                 />
-                <rect
+                <motion.rect
                   opacity="0.5"
                   width="58"
                   height="8"
                   rx="4"
                   transform="matrix(-0.978148 -0.207912 -0.207912 0.978148 155.348 91.1855)"
                   fill="white"
+                  variants={lineVariants}
                 />
-                <rect
+                <motion.rect
                   opacity="0.5"
                   width="16"
                   height="8"
                   rx="4"
                   transform="matrix(-0.978148 -0.207912 -0.207912 0.978148 90.79 77.4633)"
                   fill="white"
+                  variants={lineVariants}
                 />
               </g>
             </g>
@@ -537,17 +605,17 @@ export function CommunityWallBento() {
               />
             </clipPath>
           </defs>
-        </svg>
+        </motion.svg>
 
         <div className="grid grid-cols-2 grid-rows-2 gap-8 h-full items-end">
-          <div className="col-1 row-start-2">
+          <div className="col-1 row-start-2 z-10">
             <h2 className="font-medium mb-2">Community Wall</h2>
             <p className="text-text-secondary">
               Let everyone know you were here
             </p>
           </div>
         </div>
-      </div>
-    </Link>
+      </BentoCard>
+    </motion.div>
   );
 }

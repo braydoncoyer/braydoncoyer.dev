@@ -79,12 +79,9 @@ export default function ToolboxPage() {
       <span className="absolute right-4 top-14">
         <BgSectionTag width={250} tagType={TagType.TOOLBOX} />
       </span>
-      {/* <span className="absolute left-36">
-        <BgGradient />
-      </span> */}
       <div className="space-y-[80px] relative">
         <div className="pt-[90px] max-w-2xl mx-auto">
-          <PageTitle title="Hardware and software I keep in my toolbox." />
+          <PageTitle title="Hardware && software I keep in my toolbox." />
         </div>
         <span className="absolute top-40 -translate-y-1/2 left-1/2 translate-x-1/2">
           <HorizontalLine />
@@ -172,9 +169,9 @@ export default function ToolboxPage() {
               href={item.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="no-underline"
+              className="no-underline group group-hover:-translate-y-3 transition-all duration-500"
             >
-              <ShadowBox width={120} height={120} label={item.title}>
+              {/* <ShadowBox width={120} height={120} label={item.title}>
                 <Image
                   className="w-10 h-10 group-hover:w-11 group-hover:h-11 transition-all"
                   alt={item.title}
@@ -182,7 +179,25 @@ export default function ToolboxPage() {
                   width={40}
                   height={40}
                 />
-              </ShadowBox>
+              </ShadowBox> */}
+
+              <div className="text-center inline-block group">
+                <div className="rounded-[20px] border border-border-primary group-hover:border-indigo-400 group-hover:-translate-y-3 p-2 transition-all duration-300 h-28 w-28">
+                  <div
+                    className="border-2 h-full rounded-xl border-[#A5AEB81F]/10 bg-[#EDEEF0] grid place-items-center"
+                    style={{ boxShadow: "0px 2px 1.5px 0px #A5AEB852 inset" }}
+                  >
+                    <img
+                      className="w-10 h-10"
+                      alt={item.title}
+                      src={item.imgSrc}
+                    />
+                  </div>
+                </div>
+                {item.title ? (
+                  <p className="text-gray-500 text-sm mt-3">{item.title}</p>
+                ) : null}
+              </div>
             </a>
           ))}
           <span className="absolute bottom-0">

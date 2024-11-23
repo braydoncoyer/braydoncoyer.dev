@@ -24,7 +24,7 @@ export default async function BlogPage() {
       Decision was made to remove this from the layout component to allow for wide article image on the blog post page. */}
       <div className="space-y-[80px] mt-[100px]">
         <BlogPageHeader
-          title="Insightful and helpful content curated for you."
+          title="Insightful && helpful content curated for you."
           sectionTitle="Featured"
         />
         <div className="space-y-[80px] mt-[100px] w-full">

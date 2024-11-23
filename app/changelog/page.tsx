@@ -13,7 +13,7 @@ export default async function ChangelogPage() {
   return (
     <div className="space-y-[80px] mt-[100px] w-full">
       <div className="max-w-2xl mx-auto">
-        <PageTitle title="Here's what's new on my site." />
+        <PageTitle title="Here's what's new && exciting on my site." />
       </div>
 
       <svg
@@ -165,7 +165,7 @@ export default async function ChangelogPage() {
                 <li key={post.slug}>
                   <div
                     key={post.slug}
-                    className="grid grid-cols-12 rounded-2xl h-full py-8"
+                    className="grid grid-cols-12 rounded-2xl h-full py-8 px-4"
                   >
                     <div className="space-y-2 col-span-2 col-start-1">
                       <div className="leading-none text-sm">
@@ -185,15 +185,17 @@ export default async function ChangelogPage() {
                       <h2 className="tracking-tight text-slate-900 text-2xl font-medium leading-none mb-8">
                         {post.title}
                       </h2>
-                      <img
-                        className="w-full h-96 object-cover rounded-3xl mb-8"
-                        src="https://framerusercontent.com/images/qtKbMR65zAX0Ziafg98khJkdQ.webp?scale-down-to=2048"
-                        alt=""
-                      />
+                      {post.imageName ? (
+                        <img
+                          className="h-96 rounded-xl drama-shadow object-cover mb-12"
+                          src={`/${post.imageName}`}
+                          alt=""
+                        />
+                      ) : null}
                       <MDXContent code={post.code} />
                     </div>
                   </div>
-                  <div className="h-6 w-full border-y border-border-primary [background-image:linear-gradient(45deg,theme(colors.border-primary)_12.50%,transparent_12.50%,transparent_50%,theme(colors.border-primary)_50%,theme(colors.border-primary)_62.50%,transparent_62.50%,transparent_100%)] [background-size:5px_5px]"></div>
+                  <div className="h-0 w-full my-4 border-t border-dashed border-border-primary" />
                 </li>
               );
             })}

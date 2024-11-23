@@ -57,21 +57,29 @@ export const Photo = ({
     <motion.div
       drag
       dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-      whileTap={{ scale: 1.2, zIndex: 1000 }}
-      whileHover={{ scale: 1.1, rotateZ: 2 * (direction == "left" ? -1 : 1) }}
-      whileDrag={{ zIndex: 1000 }}
+      whileTap={{ scale: 1.2, zIndex: 9999 }}
+      whileHover={{
+        scale: 1.1,
+        rotateZ: 2 * (direction == "left" ? -1 : 1),
+        zIndex: 9999,
+      }}
+      whileDrag={{
+        scale: 1.1,
+        zIndex: 9999,
+      }}
       initial={{ rotate: initialRotation }}
-      className={cn(
-        className,
-        "shrink-0 mx-auto cursor-grab active:cursor-grabbing relative z-0"
-      )}
       style={{
         width,
         height,
         perspective: 400,
         rotateX,
         rotateY,
+        zIndex: 1,
       }}
+      className={cn(
+        className,
+        "shrink-0 mx-auto cursor-grab active:cursor-grabbing relative"
+      )}
       onMouseMove={handleMouse}
       onMouseLeave={resetMouse}
     >

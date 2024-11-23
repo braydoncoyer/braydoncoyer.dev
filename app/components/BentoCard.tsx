@@ -8,6 +8,7 @@ interface BentoCardProps {
   colSpan?: number;
   className?: string;
   showHoverGradient?: boolean;
+  hideOverflow?: boolean;
   linkTo?: string;
 }
 
@@ -18,17 +19,20 @@ export function BentoCard({
   colSpan = 7,
   className = "",
   showHoverGradient = true,
+  hideOverflow = true,
   linkTo,
 }: BentoCardProps) {
   const cardContent = (
     <div
-      className={`bg-bg-primary p-6 rounded-2xl border border-border-primary flex flex-col group hover:bg-white relative overflow-hidden ${height} row-span-${rowSpan} col-span-${colSpan} ${className}`}
+      className={`bg-bg-primary p-6 rounded-2xl border border-border-primary flex flex-col group hover:bg-white relative ${
+        hideOverflow && "overflow-hidden"
+      }  ${height} row-span-${rowSpan} col-span-${colSpan} ${className}`}
     >
       {showHoverGradient && (
-        <div className="absolute inset-0 bg-gradient-to-tl from-[#6C47FF]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out z-30 user-select-none pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-tl from-violet-400/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out z-30 user-select-none pointer-events-none"></div>
       )}
       {linkTo && (
-        <div className="absolute bottom-4 right-4 w-9 h-9 rotate-6 rounded-full bg-[#6C47FF]/40 opacity-0 group-hover:opacity-100 group-hover:translate-y-[-8px] group-hover:rotate-0 transition-all duration-300 ease-in-out z-50 flex items-center justify-center">
+        <div className="absolute bottom-4 right-4 w-9 h-9 rotate-6 rounded-full  bg-violet-300 opacity-0 group-hover:opacity-100 group-hover:translate-y-[-8px] group-hover:rotate-0 transition-all duration-300 ease-in-out z-50 flex items-center justify-center">
           <svg
             className="w-6 h-6 text-[#6C47FF]"
             width="24"

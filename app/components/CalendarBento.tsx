@@ -61,16 +61,16 @@ export function CalendarBento() {
 
   return (
     <BentoCard height="h-[220px]" linkTo={bookingLink}>
-      <div className="grid grid-cols-12 gap-5 h-full">
+      <div className="grid grid-cols-12 gap-5 h-full group">
         <div className="col-span-3 text-balance">
           <h2 className="text-base font-medium mb-4">Book a call with me</h2>
           <p className="mb-2 text-text-secondary">
             I&apos;d love to chat even if there&apos;s no agenda!
           </p>
         </div>
-        <div className="col-span-9 relative">
-          <div className="group">
-            <div className="rounded-[20px] border border-border-primary p-2 w-[550px] h-[278px]">
+        <div className="group-hover:top-5 group-hover:-right-12 absolute -right-14 top-7 transition-all ease-out duration-500">
+          <div>
+            <div className="rounded-[20px] border border-border-primary group-hover:border-indigo-400 trnasition-colors duration-100 p-2 w-[550px] h-[278px]">
               <div
                 className="border-2 h-full rounded-xl border-[#A5AEB81F]/10 bg-[#EDEEF0] p-3"
                 style={{ boxShadow: "0px 2px 1.5px 0px #A5AEB852 inset" }}

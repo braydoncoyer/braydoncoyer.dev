@@ -119,7 +119,7 @@ export default function SpeakingPage() {
           <BgSectionTag tagType={TagType.SECTION} />
         </span>
         <div>
-          <PageTitle title="I present on web development at conferences globally and across the web." />
+          <PageTitle title="I present on web development at conferences globally && across the web." />
         </div>
         <span className="absolute top-40 inset-x-0">
           <HorizontalLine />

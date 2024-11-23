@@ -7,13 +7,11 @@ import { ChangelogBento } from "./components/ChangelogBento";
 import { fetchAndSortBlogPosts } from "./lib/utils";
 import { SpeakingBento } from "./components/SpeakingBento";
 import { CommunityWallBento } from "./components/CommunityWallBento";
-import { CurrentlyPlayingBento } from "./components/CurrentlyPlayingBento";
 import { CalendarBento } from "./components/CalendarBento";
 import { FeaturedBlogCard } from "./components/FeaturedBlogCard";
 import { ToolboxBento } from "./components/ToolboxBento";
 import { ConnectionsBento } from "./components/ConnectionsBento";
 import { ProfilePicture } from "./components/ProfilePicture";
-import { AboutSection } from "./components/AboutSection";
 import { Button } from "./components/Button";
 import { Photo } from "./components/Photo";
 import { AboutMeBento } from "./components/AboutMeBento";
@@ -192,7 +190,9 @@ export default async function Home() {
           <div>
             {/* <HorizontalLine /> */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-              <ChangelogBento />
+              <span className="col-span-1 h-[276px]">
+                <ChangelogBento />
+              </span>
               <SpeakingBento />
               <CommunityWallBento />
             </div>

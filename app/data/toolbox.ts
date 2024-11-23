@@ -17,6 +17,21 @@ const softwareData: SoftwareDataItem[] = [
     link: "https://raycast.com/?via=braydon",
   },
   {
+    title: "Arc",
+    imgSrc: "/arc_logo.png",
+    link: "https://arc.net/",
+  },
+  {
+    title: "VSCode",
+    imgSrc: "/vscode_logo.png",
+    link: "https://code.visualstudio.com/",
+  },
+  {
+    title: "mymind",
+    imgSrc: "/mymind_logo.png",
+    link: "https://mymind.com/",
+  },
+  {
     title: "Obsidian",
     imgSrc: "/obsidian_logo.png",
     link: "https://obsidian.md/",
@@ -30,11 +45,6 @@ const softwareData: SoftwareDataItem[] = [
     title: "Tana",
     imgSrc: "/tana_logo.png",
     link: "https://tana.inc/",
-  },
-  {
-    title: "VSCode",
-    imgSrc: "/vscode_logo.png",
-    link: "https://code.visualstudio.com/",
   },
   {
     title: "Spotify",
@@ -60,16 +70,6 @@ const softwareData: SoftwareDataItem[] = [
     title: "1Password",
     imgSrc: "/1password_logo.png",
     link: "https://1password.com/",
-  },
-  {
-    title: "Arc",
-    imgSrc: "/arc_logo.png",
-    link: "https://arc.net/",
-  },
-  {
-    title: "mymind",
-    imgSrc: "/mymind_logo.png",
-    link: "https://mymind.com/",
   },
   {
     title: "Framer",
