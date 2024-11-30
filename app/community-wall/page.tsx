@@ -1,6 +1,7 @@
 import Link from "next/link";
 import CommunityWallLayout from "./layout";
 import { CommunityWallModal } from "../components/CommunityWallModal";
+import createSupabaseServerClient from "../lib/supabase/server";
 
 type SearchParamProps = {
   searchParams: Record<string, string> | null | undefined;
@@ -211,19 +212,31 @@ const patterns: Pattern[] = [
 ];
 
 export default async function Page({ searchParams }: SearchParamProps) {
-  const show = searchParams?.show;
+  const supabase = await createSupabaseServerClient();
+
+  const { data: messages } = await supabase.from("messages").select("*");
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   return (
     <CommunityWallLayout>
-      {show ? <CommunityWallModal /> : null}
+      {user ? null : <CommunityWallModal />}
       <div className="absolute top-0 inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_2px)] [background-size:16px_16px]"></div>
-      <div className="p-12 z-50 flex flex-wrap gap-24 justify-center">
-        <CommunityWallCard patternIndex={0} />
-        <CommunityWallCard patternIndex={1} />
-        <CommunityWallCard patternIndex={2} />
-        <CommunityWallCard patternIndex={3} />
-        <CommunityWallCard patternIndex={4} />
+      <div className="p-12 flex flex-wrap gap-24 justify-center">
+        {messages?.map((message) => (
+          <CommunityWallCard
+            key={message.id}
+            message={message.message}
+            patternIndex={message.patternindex}
+            author={message.creator_name}
+            profilePicture={message.creator_avatar_url}
+            rotation={getRandomRotation()}
+          />
+        ))}
       </div>
+
+      <pre>{JSON.stringify(messages, 0, 2)}</pre>
       <div className="sticky bottom-0 left-0 right-0 h-[150px] bg-gradient-to-b from-transparent to-zinc-300 pointer-events-none flex items-center justify-center">
         <Link href="/community-wall?show=true">
           <button
@@ -252,6 +265,12 @@ export default async function Page({ searchParams }: SearchParamProps) {
   );
 }
 
+function getRandomRotation(): string {
+  let rotation = Math.floor(Math.random() * 20) - 10;
+  if (rotation >= 0) rotation += 1;
+  return `rotate-[${rotation}deg]`;
+}
+
 function CommunityWallCard({
   patternIndex,
   message = "Hello from Texas! This is cool! I want to try more one day! Maybe tomorrow! Testing again! Cheers mate!",
@@ -272,17 +291,19 @@ function CommunityWallCard({
       className={`rounded-xl border-2 border-[#A5AEB8/12] h-[300px] w-[250px] bg-[#F7F7F8] p-2.5 flex flex-col justify-between items-start shadow-[12px_12px_0px_0px_rgba(214,218,222,0.3)] ${rotation}`}
     >
       <div
-        className={`w-full h-[232px] rounded-md bg-gradient-to-b ${pattern.gradient} flex items-center text-center text-balance p-4 relative`}
+        className={`w-full h-[232px] rounded-md bg-gradient-to-b ${pattern.gradient} flex items-center text-center text-balance p-4 relative justify-center`}
       >
         {pattern.svg}
-        <p className="font-bold text-xl line-clamp-6 z-10">{message}</p>
+        <p className="font-bold text-xl line-clamp-6 z-10 text-center">
+          {message}
+        </p>
       </div>
       <div className="flex items-center space-x-2 w-full">
         <img
-          src="/braydon_headshot_1.jpeg"
+          src={profilePicture}
           className="rounded-full h-8 w-8 p2 flex-shrink-0 ring-1 ring-slate-300 border-2 border-transparent"
         />
-        <p className="text-text-secondary truncate">Braydon Coyer</p>
+        <p className="text-text-secondary truncate">{author}</p>
       </div>
     </div>
   );

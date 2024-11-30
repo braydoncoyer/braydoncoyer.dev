@@ -10,5 +10,6 @@
   "files.exclude": {
     "node_modules": true
   },
-  "prettier.ignorePath": ".gitignore"
+  "prettier.ignorePath": ".gitignore",
+  "cSpell.words": ["supabase"]
 }
