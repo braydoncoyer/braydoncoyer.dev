@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body.modal-open {
+  overflow: hidden;
+}
+
 .wrapper {
   display: grid;
   grid-template-columns:

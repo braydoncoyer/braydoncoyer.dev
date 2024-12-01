@@ -1,44 +1,58 @@
-"use client";
+import { redirect } from "next/navigation";
+import createSupabaseServerClient from "../lib/supabase/server";
+import { CreateCommunityNoteBuilder } from "./CreateCommunityNoteBuilder";
+import { SignInWithGitHub } from "./SignInWithGitHub";
 
-import React, { useEffect } from "react";
-import { useRouter } from "next/navigation";
-import useSupabaseClient from "../lib/supabase/client";
+// Move the server action outside the component and mark it with 'use server'
+async function handleCreateCommunityNote(formData: FormData) {
+  "use server";
 
-export function CommunityWallModal() {
-  const router = useRouter();
-  const supabase = useSupabaseClient();
+  const message = formData.get("message") as string;
+  const patternIndex = parseInt(formData.get("patternIndex") as string);
+  const rotation = parseInt(formData.get("rotation") as string);
 
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
+  const supabase = await createSupabaseServerClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
-    const handleEscapeKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        router.push("/community-wall");
-      }
-    };
+  if (!user) return;
 
-    document.addEventListener("keydown", handleEscapeKey);
-
-    return () => {
-      document.body.style.overflow = "unset";
-      document.removeEventListener("keydown", handleEscapeKey);
-    };
-  }, [router]);
-
-  const handleLoginWithGoogle = () => {
-    supabase.auth.signInWithOAuth({
-      provider: "github",
-      options: {
-        redirectTo: `${location.origin}/auth/callback`,
-      },
-    });
+  const newNote = {
+    message,
+    patternindex: patternIndex,
+    rotation: rotation,
+    user_id: user.id,
+    creator_name: user.user_metadata.full_name,
+    creator_avatar_url: user.user_metadata.avatar_url,
   };
 
+  const { error } = await supabase.from("messages").insert(newNote).select();
+
+  if (!error) {
+    redirect("/community-wall");
+  }
+}
+
+export async function CommunityWallModal() {
+  const supabase = await createSupabaseServerClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   return (
-    <div className="fixed inset-0 bg-black/50 z-50">
-      <form action={handleLoginWithGoogle}>
-        <button>Login with google</button>
-      </form>
+    <div className="fixed inset-0 bg-slate-900/70 z-50 overflow-y-auto">
+      <div className="min-h-screen flex items-center justify-center">
+        {!user ? (
+          <SignInWithGitHub />
+        ) : (
+          <CreateCommunityNoteBuilder
+            onSubmit={handleCreateCommunityNote}
+            creator_name={user.user_metadata.full_name}
+            creator_avatar_url={user.user_metadata.avatar_url}
+          />
+        )}
+      </div>
     </div>
   );
 }
