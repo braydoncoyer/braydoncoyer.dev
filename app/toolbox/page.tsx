@@ -89,7 +89,9 @@ export default function ToolboxPage() {
 
         {/* Applications */}
         <div className="relative">
-          <SectionTitlePill title="Applications" />
+          <div className="text-sm font-medium text-indigo-600 text-center">
+            <span>Applications</span>
+          </div>
           <span className="absolute top-1/2 -translate-y-1/2 left-1/2 translate-x-1/2">
             <HorizontalLine />
           </span>
@@ -171,18 +173,8 @@ export default function ToolboxPage() {
               rel="noopener noreferrer"
               className="no-underline group group-hover:-translate-y-3 transition-all duration-500"
             >
-              {/* <ShadowBox width={120} height={120} label={item.title}>
-                <Image
-                  className="w-10 h-10 group-hover:w-11 group-hover:h-11 transition-all"
-                  alt={item.title}
-                  src={item.imgSrc}
-                  width={40}
-                  height={40}
-                />
-              </ShadowBox> */}
-
               <div className="text-center inline-block group">
-                <div className="rounded-[20px] border border-border-primary group-hover:border-indigo-400 group-hover:-translate-y-3 p-2 transition-all duration-300 h-28 w-28">
+                <div className="rounded-[20px] border border-border-primary bg-bg-primary group-hover:border-indigo-400 group-hover:-translate-y-3 p-2 transition-all duration-300 h-28 w-28">
                   <div
                     className="border-2 h-full rounded-xl border-[#A5AEB81F]/10 bg-[#EDEEF0] grid place-items-center"
                     style={{ boxShadow: "0px 2px 1.5px 0px #A5AEB852 inset" }}
@@ -206,7 +198,9 @@ export default function ToolboxPage() {
         </div>
         {/* Hardware */}
         <div className="relative">
-          <SectionTitlePill title="Hardware" />
+          <div className="text-sm font-medium text-indigo-600 text-center">
+            <span>Hardware</span>
+          </div>
           <span className="absolute top-1/2 -translate-y-1/2 left-1/2 translate-x-1/2">
             <HorizontalLine />
           </span>

@@ -87,7 +87,7 @@ export default async function Home() {
                   <Photo
                     width={180}
                     height={270}
-                    src="/braydon_headshot_1.jpeg"
+                    src="/braydon_headshot.jpg"
                     alt="DoorDash hitting it's millionth total order back in 2015."
                     direction="right"
                   />
@@ -103,7 +103,9 @@ export default async function Home() {
         <section className="space-y-16 relative">
           <AboutPattern />
           <div className="space-y-4">
-            <SectionTitlePill title="About" />
+            <div className="text-sm font-medium text-indigo-600 text-center">
+              <span>About</span>
+            </div>
             <h2 className="mx-auto text-text-primary text-center text-balance font-medium text-3xl tracking-tight max-w-lg leading-10">
               Here&apos;s what sets me apart and makes me unique
             </h2>
@@ -140,7 +142,9 @@ export default async function Home() {
             <span className="absolute left-1/2 -translate-x-1/2 top-0 pointer-events-none">
               <BgGradient />
             </span>
-            <SectionTitlePill title="Blog" />
+            <div className="text-sm font-medium text-indigo-600 text-center">
+              <span>Blog</span>
+            </div>
             <h2 className="mx-auto text-text-primary text-center text-balance font-medium text-3xl tracking-tighter max-w-lg leading-10">
               I like sharing my experiments and knowledge with others
             </h2>
@@ -167,21 +171,14 @@ export default async function Home() {
             </ul>
             <HorizontalLine />
           </div>
-
-          <div className="flex justify-center">
-            <Button variant="secondary" href="/blog">
-              Read More Articles
-            </Button>
-            <Button variant="secondary" href="/blog">
-              My Site
-            </Button>
-          </div>
         </section>
 
         {/* My Site Section */}
         <section className="space-y-16">
           <div className="space-y-4">
-            <SectionTitlePill title="My Site" />
+            <div className="text-sm font-medium text-indigo-600 text-center">
+              <span>My Site</span>
+            </div>
             <h2 className="mx-auto text-text-primary text-center text-balance font-medium text-3xl tracking-tighter max-w-lg leading-10">
               My site is a playful sandbox. Explore, experiment, and say hello
             </h2>

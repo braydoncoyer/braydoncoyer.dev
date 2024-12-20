@@ -1,6 +1,5 @@
 "use client";
 
-import { SectionTitlePill } from "app/components/SectionTitlePill";
 import { NewsletterSignUp } from "app/components/NewsletterSignUp";
 import { HorizontalLine } from "app/components/HorizontalLine";
 import { BgSectionTag, TagType } from "app/components/BgSectionTag";
@@ -9,12 +8,11 @@ import { ProfilePicture } from "../components/ProfilePicture";
 import React, { useEffect, useRef, useState } from "react";
 import { CurrentlyPlayingBento } from "../components/CurrentlyPlayingBento";
 import { ConnectionsBento } from "../components/ConnectionsBento";
-import { ToolboxBento } from "../components/ToolboxBento";
-import { CalendarBento } from "../components/CalendarBento";
 import { BentoCard } from "../components/BentoCard";
 import { Scrapbook } from "../components/Scrapbook";
 import { ShadowBox } from "../components/ShadowBox";
-import { useScroll, useTransform, motion } from "framer-motion";
+import { useScroll, motion } from "framer-motion";
+import { Resume } from "app/components/Resume";
 
 const experienceList = [
   {
@@ -25,9 +23,8 @@ const experienceList = [
         description: (
           <div>
             <p>
-              I lead feature development on my team by analyzing requirements,
-              designing solutions, and helping to advance the frontend chapter
-              of our organization.
+              I lead feature development by analyzing requirements, designing
+              solutions, and advancing our organization&apos;s frontend chapter
             </p>
           </div>
         ),
@@ -60,16 +57,17 @@ const experienceList = [
               Netflix OSS, Java, Spring Boot, SQL, Angular, React, and Vue.
             </p>
             <p>
-              I led development teams, utilizing extreme programming principles
-              such as agile, test-driven development, and paired programming.
+              I led development teams by applying extreme programming
+              principles, including agile, test-driven development, and pair
+              programming.
             </p>
             <p>
-              I spearheaded the information architecture and developed a
-              reusable UI component library for healthcare clients.
+              I spearheaded information architecture and created a reusable UI
+              component library for healthcare clients.
             </p>
             <p>
-              I led over 650 developers through a monthly enablement process,
-              training them for client work on the Digital Engineering stack.
+              I guided over 650 developers through a monthly training process
+              for client work on the Digital Engineering stack.
             </p>
           </div>
         ),
@@ -131,7 +129,7 @@ const experienceList = [
   },
 ];
 
-export default function ToolboxPage() {
+export default function AboutPage() {
   const timeOfDayGreeting = getTimeOfDayGreeting();
 
   return (
@@ -212,7 +210,7 @@ export default function ToolboxPage() {
             tracking-tighter"
             >
               {timeOfDayGreeting} <br />
-              I&apos;m Braydon, an experienced frontend developer.
+              I&apos;m Braydon, a creative frontend engineer.
             </h1>
           </div>
           <div className="flex-shrink-0 ml-8">
@@ -226,15 +224,18 @@ export default function ToolboxPage() {
 
         {/* About */}
         <div className="relative text-center space-y-8">
-          <SectionTitlePill title="About" />
-          <div className="max-w-3xl mx-auto">
-            <h2
-              className="w-full text-text-primary text-balance font-medium text-3xl leading-[40px]
+          <div className="space-y-4">
+            <div className="text-sm font-medium text-indigo-600 text-center">
+              <span>About</span>
+            </div>
+            <div className="max-w-3xl mx-auto">
+              <h2
+                className="w-1/2 mx-auto text-text-primary text-balance font-medium text-3xl leading-[40px]
             tracking-tighter"
-            >
-              Hey there! Let me quickly tell you about myself and what I enjoy
-              doing.
-            </h2>
+              >
+                Here&apos;s a quick intro about me and what I love to do
+              </h2>
+            </div>
           </div>
           <div className="relative overflow-hidden w-full h-[2000px]">
             <div className="absolute top-0 left-[455px] w-full">
@@ -249,7 +250,7 @@ export default function ToolboxPage() {
                     <ShadowBox width={188} height={278}></ShadowBox>
                     <img
                       className="w-[180px] h-[270px] absolute left-0 top-0 rotate-[-8deg] object-cover rounded-lg shadow"
-                      src="/braydon_headshot_1.jpeg"
+                      src="/knights_kwest.jpeg"
                       alt="A headshot"
                     />
                   </div>
@@ -260,7 +261,7 @@ export default function ToolboxPage() {
                   className="w-full text-text-primary text-balance font-medium text-3xl leading-[40px]
             tracking-tighter mb-6"
                 >
-                  I started my creative journey developing apps for iOS and
+                  I began my creative journey by developing apps for iOS and
                   Android
                 </h2>
                 <p className="text-base text-text-secondary mb-6 leading-8">
@@ -298,7 +299,7 @@ export default function ToolboxPage() {
                   className="w-full text-text-primary text-balance font-medium text-3xl leading-[40px]
             tracking-tighter mb-6"
                 >
-                  The leap over to web development.
+                  The transition to web development.
                 </h2>
                 <p className="text-base text-text-secondary mb-6 leading-8">
                   I decided to explore web development before too long. Given my
@@ -318,7 +319,7 @@ export default function ToolboxPage() {
                     <ShadowBox width={188} height={278}></ShadowBox>
                     <img
                       className="w-[180px] h-[270px] absolute left-0 top-0 rotate-[8deg] object-cover rounded-lg shadow"
-                      src="/braydon_headshot_1.jpeg"
+                      src="/braydon_and_pj.jpeg"
                       alt="A headshot"
                     />
                   </div>
@@ -348,7 +349,7 @@ export default function ToolboxPage() {
                     <ShadowBox width={188} height={278}></ShadowBox>
                     <img
                       className="w-[180px] h-[270px] absolute left-0 top-0 rotate-[-8deg] object-cover rounded-lg shadow"
-                      src="/braydon_headshot_1.jpeg"
+                      src="/braydon_and_pj.jpeg"
                       alt="A headshot"
                     />
                   </div>
@@ -395,12 +396,18 @@ export default function ToolboxPage() {
                   className="w-full text-text-primary text-balance font-medium text-3xl leading-[40px]
             tracking-tighter mb-6"
                 >
-                  What I’m doing now.
+                  What I&apos;m doing now.
                 </h2>
                 <p className="text-base text-text-secondary mb-6 leading-8">
                   These days, I work for LogicGate as a Senior Frontend
                   Developer, helping lead teams to create some pretty cool
                   stuff.
+                </p>
+
+                <p className="text-base text-text-secondary mb-6 leading-8">
+                  I&apos;m an accomplished international tech speaker, and I
+                  love sharing what I know. I aim to speak a few times each
+                  year.
                 </p>
 
                 <p className="text-base text-text-secondary mb-6 leading-8">
@@ -418,7 +425,7 @@ export default function ToolboxPage() {
                     <ShadowBox width={188} height={278}></ShadowBox>
                     <img
                       className="w-[180px] h-[270px] absolute left-0 top-0 rotate-[8deg] object-cover rounded-lg shadow"
-                      src="/braydon_headshot_1.jpeg"
+                      src="/braydon_speaking_photo.jpeg"
                       alt="A headshot"
                     />
                   </div>
@@ -521,63 +528,68 @@ export default function ToolboxPage() {
 
         {/* About */}
         <div className="relative text-center space-y-8">
-          <SectionTitlePill title="Experience" />
-          <div className="max-w-3xl mx-auto">
-            <h2
-              className="w-full text-text-primary text-balance font-medium text-3xl leading-[40px]
+          <div className="space-y-4">
+            <div className="text-sm font-medium text-indigo-600 text-center">
+              <span>Experience</span>
+            </div>
+            <div className="max-w-3xl mx-auto">
+              <h2
+                className="w-full text-text-primary text-balance font-medium text-3xl leading-[40px]
             tracking-tighter"
-            >
-              My work history and accomplishments timeline.
-            </h2>
+              >
+                My work history and achievements timeline.
+              </h2>
+            </div>
           </div>
         </div>
         <div>
-          {experienceList.map((experience, index) => (
-            <div key={index} className="grid grid-cols-12 gap-6 mb-8">
-              <div className="col-span-3 flex justify-center">
-                <h3 className="text-2xl font-semibold text-left">
-                  {experience.company}
-                </h3>
-              </div>
-              <div className="col-span-2"></div>
-              <div className="col-span-7"></div>
-
-              {experience.positions.map((position, posIndex) => (
-                <React.Fragment key={posIndex}>
-                  <div className="col-span-3 flex justify-center text-left">
-                    <span className="text-gray-500">{position.date}</span>
-                  </div>
-                  <div className="col-span-2"></div>
-                  <div className="col-span-7 pr-24">
-                    <h4 className="font-medium mb-2">{position.title}</h4>
-                    <div className="text-text-secondary leading-7 space-y-4">
-                      {position.description}
-                    </div>
-                  </div>
-                </React.Fragment>
-              ))}
-            </div>
-          ))}
+          <Resume />
         </div>
 
         <section className="space-y-16">
           <div className="space-y-4">
-            <SectionTitlePill title="About" />
+            <div className="text-sm font-medium text-indigo-600 text-center">
+              <span>More</span>
+            </div>
+
             <h2 className="mx-auto text-text-primary text-center text-balance font-medium text-3xl tracking-tight max-w-lg leading-10">
               Here&apos;s what sets me apart and makes me unique
             </h2>
           </div>
 
-          {/* About Grid */}
-          <HorizontalLine />
-          <div className="grid grid-cols-12 grid-rows-auto gap-2">
-            <CurrentlyPlayingBento />
-            <Scrapbook />
+          <a
+            href=""
+            className="group relative isolate inline-flex items-center justify-center overflow-hidden text-left font-medium transition duration-300 ease-[cubic-bezier(0.4,0.36,0,1)] before:duration-300 before:ease-[cubic-bezier(0.4,0.36,0,1)] before:transition-opacity rounded-full shadow-[0_1px_theme(colors.white/0.07)_inset,0_1px_3px_theme(colors.gray.900/0.2)] before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:rounded-full before:bg-gradient-to-b before:from-white/20 before:opacity-50 hover:before:opacity-100 after:pointer-events-none after:absolute after:inset-0 after:-z-10 after:rounded-full after:bg-gradient-to-b after:from-white/10 after:from-[46%] after:to-[54%] after:mix-blend-overlay text-sm px-3 py-1.5 ring-1 bg-indigo-600 text-white ring-indigo-600"
+          >
+            Invite me to speak
+          </a>
 
-            <ConnectionsBento />
-            <BentoCard colSpan={2} rowSpan={8} height="h-[300px]">
-              bonus
-            </BentoCard>
+          <a
+            href=""
+            className="group relative isolate inline-flex items-center justify-center overflow-hidden text-left font-medium transition duration-300 ease-[cubic-bezier(0.4,0.36,0,1)] before:duration-300 before:ease-[cubic-bezier(0.4,0.36,0,1)] before:transition-opacity rounded-full shadow-[0_1px_theme(colors.white/0.07)_inset,0_1px_3px_theme(colors.gray.900/0.2)] before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:rounded-full before:bg-gradient-to-b before:from-white/20 before:opacity-50 hover:before:opacity-100 after:pointer-events-none after:absolute after:inset-0 after:-z-10 after:rounded-full after:bg-gradient-to-b after:from-white/10 after:from-[46%] after:to-[54%] after:mix-blend-overlay text-sm px-3 py-1.5 ring-1 bg-[#6c47ff] text-white ring-[#6c47ff]"
+          >
+            Invite me to speak
+          </a>
+
+          <a
+            href=""
+            className="group relative isolate inline-flex items-center justify-center overflow-hidden text-left font-medium transition duration-300 ease-[cubic-bezier(0.4,0.36,0,1)] before:duration-300 before:ease-[cubic-bezier(0.4,0.36,0,1)] before:transition-opacity rounded-full shadow-[0_1px_theme(colors.white/0.07)_inset,0_1px_3px_theme(colors.gray.900/0.2)] before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:rounded-full before:bg-gradient-to-b before:from-white/20 before:opacity-50 hover:before:opacity-100 after:pointer-events-none after:absolute after:inset-0 after:-z-10 after:rounded-full after:bg-gradient-to-b after:from-white/10 after:from-[46%] after:to-[54%] after:mix-blend-overlay text-sm px-3 py-1.5 ring-1 bg-gray-900 text-white ring-gray-900"
+          >
+            Secondary
+          </a>
+
+          {/* About Grid */}
+          <div className="grid grid-cols-12 grid-rows-[14] gap-2">
+            <CurrentlyPlayingBento />
+            <div className="col-span-7 row-span-5">
+              <Scrapbook />
+            </div>
+            <div className="col-span-7 row-span-8">
+              <ConnectionsBento linkTo="/about" />
+            </div>
+            <div className="col-span-2 row-span-7 row-start-14 col-start-11 row-start-1 h-full">
+              <BentoCard height="h-full">bonus</BentoCard>
+            </div>
             <BentoCard colSpan={3} rowSpan={4} height="h-[220px]">
               Stats
             </BentoCard>
@@ -735,10 +747,10 @@ function AboutTrackPattern() {
 
         {/* Main circle on top */}
         <motion.circle
+          className="fill-indigo-600"
           cx={position.x}
           cy={position.y}
           r="10"
-          fill="#6C47FF"
           transition={{
             type: "spring",
             damping: 20,

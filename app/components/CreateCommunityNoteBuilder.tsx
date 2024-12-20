@@ -73,7 +73,7 @@ export function CreateCommunityNoteBuilder({
               name="message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[120px] bg-transparent resize-none text-2xl font-bold text-center focus:outline-none z-20 overflow-hidden leading-tight"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[120px] bg-transparent resize-none text-2xl font-bold text-center placeholder-slate-900 focus:outline-none z-20 overflow-hidden leading-tight"
               placeholder="Type here to leave a message"
               maxLength={200}
               rows={4}
@@ -147,14 +147,14 @@ export function CreateCommunityNoteBuilder({
                   stroke="currentColor"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth="1.5"
+                  strokeWidth="2.5"
                   d="M17.25 6.75L6.75 17.25"
                 ></path>
                 <path
                   stroke="currentColor"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth="1.5"
+                  strokeWidth="2"
                   d="M6.75 6.75L17.25 17.25"
                 ></path>
               </svg>

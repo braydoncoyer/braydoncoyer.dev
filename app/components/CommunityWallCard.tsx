@@ -21,7 +21,7 @@ export function CommunityWallCard({
 
   return (
     <div
-      className={`rounded-xl border-2 border-[#A5AEB8/12] bg-[#F7F7F8] p-2.5 flex flex-col justify-between items-start ${className}`}
+      className={`rounded-xl gap-2 border-2 border-[#A5AEB8/12] bg-[#F7F7F8] p-2.5 flex flex-col justify-between items-start ${className}`}
       style={{ transform: `rotate(${rotation}deg)` }}
     >
       <div

@@ -91,10 +91,10 @@ export function Tab({ id, label, className = "" }: Omit<TabProps, "children">) {
     <button
       onClick={() => setActiveTab(id)}
       aria-current={isActive ? "page" : undefined}
-      className={`whitespace-nowrap border-b-2 px-1 py-4 text-sm font-medium transition-colors
+      className={`whitespace-nowrap border-b-2 px-1 py-2.5 text-sm transition-colors
         ${
           isActive
-            ? "border-indigo-500 text-indigo-500"
+            ? "border-slate-900 text-slate-900 font-medium"
             : "border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-700"
         }
         ${className}`}
