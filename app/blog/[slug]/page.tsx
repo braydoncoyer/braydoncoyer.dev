@@ -55,8 +55,12 @@ function formatDate(date: string) {
 }
 
 async function getPostFromParams(params: BlogPageProps["params"]) {
-  const { slug } = params;
+  const { slug } = await params;
   const post = posts.find((post) => post.slug === slug);
+
+  if (!post) {
+    notFound();
+  }
 
   return post;
 }
@@ -68,16 +72,12 @@ export async function generateStaticParams(): Promise<
 }
 
 export default async function BlogPage({ params }: BlogPageProps) {
-  let post = await getPostFromParams(params);
-  let similarPosts = post?.categories[0]
+  const post = await getPostFromParams(params);
+  const similarPosts = post.categories[0]
     ? getBlogPostsByCategory(post.categories[0])
         .filter((p) => p.slug !== post.slug)
         .slice(0, 3)
     : [];
-
-  if (!post) {
-    notFound();
-  }
 
   const readingTime = readingDuration(post.code, {
     wordsPerMinute: 200,

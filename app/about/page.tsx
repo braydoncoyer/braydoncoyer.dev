@@ -13,8 +13,7 @@ import { ShadowBox } from "../components/ShadowBox";
 import { useScroll, motion } from "framer-motion";
 import { Resume } from "app/components/Resume";
 import { Button } from "../components/Button";
-import { AboutPattern, HeaderPattern } from "../page";
-import { BlogPagePattern } from "../blog/page";
+import { AboutPattern, HeaderPattern } from "../components/SvgPatterns";
 
 export default function AboutPage() {
   const timeOfDayGreeting = getTimeOfDayGreeting();
