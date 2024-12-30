@@ -2,7 +2,6 @@
 
 import { NewsletterSignUp } from "app/components/NewsletterSignUp";
 import { HorizontalLine } from "app/components/HorizontalLine";
-import { BgSectionTag, TagType } from "app/components/BgSectionTag";
 import { getTimeOfDayGreeting } from "app/lib/utils";
 import { ProfilePicture } from "../components/ProfilePicture";
 import React, { useEffect, useRef, useState } from "react";
@@ -13,121 +12,9 @@ import { Scrapbook } from "../components/Scrapbook";
 import { ShadowBox } from "../components/ShadowBox";
 import { useScroll, motion } from "framer-motion";
 import { Resume } from "app/components/Resume";
-
-const experienceList = [
-  {
-    company: "LogicGate",
-    positions: [
-      {
-        title: "Frontend Developer III",
-        description: (
-          <div>
-            <p>
-              I lead feature development by analyzing requirements, designing
-              solutions, and advancing our organization&apos;s frontend chapter
-            </p>
-          </div>
-        ),
-        date: "2023 - Present",
-      },
-      {
-        title: "Frontend Developer II",
-        description: (
-          <div className="space-y-4">
-            <p>
-              I joined LogicGate and quickly took charge of feature development
-              for my team, while also assisting other frontend developers in the
-              organization.
-            </p>
-          </div>
-        ),
-        date: "2022 - 2023",
-      },
-    ],
-  },
-  {
-    company: "Cognizant",
-    positions: [
-      {
-        title: "Senior Fullstack Developer",
-        description: (
-          <div className="space-y-4">
-            <p>
-              I designed and developed full-stack RESTful microservices using
-              Netflix OSS, Java, Spring Boot, SQL, Angular, React, and Vue.
-            </p>
-            <p>
-              I led development teams by applying extreme programming
-              principles, including agile, test-driven development, and pair
-              programming.
-            </p>
-            <p>
-              I spearheaded information architecture and created a reusable UI
-              component library for healthcare clients.
-            </p>
-            <p>
-              I guided over 650 developers through a monthly training process
-              for client work on the Digital Engineering stack.
-            </p>
-          </div>
-        ),
-        date: "2019 - 2021",
-      },
-    ],
-  },
-  {
-    company: "projekt202",
-    positions: [
-      {
-        title: "UI Developer",
-        description: (
-          <div className="space-y-4">
-            <p>
-              I assisted in developing a reusable UI component library and
-              worked closely with a multi-million dollar airline client to
-              gather requirements.
-            </p>
-            <p>
-              My responsibility included developing solutions for enterprise
-              clients worth millions of dollars, using Angular 7 for the
-              frontend.
-            </p>
-          </div>
-        ),
-        date: "2018 - 2019",
-      },
-    ],
-  },
-  {
-    company: "Major 4 Apps",
-    positions: [
-      {
-        title: "Founder & Developer",
-        description: (
-          <div className="space-y-4">
-            <p>
-              I developed custom applications for clients, designed, developed,
-              tested, and supported mobile applications on iOS and Android
-              platforms.
-            </p>
-            <p>
-              My mobile game ranked among the top 200 on the Amazon App Store.
-            </p>
-            <p>
-              Additionally, my mobile game was featured in the top 20 GameSalad
-              games on the Tizen App Store.
-            </p>
-            <p>
-              Furthermore, my mobile games were featured as &quot;New and
-              Noteworthy&quot; in the iOS App Store.
-            </p>
-          </div>
-        ),
-        date: "2011 - 2018",
-      },
-    ],
-  },
-];
+import { Button } from "../components/Button";
+import { AboutPattern, HeaderPattern } from "../page";
+import { BlogPagePattern } from "../blog/page";
 
 export default function AboutPage() {
   const timeOfDayGreeting = getTimeOfDayGreeting();
@@ -137,7 +24,9 @@ export default function AboutPage() {
       <span className="absolute top-20 -translate-y-1/2 left-1/2 translate-x-1/2">
         <HorizontalLine />
       </span>
-      <span className="absolute left-32 top-6 border p-2 rounded-lg border-border-primary/50">
+      <HeaderPattern />
+      {/* <BlogPagePattern /> */}
+      {/* <span className="absolute left-32 top-6 border p-2 rounded-lg border-border-primary/50">
         <svg
           width="29"
           height="29"
@@ -197,10 +86,7 @@ export default function AboutPage() {
             </filter>
           </defs>
         </svg>
-      </span>
-      <span className="absolute right-4 top-14">
-        <BgSectionTag width={250} tagType={TagType.TOOLBOX} />
-      </span>
+      </span> */}
       <div className="space-y-[80px] relative">
         {/* Title */}
         <div className="pt-[90px] flex justify-around items-center">
@@ -237,7 +123,7 @@ export default function AboutPage() {
               </h2>
             </div>
           </div>
-          <div className="relative overflow-hidden w-full h-[2000px]">
+          <div className="relative overflow-hidden w-full h-[2050px]">
             <div className="absolute top-0 left-[455px] w-full">
               <AboutTrackPattern />
             </div>
@@ -265,18 +151,18 @@ export default function AboutPage() {
                   Android
                 </h2>
                 <p className="text-base text-text-secondary mb-6 leading-8">
-                  When the iPad was launched in 2010, I felt a strong desire to
-                  create interactive content for its stunning 1024x768 screen.
+                  When the iPad launched in 2010, I was inspired to create
+                  interactive content for its stunning 1024x768 screen.
                 </p>
 
                 <p className="text-base text-text-secondary mb-6 leading-8">
-                  I delved into mobile development and successfully released
-                  numerous games and applications, with one of my games even
-                  surpassing Angry Birds in popularity.
+                  I jumped into mobile development, freelancing along the way,
+                  and successfully released several games and apps, with one of
+                  my games even surpassing Angry Birds in popularity.
                 </p>
               </div>
               <svg
-                className="absolute right-4"
+                className="absolute right-4 pointer-events-none"
                 width="648"
                 height="366"
                 viewBox="0 0 648 366"
@@ -302,15 +188,15 @@ export default function AboutPage() {
                   The transition to web development.
                 </h2>
                 <p className="text-base text-text-secondary mb-6 leading-8">
-                  I decided to explore web development before too long. Given my
-                  inclination towards visual expression and design, I naturally
-                  gravitated towards frontend development.
+                  I decided to dive into web development not long after. With my
+                  love for visual expression and design, frontend development
+                  felt like the perfect fit for me.
                 </p>
 
                 <p className="text-base text-text-secondary mb-6 leading-8">
-                  So, I started learning HTML, CSS, and JavaScript. In 2016, I
-                  got into React. Not long after that, I nailed my first
-                  full-time gig as a web developer.
+                  I began learning HTML, CSS, and JavaScript, and in 2016, I
+                  discovered React. It wasn&apos;t long before I landed my first
+                  full-time job as a web developer.
                 </p>
               </div>
               <div className="flex-1 mt-6">
@@ -326,7 +212,7 @@ export default function AboutPage() {
                 </div>
               </div>
               <svg
-                className="absolute left-4"
+                className="absolute left-4 pointer-events-none"
                 width="648"
                 height="369"
                 viewBox="0 0 648 369"
@@ -341,7 +227,7 @@ export default function AboutPage() {
             </div>
 
             {/* Section 3 */}
-            <div className="flex w-full justify-center px-14 pt-52 relative">
+            <div className="flex w-full justify-center px-14 pt-40 relative">
               <HorizontalLine />
               <div className="flex-1 mt-6">
                 <div className="flex justify-start items-center">
@@ -363,18 +249,19 @@ export default function AboutPage() {
                   What I truly value in life.
                 </h2>
                 <p className="text-base text-text-secondary mb-6 leading-8">
-                  I believed I had sufficient job security to propose to the
-                  love of my life and get married. However, COVID-19 struck, and
-                  we had a small yet delightful wedding in 2020.
+                  I knew I wanted to spend my best friend, PeggyJean, so I
+                  proposed. When COVID-19 hit, we had to adjust our plans and
+                  ended up having a small but wonderful wedding in 2020.
                 </p>
 
                 <p className="text-base text-text-secondary mb-6 leading-8">
-                  Our first daughter, ElizaJane, was born in 2021, followed by
-                  our second child, Renny, in 2023.
+                  Family means everything to me, and I cherish the moments we
+                  share together. Our first daughter, ElizaJane, arrived in
+                  2021, and our second child, Renny, joined us in 2023.
                 </p>
               </div>
               <svg
-                className="absolute right-4"
+                className="absolute right-4 pointer-events-none"
                 width="648"
                 height="316"
                 viewBox="0 0 648 316"
@@ -399,24 +286,19 @@ export default function AboutPage() {
                   What I&apos;m doing now.
                 </h2>
                 <p className="text-base text-text-secondary mb-6 leading-8">
-                  These days, I work for LogicGate as a Senior Frontend
-                  Developer, helping lead teams to create some pretty cool
-                  stuff.
+                  Right now, I&apos;m a Senior Frontend Developer at LogicGate,
+                  where I get to lead teams in building some really exciting
+                  projects.
                 </p>
 
                 <p className="text-base text-text-secondary mb-6 leading-8">
-                  I&apos;m an accomplished international tech speaker, and I
-                  love sharing what I know. I aim to speak a few times each
-                  year.
+                  I love sharing what I know as an international tech speaker
+                  and try to speak at a few events each year.
                 </p>
 
                 <p className="text-base text-text-secondary mb-6 leading-8">
-                  In my free time, I enjoy creative coding, blogging, playing
-                  games with friends and spending time with my family.
-                </p>
-
-                <p className="text-base text-text-secondary mb-6 leading-8">
-                  Thanks for checking out my corner of the web.
+                  In my downtime, I enjoy creative coding, blogging, gaming with
+                  friends, and hanging out with my family.
                 </p>
               </div>
               <div className="flex-1 mt-6">
@@ -432,7 +314,7 @@ export default function AboutPage() {
                 </div>
               </div>
               <svg
-                className="absolute left-4"
+                className="absolute left-4 pointer-events-none"
                 width="648"
                 height="341"
                 viewBox="0 0 648 341"
@@ -534,7 +416,7 @@ export default function AboutPage() {
             </div>
             <div className="max-w-3xl mx-auto">
               <h2
-                className="w-full text-text-primary text-balance font-medium text-3xl leading-[40px]
+                className="max-w-96 mx-auto text-text-primary text-balance font-medium text-3xl leading-[40px]
             tracking-tighter"
               >
                 My work history and achievements timeline.
@@ -542,11 +424,14 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-        <div>
+        <div className="space-y-16">
           <Resume />
+          <div className="flex justify-center">
+            <Button variant="secondary">Download Resume</Button>
+          </div>
         </div>
 
-        <section className="space-y-16">
+        <section className="space-y-16 relative">
           <div className="space-y-4">
             <div className="text-sm font-medium text-indigo-600 text-center">
               <span>More</span>
@@ -557,30 +442,12 @@ export default function AboutPage() {
             </h2>
           </div>
 
-          <a
-            href=""
-            className="group relative isolate inline-flex items-center justify-center overflow-hidden text-left font-medium transition duration-300 ease-[cubic-bezier(0.4,0.36,0,1)] before:duration-300 before:ease-[cubic-bezier(0.4,0.36,0,1)] before:transition-opacity rounded-full shadow-[0_1px_theme(colors.white/0.07)_inset,0_1px_3px_theme(colors.gray.900/0.2)] before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:rounded-full before:bg-gradient-to-b before:from-white/20 before:opacity-50 hover:before:opacity-100 after:pointer-events-none after:absolute after:inset-0 after:-z-10 after:rounded-full after:bg-gradient-to-b after:from-white/10 after:from-[46%] after:to-[54%] after:mix-blend-overlay text-sm px-3 py-1.5 ring-1 bg-indigo-600 text-white ring-indigo-600"
-          >
-            Invite me to speak
-          </a>
-
-          <a
-            href=""
-            className="group relative isolate inline-flex items-center justify-center overflow-hidden text-left font-medium transition duration-300 ease-[cubic-bezier(0.4,0.36,0,1)] before:duration-300 before:ease-[cubic-bezier(0.4,0.36,0,1)] before:transition-opacity rounded-full shadow-[0_1px_theme(colors.white/0.07)_inset,0_1px_3px_theme(colors.gray.900/0.2)] before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:rounded-full before:bg-gradient-to-b before:from-white/20 before:opacity-50 hover:before:opacity-100 after:pointer-events-none after:absolute after:inset-0 after:-z-10 after:rounded-full after:bg-gradient-to-b after:from-white/10 after:from-[46%] after:to-[54%] after:mix-blend-overlay text-sm px-3 py-1.5 ring-1 bg-[#6c47ff] text-white ring-[#6c47ff]"
-          >
-            Invite me to speak
-          </a>
-
-          <a
-            href=""
-            className="group relative isolate inline-flex items-center justify-center overflow-hidden text-left font-medium transition duration-300 ease-[cubic-bezier(0.4,0.36,0,1)] before:duration-300 before:ease-[cubic-bezier(0.4,0.36,0,1)] before:transition-opacity rounded-full shadow-[0_1px_theme(colors.white/0.07)_inset,0_1px_3px_theme(colors.gray.900/0.2)] before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:rounded-full before:bg-gradient-to-b before:from-white/20 before:opacity-50 hover:before:opacity-100 after:pointer-events-none after:absolute after:inset-0 after:-z-10 after:rounded-full after:bg-gradient-to-b after:from-white/10 after:from-[46%] after:to-[54%] after:mix-blend-overlay text-sm px-3 py-1.5 ring-1 bg-gray-900 text-white ring-gray-900"
-          >
-            Secondary
-          </a>
-
           {/* About Grid */}
           <div className="grid grid-cols-12 grid-rows-[14] gap-2">
-            <CurrentlyPlayingBento />
+            <AboutPattern />
+            <div className="col-span-3 row-span-6">
+              <CurrentlyPlayingBento />
+            </div>
             <div className="col-span-7 row-span-5">
               <Scrapbook />
             </div>
@@ -686,7 +553,7 @@ function AboutTrackPattern() {
             filterUnits="userSpaceOnUse"
             color-interpolation-filters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feBlend
               mode="normal"
               in="SourceGraphic"

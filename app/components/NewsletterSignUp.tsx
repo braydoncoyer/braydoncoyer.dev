@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { HorizontalLine } from "./HorizontalLine";
+import { motion } from "framer-motion";
 
 type NewsletterSignUpProps = {
   title?: string;
@@ -101,7 +102,7 @@ export function NewsletterSignUp({
               {message && (
                 <p
                   className={`text-sm ${
-                    isSuccess ? "text-emerald-400" : "text-rose-400"
+                    isSuccess ? "text-indigo-300" : "text-rose-400"
                   }`}
                 >
                   {message}
@@ -172,7 +173,7 @@ export function NewsletterSignUp({
                   result="effect1_innerShadow_185_3161"
                 />
               </filter>
-              <linearGradient
+              <motion.linearGradient
                 id="paint0_linear_185_3161"
                 x1="250.5"
                 y1="119.845"
@@ -180,10 +181,22 @@ export function NewsletterSignUp({
                 y2="501"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stopColor="#4B4B4F" />
-                <stop offset="1" stopColor="#3C3C3F" stopOpacity="0" />
-              </linearGradient>
-              <linearGradient
+                <motion.stop
+                  animate={{
+                    stopColor: isSuccess ? "#4f46e5" : "#4B4B4F",
+                  }}
+                  transition={{ duration: 0.5 }}
+                />
+                <motion.stop
+                  offset="1"
+                  animate={{
+                    stopColor: isSuccess ? "#818cf8" : "#3C3C3F",
+                    stopOpacity: isSuccess ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.5 }}
+                />
+              </motion.linearGradient>
+              <motion.linearGradient
                 id="paint1_linear_185_3161"
                 x1="236.758"
                 y1="59.688"
@@ -191,9 +204,20 @@ export function NewsletterSignUp({
                 y2="418.249"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stopColor="#4B4B4F" />
-                <stop offset="1" stopColor="#3C3C3F" />
-              </linearGradient>
+                <motion.stop
+                  animate={{
+                    stopColor: isSuccess ? "#4f46e5" : "#4B4B4F",
+                  }}
+                  transition={{ duration: 0.5 }}
+                />
+                <motion.stop
+                  offset="1"
+                  animate={{
+                    stopColor: isSuccess ? "#818cf8" : "#3C3C3F",
+                  }}
+                  transition={{ duration: 0.5 }}
+                />
+              </motion.linearGradient>
             </defs>
           </svg>
 

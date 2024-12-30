@@ -16,7 +16,7 @@ export default async function ChangelogPage() {
         <PageTitle title="Here's what's new && exciting on my site." />
       </div>
 
-      <svg
+      {/* <svg
         className="absolute top-0 w-full inset-x-0 left-1/2 transform -translate-x-1/2 pointer-events-none"
         viewBox="0 0 1440 379"
         fill="none"
@@ -155,7 +155,7 @@ export default async function ChangelogPage() {
             />
           </filter>
         </defs>
-      </svg>
+      </svg> */}
 
       <ul className="flex flex-col">
         {allChangelogItems.length > 0 ? (

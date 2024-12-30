@@ -42,7 +42,7 @@ export function CurrentlyPlayingBento() {
   }
 
   return (
-    <BentoCard colSpan={3} rowSpan={6} height="h-[300px]">
+    <BentoCard height="h-[300px]" linkTo={currentTrack.songUrl}>
       <div className="flex flex-col ">
         <div className="h-full z-10">
           <div className="flex flex-col h-full justify-between">
@@ -52,22 +52,19 @@ export function CurrentlyPlayingBento() {
             <p className="text-base text-text-secondary max-h-[150px] overflow-hidden">
               <span className="line-clamp-4 text-ellipsis">
                 I&apos;m listening to{" "}
-                <a
-                  className="underline font-medium"
-                  href={currentTrack.songUrl}
-                >
+                <a className="font-semibold" href={currentTrack.songUrl}>
                   {currentTrack.title}
                 </a>{" "}
                 by{" "}
                 <a
-                  className="underline font-medium"
+                  className="font-semibold"
                   href={`https://open.spotify.com/artist/${currentTrack.artistId}`}
                 >
                   {currentTrack.artist}
                 </a>{" "}
                 from the album{" "}
                 <a
-                  className="underline font-medium"
+                  className="font-semibold"
                   href={`https://open.spotify.com/album/${currentTrack.albumId}`}
                 >
                   {currentTrack.albumName}

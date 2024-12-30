@@ -12,7 +12,7 @@ export function Timeline({ avatarUrl }: TimelineProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start 50%", "end 50%"],
+    offset: ["end 50%", "start 50%"],
   });
 
   return (
@@ -24,7 +24,7 @@ export function Timeline({ avatarUrl }: TimelineProps) {
       </div>
       <div className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-2 rounded-full bg-[#E8ECEF] bg-opacity-24 shadow-[inset_0_2px_1.5px_rgba(165,174,184,0.32)]">
         <motion.div
-          className="absolute inset-0 w-full rounded-full bg-gradient-to-b from-transparent to-indigo-400 origin-top"
+          className="absolute inset-0 w-full rounded-full bg-gradient-to-b from-indigo-300 to-transparent origin-bottom"
           style={{ scaleY: scrollYProgress }}
         />
       </div>

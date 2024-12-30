@@ -1,6 +1,6 @@
 "use client";
 
-import { Ref, forwardRef, useState } from "react";
+import { Ref, forwardRef, useState, useEffect } from "react";
 import Image, { ImageProps } from "next/image";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
@@ -33,14 +33,19 @@ export const Photo = ({
   width: number;
   height: number;
 }) => {
-  const [savedRotation] = useState<number>(getRandomNumberInRange(1, 4));
-  const initialRotation = savedRotation * (direction == "left" ? -1 : 1);
+  const [rotation, setRotation] = useState<number>(0);
   const x = useMotionValue(200);
   const y = useMotionValue(200);
   const xSmooth = useSpring(x, { damping: 50, stiffness: 400 });
   const ySmooth = useSpring(y, { damping: 50, stiffness: 400 });
   const rotateY = useTransform(xSmooth, [0, 400], [-15, 15]);
   const rotateX = useTransform(ySmooth, [0, 400], [15, -15]);
+
+  useEffect(() => {
+    const randomRotation =
+      getRandomNumberInRange(1, 4) * (direction === "left" ? -1 : 1);
+    setRotation(randomRotation);
+  }, []);
 
   function handleMouse(event) {
     const rect = event.currentTarget.getBoundingClientRect();
@@ -60,21 +65,25 @@ export const Photo = ({
       whileTap={{ scale: 1.2, zIndex: 9999 }}
       whileHover={{
         scale: 1.1,
-        rotateZ: 2 * (direction == "left" ? -1 : 1),
+        rotateZ: 2 * (direction === "left" ? -1 : 1),
         zIndex: 9999,
       }}
       whileDrag={{
         scale: 1.1,
         zIndex: 9999,
       }}
-      initial={{ rotate: initialRotation }}
+      initial={{ rotate: 0 }}
+      animate={{ rotate: rotation }}
       style={{
         width,
         height,
         perspective: 400,
-        rotateX,
-        rotateY,
+        transform: `rotate(0deg) rotateX(0deg) rotateY(0deg)`,
         zIndex: 1,
+        WebkitTouchCallout: "none",
+        WebkitUserSelect: "none",
+        userSelect: "none",
+        touchAction: "none",
       }}
       className={cn(
         className,
@@ -82,6 +91,8 @@ export const Photo = ({
       )}
       onMouseMove={handleMouse}
       onMouseLeave={resetMouse}
+      draggable={false}
+      tabIndex={0}
     >
       <div className="relative w-full h-full rounded-lg overflow-hidden shadow">
         <MotionImage

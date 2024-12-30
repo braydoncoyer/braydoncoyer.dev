@@ -178,7 +178,6 @@ function paragraph({ children }) {
 }
 
 function OrderedList({ children }) {
-  console.log("Here");
   return <ol className="list-decimal list-inside mb-8">{children}</ol>;
 }
 

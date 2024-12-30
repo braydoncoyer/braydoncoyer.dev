@@ -135,24 +135,8 @@ export default function SpeakingPage() {
         </span>
 
         <div className="text-center">
-          <a
-            href=""
-            className="group relative isolate inline-flex items-center justify-center overflow-hidden text-left font-medium transition duration-300 ease-[cubic-bezier(0.4,0.36,0,1)] before:duration-300 before:ease-[cubic-bezier(0.4,0.36,0,1)] before:transition-opacity rounded-full shadow-[0_1px_theme(colors.white/0.07)_inset,0_1px_3px_theme(colors.gray.900/0.2)] before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:rounded-full before:bg-gradient-to-b before:from-white/20 before:opacity-50 hover:before:opacity-100 after:pointer-events-none after:absolute after:inset-0 after:-z-10 after:rounded-full after:bg-gradient-to-b after:from-white/10 after:from-[46%] after:to-[54%] after:mix-blend-overlay text-sm px-4 py-2.5 ring-1 bg-indigo-600 text-white ring-indigo-600"
-          >
-            Invite me to speak
-          </a>
-
-          <a
-            href=""
-            className="group relative isolate inline-flex items-center justify-center overflow-hidden text-left font-medium transition duration-300 ease-[cubic-bezier(0.4,0.36,0,1)] before:duration-300 before:ease-[cubic-bezier(0.4,0.36,0,1)] before:transition-opacity rounded-full shadow-[0_1px_theme(colors.white/0.07)_inset,0_1px_3px_theme(colors.gray.900/0.2)] before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:rounded-full before:bg-gradient-to-b before:from-white/20 before:opacity-50 hover:before:opacity-100 after:pointer-events-none after:absolute after:inset-0 after:-z-10 after:rounded-full after:bg-gradient-to-b after:from-white/10 after:from-[46%] after:to-[54%] after:mix-blend-overlay text-sm px-4 py-2.5 ring-1 bg-dark-primary text-white ring-dark-primary"
-          >
-            Invite me to speak
-          </a>
-          <a
-            href=""
-            className="group relative isolate inline-flex items-center justify-center overflow-hidden text-left font-medium transition duration-300 ease-[cubic-bezier(0.4,0.36,0,1)] before:duration-300 before:ease-[cubic-bezier(0.4,0.36,0,1)] before:transition-opacity rounded-full shadow-[0_1px_theme(colors.white/0.07)_inset,0_1px_3px_theme(colors.gray.900/0.2)] before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:rounded-full before:bg-gradient-to-b before:from-white/20 before:opacity-50 hover:before:opacity-100 after:pointer-events-none after:absolute after:inset-0 after:-z-10 after:rounded-full after:bg-gradient-to-b after:from-white/10 after:from-[46%] after:to-[54%] after:mix-blend-overlay text-sm px-4 py-2.5 ring-1 bg-slate-100 text-slate-900 ring-white"
-          >
-            Subscribe
+          <a href="https://forms.gle/hyhqN12A2BGForzq6" target="_blank">
+            <Button variant="primary">Invite me to speak</Button>
           </a>
         </div>
 
@@ -382,7 +366,7 @@ export default function SpeakingPage() {
                     <span>Biography</span>
                   </div>
                   <h2 className="text-3xl font-semibold text-text-primary">
-                    Here are a few speaker biography options
+                    Here are a few options for speaker bios
                   </h2>
                 </div>
 
@@ -485,7 +469,7 @@ export default function SpeakingPage() {
                     <span>Headshots</span>
                   </div>
                   <h2 className="text-3xl font-semibold text-text-primary">
-                    A collection of photos suitable for speaker headshots
+                    A variety of photos great for speaker headshots
                   </h2>
                 </div>
                 <div className="flex w-full space-x-4 mt-12">

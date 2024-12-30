@@ -47,11 +47,6 @@ function DotPattern() {
   );
 }
 
-type Size = {
-  width?: number;
-  height?: number;
-};
-
 function Sticker({
   children,
   index = 1,
@@ -77,7 +72,8 @@ function Sticker({
   // Set up initial values persisted in state even while dragging
   const [initialRotation] = useState<number>(getRandomNumberInRange(-15, 15));
   const [initialY] = useState<number>(
-    getRandomNumberInRange(25, 60) * (index % 2 == 0 ? -1 : 1)
+    getRandomNumberInRange(10, 25) *
+      (index === 0 ? 0.5 : index % 2 === 0 ? -0.25 : 0.25)
   );
 
   // Handle smaller devices with different behavior
@@ -237,7 +233,7 @@ export function Scrapbook({ className }: { className?: string }) {
       <div
         key={resetIndex}
         className={cn(
-          "w-full w-min-[280px] md:min-h-[280px] bg-secondary rounded-3xl p-6 @container max-h-72 xs:max-h-none",
+          "w-full bg-secondary rounded-3xl p-6 @container xs:max-h-none",
           className
         )}
       >
@@ -245,90 +241,50 @@ export function Scrapbook({ className }: { className?: string }) {
           variants={container}
           initial="hidden"
           animate="shown"
-          className="grid grid-cols-7 gap-4 h-full items-center justify-center -mt-16"
+          className="grid grid-cols-4 gap-4 h-full w-full items-center -mt-8"
         >
           <Sticker
-            caption="I've been on many podcasts like Design Details to talk about design-systems!"
+            caption="THAT Conference was my favorite tech event of 2024! I even kicked off my speaking season with my very first talk of the year there!"
             index={0}
-            className="col-start-1"
           >
             <img
-              width="96"
-              src="https://images.vexels.com/media/users/3/291940/isolated/lists/ff0c1ff226e5363a38f65ffece74fd6d-flat-smiley-face-sticker.png"
+              width="80"
+              src="/that_conf_sticker.png"
               className="max-w-[100px] xs:max-w-none"
               draggable={false}
             />
           </Sticker>
           <Sticker
-            caption="I've been on many podcasts like Design Details to talk about design-systems!"
+            caption={`I became an international speaker at C3 Dev Fest, where I shared insights on "The Power of a Second Brain in a Developer's Workflow."`}
             index={1}
-            className="col-start-2 translate-y-12"
           >
             <img
               width="96"
-              src="https://images.vexels.com/media/users/3/291940/isolated/lists/ff0c1ff226e5363a38f65ffece74fd6d-flat-smiley-face-sticker.png"
+              src="c3_conf_sticker.png"
               className="max-w-[100px] xs:max-w-none"
               draggable={false}
             />
           </Sticker>
           <Sticker
-            caption="I grew up in South Carolina, and like our motto says—&ldquo;While I breathe I hope.&rdquo;"
+            caption="I'm a huge Lord of the Rings nerd and host an epic 3-day marathon every year to watch the extended editions with friends and family."
             index={2}
-            className="col-start-3"
           >
             <img
-              width="96"
-              src="https://images.vexels.com/media/users/3/291940/isolated/lists/ff0c1ff226e5363a38f65ffece74fd6d-flat-smiley-face-sticker.png"
-              className="max-w-[50px] xs:max-w-none"
+              width="130"
+              src="/lotr_sticker.png"
+              className=""
               draggable={false}
             />
           </Sticker>
           <Sticker
-            caption="I joined DoorDash in 2015 as it's first product designer and frontend engineer, when it was just a handful of employees."
+            caption="I helped create, organize, and speak at the inaugural Commit Your Code Conference in 2024, where every penny went to charity!"
             index={3}
-            className="col-start-4 translate-y-12"
           >
             <img
-              width="96"
-              src="https://images.vexels.com/media/users/3/291940/isolated/lists/ff0c1ff226e5363a38f65ffece74fd6d-flat-smiley-face-sticker.png"
+              width="160"
+              src="/cyc_sticker.png"
               draggable={false}
-              className="max-w-[100px] xs:max-w-none"
-            />
-          </Sticker>
-          <Sticker
-            caption="I'm a proud trans and bi-woman that lives in San Francisco!"
-            index={4}
-            className="col-start-5"
-          >
-            <img
-              width="96"
-              src="https://images.vexels.com/media/users/3/291940/isolated/lists/ff0c1ff226e5363a38f65ffece74fd6d-flat-smiley-face-sticker.png"
-              className="max-w-[100px] xs:max-w-none"
-              draggable={false}
-            />
-          </Sticker>
-          <Sticker
-            caption="Go Blue! I was a two-time dropout from the University of Michigan's engineering school to join startups like DoorDash :)"
-            index={5}
-            className="col-start-6 translate-y-12"
-          >
-            <img
-              width="96"
-              src="https://images.vexels.com/media/users/3/291940/isolated/lists/ff0c1ff226e5363a38f65ffece74fd6d-flat-smiley-face-sticker.png"
-              className="max-w-[120px] xs:max-w-none"
-              draggable={false}
-            />
-          </Sticker>
-          <Sticker
-            index={6}
-            className="col-start-7"
-            caption="I spoke at Figma's Config 2023 conference, talking about design systems and AI!"
-          >
-            <img
-              src="https://images.vexels.com/media/users/3/291940/isolated/lists/ff0c1ff226e5363a38f65ffece74fd6d-flat-smiley-face-sticker.png"
-              width="96"
-              className="max-w-[100px] xs:max-w-none"
-              draggable={false}
+              className="xs:max-w-none"
             />
           </Sticker>
         </motion.div>

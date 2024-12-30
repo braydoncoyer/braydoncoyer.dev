@@ -3,16 +3,9 @@ import { BentoCard } from "./BentoCard";
 
 const items = softwareData
   .map((item, index) => (
-    <a
-      key={item.title}
-      href={item.link}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="no-underline"
-    >
-      <div className="text-center inline-block group">
-        <div
-          className={`rounded-[20px] border border-border-primary group-hover:border-indigo-400 p-2 transition-all duration-500
+    <div key={item.title} className="text-center inline-block group">
+      <div
+        className={`rounded-[20px] border border-border-primary group-hover:border-indigo-400 p-2 transition-all duration-500
             ${
               index === 2
                 ? "group-hover:-translate-y-3 delay-0"
@@ -20,20 +13,19 @@ const items = softwareData
                 ? "group-hover:-translate-y-3 delay-100"
                 : "group-hover:-translate-y-3 delay-200"
             }`}
-          style={{
-            width: index === 2 ? 130 : 110,
-            height: index === 2 ? 130 : 110,
-          }}
+        style={{
+          width: index === 2 ? 130 : 110,
+          height: index === 2 ? 130 : 110,
+        }}
+      >
+        <div
+          className="border-2 h-full rounded-xl border-[#A5AEB81F]/10 bg-[#EDEEF0] grid place-items-center"
+          style={{ boxShadow: "0px 2px 1.5px 0px #A5AEB852 inset" }}
         >
-          <div
-            className="border-2 h-full rounded-xl border-[#A5AEB81F]/10 bg-[#EDEEF0] grid place-items-center"
-            style={{ boxShadow: "0px 2px 1.5px 0px #A5AEB852 inset" }}
-          >
-            <img className="w-10 h-10" alt={item.title} src={item.imgSrc} />
-          </div>
+          <img className="w-10 h-10" alt={item.title} src={item.imgSrc} />
         </div>
       </div>
-    </a>
+    </div>
   ))
   .slice(0, 5);
 
