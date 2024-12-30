@@ -68,7 +68,7 @@ async function getPostFromParams(params: BlogPageProps["params"]) {
 export async function generateStaticParams(): Promise<
   BlogPageProps["params"][]
 > {
-  return posts.map((post) => ({ slug: post.slug }));
+  return posts.map((post) => Promise.resolve({ slug: post.slug }));
 }
 
 export default async function BlogPage({ params }: BlogPageProps) {
