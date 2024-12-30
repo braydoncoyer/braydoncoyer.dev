@@ -16,10 +16,9 @@ import { BgGradient } from "@/app/components/BgGradient";
 import readingDuration from "reading-duration";
 
 interface BlogPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
-  searchParams?: { [key: string]: string | string[] | undefined };
+  }>;
 }
 
 function formatDate(date: string) {
