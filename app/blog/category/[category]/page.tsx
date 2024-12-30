@@ -1,13 +1,11 @@
-import { PageTitle } from "app/components/PageTitle";
-import { SectionTitlePill } from "app/components/SectionTitlePill";
 import {
   extractUniqueBlogCategories,
   fetchAndSortBlogPosts,
 } from "app/lib/utils";
 import { NewsletterSignUp } from "@/app/components/NewsletterSignUp";
 import { BlogPostList } from "@/app/components/BlogPostList";
-import Link from "next/link";
 import { BlogPageHeader } from "@/app/components/BlogPageHeader";
+import { CategorySelect } from "@/app/components/CategorySelect";
 
 export default async function CategoryPage({
   params,
@@ -17,7 +15,9 @@ export default async function CategoryPage({
   const allPublishedBlogPosts = fetchAndSortBlogPosts();
   const categories = extractUniqueBlogCategories(allPublishedBlogPosts);
 
-  const category = params.category ? params.category.toLowerCase() : "";
+  const category = (await params.category)
+    ? await params.category.toLowerCase()
+    : "";
 
   const categoryPosts = allPublishedBlogPosts.filter((post) => {
     return (
@@ -34,23 +34,7 @@ export default async function CategoryPage({
         title={`Articles about ${category || "Unknown Category"}`}
       />
 
-      {/* Categories */}
-      <div>
-        <ul className="flex gap-3 justify-center">
-          {Array.from(categories).map((cat) => (
-            <li key={cat}>
-              <Link
-                href={`/blog/category/${encodeURIComponent(cat)}`}
-                className={`text-blue-600 hover:underline ${
-                  cat.toLowerCase() === category ? "font-bold" : ""
-                }`}
-              >
-                {cat}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <CategorySelect categories={categories} currentCategory={category} />
 
       <BlogPostList posts={categoryPosts} />
       <NewsletterSignUp

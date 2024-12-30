@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { HorizontalLine } from "./HorizontalLine";
+import { motion } from "framer-motion";
 
 type NewsletterSignUpProps = {
   title?: string;
@@ -90,7 +91,7 @@ export function NewsletterSignUp({
               />
               <button
                 type="submit"
-                className="absolute w-28 bg-white hover:bg-slate-200 rounded-full h-[42px] right-1 top-1 text-sm text-slate-900"
+                className="group h-[42px] absolute top-1 right-1 isolate inline-flex items-center justify-center overflow-hidden text-left font-medium transition duration-300 ease-[cubic-bezier(0.4,0.36,0,1)] before:duration-300 before:ease-[cubic-bezier(0.4,0.36,0,1)] before:transition-opacity rounded-full shadow-[0_1px_theme(colors.white/0.07)_inset,0_1px_3px_theme(colors.gray.900/0.2)] before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:rounded-full before:bg-gradient-to-b before:from-white/20 before:opacity-50 hover:before:opacity-100 after:pointer-events-none after:absolute after:inset-0 after:-z-10 after:rounded-full after:bg-gradient-to-b after:from-white/10 after:from-[46%] after:to-[54%] after:mix-blend-overlay text-sm px-4 py-2.5 ring-1 bg-slate-100 text-slate-900 ring-white"
                 disabled={isLoading}
               >
                 {isLoading ? "Loading..." : buttonText}
@@ -101,7 +102,7 @@ export function NewsletterSignUp({
               {message && (
                 <p
                   className={`text-sm ${
-                    isSuccess ? "text-emerald-400" : "text-rose-400"
+                    isSuccess ? "text-indigo-300" : "text-rose-400"
                   }`}
                 >
                   {message}
@@ -172,7 +173,7 @@ export function NewsletterSignUp({
                   result="effect1_innerShadow_185_3161"
                 />
               </filter>
-              <linearGradient
+              <motion.linearGradient
                 id="paint0_linear_185_3161"
                 x1="250.5"
                 y1="119.845"
@@ -180,10 +181,22 @@ export function NewsletterSignUp({
                 y2="501"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stopColor="#4B4B4F" />
-                <stop offset="1" stopColor="#3C3C3F" stopOpacity="0" />
-              </linearGradient>
-              <linearGradient
+                <motion.stop
+                  animate={{
+                    stopColor: isSuccess ? "#4f46e5" : "#4B4B4F",
+                  }}
+                  transition={{ duration: 0.5 }}
+                />
+                <motion.stop
+                  offset="1"
+                  animate={{
+                    stopColor: isSuccess ? "#818cf8" : "#3C3C3F",
+                    stopOpacity: isSuccess ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.5 }}
+                />
+              </motion.linearGradient>
+              <motion.linearGradient
                 id="paint1_linear_185_3161"
                 x1="236.758"
                 y1="59.688"
@@ -191,9 +204,20 @@ export function NewsletterSignUp({
                 y2="418.249"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stopColor="#4B4B4F" />
-                <stop offset="1" stopColor="#3C3C3F" />
-              </linearGradient>
+                <motion.stop
+                  animate={{
+                    stopColor: isSuccess ? "#4f46e5" : "#4B4B4F",
+                  }}
+                  transition={{ duration: 0.5 }}
+                />
+                <motion.stop
+                  offset="1"
+                  animate={{
+                    stopColor: isSuccess ? "#818cf8" : "#3C3C3F",
+                  }}
+                  transition={{ duration: 0.5 }}
+                />
+              </motion.linearGradient>
             </defs>
           </svg>
 

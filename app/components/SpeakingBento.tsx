@@ -104,7 +104,7 @@ export function CirclePattern({ isHovered }: { isHovered?: boolean }) {
           fill="none"
           initial={{ stroke: "#D6DADE", strokeOpacity: 0.5 }}
           animate={{
-            stroke: isHovered ? "#6C47FF" : "#D6DADE",
+            stroke: isHovered ? "#818cf8" : "#D6DADE",
             strokeOpacity: isHovered ? 1 : 0.5,
           }}
           transition={{
@@ -177,7 +177,7 @@ function AudioIndicator({ isHovered }: { isHovered: boolean }) {
                 y: 16 - bar.baseHeight / 2,
               },
               hover: {
-                fill: "#6C47FF",
+                fill: "#6c47ff",
                 height: bar.baseHeight * 1.5,
                 y: 16 - (bar.baseHeight * 1.5) / 2,
                 transition: {
@@ -308,8 +308,8 @@ function PrimaryPhoto() {
       </svg>
 
       <img
-        className="h-[100px] w-[100px] rounded-full absolute left-1/2 transform -translate-x-1/2 top-1/2 -translate-y-1/2"
-        src="/braydon_headshot_1.jpeg"
+        className="h-[100px] w-[100px] rounded-full absolute left-1/2 transform -translate-x-1/2 top-1/2 -translate-y-1/2 object-cover"
+        src="/braydon_speaking_photo.jpeg"
         alt=""
       />
     </div>

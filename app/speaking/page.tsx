@@ -11,6 +11,7 @@ import { BgSectionTag, TagType } from "app/components/BgSectionTag";
 import { BgGradient } from "app/components/BgGradient";
 import { Button } from "app/components/Button";
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from "app/components/Tabs";
+import { Photo } from "../components/Photo";
 
 type Talk = {
   conference: string;
@@ -35,6 +36,14 @@ const presentationList: PresentationList = {
   live: {
     title: "Live Talks",
     talks: [
+      {
+        conference: "Commit Your Code",
+        title: "What's New in Tailwind CSS v4?",
+        description:
+          "Tailwind CSS v4 brings numerous enhancements to the developer experience. In this session, we’ll explore the key changes and new features to help you prepare for the official release of v4.",
+        link: "https://www.youtube.com/live/Ils_dA_fHmY?si=Jk-2MDczcxbE95La&t=15711",
+        buttonLabel: "Watch Video",
+      },
       {
         conference: "C3 Dev Fest",
         title: "The Power of a Second Brain in a Developer's Workflow",
@@ -119,14 +128,60 @@ export default function SpeakingPage() {
           <BgSectionTag tagType={TagType.SECTION} />
         </span>
         <div>
-          <PageTitle title="I present on web development at conferences globally && across the web." />
+          <PageTitle title="I share my web development expertise at conferences worldwide && online." />
         </div>
         <span className="absolute top-40 inset-x-0">
           <HorizontalLine />
         </span>
 
         <div className="text-center">
-          <Button>Have me speak at your event</Button>
+          <a href="https://forms.gle/hyhqN12A2BGForzq6" target="_blank">
+            <Button variant="primary">Invite me to speak</Button>
+          </a>
+        </div>
+
+        <div>
+          {/* Photos */}
+          <div className="flex space-x-12 items-center mt-16 mb-8 justify-center">
+            <div className="relative">
+              <ShadowBox width={278} height={278}></ShadowBox>
+              <span className="absolute top-2 left-1 rotate-[-8deg]">
+                <Photo
+                  width={270}
+                  height={270}
+                  src="/c3_speaker_head.png"
+                  alt="DoorDash hitting it's millionth total order back in 2015."
+                  direction="right"
+                />
+              </span>
+            </div>
+
+            <div className="relative">
+              <ShadowBox width={412} height={278}></ShadowBox>
+              <span className="absolute top-1 left-1 rotate-[8deg]">
+                <Photo
+                  width={404}
+                  height={270}
+                  src="/braydon_commit_your_code.jpeg"
+                  alt="DoorDash hitting it's millionth total order back in 2015."
+                  direction="left"
+                />
+              </span>
+            </div>
+
+            <div className="relative">
+              <ShadowBox width={188} height={278}></ShadowBox>
+              <span className="absolute top-1 left-1 rotate-[-8deg]">
+                <Photo
+                  width={180}
+                  height={270}
+                  src="/braydon_speaking_head_3.jpeg"
+                  alt="DoorDash hitting it's millionth total order back in 2015."
+                  direction="right"
+                />
+              </span>
+            </div>
+          </div>
         </div>
 
         <div className="space-y-32 relative">
@@ -307,9 +362,11 @@ export default function SpeakingPage() {
               <div className="col-span-7 flex flex-col space-y-8 relative">
                 {/* Title */}
                 <div className="col-span-5 flex flex-col items-start space-y-3 w-3/4 text-balance">
-                  <SectionTitlePill title="Biography" />
+                  <div className="text-sm font-medium text-indigo-600 text-left">
+                    <span>Biography</span>
+                  </div>
                   <h2 className="text-3xl font-semibold text-text-primary">
-                    Here are a few speaker biography options
+                    Here are a few options for speaker bios
                   </h2>
                 </div>
 
@@ -321,22 +378,24 @@ export default function SpeakingPage() {
                   <TabPanels className="mt-8">
                     <TabPanel id="first-person">
                       <p className="text-base text-text-secondary leading-7">
-                        I&apos;m a Frontend Engineer at LogicGate where I help
-                        build a GRC automated platform. I&apos;m a creative
-                        developer, blogger and designer. My mission is to
-                        translate user-focussed designs into pixel-perfect
-                        websites or applications that run blazing fast. I live
-                        in Texas with my wife and two daughters.
+                        I am Braydon Coyer, a Senior Frontend Engineer at
+                        LogicGate, where I play a key role in developing an
+                        automated Governance, Risk, and Compliance (GRC)
+                        platform. As a creative developer, blogger, and
+                        designer, I enjoy tinkering and sharing my projects with
+                        the public. I live in Texas with my wife and two
+                        daughters.
                       </p>
                     </TabPanel>
                     <TabPanel id="third-person">
                       <p className="text-base text-text-secondary leading-7">
-                        Braydon Coyer is a Frontend Engineer at LogicGate where
-                        he helps build a GRC automated platform. He is a
-                        creative developer, a blogger and a designer. His
-                        mission is to translate user-focussed designs into
-                        pixel-perfect websites or applications that run blazing
-                        fast. He lives in Texas with his wife and two daughters.
+                        Braydon Coyer is a Senior Frontend Engineer at
+                        LogicGate, where he plays a key role in developing an
+                        automated Governance, Risk, and Compliance (GRC)
+                        platform. As a creative developer, blogger, and
+                        designer, he enjoys tinkering and sharing his projects
+                        with the public. Braydon lives in Texas with his wife
+                        and two daughters.
                       </p>
                     </TabPanel>
                   </TabPanels>
@@ -406,9 +465,11 @@ export default function SpeakingPage() {
               </div>
               <div className="col-span-5 flex flex-col space-y-8 items-start">
                 <div className="flex flex-col space-y-4 items-start">
-                  <SectionTitlePill title="Headshots" />
+                  <div className="text-sm font-medium text-indigo-600 text-left">
+                    <span>Headshots</span>
+                  </div>
                   <h2 className="text-3xl font-semibold text-text-primary">
-                    A collection of photos suitable for speaker headshots
+                    A variety of photos great for speaker headshots
                   </h2>
                 </div>
                 <div className="flex w-full space-x-4 mt-12">
@@ -425,7 +486,7 @@ export default function SpeakingPage() {
                     <ShadowBox width={200} height={200}></ShadowBox>
                     <img
                       className="w-[186px] h-[186px] rounded-lg object-cover absolute top-2 left-1 rotate-[-8deg] shadow"
-                      src="/braydon_headshot_2.jpeg"
+                      src="/braydon_speaking_photo_square.jpg"
                       alt=""
                     />
                   </div>

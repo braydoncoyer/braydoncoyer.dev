@@ -13,6 +13,7 @@ import { posts } from "#site/content";
 import { getBlogPostsByCategory } from "@/app/lib/utils";
 import { FeaturedBlogCard } from "@/app/components/FeaturedBlogCard";
 import { BgGradient } from "@/app/components/BgGradient";
+import readingDuration from "reading-duration";
 
 interface BlogPageProps {
   params: {
@@ -77,6 +78,11 @@ export default async function BlogPage({ params }: BlogPageProps) {
   if (!post) {
     notFound();
   }
+
+  const readingTime = readingDuration(post.code, {
+    wordsPerMinute: 200,
+    emoji: false,
+  });
 
   return (
     <article className="space-y-12">
@@ -199,7 +205,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
                   strokeLinejoin="round"
                 ></path>
               </svg>
-              <p>9 min read</p>
+              <p>{readingTime}</p>
             </div>
             <div className="flex items-center gap-1 text-slate-200 text-xs">
               <svg
@@ -229,6 +235,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
           </div>
         </div>
       </div>
+      {/* Content */}
       <div className="wrapper z-10">
         <MDXContent code={post.code} />
       </div>

@@ -16,7 +16,7 @@ export default async function ChangelogPage() {
         <PageTitle title="Here's what's new && exciting on my site." />
       </div>
 
-      <svg
+      {/* <svg
         className="absolute top-0 w-full inset-x-0 left-1/2 transform -translate-x-1/2 pointer-events-none"
         viewBox="0 0 1440 379"
         fill="none"
@@ -155,7 +155,7 @@ export default async function ChangelogPage() {
             />
           </filter>
         </defs>
-      </svg>
+      </svg> */}
 
       <ul className="flex flex-col">
         {allChangelogItems.length > 0 ? (
@@ -165,9 +165,9 @@ export default async function ChangelogPage() {
                 <li key={post.slug}>
                   <div
                     key={post.slug}
-                    className="grid grid-cols-12 rounded-2xl h-full py-8 px-4"
+                    className="grid grid-cols-12 rounded-2xl h-full"
                   >
-                    <div className="space-y-2 col-span-2 col-start-1">
+                    <div className="space-y-2 col-span-2 col-start-1 p-4">
                       <div className="leading-none text-sm">
                         <time dateTime={post.publishedAt}>
                           {new Date(post.publishedAt).toLocaleDateString(
@@ -181,13 +181,14 @@ export default async function ChangelogPage() {
                         </time>
                       </div>
                     </div>
-                    <div className="flex flex-col w-full flex-grow col-span-8 col-start-4">
+                    <div className="col-start-3 col-end-4 h-full border-x border-dashed border-border-primary"></div>
+                    <div className="flex flex-col w-full flex-grow col-span-9 col-start-4 p-4">
                       <h2 className="tracking-tight text-slate-900 text-2xl font-medium leading-none mb-8">
                         {post.title}
                       </h2>
                       {post.imageName ? (
                         <img
-                          className="h-96 rounded-xl drama-shadow object-cover mb-12"
+                          className="rounded-xl drama-shadow object-cover mb-12 aspect-video"
                           src={`/${post.imageName}`}
                           alt=""
                         />
@@ -195,7 +196,7 @@ export default async function ChangelogPage() {
                       <MDXContent code={post.code} />
                     </div>
                   </div>
-                  <div className="h-0 w-full my-4 border-t border-dashed border-border-primary" />
+                  <div className="h-0 w-full border-t border-dashed border-border-primary" />
                 </li>
               );
             })}

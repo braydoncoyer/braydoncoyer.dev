@@ -22,9 +22,9 @@ export function BlogPostList({ posts }: BlogPostListProps) {
               <Link href={`/blog/${post.slug}`}>
                 <div className="block">
                   <article>
-                    <div className="grid grid-cols-12 rounded-2xl h-full py-4 group">
+                    <div className="grid grid-cols-12 rounded-2xl h-full group">
                       <div className="space-y-2 col-span-2 col-start-1 p-4">
-                        <div className="font-medium leading-none text-sm">
+                        <div className="leading-none text-sm font-mono text-text-secondary">
                           <time dateTime={post.publishedAt}>
                             {new Date(post.publishedAt).toLocaleDateString(
                               "en-US",
@@ -40,9 +40,10 @@ export function BlogPostList({ posts }: BlogPostListProps) {
                           1,352 reads
                         </p>
                       </div>
+                      <div className="col-start-4 h-full border-x border-dashed border-border-primary"></div>
                       <div className="flex flex-col w-full flex-grow col-span-8 col-start-5 col-end-12 p-4 group">
                         <div className="z-10">
-                          <h2 className="tracking-tight text-slate-900 text-lg font-medium leading-none mb-3">
+                          <h2 className="tracking-tight text-slate-900 text-base font-medium leading-none mb-3">
                             {post.title}
                           </h2>
                           <p className="leading-6 text-text-secondary flex-grow text-base mb-3">
@@ -50,7 +51,7 @@ export function BlogPostList({ posts }: BlogPostListProps) {
                           </p>
                           <Link
                             href={`/blog/${post.slug}`}
-                            className="flex items-center text-sm text-indigo-500 font-medium"
+                            className="flex items-center text-sm text-indigo-600 font-medium"
                           >
                             <span className="text-sm leading-6">Read More</span>
                             <svg
@@ -70,12 +71,11 @@ export function BlogPostList({ posts }: BlogPostListProps) {
                         </div>
                       </div>
                     </div>
-                    {/* <div className="h-4 w-full border-y border-border-primary [background-image:linear-gradient(45deg,theme(colors.border-primary)_12.50%,transparent_12.50%,transparent_50%,theme(colors.border-primary)_50%,theme(colors.border-primary)_62.50%,transparent_62.50%,transparent_100%)] [background-size:5px_5px]"></div> */}
                   </article>
                 </div>
               </Link>
               {index < posts.length - 1 && (
-                <div className="h-0 w-full my-4 border-t border-dashed border-border-primary" />
+                <div className="h-0 w-full border-t border-dashed border-border-primary" />
               )}
             </li>
           ))}

@@ -33,9 +33,10 @@ export default async function Home() {
             </h1>
             <div className="mt-8 text-center text-balance">
               <p className="text-text-secondary leading-8">
-                I&apos;m an experienced front-end developer with a passion for
-                design and a knack for tinkering. Web development is my
-                playground, where I push boundaries and chase new horizons.
+                I&apos;m a front-end developer with a love for design and a
+                knack for tinkering. This site is intentionally over-engineered
+                and serves as my playground for experimenting with new ideas and
+                seeing what sticks!
               </p>
             </div>
           </div>
@@ -87,7 +88,7 @@ export default async function Home() {
                   <Photo
                     width={180}
                     height={270}
-                    src="/braydon_headshot_1.jpeg"
+                    src="/braydon_headshot.jpg"
                     alt="DoorDash hitting it's millionth total order back in 2015."
                     direction="right"
                   />
@@ -97,13 +98,13 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* <AboutSection /> */}
-
         {/* About Section */}
         <section className="space-y-16 relative">
           <AboutPattern />
           <div className="space-y-4">
-            <SectionTitlePill title="About" />
+            <div className="text-sm font-medium text-indigo-600 text-center">
+              <span>About</span>
+            </div>
             <h2 className="mx-auto text-text-primary text-center text-balance font-medium text-3xl tracking-tight max-w-lg leading-10">
               Here&apos;s what sets me apart and makes me unique
             </h2>
@@ -140,7 +141,9 @@ export default async function Home() {
             <span className="absolute left-1/2 -translate-x-1/2 top-0 pointer-events-none">
               <BgGradient />
             </span>
-            <SectionTitlePill title="Blog" />
+            <div className="text-sm font-medium text-indigo-600 text-center">
+              <span>Blog</span>
+            </div>
             <h2 className="mx-auto text-text-primary text-center text-balance font-medium text-3xl tracking-tighter max-w-lg leading-10">
               I like sharing my experiments and knowledge with others
             </h2>
@@ -167,21 +170,15 @@ export default async function Home() {
             </ul>
             <HorizontalLine />
           </div>
-
-          <div className="flex justify-center">
-            <Button variant="secondary" href="/blog">
-              Read More Articles
-            </Button>
-            <Button variant="secondary" href="/blog">
-              My Site
-            </Button>
-          </div>
         </section>
 
         {/* My Site Section */}
-        <section className="space-y-16">
+        <section className="space-y-16 relative">
+          <MySitePattern />
           <div className="space-y-4">
-            <SectionTitlePill title="My Site" />
+            <div className="text-sm font-medium text-indigo-600 text-center">
+              <span>My Site</span>
+            </div>
             <h2 className="mx-auto text-text-primary text-center text-balance font-medium text-3xl tracking-tighter max-w-lg leading-10">
               My site is a playful sandbox. Explore, experiment, and say hello
             </h2>
@@ -209,7 +206,7 @@ export default async function Home() {
   );
 }
 
-function HeaderPattern() {
+export function HeaderPattern() {
   return (
     <svg
       className="absolute top-0 w-full inset-x-0 left-1/2 transform -translate-x-1/2 pointer-events-none"
@@ -229,7 +226,7 @@ function HeaderPattern() {
           cx="1158.5"
           cy="442.5"
           r="14.5"
-          stroke="#EDEEF2"
+          stroke="#DFE1E5"
           strokeWidth="10"
         />
       </g>
@@ -238,12 +235,12 @@ function HeaderPattern() {
           cx="350.5"
           cy="35.5"
           r="14.5"
-          stroke="#EDEEF2"
+          stroke="#DFE1E5"
           strokeWidth="10"
         />
       </g>
       <g filter="url(#filter2_i_52_2905)">
-        <rect x="170" y="289" width="133" height="74" rx="4" fill="#EDEEF2" />
+        <rect x="170" y="289" width="133" height="74" rx="4" fill="#DFE1E5" />
       </g>
       <g clipPath="url(#clip0_52_2905)">
         <path
@@ -253,10 +250,10 @@ function HeaderPattern() {
         />
       </g>
       <g filter="url(#filter3_i_52_2905)">
-        <rect x="1246" y="321" width="24" height="8" rx="1" fill="#EDEEF2" />
+        <rect x="1246" y="321" width="24" height="8" rx="1" fill="#DFE1E5" />
       </g>
       <g filter="url(#filter4_i_52_2905)">
-        <rect x="91" y="100" width="24" height="8" rx="1" fill="#EDEEF2" />
+        <rect x="91" y="100" width="24" height="8" rx="1" fill="#DFE1E5" />
       </g>
       <defs>
         <filter
@@ -447,7 +444,7 @@ function HeaderPattern() {
   );
 }
 
-function AboutPattern() {
+export function AboutPattern() {
   return (
     <svg
       className="absolute z-0 -top-10 w-full inset-x-0 left-1/2 transform -translate-x-1/2 pointer-events-none"
@@ -463,7 +460,7 @@ function AboutPattern() {
         stroke="#D6DADE"
       />
       <g filter="url(#filter0_i_205_135)">
-        <circle cx="293" cy="73.5" r="11.5" stroke="#EDEEF2" strokeWidth="6" />
+        <circle cx="293" cy="73.5" r="11.5" stroke="#DFE1E5" strokeWidth="6" />
       </g>
       <defs>
         <filter
@@ -506,7 +503,66 @@ function AboutPattern() {
   );
 }
 
-function BlogPattern(): React.ReactNode {
+export function MySitePattern() {
+  return (
+    <svg
+      className="absolute z-0 -top-10 w-full inset-x-0 left-1/2 transform -translate-x-1/2 scale-x-[-1] pointer-events-none"
+      width="100%"
+      height="814"
+      viewBox="0 0 1440 814"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        opacity="0.5"
+        d="M316.25 813.497L316.25 96.7454M394.5 813.497L394.5 139.185C394.5 137.063 393.657 135.029 392.157 133.528L357.718 99.0886C356.218 97.5883 354.183 96.7454 352.061 96.7454L316.25 96.7454M1046 813.497L1046 128.246L1046 49.9947M269.5 49.9947L308.25 49.9947C312.668 49.9947 316.25 53.5764 316.25 57.9947L316.25 96.7454M269.5 49.9947L269.5 96.7454M269.5 49.9947L160.5 49.9946M6.67475e-05 49.9946L160.5 49.9946M316.25 96.7454L269.5 96.7454M269.5 96.7454L7.02898e-05 96.7454M1046 49.9947L1202.5 49.9947M1046 49.9947L1005.38 49.9945C1000.96 49.9945 997.375 46.4128 997.375 41.9945L997.375 9.36972C997.375 4.95144 1000.96 1.36972 1005.38 1.36972L1038 1.36972C1042.42 1.36972 1046 4.95144 1046 9.36972L1046 49.9947ZM1440 137.997L1379.81 137.997C1377.69 137.997 1375.66 137.154 1374.16 135.654L1346.34 107.839C1344.84 106.339 1344 104.304 1344 102.183L1344 57.9947C1344 53.5765 1340.42 49.9947 1336 49.9947L1202.5 49.9947M1202.5 49.9947L1126.59 125.903C1125.09 127.404 1124.25 129.438 1124.25 131.56L1124.25 813.497M160.5 813.497L160.5 49.9946"
+        stroke="#D6DADE"
+      />
+      <g filter="url(#filter0_i_205_135)">
+        <circle cx="293" cy="73.5" r="11.5" stroke="#DFE1E5" strokeWidth="6" />
+      </g>
+      <defs>
+        <filter
+          id="filter0_i_205_135"
+          x="278.5"
+          y="59"
+          width="29"
+          height="30.5"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dy="2" />
+          <feGaussianBlur stdDeviation="0.75" />
+          <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0.647059 0 0 0 0 0.682353 0 0 0 0 0.721569 0 0 0 0.32 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="shape"
+            result="effect1_innerShadow_205_135"
+          />
+        </filter>
+      </defs>
+    </svg>
+  );
+}
+
+export function BlogPattern(): React.ReactNode {
   return (
     <svg
       className="absolute z-0 top-10 w-full inset-x-0 left-1/2 transform -translate-x-1/2 pointer-events-none"
@@ -528,7 +584,7 @@ function BlogPattern(): React.ReactNode {
           width="144.192"
           height="28"
           rx="4"
-          fill="#EDEEF2"
+          fill="#DFE1E5"
         />
       </g>
       <g clipPath="url(#clip0_206_144)">

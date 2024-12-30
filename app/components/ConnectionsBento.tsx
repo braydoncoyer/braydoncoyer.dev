@@ -154,7 +154,7 @@ export function ConnectionsBento({
         <div className="text-center w-full mt-auto z-20">
           <h2 className="text-base font-medium">Connections</h2>
           <p className="mt-1 text-text-secondary">
-            An ever-evolving list of people I have met and wish to meet.
+            An evolving list of people I&apos;ve met and those I wish to meet.
           </p>
         </div>
       </div>

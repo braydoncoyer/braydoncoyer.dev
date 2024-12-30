@@ -4,21 +4,22 @@ import { Link } from "./Link";
 
 const variants = {
   primary: clsx(
-    "inline-flex items-center justify-center px-4 py-[calc(theme(spacing.2)-1px)]",
-    "rounded-full border border-transparent bg-gray-950 shadow-md",
-    "whitespace-nowrap text-base font-medium text-white",
-    "data-[disabled]:bg-gray-950 data-[hover]:bg-gray-800 data-[disabled]:opacity-40"
+    "group relative isolate inline-flex items-center justify-center overflow-hidden text-left font-medium transition duration-300 ease-[cubic-bezier(0.4,0.36,0,1)]",
+    "before:duration-300 before:ease-[cubic-bezier(0.4,0.36,0,1)] before:transition-opacity rounded-full shadow-[0_1px_theme(colors.white/0.07)_inset,0_1px_3px_theme(colors.gray.900/0.2)]",
+    "before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:rounded-full before:bg-gradient-to-b before:from-white/20 before:opacity-50 hover:before:opacity-100",
+    "after:pointer-events-none after:absolute after:inset-0 after:-z-10 after:rounded-full after:bg-gradient-to-b after:from-white/10 after:from-[46%] after:to-[54%] after:mix-blend-overlay text-sm px-4 py-2.5 ring-1 bg-indigo-600 text-white ring-indigo-600"
   ),
   secondary: clsx(
-    "relative inline-flex items-center justify-center px-4 py-[calc(theme(spacing.2)-1px)]",
-    "rounded-full border border-transparent bg-white/15 shadow-md ring-1 ring-indigo-500/15",
-    "after:absolute after:inset-0 after:rounded-full after:shadow-[inset_0_0_2px_1px_#ffffff4d]",
-    "whitespace-nowrap text-base font-medium text-gray-950",
-    "data-[disabled]:bg-white/15 data-[hover]:bg-white/20 data-[disabled]:opacity-40"
+    "group relative isolate inline-flex items-center justify-center overflow-hidden text-left font-medium",
+    "transition duration-300 ease-[cubic-bezier(0.4,0.36,0,1)] before:duration-300 before:ease-[cubic-bezier(0.4,0.36,0,1)]",
+    "before:transition-opacity rounded-full shadow-[0_1px_theme(colors.white/0.07)_inset,0_1px_3px_theme(colors.gray.900/0.2)]",
+    "before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:rounded-full before:bg-gradient-to-b before:from-white/20",
+    "before:opacity-50 hover:before:opacity-100 after:pointer-events-none after:absolute after:inset-0 after:-z-10 after:rounded-full",
+    "after:bg-gradient-to-b after:from-white/10 after:from-[46%] after:to-[54%] after:mix-blend-overlay text-sm px-4 py-2.5 ring-1 bg-dark-primary text-white ring-dark-primary"
   ),
   outline: clsx(
-    "inline-flex items-center justify-center px-2 py-[calc(theme(spacing.[1.5])-1px)]",
-    "rounded-lg border border-transparent shadow ring-1 ring-black/10",
+    "inline-flex items-center justify-center px-4 py-2.5",
+    "rounded-full border border-transparent shadow ring-1 ring-black/10",
     "whitespace-nowrap text-sm font-medium text-gray-950",
     "data-[disabled]:bg-transparent data-[hover]:bg-gray-50 data-[disabled]:opacity-40"
   ),

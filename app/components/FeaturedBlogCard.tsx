@@ -14,7 +14,7 @@ export function FeaturedBlogCard({
   summary,
 }: FeaturedBlogCardProps) {
   return (
-    <li className="flex flex-col h-full border border-border-primary rounded-3xl p-2 hover:bg-white z-50">
+    <li className="flex flex-col h-full border border-border-primary rounded-3xl p-2 bg-bg-primary z-50">
       <Link className="flex flex-col rounded-2xl h-full" href={`/blog/${slug}`}>
         <img
           src={

@@ -13,7 +13,11 @@ export function BlogPageHeader({
       <div className="max-w-2xl mx-auto z-10">
         <PageTitle title={title} />
       </div>
-      {sectionTitle && <SectionTitlePill title={sectionTitle} />}
+      {sectionTitle && (
+        <div className="text-sm font-medium text-indigo-600 text-center">
+          <span>{sectionTitle}</span>
+        </div>
+      )}
     </>
   );
 }

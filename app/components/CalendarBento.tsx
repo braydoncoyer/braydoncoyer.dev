@@ -18,7 +18,9 @@ const CalendarDay: React.FC<{ day: number | string; isHeader?: boolean }> = ({
         isHeader ? "" : "rounded"
       } ${randomBgWhite}`}
     >
-      <p className={`font-medium ${isHeader ? "text-xs" : "text-sm"}`}>{day}</p>
+      <span className={`font-medium ${isHeader ? "text-xs" : "text-sm"}`}>
+        {day}
+      </span>
     </div>
   );
 };
@@ -44,16 +46,17 @@ export function CalendarBento() {
   const renderCalendarDays = () => {
     let days: React.ReactNode[] = [
       ...dayNames.map((day, i) => (
-        <CalendarDay key={`day-${i}`} day={day} isHeader />
+        <CalendarDay key={`header-${day}`} day={day} isHeader />
       )),
-      ...Array(firstDayOfWeek)
-        .fill(null)
-        .map((_, i) => (
-          <div key={`empty-${i}`} className="col-span-1 row-span-1 w-8 h-8" />
-        )),
+      ...Array(firstDayOfWeek).map((_, i) => (
+        <div
+          key={`empty-start-${i}`}
+          className="col-span-1 row-span-1 w-8 h-8"
+        />
+      )),
       ...Array(daysInMonth)
         .fill(null)
-        .map((_, i) => <CalendarDay key={`day-${i + 1}`} day={i + 1} />),
+        .map((_, i) => <CalendarDay key={`date-${i + 1}`} day={i + 1} />),
     ];
 
     return days;
