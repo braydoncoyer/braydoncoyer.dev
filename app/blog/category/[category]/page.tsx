@@ -10,13 +10,15 @@ import { CategorySelect } from "@/app/components/CategorySelect";
 export default async function CategoryPage({
   params,
 }: {
-  params: { category: string };
+  params: Promise<{ category: string }>;
 }) {
   const allPublishedBlogPosts = fetchAndSortBlogPosts();
-  const categories = extractUniqueBlogCategories(allPublishedBlogPosts);
+  const categories = Array.from(
+    extractUniqueBlogCategories(allPublishedBlogPosts)
+  );
 
-  const category = (await params.category)
-    ? await params.category.toLowerCase()
+  const category = (await params).category
+    ? (await params).category.toLowerCase()
     : "";
 
   const categoryPosts = allPublishedBlogPosts.filter((post) => {
