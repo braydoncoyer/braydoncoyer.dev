@@ -73,7 +73,7 @@ function Sticker({
   const [initialRotation] = useState<number>(getRandomNumberInRange(-15, 15));
   const [initialY] = useState<number>(
     getRandomNumberInRange(10, 25) *
-      (index === 0 ? 0.5 : index % 2 === 0 ? -0.25 : 0.25)
+      (index === 0 ? 1 : index % 2 === 0 ? -0.5 : 0.5)
   );
 
   // Handle smaller devices with different behavior

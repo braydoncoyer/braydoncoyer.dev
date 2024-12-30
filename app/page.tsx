@@ -123,7 +123,7 @@ export default async function Home() {
               </div>
 
               <div className="col-span-7 row-span-8">
-                <ConnectionsBento linkTo="/about" />
+                <ConnectionsBento linkTo="/connections" />
               </div>
 
               <div className="col-span-5 row-span-7">

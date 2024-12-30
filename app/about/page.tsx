@@ -451,7 +451,7 @@ export default function AboutPage() {
               <Scrapbook />
             </div>
             <div className="col-span-7 row-span-8">
-              <ConnectionsBento linkTo="/about" />
+              <ConnectionsBento linkTo="/connections" />
             </div>
             <div className="col-span-2 row-span-7 row-start-14 col-start-11 row-start-1 h-full">
               <BentoCard height="h-full">bonus</BentoCard>
