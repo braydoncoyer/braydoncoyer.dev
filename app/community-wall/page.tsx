@@ -5,7 +5,7 @@ import createSupabaseServerClient from "../lib/supabase/server";
 import { CommunityWallCard } from "../components/CommunityWallCard";
 
 type SearchParamProps = {
-  searchParams: Record<string, string> | null | undefined;
+  searchParams: Promise<{ show: string }>;
 };
 
 export default async function Page({ searchParams }: SearchParamProps) {
@@ -16,7 +16,7 @@ export default async function Page({ searchParams }: SearchParamProps) {
     .select("*")
     .order("created_at", { ascending: false });
 
-  const show = searchParams?.show === "true";
+  const show = (await searchParams).show === "true";
 
   return (
     <CommunityWallLayout>
