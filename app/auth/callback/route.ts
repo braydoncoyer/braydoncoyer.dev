@@ -9,14 +9,14 @@ export async function GET(request: Request) {
   const next = searchParams.get("next") ?? "/community-wall?show=true";
 
   if (code) {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const supabase = createServerClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.NEXT_PUBLIC_SUPABASE_ANON!,
       {
         cookies: {
           get(name: string) {
-            return cookieStore.get(name)?.value;
+            return cookieStore.get(name)?.value ?? '';
           },
           set(name: string, value: string, options: CookieOptions) {
             cookieStore.set({ name, value, ...options });
