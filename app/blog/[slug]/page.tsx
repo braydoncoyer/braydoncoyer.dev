@@ -19,6 +19,7 @@ interface BlogPageProps {
   params: {
     slug: string;
   };
+  searchParams?: { [key: string]: string | string[] | undefined };
 }
 
 function formatDate(date: string) {

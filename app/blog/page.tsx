@@ -17,7 +17,7 @@ export default async function BlogPage({
   const categories = Array.from(
     extractUniqueBlogCategories(allPublishedBlogPosts)
   );
-  const category = searchParams.category?.toLowerCase() || "";
+  const category = searchParams?.category?.toLowerCase() || "";
 
   const displayedPosts = category
     ? allPublishedBlogPosts.filter((post) =>
