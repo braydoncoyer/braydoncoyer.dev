@@ -11,13 +11,13 @@ import { FeaturedBlogCard } from "../components/FeaturedBlogCard";
 export default async function BlogPage({
   searchParams,
 }: {
-  searchParams: { category?: string };
+  searchParams: Promise<{ category?: string }>;
 }) {
   const allPublishedBlogPosts = fetchAndSortBlogPosts();
   const categories = Array.from(
     extractUniqueBlogCategories(allPublishedBlogPosts)
   );
-  const category = searchParams?.category?.toLowerCase() || "";
+  const category = (await searchParams).category?.toLowerCase() || "";
 
   const displayedPosts = category
     ? allPublishedBlogPosts.filter((post) =>
