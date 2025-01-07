@@ -2,8 +2,7 @@
 title: Web Development Concepts in SwiftUI
 publishedAt: 2020-10-09
 summary: If you're a front-end developer interested in building your own iPhone or iPad apps, this article is for you. My goal is to take front-end concepts that you already know and show you the equivalent concepts in SwiftUI.
-coverImage: ../../static/images/web-development-concepts-in-swiftui/webdevswiftui.png
-imageName: webdevswiftui.png
+imageName: web_dev_concepts_in_swift_ui.jpeg
 categories: ["programming"]
 ---
 
@@ -23,13 +22,13 @@ Before we dive into some code, let's first define SwiftUI and the role it plays 
 
 According to [Apple](https://developer.apple.com/documentation/swiftui),
 
-<Blockquote>
+<Infoquote>
   SwiftUI provides views, controls, and layout structures for declaring your
   app’s user interface. The framework provides event handlers for delivering
   taps, gestures, and other types of input to your app, and tools to manage the
   flow of data from your app’s models down to the views and controls that users
   will see and interact with.
-</Blockquote>
+</Infoquote>
 
 SwiftUI is declarative in nature, meaning that we tell SwiftUI how our user interface should look at different states in our application and it takes care of the rest. It's a little more involved than that, but you get the basic idea.
 
@@ -62,8 +61,6 @@ Stacks provide the foundation for your layouts and can be thought of as containe
 - Horizontally, using the HStack
 - Vertically, using the VStack
 - Layered on the z-axis, using the ZStack (which I won't be covering in this article)
-
----
 
 #### HStack
 
@@ -120,8 +117,6 @@ HStack(spacing: 0) {
      Text("Right Side")
 }
 ```
-
----
 
 #### VStack
 
@@ -188,8 +183,6 @@ HStack() {
 
 ![Screen Shot 2020-10-08 at 6.59.49 PM.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1602201601758/v3T8RpzfF.png)
 
----
-
 ```
 HStack() {
      Text("I'm on the Left")
@@ -202,8 +195,6 @@ HStack() {
 
 ![Screen Shot 2020-10-08 at 7.01.45 PM.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1602201721298/L3isFeSto.png)
 
----
-
 ```
 VStack() {
      Text("I'm on the Top")
@@ -213,8 +204,6 @@ VStack() {
 ```
 
 ![Screen Shot 2020-10-08 at 7.04.37 PM.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1602201886491/PYSZRcpkC.png)
-
----
 
 ```
 VStack() {

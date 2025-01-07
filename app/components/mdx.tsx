@@ -187,7 +187,7 @@ function Code({ children, ...props }) {
   }
 
   return (
-    <>
+    <div className="max-w-[805px] w-full">
       <div className="code-frame font-mono relative">
         <div className="code-frame-content">
           <div className="frame-controls">
@@ -245,7 +245,7 @@ function Code({ children, ...props }) {
           {...props}
         />
       </div>
-    </>
+    </div>
   );
 }
 

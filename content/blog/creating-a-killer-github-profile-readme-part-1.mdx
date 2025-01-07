@@ -3,7 +3,7 @@ title: Creating a Killer GitHub Profile README Part 1
 publishedAt: 2021-01-19
 summary: In this two-part article series, I will walk through, step by step, how I created my profile so that you can make your own README.md file stand out from the crowd.
 coverImage: ../../static/images/creating-a-killer-github-profile-readme-part-1/githubbannerpart1.png
-imageName: githubbannerpart1.png
+imageName: killer_github_profile_part_1.jpeg
 canonicalUrl: https://daily.dev/blog/creating-a-killer-github-profile-readme-part-1
 categories: ["html", "programming", "design"]
 ---
@@ -53,7 +53,11 @@ I set the repository access to **private** until I was ready for the world to se
 
 I also initialized the repository with `README.md` and `.gitignore` files.
 
-> NOTE: The screenshot below is giving me an error because I've already created a profile-level repository. You shouldn't see this error. Also, if you didn't know, GitHub recently shipped dark mode.
+<Infoquote>
+  The screenshot below is giving me an error because I've already created a
+  profile-level repository. You shouldn't see this error. Also, if you didn't
+  know, GitHub recently shipped dark mode.
+</Infoquote>
 
 ![Create GitHub Repo](https://dev-to-uploads.s3.amazonaws.com/i/lp7vy1937cifyxuno56w.png)
 
@@ -120,37 +124,42 @@ For now, I put the following under the blog post section:
 <!-- BLOG-POST-LIST:END -->
 ```
 
-> To inject my blog feed into the `README.md` file, I followed [Darsh Shah's](https://hashnode.com/@iamdarshshah) article _[How to Add Your Recently Published Articles to Your GitHub Profile README using GitHub Actions 🤖](https://iamdarshshah.hashnode.dev/how-to-add-your-recently-published-articles-to-your-github-profile-readme-using-github-actions)_
+<Infoquote>
+  To inject my blog feed into the `README.md` file, I followed [Darsh
+  Shah's](https://hashnode.com/@iamdarshshah) article _[How to Add Your Recently
+  Published Articles to Your GitHub Profile README using GitHub Actions
+  🤖](https://iamdarshshah.hashnode.dev/how-to-add-your-recently-published-articles-to-your-github-profile-readme-using-github-actions)_
+</Infoquote>
 
 ### Pinned Repositories & GitHub Stats
 
 Along with my most recent blog posts, I wanted to shift the spotlight to a few of my other repositories and display some statistics. To accomplish this, I used Anurag Hazra‘s _[GitHub ReadMe Stats](https://github.com/anuraghazra/github-readme-stats) -_ The content you retrieve from his API can be wrapped in an `<img>` tag and styled in various ways. The documentation is easy to follow; I encourage you to check it out!
 
-```html
+```
 <!-- Pinned Repositories -- >
 
 <a href="https://github.com/braydoncoyer/tailwindcss-v2-dark-mode-template">
-  <img align="center" style="margin:1rem 0.5rem" src="https://github-readme-stats.vercel.app/api/pin/?username=braydoncoyer&repo=tailwindcss-v2-dark-mode-template&title_color=ffffff&text_color=c9cacc&icon_color=4AB197&bg_color=1A2B34" />
+  <img align="center" style="margin:1rem 0.5rem" src="https://github-readme-stats..." />
 </a>
 
 <br>
 
 <a href="https://github.com/braydoncoyer/ng-limeade">
-  <img align="center" style="margin:0.5rem" src="https://github-readme-stats.vercel.app/api/pin/?username=braydoncoyer&repo=ng-limeade&title_color=ffffff&text_color=c9cacc&icon_color=4AB197&bg_color=1A2B34" />
+  <img align="center" style="margin:0.5rem" src="https://github-readme-stats..." />
 </a>
 
 <a href="https://github.com/braydoncoyer/officeapi">
-  <img align="center" style="margin:0.5rem" src="https://github-readme-stats.vercel.app/api/pin/?username=braydoncoyer&repo=officeapi&title_color=ffffff&text_color=c9cacc&icon_color=4AB197&bg_color=1A2B34" />
+  <img align="center" style="margin:0.5rem" src="https://github-readme-stats..." />
 </a>
 
 <!-- GitHub Stats -- >
 
 <a href="https://github.com/braydoncoyer">
-  <img align="center" style="margin:0.5rem" src="https://github-readme-stats.vercel.app/api/top-langs/?username=braydoncoyer&hide=html,css&title_color=ffffff&text_color=c9cacc&icon_color=4AB197&bg_color=1A2B34" />
+  <img align="center" style="margin:0.5rem" src="https://github-readme-stats..." />
 </a>
 
 <a href="https://github.com/braydoncoyer">
-  <img align="center" style="margin:0.5rem" src="https://github-readme-stats.vercel.app/api?username=braydoncoyer&show_icons=true&line_height=27&count_private=true&title_color=ffffff&text_color=c9cacc&icon_color=4AB097&bg_color=1A2B34" alt="Braydon's GitHub Stats" />
+  <img align="center" style="margin:0.5rem" src="https://github-readme-stats..." alt="Braydon's GitHub Stats" />
 </a>
 ```
 
