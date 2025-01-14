@@ -65,12 +65,6 @@ async function getPostFromParams(params: BlogPageProps["params"]) {
   return post;
 }
 
-export async function generateStaticParams(): Promise<
-  BlogPageProps["params"][]
-> {
-  return posts.map((post) => Promise.resolve({ slug: post.slug }));
-}
-
 export default async function BlogPage({ params }: BlogPageProps) {
   const post = await getPostFromParams(params);
   const similarPosts = post.categories[0]
