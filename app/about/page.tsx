@@ -14,78 +14,20 @@ import { useScroll, motion } from "framer-motion";
 import { Resume } from "app/components/Resume";
 import { Button } from "../components/Button";
 import { AboutPattern, HeaderPattern } from "../components/SvgPatterns";
+import { StatsBento } from "../components/StatsBento";
+import { CurrentlyReadingBento } from "../components/CurrentlyReadingBento";
+import { GridWrapper } from "../components/GridWrapper";
 
 export default function AboutPage() {
   const timeOfDayGreeting = getTimeOfDayGreeting();
 
   return (
     <div className="relative">
+      <title>About | Braydon Coyer</title>
       <span className="absolute top-20 -translate-y-1/2 left-1/2 translate-x-1/2">
         <HorizontalLine />
       </span>
       <HeaderPattern />
-      {/* <BlogPagePattern /> */}
-      {/* <span className="absolute left-32 top-6 border p-2 rounded-lg border-border-primary/50">
-        <svg
-          width="29"
-          height="29"
-          viewBox="0 0 29 29"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g opacity="0.5" filter="url(#filter0_i_185_2882)">
-            <circle
-              cx="14.5"
-              cy="14.5"
-              r="11.5"
-              stroke="#EDEEF2"
-              strokeWidth="6"
-            />
-          </g>
-          <defs>
-            <filter
-              id="filter0_i_185_2882"
-              x="0"
-              y="0"
-              width="29"
-              height="30.5"
-              filterUnits="userSpaceOnUse"
-              colorInterpolationFilters="sRGB"
-            >
-              <feFlood floodOpacity="0" result="BackgroundImageFix" />
-              <feBlend
-                mode="normal"
-                in="SourceGraphic"
-                in2="BackgroundImageFix"
-                result="shape"
-              />
-              <feColorMatrix
-                in="SourceAlpha"
-                type="matrix"
-                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                result="hardAlpha"
-              />
-              <feOffset dy="2" />
-              <feGaussianBlur stdDeviation="0.75" />
-              <feComposite
-                in2="hardAlpha"
-                operator="arithmetic"
-                k2="-1"
-                k3="1"
-              />
-              <feColorMatrix
-                type="matrix"
-                values="0 0 0 0 0.647059 0 0 0 0 0.682353 0 0 0 0 0.721569 0 0 0 0.32 0"
-              />
-              <feBlend
-                mode="normal"
-                in2="shape"
-                result="effect1_innerShadow_185_2882"
-              />
-            </filter>
-          </defs>
-        </svg>
-      </span> */}
       <div className="space-y-[80px] relative">
         {/* Title */}
         <div className="pt-[90px] flex justify-around items-center">
@@ -110,17 +52,19 @@ export default function AboutPage() {
         {/* About */}
         <div className="relative text-center space-y-8">
           <div className="space-y-4">
-            <div className="text-sm font-medium text-indigo-600 text-center">
-              <span>About</span>
-            </div>
-            <div className="max-w-3xl mx-auto">
+            <GridWrapper>
+              <div className="text-sm font-medium text-indigo-600 text-center">
+                <span>About</span>
+              </div>
+            </GridWrapper>
+            <GridWrapper>
               <h2
-                className="w-1/2 mx-auto text-text-primary text-balance font-medium text-3xl leading-[40px]
+                className="max-w-xl mx-auto text-text-primary text-balance font-medium text-3xl leading-[40px]
             tracking-tighter"
               >
                 Here&apos;s a quick intro about me and what I love to do
               </h2>
-            </div>
+            </GridWrapper>
           </div>
           <div className="relative overflow-hidden w-full h-[2050px]">
             <div className="absolute top-0 left-[455px] w-full">
@@ -410,17 +354,19 @@ export default function AboutPage() {
         {/* About */}
         <div className="relative text-center space-y-8">
           <div className="space-y-4">
-            <div className="text-sm font-medium text-indigo-600 text-center">
-              <span>Experience</span>
-            </div>
-            <div className="max-w-3xl mx-auto">
+            <GridWrapper>
+              <div className="text-sm font-medium text-indigo-600 text-center">
+                <span>Experience</span>
+              </div>
+            </GridWrapper>
+            <GridWrapper>
               <h2
-                className="max-w-96 mx-auto text-text-primary text-balance font-medium text-3xl leading-[40px]
+                className="max-w-lg mx-auto text-text-primary text-balance font-medium text-3xl leading-[40px]
             tracking-tighter"
               >
                 My work history and achievements timeline.
               </h2>
-            </div>
+            </GridWrapper>
           </div>
         </div>
         <div className="space-y-16">
@@ -432,35 +378,41 @@ export default function AboutPage() {
 
         <section className="space-y-16 relative">
           <div className="space-y-4">
-            <div className="text-sm font-medium text-indigo-600 text-center">
-              <span>More</span>
-            </div>
+            <GridWrapper>
+              <div className="text-sm font-medium text-indigo-600 text-center">
+                <span>More</span>
+              </div>
+            </GridWrapper>
 
-            <h2 className="mx-auto text-text-primary text-center text-balance font-medium text-3xl tracking-tight max-w-lg leading-10">
-              Here&apos;s what sets me apart and makes me unique
-            </h2>
+            <GridWrapper>
+              <h2 className="mx-auto text-text-primary text-center text-balance font-medium text-3xl tracking-tight max-w-lg leading-10">
+                Here&apos;s what sets me apart and makes me unique
+              </h2>
+            </GridWrapper>
           </div>
 
           {/* About Grid */}
-          <div className="grid grid-cols-12 grid-rows-[14] gap-2">
-            <AboutPattern />
-            <div className="col-span-3 row-span-6">
-              <CurrentlyPlayingBento />
+          <GridWrapper>
+            <div className="grid grid-cols-12 gap-2">
+              <AboutPattern />
+              <div className="col-span-3 row-span-6">
+                <CurrentlyPlayingBento />
+              </div>
+              <div className="col-span-7 row-span-5">
+                <Scrapbook />
+              </div>
+              <div className="col-span-2 col-start-11 row-span-10 min-h-[50px]">
+                <CurrentlyReadingBento />
+              </div>
+              <div className="col-span-7 row-span-8">
+                <ConnectionsBento linkTo="/connections" />
+              </div>
+
+              <div className="col-span-3 row-span-4">
+                <StatsBento />
+              </div>
             </div>
-            <div className="col-span-7 row-span-5">
-              <Scrapbook />
-            </div>
-            <div className="col-span-7 row-span-8">
-              <ConnectionsBento linkTo="/connections" />
-            </div>
-            <div className="col-span-2 row-span-7 row-start-14 col-start-11 row-start-1 h-full">
-              <BentoCard height="h-full">bonus</BentoCard>
-            </div>
-            <BentoCard colSpan={3} rowSpan={4} height="h-[220px]">
-              Stats
-            </BentoCard>
-          </div>
-          {/* <HorizontalLine /> */}
+          </GridWrapper>
         </section>
 
         {/* Newsletter */}

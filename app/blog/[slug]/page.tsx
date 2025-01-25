@@ -10,7 +10,7 @@ import { SectionTitlePill } from "app/components/SectionTitlePill";
 import { HorizontalLine } from "app/components/HorizontalLine";
 import { NewsletterSignUp } from "app/components/NewsletterSignUp";
 import { posts } from "#site/content";
-import { getBlogPostsByCategory } from "@/app/lib/utils";
+import { getRelatedBlogPosts } from "@/app/lib/utils";
 import { FeaturedBlogCard } from "@/app/components/FeaturedBlogCard";
 import { BgGradient } from "@/app/components/BgGradient";
 import readingDuration from "reading-duration";
@@ -67,11 +67,7 @@ async function getPostFromParams(params: BlogPageProps["params"]) {
 
 export default async function BlogPage({ params }: BlogPageProps) {
   const post = await getPostFromParams(params);
-  const similarPosts = post.categories[0]
-    ? getBlogPostsByCategory(post.categories[0])
-        .filter((p) => p.slug !== post.slug)
-        .slice(0, 3)
-    : [];
+  const similarPosts = getRelatedBlogPosts(post);
 
   const readingTime = readingDuration(post.code, {
     wordsPerMinute: 200,
@@ -80,6 +76,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
   return (
     <article className="space-y-12">
+      <title>{post.title}</title>
       {/* Article Banner Image */}
       <div className="relative">
         {/* Lines */}
@@ -242,7 +239,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
           </span>
           <SectionTitlePill title="Similar Posts" />
           <h2 className="mx-auto text-text-primary text-center text-balance font-medium text-3xl tracking-tighter max-w-lg leading-10">
-            You may also find value in these other similar articles.
+            Here are some other articles you might find interesting.
           </h2>
         </div>
 

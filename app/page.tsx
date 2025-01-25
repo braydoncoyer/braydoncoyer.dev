@@ -19,6 +19,7 @@ import {
   HeaderPattern,
   MySitePattern,
 } from "./components/SvgPatterns";
+import { GridWrapper } from "./components/GridWrapper";
 
 export default async function Home() {
   const allPublishedBlogPosts = await fetchAndSortBlogPosts();
@@ -114,9 +115,8 @@ export default async function Home() {
             </h2>
           </div>
 
-          {/* About Grid */}
-          <div>
-            <HorizontalLine />
+          {/* About Bento */}
+          <GridWrapper>
             <div className="grid grid-cols-1 md:grid-cols-12 gap-2 grid-rows-[14]">
               <div className="col-span-5 row-span-6">
                 <AboutMeBento linkTo="/about" />
@@ -134,8 +134,7 @@ export default async function Home() {
                 <CalendarBento />
               </div>
             </div>
-            <HorizontalLine />
-          </div>
+          </GridWrapper>
         </section>
 
         {/* Blog Section */}
@@ -154,25 +153,25 @@ export default async function Home() {
           </div>
 
           <div className="z-10">
-            <ul className="grid grid-cols-3 gap-2 z-50">
-              <HorizontalLine />
-              {featuredArticles.length > 0 ? (
-                <>
-                  {featuredArticles.slice(0, 3).map((post) => (
-                    <FeaturedBlogCard
-                      key={post.slug}
-                      slug={post.slug}
-                      imageName={post.imageName}
-                      title={post.title}
-                      summary={post.summary}
-                    />
-                  ))}
-                </>
-              ) : (
-                <p>Nothing to see here yet...</p>
-              )}
-            </ul>
-            <HorizontalLine />
+            <GridWrapper>
+              <ul className="grid grid-cols-3 gap-2 z-50">
+                {featuredArticles.length > 0 ? (
+                  <>
+                    {featuredArticles.slice(0, 3).map((post) => (
+                      <FeaturedBlogCard
+                        key={post.slug}
+                        slug={post.slug}
+                        imageName={post.imageName}
+                        title={post.title}
+                        summary={post.summary}
+                      />
+                    ))}
+                  </>
+                ) : (
+                  <p>Nothing to see here yet...</p>
+                )}
+              </ul>
+            </GridWrapper>
           </div>
         </section>
 
@@ -188,8 +187,7 @@ export default async function Home() {
             </h2>
           </div>
 
-          <div>
-            {/* <HorizontalLine /> */}
+          <GridWrapper>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
               <span className="col-span-1 h-[276px]">
                 <ChangelogBento />
@@ -197,8 +195,7 @@ export default async function Home() {
               <SpeakingBento />
               <CommunityWallBento />
             </div>
-            {/* <HorizontalLine /> */}
-          </div>
+          </GridWrapper>
         </section>
 
         {/* Newsletter Section */}

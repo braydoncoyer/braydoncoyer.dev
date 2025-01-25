@@ -83,9 +83,40 @@ export function fetchAndSortBlogPosts(): Blog[] {
   }
 }
 
-export function getBlogPostsByCategory(category: string): Blog[] {
-  const allPosts = fetchAndSortBlogPosts();
-  return allPosts.filter((post) => post.categories.includes(category));
+export function getRelatedBlogPosts(
+  currentPost: Blog,
+  maxResults: number = 3
+): Blog[] {
+  const allPosts = fetchAndSortBlogPosts().filter(
+    (post) => post.slug !== currentPost.slug
+  );
+
+  const sameCategories = allPosts.filter((post) =>
+    post.categories.some((category) =>
+      currentPost.categories.includes(category)
+    )
+  );
+
+  // Sort by number of matching categories (most relevant first)
+  const sortedByRelevance = sameCategories.sort((a, b) => {
+    const aMatches = a.categories.filter((cat) =>
+      currentPost.categories.includes(cat)
+    ).length;
+    const bMatches = b.categories.filter((cat) =>
+      currentPost.categories.includes(cat)
+    ).length;
+    return bMatches - aMatches;
+  });
+
+  if (sortedByRelevance.length >= maxResults) {
+    return sortedByRelevance.slice(0, maxResults);
+  }
+
+  const remainingPosts = allPosts.filter(
+    (post) => !sortedByRelevance.some((related) => related.slug === post.slug)
+  );
+
+  return [...sortedByRelevance, ...remainingPosts].slice(0, maxResults);
 }
 
 export async function fetchAndSortChangelogPosts(): Promise<Changelog[]> {

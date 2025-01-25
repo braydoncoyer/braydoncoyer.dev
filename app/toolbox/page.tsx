@@ -1,87 +1,25 @@
-import Image from "next/image";
-import { ShadowBox } from "app/components/ShadowBox";
 import { BorderCard } from "app/components/BorderCard";
-import { SectionTitlePill } from "app/components/SectionTitlePill";
 import { NewsletterSignUp } from "app/components/NewsletterSignUp";
 import { PageTitle } from "app/components/PageTitle";
 import { hardwareData, softwareData } from "app/data/toolbox";
 import { HorizontalLine } from "app/components/HorizontalLine";
-import { BgSectionTag, TagType } from "app/components/BgSectionTag";
-import { BgGradient } from "app/components/BgGradient";
+import { GridWrapper } from "app/components/GridWrapper";
 
 export default function ToolboxPage() {
   return (
     <div className="relative">
+      <title>Toolbox | Braydon Coyer</title>
       <span className="absolute top-20 -translate-y-1/2 left-1/2 translate-x-1/2">
         <HorizontalLine />
       </span>
-      <span className="absolute left-32 top-6 border p-2 rounded-lg border-border-primary/50">
-        <svg
-          width="29"
-          height="29"
-          viewBox="0 0 29 29"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g opacity="0.5" filter="url(#filter0_i_185_2882)">
-            <circle
-              cx="14.5"
-              cy="14.5"
-              r="11.5"
-              stroke="#EDEEF2"
-              strokeWidth="6"
-            />
-          </g>
-          <defs>
-            <filter
-              id="filter0_i_185_2882"
-              x="0"
-              y="0"
-              width="29"
-              height="30.5"
-              filterUnits="userSpaceOnUse"
-              colorInterpolationFilters="sRGB"
-            >
-              <feFlood floodOpacity="0" result="BackgroundImageFix" />
-              <feBlend
-                mode="normal"
-                in="SourceGraphic"
-                in2="BackgroundImageFix"
-                result="shape"
-              />
-              <feColorMatrix
-                in="SourceAlpha"
-                type="matrix"
-                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                result="hardAlpha"
-              />
-              <feOffset dy="2" />
-              <feGaussianBlur stdDeviation="0.75" />
-              <feComposite
-                in2="hardAlpha"
-                operator="arithmetic"
-                k2="-1"
-                k3="1"
-              />
-              <feColorMatrix
-                type="matrix"
-                values="0 0 0 0 0.647059 0 0 0 0 0.682353 0 0 0 0 0.721569 0 0 0 0.32 0"
-              />
-              <feBlend
-                mode="normal"
-                in2="shape"
-                result="effect1_innerShadow_185_2882"
-              />
-            </filter>
-          </defs>
-        </svg>
-      </span>
-      <span className="absolute right-4 top-14">
-        <BgSectionTag width={250} tagType={TagType.TOOLBOX} />
-      </span>
       <div className="space-y-[80px] relative">
-        <div className="pt-[90px] max-w-2xl mx-auto">
-          <PageTitle title="Hardware && software I keep in my toolbox." />
+        <div className="pt-[90px]  mx-auto">
+          <GridWrapper>
+            <PageTitle
+              className="max-w-2xl mx-auto"
+              title="Hardware && software I keep in my toolbox."
+            />
+          </GridWrapper>
         </div>
         <span className="absolute top-40 -translate-y-1/2 left-1/2 translate-x-1/2">
           <HorizontalLine />
@@ -89,121 +27,51 @@ export default function ToolboxPage() {
 
         {/* Applications */}
         <div className="relative">
-          <div className="text-sm font-medium text-indigo-600 text-center">
-            <span>Applications</span>
-          </div>
-          <span className="absolute top-1/2 -translate-y-1/2 left-1/2 translate-x-1/2">
-            <HorizontalLine />
-          </span>
-          <span className="absolute right-14 top-0">
-            <svg
-              width="41"
-              height="40"
-              viewBox="0 0 41 40"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g filter="url(#filter0_i_185_3011)">
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M2.73721e-07 22.9537C2.86893e-07 24.0583 0.900245 24.9403 1.99645 25.076C8.91996 25.9331 14.1015 31.1905 15.0193 37.4613C15.1793 38.5542 16.06 39.4548 17.1645 39.4548L38.1645 39.4548C39.2691 39.4548 40.1699 38.5582 40.1144 37.455C39.0853 16.9813 22.338 0.99127 1.99962 0.00227915C0.896353 -0.0513691 1.01271e-08 0.849178 2.3299e-08 1.95375L2.73721e-07 22.9537Z"
-                  fill="#EDEEF0"
-                  fillOpacity="0.5"
-                />
-              </g>
-              <defs>
-                <filter
-                  id="filter0_i_185_3011"
-                  x="0"
-                  y="0"
-                  width="40.1167"
-                  height="40.9548"
-                  filterUnits="userSpaceOnUse"
-                  colorInterpolationFilters="sRGB"
-                >
-                  <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                  <feBlend
-                    mode="normal"
-                    in="SourceGraphic"
-                    in2="BackgroundImageFix"
-                    result="shape"
-                  />
-                  <feColorMatrix
-                    in="SourceAlpha"
-                    type="matrix"
-                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                    result="hardAlpha"
-                  />
-                  <feOffset dy="2" />
-                  <feGaussianBlur stdDeviation="0.75" />
-                  <feComposite
-                    in2="hardAlpha"
-                    operator="arithmetic"
-                    k2="-1"
-                    k3="1"
-                  />
-                  <feColorMatrix
-                    type="matrix"
-                    values="0 0 0 0 0.647059 0 0 0 0 0.682353 0 0 0 0 0.721569 0 0 0 0.32 0"
-                  />
-                  <feBlend
-                    mode="normal"
-                    in2="shape"
-                    result="effect1_innerShadow_185_3011"
-                  />
-                </filter>
-              </defs>
-            </svg>
-          </span>
+          <GridWrapper>
+            <div className="text-sm font-medium text-indigo-600 text-center">
+              <span>Applications</span>
+            </div>
+          </GridWrapper>
         </div>
-        <span className="absolute -left-[73px] top-[188px]">
-          <BgSectionTag tagType={TagType.SECTION} />
-        </span>
         {/* List */}
-        <div className="grid grid-cols-8 grid-rows-2 gap-6 place-items-center relative">
-          <span className="absolute top-0">
-            <HorizontalLine />
-          </span>
-          {softwareData.map((item) => (
-            <a
-              key={item.title}
-              href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="no-underline group group-hover:-translate-y-3 transition-all duration-500"
-            >
-              <div className="text-center inline-block group">
-                <div className="rounded-[20px] border border-border-primary bg-bg-primary group-hover:border-indigo-400 group-hover:-translate-y-3 p-2 transition-all duration-300 h-28 w-28">
-                  <div
-                    className="border-2 h-full rounded-xl border-[#A5AEB81F]/10 bg-[#EDEEF0] grid place-items-center"
-                    style={{ boxShadow: "0px 2px 1.5px 0px #A5AEB852 inset" }}
-                  >
-                    <img
-                      className="w-10 h-10"
-                      alt={item.title}
-                      src={item.imgSrc}
-                    />
+        <GridWrapper>
+          <div className="grid grid-cols-8 grid-rows-2 gap-6 place-items-center relative">
+            {softwareData.map((item) => (
+              <a
+                key={item.title}
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="no-underline group group-hover:-translate-y-3 transition-all duration-500"
+              >
+                <div className="text-center inline-block group">
+                  <div className="rounded-[20px] border border-border-primary bg-bg-primary group-hover:border-indigo-400 group-hover:-translate-y-3 p-2 transition-all duration-300 h-28 w-28">
+                    <div
+                      className="border-2 h-full rounded-xl border-[#A5AEB81F]/10 bg-[#EDEEF0] grid place-items-center"
+                      style={{ boxShadow: "0px 2px 1.5px 0px #A5AEB852 inset" }}
+                    >
+                      <img
+                        className="w-10 h-10"
+                        alt={item.title}
+                        src={item.imgSrc}
+                      />
+                    </div>
                   </div>
+                  {item.title ? (
+                    <p className="text-gray-500 text-sm mt-3">{item.title}</p>
+                  ) : null}
                 </div>
-                {item.title ? (
-                  <p className="text-gray-500 text-sm mt-3">{item.title}</p>
-                ) : null}
-              </div>
-            </a>
-          ))}
-          <span className="absolute bottom-0">
-            <HorizontalLine />
-          </span>
-        </div>
+              </a>
+            ))}
+          </div>
+        </GridWrapper>
         {/* Hardware */}
         <div className="relative">
-          <div className="text-sm font-medium text-indigo-600 text-center">
-            <span>Hardware</span>
-          </div>
-          <span className="absolute top-1/2 -translate-y-1/2 left-1/2 translate-x-1/2">
-            <HorizontalLine />
-          </span>
+          <GridWrapper>
+            <div className="text-sm font-medium text-indigo-600 text-center">
+              <span>Hardware</span>
+            </div>
+          </GridWrapper>
           <span className="absolute top-10 left-56">
             <svg
               width="24"
@@ -222,34 +90,34 @@ export default function ToolboxPage() {
         </div>
 
         <div>
-          <HorizontalLine />
-          <div className="grid grid-cols-3 grid-rows-2 gap-2">
-            {hardwareData.map((item) => (
-              <a
-                href={item.link}
-                className="group h-full block"
-                key={item.title}
-              >
-                <BorderCard>
-                  <div className="flex flex-col space-y-3">
-                    <p className="text-base leading-5 text-text-primary font-semibold">
-                      {item.title}
-                    </p>
-                    <p className="text-gray-500 leading-6">
-                      {item.description}
-                    </p>
-                  </div>
-                  <span className="inline-block text-right">
-                    <span className="text-purple-primary/50 group-hover:text-purple-primary text-sm">
-                      Learn more
+          <GridWrapper>
+            <div className="grid grid-cols-3 grid-rows-2 gap-2">
+              {hardwareData.map((item) => (
+                <a
+                  href={item.link}
+                  className="group h-full block"
+                  key={item.title}
+                >
+                  <BorderCard>
+                    <div className="flex flex-col space-y-3">
+                      <p className="text-base leading-5 text-text-primary font-semibold">
+                        {item.title}
+                      </p>
+                      <p className="text-gray-500 leading-6">
+                        {item.description}
+                      </p>
+                    </div>
+                    <span className="inline-block text-right">
+                      <span className="text-purple-primary/50 group-hover:text-purple-primary text-sm">
+                        Learn more
+                      </span>
                     </span>
-                  </span>
-                </BorderCard>
-              </a>
-            ))}
-          </div>
+                  </BorderCard>
+                </a>
+              ))}
+            </div>
+          </GridWrapper>
           <div className="h-16 relative">
-            <HorizontalLine />
             <span className="absolute left-64 top-5">
               <svg
                 width="89"
@@ -318,7 +186,6 @@ export default function ToolboxPage() {
               </svg>
             </span>
           </div>
-          <HorizontalLine />
         </div>
 
         {/* Newsletter */}

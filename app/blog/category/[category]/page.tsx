@@ -32,6 +32,7 @@ export default async function CategoryPage({
 
   return (
     <div className="space-y-[80px] mt-[100px] w-full">
+      <title>{category} Articles</title>
       <BlogPageHeader
         title={`Articles about ${category || "Unknown Category"}`}
       />

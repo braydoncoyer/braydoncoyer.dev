@@ -41,6 +41,7 @@ export default async function BlogPage({
 
   return (
     <div className="space-y-[80px] mt-[100px] w-full">
+      <title>Blog | Braydon Coyer</title>
       <BlogPageHeader
         title={
           category

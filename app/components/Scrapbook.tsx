@@ -1,51 +1,14 @@
 "use client";
 
 import { useRef, useState } from "react";
-import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { useClickAnyWhere, useMediaQuery } from "usehooks-ts";
-
-// import Avatar from "@/app/src/components/ui/Avatar";
 
 import { cn } from "../lib/utils";
 import { useRotationVelocity } from "../lib/useRotationVelocity";
 import { getRandomNumberInRange } from "../lib/getRandomNumberInRange";
 import { useElementBoundingRect } from "../lib/useelementBoundingRect";
-import { ProfilePicture } from "./ProfilePicture";
 import { BentoCard } from "./BentoCard";
-
-function DotPattern() {
-  return (
-    <svg className="absolute top-0 left-0 w-full h-full">
-      <pattern
-        id="pattern-circles"
-        x="0"
-        y="0"
-        width="20"
-        height="20"
-        patternUnits="userSpaceOnUse"
-        patternContentUnits="userSpaceOnUse"
-      >
-        <circle
-          id="pattern-circle"
-          cx="8"
-          cy="8"
-          r="1.6257413380501518"
-          className="fill-primary/20"
-        ></circle>
-      </pattern>
-
-      <rect
-        id="rect"
-        x="0"
-        y="0"
-        width="100%"
-        height="100%"
-        fill="url(#pattern-circles)"
-      ></rect>
-    </svg>
-  );
-}
 
 function Sticker({
   children,
@@ -226,7 +189,6 @@ export function Scrapbook({ className }: { className?: string }) {
       rowSpan={4}
       height="h-[220px]"
       showHoverGradient={false}
-      hideOverflow={false}
     >
       <h2 className="font-medium mb-2">Scrapbook</h2>
       <div className="absolute h-[220px] top-0 w-full bg-[radial-gradient(#e5e7eb_1px,transparent_2px)] [background-size:14px_14px] [mask-image:radial-gradient(ellipse_80%_70%_at_50%_50%,black_40%,transparent_100%)]"></div>

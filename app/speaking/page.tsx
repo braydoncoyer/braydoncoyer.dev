@@ -123,6 +123,7 @@ const presentationList: PresentationList = {
 export default function SpeakingPage() {
   return (
     <div className="relative">
+      <title>Speaking | Braydon Coyer</title>
       <div className="space-y-[80px] relative">
         <span className="absolute -right-[120px] top-[260px] z-10">
           <BgSectionTag tagType={TagType.SECTION} />
