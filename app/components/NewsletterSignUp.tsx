@@ -61,22 +61,35 @@ export function NewsletterSignUp({
     <div className="pb-16 relative">
       <GridWrapper>
         <div className="relative overflow-x-clip">
-          <div className="bg-dark-primary p-[100px] rounded-2xl drama-shadow">
-            <div className="w-2 h-px bg-zinc-300 absolute right-[44.5px] top-[48px] z-20"></div>
-            <div className="w-px h-2 bg-zinc-300 absolute right-[48px] top-[44.5px] z-20"></div>
+          <div className="bg-dark-primary p-14 md:p-[100px] rounded-2xl drama-shadow">
+            {/* Lines */}
+            <div className="w-full h-px bg-zinc-600 absolute left-0 right-0 top-[34px] md:top-[48px] z-10"></div>
+            <div className="w-px h-full bg-zinc-600 absolute right-[34px] md:right-[48px] top-0 bottom-0 z-10"></div>
+            <div className="w-full h-px bg-zinc-600 absolute left-0 right-0 bottom-[34px] md:bottom-[48px] z-10"></div>
+            <div className="w-px h-full bg-zinc-600 absolute left-[34px] md:left-[48px] top-0 bottom-0 z-10"></div>
 
-            <div className="w-full h-px bg-zinc-600 absolute left-0 right-0 top-[48px] z-10"></div>
-            <div className="w-px h-full bg-zinc-600 absolute right-[48px] top-0 bottom-0 z-10"></div>
-
-            <div className="w-2 h-px bg-zinc-300 absolute left-[44.5px] right-0 top-[48px] z-20"></div>
-            <div className="w-px h-2 bg-zinc-300 absolute left-[48px] right-0 top-[44.5px] z-20"></div>
+            {/* Top Right Cross */}
+            <div className="w-2 h-px bg-zinc-300 absolute right-[44.5px] top-[48px] z-20 hidden md:block"></div>
+            <div className="w-px h-2 bg-zinc-300 absolute right-[48px] top-[44.5px] z-20 hidden md:block"></div>
+            {/* Top Left Cross */}
+            <div className="w-2 h-px bg-zinc-300 absolute left-[44.5px] right-0 top-[48px] z-20 hidden md:block"></div>
+            <div className="w-px h-2 bg-zinc-300 absolute left-[48px] right-0 top-[44.5px] z-20 hidden md:block"></div>
+            {/* Bottom Left Cross */}
+            <div className="w-2 h-px bg-zinc-300 absolute left-[44.5px] right-0 bottom-[48px] z-20 hidden md:block"></div>
+            <div className="w-px h-2 bg-zinc-300 absolute left-[48px] right-0 bottom-[44.5px] z-20 hidden md:block"></div>
+            {/* Bottom Right Cross */}
+            <div className="w-2 h-px bg-zinc-300 absolute right-[44.5px] bottom-[48px] z-20 hidden md:block"></div>
+            <div className="w-px h-2 bg-zinc-300 absolute right-[48px] bottom-[44.5px] z-20 hidden md:block"></div>
 
             <h2 className="text-3xl text-slate-50 mb-4 font-medium">{title}</h2>
-            <p className="text-gray-300 text-base w-[336px] mb-12 leading-8">
+            <p className="text-gray-300 text-base w-[336px] mb-8 md:mb-12 leading-8">
               {description}
             </p>
             <div className="space-y-4 mb-4">
-              <form onSubmit={handleSubmit} className="relative inline-block">
+              <form
+                onSubmit={handleSubmit}
+                className="relative md:inline-block"
+              >
                 <label htmlFor="email" className="sr-only">
                   Email
                 </label>
@@ -86,7 +99,7 @@ export function NewsletterSignUp({
                   placeholder="bobloblaw@gmail.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-[425px] px-5 py-3 bg-transparent border border-gray-400 rounded-full placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-slate-100 focus:ring-offset-2 focus:ring-offset-dark-primary text-white"
+                  className="w-full md:w-[425px] px-5 py-3 bg-transparent border border-gray-400 rounded-full placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-slate-100 focus:ring-offset-2 focus:ring-offset-dark-primary text-white"
                   disabled={isLoading}
                 />
                 <button
@@ -98,7 +111,7 @@ export function NewsletterSignUp({
                 </button>
               </form>
               {/* Set minimum height to prevent layout shift */}
-              <div className="min-h-[30px]">
+              <div className="min-h-[15px] md:min-h-[30px]">
                 {message && (
                   <p
                     className={`text-sm ${
@@ -115,7 +128,7 @@ export function NewsletterSignUp({
               send spam. You can unsubscribe at any time!
             </p>
             <svg
-              className="absolute -top-8 right-0 z-10"
+              className="absolute -top-8 right-0 z-10 hidden md:block"
               width="453"
               height="501"
               viewBox="0 0 453 501"
@@ -220,15 +233,6 @@ export function NewsletterSignUp({
                 </motion.linearGradient>
               </defs>
             </svg>
-
-            <div className="w-2 h-px bg-zinc-300 absolute right-[44.5px] bottom-[48px] z-20"></div>
-            <div className="w-px h-2 bg-zinc-300 absolute right-[48px] bottom-[44.5px] z-20"></div>
-
-            <div className="w-full h-px bg-zinc-600 absolute left-0 right-0 bottom-[48px] z-10"></div>
-            <div className="w-px h-full bg-zinc-600 absolute left-[48px] top-0 bottom-0 z-10"></div>
-
-            <div className="w-2 h-px bg-zinc-300 absolute left-[44.5px] right-0 bottom-[48px] z-20"></div>
-            <div className="w-px h-2 bg-zinc-300 absolute left-[48px] right-0 bottom-[44.5px] z-20"></div>
           </div>
         </div>
       </GridWrapper>

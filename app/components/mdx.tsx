@@ -263,12 +263,15 @@ function createHeading(level) {
   // eslint-disable-next-line react/display-name
   return ({ children }) => {
     let slug = slugify(children);
+    let textSize = "text-4xl";
+    if (level === 2) textSize = "text-2xl md:text-3xl";
+    if (level === 3) textSize = "text-xl md:text-2xl";
+    if (level === 4) textSize = "text-lg md:text-xl";
     return React.createElement(
       `h${level}`,
       {
         id: slug,
-        className:
-          "text-2xl text-text-primary font-medium leading-8 mb-6 mt-3 text-balance",
+        className: `${textSize} text-text-primary font-medium leading-8 mb-6 mt-3 text-balance`,
       },
       [
         React.createElement("a", {
