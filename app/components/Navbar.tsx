@@ -4,33 +4,20 @@ import Link from "next/link";
 import { SocialPill } from "./SocialPill";
 import { usePathname } from "next/navigation";
 import { CloseButton, Dialog, DialogPanel } from "@headlessui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const navigationLinks = [
-  {
-    name: "Home",
-    link: "/",
-  },
-  {
-    name: "About",
-    link: "/about",
-  },
-  {
-    name: "Blog",
-    link: "/blog",
-  },
-  {
-    name: "Projects",
-    link: "/projects",
-  },
-  {
-    name: "Speaking",
-    link: "/speaking",
-  },
-  {
-    name: "Toolbox",
-    link: "/toolbox",
-  },
+type NavigationLink = {
+  name: string;
+  link: string;
+};
+
+const navigationLinks: readonly NavigationLink[] = [
+  { name: "Home", link: "/" },
+  { name: "About", link: "/about" },
+  { name: "Blog", link: "/blog" },
+  { name: "Projects", link: "/projects" },
+  { name: "Speaking", link: "/speaking" },
+  { name: "Toolbox", link: "/toolbox" },
 ] as const;
 
 const Navbar: React.FC = () => {
@@ -45,9 +32,10 @@ const Navbar: React.FC = () => {
 function DesktopNav() {
   const path = usePathname();
 
-  function determineActiveClass(link: string) {
+  const determineActiveClass = (link: string): string => {
     return path === link ? "text-text-primary" : "text-gray-500";
-  }
+  };
+
   return (
     <nav
       aria-label="Desktop navigation"
@@ -87,8 +75,12 @@ function DesktopNav() {
 }
 
 function MobileNav() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const path = usePathname();
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [path]);
 
   return (
     <nav
@@ -126,7 +118,6 @@ function MobileNav() {
               <Link
                 href={link}
                 key={link}
-                onClick={() => setIsOpen(false)}
                 className={`rounded-lg px-3 py-2 text-xl/9 font-medium ${
                   path === link ? "text-text-primary" : "text-text-secondary"
                 } data-active:bg-gray-950/5`}
@@ -158,22 +149,23 @@ const NavLogo: React.FC<NavLogoProps> = ({ onClickCallback }) => {
   );
 };
 
-interface CircleBtnProps {
+interface CircleBtnProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   onClickCallback: () => void;
   "aria-expanded": boolean;
   "aria-controls": string;
   "aria-label": string;
 }
 
-const CircleBtn: React.FC<CircleBtnProps> = ({
+const CircleBtn = ({
   onClickCallback,
-  ...ariaProps
-}) => {
+  className = "",
+  ...props
+}: CircleBtnProps): JSX.Element => {
   return (
     <button
-      className="rounded-full border border-border-primary p-2"
+      className={`rounded-full border border-border-primary p-2 ${className}`}
       onClick={onClickCallback}
-      {...ariaProps}
+      {...props}
     >
       <svg
         width="20"
@@ -181,10 +173,11 @@ const CircleBtn: React.FC<CircleBtnProps> = ({
         viewBox="0 0 20 20"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
       >
         <path
           d="M0 4.99599C0 4.77599 0.105357 4.56501 0.292893 4.40945C0.48043 4.2539 0.734784 4.1665 1 4.1665H19C19.2652 4.1665 19.5196 4.2539 19.7071 4.40945C19.8946 4.56501 20 4.77599 20 4.99599C20 5.21598 19.8946 5.42696 19.7071 5.58252C19.5196 5.73808 19.2652 5.82547 19 5.82547H1C0.734784 5.82547 0.48043 5.73808 0.292893 5.58252C0.105357 5.42696 0 5.21598 0 4.99599ZM5 9.99942C5 9.77943 5.10536 9.56845 5.29289 9.41289C5.48043 9.25733 5.73478 9.16994 6 9.16994H19C19.2652 9.16994 19.5196 9.25733 19.7071 9.41289C19.8946 9.56845 20 9.77943 20 9.99942C20 10.2194 19.8946 10.4304 19.7071 10.586C19.5196 10.7415 19.2652 10.8289 19 10.8289H6C5.73478 10.8289 5.48043 10.7415 5.29289 10.586C5.10536 10.4304 5 10.2194 5 9.99942ZM11.8333 14.1742C11.5681 14.1742 11.3138 14.2616 11.1262 14.4172C10.9387 14.5727 10.8333 14.7837 10.8333 15.0037C10.8333 15.2237 10.9387 15.4347 11.1262 15.5902C11.3138 15.7458 11.5681 15.8332 11.8333 15.8332H19C19.2652 15.8332 19.5196 15.7458 19.7071 15.5902C19.8946 15.4347 20 15.2237 20 15.0037C20 14.7837 19.8946 14.5727 19.7071 14.4172C19.5196 14.2616 19.2652 14.1742 19 14.1742H11.8333Z"
-          fill="#3C3C3F"
+          fill="currentColor"
         />
       </svg>
     </button>
