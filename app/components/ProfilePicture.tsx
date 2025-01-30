@@ -1,6 +1,6 @@
 export function ProfilePicture() {
   return (
-    <div className="relative mt-9">
+    <div className="relative my-5 md:mt-9">
       <svg
         className="mx-auto"
         width="148"

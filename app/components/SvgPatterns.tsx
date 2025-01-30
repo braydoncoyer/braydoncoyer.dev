@@ -1,9 +1,8 @@
 export function HeaderPattern() {
   return (
     <svg
-      className="absolute top-0 w-full inset-x-0 left-1/2 transform -translate-x-1/2 pointer-events-none"
+      className="absolute top-9 md:w-full md:inset-x-0 md:left-1/2 md:transform md:-translate-x-1/2 pointer-events-none"
       width="100%"
-      height="478"
       viewBox="0 0 1440 478"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

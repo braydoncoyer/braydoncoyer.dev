@@ -2,6 +2,7 @@
 
 import { BentoCard } from "./BentoCard";
 import { motion, useAnimation } from "framer-motion";
+import clsx from "clsx";
 
 export function ConnectionsBento({
   linkTo,
@@ -102,56 +103,69 @@ export function ConnectionsBento({
             </div>
           </span>
 
-          {/* Amy */}
-          <AnimatedConnectionCircle
-            src="/amy_dutton.jpg"
-            top="55%"
-            left="23%"
-            delay={0.1}
-            sizeClass="w-12 h-12"
-            controls={controls}
-          />
+          <span className="hidden md:block">
+            {/* Amy */}
+            <AnimatedConnectionCircle
+              src="/amy_dutton.jpg"
+              top="55%"
+              left="23%"
+              delay={0.1}
+              sizeClass="w-12 h-12"
+              controls={controls}
+            />
 
-          {/* James Q Quick */}
-          <AnimatedConnectionCircle
-            src="/james_q_quick.jpg"
-            top="53%"
-            left="67%"
-            delay={0.3}
-            controls={controls}
-          />
+            {/* James Q Quick */}
+            <AnimatedConnectionCircle
+              src="/james_q_quick.jpg"
+              top="53%"
+              left="67%"
+              delay={0.3}
+              controls={controls}
+            />
 
-          {/* Colby */}
-          <AnimatedConnectionCircle
-            src="/colby_fayock.jpg"
-            top="4%"
-            left="32%"
-            delay={0.2}
-            sizeClass="w-14 h-14"
-            controls={controls}
-          />
+            {/* Colby */}
+            <AnimatedConnectionCircle
+              src="/colby_fayock.jpg"
+              top="4%"
+              left="32%"
+              delay={0.2}
+              sizeClass="w-14 h-14"
+              controls={controls}
+            />
 
-          {/* Sarah */}
-          <AnimatedConnectionCircle
-            src="/sarah_drasner.jpg"
-            top="15%"
-            left="78%"
-            delay={0.4}
-            sizeClass="w-10 h-10"
-            controls={controls}
-          />
+            {/* Sarah */}
+            <AnimatedConnectionCircle
+              src="/sarah_drasner.jpg"
+              top="15%"
+              left="78%"
+              delay={0.4}
+              sizeClass="w-10 h-10"
+              controls={controls}
+            />
 
-          {/* Shashi */}
-          <AnimatedConnectionCircle
-            src="/shashi_lo.jpg"
-            top="5%"
-            left="7%"
-            delay={0.5}
-            sizeClass="w-9 h-9"
-            controls={controls}
-          />
+            {/* Shashi */}
+            <AnimatedConnectionCircle
+              src="/shashi_lo.jpg"
+              top="5%"
+              left="7%"
+              delay={0.5}
+              sizeClass="w-9 h-9"
+              controls={controls}
+            />
+          </span>
+
+          {/* mobile circle */}
+          <span className="md:hidden">
+            <ConnectionCircle sizeClass="w-12 h-12">
+              <img
+                className="rounded-full"
+                src="/amy_dutton.jpg"
+                alt="Connection"
+              />
+            </ConnectionCircle>
+          </span>
         </div>
-        <div className="text-center w-full mt-auto z-20">
+        <div className="text-center w-full mt-auto z-20 text-balance">
           <h2 className="text-base font-medium">Connections</h2>
           <p className="mt-1 text-text-secondary">
             An evolving list of people I&apos;ve met and those I wish to meet.
@@ -254,7 +268,11 @@ function ConnectionCircle({
 }) {
   return (
     <div
-      className={`rounded-full bg-[#EDEEF0] ${paddingClass} border border-bg-secondary ${sizeClass}`}
+      className={clsx(
+        "rounded-full bg-[#EDEEF0] border border-bg-secondary",
+        sizeClass,
+        paddingClass
+      )}
     >
       {children}
     </div>

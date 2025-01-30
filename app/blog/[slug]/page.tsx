@@ -104,7 +104,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
         <div
           className="w-full h-[350px] md:h-[600px] rounded-2xl md:mb-16 drama-shadow bg-cover bg-center bg-no-repeat p-8 md:p-16 flex flex-col justify-end"
           style={{
-            backgroundImage: `linear-gradient(to top, rgba(99, 102, 241, 1) 0%, rgba(99, 102, 241, 0.5) 30%, transparent 40%), url('/blog/${post.imageName}')`,
+            backgroundImage: `linear-gradient(to top, rgba(99, 102, 241, 1) 0%, rgba(99, 102, 241, 0.1) 30%, transparent 35%), url('/blog/${post.imageName}')`,
           }}
         >
           <div className="mt-auto">
@@ -118,11 +118,11 @@ export default async function BlogPage({ params }: BlogPageProps) {
                 </div>
               ))}
             </div>
-            <div className="space-y-4 mb-4 text-balance max-w-2xl">
-              <h1 className="font-medium text-4xl md:text-5xl tracking-tight leading-[45px] md:leading-[60px] text-white">
+            <div className="space-y-4 mb-4 text-balance">
+              <h1 className="max-w-2xl font-medium text-4xl md:text-5xl tracking-tight leading-[45px] md:leading-[60px] text-white">
                 {post.title}
               </h1>
-              <p className="text-slate-100 leading-8 hidden md:block">
+              <p className="max-w-3xl text-slate-100 leading-8 hidden md:block">
                 {post.summary}
               </p>
             </div>
