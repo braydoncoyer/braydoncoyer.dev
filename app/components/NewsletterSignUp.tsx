@@ -82,7 +82,7 @@ export function NewsletterSignUp({
             <div className="w-px h-2 bg-zinc-300 absolute right-[48px] bottom-[44.5px] z-20 hidden md:block"></div>
 
             <h2 className="text-3xl text-slate-50 mb-4 font-medium">{title}</h2>
-            <p className="text-gray-300 text-base w-[336px] mb-8 md:mb-12 leading-8">
+            <p className="text-gray-300 text-base max-w-[336px] mb-8 md:mb-12 leading-8">
               {description}
             </p>
             <div className="space-y-4 mb-4">

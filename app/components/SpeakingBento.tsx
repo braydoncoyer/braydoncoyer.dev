@@ -14,59 +14,61 @@ export function SpeakingBento() {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <span className="absolute inset-x-0">
+        <span className="absolute left-1/2 -translate-x-1/2">
           <CirclePattern isHovered={isHovered} />
         </span>
         <span className="absolute bottom-16 z-20 left-1/2 -translate-x-1/2">
           <AudioIndicator isHovered={isHovered} />
         </span>
-        <motion.span
-          className="absolute top-10 left-[138px] z-20"
-          initial={{ y: 0 }}
-          animate={{ y: isHovered ? -8 : 0 }}
-          transition={{
-            duration: 0.6,
-            ease: "easeOut",
-            type: "spring",
-            stiffness: 150,
-          }}
-        >
-          <PrimaryPhoto />
-        </motion.span>
+        <div className="flex justify-around">
+          <motion.span
+            className="mt-16"
+            initial={{ y: 0 }}
+            animate={{ y: isHovered ? -6 : 0 }}
+            transition={{
+              duration: 0.6,
+              ease: "easeOut",
+              delay: 0.1,
+              type: "spring",
+              stiffness: 150,
+            }}
+          >
+            <SecondaryPhoto imgSrc="/c3_speaker_head.png" />
+          </motion.span>
 
-        <motion.span
-          className="absolute top-24 left-10"
-          initial={{ y: 0 }}
-          animate={{ y: isHovered ? -6 : 0 }}
-          transition={{
-            duration: 0.6,
-            ease: "easeOut",
-            delay: 0.1,
-            type: "spring",
-            stiffness: 150,
-          }}
-        >
-          <SecondaryPhoto imgSrc="/c3_speaker_head.png" />
-        </motion.span>
+          <motion.span
+            className="z-20 mt-4"
+            initial={{ y: 0 }}
+            animate={{ y: isHovered ? -8 : 0 }}
+            transition={{
+              duration: 0.6,
+              ease: "easeOut",
+              type: "spring",
+              stiffness: 150,
+            }}
+          >
+            <PrimaryPhoto />
+          </motion.span>
 
-        <motion.span
-          className="absolute top-24 right-10"
-          initial={{ y: 0 }}
-          animate={{ y: isHovered ? -6 : 0 }}
-          transition={{
-            duration: 0.6,
-            ease: "easeOut",
-            delay: 0.2,
-            type: "spring",
-            stiffness: 150,
-          }}
-        >
-          <SecondaryPhoto imgSrc="/braydon_speaking_head_3.jpeg" />
-        </motion.span>
+          <motion.span
+            className="mt-16"
+            initial={{ y: 0 }}
+            animate={{ y: isHovered ? -6 : 0 }}
+            transition={{
+              duration: 0.6,
+              ease: "easeOut",
+              delay: 0.2,
+              type: "spring",
+              stiffness: 150,
+            }}
+          >
+            <SecondaryPhoto imgSrc="/braydon_speaking_head_3.jpeg" />
+          </motion.span>
+        </div>
         {/* Gradient overlay */}
         <div className="w-full h-full bg-gradient-to-t from-white absolute inset-0"></div>
-        <div className="grid grid-cols-2 grid-rows-2 gap-8 h-full items-end">
-          <div className="col-1 row-start-2 z-50">
+        <div className="grid grid-cols-2 grid-rows-2 gap-8 h-full items-end absolute z-50 left-6 bottom-6">
+          <div className="col-1 row-start-2 text-balance">
             <h2 className="font-medium mb-2 ">Speaking</h2>
             <p className="text-text-secondary">
               Talks, podcasts, tutorials and more
@@ -247,7 +249,7 @@ function AudioIndicator({ isHovered }: { isHovered: boolean }) {
 
 function PrimaryPhoto() {
   return (
-    <div className="relative">
+    <span className="relative">
       <svg
         width="117"
         height="116"
@@ -312,13 +314,13 @@ function PrimaryPhoto() {
         src="/braydon_speaking_photo.jpeg"
         alt=""
       />
-    </div>
+    </span>
   );
 }
 
 function SecondaryPhoto({ imgSrc }: { imgSrc: string }) {
   return (
-    <div>
+    <span className="relative">
       <svg
         width="76"
         height="76"
@@ -382,6 +384,6 @@ function SecondaryPhoto({ imgSrc }: { imgSrc: string }) {
         src={imgSrc}
         alt=""
       />
-    </div>
+    </span>
   );
 }

@@ -64,9 +64,7 @@ export function CommunityWallBento() {
 
         {/* Card 1 */}
         <motion.svg
-          className="absolute top-0"
-          width="171"
-          height="152"
+          className="absolute top-0 w-48 md:w-40"
           viewBox="0 0 171 152"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -400,9 +398,7 @@ export function CommunityWallBento() {
 
         {/* Card 2 */}
         <motion.svg
-          className="absolute right-0 top-0"
-          width="214"
-          height="223"
+          className="absolute -right-5 md:right-0 top-0 w-56"
           viewBox="0 0 214 223"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

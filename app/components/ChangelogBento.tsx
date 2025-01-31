@@ -26,7 +26,7 @@ export function ChangelogBento() {
               <span
                 className={`absolute top-[27px] ${
                   index % 2 === 1 ? "left-[-20px]" : "right-[-20px]"
-                } w-[20px] h-px bg-border-primary`}
+                } w-[20px] h-px bg-border-primary hidden md:inline-block`}
               />
               <EntreeCard title={item.title} publishedAt={item.publishedAt} />
             </div>

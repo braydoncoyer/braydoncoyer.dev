@@ -35,7 +35,7 @@ export default function ToolboxPage() {
         </div>
         {/* List */}
         <GridWrapper>
-          <div className="grid grid-cols-8 grid-rows-2 gap-6 place-items-center relative">
+          <div className="grid grid-cols-3 md:grid-cols-8 gap-6 place-items-center relative">
             {softwareData.map((item) => (
               <a
                 key={item.title}
@@ -91,7 +91,7 @@ export default function ToolboxPage() {
 
         <div>
           <GridWrapper>
-            <div className="grid grid-cols-3 grid-rows-2 gap-2">
+            <div className="grid grid-cols-1 md:grid-cols-3 grid-rows-2 gap-2">
               {hardwareData.map((item) => (
                 <a
                   href={item.link}

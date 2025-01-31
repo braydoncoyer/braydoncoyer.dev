@@ -22,7 +22,7 @@ export function FeaturedBlogCard({
             "https://image.isu.pub/190918160849-8822f46c79620853d26cb2aad7175839/jpg/page_1_thumb_large.jpg"
           }
           alt=""
-          className="rounded-2xl h-[225px] object-cover"
+          className="rounded-2xl min-h-[225px] max-h-[300px] md:h-[225px] object-cover"
         />
         <div className="my-4 flex flex-col w-full space-y-4 px-4 flex-grow text-balance">
           <h2 className="tracking-tight text-slate-900 text-lg font-medium leading-7">

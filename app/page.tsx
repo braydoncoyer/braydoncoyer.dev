@@ -34,7 +34,7 @@ export default async function Home() {
       <div className="space-y-10 md:space-y-16 mt-12 md:mt-0">
         <section>
           <div className="relative text-balance">
-            <h1 className="mx-auto text-text-primary md:text-center font-medium text-4xl md:text-6xl md:leading-[64px] tracking-tighter max-w-2xl">
+            <h1 className="mx-auto text-text-primary md:text-center font-medium text-5xl leading-tight md:text-6xl md:leading-[64px] tracking-tighter max-w-2xl">
               Hey, I&apos;m Braydon! <br /> Welcome to my corner of the
               internet!
             </h1>
@@ -142,7 +142,7 @@ export default async function Home() {
             <div className="text-sm font-medium text-indigo-600 md:text-center">
               <span>About</span>
             </div>
-            <h2 className="text-text-primary md:text-center text-balance font-medium text-3xl tracking-tight max-w-lg leading-10 md:mx-auto">
+            <h2 className="text-text-primary md:text-center text-balance font-medium text-4xl tracking-tight max-w-lg leading-10 md:mx-auto">
               Here&apos;s what sets me apart and makes me unique
             </h2>
           </div>
@@ -179,7 +179,7 @@ export default async function Home() {
             <div className="text-sm font-medium text-indigo-600 md:text-center">
               <span>Blog</span>
             </div>
-            <h2 className="text-text-primary md:text-center font-medium text-3xl tracking-tighter max-w-lg leading-10">
+            <h2 className="text-text-primary md:text-center font-medium text-4xl tracking-tighter max-w-lg leading-10 md:mx-auto">
               I like sharing my experiments && knowledge with others
             </h2>
           </div>
@@ -214,7 +214,7 @@ export default async function Home() {
             <div className="text-sm font-medium text-indigo-600 md:text-center">
               <span>My Site</span>
             </div>
-            <h2 className="text-text-primary md:text-center font-medium text-3xl tracking-tighter md:max-w-lg leading-10">
+            <h2 className="text-text-primary md:text-center font-medium text-4xl tracking-tighter md:max-w-lg leading-10 md:mx-auto">
               My site is a playful sandbox. Explore, experiment, && say hello
             </h2>
           </div>
