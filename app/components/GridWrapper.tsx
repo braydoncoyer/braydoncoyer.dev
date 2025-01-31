@@ -15,7 +15,7 @@ export function GridWrapper({
         "before:absolute before:top-0 before:h-px before:bg-border-primary/50",
         "before:inset-x-0",
         "after:inset-x-0",
-        "after:absolute after:bottom-0 after:h-px after:bg-border-primary/50"
+        "after:absolute after:bottom-0 after:h-px after:bg-border-primary/50",
       )}
     >
       {children}

@@ -21,24 +21,24 @@ export function CommunityWallCard({
 
   return (
     <div
-      className={`rounded-xl gap-2 border-2 border-[#A5AEB8/12] bg-[#F7F7F8] p-2.5 flex flex-col justify-between items-start ${className}`}
+      className={`flex flex-col items-start justify-between gap-2 rounded-xl border-2 border-[#A5AEB8/12] bg-[#F7F7F8] p-2.5 ${className}`}
       style={{ transform: `rotate(${rotation}deg)` }}
     >
       <div
-        className={`w-full h-full rounded-md bg-gradient-to-b ${pattern.gradient} flex items-center text-center text-balance p-4 relative justify-center`}
+        className={`h-full w-full rounded-md bg-gradient-to-b ${pattern.gradient} relative flex items-center justify-center text-balance p-4 text-center`}
       >
         {pattern.svg}
-        <p className="font-bold text-xl line-clamp-6 z-10 text-center">
+        <p className="z-10 line-clamp-6 text-center text-xl font-bold">
           {message}
         </p>
       </div>
-      <div className="flex items-center space-x-2 w-full">
+      <div className="flex w-full items-center space-x-2">
         <img
           src={profilePicture}
-          className="rounded-full h-8 w-8 p2 flex-shrink-0 ring-1 ring-slate-300 border-2 border-transparent"
+          className="p2 h-8 w-8 flex-shrink-0 rounded-full border-2 border-transparent ring-1 ring-slate-300"
           alt={`${author}'s avatar`}
         />
-        <p className="text-text-secondary truncate">{author}</p>
+        <p className="truncate text-text-secondary">{author}</p>
       </div>
     </div>
   );

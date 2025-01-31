@@ -17,7 +17,7 @@ export function useRotationVelocity(initialRotation: number) {
     [-25, initialRotation, 25],
     {
       clamp: true,
-    }
+    },
   );
   return { rotate, x };
 }

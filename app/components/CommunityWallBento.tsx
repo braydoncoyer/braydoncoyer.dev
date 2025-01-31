@@ -398,7 +398,7 @@ export function CommunityWallBento() {
 
         {/* Card 2 */}
         <motion.svg
-          className="absolute -right-5 md:right-0 top-0 w-56"
+          className="absolute -right-5 top-8 w-56 md:right-0 md:top-0"
           viewBox="0 0 214 223"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -603,9 +603,9 @@ export function CommunityWallBento() {
           </defs>
         </motion.svg>
 
-        <div className="grid grid-cols-2 grid-rows-2 gap-8 h-full items-end">
-          <div className="col-1 row-start-2 z-10">
-            <h2 className="font-medium mb-2">Community Wall</h2>
+        <div className="grid h-full grid-cols-2 grid-rows-2 items-end gap-8">
+          <div className="col-1 z-10 row-start-2">
+            <h2 className="mb-2 font-medium">Community Wall</h2>
             <p className="text-text-secondary">
               Let everyone know you were here
             </p>

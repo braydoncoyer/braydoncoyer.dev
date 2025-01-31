@@ -14,15 +14,15 @@ export function ConnectionsBento({
   return (
     <BentoCard height="h-[300px]" linkTo={linkTo}>
       <div
-        className="flex flex-col h-full"
+        className="flex h-full flex-col"
         onMouseEnter={() => controls.start("active")}
         onMouseLeave={() => controls.start("idle")}
       >
-        <div className="absolute left-0 inset-y-0 w-1/3 bg-gradient-to-r from-bg-primary group-hover:from-bg-white to-transparent z-20"></div>
-        <div className="absolute right-0 inset-y-0 w-1/3 bg-gradient-to-l from-bg-primary group-hover:from-bg-white to-transparent z-20"></div>
+        <div className="group-hover:from-bg-white absolute inset-y-0 left-0 z-20 w-1/3 bg-gradient-to-r from-bg-primary to-transparent"></div>
+        <div className="group-hover:from-bg-white absolute inset-y-0 right-0 z-20 w-1/3 bg-gradient-to-l from-bg-primary to-transparent"></div>
         <div>
           <BackgroundPattern />
-          <span className="absolute left-1/2 -translate-x-1/2 top-2.5">
+          <span className="absolute left-1/2 top-2.5 -translate-x-1/2">
             <div className="relative mt-9">
               <svg
                 className="mx-auto"
@@ -42,7 +42,7 @@ export function ConnectionsBento({
                     fill="#F7F7F8"
                   />
                   <rect
-                    className="stroke-[#D6DADE] group-hover:stroke-indigo-400 transition-colors delay-200 duration-500"
+                    className="stroke-[#D6DADE] transition-colors delay-200 duration-500 group-hover:stroke-indigo-400"
                     x="16.75"
                     y="16.75"
                     width="114.5"
@@ -96,7 +96,7 @@ export function ConnectionsBento({
                 </defs>
               </svg>
               <img
-                className="h-[100px] w-[100px] rounded-full absolute left-1/2 transform -translate-x-1/2 top-1/2 -translate-y-1/2"
+                className="absolute left-1/2 top-1/2 h-[100px] w-[100px] -translate-x-1/2 -translate-y-1/2 transform rounded-full"
                 src="/braydon_headshot_1.jpeg"
                 alt=""
               />
@@ -165,7 +165,7 @@ export function ConnectionsBento({
             </ConnectionCircle>
           </span>
         </div>
-        <div className="text-center w-full mt-auto z-20 text-balance">
+        <div className="z-20 mt-auto w-full text-balance text-center">
           <h2 className="text-base font-medium">Connections</h2>
           <p className="mt-1 text-text-secondary">
             An evolving list of people I&apos;ve met and those I wish to meet.
@@ -179,7 +179,7 @@ export function ConnectionsBento({
 function BackgroundPattern() {
   return (
     <svg
-      className="absolute left-1/2 -translate-x-1/2 top-0"
+      className="absolute left-1/2 top-0 -translate-x-1/2"
       width="704"
       height="250"
       viewBox="0 0 637 250"
@@ -269,9 +269,9 @@ function ConnectionCircle({
   return (
     <div
       className={clsx(
-        "rounded-full bg-[#EDEEF0] border border-bg-secondary",
+        "border-bg-secondary rounded-full border bg-[#EDEEF0]",
         sizeClass,
-        paddingClass
+        paddingClass,
       )}
     >
       {children}

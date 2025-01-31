@@ -41,8 +41,8 @@ export async function CommunityWallModal() {
   } = await supabase.auth.getUser();
 
   return (
-    <div className="fixed inset-0 bg-slate-900/70 z-50 overflow-y-auto">
-      <div className="min-h-screen flex items-center justify-center">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/70">
+      <div className="flex min-h-screen items-center justify-center">
         {!user ? (
           <SignInWithGitHub />
         ) : (

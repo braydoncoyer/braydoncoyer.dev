@@ -14,12 +14,12 @@ export function PageTitle({
     <div className={cx("w-full", className)}>
       <h1
         className={cx(
-          "text-text-primary text-balance font-medium text-5xl md:text-6xl md:leading-[64px] tracking-tighter",
+          "text-balance text-5xl font-medium tracking-tighter text-text-primary md:text-6xl md:leading-[64px]",
           textAlign === "left"
             ? "text-left"
             : textAlign === "right"
-            ? "text-right"
-            : "text-center"
+              ? "text-right"
+              : "text-center",
         )}
       >
         {title}

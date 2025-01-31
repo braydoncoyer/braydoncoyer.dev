@@ -11,7 +11,7 @@ export const patterns: Pattern[] = [
     svg: (
       <>
         <svg
-          className="absolute bottom-4 right-4 rotate-[25deg] w-14 h-14 mix-blend-color-dodge"
+          className="absolute bottom-4 right-4 h-14 w-14 rotate-[25deg] mix-blend-color-dodge"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 126 138"
         >
@@ -35,7 +35,7 @@ export const patterns: Pattern[] = [
           />
         </svg>
         <svg
-          className="absolute top-3 left-3 w-16 h-16 rotate-12"
+          className="absolute left-3 top-3 h-16 w-16 rotate-12"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 43 76"
         >
@@ -56,7 +56,7 @@ export const patterns: Pattern[] = [
     gradient: "from-[#C48EFF] to-[#FCCEED]",
     svg: (
       <svg
-        className="absolute left-1/2 w-40 h-40 top-1/2 -translate-y-1/2 -translate-x-1/2"
+        className="absolute left-1/2 top-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 141 149"
       >
@@ -110,7 +110,7 @@ export const patterns: Pattern[] = [
     gradient: "from-[#81E0CA] to-[#E9F2FE]",
     svg: (
       <svg
-        className="absolute w-3/4 h-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+        className="absolute left-1/2 top-1/2 h-full w-3/4 -translate-x-1/2 -translate-y-1/2"
         width="191"
         height="117"
         viewBox="0 0 191 117"
@@ -180,7 +180,7 @@ export const patterns: Pattern[] = [
     gradient: "from-yellow-200 to-pink-400",
     svg: (
       <svg
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
         width="183"
         height="215"
         viewBox="0 0 183 215"

@@ -10,10 +10,10 @@ import { getRandomNumberInRange } from "@/app/lib/getRandomNumberInRange";
 const MotionImage = motion(
   forwardRef(function MotionImage(
     props: ImageProps,
-    ref: Ref<HTMLImageElement>
+    ref: Ref<HTMLImageElement>,
   ) {
     return <Image ref={ref} {...props} />;
-  })
+  }),
 );
 type Direction = "left" | "right";
 
@@ -87,16 +87,16 @@ export const Photo = ({
       }}
       className={cn(
         className,
-        "shrink-0 mx-auto cursor-grab active:cursor-grabbing relative"
+        "relative mx-auto shrink-0 cursor-grab active:cursor-grabbing",
       )}
       onMouseMove={handleMouse}
       onMouseLeave={resetMouse}
       draggable={false}
       tabIndex={0}
     >
-      <div className="relative w-full h-full rounded-lg overflow-hidden shadow">
+      <div className="relative h-full w-full overflow-hidden rounded-lg shadow">
         <MotionImage
-          className={cn("rounded-lg shadow object-cover")}
+          className={cn("rounded-lg object-cover shadow")}
           fill
           src={src}
           alt={alt}

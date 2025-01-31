@@ -21,8 +21,8 @@ export default async function Page({ searchParams }: SearchParamProps) {
   return (
     <CommunityWallLayout>
       {show ? <CommunityWallModal /> : null}
-      <div className="absolute top-0 inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_2px)] [background-size:16px_16px]"></div>
-      <div className="p-12 flex flex-wrap gap-24 justify-center">
+      <div className="absolute inset-0 top-0 bg-[radial-gradient(#e5e7eb_1px,transparent_2px)] [background-size:16px_16px]"></div>
+      <div className="flex flex-wrap justify-center gap-24 p-12">
         {messages?.map((message) => (
           <CommunityWallCard
             key={message.id}
@@ -36,10 +36,10 @@ export default async function Page({ searchParams }: SearchParamProps) {
         ))}
       </div>
 
-      <div className="sticky bottom-0 left-0 right-0 h-[150px] bg-gradient-to-b from-transparent to-zinc-300 pointer-events-none flex items-center justify-center">
+      <div className="pointer-events-none sticky bottom-0 left-0 right-0 flex h-[150px] items-center justify-center bg-gradient-to-b from-transparent to-zinc-300">
         <Link href="/community-wall?show=true">
           <button
-            className="h-[60px] w-[60px] rounded-full bg-dark-primary flex items-center justify-center pointer-events-auto group"
+            className="group pointer-events-auto flex h-[60px] w-[60px] items-center justify-center rounded-full bg-dark-primary"
             aria-label="Add new item"
           >
             <svg

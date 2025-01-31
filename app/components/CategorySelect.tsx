@@ -31,7 +31,7 @@ export function CategorySelect({
   }
 
   return (
-    <div className="border-b border-dashed border-border-primary pb-5 sm:pb-0 px-4">
+    <div className="border-b border-dashed border-border-primary px-4 pb-5 sm:pb-0">
       <h3 className="text-base font-semibold text-gray-900">Categories</h3>
       <div className="mt-3 sm:mt-4">
         <div className="grid grid-cols-1 sm:hidden">
@@ -58,7 +58,7 @@ export function CategorySelect({
                 !currentCategory
                   ? "border-slate-900 text-slate-900"
                   : "border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-700",
-                "whitespace-nowrap border-b-2 pb-4 text-sm uppercase"
+                "whitespace-nowrap border-b-2 pb-4 text-sm uppercase",
               )}
             >
               All
@@ -75,7 +75,7 @@ export function CategorySelect({
                     isActiveTab(cat.toLowerCase(), currentCategory)
                     ? "border-slate-900 text-slate-900"
                     : "border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-700",
-                  "whitespace-nowrap border-b-2 pb-4 text-sm uppercase"
+                  "whitespace-nowrap border-b-2 pb-4 text-sm uppercase",
                 )}
               >
                 {cat}

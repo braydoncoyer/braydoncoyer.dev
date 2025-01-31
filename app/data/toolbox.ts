@@ -5,10 +5,10 @@ type HardwareDataItem = {
 };
 
 type SoftwareDataItem = {
-    title: string;
-    imgSrc: string;
-    link: string;
-}
+  title: string;
+  imgSrc: string;
+  link: string;
+};
 
 const softwareData: SoftwareDataItem[] = [
   {
@@ -149,7 +149,4 @@ const hardwareData: HardwareDataItem[] = [
   },
 ];
 
-export {
-    hardwareData,
-    softwareData,
-}
+export { hardwareData, softwareData };

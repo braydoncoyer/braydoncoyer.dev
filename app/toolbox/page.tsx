@@ -9,56 +9,56 @@ export default function ToolboxPage() {
   return (
     <div className="relative">
       <title>Toolbox | Braydon Coyer</title>
-      <span className="absolute top-20 -translate-y-1/2 left-1/2 translate-x-1/2">
+      <span className="absolute left-1/2 top-20 -translate-y-1/2 translate-x-1/2">
         <HorizontalLine />
       </span>
-      <div className="space-y-[80px] relative">
-        <div className="pt-[90px]  mx-auto">
+      <div className="relative space-y-[80px]">
+        <div className="mx-auto pt-[90px]">
           <GridWrapper>
             <PageTitle
-              className="max-w-2xl mx-auto"
+              className="mx-auto max-w-2xl"
               title="Hardware && software I keep in my toolbox."
             />
           </GridWrapper>
         </div>
-        <span className="absolute top-40 -translate-y-1/2 left-1/2 translate-x-1/2">
+        <span className="absolute left-1/2 top-40 -translate-y-1/2 translate-x-1/2">
           <HorizontalLine />
         </span>
 
         {/* Applications */}
         <div className="relative">
           <GridWrapper>
-            <div className="text-sm font-medium text-indigo-600 text-center">
+            <div className="text-center text-sm font-medium text-indigo-600">
               <span>Applications</span>
             </div>
           </GridWrapper>
         </div>
         {/* List */}
         <GridWrapper>
-          <div className="grid grid-cols-3 md:grid-cols-8 gap-6 place-items-center relative">
+          <div className="relative grid grid-cols-3 place-items-center gap-6 md:grid-cols-8">
             {softwareData.map((item) => (
               <a
                 key={item.title}
                 href={item.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="no-underline group group-hover:-translate-y-3 transition-all duration-500"
+                className="group no-underline transition-all duration-500 group-hover:-translate-y-3"
               >
-                <div className="text-center inline-block group">
-                  <div className="rounded-[20px] border border-border-primary bg-bg-primary group-hover:border-indigo-400 group-hover:-translate-y-3 p-2 transition-all duration-300 h-28 w-28">
+                <div className="group inline-block text-center">
+                  <div className="h-28 w-28 rounded-[20px] border border-border-primary bg-bg-primary p-2 transition-all duration-300 group-hover:-translate-y-3 group-hover:border-indigo-400">
                     <div
-                      className="border-2 h-full rounded-xl border-[#A5AEB81F]/10 bg-[#EDEEF0] grid place-items-center"
+                      className="grid h-full place-items-center rounded-xl border-2 border-[#A5AEB81F]/10 bg-[#EDEEF0]"
                       style={{ boxShadow: "0px 2px 1.5px 0px #A5AEB852 inset" }}
                     >
                       <img
-                        className="w-10 h-10"
+                        className="h-10 w-10"
                         alt={item.title}
                         src={item.imgSrc}
                       />
                     </div>
                   </div>
                   {item.title ? (
-                    <p className="text-gray-500 text-sm mt-3">{item.title}</p>
+                    <p className="mt-3 text-sm text-gray-500">{item.title}</p>
                   ) : null}
                 </div>
               </a>
@@ -68,11 +68,11 @@ export default function ToolboxPage() {
         {/* Hardware */}
         <div className="relative">
           <GridWrapper>
-            <div className="text-sm font-medium text-indigo-600 text-center">
+            <div className="text-center text-sm font-medium text-indigo-600">
               <span>Hardware</span>
             </div>
           </GridWrapper>
-          <span className="absolute top-10 left-56">
+          <span className="absolute left-56 top-10">
             <svg
               width="24"
               height="14"
@@ -91,24 +91,24 @@ export default function ToolboxPage() {
 
         <div>
           <GridWrapper>
-            <div className="grid grid-cols-1 md:grid-cols-3 grid-rows-2 gap-2">
+            <div className="grid grid-cols-1 grid-rows-2 gap-2 md:grid-cols-3">
               {hardwareData.map((item) => (
                 <a
                   href={item.link}
-                  className="group h-full block"
+                  className="group block h-full"
                   key={item.title}
                 >
                   <BorderCard>
                     <div className="flex flex-col space-y-3">
-                      <p className="text-base leading-5 text-text-primary font-semibold">
+                      <p className="text-base font-semibold leading-5 text-text-primary">
                         {item.title}
                       </p>
-                      <p className="text-gray-500 leading-6">
+                      <p className="leading-6 text-gray-500">
                         {item.description}
                       </p>
                     </div>
                     <span className="inline-block text-right">
-                      <span className="text-purple-primary/50 group-hover:text-purple-primary text-sm">
+                      <span className="text-sm text-purple-primary/50 group-hover:text-purple-primary">
                         Learn more
                       </span>
                     </span>
@@ -117,7 +117,7 @@ export default function ToolboxPage() {
               ))}
             </div>
           </GridWrapper>
-          <div className="h-16 relative">
+          <div className="relative h-16">
             <span className="absolute left-64 top-5">
               <svg
                 width="89"

@@ -16,7 +16,7 @@ export async function GET(request: Request) {
       {
         cookies: {
           get(name: string) {
-            return cookieStore.get(name)?.value ?? '';
+            return cookieStore.get(name)?.value ?? "";
           },
           set(name: string, value: string, options: CookieOptions) {
             cookieStore.set({ name, value, ...options });
@@ -25,7 +25,7 @@ export async function GET(request: Request) {
             cookieStore.delete({ name, ...options });
           },
         },
-      }
+      },
     );
     const { error } = await supabase.auth.exchangeCodeForSession(code);
     if (!error) {
@@ -35,6 +35,6 @@ export async function GET(request: Request) {
 
   // return the user to an error page with instructions
   return NextResponse.redirect(
-    `${origin}/login?message=Could not login with provider`
+    `${origin}/login?message=Could not login with provider`,
   );
 }

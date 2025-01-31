@@ -28,18 +28,16 @@ export default async function Home() {
   return (
     <section>
       <HeaderPattern />
-      <span className="hidden md:block">
-        <ProfilePicture />
-      </span>
-      <div className="space-y-10 md:space-y-16 mt-12 md:mt-0">
+      <ProfilePicture />
+      <div className="mt-6 space-y-10 md:mt-0 md:space-y-16">
         <section>
           <div className="relative text-balance">
-            <h1 className="mx-auto text-text-primary md:text-center font-medium text-5xl leading-tight md:text-6xl md:leading-[64px] tracking-tighter max-w-2xl">
+            <h1 className="mx-auto max-w-2xl text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-6xl md:leading-[64px]">
               Hey, I&apos;m Braydon! <br /> Welcome to my corner of the
               internet!
             </h1>
-            <div className="mt-4 md:mt-8 text-left md:text-center">
-              <p className="text-text-secondary leading-8">
+            <div className="mt-4 text-center md:mt-8">
+              <p className="leading-8 text-text-secondary">
                 I&apos;m a front-end developer with a love for design and a
                 knack for tinkering. This site is intentionally over-engineered
                 and serves as my playground for experimenting with new ideas and
@@ -49,10 +47,10 @@ export default async function Home() {
           </div>
           <div>
             {/* Desktop Photos */}
-            <div className="md:flex space-x-16 md:space-x-4 justify-around items-center mt-16 mb-8 hidden">
+            <div className="mb-8 mt-16 hidden items-center justify-around space-x-16 md:flex md:space-x-4">
               <div className="relative">
                 <ShadowBox width={188} height={278}></ShadowBox>
-                <span className="lg:order-2 rounded-lg absolute top-2 left-1 rotate-[-8deg]">
+                <span className="absolute left-1 top-2 rotate-[-8deg] rounded-lg lg:order-2">
                   <Photo
                     width={180}
                     height={269}
@@ -65,7 +63,7 @@ export default async function Home() {
 
               <div className="relative">
                 <ShadowBox width={278} height={214}></ShadowBox>
-                <span className="absolute top-2 left-1 rotate-[8deg]">
+                <span className="absolute left-1 top-2 rotate-[8deg]">
                   <Photo
                     width={272}
                     height={206}
@@ -78,7 +76,7 @@ export default async function Home() {
 
               <div className="relative">
                 <ShadowBox width={278} height={278}></ShadowBox>
-                <span className="absolute top-2 left-1 rotate-[-8deg]">
+                <span className="absolute left-1 top-2 rotate-[-8deg]">
                   <Photo
                     width={270}
                     height={270}
@@ -91,7 +89,7 @@ export default async function Home() {
 
               <div className="relative">
                 <ShadowBox width={188} height={278}></ShadowBox>
-                <span className="absolute top-2 left-1 rotate-[5deg]">
+                <span className="absolute left-1 top-2 rotate-[5deg]">
                   <Photo
                     width={180}
                     height={270}
@@ -105,11 +103,11 @@ export default async function Home() {
 
             {/* Mobile Photos */}
             <div className="relative w-full overflow-hidden py-12 md:hidden">
-              <div className="flex space-x-16 mt-10 justify-center -mx-32">
+              <div className="-mx-32 mt-10 flex justify-center space-x-16">
                 <div className="relative w-fit">
                   <ShadowBox width={188} height={278}></ShadowBox>
                   <img
-                    className="w-[180px] h-[270px] absolute left-0 top-0 rotate-[8deg] object-cover rounded-lg shadow"
+                    className="absolute left-0 top-0 h-[270px] w-[180px] rotate-[8deg] rounded-lg object-cover shadow"
                     src="/braydon_speaking_photo.jpeg"
                     alt="A headshot"
                   />
@@ -117,7 +115,7 @@ export default async function Home() {
                 <div className="relative w-fit">
                   <ShadowBox width={188} height={278}></ShadowBox>
                   <img
-                    className="w-[190px] h-[280px] absolute left-0 top-0 rotate-[-8deg] object-cover rounded-lg shadow"
+                    className="absolute left-0 top-0 h-[280px] w-[190px] rotate-[-8deg] rounded-lg object-cover shadow"
                     src="/braydon_speaking_photo.jpeg"
                     alt="A headshot"
                   />
@@ -125,7 +123,7 @@ export default async function Home() {
                 <div className="relative w-fit">
                   <ShadowBox width={188} height={278}></ShadowBox>
                   <img
-                    className="w-[180px] h-[270px] absolute left-0 top-0 rotate-[8deg] object-cover rounded-lg shadow"
+                    className="absolute left-0 top-0 h-[270px] w-[180px] rotate-[8deg] rounded-lg object-cover shadow"
                     src="/braydon_speaking_photo.jpeg"
                     alt="A headshot"
                   />
@@ -136,20 +134,20 @@ export default async function Home() {
         </section>
 
         {/* About Section */}
-        <section className="space-y-10 md:space-y-16 relative">
+        <section className="relative space-y-10 md:space-y-16">
           <AboutPattern />
           <div className="space-y-4">
-            <div className="text-sm font-medium text-indigo-600 md:text-center">
+            <div className="text-center text-sm font-medium text-indigo-600">
               <span>About</span>
             </div>
-            <h2 className="text-text-primary md:text-center text-balance font-medium text-4xl tracking-tight max-w-lg leading-10 md:mx-auto">
+            <h2 className="max-w-lg text-balance text-center text-3xl font-medium leading-10 tracking-tight text-text-primary md:mx-auto md:text-4xl">
               Here&apos;s what sets me apart and makes me unique
             </h2>
           </div>
 
           {/* About Bento */}
           <GridWrapper>
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-2 md:grid-rows-[14]">
+            <div className="grid grid-cols-1 gap-2 md:grid-cols-12 md:grid-rows-[14]">
               <div className="col-span-1 md:col-span-5 md:row-span-6">
                 <AboutMeBento linkTo="/about" />
               </div>
@@ -170,23 +168,23 @@ export default async function Home() {
         </section>
 
         {/* Blog Section */}
-        <section className="space-y-10 md:space-y-16 relative">
+        <section className="relative space-y-10 md:space-y-16">
           <BlogPattern />
-          <div className="space-y-4 relative text-balance">
-            <span className="absolute left-1/2 -translate-x-1/2 top-0 pointer-events-none">
+          <div className="relative space-y-4 text-balance">
+            <span className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2">
               <BgGradient />
             </span>
-            <div className="text-sm font-medium text-indigo-600 md:text-center">
+            <div className="text-center text-sm font-medium text-indigo-600">
               <span>Blog</span>
             </div>
-            <h2 className="text-text-primary md:text-center font-medium text-4xl tracking-tighter max-w-lg leading-10 md:mx-auto">
+            <h2 className="max-w-lg text-center text-3xl font-medium leading-10 tracking-tighter text-text-primary md:mx-auto md:text-4xl">
               I like sharing my experiments && knowledge with others
             </h2>
           </div>
 
           <div className="z-10">
             <GridWrapper>
-              <ul className="grid grid-cols-1 md:grid-cols-3 gap-2 z-50">
+              <ul className="z-50 grid grid-cols-1 gap-2 md:grid-cols-3">
                 {featuredArticles.length > 0 ? (
                   <>
                     {featuredArticles.slice(0, 3).map((post) => (
@@ -208,19 +206,19 @@ export default async function Home() {
         </section>
 
         {/* My Site Section */}
-        <section className="space-y-10 md:space-y-16 relative">
+        <section className="relative space-y-10 md:space-y-16">
           <MySitePattern />
           <div className="space-y-4 text-balance">
-            <div className="text-sm font-medium text-indigo-600 md:text-center">
+            <div className="text-center text-sm font-medium text-indigo-600">
               <span>My Site</span>
             </div>
-            <h2 className="text-text-primary md:text-center font-medium text-4xl tracking-tighter md:max-w-lg leading-10 md:mx-auto">
+            <h2 className="text-center text-3xl font-medium leading-10 tracking-tighter text-text-primary md:mx-auto md:max-w-lg md:text-4xl">
               My site is a playful sandbox. Explore, experiment, && say hello
             </h2>
           </div>
 
           <GridWrapper>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+            <div className="grid grid-cols-1 gap-2 md:grid-cols-3">
               <span className="col-span-1 h-[276px]">
                 <ChangelogBento />
               </span>

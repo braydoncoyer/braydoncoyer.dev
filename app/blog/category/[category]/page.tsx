@@ -14,7 +14,7 @@ export default async function CategoryPage({
 }) {
   const allPublishedBlogPosts = fetchAndSortBlogPosts();
   const categories = Array.from(
-    extractUniqueBlogCategories(allPublishedBlogPosts)
+    extractUniqueBlogCategories(allPublishedBlogPosts),
   );
 
   const category = (await params).category
@@ -25,13 +25,13 @@ export default async function CategoryPage({
     return (
       Array.isArray(post.categories) &&
       post.categories.some(
-        (cat) => typeof cat === "string" && cat.toLowerCase() === category
+        (cat) => typeof cat === "string" && cat.toLowerCase() === category,
       )
     );
   });
 
   return (
-    <div className="space-y-[80px] mt-[100px] w-full">
+    <div className="mt-[100px] w-full space-y-[80px]">
       <title>{category} Articles</title>
       <BlogPageHeader
         title={`Articles about ${category || "Unknown Category"}`}

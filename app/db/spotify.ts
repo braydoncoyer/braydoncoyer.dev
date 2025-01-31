@@ -5,7 +5,7 @@ export type CurrentlyPlaying = {
   albumName: string;
   albumId: string;
   artist: string;
-  artistId: string
+  artistId: string;
   isPlaying: boolean;
   songUrl: string;
   title: string;
@@ -14,7 +14,7 @@ export type CurrentlyPlaying = {
 // Get the access token from Spotify
 async function getAccessToken() {
   const basic = Buffer.from(
-    `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`
+    `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`,
   ).toString("base64");
   const params = new URLSearchParams();
   params.append("grant_type", "refresh_token");
@@ -39,7 +39,7 @@ export async function getCurrentlyPlaying() {
 
   const response = await fetch(
     "https://api.spotify.com/v1/me/player/currently-playing",
-    { headers: { Authorization: `Bearer ${access_token}` }, cache: "no-store" }
+    { headers: { Authorization: `Bearer ${access_token}` }, cache: "no-store" },
   );
 
   if (response.status === 204 || response.status > 400) {

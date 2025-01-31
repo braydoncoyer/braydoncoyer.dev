@@ -24,88 +24,79 @@ export default function AboutPage() {
   return (
     <div className="relative">
       <title>About | Braydon Coyer</title>
-      <span className="absolute top-20 -translate-y-1/2 left-1/2 translate-x-1/2">
+      <span className="absolute left-1/2 top-20 -translate-y-1/2 translate-x-1/2">
         <HorizontalLine />
       </span>
       <HeaderPattern />
-      <div className="space-y-[80px] relative">
+      <div className="relative space-y-[80px]">
         {/* Title */}
-        <div className="pt-[90px] flex justify-around items-center">
+        <div className="flex items-center justify-around pt-[90px]">
           <div className="max-w-3xl">
-            <h1
-              className="text-text-primary text-balance font-medium text-6xl leading-[64px]
-            tracking-tighter"
-            >
+            <h1 className="text-balance text-6xl font-medium leading-[64px] tracking-tighter text-text-primary">
               {timeOfDayGreeting} <br />
               I&apos;m Braydon, a creative frontend engineer.
             </h1>
           </div>
-          <div className="flex-shrink-0 ml-8">
+          <div className="ml-8 flex-shrink-0">
             <ProfilePicture />
           </div>
         </div>
 
-        <span className="absolute top-40 -translate-y-1/2 left-1/2 translate-x-1/2">
+        <span className="absolute left-1/2 top-40 -translate-y-1/2 translate-x-1/2">
           <HorizontalLine />
         </span>
 
         {/* About */}
-        <div className="relative text-center space-y-8">
+        <div className="relative space-y-8 text-center">
           <div className="space-y-4">
             <GridWrapper>
-              <div className="text-sm font-medium text-indigo-600 text-center">
+              <div className="text-center text-sm font-medium text-indigo-600">
                 <span>About</span>
               </div>
             </GridWrapper>
             <GridWrapper>
-              <h2
-                className="max-w-xl mx-auto text-text-primary text-balance font-medium text-3xl leading-[40px]
-            tracking-tighter"
-              >
+              <h2 className="mx-auto max-w-xl text-balance text-3xl font-medium leading-[40px] tracking-tighter text-text-primary">
                 Here&apos;s a quick intro about me and what I love to do
               </h2>
             </GridWrapper>
           </div>
-          <div className="relative overflow-hidden w-full h-[2050px]">
-            <div className="absolute top-0 left-[455px] w-full">
+          <div className="relative h-[2050px] w-full overflow-hidden">
+            <div className="absolute left-[455px] top-0 w-full">
               <AboutTrackPattern />
             </div>
             {/* Section 1 */}
-            <div className="flex w-full px-14 pt-32 relative">
+            <div className="relative flex w-full px-14 pt-32">
               <HorizontalLine />
-              <div className="flex-1 mt-6">
-                <div className="flex justify-start items-center">
-                  <div className="relative w-fit ml-20">
+              <div className="mt-6 flex-1">
+                <div className="flex items-center justify-start">
+                  <div className="relative ml-20 w-fit">
                     <ShadowBox width={188} height={278}></ShadowBox>
                     <img
-                      className="w-[180px] h-[270px] absolute left-0 top-0 rotate-[-8deg] object-cover rounded-lg shadow"
+                      className="absolute left-0 top-0 h-[270px] w-[180px] rotate-[-8deg] rounded-lg object-cover shadow"
                       src="/knights_kwest.jpeg"
                       alt="A headshot"
                     />
                   </div>
                 </div>
               </div>
-              <div className="text-left flex-1 mt-6">
-                <h2
-                  className="w-full text-text-primary text-balance font-medium text-3xl leading-[40px]
-            tracking-tighter mb-6"
-                >
+              <div className="mt-6 flex-1 text-left">
+                <h2 className="mb-6 w-full text-balance text-3xl font-medium leading-[40px] tracking-tighter text-text-primary">
                   I began my creative journey by developing apps for iOS and
                   Android
                 </h2>
-                <p className="text-base text-text-secondary mb-6 leading-8">
+                <p className="mb-6 text-base leading-8 text-text-secondary">
                   When the iPad launched in 2010, I was inspired to create
                   interactive content for its stunning 1024x768 screen.
                 </p>
 
-                <p className="text-base text-text-secondary mb-6 leading-8">
+                <p className="mb-6 text-base leading-8 text-text-secondary">
                   I jumped into mobile development, freelancing along the way,
                   and successfully released several games and apps, with one of
                   my games even surpassing Angry Birds in popularity.
                 </p>
               </div>
               <svg
-                className="absolute right-4 pointer-events-none"
+                className="pointer-events-none absolute right-4"
                 width="648"
                 height="366"
                 viewBox="0 0 648 366"
@@ -121,33 +112,30 @@ export default function AboutPage() {
             </div>
 
             {/* Section 2 */}
-            <div className="flex w-full justify-center px-14 pt-44 relative">
+            <div className="relative flex w-full justify-center px-14 pt-44">
               <HorizontalLine />
-              <div className="text-left flex-1 mt-6">
-                <h2
-                  className="w-full text-text-primary text-balance font-medium text-3xl leading-[40px]
-            tracking-tighter mb-6"
-                >
+              <div className="mt-6 flex-1 text-left">
+                <h2 className="mb-6 w-full text-balance text-3xl font-medium leading-[40px] tracking-tighter text-text-primary">
                   The transition to web development.
                 </h2>
-                <p className="text-base text-text-secondary mb-6 leading-8">
+                <p className="mb-6 text-base leading-8 text-text-secondary">
                   I decided to dive into web development not long after. With my
                   love for visual expression and design, frontend development
                   felt like the perfect fit for me.
                 </p>
 
-                <p className="text-base text-text-secondary mb-6 leading-8">
+                <p className="mb-6 text-base leading-8 text-text-secondary">
                   I began learning HTML, CSS, and JavaScript, and in 2016, I
                   discovered React. It wasn&apos;t long before I landed my first
                   full-time job as a web developer.
                 </p>
               </div>
-              <div className="flex-1 mt-6">
-                <div className="flex justify-end items-center">
-                  <div className="relative w-fit mr-20">
+              <div className="mt-6 flex-1">
+                <div className="flex items-center justify-end">
+                  <div className="relative mr-20 w-fit">
                     <ShadowBox width={188} height={278}></ShadowBox>
                     <img
-                      className="w-[180px] h-[270px] absolute left-0 top-0 rotate-[8deg] object-cover rounded-lg shadow"
+                      className="absolute left-0 top-0 h-[270px] w-[180px] rotate-[8deg] rounded-lg object-cover shadow"
                       src="/braydon_and_pj.jpeg"
                       alt="A headshot"
                     />
@@ -155,7 +143,7 @@ export default function AboutPage() {
                 </div>
               </div>
               <svg
-                className="absolute left-4 pointer-events-none"
+                className="pointer-events-none absolute left-4"
                 width="648"
                 height="369"
                 viewBox="0 0 648 369"
@@ -170,41 +158,38 @@ export default function AboutPage() {
             </div>
 
             {/* Section 3 */}
-            <div className="flex w-full justify-center px-14 pt-40 relative">
+            <div className="relative flex w-full justify-center px-14 pt-40">
               <HorizontalLine />
-              <div className="flex-1 mt-6">
-                <div className="flex justify-start items-center">
-                  <div className="relative w-fit ml-20">
+              <div className="mt-6 flex-1">
+                <div className="flex items-center justify-start">
+                  <div className="relative ml-20 w-fit">
                     <ShadowBox width={188} height={278}></ShadowBox>
                     <img
-                      className="w-[180px] h-[270px] absolute left-0 top-0 rotate-[-8deg] object-cover rounded-lg shadow"
+                      className="absolute left-0 top-0 h-[270px] w-[180px] rotate-[-8deg] rounded-lg object-cover shadow"
                       src="/braydon_and_pj.jpeg"
                       alt="A headshot"
                     />
                   </div>
                 </div>
               </div>
-              <div className="text-left flex-1 mt-6">
-                <h2
-                  className="w-full text-text-primary text-balance font-medium text-3xl leading-[40px]
-            tracking-tighter mb-6"
-                >
+              <div className="mt-6 flex-1 text-left">
+                <h2 className="mb-6 w-full text-balance text-3xl font-medium leading-[40px] tracking-tighter text-text-primary">
                   What I truly value in life.
                 </h2>
-                <p className="text-base text-text-secondary mb-6 leading-8">
+                <p className="mb-6 text-base leading-8 text-text-secondary">
                   I knew I wanted to spend my best friend, PeggyJean, so I
                   proposed. When COVID-19 hit, we had to adjust our plans and
                   ended up having a small but wonderful wedding in 2020.
                 </p>
 
-                <p className="text-base text-text-secondary mb-6 leading-8">
+                <p className="mb-6 text-base leading-8 text-text-secondary">
                   Family means everything to me, and I cherish the moments we
                   share together. Our first daughter, ElizaJane, arrived in
                   2021, and our second child, Renny, joined us in 2023.
                 </p>
               </div>
               <svg
-                className="absolute right-4 pointer-events-none"
+                className="pointer-events-none absolute right-4"
                 width="648"
                 height="316"
                 viewBox="0 0 648 316"
@@ -219,37 +204,34 @@ export default function AboutPage() {
             </div>
 
             {/* Section 4 */}
-            <div className="flex w-full justify-center px-14 pt-44 relative">
+            <div className="relative flex w-full justify-center px-14 pt-44">
               <HorizontalLine />
-              <div className="text-left flex-1 mt-6">
-                <h2
-                  className="w-full text-text-primary text-balance font-medium text-3xl leading-[40px]
-            tracking-tighter mb-6"
-                >
+              <div className="mt-6 flex-1 text-left">
+                <h2 className="mb-6 w-full text-balance text-3xl font-medium leading-[40px] tracking-tighter text-text-primary">
                   What I&apos;m doing now.
                 </h2>
-                <p className="text-base text-text-secondary mb-6 leading-8">
+                <p className="mb-6 text-base leading-8 text-text-secondary">
                   Right now, I&apos;m a Senior Frontend Developer at LogicGate,
                   where I get to lead teams in building some really exciting
                   projects.
                 </p>
 
-                <p className="text-base text-text-secondary mb-6 leading-8">
+                <p className="mb-6 text-base leading-8 text-text-secondary">
                   I love sharing what I know as an international tech speaker
                   and try to speak at a few events each year.
                 </p>
 
-                <p className="text-base text-text-secondary mb-6 leading-8">
+                <p className="mb-6 text-base leading-8 text-text-secondary">
                   In my downtime, I enjoy creative coding, blogging, gaming with
                   friends, and hanging out with my family.
                 </p>
               </div>
-              <div className="flex-1 mt-6">
-                <div className="flex justify-end items-center">
-                  <div className="relative w-fit mr-32">
+              <div className="mt-6 flex-1">
+                <div className="flex items-center justify-end">
+                  <div className="relative mr-32 w-fit">
                     <ShadowBox width={188} height={278}></ShadowBox>
                     <img
-                      className="w-[180px] h-[270px] absolute left-0 top-0 rotate-[8deg] object-cover rounded-lg shadow"
+                      className="absolute left-0 top-0 h-[270px] w-[180px] rotate-[8deg] rounded-lg object-cover shadow"
                       src="/braydon_speaking_photo.jpeg"
                       alt="A headshot"
                     />
@@ -257,7 +239,7 @@ export default function AboutPage() {
                 </div>
               </div>
               <svg
-                className="absolute left-4 pointer-events-none"
+                className="pointer-events-none absolute left-4"
                 width="648"
                 height="341"
                 viewBox="0 0 648 341"
@@ -288,7 +270,7 @@ export default function AboutPage() {
             </svg>
           </span>
 
-          <span className="absolute left-36 -bottom-12 border p-2 rounded-lg border-border-primary/50">
+          <span className="absolute -bottom-12 left-36 rounded-lg border border-border-primary/50 p-2">
             <svg
               width="29"
               height="29"
@@ -352,18 +334,15 @@ export default function AboutPage() {
         </div>
 
         {/* About */}
-        <div className="relative text-center space-y-8">
+        <div className="relative space-y-8 text-center">
           <div className="space-y-4">
             <GridWrapper>
-              <div className="text-sm font-medium text-indigo-600 text-center">
+              <div className="text-center text-sm font-medium text-indigo-600">
                 <span>Experience</span>
               </div>
             </GridWrapper>
             <GridWrapper>
-              <h2
-                className="max-w-lg mx-auto text-text-primary text-balance font-medium text-3xl leading-[40px]
-            tracking-tighter"
-              >
+              <h2 className="mx-auto max-w-lg text-balance text-3xl font-medium leading-[40px] tracking-tighter text-text-primary">
                 My work history and achievements timeline.
               </h2>
             </GridWrapper>
@@ -376,16 +355,16 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <section className="space-y-16 relative">
+        <section className="relative space-y-16">
           <div className="space-y-4">
             <GridWrapper>
-              <div className="text-sm font-medium text-indigo-600 text-center">
+              <div className="text-center text-sm font-medium text-indigo-600">
                 <span>More</span>
               </div>
             </GridWrapper>
 
             <GridWrapper>
-              <h2 className="mx-auto text-text-primary text-center text-balance font-medium text-3xl tracking-tight max-w-lg leading-10">
+              <h2 className="mx-auto max-w-lg text-balance text-center text-3xl font-medium leading-10 tracking-tight text-text-primary">
                 Here&apos;s what sets me apart and makes me unique
               </h2>
             </GridWrapper>
@@ -448,7 +427,7 @@ function AboutTrackPattern() {
       // Only update position when scrolling actually begins (latest > 0)
       if (latest > 0) {
         const point = pathRef.current!.getPointAtLength(
-          pathLength * clampedProgress
+          pathLength * clampedProgress,
         );
         setPosition({ x: point.x, y: point.y });
       }

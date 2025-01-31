@@ -14,7 +14,7 @@ const CalendarDay: React.FC<{ day: number | string; isHeader?: boolean }> = ({
 
   return (
     <div
-      className={`col-span-1 row-span-1 w-8 h-8 flex items-center justify-center ${
+      className={`col-span-1 row-span-1 flex h-8 w-8 items-center justify-center ${
         isHeader ? "" : "rounded"
       } ${randomBgWhite}`}
     >
@@ -34,7 +34,7 @@ export function CalendarBento() {
   const daysInMonth = new Date(
     currentYear,
     currentDate.getMonth() + 1,
-    0
+    0,
   ).getDate();
 
   const bookingLink = `https://cal.com/braydon-coyer-8ayx8q/30min?month=${currentYear}-${(
@@ -51,7 +51,7 @@ export function CalendarBento() {
       ...Array(firstDayOfWeek).map((_, i) => (
         <div
           key={`empty-start-${i}`}
-          className="col-span-1 row-span-1 w-8 h-8"
+          className="col-span-1 row-span-1 h-8 w-8"
         />
       )),
       ...Array(daysInMonth)
@@ -64,22 +64,22 @@ export function CalendarBento() {
 
   return (
     <BentoCard height="h-[220px]" linkTo={bookingLink}>
-      <div className="grid grid-cols-12 gap-5 h-full group">
-        <div className="col-span-5 md:col-span-5 text-balance">
-          <h2 className="text-base font-medium mb-4">Book a call with me</h2>
+      <div className="group grid h-full grid-cols-12 gap-5">
+        <div className="col-span-5 text-balance md:col-span-5">
+          <h2 className="mb-4 text-base font-medium">Book a call with me</h2>
           <p className="mb-2 text-text-secondary">
             I&apos;d love to chat even if there&apos;s no agenda!
           </p>
         </div>
-        <div className="md:group-hover:top-5 md:group-hover:-right-12 absolute md:-right-14 top-7 left-[43%] md:left-auto transition-all ease-out duration-500">
+        <div className="absolute left-[43%] top-7 transition-all duration-500 ease-out md:-right-14 md:left-auto md:group-hover:-right-12 md:group-hover:top-5">
           <div>
-            <div className="rounded-[20px] border border-border-primary group-hover:border-indigo-400 transition-colors duration-100 p-2 w-[550px] h-[278px]">
+            <div className="h-[278px] w-[550px] rounded-[20px] border border-border-primary p-2 transition-colors duration-100 group-hover:border-indigo-400">
               <div
-                className="border-2 h-full rounded-xl border-[#A5AEB81F]/10 bg-[#EDEEF0] p-3"
+                className="h-full rounded-xl border-2 border-[#A5AEB81F]/10 bg-[#EDEEF0] p-3"
                 style={{ boxShadow: "0px 2px 1.5px 0px #A5AEB852 inset" }}
               >
-                <div className="flex space-x-2 items-center">
-                  <p className="text-gray-500 text-sm">
+                <div className="flex items-center space-x-2">
+                  <p className="text-sm text-gray-500">
                     <span className="font-medium">
                       {currentMonth}, {currentYear}
                     </span>
@@ -87,9 +87,9 @@ export function CalendarBento() {
                   <span className="h-1 w-1 rounded-full bg-text-tertiary">
                     &nbsp;
                   </span>
-                  <p className="text-text-tertiary text-xs">30 min call</p>
+                  <p className="text-xs text-text-tertiary">30 min call</p>
                 </div>
-                <div className="grid grid-cols-7 grid-rows-5 gap-2 px-4 mt-4">
+                <div className="mt-4 grid grid-cols-7 grid-rows-5 gap-2 px-4">
                   {renderCalendarDays()}
                 </div>
               </div>

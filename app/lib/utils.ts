@@ -39,7 +39,7 @@ export const formatDate = (date: string) => {
 export const getTimeOfDayGreeting = () => {
   const now = new Date();
   const hours = now.getHours();
-  
+
   if (hours < 12) {
     return "Good morning!";
   } else if (hours < 17) {
@@ -47,7 +47,7 @@ export const getTimeOfDayGreeting = () => {
   } else {
     return "Good evening!";
   }
-}
+};
 
 export const cx = (...classes) => classes.filter(Boolean).join(" ");
 
@@ -62,7 +62,7 @@ export function fetchAndSortChangelogEntrees(): Changelog[] {
       .filter((item) => !item.draft)
       .sort(
         (a, b) =>
-          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
       );
   } catch (error) {
     notFound();
@@ -71,12 +71,12 @@ export function fetchAndSortChangelogEntrees(): Changelog[] {
 
 export function fetchAndSortBlogPosts(): Blog[] {
   try {
-    const allPosts =  posts; // Assuming 'posts' is a promise or async call
+    const allPosts = posts; // Assuming 'posts' is a promise or async call
     return allPosts
       .filter((post) => !post.draft)
       .sort(
         (a, b) =>
-          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
       );
   } catch (error) {
     notFound();
@@ -85,25 +85,25 @@ export function fetchAndSortBlogPosts(): Blog[] {
 
 export function getRelatedBlogPosts(
   currentPost: Blog,
-  maxResults: number = 3
+  maxResults: number = 3,
 ): Blog[] {
   const allPosts = fetchAndSortBlogPosts().filter(
-    (post) => post.slug !== currentPost.slug
+    (post) => post.slug !== currentPost.slug,
   );
 
   const sameCategories = allPosts.filter((post) =>
     post.categories.some((category) =>
-      currentPost.categories.includes(category)
-    )
+      currentPost.categories.includes(category),
+    ),
   );
 
   // Sort by number of matching categories (most relevant first)
   const sortedByRelevance = sameCategories.sort((a, b) => {
     const aMatches = a.categories.filter((cat) =>
-      currentPost.categories.includes(cat)
+      currentPost.categories.includes(cat),
     ).length;
     const bMatches = b.categories.filter((cat) =>
-      currentPost.categories.includes(cat)
+      currentPost.categories.includes(cat),
     ).length;
     return bMatches - aMatches;
   });
@@ -113,7 +113,7 @@ export function getRelatedBlogPosts(
   }
 
   const remainingPosts = allPosts.filter(
-    (post) => !sortedByRelevance.some((related) => related.slug === post.slug)
+    (post) => !sortedByRelevance.some((related) => related.slug === post.slug),
   );
 
   return [...sortedByRelevance, ...remainingPosts].slice(0, maxResults);
@@ -126,7 +126,7 @@ export async function fetchAndSortChangelogPosts(): Promise<Changelog[]> {
       .filter((item) => !item.draft)
       .sort(
         (a, b) =>
-          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
       );
   } catch (error) {
     notFound();

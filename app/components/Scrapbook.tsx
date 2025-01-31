@@ -36,7 +36,7 @@ function Sticker({
   const [initialRotation] = useState<number>(getRandomNumberInRange(-15, 15));
   const [initialY] = useState<number>(
     getRandomNumberInRange(10, 25) *
-      (index === 0 ? 1 : index % 2 === 0 ? -0.5 : 0.5)
+      (index === 0 ? 1 : index % 2 === 0 ? -0.5 : 0.5),
   );
 
   // Handle smaller devices with different behavior
@@ -116,7 +116,7 @@ function Sticker({
       <motion.div
         variants={stickerVariants}
         className={cn(
-          "relative drop-shadow-lg h-fit flex-shrink-1 min-w-[96px]"
+          "flex-shrink-1 relative h-fit min-w-[96px] drop-shadow-lg",
         )}
         drag={!matches}
         dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
@@ -135,8 +135,8 @@ function Sticker({
               ? "modal"
               : "default"
             : isDragging
-            ? "dragging"
-            : "default"
+              ? "dragging"
+              : "default"
         }
         onTap={onOpen}
         onHoverStart={onStart}
@@ -157,7 +157,7 @@ function Sticker({
                 x: `-50%`,
               }}
               className={cn(
-                "pointer-events-none max-w-screen-sm select-none z-10 absolute top-full mx-auto text-[10px] text-center bg-white/95 backdrop-blur-3xl text-black mt-2 py-2 px-3 text-balance rounded-sm min-w-[160px]"
+                "pointer-events-none absolute top-full z-10 mx-auto mt-2 min-w-[160px] max-w-screen-sm select-none text-balance rounded-sm bg-white/95 px-3 py-2 text-center text-[10px] text-black backdrop-blur-3xl",
               )}
             >
               {caption}
@@ -190,20 +190,20 @@ export function Scrapbook({ className }: { className?: string }) {
       height="h-[220px]"
       showHoverGradient={false}
     >
-      <h2 className="font-medium mb-2">Scrapbook</h2>
-      <div className="absolute h-[220px] top-0 w-full bg-[radial-gradient(#e5e7eb_1px,transparent_2px)] [background-size:14px_14px] [mask-image:radial-gradient(ellipse_80%_70%_at_50%_50%,black_40%,transparent_100%)]"></div>
+      <h2 className="mb-2 font-medium">Scrapbook</h2>
+      <div className="absolute top-0 h-[220px] w-full bg-[radial-gradient(#e5e7eb_1px,transparent_2px)] [background-size:14px_14px] [mask-image:radial-gradient(ellipse_80%_70%_at_50%_50%,black_40%,transparent_100%)]"></div>
       <div
         key={resetIndex}
         className={cn(
-          "w-full bg-secondary rounded-3xl p-6 @container xs:max-h-none",
-          className
+          "bg-secondary @container xs:max-h-none w-full rounded-3xl p-6",
+          className,
         )}
       >
         <motion.div
           variants={container}
           initial="hidden"
           animate="shown"
-          className="grid grid-cols-4 gap-4 h-full w-full items-center -mt-8"
+          className="-mt-8 grid h-full w-full grid-cols-4 items-center gap-4"
         >
           <Sticker
             caption="THAT Conference was my favorite tech event of 2024! I even kicked off my speaking season with my very first talk of the year there!"
@@ -212,7 +212,7 @@ export function Scrapbook({ className }: { className?: string }) {
             <img
               width="80"
               src="/that_conf_sticker.png"
-              className="max-w-[100px] xs:max-w-none"
+              className="xs:max-w-none max-w-[100px]"
               draggable={false}
             />
           </Sticker>
@@ -223,7 +223,7 @@ export function Scrapbook({ className }: { className?: string }) {
             <img
               width="96"
               src="c3_conf_sticker.png"
-              className="max-w-[100px] xs:max-w-none"
+              className="xs:max-w-none max-w-[100px]"
               draggable={false}
             />
           </Sticker>

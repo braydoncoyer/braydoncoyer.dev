@@ -20,16 +20,16 @@ export function BgSectionTag({
   height = 40,
 }: BgSectionTagProps) {
   return (
-    <div className="text-center inline-block group">
+    <div className="group inline-block text-center">
       <div
-        className="rounded-lg border border-border-primary p-1 bg-bg-primary"
+        className="rounded-lg border border-border-primary bg-bg-primary p-1"
         style={{ width, height }}
       >
         <div
-          className="border-2 h-full rounded border-[#A5AEB81F]/10 bg-[#EDEEF0] grid place-items-center py-1"
+          className="grid h-full place-items-center rounded border-2 border-[#A5AEB81F]/10 bg-[#EDEEF0] py-1"
           style={{ boxShadow: "0px 2px 1.5px 0px #A5AEB852 inset" }}
         >
-          <p className="inline-block font-semibold text-sm text-gray-400">
+          <p className="inline-block text-sm font-semibold text-gray-400">
             {tagType}
           </p>
         </div>

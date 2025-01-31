@@ -6,7 +6,8 @@ export default {
   theme: {
     extend: {
       boxShadow: {
-        'code-shadow': '0 0 0 1px rgba(14, 22, 34, 0.1), 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
+        "code-shadow":
+          "0 0 0 1px rgba(14, 22, 34, 0.1), 0 2px 4px 0 rgba(0, 0, 0, 0.06)",
       },
       fontFamily: {
         sans: "var(--font-geist-sans), system-ui, sans-serif",

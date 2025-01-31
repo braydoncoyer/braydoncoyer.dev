@@ -16,7 +16,7 @@ export function CreateCommunityNoteBuilder({
 }) {
   const [message, setMessage] = useState("");
   const [patternIndex, setPatternIndex] = useState(() =>
-    Math.floor(Math.random() * patterns.length)
+    Math.floor(Math.random() * patterns.length),
   );
   const [rotation, setRotation] = useState(0);
 
@@ -38,17 +38,17 @@ export function CreateCommunityNoteBuilder({
   return (
     <form
       action={onSubmit}
-      className="flex flex-col justify-center h-full items-center gap-6"
+      className="flex h-full flex-col items-center justify-center gap-6"
     >
       <div className="flex items-center gap-6">
         <button
           type="button"
           onClick={handlePrevPattern}
-          className="p-4 rounded-full bg-bg-primary stroke stroke-[#A5AEB8] group"
+          className="stroke group rounded-full bg-bg-primary stroke-[#A5AEB8] p-4"
           aria-label="Previous pattern"
         >
           <svg
-            className="stroke-[#A5AEB8] group-hover:stroke-slate-600 w-8 h-8"
+            className="h-8 w-8 stroke-[#A5AEB8] group-hover:stroke-slate-600"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -73,7 +73,7 @@ export function CreateCommunityNoteBuilder({
               name="message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[120px] bg-transparent resize-none text-2xl font-bold text-center placeholder-slate-900 focus:outline-none z-20 overflow-hidden leading-tight"
+              className="absolute left-1/2 top-1/2 z-20 h-[120px] w-[80%] -translate-x-1/2 -translate-y-1/2 resize-none overflow-hidden bg-transparent text-center text-2xl font-bold leading-tight placeholder-slate-900 focus:outline-none"
               placeholder="Type here to leave a message"
               maxLength={200}
               rows={4}
@@ -91,11 +91,11 @@ export function CreateCommunityNoteBuilder({
         <button
           type="button"
           onClick={handleNextPattern}
-          className="p-4 rounded-full bg-bg-primary stroke stroke-[#A5AEB8] group"
+          className="stroke group rounded-full bg-bg-primary stroke-[#A5AEB8] p-4"
           aria-label="Next pattern"
         >
           <svg
-            className="stroke-[#A5AEB8] group-hover:stroke-slate-600 w-8 h-8"
+            className="h-8 w-8 stroke-[#A5AEB8] group-hover:stroke-slate-600"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -108,8 +108,8 @@ export function CreateCommunityNoteBuilder({
         </button>
       </div>
 
-      <div className="flex justify-around w-[375px]">
-        <div className="px-4 flex items-center gap-2 justify-center bg-dark-primary rounded-full h-9 w-24">
+      <div className="flex w-[375px] justify-around">
+        <div className="flex h-9 w-24 items-center justify-center gap-2 rounded-full bg-dark-primary px-4">
           <input
             type="range"
             id="rotation"
@@ -118,17 +118,17 @@ export function CreateCommunityNoteBuilder({
             step="0.1"
             value={rotation}
             onChange={(e) => setRotation(parseFloat(e.target.value))}
-            className="accent-indigo-400 w-full"
+            className="w-full accent-indigo-400"
           />
         </div>
 
-        <div className="flex justify-center gap-2 items-center bg-dark-primary px-4 rounded-full h-9">
+        <div className="flex h-9 items-center justify-center gap-2 rounded-full bg-dark-primary px-4">
           {patterns.map((pattern, index) => (
             <button
               key={index}
               onClick={() => setPatternIndex(index)}
               type="button"
-              className={`w-3 h-3 rounded-full transition-all bg-gradient-to-b ${
+              className={`h-3 w-3 rounded-full bg-gradient-to-b transition-all ${
                 pattern.gradient
               } ${
                 patternIndex === index ? "outline outline-2 outline-white" : ""
@@ -136,13 +136,13 @@ export function CreateCommunityNoteBuilder({
             />
           ))}
         </div>
-        <div className="flex gap-2 divide-x-2 divide-text-secondary rounded-full px-4 h-9 bg-dark-primary items-center">
-          <Link className="w-6 h-6" href="/community-wall">
+        <div className="flex h-9 items-center gap-2 divide-x-2 divide-text-secondary rounded-full bg-dark-primary px-4">
+          <Link className="h-6 w-6" href="/community-wall">
             <button
               type="button"
-              className=" bg-dark-primary text-white disabled:opacity-50 disabled:cursor-not-allowed group"
+              className="group bg-dark-primary text-white disabled:cursor-not-allowed disabled:opacity-50"
             >
-              <svg className="w-6 h-6 text-rose-500" viewBox="0 0 24 24">
+              <svg className="h-6 w-6 text-rose-500" viewBox="0 0 24 24">
                 <path
                   stroke="currentColor"
                   strokeLinecap="round"
@@ -163,10 +163,10 @@ export function CreateCommunityNoteBuilder({
           <button
             type="submit"
             disabled={!message.trim()}
-            className="text-white disabled:opacity-50 disabled:cursor-not-allowed group"
+            className="group text-white disabled:cursor-not-allowed disabled:opacity-50"
           >
             <svg
-              className="w-7 h-7 ml-2 text-indigo-400"
+              className="ml-2 h-7 w-7 text-indigo-400"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"

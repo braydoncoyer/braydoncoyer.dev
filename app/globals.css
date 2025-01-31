@@ -69,40 +69,40 @@ iframe {
 }
 
 .drama-shadow {
-  @apply shadow-md ring-1 ring-indigo-500/15 relative;
+  @apply relative shadow-md ring-1 ring-indigo-500/15;
 }
 
 .drama-shadow::after {
-  @apply absolute inset-0 rounded-[inherit] shadow-[inset_0_0_2px_1px_#ffffff4d] pointer-events-none;
+  @apply pointer-events-none absolute inset-0 rounded-[inherit] shadow-[inset_0_0_2px_1px_#ffffff4d];
   content: "";
 }
 
 pre {
-  @apply rounded-xl mb-12 drama-shadow;
+  @apply drama-shadow mb-12 rounded-xl;
 }
 
 .code-frame {
-  @apply border-b border-[#E2E3E5] bg-white rounded-t-xl overflow-scroll h-9 px-4 flex items-center justify-between;
+  @apply flex h-9 items-center justify-between overflow-scroll rounded-t-xl border-b border-[#E2E3E5] bg-white px-4;
 }
 
 .code-frame-content {
-  @apply flex items-center justify-start w-full space-x-3;
+  @apply flex w-full items-center justify-start space-x-3;
 }
 
 .code-frame-filename {
-  @apply text-sm text-slate-400 truncate max-w-[50%] font-mono;
+  @apply max-w-[50%] truncate font-mono text-sm text-slate-400;
 }
 
 .code-container {
-  @apply p-6 overflow-scroll bg-white rounded-b-xl;
+  @apply overflow-scroll rounded-b-xl bg-white p-6;
 }
 
 .frame-controls {
-  @apply flex items-center justify-start h-full space-x-1.5;
+  @apply flex h-full items-center justify-start space-x-1.5;
 }
 
 .frame-control {
-  @apply w-[10px] h-[10px] bg-[#E2E3E5] rounded-full;
+  @apply h-[10px] w-[10px] rounded-full bg-[#E2E3E5];
 }
 
 pre code {

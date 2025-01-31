@@ -63,28 +63,28 @@ function CustomLink(props) {
 
 function RoundedImage(props) {
   return (
-    <img src={props.src} alt={props.alt} className="rounded-xl drama-shadow" />
+    <img src={props.src} alt={props.alt} className="drama-shadow rounded-xl" />
   );
 }
 
 function Callout(props) {
   return (
-    <div className="flex items-center p-1 px-4 py-3 mb-8 text-sm border rounded border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100">
-      <div className="flex items-center w-4 mr-4">{props.emoji}</div>
-      <div className="w-full callout">{props.children}</div>
+    <div className="mb-8 flex items-center rounded border border-neutral-200 bg-neutral-50 p-1 px-4 py-3 text-sm text-neutral-900 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100">
+      <div className="mr-4 flex w-4 items-center">{props.emoji}</div>
+      <div className="callout w-full">{props.children}</div>
     </div>
   );
 }
 
 function ProsCard({ title, pros }) {
   return (
-    <div className="w-full p-6 my-4 border border-emerald-200 dark:border-emerald-900 bg-neutral-50 dark:bg-neutral-900 rounded-xl">
+    <div className="my-4 w-full rounded-xl border border-emerald-200 bg-neutral-50 p-6 dark:border-emerald-900 dark:bg-neutral-900">
       <span>{`You might use ${title} if...`}</span>
       <div className="mt-4">
         {pros.map((pro) => (
-          <div key={pro} className="flex items-baseline mb-2 font-medium">
-            <div className="w-4 h-4 mr-2">
-              <svg className="w-4 h-4 text-emerald-500" viewBox="0 0 24 24">
+          <div key={pro} className="mb-2 flex items-baseline font-medium">
+            <div className="mr-2 h-4 w-4">
+              <svg className="h-4 w-4 text-emerald-500" viewBox="0 0 24 24">
                 <g
                   fill="none"
                   stroke="currentColor"
@@ -107,17 +107,17 @@ function ProsCard({ title, pros }) {
 
 function ConsCard({ title, cons }) {
   return (
-    <div className="w-full p-6 my-6 border border-red-200 dark:border-red-900 bg-neutral-50 dark:bg-neutral-900 rounded-xl">
+    <div className="my-6 w-full rounded-xl border border-red-200 bg-neutral-50 p-6 dark:border-red-900 dark:bg-neutral-900">
       <span>{`You might not use ${title} if...`}</span>
       <div className="mt-4">
         {cons.map((con) => (
-          <div key={con} className="flex items-baseline mb-2 font-medium">
-            <div className="w-4 h-4 mr-2">
+          <div key={con} className="mb-2 flex items-baseline font-medium">
+            <div className="mr-2 h-4 w-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
-                className="w-4 h-4 text-red-500"
+                className="h-4 w-4 text-red-500"
               >
                 <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
               </svg>
@@ -133,7 +133,7 @@ function ConsCard({ title, cons }) {
 const Pre = ({ children, ...props }: React.HTMLAttributes<HTMLPreElement>) => {
   const childrenArray = React.Children.toArray(children);
   const code = childrenArray.find(
-    (child) => React.isValidElement(child) && child.type === "code"
+    (child) => React.isValidElement(child) && child.type === "code",
   ) as React.ReactElement;
 
   const className = code?.props.className || "";
@@ -186,8 +186,8 @@ function Code({ children, ...props }) {
   }
 
   return (
-    <div className="max-w-[805px] w-full">
-      <div className="code-frame font-mono relative">
+    <div className="w-full max-w-[805px]">
+      <div className="code-frame relative font-mono">
         <div className="code-frame-content">
           <div className="frame-controls">
             <div className="frame-control" />
@@ -199,7 +199,7 @@ function Code({ children, ...props }) {
         <button onClick={copyToClipboard}>
           {isCopied ? (
             <svg
-              className="w-5 h-5 text-indigo-400"
+              className="h-5 w-5 text-indigo-400"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -211,7 +211,7 @@ function Code({ children, ...props }) {
             </svg>
           ) : (
             <svg
-              className="w-5 h-5 text-slate-400 hover:text-[#64758B]"
+              className="h-5 w-5 text-slate-400 hover:text-[#64758B]"
               fill="none"
               viewBox="0 0 24 24"
             >
@@ -280,7 +280,7 @@ function createHeading(level) {
           className: "anchor ",
         }),
       ],
-      children
+      children,
     );
   };
 }
@@ -291,7 +291,7 @@ function paragraph({ children }) {
     (child) =>
       React.isValidElement(child) &&
       typeof child.type === "string" &&
-      /^(div|p|ul|ol|h[1-6])$/i.test(child.type)
+      /^(div|p|ul|ol|h[1-6])$/i.test(child.type),
   );
 
   // If there are block-level elements, render without wrapping p tag
@@ -301,31 +301,31 @@ function paragraph({ children }) {
 
   // Otherwise, wrap in a p tag as before
   return (
-    <p className="text-base text-text-secondary mb-6 leading-8">{children}</p>
+    <p className="mb-6 text-base leading-8 text-text-secondary">{children}</p>
   );
 }
 
 function OrderedList({ children }) {
-  return <ol className="list-decimal pl-8 mb-8">{children}</ol>;
+  return <ol className="mb-8 list-decimal pl-8">{children}</ol>;
 }
 
 function UnorderedList({ children }) {
-  return <ul className="list-disc pl-8 mb-8">{children}</ul>;
+  return <ul className="mb-8 list-disc pl-8">{children}</ul>;
 }
 
 function ListItem({ children }) {
   return (
-    <li className="text-base text-text-secondary mb-4 leading-8">{children}</li>
+    <li className="mb-4 text-base leading-8 text-text-secondary">{children}</li>
   );
 }
 
 function FullWidthCallout({ children }) {
   return (
-    <blockquote className="full-bleed relative overflow-clip mb-8 py-8 border-y border-border-primary [background-image:linear-gradient(45deg,theme(colors.border-primary)_12.50%,transparent_12.50%,transparent_50%,theme(colors.border-primary)_50%,theme(colors.border-primary)_62.50%,transparent_62.50%,transparent_100%)] [background-size:5px_5px]">
-      <span className="-z-10 absolute -top-1/2 left-1/2 -translate-x-1/2 opacity-50">
+    <blockquote className="full-bleed relative mb-8 overflow-clip border-y border-border-primary py-8 [background-image:linear-gradient(45deg,theme(colors.border-primary)_12.50%,transparent_12.50%,transparent_50%,theme(colors.border-primary)_50%,theme(colors.border-primary)_62.50%,transparent_62.50%,transparent_100%)] [background-size:5px_5px]">
+      <span className="absolute -top-1/2 left-1/2 -z-10 -translate-x-1/2 opacity-50">
         <BgGradient />
       </span>
-      <div className="p-6 blog-container mx-auto bg-bg-primary rounded-md drama-shadow">
+      <div className="blog-container drama-shadow mx-auto rounded-md bg-bg-primary p-6">
         {children}
       </div>
     </blockquote>
@@ -335,7 +335,7 @@ function FullWidthCallout({ children }) {
 function IdeaQuote({ children }) {
   return (
     <FullWidthCallout>
-      <span className="inline-flex tracking-widest uppercase items-center rounded-full bg-yellow-50 px-4 py-1 text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20 mb-3.5">
+      <span className="mb-3.5 inline-flex items-center rounded-full bg-yellow-50 px-4 py-1 text-xs font-medium uppercase tracking-widest text-yellow-800 ring-1 ring-inset ring-yellow-600/20">
         Idea
       </span>
       {children}
@@ -346,7 +346,7 @@ function IdeaQuote({ children }) {
 function InfoQuote({ children }) {
   return (
     <FullWidthCallout>
-      <span className="inline-flex uppercase items-center rounded-full bg-blue-50 px-4 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10 mb-3.5">
+      <span className="mb-3.5 inline-flex items-center rounded-full bg-blue-50 px-4 py-1 text-xs font-medium uppercase text-blue-700 ring-1 ring-inset ring-blue-700/10">
         Info
       </span>
       {children}
@@ -357,7 +357,7 @@ function InfoQuote({ children }) {
 function ThoughtQuote({ children }) {
   return (
     <FullWidthCallout>
-      <span className="inline-flex uppercase items-center rounded-full bg-indigo-50 px-4 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10 mb-3.5">
+      <span className="mb-3.5 inline-flex items-center rounded-full bg-indigo-50 px-4 py-1 text-xs font-medium uppercase text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
         Thought
       </span>
       {children}

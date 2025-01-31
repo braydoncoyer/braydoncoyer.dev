@@ -21,6 +21,6 @@ export default async function createSupabaseServerClient() {
           cookieStore.set({ name, value: "", ...options });
         },
       },
-    }
+    },
   );
 }

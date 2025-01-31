@@ -2,10 +2,10 @@ import { siteMetadata } from "app/data/siteMetadata";
 
 export function SocialPill() {
   return (
-    <div className="bg-dark-primary rounded-full flex place-items-center px-3 py-1.5 space-x-1 z-50">
+    <div className="z-50 flex place-items-center space-x-1 rounded-full bg-dark-primary px-3 py-1.5">
       <a href={siteMetadata.twitter}>
         <svg
-          className="w-6 h-6 text-gray-400 hover:text-gray-300"
+          className="h-6 w-6 text-gray-400 hover:text-gray-300"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +22,7 @@ export function SocialPill() {
       </a>
       <a href={siteMetadata.linkedin}>
         <svg
-          className="w-6 h-6 text-gray-400 hover:text-gray-300"
+          className="h-6 w-6 text-gray-400 hover:text-gray-300"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +67,7 @@ export function SocialPill() {
       </a>
       <a href={siteMetadata.github}>
         <svg
-          className="w-6 h-6 text-gray-400 hover:text-gray-300"
+          className="h-6 w-6 text-gray-400 hover:text-gray-300"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

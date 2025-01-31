@@ -17,7 +17,7 @@ export function SpeakingBento() {
         <span className="absolute left-1/2 -translate-x-1/2">
           <CirclePattern isHovered={isHovered} />
         </span>
-        <span className="absolute bottom-16 z-20 left-1/2 -translate-x-1/2">
+        <span className="absolute bottom-16 left-1/2 z-20 -translate-x-1/2">
           <AudioIndicator isHovered={isHovered} />
         </span>
         <div className="flex justify-around">
@@ -66,10 +66,10 @@ export function SpeakingBento() {
           </motion.span>
         </div>
         {/* Gradient overlay */}
-        <div className="w-full h-full bg-gradient-to-t from-white absolute inset-0"></div>
-        <div className="grid grid-cols-2 grid-rows-2 gap-8 h-full items-end absolute z-50 left-6 bottom-6">
+        <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-white"></div>
+        <div className="absolute bottom-6 left-6 z-50 grid h-full grid-cols-2 grid-rows-2 items-end gap-8">
           <div className="col-1 row-start-2 text-balance">
-            <h2 className="font-medium mb-2 ">Speaking</h2>
+            <h2 className="mb-2 font-medium">Speaking</h2>
             <p className="text-text-secondary">
               Talks, podcasts, tutorials and more
             </p>
@@ -90,7 +90,7 @@ export function CirclePattern({ isHovered }: { isHovered?: boolean }) {
 
   return (
     <svg
-      className="w-[400px] h-full"
+      className="h-full w-[400px]"
       viewBox="0 0 368 256"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -310,7 +310,7 @@ function PrimaryPhoto() {
       </svg>
 
       <img
-        className="h-[100px] w-[100px] rounded-full absolute left-1/2 transform -translate-x-1/2 top-1/2 -translate-y-1/2 object-cover"
+        className="absolute left-1/2 top-1/2 h-[100px] w-[100px] -translate-x-1/2 -translate-y-1/2 transform rounded-full object-cover"
         src="/braydon_speaking_photo.jpeg"
         alt=""
       />
@@ -380,7 +380,7 @@ function SecondaryPhoto({ imgSrc }: { imgSrc: string }) {
         </defs>
       </svg>
       <img
-        className="h-[64px] w-[64px] rounded-full absolute left-1/2 transform -translate-x-1/2 top-1/2 -translate-y-1/2 object-cover"
+        className="absolute left-1/2 top-1/2 h-[64px] w-[64px] -translate-x-1/2 -translate-y-1/2 transform rounded-full object-cover"
         src={imgSrc}
         alt=""
       />

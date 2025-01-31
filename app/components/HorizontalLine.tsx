@@ -1,5 +1,5 @@
 export function HorizontalLine() {
   return (
-    <span className="absolute w-full h-px bg-border-primary/50 left-1/2 transform -translate-x-1/2 "></span>
+    <span className="absolute left-1/2 h-px w-full -translate-x-1/2 transform bg-border-primary/50"></span>
   );
 }

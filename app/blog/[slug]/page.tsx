@@ -80,58 +80,58 @@ export default async function BlogPage({ params }: BlogPageProps) {
       {/* Article Banner Image */}
       <div className="relative">
         {/* Lines */}
-        <span className="absolute w-full h-px bg-zinc-500/75 mix-blend-screen top-6 md:top-12 z-10"></span>
-        <span className="absolute w-full h-px bg-zinc-500/75 mix-blend-screen bottom-6 md:bottom-12 z-10"></span>
-        <span className="absolute w-px h-full bg-zinc-500/75 mix-blend-screen left-6 md:left-12 z-10"></span>
-        <span className="absolute w-px h-full bg-zinc-500/75 mix-blend-screen right-6 md:right-12 z-10"></span>
+        <span className="absolute top-6 z-10 h-px w-full bg-zinc-500/75 mix-blend-screen md:top-12"></span>
+        <span className="absolute bottom-6 z-10 h-px w-full bg-zinc-500/75 mix-blend-screen md:bottom-12"></span>
+        <span className="absolute left-6 z-10 h-full w-px bg-zinc-500/75 mix-blend-screen md:left-12"></span>
+        <span className="absolute right-6 z-10 h-full w-px bg-zinc-500/75 mix-blend-screen md:right-12"></span>
 
         {/* top left cross */}
-        <span className="hidden md:block w-2 h-px bg-white absolute left-[44.5px] top-12 z-20"></span>
-        <span className="hidden md:block w-px h-2 bg-white absolute left-[48px] top-[44.5px] z-20"></span>
+        <span className="absolute left-[44.5px] top-12 z-20 hidden h-px w-2 bg-white md:block"></span>
+        <span className="absolute left-[48px] top-[44.5px] z-20 hidden h-2 w-px bg-white md:block"></span>
 
         {/* top right cross */}
-        <span className="hidden md:block w-2 h-px bg-white absolute right-[44.5px] top-12 z-20"></span>
-        <span className="hidden md:block w-px h-2 bg-white absolute right-[48px] top-[44.5px] z-20"></span>
+        <span className="absolute right-[44.5px] top-12 z-20 hidden h-px w-2 bg-white md:block"></span>
+        <span className="absolute right-[48px] top-[44.5px] z-20 hidden h-2 w-px bg-white md:block"></span>
 
         {/* bottom left cross */}
-        <span className="hidden md:block w-2 h-px bg-white absolute left-[44.5px] bottom-12 z-20"></span>
-        <span className="hidden md:block w-px h-2 bg-white absolute left-[48px] bottom-[44.5px] z-20"></span>
+        <span className="absolute bottom-12 left-[44.5px] z-20 hidden h-px w-2 bg-white md:block"></span>
+        <span className="absolute bottom-[44.5px] left-[48px] z-20 hidden h-2 w-px bg-white md:block"></span>
 
         {/* bottom right cross */}
-        <span className="hidden md:block w-2 h-px bg-white absolute right-[44.5px] bottom-12 z-20"></span>
-        <span className="hidden md:block w-px h-2 bg-white absolute right-[48px] bottom-[44.5px] z-20"></span>
+        <span className="absolute bottom-12 right-[44.5px] z-20 hidden h-px w-2 bg-white md:block"></span>
+        <span className="absolute bottom-[44.5px] right-[48px] z-20 hidden h-2 w-px bg-white md:block"></span>
 
         <div
-          className="w-full h-[350px] md:h-[600px] rounded-2xl md:mb-16 drama-shadow bg-cover bg-center bg-no-repeat p-8 md:p-16 flex flex-col justify-end"
+          className="drama-shadow flex h-[350px] w-full flex-col justify-end rounded-2xl bg-cover bg-center bg-no-repeat p-8 md:mb-16 md:h-[600px] md:p-16"
           style={{
             backgroundImage: `linear-gradient(to top, rgba(99, 102, 241, 1) 0%, rgba(99, 102, 241, 0.1) 30%, transparent 35%), url('/blog/${post.imageName}')`,
           }}
         >
           <div className="mt-auto">
-            <div className="md:flex-wrap gap-2 hidden md:flex mb-4">
+            <div className="mb-4 hidden gap-2 md:flex md:flex-wrap">
               {post.categories.slice(0, 3).map((category, index) => (
                 <div
                   key={index}
-                  className="inline-flex text-center text-xs text-white rounded-full uppercase border border-border-primary px-2 py-px"
+                  className="inline-flex rounded-full border border-border-primary px-2 py-px text-center text-xs uppercase text-white"
                 >
                   <span>#{category}</span>
                 </div>
               ))}
             </div>
-            <div className="space-y-4 mb-4 text-balance">
-              <h1 className="max-w-2xl font-medium text-4xl md:text-5xl tracking-tight leading-[45px] md:leading-[60px] text-white">
+            <div className="mb-4 space-y-4 text-balance">
+              <h1 className="max-w-2xl text-4xl font-medium leading-[45px] tracking-tight text-white md:text-5xl md:leading-[60px]">
                 {post.title}
               </h1>
-              <p className="max-w-3xl text-slate-100 leading-8 hidden md:block">
+              <p className="hidden max-w-3xl leading-8 text-slate-100 md:block">
                 {post.summary}
               </p>
             </div>
 
-            {/* View Count */}
-            <div className="flex items-center gap-4 text-slate-300 text-sm">
-              <div className="flex items-center gap-1.5 text-slate-300 text-xs">
+            {/* Published Date */}
+            <div className="grid auto-cols-auto grid-cols-3 items-center gap-4 text-sm text-slate-300">
+              <div className="flex items-center gap-1.5 text-xs text-slate-300">
                 <svg
-                  className="w-5 h-5 text-slate-200"
+                  className="hidden h-5 w-5 text-slate-200 md:block"
                   fill="none"
                   viewBox="0 0 24 24"
                 >
@@ -167,9 +167,10 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
                 <p>{formatDate(post.publishedAt)}</p>
               </div>
-              <div className="flex items-center gap-1.5 text-slate-200 text-xs">
+              {/* Read Time */}
+              <div className="flex items-center gap-1.5 text-xs text-slate-200">
                 <svg
-                  className="w-5 h-5 text-slate-300"
+                  className="hidden h-5 w-5 text-slate-300 md:block"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -198,9 +199,10 @@ export default async function BlogPage({ params }: BlogPageProps) {
                 </svg>
                 <p>{readingTime}</p>
               </div>
-              <div className="flex items-center gap-1 text-slate-200 text-xs">
+              {/* View Count */}
+              <div className="flex items-center gap-1 text-xs text-slate-200">
                 <svg
-                  className="text-slate-300 w-5 h-5"
+                  className="hidden h-5 w-5 text-slate-300 md:block"
                   fill="none"
                   viewBox="0 0 24 24"
                 >
@@ -234,18 +236,18 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
       {/* Similar Posts */}
       <section className="space-y-16">
-        <div className="space-y-4 relative">
-          <span className="absolute left-1/2 -translate-x-1/2 top-0 pointer-events-none">
+        <div className="relative space-y-4">
+          <span className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2">
             <BgGradient />
           </span>
           <SectionTitlePill title="Similar Posts" />
-          <h2 className="mx-auto text-text-primary text-center text-balance font-medium text-3xl tracking-tighter max-w-lg leading-10">
+          <h2 className="mx-auto max-w-lg text-balance text-center text-3xl font-medium leading-10 tracking-tighter text-text-primary">
             Here are some other articles you might find interesting.
           </h2>
         </div>
 
         <div className="z-10">
-          <ul className="grid grid-cols-1 md:grid-cols-3 gap-2">
+          <ul className="grid grid-cols-1 gap-2 md:grid-cols-3">
             <HorizontalLine />
             {similarPosts.length > 0 ? (
               <>

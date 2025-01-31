@@ -26,12 +26,12 @@ export default function Marquee(props) {
         initial="idle"
         whileHover="active"
         variants={{ idle: {}, active: {} }}
-        className={clsx("flex gap-4 group")}
+        className={clsx("group flex gap-4")}
       >
         {props.items.map((item, index) => (
           <div
             className={clsx(
-              "animate-marquee group-hover:[animation-play-state:running]"
+              "animate-marquee group-hover:[animation-play-state:running]",
             )}
             style={{ ...itemStyle, animationDuration: `${speed}s` }}
             key={`${item}-${index}`}
@@ -42,7 +42,7 @@ export default function Marquee(props) {
         {props.items.map((item, index) => (
           <div
             className={clsx(
-              "[--move-x-from:-100%] [--move-x-to:calc(100%+100cqw)] [animation-iteration-count:infinite] [animation-name:move-x] [animation-play-state:paused] [animation-timing-function:linear] group-hover:[animation-play-state:running]"
+              "[--move-x-from:-100%] [--move-x-to:calc(100%+100cqw)] [animation-iteration-count:infinite] [animation-name:move-x] [animation-play-state:paused] [animation-timing-function:linear] group-hover:[animation-play-state:running]",
             )}
             style={itemStyle}
             key={`${item}-repeat-${index}`}

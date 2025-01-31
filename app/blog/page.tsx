@@ -15,13 +15,13 @@ export default async function BlogPage({
 }) {
   const allPublishedBlogPosts = fetchAndSortBlogPosts();
   const categories = Array.from(
-    extractUniqueBlogCategories(allPublishedBlogPosts)
+    extractUniqueBlogCategories(allPublishedBlogPosts),
   );
   const category = (await searchParams).category?.toLowerCase() || "";
 
   const displayedPosts = category
     ? allPublishedBlogPosts.filter((post) =>
-        post.categories?.map((cat) => cat.toLowerCase()).includes(category)
+        post.categories?.map((cat) => cat.toLowerCase()).includes(category),
       )
     : allPublishedBlogPosts;
 
@@ -40,7 +40,7 @@ export default async function BlogPage({
   );
 
   return (
-    <div className="space-y-[80px] mt-[100px] w-full">
+    <div className="mt-[100px] w-full space-y-[80px]">
       <title>Blog | Braydon Coyer</title>
       <BlogPageHeader
         title={

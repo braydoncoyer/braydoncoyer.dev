@@ -124,14 +124,14 @@ export default function SpeakingPage() {
   return (
     <div className="relative">
       <title>Speaking | Braydon Coyer</title>
-      <div className="space-y-[80px] relative">
+      <div className="relative space-y-[80px]">
         <span className="absolute -right-[120px] top-[260px] z-10">
           <BgSectionTag tagType={TagType.SECTION} />
         </span>
         <div>
           <PageTitle title="I share my web development expertise at conferences worldwide && online." />
         </div>
-        <span className="absolute top-40 inset-x-0">
+        <span className="absolute inset-x-0 top-40">
           <HorizontalLine />
         </span>
 
@@ -143,10 +143,10 @@ export default function SpeakingPage() {
 
         <div>
           {/* Photos */}
-          <div className="flex space-x-12 items-center mt-16 mb-8 justify-center">
+          <div className="mb-8 mt-16 flex items-center justify-center space-x-12">
             <div className="relative">
               <ShadowBox width={278} height={278}></ShadowBox>
-              <span className="absolute top-2 left-1 rotate-[-8deg]">
+              <span className="absolute left-1 top-2 rotate-[-8deg]">
                 <Photo
                   width={270}
                   height={270}
@@ -159,7 +159,7 @@ export default function SpeakingPage() {
 
             <div className="relative">
               <ShadowBox width={412} height={278}></ShadowBox>
-              <span className="absolute top-1 left-1 rotate-[8deg]">
+              <span className="absolute left-1 top-1 rotate-[8deg]">
                 <Photo
                   width={404}
                   height={270}
@@ -172,7 +172,7 @@ export default function SpeakingPage() {
 
             <div className="relative">
               <ShadowBox width={188} height={278}></ShadowBox>
-              <span className="absolute top-1 left-1 rotate-[-8deg]">
+              <span className="absolute left-1 top-1 rotate-[-8deg]">
                 <Photo
                   width={180}
                   height={270}
@@ -185,7 +185,7 @@ export default function SpeakingPage() {
           </div>
         </div>
 
-        <div className="space-y-32 relative">
+        <div className="relative space-y-32">
           <span className="absolute left-0 top-[400px]">
             <svg
               width="89"
@@ -258,14 +258,14 @@ export default function SpeakingPage() {
             {Object.entries(presentationList).map(([key, category]) => (
               <>
                 <div
-                  className="grid grid-cols-12 text-balance h-auto pt-16"
+                  className="grid h-auto grid-cols-12 text-balance pt-16"
                   key={key}
                 >
-                  <h2 className="text-3xl text-right font-semibold leading-10 col-span-2">
+                  <h2 className="col-span-2 text-right text-3xl font-semibold leading-10">
                     {category.title}
                   </h2>
-                  <div className="col-span-2 h-auto flex justify-center">
-                    <svg className="w-2 h-full">
+                  <div className="col-span-2 flex h-auto justify-center">
+                    <svg className="h-full w-2">
                       <g filter="url(#filter0_i_185_3294)">
                         <path
                           d="M4 4L4.00002 1000"
@@ -324,13 +324,13 @@ export default function SpeakingPage() {
                   <div className="col-span-8 col-start-5 flex flex-col space-y-14 text-left">
                     {category.talks.map((talk, index) => (
                       <div key={index}>
-                        <h3 className="text-base font-semibold mb-4">
+                        <h3 className="mb-4 text-base font-semibold">
                           {talk.title}
                         </h3>
-                        <p className="text-base font-semibold text-text-secondary mb-6">
+                        <p className="mb-6 text-base font-semibold text-text-secondary">
                           {talk.conference}
                         </p>
-                        <p className="text-base text-text-secondary mb-6 leading-7">
+                        <p className="mb-6 text-base leading-7 text-text-secondary">
                           {talk.description}
                         </p>
                         {talk.link && talk.buttonLabel && (
@@ -360,10 +360,10 @@ export default function SpeakingPage() {
               <BgSectionTag tagType={TagType.SECTION} />
             </span>
             <div className="grid grid-cols-12 gap-12">
-              <div className="col-span-7 flex flex-col space-y-8 relative">
+              <div className="relative col-span-7 flex flex-col space-y-8">
                 {/* Title */}
-                <div className="col-span-5 flex flex-col items-start space-y-3 w-3/4 text-balance">
-                  <div className="text-sm font-medium text-indigo-600 text-left">
+                <div className="col-span-5 flex w-3/4 flex-col items-start space-y-3 text-balance">
+                  <div className="text-left text-sm font-medium text-indigo-600">
                     <span>Biography</span>
                   </div>
                   <h2 className="text-3xl font-semibold text-text-primary">
@@ -378,7 +378,7 @@ export default function SpeakingPage() {
                   </TabList>
                   <TabPanels className="mt-8">
                     <TabPanel id="first-person">
-                      <p className="text-base text-text-secondary leading-7">
+                      <p className="text-base leading-7 text-text-secondary">
                         I am Braydon Coyer, a Senior Frontend Engineer at
                         LogicGate, where I play a key role in developing an
                         automated Governance, Risk, and Compliance (GRC)
@@ -389,7 +389,7 @@ export default function SpeakingPage() {
                       </p>
                     </TabPanel>
                     <TabPanel id="third-person">
-                      <p className="text-base text-text-secondary leading-7">
+                      <p className="text-base leading-7 text-text-secondary">
                         Braydon Coyer is a Senior Frontend Engineer at
                         LogicGate, where he plays a key role in developing an
                         automated Governance, Risk, and Compliance (GRC)
@@ -402,7 +402,7 @@ export default function SpeakingPage() {
                   </TabPanels>
                 </Tabs>
 
-                <span className="absolute left-3/4 top-12 border p-2 rounded-lg border-border-primary/50">
+                <span className="absolute left-3/4 top-12 rounded-lg border border-border-primary/50 p-2">
                   <svg
                     width="29"
                     height="29"
@@ -464,20 +464,20 @@ export default function SpeakingPage() {
                   </svg>
                 </span>
               </div>
-              <div className="col-span-5 flex flex-col space-y-8 items-start">
-                <div className="flex flex-col space-y-4 items-start">
-                  <div className="text-sm font-medium text-indigo-600 text-left">
+              <div className="col-span-5 flex flex-col items-start space-y-8">
+                <div className="flex flex-col items-start space-y-4">
+                  <div className="text-left text-sm font-medium text-indigo-600">
                     <span>Headshots</span>
                   </div>
                   <h2 className="text-3xl font-semibold text-text-primary">
                     A variety of photos great for speaker headshots
                   </h2>
                 </div>
-                <div className="flex w-full space-x-4 mt-12">
+                <div className="mt-12 flex w-full space-x-4">
                   <div className="relative">
                     <ShadowBox width={200} height={200}></ShadowBox>
                     <img
-                      className="w-[186px] h-[186px] rounded-lg object-cover absolute top-2 left-1 rotate-[9deg] shadow"
+                      className="absolute left-1 top-2 h-[186px] w-[186px] rotate-[9deg] rounded-lg object-cover shadow"
                       src="/braydon_headshot_1.jpeg"
                       alt=""
                     />
@@ -486,7 +486,7 @@ export default function SpeakingPage() {
                   <div className="relative">
                     <ShadowBox width={200} height={200}></ShadowBox>
                     <img
-                      className="w-[186px] h-[186px] rounded-lg object-cover absolute top-2 left-1 rotate-[-8deg] shadow"
+                      className="absolute left-1 top-2 h-[186px] w-[186px] rotate-[-8deg] rounded-lg object-cover shadow"
                       src="/braydon_speaking_photo_square.jpg"
                       alt=""
                     />
@@ -494,7 +494,7 @@ export default function SpeakingPage() {
                 </div>
               </div>
             </div>
-            <div className="pt-24 relative">
+            <div className="relative pt-24">
               <HorizontalLine />
             </div>
           </section>

@@ -1,6 +1,5 @@
 export const siteMetadata = {
-  title:
-    "Braydon Coyer",
+  title: "Braydon Coyer",
   author: "Braydon Coyer",
   headerTitle: "Braydon's Portfolio",
   description:

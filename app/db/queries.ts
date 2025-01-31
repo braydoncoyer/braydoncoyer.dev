@@ -33,7 +33,6 @@
 //   `;
 // }
 
-
 // export async function getCommunityWallEntries() {
 //   if (!process.env.POSTGRES_URL) {
 //     return [];

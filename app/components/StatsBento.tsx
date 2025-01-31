@@ -3,9 +3,9 @@ import { BentoCard } from "./BentoCard";
 export function StatsBento() {
   return (
     <BentoCard height="h-[220px]" className="group">
-      <h2 className="font-medium mb-2">
+      <h2 className="mb-2 font-medium">
         Stats{" "}
-        <span className="uppercase text-xs text-text-tertiary ml-2">
+        <span className="ml-2 text-xs uppercase text-text-tertiary">
           coming soon
         </span>
       </h2>
@@ -13,7 +13,7 @@ export function StatsBento() {
         <StatsIllustration />
       </div>
       {/* Gradient overlay */}
-      <div className="w-full h-full bg-gradient-to-t from-white via-transparent to-transparent absolute inset-0"></div>
+      <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-white via-transparent to-transparent"></div>
     </BentoCard>
   );
 }

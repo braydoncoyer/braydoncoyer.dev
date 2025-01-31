@@ -33,8 +33,8 @@ export function CurrentlyPlayingBento() {
 
   if (isLoading) {
     return (
-      <div className="p-6 rounded-2xl col-span-5 row-span-6 h-[220px] border border-border-primary flex flex-col hover:bg-white group relative overflow-hidden">
-        <p className="text-base animate-pulse text-text-primary">
+      <div className="group relative col-span-5 row-span-6 flex h-[220px] flex-col overflow-hidden rounded-2xl border border-border-primary p-6 hover:bg-white">
+        <p className="animate-pulse text-base text-text-primary">
           Loading music...
         </p>
       </div>
@@ -43,13 +43,13 @@ export function CurrentlyPlayingBento() {
 
   return (
     <BentoCard height="h-[300px]" linkTo={currentTrack.songUrl}>
-      <div className="flex flex-col ">
-        <div className="h-full z-10">
-          <div className="flex flex-col h-full justify-between">
-            <h2 className="text-base font-medium mb-2">
+      <div className="flex flex-col">
+        <div className="z-10 h-full">
+          <div className="flex h-full flex-col justify-between">
+            <h2 className="mb-2 text-base font-medium">
               {isCurrentlyPlaying ? "Currently Playing" : "Recent Favorite"}
             </h2>
-            <p className="text-base text-text-secondary max-h-[150px] overflow-hidden">
+            <p className="max-h-[150px] overflow-hidden text-base text-text-secondary">
               <span className="line-clamp-4 text-ellipsis">
                 I&apos;m listening to{" "}
                 <a className="font-semibold" href={currentTrack.songUrl}>
@@ -72,7 +72,7 @@ export function CurrentlyPlayingBento() {
               </span>
             </p>
           </div>
-          <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 group-hover:-bottom-1 transition-all duration-300 user-select-none pointer-events-none">
+          <div className="user-select-none pointer-events-none absolute -bottom-8 left-1/2 -translate-x-1/2 transition-all duration-300 group-hover:-bottom-1">
             <Record
               albumImageUrl={currentTrack.albumImageUrl}
               isPlaying={isCurrentlyPlaying}
@@ -80,12 +80,12 @@ export function CurrentlyPlayingBento() {
           </div>
           <div className="absolute -bottom-32 left-1/2 -translate-x-1/2">
             <div
-              className="h-[210px] w-[210px] bg-cover bg-center rounded-sm shadow-md"
+              className="h-[210px] w-[210px] rounded-sm bg-cover bg-center shadow-md"
               style={{ backgroundImage: `url(${currentTrack.albumImageUrl})` }}
             ></div>
           </div>
         </div>
-        <span className="absolute left-1/2 -translate-x-1/2 -bottom-32">
+        <span className="absolute -bottom-32 left-1/2 -translate-x-1/2">
           <CirclePattern />
         </span>
       </div>
@@ -252,7 +252,7 @@ function TrackLink({
 }) {
   return (
     <Link href={track.songUrl} target="_blank" rel="noopener noreferrer">
-      <h3 className="font-medium text-base text-purple-primary/75 hover:text-purple-primary">
+      <h3 className="text-base font-medium text-purple-primary/75 hover:text-purple-primary">
         {track.title}
       </h3>
     </Link>
@@ -267,16 +267,16 @@ function RecordPlayer({
     <div>
       {/* Record */}
       <div
-        className={`bg-dark-primary ring-1 ring-inset ring-[#6C6D70] rounded-full w-28 h-28 flex items-center justify-center shadow-md ${
+        className={`flex h-28 w-28 items-center justify-center rounded-full bg-dark-primary shadow-md ring-1 ring-inset ring-[#6C6D70] ${
           isPlaying ? "animate-spin-slow" : ""
         }`}
       >
         {/* Album Cover */}
         <div
-          className="w-12 h-12 bg-white rounded-full bg-cover bg-center flex items-center justify-center ring-1 ring-inset ring-[#6C6D70]"
+          className="flex h-12 w-12 items-center justify-center rounded-full bg-white bg-cover bg-center ring-1 ring-inset ring-[#6C6D70]"
           style={{ backgroundImage: `url(${albumImageUrl})` }}
         >
-          <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+          <div className="h-1.5 w-1.5 rounded-full bg-white"></div>
         </div>
       </div>
     </div>
@@ -286,7 +286,7 @@ function RecordPlayer({
 function SpotifyLogo() {
   return (
     <svg
-      className="w-6 h-6 absolute bottom-2 left-2 text-[#1CD760] opacity-50 hover:opacity-100"
+      className="absolute bottom-2 left-2 h-6 w-6 text-[#1CD760] opacity-50 hover:opacity-100"
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

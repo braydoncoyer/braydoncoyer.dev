@@ -1,6 +1,6 @@
-import { defineConfig, defineCollection, s } from 'velite';
+import { defineConfig, defineCollection, s } from "velite";
 
-const computedFields = <T extends { slug: string}>(data: T) => ({
+const computedFields = <T extends { slug: string }>(data: T) => ({
   ...data,
   slugAsParams: data.slug.split("/").slice(1).join("/"),
 });

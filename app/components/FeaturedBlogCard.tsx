@@ -14,21 +14,21 @@ export function FeaturedBlogCard({
   summary,
 }: FeaturedBlogCardProps) {
   return (
-    <li className="flex flex-col h-full border border-border-primary rounded-3xl p-2 bg-bg-primary z-50">
-      <Link className="flex flex-col rounded-2xl h-full" href={`/blog/${slug}`}>
+    <li className="z-50 flex h-full flex-col rounded-3xl border border-border-primary bg-bg-primary p-2">
+      <Link className="flex h-full flex-col rounded-2xl" href={`/blog/${slug}`}>
         <img
           src={
             `/blog/${imageName}` ||
             "https://image.isu.pub/190918160849-8822f46c79620853d26cb2aad7175839/jpg/page_1_thumb_large.jpg"
           }
           alt=""
-          className="rounded-2xl min-h-[225px] max-h-[300px] md:h-[225px] object-cover"
+          className="h-[280px] rounded-2xl object-cover md:h-[225px]"
         />
-        <div className="my-4 flex flex-col w-full space-y-4 px-4 flex-grow text-balance">
-          <h2 className="tracking-tight text-slate-900 text-lg font-medium leading-7">
+        <div className="my-4 flex w-full flex-grow flex-col space-y-4 text-balance px-4">
+          <h2 className="text-lg font-medium leading-7 tracking-tight text-slate-900">
             {title}
           </h2>
-          <p className="leading-7 text-text-secondary flex-grow">{summary}</p>
+          <p className="flex-grow leading-7 text-text-secondary">{summary}</p>
         </div>
       </Link>
     </li>

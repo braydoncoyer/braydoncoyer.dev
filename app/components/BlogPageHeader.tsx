@@ -10,11 +10,11 @@ export function BlogPageHeader({
 }) {
   return (
     <>
-      <div className="max-w-2xl mx-auto z-10">
+      <div className="z-10 mx-auto max-w-2xl">
         <PageTitle title={title} />
       </div>
       {sectionTitle && (
-        <div className="text-sm font-medium text-indigo-600 text-center">
+        <div className="text-center text-sm font-medium text-indigo-600">
           <span>{sectionTitle}</span>
         </div>
       )}

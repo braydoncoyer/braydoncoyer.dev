@@ -58,34 +58,34 @@ export function NewsletterSignUp({
   };
 
   return (
-    <div className="pb-16 relative">
+    <div className="relative pb-16">
       <GridWrapper>
         <div className="relative overflow-x-clip">
-          <div className="bg-dark-primary p-14 md:p-[100px] rounded-2xl drama-shadow">
+          <div className="drama-shadow rounded-2xl bg-dark-primary p-14 md:p-[100px]">
             {/* Lines */}
-            <div className="w-full h-px bg-zinc-600 absolute left-0 right-0 top-[34px] md:top-[48px] z-10"></div>
-            <div className="w-px h-full bg-zinc-600 absolute right-[34px] md:right-[48px] top-0 bottom-0 z-10"></div>
-            <div className="w-full h-px bg-zinc-600 absolute left-0 right-0 bottom-[34px] md:bottom-[48px] z-10"></div>
-            <div className="w-px h-full bg-zinc-600 absolute left-[34px] md:left-[48px] top-0 bottom-0 z-10"></div>
+            <div className="absolute left-0 right-0 top-[34px] z-10 h-px w-full bg-zinc-600 md:top-[48px]"></div>
+            <div className="absolute bottom-0 right-[34px] top-0 z-10 h-full w-px bg-zinc-600 md:right-[48px]"></div>
+            <div className="absolute bottom-[34px] left-0 right-0 z-10 h-px w-full bg-zinc-600 md:bottom-[48px]"></div>
+            <div className="absolute bottom-0 left-[34px] top-0 z-10 h-full w-px bg-zinc-600 md:left-[48px]"></div>
 
             {/* Top Right Cross */}
-            <div className="w-2 h-px bg-zinc-300 absolute right-[44.5px] top-[48px] z-20 hidden md:block"></div>
-            <div className="w-px h-2 bg-zinc-300 absolute right-[48px] top-[44.5px] z-20 hidden md:block"></div>
+            <div className="absolute right-[44.5px] top-[48px] z-20 hidden h-px w-2 bg-zinc-300 md:block"></div>
+            <div className="absolute right-[48px] top-[44.5px] z-20 hidden h-2 w-px bg-zinc-300 md:block"></div>
             {/* Top Left Cross */}
-            <div className="w-2 h-px bg-zinc-300 absolute left-[44.5px] right-0 top-[48px] z-20 hidden md:block"></div>
-            <div className="w-px h-2 bg-zinc-300 absolute left-[48px] right-0 top-[44.5px] z-20 hidden md:block"></div>
+            <div className="absolute left-[44.5px] right-0 top-[48px] z-20 hidden h-px w-2 bg-zinc-300 md:block"></div>
+            <div className="absolute left-[48px] right-0 top-[44.5px] z-20 hidden h-2 w-px bg-zinc-300 md:block"></div>
             {/* Bottom Left Cross */}
-            <div className="w-2 h-px bg-zinc-300 absolute left-[44.5px] right-0 bottom-[48px] z-20 hidden md:block"></div>
-            <div className="w-px h-2 bg-zinc-300 absolute left-[48px] right-0 bottom-[44.5px] z-20 hidden md:block"></div>
+            <div className="absolute bottom-[48px] left-[44.5px] right-0 z-20 hidden h-px w-2 bg-zinc-300 md:block"></div>
+            <div className="absolute bottom-[44.5px] left-[48px] right-0 z-20 hidden h-2 w-px bg-zinc-300 md:block"></div>
             {/* Bottom Right Cross */}
-            <div className="w-2 h-px bg-zinc-300 absolute right-[44.5px] bottom-[48px] z-20 hidden md:block"></div>
-            <div className="w-px h-2 bg-zinc-300 absolute right-[48px] bottom-[44.5px] z-20 hidden md:block"></div>
+            <div className="absolute bottom-[48px] right-[44.5px] z-20 hidden h-px w-2 bg-zinc-300 md:block"></div>
+            <div className="absolute bottom-[44.5px] right-[48px] z-20 hidden h-2 w-px bg-zinc-300 md:block"></div>
 
-            <h2 className="text-3xl text-slate-50 mb-4 font-medium">{title}</h2>
-            <p className="text-gray-300 text-base max-w-[336px] mb-8 md:mb-12 leading-8">
+            <h2 className="mb-4 text-3xl font-medium text-slate-50">{title}</h2>
+            <p className="mb-8 max-w-[336px] text-base leading-8 text-gray-300 md:mb-12">
               {description}
             </p>
-            <div className="space-y-4 mb-4">
+            <div className="mb-4 space-y-4">
               <form
                 onSubmit={handleSubmit}
                 className="relative md:inline-block"
@@ -99,12 +99,12 @@ export function NewsletterSignUp({
                   placeholder="bobloblaw@gmail.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full md:w-[425px] px-5 py-3 bg-transparent border border-gray-400 rounded-full placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-slate-100 focus:ring-offset-2 focus:ring-offset-dark-primary text-white"
+                  className="w-full rounded-full border border-gray-400 bg-transparent px-5 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-slate-100 focus:ring-offset-2 focus:ring-offset-dark-primary md:w-[425px]"
                   disabled={isLoading}
                 />
                 <button
                   type="submit"
-                  className="group h-[42px] absolute top-1 right-1 isolate inline-flex items-center justify-center overflow-hidden text-left font-medium transition duration-300 ease-[cubic-bezier(0.4,0.36,0,1)] before:duration-300 before:ease-[cubic-bezier(0.4,0.36,0,1)] before:transition-opacity rounded-full shadow-[0_1px_theme(colors.white/0.07)_inset,0_1px_3px_theme(colors.gray.900/0.2)] before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:rounded-full before:bg-gradient-to-b before:from-white/20 before:opacity-50 hover:before:opacity-100 after:pointer-events-none after:absolute after:inset-0 after:-z-10 after:rounded-full after:bg-gradient-to-b after:from-white/10 after:from-[46%] after:to-[54%] after:mix-blend-overlay text-sm px-4 py-2.5 ring-1 bg-slate-100 text-slate-900 ring-white"
+                  className="group absolute right-1 top-1 isolate inline-flex h-[42px] items-center justify-center overflow-hidden rounded-full bg-slate-100 px-4 py-2.5 text-left text-sm font-medium text-slate-900 shadow-[0_1px_theme(colors.white/0.07)_inset,0_1px_3px_theme(colors.gray.900/0.2)] ring-1 ring-white transition duration-300 ease-[cubic-bezier(0.4,0.36,0,1)] before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:rounded-full before:bg-gradient-to-b before:from-white/20 before:opacity-50 before:transition-opacity before:duration-300 before:ease-[cubic-bezier(0.4,0.36,0,1)] after:pointer-events-none after:absolute after:inset-0 after:-z-10 after:rounded-full after:bg-gradient-to-b after:from-white/10 after:from-[46%] after:to-[54%] after:mix-blend-overlay hover:before:opacity-100"
                   disabled={isLoading}
                 >
                   {isLoading ? "Loading..." : buttonText}
@@ -123,7 +123,7 @@ export function NewsletterSignUp({
                 )}
               </div>
             </div>
-            <p className="text-gray-300 text-base">
+            <p className="text-base text-gray-300">
               <span className="font-bold text-white">NO SPAM.</span> I never
               send spam. You can unsubscribe at any time!
             </p>

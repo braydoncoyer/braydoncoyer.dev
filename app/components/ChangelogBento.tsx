@@ -13,10 +13,10 @@ export function ChangelogBento() {
 
   return (
     <BentoCard height="h-[276px]" linkTo="/changelog" className="group">
-      <div className="absolute top-0 h-full left-1/2 transform -translate-x-1/2 w-2 bg-[#D6DADE]/35 border-x border-px border-[#A5AEB8]/10"></div>
+      <div className="border-px absolute left-1/2 top-0 h-full w-2 -translate-x-1/2 transform border-x border-[#A5AEB8]/10 bg-[#D6DADE]/35"></div>
       {/* Timeline */}
       <div className="relative">
-        <div className="absolute top-0 left-0 right-0 transition-transform duration-500 ease-in-out group-hover:-translate-y-6">
+        <div className="absolute left-0 right-0 top-0 transition-transform duration-500 ease-in-out group-hover:-translate-y-6">
           {changelogItems.map((item, index) => (
             <div
               key={item.publishedAt}
@@ -26,7 +26,7 @@ export function ChangelogBento() {
               <span
                 className={`absolute top-[27px] ${
                   index % 2 === 1 ? "left-[-20px]" : "right-[-20px]"
-                } w-[20px] h-px bg-border-primary hidden md:inline-block`}
+                } hidden h-px w-[20px] bg-border-primary md:inline-block`}
               />
               <EntreeCard title={item.title} publishedAt={item.publishedAt} />
             </div>
@@ -34,10 +34,10 @@ export function ChangelogBento() {
         </div>
       </div>
       {/* Gradient overlay */}
-      <div className="w-full h-full bg-gradient-to-t from-white to-transparent absolute inset-0"></div>
-      <div className="grid grid-cols-2 grid-rows-2 gap-8 h-full items-end z-10">
+      <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-white to-transparent"></div>
+      <div className="z-10 grid h-full grid-cols-2 grid-rows-2 items-end gap-8">
         <div className="col-1 row-start-2">
-          <h2 className="font-medium mb-2">Changelog</h2>
+          <h2 className="mb-2 font-medium">Changelog</h2>
           <p className="text-text-secondary">
             Here&apos;s what&apos;s new on my site
           </p>
@@ -52,8 +52,8 @@ function EntreeCard({
   publishedAt = "2022-12-13",
 }: Partial<Changelog>) {
   return (
-    <div className="rounded-xl inline-block px-3 py-2.5 bg-white text-xs space-y-px border border-border-primary w-[160px] z-10">
-      <p className="font-semibold text-text-secondary text-ellipsis whitespace-nowrap overflow-hidden">
+    <div className="z-10 inline-block w-[160px] space-y-px rounded-xl border border-border-primary bg-white px-3 py-2.5 text-xs">
+      <p className="overflow-hidden text-ellipsis whitespace-nowrap font-semibold text-text-secondary">
         {title}
       </p>
       <time dateTime={publishedAt}>

@@ -53,11 +53,11 @@ function CustomLink(props) {
 function RoundedImage(props) {
   return (
     <div className="relative">
-      <span className="absolute top-0 inset-x-0">
+      <span className="absolute inset-x-0 top-0">
         <HorizontalLine />
       </span>
       <img src={props.src} alt={props.alt} className="rounded-3xl" />
-      <span className="absolute bottom-0 inset-x-0">
+      <span className="absolute inset-x-0 bottom-0">
         <HorizontalLine />
       </span>
     </div>
@@ -66,22 +66,22 @@ function RoundedImage(props) {
 
 function Callout(props) {
   return (
-    <div className="flex items-center p-1 px-4 py-3 mb-8 text-sm border rounded border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100">
-      <div className="flex items-center w-4 mr-4">{props.emoji}</div>
-      <div className="w-full callout">{props.children}</div>
+    <div className="mb-8 flex items-center rounded border border-neutral-200 bg-neutral-50 p-1 px-4 py-3 text-sm text-neutral-900 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100">
+      <div className="mr-4 flex w-4 items-center">{props.emoji}</div>
+      <div className="callout w-full">{props.children}</div>
     </div>
   );
 }
 
 function ProsCard({ title, pros }) {
   return (
-    <div className="w-full p-6 my-4 border border-emerald-200 dark:border-emerald-900 bg-neutral-50 dark:bg-neutral-900 rounded-xl">
+    <div className="my-4 w-full rounded-xl border border-emerald-200 bg-neutral-50 p-6 dark:border-emerald-900 dark:bg-neutral-900">
       <span>{`You might use ${title} if...`}</span>
       <div className="mt-4">
         {pros.map((pro) => (
-          <div key={pro} className="flex items-baseline mb-2 font-medium">
-            <div className="w-4 h-4 mr-2">
-              <svg className="w-4 h-4 text-emerald-500" viewBox="0 0 24 24">
+          <div key={pro} className="mb-2 flex items-baseline font-medium">
+            <div className="mr-2 h-4 w-4">
+              <svg className="h-4 w-4 text-emerald-500" viewBox="0 0 24 24">
                 <g
                   fill="none"
                   stroke="currentColor"
@@ -104,17 +104,17 @@ function ProsCard({ title, pros }) {
 
 function ConsCard({ title, cons }) {
   return (
-    <div className="w-full p-6 my-6 border border-red-200 dark:border-red-900 bg-neutral-50 dark:bg-neutral-900 rounded-xl">
+    <div className="my-6 w-full rounded-xl border border-red-200 bg-neutral-50 p-6 dark:border-red-900 dark:bg-neutral-900">
       <span>{`You might not use ${title} if...`}</span>
       <div className="mt-4">
         {cons.map((con) => (
-          <div key={con} className="flex items-baseline mb-2 font-medium">
-            <div className="w-4 h-4 mr-2">
+          <div key={con} className="mb-2 flex items-baseline font-medium">
+            <div className="mr-2 h-4 w-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
-                className="w-4 h-4 text-red-500"
+                className="h-4 w-4 text-red-500"
               >
                 <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
               </svg>
@@ -166,19 +166,19 @@ function createHeading(level) {
           className: "anchor ",
         }),
       ],
-      children
+      children,
     );
   };
 }
 
 function paragraph({ children }) {
   return (
-    <p className="text-base text-text-secondary mb-8 leading-7">{children}</p>
+    <p className="mb-8 text-base leading-7 text-text-secondary">{children}</p>
   );
 }
 
 function OrderedList({ children }) {
-  return <ol className="list-decimal list-inside mb-8">{children}</ol>;
+  return <ol className="mb-8 list-inside list-decimal">{children}</ol>;
 }
 
 const sharedComponents = {

@@ -578,7 +578,7 @@ export default function ConnectionsPage() {
 
   return (
     <div className="relative">
-      <div className="pt-[90px] mb-[80px] max-w-3xl mx-auto z-50">
+      <div className="z-50 mx-auto mb-[80px] max-w-3xl pt-[90px]">
         <PageTitle
           className="z-50"
           title="An evolving list of people I've met and those I wish to meet."
@@ -589,7 +589,7 @@ export default function ConnectionsPage() {
         <BlogPattern />
       </div>
       <div className="relative">
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-6 auto-rows-auto place-items-center justify-center relative mb-12">
+        <div className="relative mb-12 grid auto-rows-auto grid-cols-2 place-items-center justify-center gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
           <span className="absolute top-0">
             <HorizontalLine />
           </span>
@@ -599,18 +599,18 @@ export default function ConnectionsPage() {
               href={person.socialLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="no-underline group transition-all duration-500"
+              className="group no-underline transition-all duration-500"
             >
-              <div className="text-center inline-block group">
+              <div className="group inline-block text-center">
                 <div
-                  className={`rounded-[20px] relative border border-border-primary bg-bg-primary p-2 transition-all duration-300 h-28 w-28 ${
+                  className={`relative h-28 w-28 rounded-[20px] border border-border-primary bg-bg-primary p-2 transition-all duration-300 ${
                     person.isConnected
-                      ? "group-hover:border-indigo-400 group-hover:-translate-y-3"
+                      ? "group-hover:-translate-y-3 group-hover:border-indigo-400"
                       : ""
                   }`}
                 >
                   {person.isConnected && person.connectedDate ? (
-                    <div className="px-1.5 py-1 text-xs bg-indigo-400 w-full rounded-full text-white text-center absolute -bottom-2 left-1/2 -translate-x-1/2 text-nowrap">
+                    <div className="absolute -bottom-2 left-1/2 w-full -translate-x-1/2 text-nowrap rounded-full bg-indigo-400 px-1.5 py-1 text-center text-xs text-white">
                       <span>
                         Met on{" "}
                         <time>
@@ -624,11 +624,11 @@ export default function ConnectionsPage() {
                     </div>
                   ) : null}
                   <div
-                    className="border-2 h-full rounded-xl border-[#A5AEB81F]/10 bg-[#EDEEF0] grid place-items-center"
+                    className="grid h-full place-items-center rounded-xl border-2 border-[#A5AEB81F]/10 bg-[#EDEEF0]"
                     style={{ boxShadow: "0px 2px 1.5px 0px #A5AEB852 inset" }}
                   >
                     <img
-                      className={`w-14 h-14 rounded transition-all duration-300 ${
+                      className={`h-14 w-14 rounded transition-all duration-300 ${
                         !person.isConnected ? "grayscale" : ""
                       }`}
                       alt={person.name}
@@ -638,7 +638,7 @@ export default function ConnectionsPage() {
                 </div>
                 {person.name && (
                   <div className="mt-3">
-                    <p className="text-gray-500 text-sm">{person.name}</p>
+                    <p className="text-sm text-gray-500">{person.name}</p>
                   </div>
                 )}
               </div>

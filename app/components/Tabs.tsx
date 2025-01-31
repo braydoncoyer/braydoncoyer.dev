@@ -52,7 +52,7 @@ export function TabList({
           className="block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-400 focus:outline-none focus:ring-indigo-400 sm:text-sm"
           onChange={(e) => {
             const selectedTab = childrenArray.find(
-              (child: any) => child.props.label === e.target.value
+              (child: any) => child.props.label === e.target.value,
             ) as any;
             if (selectedTab) {
               selectedTab.props.onClick?.(selectedTab.props.id);
@@ -91,13 +91,11 @@ export function Tab({ id, label, className = "" }: Omit<TabProps, "children">) {
     <button
       onClick={() => setActiveTab(id)}
       aria-current={isActive ? "page" : undefined}
-      className={`whitespace-nowrap border-b-2 px-1 py-2.5 text-sm transition-colors
-        ${
-          isActive
-            ? "border-slate-900 text-slate-900 font-medium"
-            : "border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-700"
-        }
-        ${className}`}
+      className={`whitespace-nowrap border-b-2 px-1 py-2.5 text-sm transition-colors ${
+        isActive
+          ? "border-slate-900 font-medium text-slate-900"
+          : "border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-700"
+      } ${className}`}
     >
       {label}
     </button>

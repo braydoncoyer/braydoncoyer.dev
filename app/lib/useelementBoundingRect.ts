@@ -8,7 +8,7 @@ interface Position {
 }
 
 export function useElementBoundingRect(
-  ref: React.RefObject<HTMLElement>
+  ref: React.RefObject<HTMLElement>,
 ): Position {
   const [boundingRect, setBoundingRect] = useState<Position>({
     x: 0,

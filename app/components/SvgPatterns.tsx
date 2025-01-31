@@ -1,8 +1,7 @@
 export function HeaderPattern() {
   return (
     <svg
-      className="absolute top-9 md:w-full md:inset-x-0 md:left-1/2 md:transform md:-translate-x-1/2 pointer-events-none"
-      width="100%"
+      className="pointer-events-none absolute top-9 hidden md:inset-x-0 md:left-1/2 md:block md:w-full md:-translate-x-1/2 md:transform"
       viewBox="0 0 1440 478"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -238,7 +237,7 @@ export function HeaderPattern() {
 export function AboutPattern() {
   return (
     <svg
-      className="absolute z-0 -top-10 w-full inset-x-0 left-1/2 transform -translate-x-1/2 pointer-events-none"
+      className="pointer-events-none absolute inset-x-0 -top-10 left-1/2 z-0 w-full -translate-x-1/2 transform"
       width="100%"
       height="814"
       viewBox="0 0 1440 814"
@@ -297,7 +296,7 @@ export function AboutPattern() {
 export function MySitePattern() {
   return (
     <svg
-      className="absolute z-0 -top-10 w-full inset-x-0 left-1/2 transform -translate-x-1/2 scale-x-[-1] pointer-events-none"
+      className="pointer-events-none absolute inset-x-0 -top-10 left-1/2 z-0 w-full -translate-x-1/2 scale-x-[-1] transform"
       width="100%"
       height="814"
       viewBox="0 0 1440 814"
@@ -356,7 +355,7 @@ export function MySitePattern() {
 export function BlogPattern(): React.ReactNode {
   return (
     <svg
-      className="absolute z-0 top-10 w-full inset-x-0 left-1/2 transform -translate-x-1/2 pointer-events-none"
+      className="pointer-events-none absolute inset-x-0 left-1/2 top-10 z-0 w-full -translate-x-1/2 transform"
       width="100%"
       height="205"
       viewBox="0 0 1438 205"
