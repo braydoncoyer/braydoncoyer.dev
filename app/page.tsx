@@ -102,31 +102,33 @@ export default async function Home() {
             </div>
 
             {/* Mobile Photos */}
-            <div className="relative w-full overflow-hidden py-12 md:hidden">
-              <div className="-mx-32 mt-10 flex justify-center space-x-16">
-                <div className="relative w-fit">
-                  <ShadowBox width={188} height={278}></ShadowBox>
-                  <img
-                    className="absolute left-0 top-0 h-[270px] w-[180px] rotate-[8deg] rounded-lg object-cover shadow"
-                    src="/braydon_speaking_photo.jpeg"
-                    alt="A headshot"
-                  />
-                </div>
-                <div className="relative w-fit">
-                  <ShadowBox width={188} height={278}></ShadowBox>
-                  <img
-                    className="absolute left-0 top-0 h-[280px] w-[190px] rotate-[-8deg] rounded-lg object-cover shadow"
-                    src="/braydon_speaking_photo.jpeg"
-                    alt="A headshot"
-                  />
-                </div>
-                <div className="relative w-fit">
-                  <ShadowBox width={188} height={278}></ShadowBox>
-                  <img
-                    className="absolute left-0 top-0 h-[270px] w-[180px] rotate-[8deg] rounded-lg object-cover shadow"
-                    src="/braydon_speaking_photo.jpeg"
-                    alt="A headshot"
-                  />
+            <div className="relative -mx-3 md:hidden">
+              <div className="relative w-full overflow-hidden py-12">
+                <div className="-mx-32 mt-10 flex justify-center space-x-16">
+                  <div className="relative w-fit">
+                    <ShadowBox width={188} height={278}></ShadowBox>
+                    <img
+                      className="absolute left-0 top-0 h-[270px] w-[180px] rotate-[8deg] rounded-lg object-cover shadow"
+                      src="/braydon_speaking_photo.jpeg"
+                      alt="A headshot"
+                    />
+                  </div>
+                  <div className="relative w-fit">
+                    <ShadowBox width={188} height={278}></ShadowBox>
+                    <img
+                      className="absolute left-0 top-0 h-[280px] w-[190px] rotate-[-8deg] rounded-lg object-cover shadow"
+                      src="/braydon_speaking_photo.jpeg"
+                      alt="A headshot"
+                    />
+                  </div>
+                  <div className="relative w-fit">
+                    <ShadowBox width={188} height={278}></ShadowBox>
+                    <img
+                      className="absolute left-0 top-0 h-[270px] w-[180px] rotate-[8deg] rounded-lg object-cover shadow"
+                      src="/braydon_speaking_photo.jpeg"
+                      alt="A headshot"
+                    />
+                  </div>
                 </div>
               </div>
             </div>

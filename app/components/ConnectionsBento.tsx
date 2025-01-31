@@ -156,10 +156,43 @@ export function ConnectionsBento({
 
           {/* mobile circle */}
           <span className="md:hidden">
-            <ConnectionCircle sizeClass="w-12 h-12">
+            <ConnectionCircle
+              sizeClass="w-10 h-10"
+              className="absolute left-4 top-4"
+            >
+              <img
+                className="rounded-full"
+                src="/shashi_lo.jpg"
+                alt="Connection"
+              />
+            </ConnectionCircle>
+            <ConnectionCircle
+              sizeClass="w-12 h-12"
+              className="absolute bottom-20 left-14"
+            >
               <img
                 className="rounded-full"
                 src="/amy_dutton.jpg"
+                alt="Connection"
+              />
+            </ConnectionCircle>
+            <ConnectionCircle
+              sizeClass="w-14 h-14"
+              className="absolute right-16 top-4"
+            >
+              <img
+                className="rounded-full"
+                src="/james_q_quick.jpg"
+                alt="Connection"
+              />
+            </ConnectionCircle>
+            <ConnectionCircle
+              sizeClass="w-11 h-11"
+              className="absolute bottom-20 right-4"
+            >
+              <img
+                className="rounded-full"
+                src="/colby_fayock.jpg"
                 alt="Connection"
               />
             </ConnectionCircle>
@@ -261,10 +294,12 @@ function ConnectionCircle({
   children,
   sizeClass = "w-16 h-16",
   paddingClass = "p-1",
+  className,
 }: {
   children: React.ReactNode;
   sizeClass?: string;
   paddingClass?: string;
+  className?: string;
 }) {
   return (
     <div
@@ -272,6 +307,7 @@ function ConnectionCircle({
         "border-bg-secondary rounded-full border bg-[#EDEEF0]",
         sizeClass,
         paddingClass,
+        className,
       )}
     >
       {children}
