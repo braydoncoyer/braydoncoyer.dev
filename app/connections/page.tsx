@@ -584,7 +584,7 @@ export default function ConnectionsPage() {
           title="An evolving list of people I've met and those I wish to meet."
         /> */}
         <h1 className="mx-auto max-w-2xl text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-6xl md:leading-[64px]">
-          An evolving list of people I've met and those I wish to meet.
+          An evolving list of people I&apos;ve met and those I wish to meet.
         </h1>
       </div>
 
