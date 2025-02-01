@@ -13,8 +13,8 @@ export function GridWrapper({
         className,
         "relative w-full",
         "before:absolute before:top-0 before:h-px before:bg-border-primary/50",
-        "before:inset-x-0",
-        "after:inset-x-0",
+        "before:-left-4 before:right-[-1rem] sm:before:inset-x-0",
+        "after:-left-4 after:right-[-1rem] sm:after:inset-x-0",
         "after:absolute after:bottom-0 after:h-px after:bg-border-primary/50",
       )}
     >

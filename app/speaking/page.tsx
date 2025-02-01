@@ -128,9 +128,9 @@ export default function SpeakingPage() {
         <span className="absolute -right-[120px] top-[260px] z-10">
           <BgSectionTag tagType={TagType.SECTION} />
         </span>
-        <div>
-          <PageTitle title="I share my web development expertise at conferences worldwide && online." />
-        </div>
+        <h1 className="mx-auto max-w-2xl text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-6xl md:leading-[64px]">
+          My conference talks, podcast && video appearances.
+        </h1>
         <span className="absolute inset-x-0 top-40">
           <HorizontalLine />
         </span>

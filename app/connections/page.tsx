@@ -579,17 +579,20 @@ export default function ConnectionsPage() {
   return (
     <div className="relative">
       <div className="z-50 mx-auto mb-[80px] max-w-3xl pt-[90px]">
-        <PageTitle
+        {/* <PageTitle
           className="z-50"
           title="An evolving list of people I've met and those I wish to meet."
-        />
+        /> */}
+        <h1 className="mx-auto max-w-2xl text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-6xl md:leading-[64px]">
+          An evolving list of people I've met and those I wish to meet.
+        </h1>
       </div>
 
       <div className="absolute inset-0 -top-8 -z-10">
         <BlogPattern />
       </div>
       <div className="relative">
-        <div className="relative mb-12 grid auto-rows-auto grid-cols-2 place-items-center justify-center gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
+        <div className="relative mb-12 grid auto-rows-auto grid-cols-3 place-items-center justify-center gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
           <span className="absolute top-0">
             <HorizontalLine />
           </span>

@@ -32,18 +32,22 @@ export default async function Home() {
       <div className="mt-6 space-y-10 md:mt-0 md:space-y-16">
         <section>
           <div className="relative text-balance">
-            <h1 className="mx-auto max-w-2xl text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-6xl md:leading-[64px]">
-              Hey, I&apos;m Braydon! <br /> Welcome to my corner of the
-              internet!
-            </h1>
-            <div className="mt-4 text-center md:mt-8">
-              <p className="leading-8 text-text-secondary">
-                I&apos;m a front-end developer with a love for design and a
-                knack for tinkering. This site is intentionally over-engineered
-                and serves as my playground for experimenting with new ideas and
-                seeing what sticks!
-              </p>
-            </div>
+            <GridWrapper>
+              <h1 className="mx-auto max-w-2xl text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-6xl md:leading-[64px]">
+                Hey, I&apos;m Braydon! <br /> Welcome to my corner of the
+                internet!
+              </h1>
+            </GridWrapper>
+            <GridWrapper>
+              <div className="mt-4 text-center md:mt-8">
+                <p className="leading-8 text-text-secondary">
+                  I&apos;m a front-end developer with a love for design and a
+                  knack for tinkering. This site is intentionally
+                  over-engineered and serves as my playground for experimenting
+                  with new ideas and seeing what sticks!
+                </p>
+              </div>
+            </GridWrapper>
           </div>
           <div>
             {/* Desktop Photos */}
@@ -102,14 +106,14 @@ export default async function Home() {
             </div>
 
             {/* Mobile Photos */}
-            <div className="relative -mx-3 md:hidden">
+            <div className="relative -mx-12 md:hidden">
               <div className="relative w-full overflow-hidden py-12">
-                <div className="-mx-32 mt-10 flex justify-center space-x-16">
+                <div className="mt-10 flex items-center justify-center space-x-14">
                   <div className="relative w-fit">
-                    <ShadowBox width={188} height={278}></ShadowBox>
+                    <ShadowBox width={170} height={252}></ShadowBox>
                     <img
-                      className="absolute left-0 top-0 h-[270px] w-[180px] rotate-[8deg] rounded-lg object-cover shadow"
-                      src="/braydon_speaking_photo.jpeg"
+                      className="absolute left-0 top-2 h-[245px] w-[163px] rotate-[-5deg] rounded-lg object-cover shadow"
+                      src="/c3_speaker_head.png"
                       alt="A headshot"
                     />
                   </div>
@@ -122,10 +126,10 @@ export default async function Home() {
                     />
                   </div>
                   <div className="relative w-fit">
-                    <ShadowBox width={188} height={278}></ShadowBox>
+                    <ShadowBox width={170} height={252}></ShadowBox>
                     <img
-                      className="absolute left-0 top-0 h-[270px] w-[180px] rotate-[8deg] rounded-lg object-cover shadow"
-                      src="/braydon_speaking_photo.jpeg"
+                      className="absolute left-0 top-0 h-[245px] w-[163px] rotate-[10deg] rounded-lg object-cover shadow"
+                      src="/braydon_speaking_head_3.jpeg"
                       alt="A headshot"
                     />
                   </div>
@@ -139,12 +143,16 @@ export default async function Home() {
         <section className="relative space-y-10 md:space-y-16">
           <AboutPattern />
           <div className="space-y-4">
-            <div className="text-center text-sm font-medium text-indigo-600">
-              <span>About</span>
-            </div>
-            <h2 className="max-w-lg text-balance text-center text-3xl font-medium leading-10 tracking-tight text-text-primary md:mx-auto md:text-4xl">
-              Here&apos;s what sets me apart and makes me unique
-            </h2>
+            <GridWrapper>
+              <div className="text-center text-sm font-medium text-indigo-600">
+                <span>About</span>
+              </div>
+            </GridWrapper>
+            <GridWrapper>
+              <h2 className="mx-auto max-w-lg text-balance text-center text-3xl font-medium leading-10 tracking-tight text-text-primary md:text-4xl">
+                Here&apos;s what sets me apart and makes me unique
+              </h2>
+            </GridWrapper>
           </div>
 
           {/* About Bento */}
@@ -176,12 +184,16 @@ export default async function Home() {
             <span className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2">
               <BgGradient />
             </span>
-            <div className="text-center text-sm font-medium text-indigo-600">
-              <span>Blog</span>
-            </div>
-            <h2 className="max-w-lg text-center text-3xl font-medium leading-10 tracking-tighter text-text-primary md:mx-auto md:text-4xl">
-              I like sharing my experiments && knowledge with others
-            </h2>
+            <GridWrapper>
+              <div className="text-center text-sm font-medium text-indigo-600">
+                <span>Blog</span>
+              </div>
+            </GridWrapper>
+            <GridWrapper>
+              <h2 className="mx-auto max-w-lg text-center text-3xl font-medium leading-10 tracking-tighter text-text-primary md:text-4xl">
+                I like sharing my experiments && knowledge with others
+              </h2>
+            </GridWrapper>
           </div>
 
           <div className="z-10">
@@ -211,12 +223,16 @@ export default async function Home() {
         <section className="relative space-y-10 md:space-y-16">
           <MySitePattern />
           <div className="space-y-4 text-balance">
-            <div className="text-center text-sm font-medium text-indigo-600">
-              <span>My Site</span>
-            </div>
-            <h2 className="text-center text-3xl font-medium leading-10 tracking-tighter text-text-primary md:mx-auto md:max-w-lg md:text-4xl">
-              My site is a playful sandbox. Explore, experiment, && say hello
-            </h2>
+            <GridWrapper>
+              <div className="text-center text-sm font-medium text-indigo-600">
+                <span>My Site</span>
+              </div>
+            </GridWrapper>
+            <GridWrapper>
+              <h2 className="text-center text-3xl font-medium leading-10 tracking-tighter text-text-primary md:mx-auto md:max-w-lg md:text-4xl">
+                My site is a playful sandbox. Explore, experiment, && say hello
+              </h2>
+            </GridWrapper>
           </div>
 
           <GridWrapper>
