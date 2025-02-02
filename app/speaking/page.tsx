@@ -12,6 +12,7 @@ import { BgGradient } from "app/components/BgGradient";
 import { Button } from "app/components/Button";
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from "app/components/Tabs";
 import { Photo } from "../components/Photo";
+import { GridWrapper } from "../components/GridWrapper";
 
 type Talk = {
   conference: string;
@@ -124,13 +125,15 @@ export default function SpeakingPage() {
   return (
     <div className="relative">
       <title>Speaking | Braydon Coyer</title>
-      <div className="relative space-y-[80px]">
+      <div className="relative space-y-16">
         <span className="absolute -right-[120px] top-[260px] z-10">
           <BgSectionTag tagType={TagType.SECTION} />
         </span>
-        <h1 className="mx-auto max-w-2xl text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-6xl md:leading-[64px]">
-          My conference talks, podcast && video appearances.
-        </h1>
+        <GridWrapper>
+          <h1 className="mx-auto max-w-2xl text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-6xl md:leading-[64px]">
+            My conference talks, podcast && video appearances.
+          </h1>
+        </GridWrapper>
         <span className="absolute inset-x-0 top-40">
           <HorizontalLine />
         </span>

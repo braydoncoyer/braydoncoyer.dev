@@ -13,7 +13,7 @@ export default function ToolboxPage() {
         <HorizontalLine />
       </span>
       <div className="relative space-y-10 md:space-y-16">
-        <div className="mx-auto pt-[90px]">
+        <div className="mx-auto text-balance pt-14 md:pt-16">
           <GridWrapper>
             <h1 className="mx-auto max-w-2xl text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-6xl md:leading-[64px]">
               Hardware && software I keep in my toolbox.

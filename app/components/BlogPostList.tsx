@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { HorizontalLine } from "./HorizontalLine";
 
 interface BlogPost {
   slug: string;
@@ -22,8 +21,8 @@ export function BlogPostList({ posts }: BlogPostListProps) {
               <Link href={`/blog/${post.slug}`}>
                 <div className="block">
                   <article>
-                    <div className="group grid h-full grid-cols-12 rounded-2xl">
-                      <div className="col-span-2 col-start-1 space-y-2 p-4">
+                    <div className="group grid h-full grid-cols-1 md:grid-cols-12">
+                      <div className="hidden space-y-2 p-4 md:col-span-2 md:col-start-1 md:block">
                         <div className="font-mono text-sm leading-none text-text-secondary">
                           <time dateTime={post.publishedAt}>
                             {new Date(post.publishedAt).toLocaleDateString(
@@ -40,10 +39,10 @@ export function BlogPostList({ posts }: BlogPostListProps) {
                           1,352 reads
                         </p>
                       </div>
-                      <div className="col-start-4 h-full border-x border-dashed border-border-primary"></div>
-                      <div className="group col-span-8 col-start-5 col-end-12 flex w-full flex-grow flex-col p-4">
-                        <div className="z-10">
-                          <h2 className="mb-3 text-base font-medium leading-none tracking-tight text-slate-900">
+                      <div className="col-start-4 hidden h-full border-x border-border-primary md:block md:border-dashed"></div>
+                      <div className="group col-span-8 flex w-full flex-grow flex-col py-4 md:col-start-5 md:col-end-12 md:p-4">
+                        <div className="z-10 text-balance">
+                          <h2 className="mb-3 text-base font-medium leading-6 tracking-tight text-slate-900 md:leading-none">
                             {post.title}
                           </h2>
                           <p className="mb-3 flex-grow text-base leading-6 text-text-secondary">
@@ -74,9 +73,7 @@ export function BlogPostList({ posts }: BlogPostListProps) {
                   </article>
                 </div>
               </Link>
-              {index < posts.length - 1 && (
-                <div className="h-0 w-full border-t border-dashed border-border-primary" />
-              )}
+              <div className="-mx-4 h-0 w-svw border-t border-dashed border-border-primary md:m-0 md:w-full" />
             </li>
           ))}
         </>

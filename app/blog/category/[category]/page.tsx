@@ -4,7 +4,6 @@ import {
 } from "app/lib/utils";
 import { NewsletterSignUp } from "@/app/components/NewsletterSignUp";
 import { BlogPostList } from "@/app/components/BlogPostList";
-import { BlogPageHeader } from "@/app/components/BlogPageHeader";
 import { CategorySelect } from "@/app/components/CategorySelect";
 
 export default async function CategoryPage({
@@ -33,9 +32,9 @@ export default async function CategoryPage({
   return (
     <div className="mt-[100px] w-full space-y-[80px]">
       <title>{category} Articles</title>
-      <BlogPageHeader
-        title={`Articles about ${category || "Unknown Category"}`}
-      />
+      <h1 className="mx-auto max-w-2xl text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-6xl md:leading-[64px]">
+        {`Articles about ${category || "Unknown Category"}`}
+      </h1>
 
       <CategorySelect categories={categories} currentCategory={category} />
 

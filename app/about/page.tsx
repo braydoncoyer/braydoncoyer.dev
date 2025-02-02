@@ -28,9 +28,9 @@ export default function AboutPage() {
         <HorizontalLine />
       </span>
       <HeaderPattern />
-      <div className="relative space-y-[80px]">
+      <div className="relative space-y-16">
         {/* Title */}
-        <div className="flex items-center justify-around pt-[90px]">
+        <div className="flex items-center justify-around pt-14 md:pt-16">
           <div className="max-w-3xl">
             <h1 className="text-balance text-6xl font-medium leading-[64px] tracking-tighter text-text-primary">
               {timeOfDayGreeting} <br />

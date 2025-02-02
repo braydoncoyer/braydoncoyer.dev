@@ -31,7 +31,7 @@ export function CategorySelect({
   }
 
   return (
-    <div className="border-b border-dashed border-border-primary px-4 pb-5 sm:pb-0">
+    <div className="border-b border-dashed border-border-primary pb-5 sm:pb-0 md:px-4">
       <h3 className="text-base font-semibold text-gray-900">Categories</h3>
       <div className="mt-3 sm:mt-4">
         <div className="grid grid-cols-1 sm:hidden">
