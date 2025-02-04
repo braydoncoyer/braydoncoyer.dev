@@ -319,50 +319,108 @@ function ListItem({ children }) {
   );
 }
 
-function FullWidthCallout({ children }) {
+function FullWidthCallout({ children, type }) {
+  const renderMDXContent = (content) => {
+    if (!content) return null;
+
+    if (typeof content === "string") {
+      return content;
+    }
+
+    if (Array.isArray(content)) {
+      return content.map((item, index) => (
+        <React.Fragment key={index}>{renderMDXContent(item)}</React.Fragment>
+      ));
+    }
+
+    // Handle semantic elements
+    if (content.type === "ul") {
+      return (
+        <UnorderedList>
+          {renderMDXContent(content.props.children)}
+        </UnorderedList>
+      );
+    }
+
+    if (content.type === "ol") {
+      return (
+        <OrderedList>{renderMDXContent(content.props.children)}</OrderedList>
+      );
+    }
+
+    if (content.type === "li") {
+      return <ListItem>{renderMDXContent(content.props.children)}</ListItem>;
+    }
+
+    // Handle link components
+    if (content.type === "a") {
+      return (
+        <CustomLink key={content.props.href} href={content.props.href}>
+          {content.props.children}
+        </CustomLink>
+      );
+    }
+
+    // Handle nested children in props
+    if (content.props?.children) {
+      return renderMDXContent(content.props.children);
+    }
+
+    return content;
+  };
+
+  const badges = {
+    idea: {
+      bg: "bg-yellow-50",
+      text: "text-yellow-800",
+      ring: "ring-yellow-600/20",
+      label: "Idea",
+    },
+    info: {
+      bg: "bg-blue-50",
+      text: "text-blue-700",
+      ring: "ring-blue-700/10",
+      label: "Info",
+    },
+    thought: {
+      bg: "bg-indigo-50",
+      text: "text-indigo-700",
+      ring: "ring-indigo-700/10",
+      label: "Thought",
+    },
+  };
+
+  const badge = badges[type];
+
   return (
-    <blockquote className="full-bleed relative mb-8 overflow-clip border-y border-border-primary py-8 [background-image:linear-gradient(45deg,theme(colors.border-primary)_12.50%,transparent_12.50%,transparent_50%,theme(colors.border-primary)_50%,theme(colors.border-primary)_62.50%,transparent_62.50%,transparent_100%)] [background-size:5px_5px]">
+    <blockquote className="relative -mx-3 mb-8 w-[100vw] overflow-clip border-y border-border-primary px-6 py-8 [background-image:linear-gradient(45deg,theme(colors.border-primary)_12.50%,transparent_12.50%,transparent_50%,theme(colors.border-primary)_50%,theme(colors.border-primary)_62.50%,transparent_62.50%,transparent_100%)] [background-size:5px_5px] md:col-start-1 md:col-end-4 md:mx-0 md:w-full md:px-0">
       <span className="absolute -top-1/2 left-1/2 -z-10 -translate-x-1/2 opacity-50">
         <BgGradient />
       </span>
       <div className="blog-container drama-shadow mx-auto rounded-md bg-bg-primary p-6">
-        {children}
+        {badge && (
+          <span
+            className={`mb-3.5 inline-flex items-center rounded-full ${badge.bg} px-4 py-1 text-xs font-medium uppercase ${badge.text} ring-1 ring-inset ${badge.ring}`}
+          >
+            {badge.label}
+          </span>
+        )}
+        <div className="text-text-secondary">{renderMDXContent(children)}</div>
       </div>
     </blockquote>
   );
 }
 
 function IdeaQuote({ children }) {
-  return (
-    <FullWidthCallout>
-      <span className="mb-3.5 inline-flex items-center rounded-full bg-yellow-50 px-4 py-1 text-xs font-medium uppercase tracking-widest text-yellow-800 ring-1 ring-inset ring-yellow-600/20">
-        Idea
-      </span>
-      {children}
-    </FullWidthCallout>
-  );
+  return <FullWidthCallout type="idea">{children}</FullWidthCallout>;
 }
 
 function InfoQuote({ children }) {
-  return (
-    <FullWidthCallout>
-      <span className="mb-3.5 inline-flex items-center rounded-full bg-blue-50 px-4 py-1 text-xs font-medium uppercase text-blue-700 ring-1 ring-inset ring-blue-700/10">
-        Info
-      </span>
-      {children}
-    </FullWidthCallout>
-  );
+  return <FullWidthCallout type="info">{children}</FullWidthCallout>;
 }
 
 function ThoughtQuote({ children }) {
-  return (
-    <FullWidthCallout>
-      <span className="mb-3.5 inline-flex items-center rounded-full bg-indigo-50 px-4 py-1 text-xs font-medium uppercase text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
-        Thought
-      </span>
-      {children}
-    </FullWidthCallout>
-  );
+  return <FullWidthCallout type="thought">{children}</FullWidthCallout>;
 }
 
 const sharedComponents = {

@@ -6,14 +6,19 @@ import { HorizontalLine } from "../components/HorizontalLine";
 import { MDXContent } from "@/app/components/mdx";
 import { NewsletterSignUp } from "../components/NewsletterSignUp";
 import { fetchAndSortChangelogPosts } from "../lib/utils";
+import { GridWrapper } from "../components/GridWrapper";
 
 export default async function ChangelogPage() {
   const allChangelogItems = await fetchAndSortChangelogPosts();
 
   return (
-    <div className="mt-[100px] w-full space-y-[80px]">
-      <div className="mx-auto max-w-2xl">
-        <PageTitle title="Here's what's new && exciting on my site." />
+    <div className="w-full space-y-16">
+      <div className="mx-auto text-balance pt-14 md:pt-16">
+        <GridWrapper>
+          <h1 className="mx-auto max-w-2xl text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-6xl md:leading-[64px]">
+            Here's what's new && exciting on my site.
+          </h1>
+        </GridWrapper>
       </div>
 
       {/* <svg
@@ -165,10 +170,10 @@ export default async function ChangelogPage() {
                 <li key={post.slug}>
                   <div
                     key={post.slug}
-                    className="grid h-full grid-cols-12 rounded-2xl"
+                    className="grid h-full grid-cols-1 rounded-2xl md:grid-cols-12"
                   >
-                    <div className="col-span-2 col-start-1 space-y-2 p-4">
-                      <div className="text-sm leading-none">
+                    <div className="col-span-2 col-start-1 hidden space-y-2 p-4 md:block">
+                      <div className="font-mono text-sm leading-none text-text-secondary">
                         <time dateTime={post.publishedAt}>
                           {new Date(post.publishedAt).toLocaleDateString(
                             "en-US",
@@ -181,9 +186,21 @@ export default async function ChangelogPage() {
                         </time>
                       </div>
                     </div>
-                    <div className="col-start-3 col-end-4 h-full border-x border-dashed border-border-primary"></div>
+                    <div className="col-start-3 col-end-4 hidden h-full border-x border-dashed border-border-primary md:block"></div>
                     <div className="col-span-9 col-start-4 flex w-full flex-grow flex-col p-4">
-                      <h2 className="mb-8 text-2xl font-medium leading-none tracking-tight text-slate-900">
+                      <div className="mb-3 font-mono text-sm leading-none text-text-secondary md:hidden">
+                        <time dateTime={post.publishedAt}>
+                          {new Date(post.publishedAt).toLocaleDateString(
+                            "en-US",
+                            {
+                              month: "long",
+                              day: "numeric",
+                              year: "numeric",
+                            },
+                          )}
+                        </time>
+                      </div>
+                      <h2 className="mb-8 text-balance text-2xl font-medium leading-none tracking-tight text-text-primary">
                         {post.title}
                       </h2>
                       {post.imageName ? (

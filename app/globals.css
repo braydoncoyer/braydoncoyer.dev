@@ -22,11 +22,6 @@ body.modal-open {
   grid-column: 2;
 }
 
-.full-bleed {
-  width: 100%;
-  grid-column: 1 / 4;
-}
-
 ::selection {
   background-color: #47a3f3;
   color: #fefefe;

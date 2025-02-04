@@ -44,7 +44,7 @@ const softwareData: SoftwareDataItem[] = [
   {
     title: "Tana",
     imgSrc: "/tana_logo.png",
-    link: "https://tana.inc/",
+    link: "https://try.tana.inc/66bqr1sp5wkb",
   },
   {
     title: "Spotify",
