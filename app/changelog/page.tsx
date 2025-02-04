@@ -16,7 +16,7 @@ export default async function ChangelogPage() {
       <div className="mx-auto text-balance pt-14 md:pt-16">
         <GridWrapper>
           <h1 className="mx-auto max-w-2xl text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-6xl md:leading-[64px]">
-            Here's what's new && exciting on my site.
+            Here&apos;s what&apos;s new && exciting on my site.
           </h1>
         </GridWrapper>
       </div>
