@@ -5,7 +5,7 @@ export function AboutMeBento({ linkTo }: { linkTo?: string }) {
   const timeOfDayGreeting = getTimeOfDayGreeting();
 
   return (
-    <BentoCard height="h-[220px]" linkTo={linkTo}>
+    <BentoCard height="h-[275px] md:h-[304px] lg:h-[220px]" linkTo={linkTo}>
       <div className="group flex h-full">
         <div className="text-balance">
           <h2 className="mb-4 text-base font-medium">Learn more about me</h2>

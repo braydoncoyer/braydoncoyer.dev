@@ -41,7 +41,7 @@ const presentationList: PresentationList = {
         conference: "Commit Your Code",
         title: "What's New in Tailwind CSS v4?",
         description:
-          "Tailwind CSS v4 brings numerous enhancements to the developer experience. In this session, we’ll explore the key changes and new features to help you prepare for the official release of v4.",
+          "Tailwind CSS v4 brings numerous enhancements to the developer experience. In this session, we'll explore the key changes and new features to help you prepare for the official release of v4.",
         link: "https://www.youtube.com/live/Ils_dA_fHmY?si=Jk-2MDczcxbE95La&t=15711",
         buttonLabel: "Watch Video",
       },
@@ -130,7 +130,7 @@ export default function SpeakingPage() {
           <BgSectionTag tagType={TagType.SECTION} />
         </span>
         <GridWrapper>
-          <h1 className="mx-auto max-w-2xl text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-6xl md:leading-[64px]">
+          <h1 className="mx-auto max-w-2xl text-balance text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-6xl md:leading-[64px]">
             My conference talks, podcast && video appearances.
           </h1>
         </GridWrapper>
@@ -259,31 +259,34 @@ export default function SpeakingPage() {
           {/* Talks list */}
           <section className="space-y-16">
             {Object.entries(presentationList).map(([key, category]) => (
-              <>
-                <div
-                  className="grid h-auto grid-cols-12 text-balance pt-16"
-                  key={key}
-                >
-                  <h2 className="col-span-2 text-right text-3xl font-semibold leading-10">
+              <div key={key}>
+                <div className="grid h-auto grid-cols-1 text-balance pt-16 lg:grid-cols-12">
+                  <h2 className="mb-16 text-balance text-3xl font-semibold leading-10 lg:col-span-2 lg:mb-0 lg:text-right">
                     {category.title}
                   </h2>
-                  <div className="col-span-2 flex h-auto justify-center">
-                    <svg className="h-full w-2">
+                  <div className="col-span-2 hidden h-auto justify-center lg:flex">
+                    <svg
+                      className="h-full w-2"
+                      viewBox="0 0 8 100"
+                      preserveAspectRatio="none"
+                    >
                       <g filter="url(#filter0_i_185_3294)">
                         <path
-                          d="M4 4L4.00002 1000"
+                          d="M4 4L4 96"
                           stroke="#D6DADE"
                           strokeOpacity="0.24"
                           strokeWidth="8"
                           strokeLinecap="round"
+                          vectorEffect="non-scaling-stroke"
                         />
                       </g>
                       <defs>
                         <filter
-                          className="h-full w-2"
                           id="filter0_i_185_3294"
                           x="0"
                           y="0"
+                          width="8"
+                          height="100%"
                           filterUnits="userSpaceOnUse"
                           colorInterpolationFilters="sRGB"
                         >
@@ -303,8 +306,8 @@ export default function SpeakingPage() {
                             values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
                             result="hardAlpha"
                           />
-                          <feOffset dy="2" />
-                          <feGaussianBlur stdDeviation="0.75" />
+                          <feOffset dy="1" />
+                          <feGaussianBlur stdDeviation="0.5" />
                           <feComposite
                             in2="hardAlpha"
                             operator="arithmetic"
@@ -313,7 +316,7 @@ export default function SpeakingPage() {
                           />
                           <feColorMatrix
                             type="matrix"
-                            values="0 0 0 0 0.647059 0 0 0 0 0.682353 0 0 0 0 0.721569 0 0 0 0.32 0"
+                            values="0 0 0 0 0.847059 0 0 0 0 0.882353 0 0 0 0 0.921569 0 0 0 0.32 0"
                           />
                           <feBlend
                             mode="normal"
@@ -324,7 +327,7 @@ export default function SpeakingPage() {
                       </defs>
                     </svg>
                   </div>
-                  <div className="col-span-8 col-start-5 flex flex-col space-y-14 text-left">
+                  <div className="flex flex-col space-y-14 text-left lg:col-span-8 lg:col-start-5">
                     {category.talks.map((talk, index) => (
                       <div key={index}>
                         <h3 className="mb-4 text-base font-semibold">
@@ -353,7 +356,7 @@ export default function SpeakingPage() {
                   </div>
                 </div>
                 <HorizontalLine />
-              </>
+              </div>
             ))}
           </section>
 
@@ -362,7 +365,7 @@ export default function SpeakingPage() {
             <span className="absolute -left-[120px] top-[-85px] z-10">
               <BgSectionTag tagType={TagType.SECTION} />
             </span>
-            <div className="grid grid-cols-12 gap-12">
+            <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
               <div className="relative col-span-7 flex flex-col space-y-8">
                 {/* Title */}
                 <div className="col-span-5 flex w-3/4 flex-col items-start space-y-3 text-balance">

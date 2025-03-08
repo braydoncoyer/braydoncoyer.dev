@@ -7,6 +7,7 @@ import { BlogPostList } from "@/app/components/BlogPostList";
 import { CategorySelect } from "@/app/components/CategorySelect";
 import { FeaturedBlogCard } from "../components/FeaturedBlogCard";
 import { GridWrapper } from "../components/GridWrapper";
+import clsx from "clsx";
 
 export default async function BlogPage({
   searchParams,
@@ -27,16 +28,26 @@ export default async function BlogPage({
 
   const featuredPosts = !category && (
     <GridWrapper>
-      <ul className="grid grid-cols-1 gap-2 md:grid-cols-3">
-        {allPublishedBlogPosts.slice(0, 3).map((post) => (
-          <FeaturedBlogCard
-            key={post.slug}
-            slug={post.slug}
-            imageName={post.imageName}
-            title={post.title}
-            summary={post.summary}
-          />
-        ))}
+      <ul className="z-50 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
+        {allPublishedBlogPosts.length > 0 ? (
+          <>
+            {allPublishedBlogPosts.slice(0, 4).map((post, index) => (
+              <FeaturedBlogCard
+                key={post.slug}
+                slug={post.slug}
+                imageName={post.imageName}
+                title={post.title}
+                summary={post.summary}
+                className={clsx(
+                  // Hide the fourth article on mobile and desktop
+                  index === 3 && "hidden md:block lg:hidden",
+                )}
+              />
+            ))}
+          </>
+        ) : (
+          <p>Nothing to see here yet...</p>
+        )}
       </ul>
     </GridWrapper>
   );

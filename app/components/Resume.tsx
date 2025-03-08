@@ -75,9 +75,9 @@ export function Resume() {
             {resumeData.experiences.map((experience) => (
               <div
                 key={experience.company}
-                className="grid grid-cols-[2fr,0fr,4fr] gap-6 py-12 first:pt-0 last:pb-0"
+                className="grid grid-cols-[1fr,5fr] gap-6 py-12 first:pt-0 last:pb-0 md:grid-cols-[2fr,1fr,4fr]"
               >
-                <div>
+                <div className="hidden md:block">
                   <h3 className="text-xl font-bold">{experience.company}</h3>
                   <p className="text-sm text-gray-600">{experience.period}</p>
                 </div>
@@ -107,7 +107,7 @@ export function Resume() {
             ))}
           </div>
 
-          <div className="absolute left-[calc(28%_-_1rem)] top-0 h-full">
+          <div className="absolute top-0 h-full w-8 md:left-[calc(28%_-_1rem)]">
             <Timeline avatarUrl={resumeData.avatarUrl} />
           </div>
         </div>

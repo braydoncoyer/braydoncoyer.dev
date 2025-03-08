@@ -1,10 +1,12 @@
 import Link from "next/link";
+import clsx from "clsx";
 
 type FeaturedBlogCardProps = {
   slug: string;
   imageName: string;
   title: string;
   summary: string;
+  className?: string;
 };
 
 export function FeaturedBlogCard({
@@ -12,9 +14,15 @@ export function FeaturedBlogCard({
   imageName,
   title,
   summary,
+  className,
 }: FeaturedBlogCardProps) {
   return (
-    <li className="z-50 flex h-full flex-col rounded-3xl border border-border-primary bg-bg-primary p-2">
+    <li
+      className={clsx(
+        "z-50 flex h-full flex-col rounded-3xl border border-border-primary bg-bg-primary p-2",
+        className,
+      )}
+    >
       <Link className="flex h-full flex-col rounded-2xl" href={`/blog/${slug}`}>
         <img
           src={

@@ -14,6 +14,7 @@ import { getRelatedBlogPosts } from "@/app/lib/utils";
 import { FeaturedBlogCard } from "@/app/components/FeaturedBlogCard";
 import { BgGradient } from "@/app/components/BgGradient";
 import readingDuration from "reading-duration";
+import clsx from "clsx";
 
 interface BlogPageProps {
   params: Promise<{
@@ -128,7 +129,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
             </div>
 
             {/* Published Date */}
-            <div className="grid auto-cols-auto grid-cols-3 items-center gap-4 text-sm text-slate-300">
+            <div className="grid auto-cols-auto items-center gap-4 text-sm text-slate-300 lg:flex lg:gap-6">
               <div className="flex items-center gap-1.5 text-xs text-slate-300">
                 <svg
                   className="hidden h-5 w-5 text-slate-200 md:block"
@@ -247,17 +248,18 @@ export default async function BlogPage({ params }: BlogPageProps) {
         </div>
 
         <div className="z-10">
-          <ul className="grid grid-cols-1 gap-2 md:grid-cols-3">
+          <ul className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
             <HorizontalLine />
             {similarPosts.length > 0 ? (
               <>
-                {similarPosts.slice(0, 3).map((post) => (
+                {similarPosts.slice(0, 3).map((post, index) => (
                   <FeaturedBlogCard
                     key={post.slug}
                     slug={post.slug}
                     imageName={post.imageName}
                     title={post.title}
                     summary={post.summary}
+                    className={clsx(index === 2 && "hidden sm:hidden lg:block")}
                   />
                 ))}
               </>

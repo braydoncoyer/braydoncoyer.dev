@@ -16,6 +16,8 @@ export default async function Page({ searchParams }: SearchParamProps) {
     .select("*")
     .order("created_at", { ascending: false });
 
+  console.log(messages);
+
   const show = (await searchParams).show === "true";
 
   return (

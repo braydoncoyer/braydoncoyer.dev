@@ -31,10 +31,10 @@ export function CategorySelect({
   }
 
   return (
-    <div className="border-b border-dashed border-border-primary pb-5 sm:pb-0 md:px-4">
+    <div className="border-b border-dashed border-border-primary pb-5 md:px-4 lg:pb-0">
       <h3 className="text-base font-semibold text-gray-900">Categories</h3>
       <div className="mt-3 sm:mt-4">
-        <div className="grid grid-cols-1 sm:hidden">
+        <div className="grid grid-cols-1 lg:hidden">
           <select
             value={currentCategory}
             onChange={(e) => routeToCategoryPage(e.target.value)}
@@ -49,7 +49,7 @@ export function CategorySelect({
             ))}
           </select>
         </div>
-        <div className="hidden sm:block">
+        <div className="hidden lg:block">
           <nav className="-mb-px flex space-x-4">
             <Link
               href="/blog"

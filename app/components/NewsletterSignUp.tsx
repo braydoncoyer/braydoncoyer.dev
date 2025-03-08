@@ -82,10 +82,10 @@ export function NewsletterSignUp({
             <div className="absolute bottom-[44.5px] right-[48px] z-20 hidden h-2 w-px bg-zinc-300 md:block"></div>
 
             <h2 className="mb-4 text-3xl font-medium text-slate-50">{title}</h2>
-            <p className="mb-8 max-w-[336px] text-base leading-8 text-gray-300 md:mb-12">
+            <p className="z-50 mb-8 max-w-[336px] text-base leading-8 text-gray-300 md:mb-12">
               {description}
             </p>
-            <div className="mb-4 space-y-4">
+            <div className="z-50 mb-4 space-y-4">
               <form
                 onSubmit={handleSubmit}
                 className="relative md:inline-block"
@@ -128,7 +128,7 @@ export function NewsletterSignUp({
               send spam. You can unsubscribe at any time!
             </p>
             <svg
-              className="absolute -top-8 right-0 z-10 hidden md:block"
+              className="absolute -top-8 right-0 z-10 hidden lg:block"
               width="453"
               height="501"
               viewBox="0 0 453 501"

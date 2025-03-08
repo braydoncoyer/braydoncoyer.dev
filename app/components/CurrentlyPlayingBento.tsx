@@ -42,7 +42,7 @@ export function CurrentlyPlayingBento() {
   }
 
   return (
-    <BentoCard height="h-[300px]" linkTo={currentTrack.songUrl}>
+    <BentoCard height="h-[300px]">
       <div className="flex flex-col">
         <div className="z-10 h-full">
           <div className="flex h-full flex-col justify-between">
@@ -181,7 +181,7 @@ function Record({
         <path
           d="M88.5 97L46 26C84.8 5.60003 121.833 18.5 135.5 27.5L88.5 97Z"
           fill="white"
-          fill-opacity="0.15"
+          fillOpacity="0.15"
           style={{ mixBlendMode: "soft-light" }}
         />
       </g>
@@ -202,9 +202,9 @@ function Record({
           width="119.5"
           height="111.88"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -224,9 +224,9 @@ function Record({
           y2="19.9601"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" stop-opacity="0" />
-          <stop offset="0.51" stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" stopOpacity="0" />
+          <stop offset="0.51" stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_161_134"
@@ -236,9 +236,9 @@ function Record({
           y2="40.9601"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" stop-opacity="0" />
-          <stop offset="0.51" stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" stopOpacity="0" />
+          <stop offset="0.51" stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
       </defs>
     </svg>

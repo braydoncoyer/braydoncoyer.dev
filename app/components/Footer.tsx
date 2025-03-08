@@ -7,7 +7,7 @@ export function Footer() {
     <>
       <div className="relative max-w-7xl border-border-primary/50">
         <GridWrapper>
-          <div className="max-w-6xl divide-y px-4 md:flex md:divide-x md:px-0 lg:mx-auto">
+          <div className="max-w-6xl divide-y px-4 lg:mx-auto lg:flex lg:divide-x lg:px-4 xl:px-0">
             <div className="flex w-full py-6 text-sm">
               <div>
                 <div className="flex-grow space-y-6">
@@ -31,8 +31,8 @@ export function Footer() {
                 <SocialPill />
               </div>
             </div>
-            <div className="flex w-full flex-col items-end py-6 text-xs md:pl-16">
-              <div className="flex w-full justify-between">
+            <div className="flex w-full flex-col items-end py-6 text-xs lg:pl-16">
+              <div className="ld:space-x-0 flex w-full justify-between md:justify-start md:space-x-36 lg:justify-between">
                 <div>
                   <span className="mb-4 inline-block text-base font-medium text-text-primary">
                     General

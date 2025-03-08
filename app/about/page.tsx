@@ -7,7 +7,6 @@ import { ProfilePicture } from "../components/ProfilePicture";
 import React, { useEffect, useRef, useState } from "react";
 import { CurrentlyPlayingBento } from "../components/CurrentlyPlayingBento";
 import { ConnectionsBento } from "../components/ConnectionsBento";
-import { BentoCard } from "../components/BentoCard";
 import { Scrapbook } from "../components/Scrapbook";
 import { ShadowBox } from "../components/ShadowBox";
 import { useScroll, motion } from "framer-motion";
@@ -28,16 +27,18 @@ export default function AboutPage() {
         <HorizontalLine />
       </span>
       <HeaderPattern />
-      <div className="relative space-y-16">
+      <div className="relative space-y-10 md:space-y-16">
         {/* Title */}
-        <div className="flex items-center justify-around pt-14 md:pt-16">
-          <div className="max-w-3xl">
-            <h1 className="text-balance text-6xl font-medium leading-[64px] tracking-tighter text-text-primary">
-              {timeOfDayGreeting} <br />
-              I&apos;m Braydon, a creative frontend engineer.
-            </h1>
+        <div className="flex flex-col md:flex-row md:items-center md:justify-around md:pt-16">
+          <div className="order-2 mx-auto max-w-lg md:order-1 md:m-0 md:max-w-3xl">
+            <GridWrapper>
+              <h1 className="mx-auto max-w-2xl text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-left md:text-6xl md:leading-[64px]">
+                {timeOfDayGreeting} <br />
+                I&apos;m Braydon, a creative frontend engineer.
+              </h1>
+            </GridWrapper>
           </div>
-          <div className="ml-8 flex-shrink-0">
+          <div className="order-1 flex-shrink-0 md:order-2 md:ml-8">
             <ProfilePicture />
           </div>
         </div>
@@ -60,16 +61,16 @@ export default function AboutPage() {
               </h2>
             </GridWrapper>
           </div>
-          <div className="relative h-[2050px] w-full overflow-hidden">
+          <div className="relative w-full overflow-hidden md:h-[2050px]">
             <div className="absolute left-[455px] top-0 w-full">
               <AboutTrackPattern />
             </div>
             {/* Section 1 */}
-            <div className="relative flex w-full px-14 pt-32">
+            <div className="relative w-full md:flex md:px-14 md:pt-32">
               <HorizontalLine />
               <div className="mt-6 flex-1">
                 <div className="flex items-center justify-start">
-                  <div className="relative ml-20 w-fit">
+                  <div className="relative w-fit md:ml-20">
                     <ShadowBox width={188} height={278}></ShadowBox>
                     <img
                       className="absolute left-0 top-0 h-[270px] w-[180px] rotate-[-8deg] rounded-lg object-cover shadow"
@@ -112,7 +113,7 @@ export default function AboutPage() {
             </div>
 
             {/* Section 2 */}
-            <div className="relative flex w-full justify-center px-14 pt-44">
+            <div className="relative w-full justify-center md:flex md:px-14 md:pt-44">
               <HorizontalLine />
               <div className="mt-6 flex-1 text-left">
                 <h2 className="mb-6 w-full text-balance text-3xl font-medium leading-[40px] tracking-tighter text-text-primary">
@@ -126,7 +127,7 @@ export default function AboutPage() {
 
                 <p className="mb-6 text-base leading-8 text-text-secondary">
                   I began learning HTML, CSS, and JavaScript, and in 2016, I
-                  discovered React. It wasn&apos;t long before I landed my first
+                  discovered React. It&apos;t long before I landed my first
                   full-time job as a web developer.
                 </p>
               </div>
@@ -158,7 +159,7 @@ export default function AboutPage() {
             </div>
 
             {/* Section 3 */}
-            <div className="relative flex w-full justify-center px-14 pt-40">
+            <div className="relative w-full justify-center md:flex md:px-14 md:pt-40">
               <HorizontalLine />
               <div className="mt-6 flex-1">
                 <div className="flex items-center justify-start">
@@ -204,7 +205,7 @@ export default function AboutPage() {
             </div>
 
             {/* Section 4 */}
-            <div className="relative flex w-full justify-center px-14 pt-44">
+            <div className="relative w-full justify-center md:flex md:px-14 md:pt-44">
               <HorizontalLine />
               <div className="mt-6 flex-1 text-left">
                 <h2 className="mb-6 w-full text-balance text-3xl font-medium leading-[40px] tracking-tighter text-text-primary">
@@ -372,22 +373,22 @@ export default function AboutPage() {
 
           {/* About Grid */}
           <GridWrapper>
-            <div className="grid grid-cols-12 gap-2">
+            <div className="grid grid-cols-1 gap-2 md:grid-cols-12">
               <AboutPattern />
-              <div className="col-span-3 row-span-6">
+              <div className="md:col-span-3 md:row-span-6">
                 <CurrentlyPlayingBento />
               </div>
-              <div className="col-span-7 row-span-5">
+              <div className="hidden md:col-span-7 md:row-span-5 md:block">
                 <Scrapbook />
               </div>
-              <div className="col-span-2 col-start-11 row-span-10 min-h-[50px]">
+              <div className="hidden md:col-span-2 md:col-start-11 md:row-span-10 md:block md:min-h-[50px]">
                 <CurrentlyReadingBento />
               </div>
-              <div className="col-span-7 row-span-8">
+              <div className="md:col-span-7 md:row-span-8">
                 <ConnectionsBento linkTo="/connections" />
               </div>
 
-              <div className="col-span-3 row-span-4">
+              <div className="md:col-span-3 md:row-span-4">
                 <StatsBento />
               </div>
             </div>
@@ -481,7 +482,7 @@ function AboutTrackPattern() {
             width="380"
             height="1778"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
             <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feBlend

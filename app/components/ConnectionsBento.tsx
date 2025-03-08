@@ -154,11 +154,11 @@ export function ConnectionsBento({
             />
           </span>
 
-          {/* mobile circle */}
-          <span className="md:hidden">
+          {/* mobile & tablet circle */}
+          <span className="lg:hidden">
             <ConnectionCircle
               sizeClass="w-10 h-10"
-              className="absolute left-4 top-4"
+              className="absolute left-4 top-6 md:left-24"
             >
               <img
                 className="rounded-full"
@@ -168,7 +168,7 @@ export function ConnectionsBento({
             </ConnectionCircle>
             <ConnectionCircle
               sizeClass="w-12 h-12"
-              className="absolute bottom-20 left-14"
+              className="absolute bottom-20 left-14 md:left-52"
             >
               <img
                 className="rounded-full"
@@ -178,7 +178,7 @@ export function ConnectionsBento({
             </ConnectionCircle>
             <ConnectionCircle
               sizeClass="w-14 h-14"
-              className="absolute right-16 top-4"
+              className="absolute right-16 top-4 md:right-52"
             >
               <img
                 className="rounded-full"
@@ -188,7 +188,7 @@ export function ConnectionsBento({
             </ConnectionCircle>
             <ConnectionCircle
               sizeClass="w-11 h-11"
-              className="absolute bottom-20 right-4"
+              className="absolute bottom-20 right-4 md:right-12"
             >
               <img
                 className="rounded-full"

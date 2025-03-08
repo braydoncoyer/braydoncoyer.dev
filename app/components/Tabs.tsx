@@ -37,6 +37,10 @@ export function TabList({
   children: ReactNode;
   className?: string;
 }) {
+  const context = useContext(TabsContext);
+  if (!context) throw new Error("TabList must be used within Tabs");
+  const { setActiveTab } = context;
+
   const childrenArray = React.Children.toArray(children);
 
   return (
@@ -55,7 +59,7 @@ export function TabList({
               (child: any) => child.props.label === e.target.value,
             ) as any;
             if (selectedTab) {
-              selectedTab.props.onClick?.(selectedTab.props.id);
+              setActiveTab(selectedTab.props.id);
             }
           }}
         >

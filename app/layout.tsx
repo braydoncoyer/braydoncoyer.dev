@@ -25,7 +25,7 @@ export default function RootLayout({
       className={`bg-bg-primary ${GeistMono.variable} ${GeistSans.variable}`}
     >
       <head></head>
-      <body className="font-sans md:max-w-7xl md:flex-row lg:mx-auto">
+      <body className="font-sans md:max-w-7xl lg:mx-auto lg:flex-row">
         <main
           className={cx(
             "relative overflow-x-hidden border-x border-border-primary/50",
@@ -33,13 +33,13 @@ export default function RootLayout({
         >
           <Navbar />
           <HorizontalLine />
-          <div className="grid grid-cols-1 md:grid-cols-[32px_1fr_32px]">
-            <div className="hidden w-full border-r border-border-primary opacity-75 [background-image:linear-gradient(45deg,theme(colors.border-primary)_12.50%,transparent_12.50%,transparent_50%,theme(colors.border-primary)_50%,theme(colors.border-primary)_62.50%,transparent_62.50%,transparent_100%)] [background-size:5px_5px] md:block"></div>
-            <div className="relative col-span-1 px-3 md:px-0">
+          <div className="grid grid-cols-1 lg:grid-cols-[32px_1fr_32px]">
+            <div className="hidden w-full border-r border-border-primary opacity-75 [background-image:linear-gradient(45deg,theme(colors.border-primary)_12.50%,transparent_12.50%,transparent_50%,theme(colors.border-primary)_50%,theme(colors.border-primary)_62.50%,transparent_62.50%,transparent_100%)] [background-size:5px_5px] lg:block"></div>
+            <div className="relative col-span-1 px-3 lg:px-0">
               <BgGradient />
               {children}
             </div>
-            <div className="hidden w-full border-l border-border-primary opacity-75 [background-image:linear-gradient(45deg,theme(colors.border-primary)_12.50%,transparent_12.50%,transparent_50%,theme(colors.border-primary)_50%,theme(colors.border-primary)_62.50%,transparent_62.50%,transparent_100%)] [background-size:5px_5px] md:block"></div>
+            <div className="hidden w-full border-l border-border-primary opacity-75 [background-image:linear-gradient(45deg,theme(colors.border-primary)_12.50%,transparent_12.50%,transparent_50%,theme(colors.border-primary)_50%,theme(colors.border-primary)_62.50%,transparent_62.50%,transparent_100%)] [background-size:5px_5px] lg:block"></div>
           </div>
           <Footer />
         </main>

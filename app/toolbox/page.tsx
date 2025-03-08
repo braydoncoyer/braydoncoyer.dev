@@ -34,7 +34,7 @@ export default function ToolboxPage() {
         </div>
         {/* List */}
         <GridWrapper>
-          <div className="relative grid grid-cols-3 place-items-center gap-6 md:grid-cols-8">
+          <div className="relative grid grid-cols-3 place-items-center md:grid-cols-4 lg:grid-cols-8 lg:gap-6">
             {softwareData.map((item) => (
               <a
                 key={item.title}
