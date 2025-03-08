@@ -129,10 +129,10 @@ export default async function BlogPage({ params }: BlogPageProps) {
             </div>
 
             {/* Published Date */}
-            <div className="grid auto-cols-auto items-center gap-4 text-sm text-slate-300 lg:flex lg:gap-6">
-              <div className="flex items-center gap-1.5 text-xs text-slate-300">
+            <div className="grid auto-cols-auto items-center gap-4 text-sm text-slate-200 lg:flex lg:gap-6">
+              <div className="flex items-center gap-1.5 text-xs">
                 <svg
-                  className="hidden h-5 w-5 text-slate-200 md:block"
+                  className="hidden h-5 w-5 md:block"
                   fill="none"
                   viewBox="0 0 24 24"
                 >

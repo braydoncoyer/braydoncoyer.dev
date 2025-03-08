@@ -1,0 +1,166 @@
+---
+title: Blogfolio V3 - Update 2022
+publishedAt: 2022-12-13
+summary: I am excited to announce the launch of my annual blogfolio update. Let’s take an in-depth look at what’s new!
+imageName: blogfolio_v3.jpeg
+categories: ["personal"]
+---
+
+As the holiday season approaches, I am pleased to announce the latest update to my blogfolio! This year's update focuses on refining existing designs and adding some key features, building on the success of [last year's major redesign and transition to Next.js](https://braydoncoyer.dev/blog/introducing-my-new-blogfolio).
+
+In this article, I’ll take you on a tour of the new features, and at the end, I will provide an overview of the technology stack that I am using to power the site.
+
+## What’s New on My Blogfolio
+
+I have made a number of changes to my site, ranging from small tweaks to major improvements. Some of the most notable changes include the addition of a new logo, a blog redesign, reimagining the project page, and the implementation of a more user-friendly navigation system.
+
+There’s a lot more packed into this update; here’s a rundown of whats new on my site!
+
+![](https://res.cloudinary.com/braydoncoyer/image/upload/v1670906029/blogfolio_2022_01_mr1sls.jpg)
+
+### New Logo
+
+After considering several options, I finally decided to create a new logo for my personal brand. I wanted something that would be easily recognizable and would reflect my personal style, so I chose a design that features my initials. I worked with a designer to develop the logo, and we experimented with different fonts and colors before settling on the current design.
+
+I think this new logo will be a great addition to my brand, and I'm excited to use it on my site, social media assets, and other materials. What do you think?
+
+### Design Changes
+
+**Redesigned Navbar**
+
+Noticeable for those viewing on a desktop, the navbar has had a facelift. The center links are now positioned more closely and the navbar sticks to the top of the page as you scroll, bringing back the frosted glass effect that was on my portfolio a few years ago.
+
+<Infoquote>
+  By the way, I wrote a tutorial on how to create a sticky glassmorphic navbar.
+  You can find it here on my blog.
+</Infoquote>
+
+**Vibrant Gradient Flare**
+
+In the background, you’ll notice a few vibrant gradient rays shining from the top and bottom of the page. I’ve replaced the patrolling color orbs from last year with this new static option. I think it looks better, what do you think?
+
+**Timeline Section**
+
+On the About page, the work experience section has been redesigned to a timeline, providing much more information for each time. Like the content on my blog, this information is being sourced from a Notion database, which makes it very easy to update at any time.
+
+![](https://res.cloudinary.com/braydoncoyer/image/upload/v1670906016/brandbird_8_yhry9q.png)
+
+**Newsletter form**
+
+A small change, but I reduced the visual noise on the newsletter form. It’s smaller, and themed better with the overall feel of the site.
+
+**Button Revamp**
+
+Buttons have been revisited and tidied up. They’re smaller, and now include a subtle animation when you hover over them.
+
+### New Article Layout
+
+Last year, I created an article layout with the blog content in the left column. While this worked well for keeping the article reactions stickied on the right, it often felt awkward to read. In order to find a more balanced approach, I made some changes to the layout this year.
+
+![](https://res.cloudinary.com/braydoncoyer/image/upload/v1670906016/brandbird_7_fd6ofw.png)
+
+The blog content is now centered on the page, allowing for a more comfortable reading experience, while still keeping the article reactions stickied on the right for easy access.
+
+### A New Community Wall
+
+I introduced the [Community Wall](https://braydoncoyer.dev/community-wall) last year, providing a way for visitors to leave a footprint on my site. I have made some improvements this year, including a redesign of the wall and responses, as well as the addition of avatars to the messages to give them more personality.
+
+![](https://res.cloudinary.com/braydoncoyer/image/upload/v1670906016/brandbird_9_r7xgkk.png)
+
+Visitors can sign in through GitHub and leave their own message. If they have a profile picture set on GitHub, it will be used as their avatar on the wall. If not, a placeholder avatar will be used instead. These avatars are robot-themed, adding a fun element to the wall.
+
+### Revamped Projects Page
+
+I like to try my hand at designing things on the web, and one example is the Projects page.
+
+This redesign highlights the project by borrowing it’s main color scheme and using it on the project card.
+
+![](https://res.cloudinary.com/braydoncoyer/image/upload/v1670906016/brandbird_10_lmyjbr.png)
+
+To be honest, I’m not sure what I think about it. I feel like it’s an improvement on last year, but something still feels missing. I don’t think it matches too well with the rest of the site’s theme, and I may end up changing it as time goes on.
+
+### Introducing the ‘/latest’ Route
+
+I’m excited about this one! Utilizing Middleware, I implemented an easy way for visitors to always read my latest blog post without needing to know its name or specific URL. Want to give it a try? Try navigating to [`https://braydoncoyer.dev/blog/latest`](https://braydoncoyer.dev/blog/latest) !
+
+<Thoughtquote>
+  It’s possible that this article is the most recent article that I’ve
+  published. If you try navigating to the URL above, it may just reroute you
+  here. You may need to open a new tab to see it working!
+</Thoughtquote>
+
+### Link Previews
+
+One of the new features that I am particularly excited about is the live preview that appears when you hover over a link in a blog post. This feature is only available on desktop, but it provides a quick and convenient way to preview the destination of a link before you click on it.
+
+![](https://res.cloudinary.com/braydoncoyer/image/upload/v1670906299/brandbird_12_gubbym.png)
+
+To create this feature, I made a custom component that uses a Next.js API route and the [MicroLink](https://microlink.io/screenshot) API to generate a screenshot of the destination webpage. This screenshot is then displayed above the link, providing a visual preview of the page that you can access with a single click. I think this is a useful and user-friendly feature, and I'm interested to see how it is used by readers.
+
+### Revamped Open Graph Images
+
+Last year, I developed a system for dynamically generating Open Graph images for my blog posts, which involved a significant amount of custom code and reliance on a third-party API. However, Vercel recently announced the experimental release of their own Open Graph API, which I have decided to test on my blog.
+
+![](https://res.cloudinary.com/braydoncoyer/image/upload/v1670906016/brandbird_11_kyhfro.png)
+
+This new API has allowed me to simplify and clean up my codebase, as well as eliminate my reliance on the Cloudinary API. In addition to these technical improvements, I have also updated the design of my Open Graph images to make them more visually appealing and consistent with my brand.
+
+### Articles By Tag
+
+Another change that I have made to my site this year is to improve the way that articles are organized and categorized on the blog page.
+
+Previously, if you wanted to send someone a list of articles on a specific topic, you had to find each article individually and send multiple links. This was not very user-friendly, so I have implemented a new system that allows you to browse articles by topic and easily share the entire list with others.
+
+Now, when you select a tag on the blog page, you can simply copy the URL and send it to someone else. They can then access all of the articles related to that topic in one convenient location. I think this new system will make it easier for readers to find and share the articles that they are interested in, and I'm excited to see how it is used.
+
+### The New Speaking Page
+
+One of my goals for this year is to become more involved in the tech conference community, and I am excited to announce the launch of my new Speaking page!
+
+This page contains information about my background, experience, and areas of expertise, as well as a list of past talks and presentations that I have given. I hope that this page will be useful for conference organizers who are looking for speakers, and I encourage them to take a look and consider me for their events. In the future, I plan to add more information and resources to this page, including details about upcoming talks and abstracts for potential presentations.
+
+You can visit the [Speaking page here](https://braydoncoyer.dev/speaking)!
+
+## The Tech Stack
+
+I'm sure some of you are interested to know what technologies I used to build my JAMstack blogfolio. I have this information [**listed on my toolbox page**](https://braydoncoyer.dev/toolbox#this-site-&-blog), but let me dive a bit deeper here.
+
+### Next.js Version 13
+
+I'm using [**Next.js**](https://nextjs.org/) as my framework of choice. And although I am technically running the newly released version 13, my blogfolio is not using all of the new features described in the release notes.
+
+All of the pages on my site are either statically generated at build time, or incrementally regenerate to fetch new data. This means my blogfolio continues to be blazing fast. 🔥
+
+### **Notion**
+
+I'm still using [**Notion**](https://www.notion.so/product?utm_source=google&utm_campaign=2075789710&utm_medium=80211061601&utm_content=500427479647&utm_term=notion&targetid=aud-1188813422817:kwd-312974742&gclid=Cj0KCQiAzMGNBhCyARIsANpUkzMIIZl2Z9mzf48BtyHyqEdNRIJpk6z9majB1vQgp1fXQ4OBMqodeYoaAn8REALw_wcB) as my CMS and makes publishing new blog articles a trivial task. The Notion API has become more stable and more block-elements are supported. I’m excited to use this for another year!
+
+Combined with static generation provided by Next.js, new articles are automatically served to visitors. It’s truly magic. ✨
+
+### **TailwindCSS Version 3**
+
+This shouldn’t be a surprise to anyone! [**Tailwind**](https://tailwindcss.com/) is still the CSS framework I’m using to make my site look clean. 😎
+
+### **Supabase**
+
+[**Supabase**](https://supabase.com/) has been my secret weapon for a lot of features on my website. From tracking and displaying article hit-count, to handling messages on the Community Wall, I’ve fallen in love with the tool and can’t see myself moving away from it anytime soon!
+
+### **Cloudinary**
+
+Last year I used [Cloudinary](https://cloudinary.com/) to host my images, but also manipulate them for tasks like Open Graph images.
+
+Since then, Vercel has released their own Open Graph API. Cloudinary is still my choice for image hosting, though.
+
+### **Iconic**
+
+One of the things that give UIs that extra level of polish is consistency, and icons play an important part in that. There are countless icon libraries available, but I chose to go with the premium [**Iconic**](https://iconic.app/) library. Each icon is crafted to perfection - and I hope you enjoy them as much as I do!
+
+### MicroLink
+
+I’m using this [MicroLink](https://microlink.io/) to take screenshots of webpages and return the image to my site so I can show a preview of links on my blogfolio. The API is very easy to use, and they have a generous free tier to get started!
+
+## **Conclusion**
+
+Overall, I am very happy with the changes that I have made to my site this year, and I hope that you enjoy the new features and improvements!
+
+If you have any feedback or suggestions, please feel free to leave a comment on the Community Wall or contact me directly. Thank you for visiting my site, and I wish you a Merry Christmas and Happy New Year!

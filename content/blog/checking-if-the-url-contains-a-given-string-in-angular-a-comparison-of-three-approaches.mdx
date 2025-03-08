@@ -1,0 +1,117 @@
+---
+title: "Checking if the URL Contains a Given String in Angular: A Comparison of Three Approaches"
+publishedAt: 2022-12-21
+summary: This article discusses three different approaches for checking if a URL contains a given string in Angular, including using the Location service, the JavaScript includes() method, and regular expressions.
+imageName: checking_if_url_contains_string.jpeg
+categories: ["angular", "programming"]
+---
+
+As a front-end developer working with the Angular framework, you may find yourself in a situation where you need to determine if the current URL contains a given string. This could be useful for a variety of reasons, such as triggering certain behaviors based on the URL, or verifying that a user is on the correct page before allowing them to perform certain actions.
+
+In this article, we will explore three different approaches for checking if the URL contains a given string in Angular: using the Angular Location service, using the JavaScript **`includes()`** method, and using a regular expression.
+
+## **The Angular Location Service**
+
+The Angular Location service is a built-in Angular service that allows us to access the current URL and perform actions on it. To use the Location service in a component or service, we first need to inject it using Angular's dependency injection system. Here's an example of how to do this:
+
+```ts
+import { Component } from "@angular/core";
+import { Location } from "@angular/common";
+
+@Component({
+  // component metadata
+})
+export class MyComponent {
+  constructor(private location: Location) {}
+}
+```
+
+Once we have injected the Location service, we can use its **`path()`** method to retrieve the current URL as a string. Here's an example of how to do this:
+
+```ts
+import { Component } from "@angular/core";
+import { Location } from "@angular/common";
+
+@Component({
+  // component metadata
+})
+export class MyComponent implements OnInit {
+  constructor(private location: Location) {}
+
+  ngOnInit(): void {
+    const currentUrl = this.location.path();
+    console.log(currentUrl); // logs the current URL
+  }
+}
+```
+
+## **Using the JavaScript includes() method**
+
+Once we have retrieved the current URL as a string using the Location service, we can use the JavaScript **`includes()`** method to determine if it contains a given string. The **`includes()`** method returns a boolean value indicating whether the string it is called on contains a specified substring.
+
+Here's an example of how to use the **`includes()`** method in conjunction with the Location service's **`path()`** method to check if the current URL contains a given string:
+
+```ts
+import { Component } from "@angular/core";
+import { Location } from "@angular/common";
+
+@Component({
+  // component metadata
+})
+export class MyComponent implements OnInit {
+  constructor(private location: Location) {}
+
+  ngOnInit(): void {
+    const currentUrl = this.location.path();
+    const urlContainsFoo = currentUrl.includes("foo");
+    console.log(urlContainsFoo); // logs true if the current URL contains 'foo', false otherwise
+  }
+}
+```
+
+## **Using a Regular Expression**
+
+Another approach to checking if the URL contains a given string is to use a regular expression. Regular expressions are special strings that can be used to match patterns in other strings. To create a regular expression to match a given string, we can use the **`RegExp`** constructor and pass in the string as an argument.
+
+Here's an example of how to create a regular expression to match the string 'foo':
+
+```ts
+const regex = new RegExp("foo");
+```
+
+Once we have created our regular expression, we can use its **`test()`** method to check if a string contains the pattern it represents. The **`test()`** method returns a boolean value indicating whether the string it is called on contains the pattern.
+
+Here's an example of how to use the regular expression's **`test()`** method in conjunction with the Location service's **`path()`** method to check if the current URL contains the string 'foo':
+
+```ts
+import { Component } from "@angular/core";
+import { Location } from "@angular/common";
+
+@Component({
+  // component metadata
+})
+export class MyComponent implements OnInit {
+  constructor(private location: Location) {}
+
+  ngOnInit(): void {
+    const currentUrl = this.location.path();
+    const regex = new RegExp("foo");
+    const urlContainsFoo = regex.test(currentUrl);
+    console.log(urlContainsFoo); // logs true if the current URL contains 'foo', false otherwise
+  }
+}
+```
+
+## **Conclusion**
+
+In this article, we have explored three different approaches for checking if the URL contains a given string in Angular: using the Angular Location service, using the JavaScript **`includes()`** method, and using a regular expression.
+
+Each approach has its own benefits and considerations, and the best one for your specific use case will depend on your requirements and preferences. If you only need to check for the presence of a simple string, the **`includes()`** method or a regular expression may be sufficient.
+
+However, if you need more advanced URL manipulation capabilities, the Angular Location service may be the better choice.
+
+## **Additional Resources**
+
+- [**Angular Location service documentation**](https://angular.io/api/common/Location)
+- [**JavaScript String includes() method documentation**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes)
+- [**Regular expression documentation**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
