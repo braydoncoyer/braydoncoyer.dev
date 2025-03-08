@@ -388,6 +388,12 @@ function FullWidthCallout({ children, type }) {
       ring: "ring-indigo-700/10",
       label: "Thought",
     },
+    warning: {
+      bg: "bg-rose-50",
+      text: "text-rose-700",
+      ring: "ring-rose-700/10",
+      label: "Warning",
+    },
   };
 
   const badge = badges[type];
@@ -415,6 +421,10 @@ function IdeaQuote({ children }) {
   return <FullWidthCallout type="idea">{children}</FullWidthCallout>;
 }
 
+function WarningQuote({ children }) {
+  return <FullWidthCallout type="warning">{children}</FullWidthCallout>;
+}
+
 function InfoQuote({ children }) {
   return <FullWidthCallout type="info">{children}</FullWidthCallout>;
 }
@@ -439,6 +449,7 @@ const sharedComponents = {
   Ideaquote: IdeaQuote,
   Infoquote: InfoQuote,
   Thoughtquote: ThoughtQuote,
+  Warningquote: WarningQuote,
   //   StaticTweet: TweetComponent,
   code: Code,
   Table,
