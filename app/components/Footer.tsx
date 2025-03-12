@@ -89,7 +89,7 @@ export function Footer() {
                       <Link href="/resume">Resume</Link>
                     </li>
                     <li>
-                      <Link href="/snippets">Snippets</Link>
+                      <Link href="/links">Links</Link>
                     </li>
                   </ul>
                 </div>
