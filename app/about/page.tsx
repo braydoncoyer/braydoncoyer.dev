@@ -12,7 +12,6 @@ import { ShadowBox } from "../components/ShadowBox";
 import { useScroll, motion } from "framer-motion";
 import { Resume } from "app/components/Resume";
 import { Button } from "../components/Button";
-import { AboutPattern, HeaderPattern } from "../components/SvgPatterns";
 import { StatsBento } from "../components/StatsBento";
 import { CurrentlyReadingBento } from "../components/CurrentlyReadingBento";
 import { GridWrapper } from "../components/GridWrapper";
@@ -23,25 +22,21 @@ export default function AboutPage() {
   return (
     <div className="relative">
       <title>About | Braydon Coyer</title>
-      <span className="absolute left-1/2 top-20 -translate-y-1/2 translate-x-1/2">
-        <HorizontalLine />
-      </span>
-      <HeaderPattern />
       <div className="relative space-y-10 md:space-y-16">
         {/* Title */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-around md:pt-16">
-          <div className="order-2 mx-auto max-w-lg md:order-1 md:m-0 md:max-w-3xl">
-            <GridWrapper>
-              <h1 className="mx-auto max-w-2xl text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-left md:text-6xl md:leading-[64px]">
+        <GridWrapper>
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-around lg:pt-16">
+            <div className="order-2 mx-auto max-w-lg lg:order-1 lg:m-0 lg:max-w-3xl">
+              <h1 className="mx-auto max-w-2xl text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-5xl lg:text-left lg:text-6xl lg:leading-[64px]">
                 {timeOfDayGreeting} <br />
                 I&apos;m Braydon, a creative frontend engineer.
               </h1>
-            </GridWrapper>
+            </div>
+            <div className="ld:order-2 order-1 flex-shrink-0 lg:ml-8">
+              <ProfilePicture />
+            </div>
           </div>
-          <div className="order-1 flex-shrink-0 md:order-2 md:ml-8">
-            <ProfilePicture />
-          </div>
-        </div>
+        </GridWrapper>
 
         <span className="absolute left-1/2 top-40 -translate-y-1/2 translate-x-1/2">
           <HorizontalLine />
@@ -61,26 +56,13 @@ export default function AboutPage() {
               </h2>
             </GridWrapper>
           </div>
-          <div className="relative w-full overflow-hidden md:h-[2050px]">
-            <div className="absolute left-[455px] top-0 w-full">
+          <div className="relative h-[2050px] w-full overflow-hidden lg:h-[2050px]">
+            <div className="absolute left-0 top-0 w-full md:left-4 lg:left-[455px]">
               <AboutTrackPattern />
             </div>
             {/* Section 1 */}
-            <div className="relative w-full md:flex md:px-14 md:pt-32">
-              <HorizontalLine />
-              <div className="mt-6 flex-1">
-                <div className="flex items-center justify-start">
-                  <div className="relative w-fit md:ml-20">
-                    <ShadowBox width={188} height={278}></ShadowBox>
-                    <img
-                      className="absolute left-0 top-0 h-[270px] w-[180px] rotate-[-8deg] rounded-lg object-cover shadow"
-                      src="/knights_kwest.jpeg"
-                      alt="A headshot"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="mt-6 flex-1 text-left">
+            <div className="relative ml-5 grid w-full grid-cols-12 grid-rows-2 md:grid-cols-10 md:grid-rows-1 lg:flex lg:px-14 lg:pt-32">
+              <div className="col-span-11 col-start-1 mt-6 text-left md:col-span-6 md:col-start-2 lg:order-2 lg:flex-1">
                 <h2 className="mb-6 w-full text-balance text-3xl font-medium leading-[40px] tracking-tighter text-text-primary">
                   I began my creative journey by developing apps for iOS and
                   Android
@@ -96,8 +78,20 @@ export default function AboutPage() {
                   my games even surpassing Angry Birds in popularity.
                 </p>
               </div>
+              <div className="col-span-11 col-start-1 row-start-2 mt-6 place-items-center md:col-span-3 md:col-start-8 md:row-start-1 lg:flex-1 lg:place-items-start">
+                <div className="lg:flex lg:items-center lg:justify-start">
+                  <div className="relative w-fit lg:ml-20">
+                    <ShadowBox width={188} height={278}></ShadowBox>
+                    <img
+                      className="absolute left-0 top-0 h-[270px] w-[180px] rotate-[-8deg] rounded-lg object-cover shadow"
+                      src="/knights_kwest.jpeg"
+                      alt="A headshot"
+                    />
+                  </div>
+                </div>
+              </div>
               <svg
-                className="pointer-events-none absolute right-4"
+                className="pointer-events-none absolute right-4 hidden lg:block"
                 width="648"
                 height="366"
                 viewBox="0 0 648 366"
@@ -374,7 +368,6 @@ export default function AboutPage() {
           {/* About Grid */}
           <GridWrapper>
             <div className="grid grid-cols-1 gap-2 md:grid-cols-12">
-              <AboutPattern />
               <div className="md:col-span-3 md:row-span-6">
                 <CurrentlyPlayingBento />
               </div>
@@ -405,6 +398,7 @@ export default function AboutPage() {
 function AboutTrackPattern() {
   const containerRef = useRef<HTMLDivElement>(null);
   const pathRef = useRef<SVGPathElement>(null);
+  const verticalPathRef = useRef<SVGPathElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -415,21 +409,26 @@ function AboutTrackPattern() {
   const [position, setPosition] = useState({ x: 145, y: 0 });
 
   useEffect(() => {
-    if (!pathRef.current) return;
-    const length = pathRef.current.getTotalLength();
+    if (!pathRef.current && !verticalPathRef.current) return;
+    const length =
+      pathRef.current?.getTotalLength() ||
+      verticalPathRef.current?.getTotalLength() ||
+      0;
     setPathLength(length);
   }, []);
 
   useEffect(() => {
-    if (!pathRef.current || !pathLength) return;
+    if ((!pathRef.current && !verticalPathRef.current) || !pathLength) return;
 
     return scrollYProgress.on("change", (latest) => {
       const clampedProgress = Math.max(0, Math.min(latest, 1));
-      // Only update position when scrolling actually begins (latest > 0)
       if (latest > 0) {
-        const point = pathRef.current!.getPointAtLength(
-          pathLength * clampedProgress,
-        );
+        // Get the active path based on screen size
+        const activePath =
+          window.innerWidth >= 1024 ? pathRef.current : verticalPathRef.current;
+        if (!activePath) return;
+
+        const point = activePath.getPointAtLength(pathLength * clampedProgress);
         setPosition({ x: point.x, y: point.y });
       }
     });
@@ -437,8 +436,85 @@ function AboutTrackPattern() {
 
   return (
     <div ref={containerRef}>
+      {/* Vertical SVG for small/medium screens */}
       <svg
-        className="user-select-none pointer-events-none"
+        className="user-select-none pointer-events-none block lg:hidden"
+        width="20"
+        height="2500"
+        viewBox="-10 -10 40 2500"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <filter
+            id="purpleGlowVertical"
+            x="-100%"
+            y="-100%"
+            width="300%"
+            height="300%"
+          >
+            <feGaussianBlur stdDeviation="15" result="blur" />
+            <feColorMatrix
+              in="blur"
+              type="matrix"
+              values="0 0 0 0 0.423 0 0 0 0 0.278 0 0 0 0 1 0 0 0 0.6 0"
+            />
+          </filter>
+
+          <mask id="verticalPathMask">
+            <path
+              d="M10 0.5L10 2500"
+              stroke="white"
+              strokeWidth="8"
+              strokeLinejoin="round"
+              fill="none"
+            />
+          </mask>
+        </defs>
+
+        <g mask="url(#verticalPathMask)">
+          <motion.circle
+            cx={10}
+            cy={position.y}
+            r="120"
+            fill="#6C47FF"
+            filter="url(#purpleGlowVertical)"
+            opacity="0.5"
+            transition={{
+              type: "spring",
+              damping: 20,
+              stiffness: 100,
+              mass: 0.5,
+            }}
+          />
+        </g>
+
+        <path
+          ref={verticalPathRef}
+          d="M10 0.5L10 2500"
+          stroke="#D6DADE"
+          strokeOpacity="0.24"
+          strokeWidth="8"
+          strokeLinejoin="round"
+        />
+
+        <motion.circle
+          className="fill-indigo-600"
+          cx={10}
+          cy={position.y}
+          r="10"
+          transition={{
+            type: "spring",
+            damping: 20,
+            stiffness: 100,
+            mass: 0.5,
+          }}
+        />
+      </svg>
+
+      {/* Original SVG for large screens */}
+      <svg
+        className="user-select-none pointer-events-none hidden lg:block"
         width="380"
         height="1787"
         viewBox="-10 -10 380 1795"

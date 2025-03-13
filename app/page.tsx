@@ -11,6 +11,7 @@ import { ToolboxBento } from "./components/ToolboxBento";
 import { ConnectionsBento } from "./components/ConnectionsBento";
 import { ProfilePicture } from "./components/ProfilePicture";
 import { Photo } from "./components/Photo";
+import { PhotoGallery } from "./components/PhotoGallery";
 import { AboutMeBento } from "./components/AboutMeBento";
 // import {
 //   AboutPattern,
@@ -51,58 +52,8 @@ export default async function Home() {
           </div>
           <div>
             {/* Desktop Photos */}
-            <div className="mb-8 mt-16 hidden items-center justify-around space-x-16 md:space-x-4 lg:flex">
-              <div className="relative">
-                <ShadowBox width={188} height={278}></ShadowBox>
-                <span className="absolute left-1 top-2 rotate-[-8deg] rounded-lg lg:order-2">
-                  <Photo
-                    width={180}
-                    height={269}
-                    src="/braydon_speaking_photo.jpeg"
-                    alt="DoorDash hitting it's millionth total order back in 2015."
-                    direction="right"
-                  />
-                </span>
-              </div>
-
-              <div className="relative">
-                <ShadowBox width={278} height={214}></ShadowBox>
-                <span className="absolute left-1 top-2 rotate-[8deg]">
-                  <Photo
-                    width={272}
-                    height={206}
-                    src="/family_02.jpeg"
-                    alt="DoorDash hitting it's millionth total order back in 2015."
-                    direction="left"
-                  />
-                </span>
-              </div>
-
-              <div className="relative">
-                <ShadowBox width={278} height={278}></ShadowBox>
-                <span className="absolute left-1 top-2 rotate-[-8deg]">
-                  <Photo
-                    width={270}
-                    height={270}
-                    src="/family_03.jpeg"
-                    alt="DoorDash hitting it's millionth total order back in 2015."
-                    direction="right"
-                  />
-                </span>
-              </div>
-
-              <div className="relative">
-                <ShadowBox width={188} height={278}></ShadowBox>
-                <span className="absolute left-1 top-2 rotate-[5deg]">
-                  <Photo
-                    width={180}
-                    height={270}
-                    src="/braydon_headshot.jpg"
-                    alt="DoorDash hitting it's millionth total order back in 2015."
-                    direction="right"
-                  />
-                </span>
-              </div>
+            <div className="relative mb-8 hidden h-[350px] w-full items-center justify-center lg:flex">
+              <PhotoGallery />
             </div>
 
             {/* Mobile Photos */}

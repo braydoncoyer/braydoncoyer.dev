@@ -26,8 +26,8 @@ export default async function LinksPage() {
         <GridWrapper>
           <div className="mx-auto max-w-xl text-center md:mt-8">
             <p className="leading-8 text-text-secondary">
-              I&apos;m a front-end developer with a love for design and a knack
-              for tinkering.
+              I&apos;m a front-end developer, team lead, blogger and
+              international public speaker.
             </p>
           </div>
         </GridWrapper>
