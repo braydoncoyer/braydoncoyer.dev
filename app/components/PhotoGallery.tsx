@@ -36,14 +36,13 @@ export const PhotoGallery = () => {
       y: 0,
       rotate: 0,
       scale: 1,
-      zIndex: 60 - custom.order, // Stack them in reverse order initially
+      // Keep the same z-index throughout animation
     }),
     visible: (custom) => ({
       x: custom.x,
       y: custom.y,
       rotate: 0, // No rotation
       scale: 1,
-      zIndex: custom.zIndex,
       transition: {
         type: "spring",
         stiffness: 70,
@@ -59,47 +58,47 @@ export const PhotoGallery = () => {
     {
       id: 1,
       order: 0,
-      src: "/c3_speaker_head.png",
       x: "-320px",
       y: "15px",
-      zIndex: 10,
+      zIndex: 50, // Highest z-index (on top)
       direction: "left" as Direction,
+      src: "/c3_speaker_head.png",
     },
     {
       id: 2,
       order: 1,
-      src: "/braydon_speaking_photo.jpeg",
       x: "-160px",
       y: "32px",
-      zIndex: 20,
+      zIndex: 40,
       direction: "left" as Direction,
+      src: "/braydon_speaking_photo.jpeg",
     },
     {
       id: 3,
       order: 2,
-      src: "/braydon_headshot_1.jpeg",
       x: "0px",
       y: "8px",
       zIndex: 30,
       direction: "right" as Direction,
+      src: "/braydon_headshot_1.jpeg",
     },
     {
       id: 4,
       order: 3,
-      src: "/family_03.jpeg",
       x: "160px",
       y: "22px",
-      zIndex: 40,
+      zIndex: 20,
       direction: "right" as Direction,
+      src: "/family_03.jpeg",
     },
     {
       id: 5,
       order: 4,
-      src: "/braydon_speaking_head_3.jpeg",
       x: "320px",
       y: "44px",
-      zIndex: 50,
+      zIndex: 10, // Lowest z-index (at bottom)
       direction: "right" as Direction,
+      src: "/braydon_speaking_head_3.jpeg",
     },
   ];
 
@@ -112,15 +111,16 @@ export const PhotoGallery = () => {
         animate={isLoaded ? "visible" : "hidden"}
       >
         <div className="relative h-[220px] w-[220px]">
-          {photos.map((photo) => (
+          {/* Render photos in reverse order so that higher z-index photos are rendered later in the DOM */}
+          {[...photos].reverse().map((photo) => (
             <motion.div
               key={photo.id}
               className="absolute left-0 top-0"
+              style={{ zIndex: photo.zIndex }} // Apply z-index directly in style
               variants={photoVariants}
               custom={{
                 x: photo.x,
                 y: photo.y,
-                zIndex: photo.zIndex,
                 order: photo.order,
               }}
             >
