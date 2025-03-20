@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ViewCounter } from "./ViewCounter";
 
 interface BlogPost {
   slug: string;
@@ -34,7 +35,13 @@ export function BlogPostList({ posts }: BlogPostListProps) {
                           )}
                         </time>
                       </div>
-                      <p className="text-sm text-text-secondary">1,352 reads</p>
+                      <span className="text-text-secondary">
+                        <ViewCounter
+                          slug={post.slug}
+                          increment={false}
+                          className="font-mono text-xs text-text-secondary"
+                        />
+                      </span>
                     </div>
                     <div className="col-start-4 hidden h-full border-x border-border-primary md:block md:border-dashed"></div>
                     <div className="group col-span-8 flex w-full flex-grow flex-col py-4 md:col-start-5 md:col-end-12 md:p-4">

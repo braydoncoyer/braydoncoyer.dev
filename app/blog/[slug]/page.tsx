@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { MDXContent } from "@/app/components/mdx";
-// import { getViewsCount } from "app/db/queries";
-import { getBlogPosts } from "app/db/blog";
-// import ViewCounter from "../view-counter";
-// import { increment } from "app/db/actions";
 import { unstable_noStore as noStore } from "next/cache";
 import { SectionTitlePill } from "app/components/SectionTitlePill";
 import { HorizontalLine } from "app/components/HorizontalLine";
@@ -15,6 +11,7 @@ import { FeaturedBlogCard } from "@/app/components/FeaturedBlogCard";
 import { BgGradient } from "@/app/components/BgGradient";
 import readingDuration from "reading-duration";
 import clsx from "clsx";
+import { ViewCounter } from "@/app/components/ViewCounter";
 
 interface BlogPageProps {
   params: Promise<{
@@ -224,7 +221,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
                     strokeWidth="1.5"
                   ></circle>
                 </svg>
-                <p>5000 reads</p>
+                <ViewCounter slug={(await params).slug} increment={true} />
               </div>
             </div>
           </div>

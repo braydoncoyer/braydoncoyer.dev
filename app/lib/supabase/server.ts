@@ -1,6 +1,7 @@
 "use server";
 
-import { createServerClient, type CookieOptions } from "@supabase/ssr";
+import { createServerClient, type CookieOptions, createBrowserClient } from "@supabase/ssr";
+import { createClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
 
 export default async function createSupabaseServerClient() {
@@ -22,5 +23,13 @@ export default async function createSupabaseServerClient() {
         },
       },
     },
+  );
+}
+
+/// Admin client with service role key (for operations that need to bypass RLS)
+export async function createSupabaseAdminClient() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
   );
 }
