@@ -36,10 +36,6 @@ export const Photo = ({
   const [rotation, setRotation] = useState<number>(0);
   const x = useMotionValue(200);
   const y = useMotionValue(200);
-  const xSmooth = useSpring(x, { damping: 50, stiffness: 400 });
-  const ySmooth = useSpring(y, { damping: 50, stiffness: 400 });
-  const rotateY = useTransform(xSmooth, [0, 400], [-15, 15]);
-  const rotateX = useTransform(ySmooth, [0, 400], [15, -15]);
 
   useEffect(() => {
     const randomRotation =
@@ -94,9 +90,9 @@ export const Photo = ({
       draggable={false}
       tabIndex={0}
     >
-      <div className="relative h-full w-full overflow-hidden rounded-lg shadow">
+      <div className="relative h-full w-full overflow-hidden rounded-lg shadow-sm shadow-slate-900/30">
         <MotionImage
-          className={cn("rounded-lg object-cover shadow")}
+          className={cn("rounded-lg object-cover")}
           fill
           src={src}
           alt={alt}

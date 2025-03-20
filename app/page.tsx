@@ -1,5 +1,4 @@
 import { BgGradient } from "./components/BgGradient";
-import { ShadowBox } from "./components/ShadowBox";
 import { NewsletterSignUp } from "./components/NewsletterSignUp";
 import { ChangelogBento } from "./components/ChangelogBento";
 import { fetchAndSortBlogPosts } from "./lib/utils";
@@ -9,16 +8,11 @@ import { CalendarBento } from "./components/CalendarBento";
 import { FeaturedBlogCard } from "./components/FeaturedBlogCard";
 import { ToolboxBento } from "./components/ToolboxBento";
 import { ConnectionsBento } from "./components/ConnectionsBento";
-import { ProfilePicture } from "./components/ProfilePicture";
-import { Photo } from "./components/Photo";
+import { AnimatedProfilePicture } from "./components/AnimatedProfilePicture";
+import { AnimatedText } from "./components/AnimatedText";
 import { PhotoGallery } from "./components/PhotoGallery";
 import { AboutMeBento } from "./components/AboutMeBento";
-// import {
-//   AboutPattern,
-//   BlogPattern,
-//   HeaderPattern,
-//   MySitePattern,
-// } from "./components/SvgPatterns";
+import { AnimatedMobilePhotos } from "./components/AnimatedMobilePhotos";
 import { GridWrapper } from "./components/GridWrapper";
 import clsx from "clsx";
 
@@ -26,67 +20,50 @@ export default async function Home() {
   const allPublishedBlogPosts = await fetchAndSortBlogPosts();
   const featuredArticles = allPublishedBlogPosts.slice(0, 4);
 
+  const PROFILE_DELAY = 0;
+  const HEADING_DELAY = PROFILE_DELAY + 0.2;
+  const PARAGRAPH_DELAY = HEADING_DELAY + 0.1;
+  const PHOTOS_DELAY = PARAGRAPH_DELAY + 0.1;
+
   return (
     <section>
-      {/* <HeaderPattern /> */}
-      <ProfilePicture />
+      <AnimatedProfilePicture delay={PROFILE_DELAY} />
       <div className="mt-6 space-y-10 md:mt-0 md:space-y-16">
         <section>
           <div className="relative text-balance">
             <GridWrapper>
-              <h1 className="mx-auto max-w-2xl text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-6xl md:leading-[64px]">
+              <AnimatedText
+                as="h1"
+                delay={HEADING_DELAY}
+                className="mx-auto max-w-2xl text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-6xl md:leading-[64px]"
+              >
                 Hey, I&apos;m Braydon! <br /> Welcome to my corner of the
                 internet!
-              </h1>
+              </AnimatedText>
             </GridWrapper>
             <GridWrapper>
               <div className="mt-4 text-center md:mt-8">
-                <p className="leading-8 text-text-secondary">
+                <AnimatedText
+                  as="p"
+                  delay={PARAGRAPH_DELAY}
+                  className="leading-8 text-text-secondary"
+                >
                   I&apos;m a front-end developer with a love for design and a
                   knack for tinkering. This site is intentionally
                   over-engineered and serves as my playground for experimenting
                   with new ideas and seeing what sticks!
-                </p>
+                </AnimatedText>
               </div>
             </GridWrapper>
           </div>
           <div>
             {/* Desktop Photos */}
             <div className="relative mb-8 hidden h-[350px] w-full items-center justify-center lg:flex">
-              <PhotoGallery />
+              <PhotoGallery animationDelay={PHOTOS_DELAY} />
             </div>
 
             {/* Mobile Photos */}
-            <div className="relative -mx-12 lg:hidden">
-              <div className="relative w-full overflow-hidden py-12">
-                <div className="mt-10 flex items-center justify-center space-x-14">
-                  <div className="relative w-fit">
-                    <ShadowBox width={170} height={252}></ShadowBox>
-                    <img
-                      className="absolute left-0 top-2 h-[245px] w-[163px] rotate-[-5deg] rounded-lg object-cover shadow"
-                      src="/c3_speaker_head.png"
-                      alt="A headshot"
-                    />
-                  </div>
-                  <div className="relative w-fit">
-                    <ShadowBox width={188} height={278}></ShadowBox>
-                    <img
-                      className="absolute left-0 top-0 h-[280px] w-[190px] rotate-[-8deg] rounded-lg object-cover shadow"
-                      src="/braydon_speaking_photo.jpeg"
-                      alt="A headshot"
-                    />
-                  </div>
-                  <div className="relative w-fit">
-                    <ShadowBox width={170} height={252}></ShadowBox>
-                    <img
-                      className="absolute left-0 top-0 h-[245px] w-[163px] rotate-[10deg] rounded-lg object-cover shadow"
-                      src="/braydon_speaking_head_3.jpeg"
-                      alt="A headshot"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+            <AnimatedMobilePhotos delay={PHOTOS_DELAY} />
           </div>
         </section>
 
@@ -105,27 +82,6 @@ export default async function Home() {
               </h2>
             </GridWrapper>
           </div>
-
-          {/* About Bento */}
-          {/* <GridWrapper>
-            <div className="grid grid-cols-1 gap-2 md:grid-cols-12 md:grid-rows-[14]">
-              <div className="col-span-1 md:col-span-5 md:row-span-6">
-                <AboutMeBento linkTo="/about" />
-              </div>
-
-              <div className="md:col-span-7 md:row-span-8">
-                <ConnectionsBento linkTo="/connections" />
-              </div>
-
-              <div className="md:col-span-5 md:row-span-7">
-                <ToolboxBento linkTo="/toolbox" />
-              </div>
-
-              <div className="md:col-span-7 md:row-span-5">
-                <CalendarBento />
-              </div>
-            </div>
-          </GridWrapper> */}
 
           <GridWrapper>
             <div className="grid grid-cols-1 gap-2 md:grid-cols-12 lg:grid-rows-[14]">

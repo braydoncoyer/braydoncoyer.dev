@@ -113,7 +113,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
               {post.categories.slice(0, 3).map((category, index) => (
                 <div
                   key={index}
-                  className="inline-flex rounded-full border border-border-primary px-2 py-px text-center text-xs uppercase text-white"
+                  className="inline-flex rounded-full border border-white px-2 py-px text-center text-xs uppercase text-white"
                 >
                   <span>#{category}</span>
                 </div>

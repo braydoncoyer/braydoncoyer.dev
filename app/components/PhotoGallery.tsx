@@ -6,16 +6,33 @@ import { useEffect, useState } from "react";
 
 type Direction = "left" | "right";
 
-export const PhotoGallery = () => {
+export const PhotoGallery = ({
+  animationDelay = 0.5,
+}: {
+  animationDelay?: number;
+}) => {
+  const [isVisible, setIsVisible] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    // Set isLoaded to true after a short delay to trigger the animation
-    const timer = setTimeout(() => {
-      setIsLoaded(true);
-    }, 500);
-    return () => clearTimeout(timer);
-  }, []);
+    // First make the container visible with a fade-in
+    const visibilityTimer = setTimeout(() => {
+      setIsVisible(true);
+    }, animationDelay * 1000);
+
+    // Then start the photo animations after a short delay
+    const animationTimer = setTimeout(
+      () => {
+        setIsLoaded(true);
+      },
+      (animationDelay + 0.4) * 1000,
+    ); // Add 0.4s for the opacity transition
+
+    return () => {
+      clearTimeout(visibilityTimer);
+      clearTimeout(animationTimer);
+    };
+  }, [animationDelay]);
 
   // Animation variants for the container
   const containerVariants = {
@@ -24,7 +41,7 @@ export const PhotoGallery = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.15,
-        delayChildren: 0.3,
+        delayChildren: 0.1, // Reduced from 0.3 to 0.1 since we already have the fade-in delay
       },
     },
   };
@@ -62,7 +79,7 @@ export const PhotoGallery = () => {
       y: "15px",
       zIndex: 50, // Highest z-index (on top)
       direction: "left" as Direction,
-      src: "/c3_speaker_head.png",
+      src: "/braydon_speaking_photo.jpeg",
     },
     {
       id: 2,
@@ -71,7 +88,7 @@ export const PhotoGallery = () => {
       y: "32px",
       zIndex: 40,
       direction: "left" as Direction,
-      src: "/braydon_speaking_photo.jpeg",
+      src: "/c3_speaker_head.png",
     },
     {
       id: 3,
@@ -97,7 +114,7 @@ export const PhotoGallery = () => {
       x: "320px",
       y: "44px",
       zIndex: 10, // Lowest z-index (at bottom)
-      direction: "right" as Direction,
+      direction: "left" as Direction,
       src: "/braydon_speaking_head_3.jpeg",
     },
   ];
@@ -106,34 +123,41 @@ export const PhotoGallery = () => {
     <div className="relative mb-8 hidden h-[350px] w-full items-center justify-center lg:flex">
       <motion.div
         className="relative mx-auto flex w-full max-w-6xl justify-center"
-        variants={containerVariants}
-        initial="hidden"
-        animate={isLoaded ? "visible" : "hidden"}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isVisible ? 1 : 0 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
       >
-        <div className="relative h-[220px] w-[220px]">
-          {/* Render photos in reverse order so that higher z-index photos are rendered later in the DOM */}
-          {[...photos].reverse().map((photo) => (
-            <motion.div
-              key={photo.id}
-              className="absolute left-0 top-0"
-              style={{ zIndex: photo.zIndex }} // Apply z-index directly in style
-              variants={photoVariants}
-              custom={{
-                x: photo.x,
-                y: photo.y,
-                order: photo.order,
-              }}
-            >
-              <Photo
-                width={220}
-                height={220}
-                src={photo.src}
-                alt="Family photo"
-                direction={photo.direction}
-              />
-            </motion.div>
-          ))}
-        </div>
+        <motion.div
+          className="relative flex w-full justify-center"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isLoaded ? "visible" : "hidden"}
+        >
+          <div className="relative h-[220px] w-[220px]">
+            {/* Render photos in reverse order so that higher z-index photos are rendered later in the DOM */}
+            {[...photos].reverse().map((photo) => (
+              <motion.div
+                key={photo.id}
+                className="absolute left-0 top-0"
+                style={{ zIndex: photo.zIndex }} // Apply z-index directly in style
+                variants={photoVariants}
+                custom={{
+                  x: photo.x,
+                  y: photo.y,
+                  order: photo.order,
+                }}
+              >
+                <Photo
+                  width={220}
+                  height={220}
+                  src={photo.src}
+                  alt="Family photo"
+                  direction={photo.direction}
+                />
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </motion.div>
     </div>
   );
