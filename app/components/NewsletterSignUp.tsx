@@ -1,59 +1,79 @@
 "use client";
 
-import { useState } from "react";
+import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
 import { GridWrapper } from "./GridWrapper";
+import { createContact } from "@/app/db/actions";
 
-type NewsletterSignUpProps = {
+interface NewsletterSignUpProps {
   title?: string;
   description?: string;
   buttonText?: string;
-};
+}
+
+interface FormState {
+  email: string;
+  message: string;
+  isSuccess: boolean;
+  isLoading: boolean;
+}
 
 export function NewsletterSignUp({
   title = "Subscribe to my newsletter",
   description = "A periodic update about my life, recent blog posts, how-tos, and discoveries.",
   buttonText = "Subscribe",
 }: NewsletterSignUpProps) {
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [formState, setFormState] = useState<FormState>({
+    email: "",
+    message: "",
+    isSuccess: false,
+    isLoading: false,
+  });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setMessage("");
-    setIsSuccess(false);
-    setIsLoading(true);
+    setFormState((prev) => ({
+      ...prev,
+      message: "",
+      isSuccess: false,
+      isLoading: true,
+    }));
 
-    if (!email) {
-      setMessage("Please provide an email address.");
-      setIsLoading(false);
+    if (!formState.email) {
+      setFormState((prev) => ({
+        ...prev,
+        message: "Please provide an email address.",
+        isLoading: false,
+      }));
       return;
     }
 
     try {
-      const response = await fetch("/api/create-contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
+      const result = await createContact(formState.email);
 
-      if (response.ok) {
-        setMessage("You're signed up!");
-        setIsSuccess(true);
-        setEmail("");
+      if (result.success) {
+        setFormState((prev) => ({
+          ...prev,
+          message: "You're signed up!",
+          isSuccess: true,
+          email: "",
+        }));
       } else {
-        setMessage("Something went wrong. :(");
-        setIsSuccess(false);
+        setFormState((prev) => ({
+          ...prev,
+          message: "Something went wrong. :(",
+          isSuccess: false,
+        }));
       }
     } catch (error) {
-      setMessage("Something went wrong. :(");
-      setIsSuccess(false);
+      setFormState((prev) => ({
+        ...prev,
+        message: "Something went wrong. :(",
+        isSuccess: false,
+      }));
+      console.error(error);
     } finally {
-      setIsLoading(false);
+      setFormState((prev) => ({ ...prev, isLoading: false }));
     }
   };
 
@@ -97,28 +117,30 @@ export function NewsletterSignUp({
                   id="email"
                   type="email"
                   placeholder="bobloblaw@gmail.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={formState.email}
+                  onChange={(e) =>
+                    setFormState((prev) => ({ ...prev, email: e.target.value }))
+                  }
                   className="w-full rounded-full border border-gray-400 bg-transparent px-5 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-slate-100 focus:ring-offset-2 focus:ring-offset-dark-primary md:w-[425px]"
-                  disabled={isLoading}
+                  disabled={formState.isLoading}
                 />
                 <button
                   type="submit"
                   className="group absolute right-1 top-1 isolate inline-flex h-[42px] items-center justify-center overflow-hidden rounded-full bg-slate-100 px-4 py-2.5 text-left text-sm font-medium text-slate-900 shadow-[0_1px_theme(colors.white/0.07)_inset,0_1px_3px_theme(colors.gray.900/0.2)] ring-1 ring-white transition duration-300 ease-[cubic-bezier(0.4,0.36,0,1)] before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:rounded-full before:bg-gradient-to-b before:from-white/20 before:opacity-50 before:transition-opacity before:duration-300 before:ease-[cubic-bezier(0.4,0.36,0,1)] after:pointer-events-none after:absolute after:inset-0 after:-z-10 after:rounded-full after:bg-gradient-to-b after:from-white/10 after:from-[46%] after:to-[54%] after:mix-blend-overlay hover:before:opacity-100"
-                  disabled={isLoading}
+                  disabled={formState.isLoading}
                 >
-                  {isLoading ? "Loading..." : buttonText}
+                  {formState.isLoading ? "Loading..." : buttonText}
                 </button>
               </form>
               {/* Set minimum height to prevent layout shift */}
               <div className="min-h-[15px] md:min-h-[30px]">
-                {message && (
+                {formState.message && (
                   <p
                     className={`text-sm ${
-                      isSuccess ? "text-indigo-300" : "text-rose-400"
+                      formState.isSuccess ? "text-indigo-300" : "text-rose-400"
                     }`}
                   >
-                    {message}
+                    {formState.message}
                   </p>
                 )}
               </div>
@@ -196,15 +218,15 @@ export function NewsletterSignUp({
                 >
                   <motion.stop
                     animate={{
-                      stopColor: isSuccess ? "#4f46e5" : "#4B4B4F",
+                      stopColor: formState.isSuccess ? "#4f46e5" : "#4B4B4F",
                     }}
                     transition={{ duration: 0.5 }}
                   />
                   <motion.stop
                     offset="1"
                     animate={{
-                      stopColor: isSuccess ? "#818cf8" : "#3C3C3F",
-                      stopOpacity: isSuccess ? 1 : 0,
+                      stopColor: formState.isSuccess ? "#818cf8" : "#3C3C3F",
+                      stopOpacity: formState.isSuccess ? 1 : 0,
                     }}
                     transition={{ duration: 0.5 }}
                   />
@@ -219,14 +241,14 @@ export function NewsletterSignUp({
                 >
                   <motion.stop
                     animate={{
-                      stopColor: isSuccess ? "#4f46e5" : "#4B4B4F",
+                      stopColor: formState.isSuccess ? "#4f46e5" : "#4B4B4F",
                     }}
                     transition={{ duration: 0.5 }}
                   />
                   <motion.stop
                     offset="1"
                     animate={{
-                      stopColor: isSuccess ? "#818cf8" : "#3C3C3F",
+                      stopColor: formState.isSuccess ? "#818cf8" : "#3C3C3F",
                     }}
                     transition={{ duration: 0.5 }}
                   />

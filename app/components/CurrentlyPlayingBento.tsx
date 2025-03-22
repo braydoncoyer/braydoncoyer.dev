@@ -6,6 +6,7 @@ import { type CurrentlyPlaying } from "app/db/spotify";
 import Link from "next/link";
 import { BentoCard } from "./BentoCard";
 import { CirclePattern } from "./SpeakingBento";
+import { getCurrentlyPlaying } from "@/app/db/actions";
 
 const favorite: CurrentlyPlaying = {
   artist: "Bear McCreary",
@@ -19,14 +20,15 @@ const favorite: CurrentlyPlaying = {
   isPlaying: false,
 };
 
-// @ts-ignore
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
-
 export function CurrentlyPlayingBento() {
-  const { data: playing, isLoading } = useSWR("/api/listening", fetcher, {
-    revalidateOnFocus: true,
-    refreshInterval: 60000,
-  });
+  const { data: playing, isLoading } = useSWR(
+    "currently-playing",
+    getCurrentlyPlaying,
+    {
+      revalidateOnFocus: true,
+      refreshInterval: 60000,
+    },
+  );
 
   const currentTrack = playing || favorite;
   const isCurrentlyPlaying = !!playing;

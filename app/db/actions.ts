@@ -4,6 +4,7 @@ import { createSupabaseAdminClient } from "../lib/supabase/server";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { v4 as uuidv4 } from "uuid";
+import { type CurrentlyPlaying, getCurrentlyPlaying as getSpotifyCurrentlyPlaying } from "./spotify";
 
 type ReactionType = "like" | "heart" | "celebrate" | "insightful";
 const VALID_REACTIONS: ReactionType[] = [
@@ -12,6 +13,11 @@ const VALID_REACTIONS: ReactionType[] = [
   "celebrate",
   "insightful",
 ];
+
+type CreateContactResponse = {
+  success: boolean;
+  error?: string;
+};
 
 export async function incrementViewCount(slug: string) {
   const supabase = await createSupabaseAdminClient();
@@ -216,3 +222,37 @@ export async function toggleReaction(slug: string, reactionType: ReactionType) {
     };
   }
 }
+
+export async function createContact(email: string): Promise<CreateContactResponse> {
+  try {
+    const response = await fetch(
+      "https://app.loops.so/api/v1/contacts/create",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.LOOPS_API_KEY}`,
+        },
+        body: JSON.stringify({ email, userGroup: "Blogfolio" }),
+      },
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to create contact");
+    }
+
+    return { success: true };
+  } catch (error) {
+    return { success: false, error: "Failed to create contact" };
+  }
+}
+
+export async function getCurrentlyPlaying(): Promise<CurrentlyPlaying | null> {
+  try {
+    const result = await getSpotifyCurrentlyPlaying();
+    return result || null;
+  } catch (error) {
+    console.error("Error fetching Spotify data:", error);
+    return null;
+  }
+} 

@@ -26,13 +26,11 @@ const config = {
           "https://braydoncoyer-dev-git-v3-braydon-coyer.vercel.app/",
         permanent: true,
       },
-      // UPDATE LINK BELOW WITH FRAMER ARCHIVE LINK
-      // {
-      //   source: "/archives/v4",
-      //   destination:
-      //     "https://braydoncoyer-dev-git-v3-braydon-coyer.vercel.app/",
-      //   permanent: true,
-      // },
+      {
+        source: "/archives/v4",
+        destination: "https://braydoncoyer.framer.website/",
+        permanent: true,
+      },
     ];
   },
 };
