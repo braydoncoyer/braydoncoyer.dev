@@ -4,6 +4,7 @@ import { Button } from "@/app/components/Button";
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@/app/components/Tabs";
 import { Photo } from "@/app/components/Photo";
 import { GridWrapper } from "@/app/components/GridWrapper";
+import { AnimatedMobilePhotos } from "@/app/components/AnimatedMobilePhotos";
 
 type Talk = {
   conference: string;
@@ -49,7 +50,7 @@ const presentationList: PresentationList = {
         title: "Choosing Blog Topics and Boosting Content with SEO",
         description:
           "Learn the art of selecting high-traffic article topics and mastering effective writing and formatting techniques to maximize engagement and readership.",
-        link: "https:",
+        link: "https://www.youtube.com/watch?v=VS01DHSnGV0&t",
         buttonLabel: "Watch Video",
       },
       {
@@ -58,7 +59,7 @@ const presentationList: PresentationList = {
           "The Nest Big Thing in CSS: An Introduction to Native Class Nesting",
         description:
           "Let's explore native class nesting in CSS! We'll cover the fundamentals of nesting, its benefits, and browser support.",
-        link: "https:",
+        link: "https://www.youtube.com/watch?v=4lNEn9bY-GE",
         buttonLabel: "Watch Video",
       },
       {
@@ -73,27 +74,33 @@ const presentationList: PresentationList = {
     title: "Virtual Events",
     talks: [
       {
-        conference: "THAT Conference",
-        title: "Choosing Blog Topics and Boosting Content with SEO",
+        conference: "Twitter",
+        title: "CSS Grid vs Flexbox",
         description:
-          "Learn the art of selecting high-traffic article topics and mastering effective writing and formatting techniques to maximize engagement and readership.",
-        link: "https:",
-        buttonLabel: "Watch Video",
+          "An online discussion on Twitter with experts in the web development sphere on all things Flexbox and Grid and when to use each tool.",
       },
       {
-        conference: "Dallas Software Developer Meetup",
+        conference: "Internal Company Lighting Talk",
         title:
-          "The Nest Big Thing in CSS: An Introduction to Native Class Nesting",
+          "Reactivity Without the Headache - An Introduction to Angular Signals",
         description:
-          "Let's explore native class nesting in CSS! We'll cover the fundamentals of nesting, its benefits, and browser support.",
-        link: "https:",
-        buttonLabel: "Watch Video",
+          "Learn how Angular Signals introduce a new reactive way to track state across your application. We'll refactor real code to use this new reactive pattern to simplify and minimize the codebase.",
+      },
+      {
+        conference: "Twitter",
+        title: "FullStack <development /> Chat",
+        description:
+          "I was invited by a Shashi Lo to be a speaker on his Twitter Space discussing Fullstack development.",
+        link: "https://x.com/shashiwhocodes/status/1620965070183305216",
+        buttonLabel: "Listen now",
       },
       {
         conference: "Dallas Software Developer Meetup",
-        title: "Live Link Previews with Next.js",
+        title: "Application Confidence - An Introduction to Testing React",
         description:
-          "Learn how to display a preview of an externally linked site in your Next.js application!",
+          "An introducing to testing React Applications with the React Testing Library!",
+        link: "https://youtu.be/65wXOrmIOK4?si=MURD5_RbieH4Gtnu&t=3695",
+        buttonLabel: "Watch now",
       },
     ],
   },
@@ -101,12 +108,13 @@ const presentationList: PresentationList = {
     title: "Podcasts & Videos",
     talks: [
       {
-        conference: "THAT Conference",
-        title: "Choosing Blog Topics and Boosting Content with SEO",
+        conference: "Guidance Counselor 2.0",
+        title:
+          "GC 2.0 w/Taylor Desseyn and Navigating 800 Submissions to Fulltime Job",
         description:
-          "Learn the art of selecting high-traffic article topics and mastering effective writing and formatting techniques to maximize engagement and readership.",
-        link: "https:",
-        buttonLabel: "Watch Video",
+          "Taylor had me on his podcasts to help encourage job seekers by talking about my experience landing my first time web development job.",
+        link: "https://x.com/tdesseyn/status/1648331656749813760",
+        buttonLabel: "Listen now",
       },
     ],
   },
@@ -136,7 +144,7 @@ export default function SpeakingPage() {
 
         <div>
           {/* Photos */}
-          <div className="mb-8 mt-16 flex items-center justify-center space-x-12">
+          <div className="mb-8 mt-16 hidden items-center justify-center space-x-12 lg:flex">
             <div className="relative">
               <ShadowBox width={278} height={278}></ShadowBox>
               <span className="absolute left-1 top-2 rotate-[-8deg]">
@@ -176,6 +184,8 @@ export default function SpeakingPage() {
               </span>
             </div>
           </div>
+          {/* Mobile Photos */}
+          <AnimatedMobilePhotos delay={0.1} />
         </div>
 
         <div className="relative space-y-32">
@@ -264,9 +274,25 @@ export default function SpeakingPage() {
                             {talk.description}
                           </p>
                           {talk.link && talk.buttonLabel && (
-                            <Button variant="secondary" href={talk.link}>
+                            <a
+                              className="flex items-center text-sm font-medium text-indigo-600"
+                              href={talk.link}
+                            >
                               {talk.buttonLabel}
-                            </Button>
+                              <svg
+                                className="relative ml-2.5 mt-px overflow-visible"
+                                width="3"
+                                height="6"
+                                viewBox="0 0 3 6"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              >
+                                <path d="M0 0L3 3L0 6"></path>
+                              </svg>
+                            </a>
                           )}
                         </div>
                       ))}

@@ -11,7 +11,7 @@ export function AnimatedMobilePhotos({ delay }: AnimatedMobilePhotosProps) {
   return (
     <div className="relative -mx-12 lg:hidden">
       <div className="relative w-full overflow-hidden py-12">
-        <div className="mt-10 flex items-center justify-center space-x-14">
+        <div className="flex items-center justify-center space-x-14">
           <motion.div
             className="relative w-fit"
             initial={{ opacity: 0, y: 20 }}

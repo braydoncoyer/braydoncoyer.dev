@@ -58,7 +58,7 @@ export default async function Home() {
           </div>
           <div>
             {/* Desktop Photos */}
-            <div className="relative mb-8 hidden h-[350px] w-full items-center justify-center lg:flex">
+            <div className="relative hidden h-fit w-full items-center justify-center lg:flex">
               <PhotoGallery animationDelay={PHOTOS_DELAY} />
             </div>
 
