@@ -55,6 +55,7 @@ function DesktopNav() {
           <li key={link.name}>
             <Link
               href={link.link}
+              prefetch={true}
               className={`${determineActiveClass(
                 link.link,
               )} font-medium hover:text-text-primary`}

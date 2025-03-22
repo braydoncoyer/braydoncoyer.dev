@@ -58,6 +58,7 @@ export function BlogPostList({ posts }: BlogPostListProps) {
                         <Link
                           href={`/blog/${post.slug}`}
                           className="flex items-center text-sm font-medium text-indigo-600"
+                          prefetch={true}
                         >
                           <span className="text-sm leading-6">Read More</span>
                           <svg

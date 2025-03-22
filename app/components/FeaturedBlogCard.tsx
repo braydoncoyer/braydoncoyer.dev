@@ -23,7 +23,11 @@ export function FeaturedBlogCard({
         className,
       )}
     >
-      <Link className="flex h-full flex-col rounded-2xl" href={`/blog/${slug}`}>
+      <Link
+        className="flex h-full flex-col rounded-2xl"
+        href={`/blog/${slug}`}
+        prefetch={true}
+      >
         <img
           src={
             `/blog/${imageName}` ||
