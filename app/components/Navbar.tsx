@@ -41,11 +41,6 @@ function DesktopNav() {
       aria-label="Desktop navigation"
       className="bleed-border-b bleed-border-primary/50 hidden h-16 w-full items-center justify-between px-4 md:flex"
     >
-      <span className="absolute right-[-4.25px] top-[63px] z-10 h-px w-2 bg-slate-400"></span>
-      <span className="absolute right-[-1px] top-[59.6px] z-10 h-2 w-px bg-slate-400"></span>
-
-      <span className="absolute left-[-4.50px] top-[63px] z-10 h-px w-2 bg-slate-400"></span>
-      <span className="absolute left-[-1px] top-[59.6px] z-10 h-2 w-px bg-slate-400"></span>
       <div className="w-[104px]">
         <Link href="/" aria-label="Home">
           <img

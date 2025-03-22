@@ -1,18 +1,18 @@
-import { NewsletterSignUp } from "app/components/NewsletterSignUp";
-import { HorizontalLine } from "app/components/HorizontalLine";
+import { NewsletterSignUp } from "@/app/components/NewsletterSignUp";
+import { HorizontalLine } from "@/app/components/HorizontalLine";
 import { getTimeOfDayGreeting } from "app/lib/utils";
-import { ProfilePicture } from "../components/ProfilePicture";
+import { ProfilePicture } from "@/app/components/ProfilePicture";
 import React from "react";
-import { CurrentlyPlayingBento } from "../components/CurrentlyPlayingBento";
-import { ConnectionsBento } from "../components/ConnectionsBento";
-import { Scrapbook } from "../components/Scrapbook";
-import { ShadowBox } from "../components/ShadowBox";
+import { CurrentlyPlayingBento } from "@/app/components/CurrentlyPlayingBento";
+import { ConnectionsBento } from "@/app/components/ConnectionsBento";
+import { Scrapbook } from "@/app/components/Scrapbook";
+import { ShadowBox } from "@/app/components/ShadowBox";
 import { Resume } from "app/components/Resume";
-import { Button } from "../components/Button";
-import { StatsBento } from "../components/StatsBento";
-import { CurrentlyReadingBento } from "../components/CurrentlyReadingBento";
-import { GridWrapper } from "../components/GridWrapper";
-import { AboutTrackPattern } from "../components/AboutTrackPattern";
+import { Button } from "@/app/components/Button";
+import { StatsBento } from "@/app/components/StatsBento";
+import { CurrentlyReadingBento } from "@/app/components/CurrentlyReadingBento";
+import { GridWrapper } from "@/app/components/GridWrapper";
+import { AboutTrackPattern } from "@/app/components/AboutTrackPattern";
 
 export default function AboutPage() {
   const timeOfDayGreeting = getTimeOfDayGreeting();

@@ -1,8 +1,8 @@
 import Link from "next/link";
 import CommunityWallLayout from "./layout";
-import { CommunityWallModal } from "../components/CommunityWallModal";
-import createSupabaseServerClient from "../lib/supabase/server";
-import { CommunityWallCard } from "../components/CommunityWallCard";
+import { CommunityWallModal } from "@/app/components/CommunityWallModal";
+import createSupabaseServerClient from "@/app/lib/supabase/server";
+import { CommunityWallCard } from "@/app/components/CommunityWallCard";
 
 type SearchParamProps = {
   searchParams: Promise<{ show: string }>;
@@ -22,6 +22,7 @@ export default async function Page({ searchParams }: SearchParamProps) {
 
   return (
     <CommunityWallLayout>
+      <title>Toolbox | Braydon Coyer</title>
       {show ? <CommunityWallModal /> : null}
       <div className="absolute inset-0 top-0 bg-[radial-gradient(#e5e7eb_1px,transparent_2px)] [background-size:16px_16px]"></div>
       <div className="flex flex-wrap justify-center gap-24 p-12">

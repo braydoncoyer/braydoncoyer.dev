@@ -1,9 +1,9 @@
-import { ShadowBox } from "app/components/ShadowBox";
-import { NewsletterSignUp } from "app/components/NewsletterSignUp";
-import { Button } from "app/components/Button";
-import { Tabs, TabList, Tab, TabPanels, TabPanel } from "app/components/Tabs";
-import { Photo } from "../components/Photo";
-import { GridWrapper } from "../components/GridWrapper";
+import { ShadowBox } from "@/app/components/ShadowBox";
+import { NewsletterSignUp } from "@/app/components/NewsletterSignUp";
+import { Button } from "@/app/components/Button";
+import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@/app/components/Tabs";
+import { Photo } from "@/app/components/Photo";
+import { GridWrapper } from "@/app/components/GridWrapper";
 
 type Talk = {
   conference: string;
@@ -254,10 +254,10 @@ export default function SpeakingPage() {
                     <div className="flex flex-col space-y-14 text-left lg:col-span-8 lg:col-start-5">
                       {category.talks.map((talk, index) => (
                         <div key={index}>
-                          <h3 className="mb-4 text-base font-semibold">
+                          <h3 className="mb-2 text-lg font-semibold">
                             {talk.title}
                           </h3>
-                          <p className="mb-6 text-base font-semibold text-text-secondary">
+                          <p className="mb-6 text-xs text-text-secondary">
                             {talk.conference}
                           </p>
                           <p className="mb-6 text-base leading-7 text-text-secondary">

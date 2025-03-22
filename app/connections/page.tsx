@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { HorizontalLine } from "../components/HorizontalLine";
-import { GridWrapper } from "../components/GridWrapper";
+import { HorizontalLine } from "@/app/components/HorizontalLine";
+import { GridWrapper } from "@/app/components/GridWrapper";
 
 type Connection = {
   name: string;

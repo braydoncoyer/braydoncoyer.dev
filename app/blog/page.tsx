@@ -5,8 +5,8 @@ import {
 import { NewsletterSignUp } from "@/app/components/NewsletterSignUp";
 import { BlogPostList } from "@/app/components/BlogPostList";
 import { CategorySelect } from "@/app/components/CategorySelect";
-import { FeaturedBlogCard } from "../components/FeaturedBlogCard";
-import { GridWrapper } from "../components/GridWrapper";
+import { FeaturedBlogCard } from "@/app/components/FeaturedBlogCard";
+import { GridWrapper } from "@/app/components/GridWrapper";
 import clsx from "clsx";
 
 export default async function BlogPage({

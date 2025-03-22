@@ -1,12 +1,11 @@
-import { BorderCard } from "app/components/BorderCard";
-import { NewsletterSignUp } from "app/components/NewsletterSignUp";
-import { softwareData } from "app/data/toolbox";
-import { GridWrapper } from "app/components/GridWrapper";
-import { ProfilePicture } from "../components/ProfilePicture";
-import { Button } from "../components/Button";
-import { siteMetadata } from "../data/siteMetadata";
-import { fetchAndSortBlogPosts } from "../lib/utils";
-import { FeaturedBlogCard } from "../components/FeaturedBlogCard";
+import { NewsletterSignUp } from "@/app/components/NewsletterSignUp";
+
+import { GridWrapper } from "@/app/components/GridWrapper";
+import { ProfilePicture } from "@/app/components/ProfilePicture";
+import { Button } from "@/app/components/Button";
+import { siteMetadata } from "@/app/data/siteMetadata";
+import { fetchAndSortBlogPosts } from "@/app/lib/utils";
+import { FeaturedBlogCard } from "@/app/components/FeaturedBlogCard";
 import clsx from "clsx";
 
 export default async function LinksPage() {

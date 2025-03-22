@@ -1,10 +1,9 @@
-import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { MDXContent } from "@/app/components/mdx";
 import { unstable_noStore as noStore } from "next/cache";
-import { SectionTitlePill } from "app/components/SectionTitlePill";
-import { HorizontalLine } from "app/components/HorizontalLine";
-import { NewsletterSignUp } from "app/components/NewsletterSignUp";
+import { SectionTitlePill } from "@/app/components/SectionTitlePill";
+import { HorizontalLine } from "@/app/components/HorizontalLine";
+import { NewsletterSignUp } from "@/app/components/NewsletterSignUp";
 import { posts } from "#site/content";
 import { getRelatedBlogPosts } from "@/app/lib/utils";
 import { FeaturedBlogCard } from "@/app/components/FeaturedBlogCard";
