@@ -44,7 +44,7 @@ export function CreateCommunityNoteBuilder({
         <button
           type="button"
           onClick={handlePrevPattern}
-          className="stroke group rounded-full bg-bg-primary stroke-[#A5AEB8] p-4"
+          className="stroke group hidden rounded-full bg-bg-primary stroke-[#A5AEB8] p-4 md:block"
           aria-label="Previous pattern"
         >
           <svg
@@ -91,7 +91,7 @@ export function CreateCommunityNoteBuilder({
         <button
           type="button"
           onClick={handleNextPattern}
-          className="stroke group rounded-full bg-bg-primary stroke-[#A5AEB8] p-4"
+          className="stroke group hidden rounded-full bg-bg-primary stroke-[#A5AEB8] p-4 md:block"
           aria-label="Next pattern"
         >
           <svg

@@ -1,14 +1,5 @@
-"use client";
-import Image from "next/image";
 import { ShadowBox } from "app/components/ShadowBox";
-import { BorderCard } from "app/components/BorderCard";
-import { SectionTitlePill } from "app/components/SectionTitlePill";
 import { NewsletterSignUp } from "app/components/NewsletterSignUp";
-import { PageTitle } from "app/components/PageTitle";
-import { hardwareData, softwareData } from "app/data/toolbox";
-import { HorizontalLine } from "app/components/HorizontalLine";
-import { BgSectionTag, TagType } from "app/components/BgSectionTag";
-import { BgGradient } from "app/components/BgGradient";
 import { Button } from "app/components/Button";
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from "app/components/Tabs";
 import { Photo } from "../components/Photo";
@@ -126,22 +117,21 @@ export default function SpeakingPage() {
     <div className="relative">
       <title>Speaking | Braydon Coyer</title>
       <div className="relative space-y-16">
-        <span className="absolute -right-[120px] top-[260px] z-10">
-          <BgSectionTag tagType={TagType.SECTION} />
-        </span>
         <GridWrapper>
-          <h1 className="mx-auto max-w-2xl text-balance text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-6xl md:leading-[64px]">
+          <h1 className="mx-auto mt-16 max-w-2xl text-balance text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-6xl md:leading-[64px]">
             My conference talks, podcast && video appearances.
           </h1>
         </GridWrapper>
-        <span className="absolute inset-x-0 top-40">
-          <HorizontalLine />
-        </span>
 
         <div className="text-center">
-          <a href="https://forms.gle/hyhqN12A2BGForzq6" target="_blank">
-            <Button variant="primary">Invite me to speak</Button>
-          </a>
+          <GridWrapper className="py-4">
+            <Button
+              variant="primary"
+              href="https://forms.gle/hyhqN12A2BGForzq6"
+            >
+              Invite me to speak
+            </Button>
+          </GridWrapper>
         </div>
 
         <div>
@@ -189,182 +179,106 @@ export default function SpeakingPage() {
         </div>
 
         <div className="relative space-y-32">
-          <span className="absolute left-0 top-[400px]">
-            <svg
-              width="89"
-              height="27"
-              viewBox="0 0 89 27"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                opacity="0.5"
-                d="M80 1C84.4183 1 88 4.58172 88 9V18C88 22.4183 84.4183 26 80 26L9 26C4.58172 26 0.999998 22.4183 0.999998 18V9C0.999998 4.58172 4.58172 1 9 1L80 1Z"
-                stroke="#D6DADE"
-              />
-              <g filter="url(#filter0_i_0_1)">
-                <rect
-                  x="58"
-                  y="7"
-                  width="24"
-                  height="7"
-                  rx="1"
-                  fill="#EDEEF2"
-                />
-              </g>
-              <defs>
-                <filter
-                  id="filter0_i_0_1"
-                  x="58"
-                  y="7"
-                  width="24"
-                  height="8.5"
-                  filterUnits="userSpaceOnUse"
-                  colorInterpolationFilters="sRGB"
-                >
-                  <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                  <feBlend
-                    mode="normal"
-                    in="SourceGraphic"
-                    in2="BackgroundImageFix"
-                    result="shape"
-                  />
-                  <feColorMatrix
-                    in="SourceAlpha"
-                    type="matrix"
-                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                    result="hardAlpha"
-                  />
-                  <feOffset dy="2" />
-                  <feGaussianBlur stdDeviation="0.75" />
-                  <feComposite
-                    in2="hardAlpha"
-                    operator="arithmetic"
-                    k2="-1"
-                    k3="1"
-                  />
-                  <feColorMatrix
-                    type="matrix"
-                    values="0 0 0 0 0.647059 0 0 0 0 0.682353 0 0 0 0 0.721569 0 0 0 0.32 0"
-                  />
-                  <feBlend
-                    mode="normal"
-                    in2="shape"
-                    result="effect1_innerShadow_0_1"
-                  />
-                </filter>
-              </defs>
-            </svg>
-          </span>
           {/* Talks list */}
           <section className="space-y-16">
             {Object.entries(presentationList).map(([key, category]) => (
-              <div key={key}>
-                <div className="grid h-auto grid-cols-1 text-balance pt-16 lg:grid-cols-12">
-                  <h2 className="mb-16 text-balance text-3xl font-semibold leading-10 lg:col-span-2 lg:mb-0 lg:text-right">
-                    {category.title}
-                  </h2>
-                  <div className="col-span-2 hidden h-auto justify-center lg:flex">
-                    <svg
-                      className="h-full w-2"
-                      viewBox="0 0 8 100"
-                      preserveAspectRatio="none"
-                    >
-                      <g filter="url(#filter0_i_185_3294)">
-                        <path
-                          d="M4 4L4 96"
-                          stroke="#D6DADE"
-                          strokeOpacity="0.24"
-                          strokeWidth="8"
-                          strokeLinecap="round"
-                          vectorEffect="non-scaling-stroke"
-                        />
-                      </g>
-                      <defs>
-                        <filter
-                          id="filter0_i_185_3294"
-                          x="0"
-                          y="0"
-                          width="8"
-                          height="100%"
-                          filterUnits="userSpaceOnUse"
-                          colorInterpolationFilters="sRGB"
-                        >
-                          <feFlood
-                            floodOpacity="0"
-                            result="BackgroundImageFix"
+              <GridWrapper key={key} className="py-4">
+                <div>
+                  <div className="grid h-auto grid-cols-1 text-balance pt-16 lg:grid-cols-12">
+                    <h2 className="mb-16 text-balance text-3xl font-semibold leading-10 lg:col-span-2 lg:mb-0 lg:text-right">
+                      {category.title}
+                    </h2>
+                    <div className="col-span-2 hidden h-auto justify-center lg:flex">
+                      <svg
+                        className="h-full w-2"
+                        viewBox="0 0 8 100"
+                        preserveAspectRatio="none"
+                      >
+                        <g filter="url(#filter0_i_185_3294)">
+                          <path
+                            d="M4 4L4 96"
+                            stroke="#D6DADE"
+                            strokeOpacity="0.24"
+                            strokeWidth="8"
+                            strokeLinecap="round"
+                            vectorEffect="non-scaling-stroke"
                           />
-                          <feBlend
-                            mode="normal"
-                            in="SourceGraphic"
-                            in2="BackgroundImageFix"
-                            result="shape"
-                          />
-                          <feColorMatrix
-                            in="SourceAlpha"
-                            type="matrix"
-                            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                            result="hardAlpha"
-                          />
-                          <feOffset dy="1" />
-                          <feGaussianBlur stdDeviation="0.5" />
-                          <feComposite
-                            in2="hardAlpha"
-                            operator="arithmetic"
-                            k2="-1"
-                            k3="1"
-                          />
-                          <feColorMatrix
-                            type="matrix"
-                            values="0 0 0 0 0.847059 0 0 0 0 0.882353 0 0 0 0 0.921569 0 0 0 0.32 0"
-                          />
-                          <feBlend
-                            mode="normal"
-                            in2="shape"
-                            result="effect1_innerShadow_185_3294"
-                          />
-                        </filter>
-                      </defs>
-                    </svg>
-                  </div>
-                  <div className="flex flex-col space-y-14 text-left lg:col-span-8 lg:col-start-5">
-                    {category.talks.map((talk, index) => (
-                      <div key={index}>
-                        <h3 className="mb-4 text-base font-semibold">
-                          {talk.title}
-                        </h3>
-                        <p className="mb-6 text-base font-semibold text-text-secondary">
-                          {talk.conference}
-                        </p>
-                        <p className="mb-6 text-base leading-7 text-text-secondary">
-                          {talk.description}
-                        </p>
-                        {talk.link && talk.buttonLabel && (
-                          <a
-                            href={talk.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                        </g>
+                        <defs>
+                          <filter
+                            id="filter0_i_185_3294"
+                            x="0"
+                            y="0"
+                            width="8"
+                            height="100%"
+                            filterUnits="userSpaceOnUse"
+                            colorInterpolationFilters="sRGB"
                           >
-                            {/* Extra focus is applied due to the anchor tag. Come back and fix this. */}
+                            <feFlood
+                              floodOpacity="0"
+                              result="BackgroundImageFix"
+                            />
+                            <feBlend
+                              mode="normal"
+                              in="SourceGraphic"
+                              in2="BackgroundImageFix"
+                              result="shape"
+                            />
+                            <feColorMatrix
+                              in="SourceAlpha"
+                              type="matrix"
+                              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                              result="hardAlpha"
+                            />
+                            <feOffset dy="1" />
+                            <feGaussianBlur stdDeviation="0.5" />
+                            <feComposite
+                              in2="hardAlpha"
+                              operator="arithmetic"
+                              k2="-1"
+                              k3="1"
+                            />
+                            <feColorMatrix
+                              type="matrix"
+                              values="0 0 0 0 0.847059 0 0 0 0 0.882353 0 0 0 0 0.921569 0 0 0 0.32 0"
+                            />
+                            <feBlend
+                              mode="normal"
+                              in2="shape"
+                              result="effect1_innerShadow_185_3294"
+                            />
+                          </filter>
+                        </defs>
+                      </svg>
+                    </div>
+                    <div className="flex flex-col space-y-14 text-left lg:col-span-8 lg:col-start-5">
+                      {category.talks.map((talk, index) => (
+                        <div key={index}>
+                          <h3 className="mb-4 text-base font-semibold">
+                            {talk.title}
+                          </h3>
+                          <p className="mb-6 text-base font-semibold text-text-secondary">
+                            {talk.conference}
+                          </p>
+                          <p className="mb-6 text-base leading-7 text-text-secondary">
+                            {talk.description}
+                          </p>
+                          {talk.link && talk.buttonLabel && (
                             <Button variant="secondary" href={talk.link}>
                               {talk.buttonLabel}
                             </Button>
-                          </a>
-                        )}
-                      </div>
-                    ))}
+                          )}
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
-                <HorizontalLine />
-              </div>
+              </GridWrapper>
             ))}
           </section>
 
           {/* Biography */}
           <section className="relative px-4">
-            <span className="absolute -left-[120px] top-[-85px] z-10">
-              <BgSectionTag tagType={TagType.SECTION} />
-            </span>
             <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
               <div className="relative col-span-7 flex flex-col space-y-8">
                 {/* Title */}
@@ -499,9 +413,6 @@ export default function SpeakingPage() {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="relative pt-24">
-              <HorizontalLine />
             </div>
           </section>
         </div>

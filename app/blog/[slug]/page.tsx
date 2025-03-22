@@ -13,6 +13,7 @@ import readingDuration from "reading-duration";
 import clsx from "clsx";
 import { ViewCounter } from "@/app/components/ViewCounter";
 import ArticleReactionWrapper from "@/app/components/ArticleReactionsWrapper";
+import { Suspense } from "react";
 
 interface BlogPageProps {
   params: Promise<{
@@ -222,7 +223,9 @@ export default async function BlogPage({ params }: BlogPageProps) {
                     strokeWidth="1.5"
                   ></circle>
                 </svg>
-                <ViewCounter slug={(await params).slug} increment={true} />
+                <Suspense fallback={<span>...</span>}>
+                  <ViewCounter slug={(await params).slug} increment={true} />
+                </Suspense>
               </div>
             </div>
           </div>
@@ -236,7 +239,9 @@ export default async function BlogPage({ params }: BlogPageProps) {
       {/* Similar Posts */}
       <section className="space-y-16">
         <div className="mx-auto w-fit">
-          <ArticleReactionWrapper slug={post.slug} />
+          <Suspense fallback={<div>Loading reactions...</div>}>
+            <ArticleReactionWrapper slug={post.slug} />
+          </Suspense>
         </div>
         <div className="relative space-y-4">
           <span className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2">

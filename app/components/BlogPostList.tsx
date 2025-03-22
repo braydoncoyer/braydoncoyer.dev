@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ViewCounter } from "./ViewCounter";
+import { Suspense } from "react";
 
 interface BlogPost {
   slug: string;
@@ -36,11 +37,13 @@ export function BlogPostList({ posts }: BlogPostListProps) {
                         </time>
                       </div>
                       <span className="text-text-secondary">
-                        <ViewCounter
-                          slug={post.slug}
-                          increment={false}
-                          className="font-mono text-xs text-text-secondary"
-                        />
+                        <Suspense fallback={<span>...</span>}>
+                          <ViewCounter
+                            slug={post.slug}
+                            increment={false}
+                            className="font-mono text-xs text-text-secondary"
+                          />
+                        </Suspense>
                       </span>
                     </div>
                     <div className="col-start-4 hidden h-full border-x border-border-primary md:block md:border-dashed"></div>

@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import { PageTitle } from "../components/PageTitle";
 import { HorizontalLine } from "../components/HorizontalLine";
-import { AboutPattern, BlogPattern } from "../components/SvgPatterns";
 import { GridWrapper } from "../components/GridWrapper";
 
 type Connection = {
@@ -578,18 +576,13 @@ export default function ConnectionsPage() {
   });
 
   return (
-    <div className="relative">
-      <div className="z-50 mx-auto mb-[80px] max-w-3xl text-balance pt-14 md:pt-16">
-        <GridWrapper>
-          <h1 className="mx-auto max-w-2xl text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-6xl md:leading-[64px]">
-            An evolving list of people I&apos;ve met and those I wish to meet.
-          </h1>
-        </GridWrapper>
-      </div>
+    <div className="relative space-y-16">
+      <GridWrapper>
+        <h1 className="mx-auto mt-16 max-w-2xl text-balance text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-6xl md:leading-[64px]">
+          An evolving list of people I&apos;ve met and those I wish to meet.
+        </h1>
+      </GridWrapper>
 
-      <div className="absolute inset-0 -top-8 -z-10">
-        <BlogPattern />
-      </div>
       <div className="relative">
         <div className="relative mb-12 grid auto-rows-auto grid-cols-3 place-items-center justify-center gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
           <span className="absolute top-0">
