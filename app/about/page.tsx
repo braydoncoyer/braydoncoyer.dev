@@ -189,8 +189,8 @@ export default function AboutPage() {
                 </p>
                 <p className="mb-6 text-base leading-8 text-text-secondary">
                   Family has always been my center, and seeing ours grow has
-                  been life's greatest joy. Our daughter ElizaJane arrived in
-                  2021, bringing endless wonder to our days, and little Renny
+                  been life&apos;s greatest joy. Our daughter ElizaJane arrived
+                  in 2021, bringing endless wonder to our days, and little Renny
                   joined our crew in 2023, completing our circle.
                 </p>
               </div>
@@ -223,16 +223,17 @@ export default function AboutPage() {
                   These Days
                 </h2>
                 <p className="mb-6 text-base leading-8 text-text-secondary">
-                  Currently, I'm leading teams at LogicGate as a Senior Frontend
-                  Engineer where we're building some pretty awesome stuff.
-                  Speaking at tech conferences has become a regular part of my
-                  year.
+                  Currently, I&apos;m leading teams at LogicGate as a Senior
+                  Frontend Engineer where we&apos;re building some pretty
+                  awesome stuff. Speaking at tech conferences has become a
+                  regular part of my year.
                 </p>
                 <p className="mb-6 text-base leading-8 text-text-secondary">
-                  When I'm not working, you'll find me on creative coding side
-                  projects, writing for my blog, failing spectacularly at games
-                  with friends, or—best of all—hanging out with my family,
-                  usually with coffee nearby and dad jokes at the ready.
+                  When I&apos;m not working, you&apos;ll find me on creative
+                  coding side projects, writing for my blog, failing
+                  spectacularly at games with friends, or—best of all—hanging
+                  out with my family, usually with coffee nearby and dad jokes
+                  at the ready.
                 </p>
               </div>
               <div className="hidden lg:block">
