@@ -126,8 +126,8 @@ export default async function BlogPage({ params }: BlogPageProps) {
               </p>
             </div>
 
-            {/* Published Date */}
-            <div className="grid auto-cols-auto items-center gap-4 text-sm text-slate-200 lg:flex lg:gap-6">
+            {/* Article metadata */}
+            <div className="flex items-center gap-4 gap-6 text-sm text-slate-200">
               <div className="flex items-center gap-1.5 text-xs">
                 <svg
                   className="hidden h-5 w-5 md:block"

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import CommunityWallLayout from "./layout";
 import { CommunityWallModal } from "@/app/components/CommunityWallModal";
 import createSupabaseServerClient from "@/app/lib/supabase/server";
 import { CommunityWallCard } from "@/app/components/CommunityWallCard";
@@ -21,8 +20,8 @@ export default async function Page({ searchParams }: SearchParamProps) {
   const show = (await searchParams).show === "true";
 
   return (
-    <CommunityWallLayout>
-      <title>Toolbox | Braydon Coyer</title>
+    <>
+      <title>Community Wall | Braydon Coyer</title>
       {show ? <CommunityWallModal /> : null}
       <div className="absolute inset-0 top-0 bg-[radial-gradient(#e5e7eb_1px,transparent_2px)] [background-size:16px_16px]"></div>
       <div className="flex flex-wrap justify-center gap-24 p-12">
@@ -39,7 +38,7 @@ export default async function Page({ searchParams }: SearchParamProps) {
         ))}
       </div>
 
-      <div className="pointer-events-none sticky bottom-0 left-0 right-0 flex h-[150px] items-center justify-center bg-gradient-to-b from-transparent to-zinc-300">
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 flex h-full flex-col items-center justify-end bg-gradient-to-b from-transparent to-zinc-300 pb-8">
         <Link href="/community-wall?show=true">
           <button
             className="group pointer-events-auto flex h-[60px] w-[60px] items-center justify-center rounded-full bg-dark-primary"
@@ -63,6 +62,6 @@ export default async function Page({ searchParams }: SearchParamProps) {
           </button>
         </Link>
       </div>
-    </CommunityWallLayout>
+    </>
   );
 }

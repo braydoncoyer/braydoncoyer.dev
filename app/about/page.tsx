@@ -1,18 +1,17 @@
 import { NewsletterSignUp } from "@/app/components/NewsletterSignUp";
 import { HorizontalLine } from "@/app/components/HorizontalLine";
 import { getTimeOfDayGreeting } from "app/lib/utils";
-import { ProfilePicture } from "@/app/components/ProfilePicture";
 import React from "react";
 import { CurrentlyPlayingBento } from "@/app/components/CurrentlyPlayingBento";
 import { ConnectionsBento } from "@/app/components/ConnectionsBento";
 import { Scrapbook } from "@/app/components/Scrapbook";
 import { ShadowBox } from "@/app/components/ShadowBox";
 import { Resume } from "app/components/Resume";
-import { Button } from "@/app/components/Button";
 import { StatsBento } from "@/app/components/StatsBento";
 import { CurrentlyReadingBento } from "@/app/components/CurrentlyReadingBento";
 import { GridWrapper } from "@/app/components/GridWrapper";
 import { AboutTrackPattern } from "@/app/components/AboutTrackPattern";
+import { Photo } from "@/app/components/Photo";
 
 export default function AboutPage() {
   const timeOfDayGreeting = getTimeOfDayGreeting();
@@ -22,16 +21,48 @@ export default function AboutPage() {
       <title>About | Braydon Coyer</title>
       <div className="relative space-y-10 md:space-y-16">
         {/* Title */}
-        <GridWrapper>
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-around lg:pt-16">
-            <div className="order-2 mx-auto max-w-lg lg:order-1 lg:m-0 lg:max-w-3xl">
+        <GridWrapper className="space-y-12 lg:pt-16">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-around lg:px-24">
+            <div className="order-2 mx-auto max-w-lg lg:order-1 lg:m-0 lg:max-w-3xl lg:pr-12">
+              <div className="text-center text-sm font-medium text-indigo-600 lg:text-left">
+                <span>{timeOfDayGreeting}</span>
+              </div>
               <h1 className="mx-auto max-w-2xl text-balance text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-5xl lg:text-left lg:text-6xl lg:leading-[64px]">
-                {timeOfDayGreeting} <br />
                 I&apos;m Braydon, a creative frontend engineer.
               </h1>
             </div>
-            <div className="ld:order-2 order-1 flex-shrink-0 lg:ml-8">
-              <ProfilePicture />
+            <div className="order-1 my-12 flex-shrink-0 lg:order-2 lg:my-0">
+              <div className="relative mx-auto w-full max-w-[400px]">
+                <div className="relative grid grid-cols-3">
+                  <div className="relative z-20 -translate-y-2">
+                    <Photo
+                      width={140}
+                      height={140}
+                      src="/braydon_speaking_photo.jpeg"
+                      alt="Braydon Coyer"
+                      direction="left"
+                    />
+                  </div>
+                  <div className="relative z-30">
+                    <Photo
+                      width={140}
+                      height={140}
+                      src="/braydon_headshot_1.jpeg"
+                      alt="Braydon Coyer"
+                      direction="right"
+                    />
+                  </div>
+                  <div className="relative z-20 translate-y-4">
+                    <Photo
+                      width={140}
+                      height={140}
+                      src="/c3_speaker_head.png"
+                      alt="Braydon Coyer"
+                      direction="left"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </GridWrapper>
@@ -60,7 +91,7 @@ export default function AboutPage() {
             </div>
 
             {/* Section 1 */}
-            <div className="grid grid-cols-1 gap-8 pr-12 lg:grid-cols-2 lg:items-center lg:justify-between lg:py-32 lg:pb-20 xl:py-32">
+            <div className="grid grid-cols-1 gap-8 py-12 pr-12 lg:grid-cols-2 lg:items-center lg:justify-between lg:py-32 lg:pb-20 xl:py-32">
               <div className="flex flex-col items-center text-left lg:order-2 lg:items-start">
                 <div className="mb-8 lg:hidden">
                   <div className="relative mx-auto w-fit">
@@ -73,17 +104,15 @@ export default function AboutPage() {
                   </div>
                 </div>
                 <h2 className="mb-6 w-full text-balance text-3xl font-medium leading-[40px] tracking-tighter text-text-primary">
-                  I began my creative journey by developing apps for iOS and
-                  Android
+                  My programming origins
                 </h2>
                 <p className="mb-6 text-base leading-8 text-text-secondary">
-                  When the iPad launched in 2010, I was inspired to create
-                  interactive content for its stunning 1024x768 screen.
-                </p>
-                <p className="mb-6 text-base leading-8 text-text-secondary">
-                  I jumped into mobile development, freelancing along the way,
-                  and successfully released several games and apps, with one of
-                  my games even surpassing Angry Birds in popularity.
+                  When Apple unveiled the first iPad with its beautiful 1024x768
+                  display, I knew I had to create for it. I taught myself mobile
+                  development while freelancing, and soon I was shipping iOS and
+                  Android apps. One of my games even climbed above Angry Birds
+                  in the charts for a while—which still makes me smile when I
+                  think about it.
                 </p>
               </div>
               <div className="hidden lg:order-1 lg:block">
@@ -106,23 +135,21 @@ export default function AboutPage() {
                     <ShadowBox width={188} height={278}></ShadowBox>
                     <img
                       className="absolute left-0 top-0 h-[270px] w-[180px] rotate-[8deg] rounded-lg object-cover shadow"
-                      src="/braydon_and_pj.jpeg"
-                      alt="A headshot"
+                      src="/c3_speaker_head.png"
+                      alt="Speaking at C3 Conf!"
                     />
                   </div>
                 </div>
                 <h2 className="mb-6 w-full text-balance text-3xl font-medium leading-[40px] tracking-tighter text-text-primary">
-                  The transition to web development.
+                  Finding My Way to Web
                 </h2>
                 <p className="mb-6 text-base leading-8 text-text-secondary">
-                  I decided to dive into web development not long after. With my
-                  love for visual expression and design, frontend development
-                  felt like the perfect fit for me.
-                </p>
-                <p className="mb-6 text-base leading-8 text-text-secondary">
-                  I began learning HTML, CSS, and JavaScript, and in 2016, I
-                  discovered React. It wasn&apos;t long before I landed my first
-                  full-time job as a web developer.
+                  Despite my love for mobile development, the web kept calling
+                  my name. With my eye for design, frontend felt like the
+                  perfect playground. I dove into HTML, CSS, and JavaScript—with
+                  React in 2016 becoming my game-changer. A few months later and
+                  I had landed my first full-time web dev role and never looked
+                  back.
                 </p>
               </div>
               <div className="hidden lg:block">
@@ -130,8 +157,8 @@ export default function AboutPage() {
                   <ShadowBox width={188} height={278}></ShadowBox>
                   <img
                     className="absolute left-0 top-0 h-[270px] w-[180px] rotate-[8deg] rounded-lg object-cover shadow"
-                    src="/braydon_and_pj.jpeg"
-                    alt="A headshot"
+                    src="/c3_speaker_head.png"
+                    alt="Speaking at C3 Conf!"
                   />
                 </div>
               </div>
@@ -151,17 +178,20 @@ export default function AboutPage() {
                   </div>
                 </div>
                 <h2 className="mb-6 w-full text-balance text-3xl font-medium leading-[40px] tracking-tighter text-text-primary">
-                  What I truly value in life.
+                  Life Beyond Code
                 </h2>
                 <p className="mb-6 text-base leading-8 text-text-secondary">
-                  I knew I wanted to spend my best friend, PeggyJean, so I
-                  proposed. When COVID-19 hit, we had to adjust our plans and
-                  ended up having a small but wonderful wedding in 2020.
+                  When I met PeggyJean, I knew pretty quickly she was the one.
+                  After proposing, we had grand wedding plans – until COVID
+                  happened. We pivoted (developer joke!) and had a small,
+                  intimate ceremony in 2020 that turned out more perfect than we
+                  could have imagined.
                 </p>
                 <p className="mb-6 text-base leading-8 text-text-secondary">
-                  Family means everything to me, and I cherish the moments we
-                  share together. Our first daughter, ElizaJane, arrived in
-                  2021, and our second child, Renny, joined us in 2023.
+                  Family has always been my center, and seeing ours grow has
+                  been life's greatest joy. Our daughter ElizaJane arrived in
+                  2021, bringing endless wonder to our days, and little Renny
+                  joined our crew in 2023, completing our circle.
                 </p>
               </div>
               <div className="hidden lg:block">
@@ -190,20 +220,19 @@ export default function AboutPage() {
                   </div>
                 </div>
                 <h2 className="mb-6 w-full text-balance text-3xl font-medium leading-[40px] tracking-tighter text-text-primary">
-                  What I&apos;m doing now.
+                  These Days
                 </h2>
                 <p className="mb-6 text-base leading-8 text-text-secondary">
-                  Right now, I&apos;m a Senior Frontend Developer at LogicGate,
-                  where I get to lead teams in building some really exciting
-                  projects.
+                  Currently, I'm leading teams at LogicGate as a Senior Frontend
+                  Engineer where we're building some pretty awesome stuff.
+                  Speaking at tech conferences has become a regular part of my
+                  year.
                 </p>
                 <p className="mb-6 text-base leading-8 text-text-secondary">
-                  I love sharing what I know as an international tech speaker
-                  and try to speak at a few events each year.
-                </p>
-                <p className="mb-6 text-base leading-8 text-text-secondary">
-                  In my downtime, I enjoy creative coding, blogging, gaming with
-                  friends, and hanging out with my family.
+                  When I'm not working, you'll find me on creative coding side
+                  projects, writing for my blog, failing spectacularly at games
+                  with friends, or—best of all—hanging out with my family,
+                  usually with coffee nearby and dad jokes at the ready.
                 </p>
               </div>
               <div className="hidden lg:block">
@@ -239,9 +268,9 @@ export default function AboutPage() {
           <GridWrapper>
             <Resume />
           </GridWrapper>
-          <div className="flex justify-center">
+          {/* <div className="flex justify-center">
             <Button variant="secondary">Download Resume</Button>
-          </div>
+          </div> */}
         </div>
 
         <section className="relative space-y-16">
