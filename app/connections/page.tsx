@@ -173,7 +173,8 @@ const connections: Connection[] = [
     name: "Keenan Payne",
     profile_picture: "/connections/Keenan Payne.jpeg",
     socialLink: "https://x.com/BraydonCoyer",
-    isConnected: false,
+    isConnected: true,
+    connectedDate: new Date("03/26/2025"),
   },
   {
     name: "Samantha Ming",
@@ -323,7 +324,22 @@ const connections: Connection[] = [
     name: "Jason Lengstorf",
     profile_picture: "/connections/Jason Lengstorf.jpeg",
     socialLink: "https://x.com/BraydonCoyer",
-    isConnected: false,
+    isConnected: true,
+    connectedDate: new Date("03/24/2025"),
+  },
+  {
+    name: "Michael Chan",
+    profile_picture: "/connections/michael_chan.jpeg",
+    socialLink: "https://x.com/BraydonCoyer",
+    isConnected: true,
+    connectedDate: new Date("03/24/2025"),
+  },
+  {
+    name: "Tanner Linsley",
+    profile_picture: "/connections/tanner_linsley.jpg",
+    socialLink: "https://x.com/BraydonCoyer",
+    isConnected: true,
+    connectedDate: new Date("03/26/2025"),
   },
   {
     name: "Shawn Wang",
@@ -491,7 +507,8 @@ const connections: Connection[] = [
     name: "Kent C. Dodds",
     profile_picture: "/connections/Kent C. Dodds.jpeg",
     socialLink: "https://x.com/BraydonCoyer",
-    isConnected: false,
+    isConnected: true,
+    connectedDate: new Date("03/25/2025"),
   },
   {
     name: "Ryan Florence",
