@@ -39,7 +39,7 @@ function DesktopNav() {
   return (
     <nav
       aria-label="Desktop navigation"
-      className="bleed-border-b bleed-border-primary/50 hidden h-16 w-full items-center justify-between px-4 md:flex"
+      className="hidden h-16 w-full items-center justify-between border-b border-border-primary/50 px-4 md:flex"
     >
       <div className="w-[104px]">
         <Link href="/" aria-label="Home">
@@ -81,7 +81,7 @@ function MobileNav() {
   return (
     <nav
       aria-label="Mobile navigation"
-      className="flex h-16 items-center justify-between gap-2.5 px-3 md:hidden"
+      className="flex h-16 items-center justify-between gap-2.5 border-b border-border-primary/50 px-3 md:hidden"
     >
       <NavLogo onClickCallback={setIsOpen} />
 
