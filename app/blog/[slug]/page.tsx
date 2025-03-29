@@ -282,14 +282,18 @@ export default async function BlogPage({ params }: BlogPageProps) {
 }
 
 type Props = {
-  params: { slug: string };
+  params: {
+    slug: Promise<string>;
+  };
 };
 
 export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const post = posts.find((post) => post.slug === params.slug);
+  const slug = await params.slug;
+
+  const post = posts.find((post) => post.slug === slug);
 
   if (!post) {
     return {
