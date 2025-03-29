@@ -13,11 +13,12 @@ import clsx from "clsx";
 import { ViewCounter } from "@/app/components/ViewCounter";
 import ArticleReactionWrapper from "@/app/components/ArticleReactionsWrapper";
 import { Suspense } from "react";
+import { Metadata, ResolvingMetadata } from "next";
 
 interface BlogPageProps {
-  params: Promise<{
+  params: {
     slug: string;
-  }>;
+  };
 }
 
 function formatDate(date: string) {
@@ -54,7 +55,7 @@ function formatDate(date: string) {
 }
 
 async function getPostFromParams(params: BlogPageProps["params"]) {
-  const { slug } = await params;
+  const { slug } = params;
   const post = posts.find((post) => post.slug === slug);
 
   if (!post) {
@@ -75,7 +76,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
   return (
     <article className="space-y-12">
-      <title>{post.title}</title>
+      {/* <title>{post.title}</title> */}
       {/* Article Banner Image */}
       <div className="relative">
         {/* Lines */}
@@ -223,7 +224,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
                   ></circle>
                 </svg>
                 <Suspense fallback={<span>...</span>}>
-                  <ViewCounter slug={(await params).slug} increment={true} />
+                  <ViewCounter slug={params.slug} increment={true} />
                 </Suspense>
               </div>
             </div>
@@ -280,10 +281,50 @@ export default async function BlogPage({ params }: BlogPageProps) {
   );
 }
 
-// let incrementViews = cache(increment);
+type Props = {
+  params: { slug: string };
+};
 
-// async function Views({ slug }: { slug: string }) {
-//   let views = await getViewsCount();
-//   incrementViews(slug);
-//   return <ViewCounter allViews={views} slug={slug} />;
-// }
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const post = posts.find((post) => post.slug === params.slug);
+
+  if (!post) {
+    return {
+      title: "Blog Post Not Found",
+    };
+  }
+
+  const previousImages = (await parent)?.openGraph?.images || [];
+
+  return {
+    title: post.title,
+    description: post.summary,
+    openGraph: {
+      title: post.title,
+      description: post.summary,
+      type: "article",
+      publishedTime: post.publishedAt,
+      authors: ["Braydon Coyer"],
+      images: [
+        {
+          url: `/api/og?title=${encodeURIComponent(post.title)}&summary=${encodeURIComponent(post.summary)}&image=${encodeURIComponent(post.imageName)}`,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+        ...previousImages,
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.summary,
+      images: [
+        `/api/og?title=${encodeURIComponent(post.title)}&summary=${encodeURIComponent(post.summary)}&image=${encodeURIComponent(post.imageName)}`,
+      ],
+    },
+  };
+}
