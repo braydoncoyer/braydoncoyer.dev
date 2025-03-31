@@ -16,9 +16,9 @@ import { Suspense } from "react";
 import { Metadata, ResolvingMetadata } from "next";
 
 interface BlogPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 function formatDate(date: string) {
@@ -55,7 +55,7 @@ function formatDate(date: string) {
 }
 
 async function getPostFromParams(params: BlogPageProps["params"]) {
-  const { slug } = params;
+  const { slug } = await params;
   const post = posts.find((post) => post.slug === slug);
 
   if (!post) {
@@ -224,7 +224,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
                   ></circle>
                 </svg>
                 <Suspense fallback={<span>...</span>}>
-                  <ViewCounter slug={params.slug} increment={true} />
+                  <ViewCounter slug={post.slug} increment={true} />
                 </Suspense>
               </div>
             </div>
@@ -281,17 +281,11 @@ export default async function BlogPage({ params }: BlogPageProps) {
   );
 }
 
-type Props = {
-  params: {
-    slug: string;
-  };
-};
-
 export async function generateMetadata(
-  { params }: Props,
+  { params }: BlogPageProps,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const slug = await params.slug;
+  const slug = (await params).slug;
 
   const post = posts.find((post) => post.slug === slug);
 
