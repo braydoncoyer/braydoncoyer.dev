@@ -9,8 +9,29 @@ import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 
 export const metadata: Metadata = {
-  title: siteMetadata.title,
+  title: {
+    template: siteMetadata.title,
+    default: siteMetadata.title,
+  },
   description: siteMetadata.description,
+  openGraph: {
+    title: siteMetadata.title,
+    description: siteMetadata.description,
+    images: [
+      {
+        url: "/braydon_coyer_blogfolio_og.jpg", // Your default OG image
+        width: 1200,
+        height: 630,
+        alt: siteMetadata.title,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteMetadata.title,
+    description: siteMetadata.description,
+    images: ["/braydon_coyer_blogfolio_og.jpg"],
+  },
 };
 
 export default function RootLayout({
