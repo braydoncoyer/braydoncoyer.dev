@@ -283,7 +283,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
 type Props = {
   params: {
-    slug: Promise<string>;
+    slug: string;
   };
 };
 
