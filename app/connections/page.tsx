@@ -606,11 +606,8 @@ export default function ConnectionsPage() {
             <HorizontalLine />
           </span>
           {sortedConnections.map((person) => (
-            <a
+            <div
               key={person.name}
-              href={person.socialLink}
-              target="_blank"
-              rel="noopener noreferrer"
               className="group no-underline transition-all duration-500"
             >
               <div className="group inline-block text-center">
@@ -654,7 +651,7 @@ export default function ConnectionsPage() {
                   </div>
                 )}
               </div>
-            </a>
+            </div>
           ))}
           <span className="absolute bottom-0">
             <HorizontalLine />

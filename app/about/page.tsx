@@ -4,7 +4,7 @@ import { getTimeOfDayGreeting } from "app/lib/utils";
 import React from "react";
 import { CurrentlyPlayingBento } from "@/app/components/CurrentlyPlayingBento";
 import { ConnectionsBento } from "@/app/components/ConnectionsBento";
-import { Scrapbook } from "@/app/components/Scrapbook";
+import { ScrapbookBento } from "@/app/components/ScrapbookBento";
 import { ShadowBox } from "@/app/components/ShadowBox";
 import { Resume } from "app/components/Resume";
 import { StatsBento } from "@/app/components/StatsBento";
@@ -296,7 +296,7 @@ export default function AboutPage() {
                 <CurrentlyPlayingBento />
               </div>
               <div className="hidden lg:col-span-7 lg:row-span-5 lg:block">
-                <Scrapbook />
+                <ScrapbookBento />
               </div>
               <div className="hidden lg:col-span-2 lg:col-start-11 lg:row-span-10 lg:block lg:min-h-[50px]">
                 <CurrentlyReadingBento />

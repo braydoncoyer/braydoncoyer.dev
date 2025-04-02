@@ -1,0 +1,204 @@
+---
+title: Introducing Blogfolio v5
+publishedAt: 2025-03-31
+summary: I've been working hard on my website, and I'm pumped to show you what I've been up to this year. From new features to some behind-the-scenes tech magic, there's a lot to unpack in this 2024 update.
+imageName: blogfolio_v5.jpg
+categories: ["personal"]
+draft: false
+---
+
+This is my website refresh for 2024. And yes — I know it's 2025! This has been in the works for over 14 months, and I'm excited to _finally_ get this online.
+
+<iframe
+  className="w-full"
+  height="515"
+  src="https://www.youtube.com/embed/A8JRge8GsTY"
+  frameBorder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen={true}
+></iframe>
+
+## Welcome to the Evolution
+
+If this is your first time on my website—welcome!
+
+Each year, I rebuild my portfolio website (affectionately dubbed "Blogfolio") from scratch. And yes, I purposefully over-engineer it. Why? It creates a footprint of my technical and design evolution over the years, and most importantly, keeps me current with the ever-evolving landscape of web development.
+
+<Thoughtquote>
+  I think you should build your own blog and website, too. [Here's
+  why.](http://braydoncoyer.dev/blog/why-every-developer-should-build-their-own-blog)
+</Thoughtquote>
+
+Curious about my previous iterations? Check out my journey:
+
+- [2023](http://braydoncoyer.dev/blog/my-evolved-blogfolio-in-2023)
+- [2022](http://braydoncoyer.dev/blog/blogfolio-v3-update-2022)
+- [2021](http://braydoncoyer.dev/blog/introducing-my-new-blogfolio)
+
+## A Fresh Design Direction
+
+The most striking change this year: a completely fresh design approach. While last year embraced the dark side, 2024's iteration pivots to a clean, light-themed aesthetic.
+
+For the first time, I collaborated with a professional designer from the early stages to inject distinct personality into my annual rebuild. The challenge was incorporating technical elements without being heavy-handed—moving beyond the typical programming symbols and node-based visuals toward something subtler yet instantly recognizable.
+
+The result? A sophisticated grid-based container system that elegantly separates elements while masterfully managing white space. It's clean, sleek, and purposeful.
+
+![Grid system visualization](/blog/introducing_blogfolio_v5_grid_system.jpeg)
+
+During the design process, I experimented with visualizing semantic HTML elements as integral components of the page layout. We played with "puck" designs to divide sections and illustrate how semantic HTML tags might function under the hood. Ultimately, this approach didn't achieve the cohesive feel I was aiming for, so I moved in a different direction.
+
+![Semantic puck exloration](/blog/introducing_blogfolio_v5_semantic_puck.jpeg)
+
+### Typography Refresh
+
+While Inter has been my trusted typeface for several years, I've been seduced by Vercel's [Geist typeface](https://vercel.com/font). I'm now using Geist for both headings and body text, bringing a fresh typographic personality to the site.
+
+### Embracing Bento Design
+
+Bento design exploded in popularity throughout 2023, primarily in SaaS product landing pages, but I hadn't seen it applied effectively to personal portfolio sites. Major credit to [Marcin Pankiewicz](https://x.com/uiuxarih), who helped shape the individual experiences and design language for these bento boxes. His input influenced numerous variations that emerged later in the development phase.
+
+![Embracing Bento Design](/blog/introducing_blogfolio_v5_bento.jpg)
+
+## Reimagined Features
+
+None of this year's features are entirely novel—many have appeared incrementally over the past few years. The key difference is that every feature below has been rebuilt from the ground up with significantly improved implementation.
+
+### Enhanced Article Engagement
+
+The article hit count returns—a fun interactive way to gauge a post's popularity. We'll talk about this more later, but I utilize Supabase to do this behinds the scenes.
+
+![Article hit count](/blog/introducing_blogfolio_v5_article_hit_count.jpg)
+
+Article reactions make a triumphant return with Blogfolio v5, now with expanded options: like, love, celebrate, and insightful! This year, I've taken it further with satisfying microinteractions that trigger after you've clicked the reaction.
+
+![Article Reactions](/blog/introducing_blogfolio_v5_article_reactions.jpg)
+
+<Ideaquote>
+  You should give it a try! After reading this post, try clicking on some of the
+  reactions!
+</Ideaquote>
+
+A small but useful addition: estimated reading time now appears in the article banner, giving readers a sense of the time commitment before diving in.
+
+### Reimagined Code Blocks
+
+I'm particularly proud of this revamp—code blocks have been completely reworked. They're more aesthetic, include line numbers, and offer greater flexibility, allowing me to control the language and display the filename when desired.
+
+```typescript:Example1.tsx
+console.log("Do you see the file name in the codeblock header?");
+```
+
+```html
+<div>
+  <h1>But this one does not</h1>
+</div>
+```
+
+<Infoquote>
+  Code blocks also include a handy copy button in the top right for easier
+  snippet sharing!
+</Infoquote>
+
+### Sleek Newsletter Integration
+
+My newsletter signup form received a stylish redesign featuring my logo and an Easter egg animation when you subscribe—but you didn't hear that from me! 👀
+
+Plus, the copy in the form subtly changes depending on which page you're viewing, so keep an eye out for these little differences!
+
+![Article Reactions](/blog/introducing_blogfolio_v5_newsletter.jpg)
+
+### The Interactive Community Wall
+
+One of my favorite features is the Community Wall—essentially a virtual guestbook with personality. This year's upgrade allows visitors to do more than simply write a message; they can customize their note's color, pattern, and rotation for a truly personal touch.
+
+Want to leave your own message? [Give it a try!](/community-wall)
+
+![The new community wall!](/blog/introducing_blogfolio_v5_community_wall.jpg)
+
+### Currently Playing: Music Integration
+
+A standout addition to this year's build is the "Currently Playing" Bento card that displays my current Spotify activity. When I'm actively listening to music, it shows the song name, artist, and album. Hover over the Bento, and the vinyl record animates, rotating to simulate the song playing.
+
+Not catching me during a listening session? The Bento defaults to displaying one of my recent favorite tracks.
+
+![A live account of what I'm listening to](/blog/introducing_blogfolio_v5_currently_playing.jpg)
+
+### Expressive Callout Blocks
+
+One of the benefits of using MDX as my content source is the ability to use custom components in my Markdown. When I need to highlight important information or share asides with readers, I can use my new Callout components!
+
+Aesthetically, they're some of my favorite elements on the site. They continue the grid design language that helps separate them from surrounding content. I considered using this same approach for code blocks but decided it would be too jarring for code directly related to the content.
+
+<Ideaquote>Here's an idea!</Ideaquote>
+<Thoughtquote>Here's an intruiging thought! 🤔</Thoughtquote>
+<Infoquote>Here's some additional information...</Infoquote>
+<Warningquote>
+  Hold up! I use this when I need to warn readers about something.
+</Warningquote>
+
+### Rebuilt Connection Page
+
+The Connections page has received a substantial overhaul since its 2023 debut. The new design better showcases contact details and photos, with people I've already met appearing first, sorted alphabetically.
+
+The page serves as a public showcase of tech industry professionals I'd love to connect with. Not on the list and think you should be? [Send me a DM](https://x.com/BraydonCoyer)!
+
+![Who I've connected with and who I wish to meet](/blog/introducing_blogfolio_v5_connections_page.jpg)
+
+### Refined Changelog and Links Pages
+
+Both the Changelog and Links pages have been updated to align with the new design language.
+
+The [Changelog](/changelog) is now more flexible, powered by MDX for easier addition of images and videos to document the site's evolution.
+
+The [Links](/links) page serves as my personal alternative to LinkTree—a centralized hub where people I meet at conferences and meetups can access all my social networks and content.
+
+![What has changed on my site](/blog/introducing_blogfolio_v5_changelog_page.jpg)
+
+## The Technical Foundation
+
+When rebuilding my site, I survey the evolving web development landscape and select technologies that are either emerging or that I don't get to use in my day job. Here's what powers this year's iteration:
+
+### Next.js 15
+
+I've returned to [Next.js](https://nextjs.org/) for this year's rebuild! I've always been a big fan, and with the recent additions of Server Components, Server Actions, and the new App Router, working with this framework has been nothing short of delightful.
+
+### Tailwind CSS
+
+Anyone who knows me knows about my love affair with [Tailwind CSS](https://tailwindcss.com/). While I'm still on v3 at launch, upgrading to v4 is at the top of my post-launch to-do list!
+
+### MDX + Velite
+
+I've used MDX in past builds, but this year I'm pairing it with [Velite](https://velite.js.org/), a build tool that transforms MDX content into high-performance data structures optimized for Next.js and React applications.
+
+The initial setup had some rough edges, but it's been smooth sailing since! I can define content configurations for blogs or changelogs, specify frontmatter requirements, and everything just works. It's remarkably convenient.
+
+### Framer Motion
+
+This marks the first year I've integrated a dedicated animation library—practically inevitable given the microinteractions I wanted to achieve.
+
+While I wouldn't call myself a [Framer Motion](https://www.npmjs.com/package/framer-motion) expert, I was able to implement most animations quickly, leaning on Copilot to help me through the learning curve.
+
+### Supabase
+
+[Supabase](https://supabase.com/) provides the backend muscle for tracking article hit counts and reactions. As an open-source Firebase alternative, it offers a comprehensive suite of services with a developer-friendly experience. I'll likely expand its role as I develop the upcoming Stats page.
+
+### Loops.so
+
+[Loops.so](https://loops.so/) handles all my newsletter needs with its modern, streamlined approach to email marketing. I've been a customer since the beta and have no plans to switch anytime soon.
+
+### Iconic
+
+[Iconic](https://iconic.app/) simply offers the _best_ SVG icons available. Crafted by my favorite designer [James McDonald](https://x.com/jamesm), these icons continue to earn their place in my tech stack year after year.
+
+## Looking Forward
+
+For five consecutive years, I've rebuilt my portfolio from scratch, but I'm unsure if this tradition will continue annually.
+
+Between family responsibilities, a full-time job, and various personal challenges, maintaining a strict 12-month rebuild cycle has become increasingly difficult. While rebuilds will remain part of my professional growth—I still believe in the value of over-engineering personal websites—I may need to adopt a more flexible timeline moving forward.
+
+## Appreciation Corner
+
+I'd like to close with sincere thanks to those who helped bring this vision to life:
+
+- [Marcin Pankiewicz](https://x.com/uiuxarih): The design mastermind behind this site—His early designs ultimately shaped the end product and I couldn't have created this without his expertise!
+- [Kuldar Kalvik](https://kuldar.com/): A kindred spirit who shares my love of tinkering and building cool things. Kuldar guided me through creating my Blogfolio trailer and provided code that formed the foundation of my Now Listening Bento. Check out his amazing personal site at [kuldar.com](https://kuldar.com/)!

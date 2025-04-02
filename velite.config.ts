@@ -1,4 +1,5 @@
 import { defineConfig, defineCollection, s } from "velite";
+import rehypeRaw from "rehype-raw";
 
 const computedFields = <T extends { slug: string }>(data: T) => ({
   ...data,
@@ -53,7 +54,9 @@ export default defineConfig({
   },
   collections: { posts, changelogItems },
   mdx: {
-    rehypePlugins: [],
+    rehypePlugins: [
+      [rehypeRaw, { passThrough: ['mdxJsxFlowElement', 'mdxJsxTextElement'] }]
+    ],
     remarkPlugins: [],
   },
 });

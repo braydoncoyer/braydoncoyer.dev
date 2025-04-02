@@ -169,7 +169,7 @@ function Sticker({
   );
 }
 
-export function Scrapbook({ className }: { className?: string }) {
+export function ScrapbookBento({ className }: { className?: string }) {
   const [resetIndex, setResetIndex] = useState<number>(0);
 
   const container = {
@@ -189,9 +189,10 @@ export function Scrapbook({ className }: { className?: string }) {
       rowSpan={4}
       height="h-[220px]"
       showHoverGradient={false}
+      hideOverflow={false}
     >
       <h2 className="mb-2 font-medium">Scrapbook</h2>
-      <div className="absolute top-0 h-[220px] w-full bg-[radial-gradient(#e5e7eb_1px,transparent_2px)] [background-size:14px_14px] [mask-image:radial-gradient(ellipse_80%_70%_at_50%_50%,black_40%,transparent_100%)]"></div>
+      <div className="absolute top-0 h-[220px] w-full overflow-hidden bg-[radial-gradient(#e5e7eb_1px,transparent_2px)] [background-size:14px_14px] [mask-image:radial-gradient(ellipse_80%_70%_at_50%_50%,black_40%,transparent_100%)]"></div>
       <div
         key={resetIndex}
         className={cn(

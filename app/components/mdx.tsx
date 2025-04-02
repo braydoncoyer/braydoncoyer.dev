@@ -271,7 +271,7 @@ function createHeading(level) {
       `h${level}`,
       {
         id: slug,
-        className: `${textSize} text-text-primary font-medium leading-8 mb-6 mt-3 text-balance`,
+        className: `${textSize} text-text-primary font-medium leading-8 mb-6 ${level === 2 ? "mt-8" : "mt-3"} text-balance`,
       },
       [
         React.createElement("a", {
@@ -320,54 +320,61 @@ function ListItem({ children }) {
 }
 
 function FullWidthCallout({ children, type }) {
-  const renderMDXContent = (content) => {
-    if (!content) return null;
-
-    if (typeof content === "string") {
-      return content;
+  const hasLinks = React.Children.toArray(children).some((child) => {
+    if (
+      typeof child === "string" &&
+      child.includes("[") &&
+      child.includes("](")
+    ) {
+      return true;
     }
 
-    if (Array.isArray(content)) {
-      return content.map((item, index) => (
-        <React.Fragment key={index}>{renderMDXContent(item)}</React.Fragment>
-      ));
-    }
-
-    // Handle semantic elements
-    if (content.type === "ul") {
-      return (
-        <UnorderedList>
-          {renderMDXContent(content.props.children)}
-        </UnorderedList>
+    if (React.isValidElement(child) && child.props?.children) {
+      return React.Children.toArray(child.props.children).some(
+        (grandchild) =>
+          React.isValidElement(grandchild) && grandchild.type === CustomLink,
       );
     }
 
-    if (content.type === "ol") {
-      return (
-        <OrderedList>{renderMDXContent(content.props.children)}</OrderedList>
-      );
-    }
+    return false;
+  });
 
-    if (content.type === "li") {
-      return <ListItem>{renderMDXContent(content.props.children)}</ListItem>;
-    }
+  const processedChildren = hasLinks
+    ? React.Children.map(children, (child) => {
+        if (
+          typeof child === "string" &&
+          child.includes("[") &&
+          child.includes("](")
+        ) {
+          const segments: (string | JSX.Element)[] = [];
+          let currentIndex = 0;
+          const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+          let match;
 
-    // Handle link components
-    if (content.type === "a") {
-      return (
-        <CustomLink key={content.props.href} href={content.props.href}>
-          {content.props.children}
-        </CustomLink>
-      );
-    }
+          while ((match = linkRegex.exec(child)) !== null) {
+            if (match.index > currentIndex) {
+              segments.push(child.substring(currentIndex, match.index));
+            }
 
-    // Handle nested children in props
-    if (content.props?.children) {
-      return renderMDXContent(content.props.children);
-    }
+            segments.push(
+              <CustomLink key={match.index} href={match[2]}>
+                {match[1]}
+              </CustomLink>,
+            );
 
-    return content;
-  };
+            currentIndex = match.index + match[0].length;
+          }
+
+          if (currentIndex < child.length) {
+            segments.push(child.substring(currentIndex));
+          }
+
+          return segments;
+        }
+
+        return child;
+      })
+    : children;
 
   const badges = {
     idea: {
@@ -411,7 +418,7 @@ function FullWidthCallout({ children, type }) {
             {badge.label}
           </span>
         )}
-        <div className="text-text-secondary">{renderMDXContent(children)}</div>
+        <div className="text-text-secondary">{processedChildren}</div>
       </div>
     </blockquote>
   );
@@ -450,7 +457,6 @@ const sharedComponents = {
   Infoquote: InfoQuote,
   Thoughtquote: ThoughtQuote,
   Warningquote: WarningQuote,
-  //   StaticTweet: TweetComponent,
   code: Code,
   Table,
   p: paragraph,
