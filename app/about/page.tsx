@@ -56,7 +56,7 @@ export default function AboutPage() {
                     <Photo
                       width={140}
                       height={140}
-                      src="/c3_speaker_head.png"
+                      src="/braydon_headshot_3.jpg"
                       alt="Braydon Coyer"
                       direction="left"
                     />
@@ -157,7 +157,7 @@ export default function AboutPage() {
                   <ShadowBox width={188} height={278}></ShadowBox>
                   <img
                     className="absolute left-0 top-0 h-[270px] w-[180px] rotate-[8deg] rounded-lg object-cover shadow"
-                    src="/c3_speaker_head.png"
+                    src="/braydon_headshot_3.jpg"
                     alt="Speaking at C3 Conf!"
                   />
                 </div>

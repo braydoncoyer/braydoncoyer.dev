@@ -88,14 +88,16 @@ export function Footer(): JSX.Element {
             </div>
             <div className="flex w-full flex-col items-end py-6 text-xs lg:pl-16">
               <div className="ld:space-x-0 flex w-full justify-between md:justify-start md:space-x-36 lg:justify-between">
-                {footerSections.map((section, index) => (
+                {footerSections.map((section) => (
                   <div key={section.title}>
                     <span className="mb-4 inline-block text-base font-medium text-text-primary">
                       {section.title}
                     </span>
                     <ul className="space-y-2 text-sm text-gray-500">
                       {section.links.map((link) => (
-                        <li key={link.href}>{renderFooterLink(link)}</li>
+                        <li className="hover:text-text-primary" key={link.href}>
+                          {renderFooterLink(link)}
+                        </li>
                       ))}
                     </ul>
                   </div>

@@ -67,7 +67,7 @@ const connections: Connection[] = [
   },
   {
     name: "Shashi Lo",
-    profile_picture: "/connections/Shashi.jpeg",
+    profile_picture: "/connections/shashi.jpeg",
     connectedDate: new Date("01/15/2023"),
     socialLink: "https://x.com/BraydonCoyer",
     isConnected: true,
@@ -88,7 +88,7 @@ const connections: Connection[] = [
   },
   {
     name: "Brad Garropy",
-    profile_picture: "/connections/Brad.jpeg",
+    profile_picture: "/connections/brad.jpeg",
     connectedDate: new Date("01/15/2023"),
     socialLink: "https://x.com/BraydonCoyer",
     isConnected: true,
@@ -226,7 +226,7 @@ const connections: Connection[] = [
   },
   {
     name: "Telmo",
-    profile_picture: "/connections/Telmo.jpeg",
+    profile_picture: "/connections/telmo.jpeg",
     socialLink: "https://x.com/BraydonCoyer",
     isConnected: false,
   },
@@ -518,7 +518,7 @@ const connections: Connection[] = [
   },
   {
     name: "Jim Raptis",
-    profile_picture: "/connections/Jim.jpeg",
+    profile_picture: "/connections/jim.jpeg",
     socialLink: "https://x.com/BraydonCoyer",
     isConnected: false,
   },
@@ -530,13 +530,13 @@ const connections: Connection[] = [
   },
   {
     name: "Jhey Tompkins",
-    profile_picture: "/connections/Jhey.jpeg",
+    profile_picture: "/connections/jhey.jpeg",
     socialLink: "https://x.com/BraydonCoyer",
     isConnected: false,
   },
   {
     name: "James",
-    profile_picture: "/connections/James.jpeg",
+    profile_picture: "/connections/james.jpeg",
     socialLink: "https://x.com/BraydonCoyer",
     isConnected: false,
   },
@@ -548,7 +548,7 @@ const connections: Connection[] = [
   },
   {
     name: "Lee Robinson",
-    profile_picture: "/connections/Lee_rpb.jpeg",
+    profile_picture: "/connections/lee_rob.jpeg",
     socialLink: "https://x.com/BraydonCoyer",
     isConnected: false,
   },
@@ -566,7 +566,7 @@ const connections: Connection[] = [
   },
   {
     name: "Scott Spense",
-    profile_picture: "/connections/Scott.jpeg",
+    profile_picture: "/connections/scott.jpeg",
     socialLink: "https://x.com/BraydonCoyer",
     isConnected: false,
   },
