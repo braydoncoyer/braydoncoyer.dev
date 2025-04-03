@@ -1,10 +1,10 @@
 import { siteMetadata } from "@/app/data/siteMetadata";
 import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
-import fs from "fs";
-import path from "path";
+// import fs from "fs";
+// import path from "path";
 
-export const runtime = "nodejs";
+// export const runtime = "nodejs";
 
 // Route segment config
 export const fetchCache = "force-no-store";
@@ -24,29 +24,28 @@ export async function GET(request: NextRequest) {
       : siteMetadata.siteUrl;
 
     const imageUrl = imageName ? `${baseUrl}/blog/${imageName}` : "";
-    const baseImageUrl = `${baseUrl}`;
 
     // Load fonts using the file system with Node.js runtime
-    const geistRegular = fs.readFileSync(
-      path.join(
-        process.cwd(),
-        "node_modules/geist/dist/fonts/geist-sans/Geist-Regular.ttf",
-      ),
-    );
+    // const geistRegular = fs.readFileSync(
+    //   path.join(
+    //     process.cwd(),
+    //     "node_modules/geist/dist/fonts/geist-sans/Geist-Regular.ttf",
+    //   ),
+    // );
 
-    const geistMedium = fs.readFileSync(
-      path.join(
-        process.cwd(),
-        "node_modules/geist/dist/fonts/geist-sans/Geist-Medium.ttf",
-      ),
-    );
+    // const geistMedium = fs.readFileSync(
+    //   path.join(
+    //     process.cwd(),
+    //     "node_modules/geist/dist/fonts/geist-sans/Geist-Medium.ttf",
+    //   ),
+    // );
 
-    const geistSemiBold = fs.readFileSync(
-      path.join(
-        process.cwd(),
-        "node_modules/geist/dist/fonts/geist-sans/Geist-SemiBold.ttf",
-      ),
-    );
+    // const geistSemiBold = fs.readFileSync(
+    //   path.join(
+    //     process.cwd(),
+    //     "node_modules/geist/dist/fonts/geist-sans/Geist-SemiBold.ttf",
+    //   ),
+    // );
 
     return new ImageResponse(
       (
@@ -72,7 +71,7 @@ export async function GET(request: NextRequest) {
             alt="Gradient overlay"
           />
 
-          <h1 tw="absolute -bottom-12 left-0 pl-22 w-full text-white text-5xl font-semibold leading-tight max-w-4xl">
+          <h1 tw="absolute -bottom-12 left-0 pl-22 w-full text-white text-6xl leading-tight max-w-4xl">
             {title}
           </h1>
         </div>
@@ -80,26 +79,6 @@ export async function GET(request: NextRequest) {
       {
         width: 1200,
         height: 630,
-        fonts: [
-          {
-            name: "Geist Sans",
-            data: geistRegular,
-            weight: 400,
-            style: "normal",
-          },
-          {
-            name: "Geist Sans",
-            data: geistMedium,
-            weight: 500,
-            style: "normal",
-          },
-          {
-            name: "Geist Sans",
-            data: geistSemiBold,
-            weight: 600,
-            style: "normal",
-          },
-        ],
       },
     );
   } catch (error) {

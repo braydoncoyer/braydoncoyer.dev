@@ -76,7 +76,6 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
   return (
     <article className="space-y-12">
-      {/* <title>{post.title}</title> */}
       {/* Article Banner Image */}
       <div className="relative">
         {/* Lines */}

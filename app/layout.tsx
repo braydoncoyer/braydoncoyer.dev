@@ -9,10 +9,6 @@ import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 
 export const metadata: Metadata = {
-  title: {
-    template: siteMetadata.title,
-    default: siteMetadata.title,
-  },
   description: siteMetadata.description,
   openGraph: {
     title: siteMetadata.title,
