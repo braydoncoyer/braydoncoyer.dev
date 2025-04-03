@@ -7,6 +7,7 @@ import { BgGradient } from "./components/BgGradient";
 import { cx } from "./lib/utils";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   description: siteMetadata.description,
@@ -40,7 +41,6 @@ export default function RootLayout({
       lang="en"
       className={`bg-bg-primary ${GeistMono.variable} ${GeistSans.variable}`}
     >
-      <head></head>
       <body className="flex min-h-screen flex-col font-sans md:max-w-7xl lg:mx-auto lg:flex-row">
         <main
           className={cx(
@@ -59,6 +59,19 @@ export default function RootLayout({
           <Footer />
         </main>
       </body>
+
+      <Script id="vemetric-loader" strategy="afterInteractive">
+        {`
+          window.vmtrcq = window.vmtrcq || [];
+          window.vmtrc = window.vmtrc || ((...args) => window.vmtrcq.push(args));
+        `}
+      </Script>
+
+      <Script
+        src="https://cdn.vemetric.com/main.js"
+        data-token="HUO9AbX53v2wkzRu"
+        strategy="afterInteractive"
+      />
     </html>
   );
 }
