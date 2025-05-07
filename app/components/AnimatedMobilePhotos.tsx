@@ -59,7 +59,7 @@ export function AnimatedMobilePhotos({ delay }: AnimatedMobilePhotosProps) {
             <ShadowBox width={170} height={252}></ShadowBox>
             <img
               className="absolute left-0 top-0 h-[245px] w-[163px] rotate-[10deg] rounded-lg object-cover shadow-lg shadow-black/20"
-              src="/braydon_speaking_head_3.jpeg"
+              src="/braydon_headshot_4.jpg"
               alt="A headshot"
             />
           </motion.div>

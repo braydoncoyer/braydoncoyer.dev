@@ -30,6 +30,12 @@ const presentationList: PresentationList = {
     title: "Live Talks",
     talks: [
       {
+        conference: "Stir Trek 2025",
+        title: "Behind the Scenes of Tailwind CSS",
+        description:
+          "Ever peeked into Tailwind's source code? You'll see exactly how thousands of utility classes get generated, the purging techniques that scan your templates to slash bundle sizes, and how JIT compilation delivers unlimited arbitrary values without tanking performance.",
+      },
+      {
         conference: "Commit Your Code",
         title: "What's New in Tailwind CSS v4?",
         description:
@@ -113,7 +119,7 @@ const presentationList: PresentationList = {
           "GC 2.0 w/Taylor Desseyn and Navigating 800 Submissions to Fulltime Job",
         description:
           "Taylor had me on his podcasts to help encourage job seekers by talking about my experience landing my first time web development job.",
-        link: "https://x.com/tdesseyn/status/1648331656749813760",
+        link: "https://open.spotify.com/episode/10ddc4Hukv1jV6q3hiIOpM",
         buttonLabel: "Listen now",
       },
     ],
@@ -177,7 +183,7 @@ export default function SpeakingPage() {
                 <Photo
                   width={180}
                   height={270}
-                  src="/braydon_speaking_head_3.jpeg"
+                  src="/braydon_stir_trek.jpeg"
                   alt="DoorDash hitting it's millionth total order back in 2015."
                   direction="right"
                 />
@@ -424,7 +430,7 @@ export default function SpeakingPage() {
                     <ShadowBox width={200} height={200}></ShadowBox>
                     <img
                       className="absolute left-1 top-2 h-[186px] w-[186px] rotate-[9deg] rounded-lg object-cover shadow"
-                      src="/braydon_headshot_1.jpeg"
+                      src="/braydon_headshot_3.jpg"
                       alt=""
                     />
                   </div>
