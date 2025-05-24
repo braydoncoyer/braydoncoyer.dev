@@ -1,4 +1,4 @@
-import { Blog, Changelog, changelogItems, posts } from "#site/content";
+import { Blog, Changelog, changelogItems, posts, projects } from "#site/content";
 import { unstable_noStore as noStore } from "next/cache";
 import { notFound } from "next/navigation";
 import { ClassValue, clsx } from "clsx";
@@ -139,4 +139,53 @@ export function extractUniqueBlogCategories(posts: Blog[]): Set<string> {
     post.categories.forEach((category) => categories.add(category));
   });
   return categories;
+}
+
+export function fetchAndSortProjects() {
+  try {
+    return projects
+      .filter((project) => !project.draft)
+      .sort(
+        (a, b) =>
+          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
+      );
+  } catch (error) {
+    notFound();
+  }
+}
+
+export function getRelatedProjects(
+  currentProject: any,
+  maxResults: number = 3,
+) {
+  const allProjects = fetchAndSortProjects().filter(
+    (project) => project.slug !== currentProject.slug,
+  );
+
+  const sameTechnologies = allProjects.filter((project) =>
+    project.technologies.some((tech) =>
+      currentProject.technologies.includes(tech),
+    ),
+  );
+
+  // Sort by number of matching technologies (most relevant first)
+  const sortedByRelevance = sameTechnologies.sort((a, b) => {
+    const aMatches = a.technologies.filter((tech) =>
+      currentProject.technologies.includes(tech),
+    ).length;
+    const bMatches = b.technologies.filter((tech) =>
+      currentProject.technologies.includes(tech),
+    ).length;
+    return bMatches - aMatches;
+  });
+
+  if (sortedByRelevance.length >= maxResults) {
+    return sortedByRelevance.slice(0, maxResults);
+  }
+
+  const remainingProjects = allProjects.filter(
+    (project) => !sortedByRelevance.some((related) => related.slug === project.slug),
+  );
+
+  return [...sortedByRelevance, ...remainingProjects].slice(0, maxResults);
 }
