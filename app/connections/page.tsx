@@ -143,7 +143,7 @@ const connections: Connection[] = [
     isConnected: true,
   },
   {
-    name: "Quincy Larsen",
+    name: "Quincy Larson",
     profile_picture: "/connections/Quincy Larsen.jpeg",
     connectedDate: new Date("12/05/24"),
     socialLink: "https://x.com/BraydonCoyer",
