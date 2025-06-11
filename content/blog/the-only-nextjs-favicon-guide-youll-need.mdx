@@ -1,0 +1,96 @@
+---
+title: The Only Next.js Favicon Guide You'll Need (Updated 2025)
+publishedAt: 2025-06-11
+summary: Learn how to properly add a Favicon to your Next.js application. No nonsense. No fluff.
+imageName: the-only-nextjs-favicon-guide-youll-need.jpg
+categories: ["programming", "react", "javascript"]
+---
+
+You're probably here because you published your Next.js application and noticed that either:
+
+1. You forgot to include a favicon, or
+2. You thought you added a favicon but it isn't working correctly.
+
+The Next.js documentation is difficult to understand in this area and doesn't clearly call out many of the gotchas and magic behavior that Next.js handles behind the scenes. This article will show you _everything_ you need to know to get a favicon working in your application. No nonsense. No fluff.
+
+## Required Favicon Formats
+
+I used to think I could get away with just a `favicon.ico` file and be good—but that doesn't cover the variety of devices that could end up using your application or visiting your website.
+
+You actually need six different files to allow your favicon to display properly across all devices:
+
+- `favicon.ico` - The classic browser tab icon
+- `apple-icon.png` - For iOS devices when saving to home screen
+- `icon.svg` - Scalable vector version for modern browsers
+- `icon.png` - Fallback bitmap version
+- `web-app-manifest-192x192.png` - For Android home screen (small)
+- `web-app-manifest-512x512.png` - For Android home screen (large)
+
+**Here's the key thing about Next.js:** When you place these files in the right locations, Next.js automatically detects them and generates all the necessary `<link>` and `<meta>` tags in your HTML. You don't have to manually add them to your layout.
+
+## Generating Required Favicon Formats
+
+I recommend designing and exporting your favicon as an SVG because it allows the icon to be scaled and resized without losing image quality.
+
+After you've designed your favicon (presumably in a tool like Figma or Illustrator), the easiest way to get all the files you need is to use an online tool like [RealFaviconGenerator's Next.js generator](https://realfavicongenerator.net/favicon-generator/nextjs). I've found this to be the _easiest_ option for generating the files I need without any bloat.
+
+After walking through the few settings, RealFaviconGenerator will bring you to a page where you can download the generated files.
+
+![Downloaded Favicon page](/blog/favicon_download_page.jpeg)
+
+Follow the steps on this page and download the two packages. Each package includes files that go in a specific place in your Next.js application.
+
+## The App Directory Setup
+
+Unzip the first package—there should be five files in total.
+
+![Favicon for app directory](/blog/favicon_for_app.jpeg)
+
+1. Copy all of these files
+2. Paste them in the root `/app` directory of your Next.js project (the same level as your `layout.tsx` file)
+
+The files should be directly in `/app`, not in a subfolder. Your structure should look like:
+
+```
+app/
+├── layout.tsx
+├── page.tsx
+├── favicon.ico
+├── apple-icon.png
+├── icon.svg
+├── icon.png
+└── manifest.json
+```
+
+<Ideaquote>
+  The manifest file is crucial for mobile users—without it, many Android devices
+  won't properly display your favicon when users add your site to their home
+  screen.
+</Ideaquote>
+
+## The Public Directory Setup
+
+Unzip the second package you downloaded from RealFaviconGenerator—it should contain two images.
+
+![Favicon for public directory](/blog/favicon_for_public.jpeg)
+
+1. Copy these two images
+2. Paste them in the root `public` directory of your Next.js project
+
+These larger images are used specifically for Progressive Web App (PWA) functionality and when users add your site to their mobile home screen.
+
+## One Manual Step: Meta Tag in Root Layout
+
+While Next.js handles most favicon setup automatically, there's one meta tag you need to add manually to your root `layout.tsx` file.
+
+Add this inside the `<head>` section:
+
+```jsx:layout.tsx
+<meta name="apple-mobile-web-app-title" content="Your App Name" />
+```
+
+Replace "Your App Name" with your actual application name. This controls what text appears when iOS users save your site to their home screen.
+
+## Conclusion
+
+That's all you need to do to add a favicon to your Next.js application. Unfortunately, the Next.js documentation is rather unclear on the proper way to handle this, and I hope this article was able to help you quickly complete this task so you can get back to doing the things that actually matter.
