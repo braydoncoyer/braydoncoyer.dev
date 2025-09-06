@@ -31,6 +31,18 @@ const config = {
         destination: "https://braydoncoyer.framer.website/",
         permanent: true,
       },
+      {
+        source: "/blog/how-to-enable-preview-mode-in-next.js-for-your-cms",
+        destination:
+          "https://braydoncoyer.dev/blog/how-to-enable-preview-mode-in-next-js-for-your-cms",
+        permanent: true,
+      },
+      {
+        source:
+          "/blog/setting-yourself-up-for-success-how-i-define-mvp-(minimal-viable-product)",
+        destination: "https://braydoncoyer.dev/blog/how-i-define-mvp",
+        permanent: true,
+      },
     ];
   },
 };
