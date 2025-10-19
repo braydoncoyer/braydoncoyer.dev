@@ -22,6 +22,7 @@ export const posts = defineCollection({
       code: s.mdx(),
       canonicalUrl: s.string().optional(),
       draft: s.boolean().default(false),
+      audioFile: s.string().optional(), // Audio file name (e.g., "article-slug.mp3")
     })
     .transform(computedFields),
 });

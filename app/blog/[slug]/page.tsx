@@ -14,6 +14,7 @@ import { ViewCounter } from "@/app/components/ViewCounter";
 import ArticleReactionWrapper from "@/app/components/ArticleReactionsWrapper";
 import { Suspense } from "react";
 import { Metadata, ResolvingMetadata } from "next";
+import { AudioPlayer } from "@/app/components/AudioPlayer";
 
 interface BlogPageProps {
   params: Promise<{
@@ -230,6 +231,17 @@ export default async function BlogPage({ params }: BlogPageProps) {
           </div>
         </div>
       </div>
+
+      {/* Audio Player */}
+      {post.audioFile && (
+        <div className="wrapper z-10">
+          <AudioPlayer
+            audioSrc={`/audio/${post.audioFile}`}
+            title={post.title}
+          />
+        </div>
+      )}
+
       {/* Content */}
       <div className="wrapper z-10">
         <MDXContent code={post.code} />
