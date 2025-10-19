@@ -22,6 +22,7 @@ const talksAndPresentations: Talk[] = [
     description:
       "Ever peeked into Tailwind's source code? You'll see exactly how thousands of utility classes get generated, the purging techniques that scan your templates to slash bundle sizes, and how JIT compilation delivers unlimited arbitrary values without tanking performance.",
     event: "Stir Trek 2025",
+    url: "https://youtu.be/qx_t3uae1o4?si=uvU6dITj1UjbBELf",
   },
   {
     title: "What's New in Tailwind CSS v4?",
