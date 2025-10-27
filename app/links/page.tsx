@@ -138,7 +138,7 @@ export default async function LinksPage() {
               </div>
             </a>
             <a
-              href={siteMetadata.linkedin}
+              href={siteMetadata.github}
               target="_blank"
               rel="noopener noreferrer"
               className="group no-underline transition-all duration-500 group-hover:-translate-y-3"
