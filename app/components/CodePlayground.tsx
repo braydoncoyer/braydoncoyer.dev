@@ -54,29 +54,27 @@ export function CodePlayground({
   };
 
   return (
-    <div className="full-bleed mb-12">
-      <div className="mx-auto px-4 md:px-6">
-        <div className="drama-shadow rounded-xl overflow-hidden">
-          <Sandpack
-            template={template}
-            files={files}
-            theme={customTheme}
-            options={{
-              showNavigator: false,
-              showTabs: Object.keys(files).length > 1,
-              showLineNumbers: true,
-              showInlineErrors: true,
-              editorHeight: editorHeight,
-              editorWidthPercentage: showPreview ? 50 : 100,
-              wrapContent: true,
-              autoReload: true,
-              autorun: true,
-            }}
-            customSetup={{
-              dependencies: {},
-            }}
-          />
-        </div>
+    <div className="wide-layout mb-12">
+      <div className="drama-shadow rounded-xl overflow-hidden">
+        <Sandpack
+          template={template}
+          files={files}
+          theme={customTheme}
+          options={{
+            showNavigator: false,
+            showTabs: Object.keys(files).length > 1,
+            showLineNumbers: true,
+            showInlineErrors: true,
+            editorHeight: editorHeight,
+            editorWidthPercentage: showPreview ? 50 : 100,
+            wrapContent: true,
+            autoReload: true,
+            autorun: true,
+          }}
+          customSetup={{
+            dependencies: {},
+          }}
+        />
       </div>
     </div>
   );

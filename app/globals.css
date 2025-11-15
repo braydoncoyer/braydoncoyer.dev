@@ -213,17 +213,22 @@ blockquote p {
   margin: 0 !important;
 }
 
-/* Full-bleed utility for breaking out of content constraints */
-.full-bleed {
-  width: 100vw;
-  margin-left: 50%;
-  transform: translateX(-50%);
+/* Wide layout utility for breaking out of blog content constraints while staying in grid */
+.wide-layout {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: inherit;
+}
+
+.wide-layout > * {
+  grid-column: 2;
+  max-width: min(95vw, 1400px);
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 @media (min-width: 768px) {
-  .full-bleed {
-    width: min(95vw, 1400px);
-    margin-left: 50%;
-    transform: translateX(-50%);
+  .wide-layout > * {
+    padding: 0 1.5rem;
   }
 }
