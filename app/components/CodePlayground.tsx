@@ -14,8 +14,8 @@ export function CodePlayground({
   files,
   template = "static",
   showPreview = true,
-  editorHeight = 400,
-  previewHeight = 400,
+  editorHeight = 600,
+  previewHeight = 600,
 }: CodePlaygroundProps) {
   // Custom light theme matching the site's code blocks
   const customTheme: SandpackTheme = {
@@ -54,7 +54,7 @@ export function CodePlayground({
   };
 
   return (
-    <div className="wide-layout mb-12">
+    <div className="wide-layout mb-12 [&_iframe]:mb-0">
       <div className="drama-shadow rounded-xl overflow-hidden">
         <Sandpack
           template={template}
