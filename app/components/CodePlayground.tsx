@@ -1,13 +1,11 @@
 "use client";
 
-import { useEffect } from "react";
 import {
   SandpackProvider,
   SandpackLayout,
   SandpackCodeEditor,
   SandpackPreview,
   SandpackTheme,
-  useSandpack,
 } from "@codesandbox/sandpack-react";
 
 interface CodePlaygroundProps {
@@ -16,41 +14,15 @@ interface CodePlaygroundProps {
   showPreview?: boolean;
   editorHeight?: number;
   previewHeight?: number;
-  highlightedLines?: Record<string, number[]>;
 }
 
 function CodeEditorWithDecorators({
   editorHeight,
   showTabs,
-  decorators,
 }: {
   editorHeight: number;
   showTabs: boolean;
-  decorators: Array<{ line: number; className: string }>;
 }) {
-  const { sandpack } = useSandpack();
-
-  useEffect(() => {
-    if (decorators.length > 0 && sandpack.activeFile) {
-      // Set decorators through Sandpack API
-      const timeout = setTimeout(() => {
-        const editorElement = document.querySelector(".cm-editor");
-        if (editorElement) {
-          decorators.forEach(({ line }) => {
-            const lineElement = editorElement.querySelector(
-              `.cm-line:nth-child(${line})`
-            );
-            if (lineElement) {
-              lineElement.classList.add("sandpack-highlight");
-            }
-          });
-        }
-      }, 100);
-
-      return () => clearTimeout(timeout);
-    }
-  }, [decorators, sandpack.activeFile]);
-
   return (
     <SandpackCodeEditor
       showTabs={showTabs}
@@ -68,7 +40,6 @@ export function CodePlayground({
   showPreview = true,
   editorHeight = 600,
   previewHeight = 600,
-  highlightedLines = {},
 }: CodePlaygroundProps) {
   // Custom light theme matching the site's code blocks
   const customTheme: SandpackTheme = {
@@ -106,37 +77,15 @@ export function CodePlayground({
     },
   };
 
-  // Convert files to Sandpack files format with decorators for highlighting
-  const sandpackFiles = Object.entries(files).reduce((acc, [path, code]) => {
-    const linesToHighlight = highlightedLines[path] || [];
-
-    if (linesToHighlight.length > 0) {
-      acc[path] = {
-        code: code,
-        active: true,
-      };
-    } else {
-      acc[path] = code;
-    }
-
-    return acc;
-  }, {} as Record<string, any>);
-
-  // Find the file to make active (the one with highlights, or first file)
-  const activeFile = Object.keys(highlightedLines)[0] || Object.keys(files)[0];
-
-  // Get decorators for active file
-  const decorators = highlightedLines[activeFile]?.map(line => ({
-    line,
-    className: 'sandpack-highlight'
-  })) || [];
+  // Use first file as active file
+  const activeFile = Object.keys(files)[0];
 
   return (
-    <div className="wide-layout mb-12 [&_iframe]:mb-0">
-      <div className="drama-shadow rounded-xl overflow-hidden">
+    <div className="wide-layout mb-12 md:px-8 [&_iframe]:mb-0">
+      <div className="drama-shadow overflow-hidden rounded-xl">
         <SandpackProvider
           template={template}
-          files={sandpackFiles}
+          files={files}
           theme={customTheme}
           options={{
             activeFile: activeFile,
@@ -151,7 +100,6 @@ export function CodePlayground({
             <CodeEditorWithDecorators
               editorHeight={editorHeight}
               showTabs={Object.keys(files).length > 1}
-              decorators={decorators}
             />
             {showPreview && (
               <SandpackPreview

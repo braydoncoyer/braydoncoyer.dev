@@ -63,64 +63,6 @@ The last line of CSS sets the top-right `border-radius` to `0`, creating a smoot
 
 ![Screen Shot 2021-04-15 at 9.09.29 AM.jpeg](https://res.craft.do/user/full/2f1f2003-c717-014a-0ff0-8172b22b7eda/2CE5D41C-7A3E-4702-9FF7-D365745DB492_2)
 
-<CodePlayground
-  files={{
-    "/index.html": `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JAMstack Logo - Step 1</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="container">
-    <div class="jam__circle"></div>
-  </div>
-</body>
-</html>`,
-    "/styles.css": `/* JAMstack Logo Variables */
-:root {
-  --jam: #f0047f;
-  --white: white;
-  --logo-size: 24rem;
-  --inner-square-size: 9rem;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-
-/* The JAMstack Logo Circle */
-.jam__circle {
-  position: relative;
-  width: var(--logo-size);
-  height: var(--logo-size);
-  background: var(--jam);
-  border-radius: 100%;
-  border-top-right-radius: 0;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-}`
-  }}
-  highlightedLines={{
-    "/styles.css": [33, 34]
-  }}
-/>
-
 ### The inner squares
 
 The inner squares require a bit more CSS, but from here on out, things are pretty straightforward!
@@ -186,101 +128,6 @@ Because we're using SCSS, the class name nesting comes in handy and makes it eas
 
 ![Screen Shot 2021-04-15 at 9.34.05 AM.jpeg](https://res.craft.do/user/full/2f1f2003-c717-014a-0ff0-8172b22b7eda/0BBD6C24-87FB-4F86-97B8-C8E900D67C9A_2)
 
-<CodePlayground
-  files={{
-    "/index.html": `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JAMstack Logo - Step 2</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="container">
-    <div class="jam__circle">
-      <div class="jam__squares">
-        <div class="jam__squares-top">
-          <div class="jam__squares-top-right"></div>
-        </div>
-        <div class="jam__squares-bottom">
-          <div class="jam__squares-bottom-left"></div>
-          <div class="jam__squares-bottom-right"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
-</html>`,
-    "/styles.css": `/* JAMstack Logo Variables */
-:root {
-  --jam: #f0047f;
-  --white: white;
-  --logo-size: 24rem;
-  --inner-square-size: 9rem;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-
-/* The JAMstack Logo Circle */
-.jam__circle {
-  position: relative;
-  width: var(--logo-size);
-  height: var(--logo-size);
-  background: var(--jam);
-  border-radius: 100%;
-  border-top-right-radius: 0;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-}
-
-/* Inner Squares Container */
-.jam__squares {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* Squares */
-.jam__squares-top-right {
-  width: var(--inner-square-size);
-  height: var(--inner-square-size);
-  background: var(--white);
-}
-
-.jam__squares-bottom-left {
-  width: var(--inner-square-size);
-  height: var(--inner-square-size);
-  background: var(--white);
-}
-
-.jam__squares-bottom-right {
-  width: var(--inner-square-size);
-  height: var(--inner-square-size);
-  background: var(--white);
-}`
-  }}
-  highlightedLines={{
-    "/styles.css": [40, 41, 42, 43]
-  }}
-/>
-
 The squares show up, but they certainly aren't positioned correctly.
 
 We can take a giant leap towards the desired look if we target the `&-bottom` nested class and turn it into a flex element.
@@ -302,105 +149,6 @@ With that single change, our piece is starting to take form.
 
 ![Screen Shot 2021-04-15 at 9.37.05 AM.jpeg](https://res.craft.do/user/full/2f1f2003-c717-014a-0ff0-8172b22b7eda/FFC13270-5FA2-4EDB-8DBB-99490DA789AE_2)
 
-<CodePlayground
-  files={{
-    "/index.html": `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JAMstack Logo - Step 3</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="container">
-    <div class="jam__circle">
-      <div class="jam__squares">
-        <div class="jam__squares-top">
-          <div class="jam__squares-top-right"></div>
-        </div>
-        <div class="jam__squares-bottom">
-          <div class="jam__squares-bottom-left"></div>
-          <div class="jam__squares-bottom-right"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
-</html>`,
-    "/styles.css": `/* JAMstack Logo Variables */
-:root {
-  --jam: #f0047f;
-  --white: white;
-  --logo-size: 24rem;
-  --inner-square-size: 9rem;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-
-/* The JAMstack Logo Circle */
-.jam__circle {
-  position: relative;
-  width: var(--logo-size);
-  height: var(--logo-size);
-  background: var(--jam);
-  border-radius: 100%;
-  border-top-right-radius: 0;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-}
-
-/* Inner Squares Container */
-.jam__squares {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* Squares */
-.jam__squares-top-right {
-  width: var(--inner-square-size);
-  height: var(--inner-square-size);
-  background: var(--white);
-}
-
-.jam__squares-bottom {
-  display: flex;
-}
-
-.jam__squares-bottom-left {
-  width: var(--inner-square-size);
-  height: var(--inner-square-size);
-  background: var(--white);
-}
-
-.jam__squares-bottom-right {
-  width: var(--inner-square-size);
-  height: var(--inner-square-size);
-  background: var(--white);
-}`
-  }}
-  highlightedLines={{
-    "/styles.css": [54]
-  }}
-/>
-
 The top square is sitting on the left instead of the right-side of our logo. Let’s fix that and add a bit of bottom-margin, creating a gap between the top and bottom squares.
 
 ```scss {4-6}
@@ -419,112 +167,6 @@ The top square is sitting on the left instead of the right-side of our logo. Let
 
 ![Screen Shot 2021-04-15 at 9.39.34 AM.jpeg](https://res.craft.do/user/full/2f1f2003-c717-014a-0ff0-8172b22b7eda/1F4ADB5D-2A81-4F05-A29E-2FD68C12B0E3_2)
 
-<CodePlayground
-  files={{
-    "/index.html": `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JAMstack Logo - Step 4</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="container">
-    <div class="jam__circle">
-      <div class="jam__squares">
-        <div class="jam__squares-top">
-          <div class="jam__squares-top-right"></div>
-        </div>
-        <div class="jam__squares-bottom">
-          <div class="jam__squares-bottom-left"></div>
-          <div class="jam__squares-bottom-right"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
-</html>`,
-    "/styles.css": `/* JAMstack Logo Variables */
-:root {
-  --jam: #f0047f;
-  --white: white;
-  --logo-size: 24rem;
-  --inner-square-size: 9rem;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-
-/* The JAMstack Logo Circle */
-.jam__circle {
-  position: relative;
-  width: var(--logo-size);
-  height: var(--logo-size);
-  background: var(--jam);
-  border-radius: 100%;
-  border-top-right-radius: 0;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-}
-
-/* Inner Squares Container */
-.jam__squares {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* Top Square */
-.jam__squares-top {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 0.8rem;
-}
-
-.jam__squares-top-right {
-  width: var(--inner-square-size);
-  height: var(--inner-square-size);
-  background: var(--white);
-}
-
-/* Bottom Squares */
-.jam__squares-bottom {
-  display: flex;
-}
-
-.jam__squares-bottom-left {
-  width: var(--inner-square-size);
-  height: var(--inner-square-size);
-  background: var(--white);
-}
-
-.jam__squares-bottom-right {
-  width: var(--inner-square-size);
-  height: var(--inner-square-size);
-  background: var(--white);
-}`
-  }}
-  highlightedLines={{
-    "/styles.css": [47, 48, 49]
-  }}
-/>
-
 You may be wondering how we'll achieve that rounded look on the bottom squares. If you're thinking we can use the same `border-radius` trick we used earlier, you're right!
 
 ```scss {3,8}
@@ -540,114 +182,6 @@ You may be wondering how we'll achieve that rounded look on the bottom squares. 
 ```
 
 ![Screen Shot 2021-04-15 at 9.43.04 AM.jpeg](https://res.craft.do/user/full/2f1f2003-c717-014a-0ff0-8172b22b7eda/8CB7FC40-C372-4FD8-8004-27E8D853B8D3_2)
-
-<CodePlayground
-  files={{
-    "/index.html": `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JAMstack Logo - Step 5</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="container">
-    <div class="jam__circle">
-      <div class="jam__squares">
-        <div class="jam__squares-top">
-          <div class="jam__squares-top-right"></div>
-        </div>
-        <div class="jam__squares-bottom">
-          <div class="jam__squares-bottom-left"></div>
-          <div class="jam__squares-bottom-right"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
-</html>`,
-    "/styles.css": `/* JAMstack Logo Variables */
-:root {
-  --jam: #f0047f;
-  --white: white;
-  --logo-size: 24rem;
-  --inner-square-size: 9rem;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-
-/* The JAMstack Logo Circle */
-.jam__circle {
-  position: relative;
-  width: var(--logo-size);
-  height: var(--logo-size);
-  background: var(--jam);
-  border-radius: 100%;
-  border-top-right-radius: 0;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-}
-
-/* Inner Squares Container */
-.jam__squares {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* Top Square */
-.jam__squares-top {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 0.8rem;
-}
-
-.jam__squares-top-right {
-  width: var(--inner-square-size);
-  height: var(--inner-square-size);
-  background: var(--white);
-}
-
-/* Bottom Squares */
-.jam__squares-bottom {
-  display: flex;
-}
-
-.jam__squares-bottom-left {
-  width: var(--inner-square-size);
-  height: var(--inner-square-size);
-  background: var(--white);
-  border-bottom-left-radius: 10rem;
-}
-
-.jam__squares-bottom-right {
-  width: var(--inner-square-size);
-  height: var(--inner-square-size);
-  background: var(--white);
-  border-bottom-right-radius: 10rem;
-}`
-  }}
-  highlightedLines={{
-    "/styles.css": [62, 68]
-  }}
-/>
 
 We're almost there! All we need to do is make a bit of a gap between the bottom squares. That’s easy enough.
 
@@ -690,8 +224,7 @@ Now that we've walked through each step, here's the complete, interactive demo! 
   </div>
 </body>
 </html>`,
-    "/styles.css": `/* JAMstack Logo Variables */
-:root {
+    "/styles.css": `:root {
   --jam: #f0047f;
   --white: white;
   --logo-size: 24rem;
@@ -699,78 +232,71 @@ Now that we've walked through each step, here's the complete, interactive demo! 
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+margin: 0;
+padding: 0;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+background: #ECF5FB;
+min-height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
 }
 
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 2rem;
 }
 
-/* The JAMstack Logo Circle */
-.jam__circle {
-  position: relative;
-  width: var(--logo-size);
-  height: var(--logo-size);
-  background: var(--jam);
-  border-radius: 100%;
-  border-top-right-radius: 0;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+.jam\_\_circle {
+position: relative;
+width: var(--logo-size);
+height: var(--logo-size);
+background: var(--jam);
+border-radius: 100%;
+border-top-right-radius: 0;
+box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
-/* Inner Squares Container */
-.jam__squares {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+.jam\_\_squares {
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
 }
 
-/* Top Square */
-.jam__squares-top {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 0.8rem;
+.jam\_\_squares-top {
+display: flex;
+justify-content: flex-end;
+margin-bottom: 0.8rem;
 }
 
-.jam__squares-top-right {
-  width: var(--inner-square-size);
-  height: var(--inner-square-size);
-  background: var(--white);
+.jam\_\_squares-top-right {
+width: var(--inner-square-size);
+height: var(--inner-square-size);
+background: var(--white);
 }
 
-/* Bottom Squares */
-.jam__squares-bottom {
-  display: flex;
+.jam\_\_squares-bottom {
+display: flex;
 }
 
-.jam__squares-bottom-left {
-  width: var(--inner-square-size);
-  height: var(--inner-square-size);
-  background: var(--white);
-  border-bottom-left-radius: 10rem;
-  margin-right: 0.8rem;
+.jam\_\_squares-bottom-left {
+width: var(--inner-square-size);
+height: var(--inner-square-size);
+background: var(--white);
+border-bottom-left-radius: 10rem;
+margin-right: 0.8rem;
 }
 
-.jam__squares-bottom-right {
-  width: var(--inner-square-size);
-  height: var(--inner-square-size);
-  background: var(--white);
-  border-bottom-right-radius: 10rem;
+.jam\_\_squares-bottom-right {
+width: var(--inner-square-size);
+height: var(--inner-square-size);
+background: var(--white);
+border-bottom-right-radius: 10rem;
 }`
-  }}
-  highlightedLines={{
-    "/styles.css": [63]
-  }}
+}}
 />
 
 ## Conclusion
