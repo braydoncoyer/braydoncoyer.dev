@@ -8,6 +8,7 @@ interface CodePlaygroundProps {
   showPreview?: boolean;
   editorHeight?: number;
   previewHeight?: number;
+  highlightedLines?: Record<string, number[]>;
 }
 
 export function CodePlayground({
@@ -16,6 +17,7 @@ export function CodePlayground({
   showPreview = true,
   editorHeight = 600,
   previewHeight = 600,
+  highlightedLines = {},
 }: CodePlaygroundProps) {
   // Custom light theme matching the site's code blocks
   const customTheme: SandpackTheme = {
@@ -53,12 +55,32 @@ export function CodePlayground({
     },
   };
 
+  // Convert files to Sandpack files format with decorators for highlighting
+  const sandpackFiles = Object.entries(files).reduce((acc, [path, code]) => {
+    const linesToHighlight = highlightedLines[path] || [];
+
+    if (linesToHighlight.length > 0) {
+      acc[path] = {
+        code: code,
+        active: true,
+        decorators: linesToHighlight.map(line => ({
+          line,
+          className: 'sandpack-highlight'
+        }))
+      };
+    } else {
+      acc[path] = code;
+    }
+
+    return acc;
+  }, {} as Record<string, any>);
+
   return (
     <div className="wide-layout mb-12 [&_iframe]:mb-0">
       <div className="drama-shadow rounded-xl overflow-hidden">
         <Sandpack
           template={template}
-          files={files}
+          files={sandpackFiles}
           theme={customTheme}
           options={{
             showNavigator: false,
@@ -71,6 +93,7 @@ export function CodePlayground({
             autoReload: true,
             autorun: true,
             showConsoleButton: false,
+            activeFile: Object.keys(highlightedLines)[0] || Object.keys(files)[0],
           }}
           customSetup={{
             dependencies: {},

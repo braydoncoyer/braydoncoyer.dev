@@ -227,3 +227,11 @@ blockquote p {
 .wide-layout button[title="Open in CodeSandbox"] {
   display: none !important;
 }
+
+/* Sandpack line highlighting */
+.sandpack-highlight {
+  background-color: #fef3c7 !important;
+  border-left: 3px solid #f59e0b !important;
+  margin-left: -1rem !important;
+  padding-left: calc(1rem - 3px) !important;
+}
