@@ -17,64 +17,66 @@ export function CodePlayground({
   editorHeight = 400,
   previewHeight = 400,
 }: CodePlaygroundProps) {
-  // Custom theme matching the site's aesthetic
+  // Custom light theme matching the site's code blocks
   const customTheme: SandpackTheme = {
     colors: {
-      surface1: "#1e293b", // slate-800
-      surface2: "#334155", // slate-700
-      surface3: "#475569", // slate-600
-      clickable: "#818cf8", // indigo-400
-      base: "#e2e8f0", // slate-200
-      disabled: "#64748b", // slate-500
-      hover: "#c7d2fe", // indigo-200
-      accent: "#6366f1", // indigo-500
-      error: "#ef4444", // red-500
-      errorSurface: "#7f1d1d", // red-900
+      surface1: "#ffffff", // White background like code blocks
+      surface2: "#f8fafc", // Slightly off-white for subtle contrast
+      surface3: "#f1f5f9", // Light slate for hover states
+      clickable: "#6366f1", // Indigo for clickable elements
+      base: "#334155", // Slate for text
+      disabled: "#94a3b8", // Light slate for disabled
+      hover: "#e0e7ff", // Light indigo for hover
+      accent: "#6366f1", // Indigo accent
+      error: "#ef4444", // Red for errors
+      errorSurface: "#fef2f2", // Light red background
     },
     syntax: {
-      plain: "#e2e8f0",
+      plain: "#334155", // Base slate color
       comment: {
-        color: "#94a3b8",
+        color: "#64758b", // Matches --sh-comment
         fontStyle: "italic",
       },
-      keyword: "#c084fc",
-      tag: "#ec4899",
-      punctuation: "#cbd5e1",
-      definition: "#60a5fa",
-      property: "#fbbf24",
-      static: "#818cf8",
-      string: "#34d399",
+      keyword: "#7e3ced", // Matches --sh-keyword (purple)
+      tag: "#0885c7", // Matches --sh-entity (cyan)
+      punctuation: "#334155", // Matches --sh-sign (slate)
+      definition: "#2252d9", // Matches --sh-identifier (blue)
+      property: "#0d9488", // Matches --sh-property (teal)
+      static: "#6266d1", // Matches --sh-jsxliterals (indigo)
+      string: "#00a99a", // Matches --sh-string (teal/cyan)
     },
     font: {
       body: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
       mono: '"Fira Code", "Fira Mono", monospace',
-      size: "14px",
-      lineHeight: "1.6",
+      size: "15px", // Matches the code block font size
+      lineHeight: "1.75", // Matches leading-7
     },
   };
 
   return (
     <div className="full-bleed mb-12 w-full">
       <div className="blog-container">
-        <Sandpack
-          template={template}
-          files={files}
-          theme={customTheme}
-          options={{
-            showNavigator: false,
-            showTabs: Object.keys(files).length > 1,
-            showLineNumbers: true,
-            showInlineErrors: true,
-            editorHeight: editorHeight,
-            editorWidthPercentage: showPreview ? 50 : 100,
-            wrapContent: true,
-            autoReload: true,
-            autorun: true,
-          }}
-          customSetup={{
-            dependencies: {},
-          }}
-        />
+        <div className="drama-shadow rounded-xl overflow-hidden">
+          <Sandpack
+            template={template}
+            files={files}
+            theme={customTheme}
+            options={{
+              showNavigator: false,
+              showTabs: Object.keys(files).length > 1,
+              showLineNumbers: true,
+              showInlineErrors: true,
+              editorHeight: editorHeight,
+              editorWidthPercentage: showPreview ? 50 : 100,
+              wrapContent: true,
+              autoReload: true,
+              autorun: true,
+            }}
+            customSetup={{
+              dependencies: {},
+            }}
+          />
+        </div>
       </div>
     </div>
   );
