@@ -222,3 +222,8 @@ blockquote p {
   max-width: min(95vw, 1400px);
   margin: 0 auto;
 }
+
+/* Hide CodeSandbox button in Sandpack */
+.wide-layout button[title="Open in CodeSandbox"] {
+  display: none !important;
+}

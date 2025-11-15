@@ -70,6 +70,7 @@ export function CodePlayground({
             wrapContent: true,
             autoReload: true,
             autorun: true,
+            showConsoleButton: false,
           }}
           customSetup={{
             dependencies: {},
