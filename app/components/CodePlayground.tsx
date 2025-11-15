@@ -54,8 +54,8 @@ export function CodePlayground({
   };
 
   return (
-    <div className="full-bleed mb-12 w-full">
-      <div className="blog-container">
+    <div className="full-bleed mb-12">
+      <div className="mx-auto px-4 md:px-6">
         <div className="drama-shadow rounded-xl overflow-hidden">
           <Sandpack
             template={template}
