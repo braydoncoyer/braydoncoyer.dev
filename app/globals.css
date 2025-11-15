@@ -216,19 +216,9 @@ blockquote p {
 /* Wide layout utility for breaking out of blog content constraints while staying in grid */
 .wide-layout {
   grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: inherit;
 }
 
 .wide-layout > * {
-  grid-column: 2;
   max-width: min(95vw, 1400px);
   margin: 0 auto;
-  padding: 0 1rem;
-}
-
-@media (min-width: 768px) {
-  .wide-layout > * {
-    padding: 0 1.5rem;
-  }
 }
