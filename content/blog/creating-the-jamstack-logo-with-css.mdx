@@ -194,6 +194,116 @@ We’re almost there! All we need to do is make a bit of a gap between the botto
 
 ![Screen Shot 2021-04-15 at 9.44.38 AM.jpeg](https://res.craft.do/user/full/2f1f2003-c717-014a-0ff0-8172b22b7eda/FA700C3B-69F9-45F5-806C-0B2C3F667E44_2)
 
+### Interactive Demo
+
+Now that we've walked through each step, here's the complete, interactive demo! Feel free to modify the code and see your changes in real-time.
+
+<CodePlayground
+  files={{
+    "/index.html": `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JAMstack Logo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="jam__circle">
+      <div class="jam__squares">
+        <div class="jam__squares-top">
+          <div class="jam__squares-top-right"></div>
+        </div>
+        <div class="jam__squares-bottom">
+          <div class="jam__squares-bottom-left"></div>
+          <div class="jam__squares-bottom-right"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>`,
+    "/styles.css": `/* JAMstack Logo Variables */
+:root {
+  --jam: #f0047f;
+  --white: white;
+  --logo-size: 24rem;
+  --inner-square-size: 9rem;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* The JAMstack Logo Circle */
+.jam__circle {
+  position: relative;
+  width: var(--logo-size);
+  height: var(--logo-size);
+  background: var(--jam);
+  border-radius: 100%;
+  border-top-right-radius: 0;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* Inner Squares Container */
+.jam__squares {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Top Square */
+.jam__squares-top {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.8rem;
+}
+
+.jam__squares-top-right {
+  width: var(--inner-square-size);
+  height: var(--inner-square-size);
+  background: var(--white);
+}
+
+/* Bottom Squares */
+.jam__squares-bottom {
+  display: flex;
+}
+
+.jam__squares-bottom-left {
+  width: var(--inner-square-size);
+  height: var(--inner-square-size);
+  background: var(--white);
+  border-bottom-left-radius: 10rem;
+  margin-right: 0.8rem;
+}
+
+.jam__squares-bottom-right {
+  width: var(--inner-square-size);
+  height: var(--inner-square-size);
+  background: var(--white);
+  border-bottom-right-radius: 10rem;
+}`
+  }}
+/>
+
 ## Conclusion
 
 And there we go! CSS Art is always so much fun to make and it's a great way to challenge yourself and learn new things. Don’t forget, break things down into simple shapes and create a game-plan for the project. Once those shapes are defined, the rest will usually fall into place.

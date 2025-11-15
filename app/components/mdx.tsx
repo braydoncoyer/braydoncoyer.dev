@@ -5,6 +5,7 @@ import { highlight } from "sugar-high";
 import Link from "next/link";
 
 import { BgGradient } from "./BgGradient";
+import { CodePlayground } from "./CodePlayground";
 
 interface MDXProps {
   code: string;
@@ -459,6 +460,7 @@ const sharedComponents = {
   Warningquote: WarningQuote,
   code: Code,
   Table,
+  CodePlayground,
   p: paragraph,
   ol: OrderedList,
   ul: UnorderedList,
