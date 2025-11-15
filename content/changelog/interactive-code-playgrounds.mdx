@@ -1,0 +1,109 @@
+---
+title: Interactive Code Playgrounds!
+publishedAt: 2025-11-15
+draft: false
+---
+
+I've added interactive code playgrounds to my blog! Now you can really follow along with the code examples in the articles!
+Try the example below!
+
+<CodePlayground
+  files={{
+    "/index.html": `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JAMstack Logo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="jam__circle">
+      <div class="jam__squares">
+        <div class="jam__squares-top">
+          <div class="jam__squares-top-right"></div>
+        </div>
+        <div class="jam__squares-bottom">
+          <div class="jam__squares-bottom-left"></div>
+          <div class="jam__squares-bottom-right"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>`,
+    "/styles.css": `:root {
+  --jam: #f0047f;
+  --white: white;
+  --logo-size: 24rem;
+  --inner-square-size: 9rem;
+}
+
+body {
+margin: 0;
+padding: 0;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+background: #ECF5FB;
+min-height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.container {
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 2rem;
+}
+
+.jam\_\_circle {
+position: relative;
+width: var(--logo-size);
+height: var(--logo-size);
+background: var(--jam);
+border-radius: 100%;
+border-top-right-radius: 0;
+box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.jam\_\_squares {
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+}
+
+.jam\_\_squares-top {
+display: flex;
+justify-content: flex-end;
+margin-bottom: 0.8rem;
+}
+
+.jam\_\_squares-top-right {
+width: var(--inner-square-size);
+height: var(--inner-square-size);
+background: var(--white);
+}
+
+.jam\_\_squares-bottom {
+display: flex;
+}
+
+.jam\_\_squares-bottom-left {
+width: var(--inner-square-size);
+height: var(--inner-square-size);
+background: var(--white);
+border-bottom-left-radius: 10rem;
+margin-right: 0.8rem;
+}
+
+.jam\_\_squares-bottom-right {
+width: var(--inner-square-size);
+height: var(--inner-square-size);
+background: var(--white);
+border-bottom-right-radius: 10rem;
+}`
+}}
+/>
