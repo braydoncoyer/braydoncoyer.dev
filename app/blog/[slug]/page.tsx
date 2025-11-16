@@ -78,9 +78,6 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
   return (
     <article className="space-y-12">
-      {/* Table of Contents */}
-      <TableOfContents toc={post.toc} />
-
       {/* Article Banner Image */}
       <div className="relative">
         {/* Lines */}
@@ -248,7 +245,15 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
       {/* Content */}
       <div className="wrapper z-10">
-        <MDXContent code={post.code} />
+        <div className="relative flex gap-8">
+          {/* Table of Contents */}
+          <TableOfContents toc={post.toc} />
+
+          {/* Article Content */}
+          <div className="flex-1 min-w-0">
+            <MDXContent code={post.code} />
+          </div>
+        </div>
       </div>
 
       {/* Similar Posts */}

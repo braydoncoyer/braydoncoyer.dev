@@ -17,7 +17,7 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
   }
 
   return (
-    <nav className="toc-container group fixed right-0 top-32 z-30 hidden xl:block">
+    <nav className="toc-container group hidden lg:block">
       <div className="toc-content">
         {/* Collapsed tab - visible by default */}
         <div className="toc-tab">
@@ -64,15 +64,19 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
 
       <style jsx>{`
         .toc-container {
-          max-height: calc(100vh - 8rem);
+          position: sticky;
+          top: 2rem;
+          width: 280px;
+          flex-shrink: 0;
+          max-height: calc(100vh - 4rem);
           overflow-y: auto;
+          align-self: flex-start;
         }
 
         .toc-content {
           position: relative;
-          margin-right: 2rem;
-          width: 280px;
-          transform: translateX(calc(100% - 3rem));
+          width: 100%;
+          transform: translateX(calc(-100% + 3rem));
           transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -82,7 +86,7 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
 
         .toc-tab {
           position: absolute;
-          left: 0;
+          right: 0;
           top: 0;
           display: flex;
           flex-direction: column;
@@ -91,8 +95,8 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
           padding: 0.75rem 0.5rem;
           background: linear-gradient(135deg, rgb(99, 102, 241) 0%, rgb(139, 92, 246) 100%);
           color: white;
-          border-radius: 0.5rem 0 0 0.5rem;
-          box-shadow: -4px 0 12px rgba(0, 0, 0, 0.1);
+          border-radius: 0 0.5rem 0.5rem 0;
+          box-shadow: 4px 0 12px rgba(0, 0, 0, 0.1);
           opacity: 1;
           transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -115,7 +119,7 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
           border: 1px solid rgb(228, 228, 231);
           border-radius: 0.75rem;
           padding: 1.5rem;
-          box-shadow: -8px 0 24px rgba(0, 0, 0, 0.08);
+          box-shadow: 4px 0 24px rgba(0, 0, 0, 0.08);
           opacity: 0;
           transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           pointer-events: none;
