@@ -244,16 +244,12 @@ export default async function BlogPage({ params }: BlogPageProps) {
       )}
 
       {/* Content */}
-      <div className="wrapper z-10">
-        <div className="relative flex gap-8">
-          {/* Table of Contents */}
-          <TableOfContents toc={post.toc} />
+      <div className="wrapper z-10 relative">
+        {/* Table of Contents */}
+        <TableOfContents toc={post.toc} />
 
-          {/* Article Content */}
-          <div className="flex-1 min-w-0">
-            <MDXContent code={post.code} />
-          </div>
-        </div>
+        {/* Article Content */}
+        <MDXContent code={post.code} />
       </div>
 
       {/* Similar Posts */}

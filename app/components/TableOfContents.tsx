@@ -64,20 +64,31 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
 
       <style jsx>{`
         .toc-container {
-          position: sticky;
-          top: 2rem;
+          position: absolute;
+          left: 0;
+          top: 0;
           width: 280px;
-          flex-shrink: 0;
           max-height: calc(100vh - 4rem);
           overflow-y: auto;
-          align-self: flex-start;
+          pointer-events: none;
+        }
+
+        /* Make the sticky positioning work within the absolute container */
+        .toc-container::before {
+          content: "";
+          position: sticky;
+          top: 2rem;
+          display: block;
+          height: 0;
         }
 
         .toc-content {
-          position: relative;
+          position: sticky;
+          top: 2rem;
           width: 100%;
           transform: translateX(calc(-100% + 3rem));
           transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          pointer-events: auto;
         }
 
         .toc-container:hover .toc-content {
