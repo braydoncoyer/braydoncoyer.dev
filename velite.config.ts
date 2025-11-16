@@ -6,6 +6,34 @@ const computedFields = <T extends { slug: string }>(data: T) => ({
   slugAsParams: data.slug.split("/").slice(1).join("/"),
 });
 
+// Helper function to slugify text (matches the one in mdx.tsx)
+function slugify(str: string): string {
+  return str
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/&/g, "-and-")
+    .replace(/[^\w\-]+/g, "")
+    .replace(/\-\-+/g, "-");
+}
+
+// Extract table of contents from raw MDX content
+function extractToc(content: string) {
+  const headingRegex = /^(#{2,3})\s+(.+)$/gm;
+  const headings: Array<{ depth: number; value: string; id: string }> = [];
+
+  let match;
+  while ((match = headingRegex.exec(content)) !== null) {
+    const depth = match[1].length;
+    const value = match[2].trim();
+    const id = slugify(value);
+    headings.push({ depth, value, id });
+  }
+
+  return headings;
+}
+
 export const posts = defineCollection({
   name: "Blog", // collection type name
   pattern: "./blog/*.mdx", // content files glob pattern
@@ -19,12 +47,16 @@ export const posts = defineCollection({
       slug: s.custom().transform((_, { meta }) => {
         return meta.basename?.replace(/\.mdx$/, "") || "";
       }),
+      content: s.raw(), // Raw MDX content for TOC extraction
       code: s.mdx(),
       canonicalUrl: s.string().optional(),
       draft: s.boolean().default(false),
       audioFile: s.string().optional(), // Audio file name (e.g., "article-slug.mp3")
     })
-    .transform(computedFields),
+    .transform((data) => ({
+      ...computedFields(data),
+      toc: extractToc(data.content), // Extract TOC from raw content
+    })),
 });
 
 export const changelogItems = defineCollection({

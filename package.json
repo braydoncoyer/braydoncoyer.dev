@@ -11,6 +11,7 @@
   "dependencies": {
     "@codesandbox/sandpack-react": "^2.20.0",
     "@headlessui/react": "^2.1.8",
+    "@stefanprobst/rehype-extract-toc": "^3.0.0",
     "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.49.1",
     "clsx": "^2.1.1",

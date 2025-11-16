@@ -15,6 +15,7 @@ import ArticleReactionWrapper from "@/app/components/ArticleReactionsWrapper";
 import { Suspense } from "react";
 import { Metadata, ResolvingMetadata } from "next";
 import { AudioPlayer } from "@/app/components/AudioPlayer";
+import { TableOfContents } from "@/app/components/TableOfContents";
 
 interface BlogPageProps {
   params: Promise<{
@@ -77,6 +78,9 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
   return (
     <article className="space-y-12">
+      {/* Table of Contents */}
+      <TableOfContents toc={post.toc} />
+
       {/* Article Banner Image */}
       <div className="relative">
         {/* Lines */}
