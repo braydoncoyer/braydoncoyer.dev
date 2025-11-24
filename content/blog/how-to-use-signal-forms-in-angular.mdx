@@ -1,0 +1,522 @@
+---
+title: "How to Use Signal Forms in Angular 21 (With Examples)"
+publishedAt: 2025-11-25
+summary: In this post, you’ll learn how Angular’s new Signal Forms dramatically simplify form creation, improve performance through fine-grained reactivity, and eliminate the boilerplate and workarounds required by Reactive Forms.
+imageName: angular-signal-forms.jpeg
+categories: ["angular", "programming", "javascript"]
+---
+
+Angular’s been steadily moving toward signals and zoneless change detection for a while now, and with Angular 21, that shift takes a big step forward with **Signal Forms**. And honestly? They’re one of the most exciting additions to Angular’s form story in years.
+
+<Warningquote>
+  Please note that Signal Forms are still marked as **experimental in Angular
+  21**. The API may change before the final release. I will update this article
+  as the API stabilizes.
+</Warningquote>
+
+I’ve been playing around with them quite a bit, and in this post I want to break down what makes Signal Forms special—why they exist, how they work, and the patterns that really start to shine once you use them in real projects.
+
+## What Are Signal Forms (And Why Should You Care)
+
+Signal Forms are Angular 21’s new experimental, signal-driven approach to forms. Since the API is still in flux, it’s not something I’d drop into a massive production app today, but they’re great for side projects, prototypes, internal tools, and anywhere you want to lean into Angular’s newest capabilities.
+
+So why all the excitement? Signal Forms address two long-standing issues Angular developers know all too well:
+
+1. Boilerplate everywhere
+2. Performance tied to Zone.js and broad change detection
+
+If you’ve used Reactive Forms, you know the routine: inject `FormBuilder`, create controls by hand, subscribe to `valueChanges` (and remember to unsubscribe!), and deal with the headache that is `ControlValueAccessor` anytime you want a custom component.
+
+Signal Forms flip this model around. Instead of Angular owning your form state through `FormGroup`/`FormControl`, **you own a simple signal**, and Angular builds form behavior around it.
+
+<Thoughtquote>
+  You describe your data shape, and Angular derives everything else.
+</Thoughtquote>
+
+And because there’s no Zone.js involved, performance becomes more predictable and efficient. Updating a single field no longer forces Angular to scan the entire component tree; only the bindings that depend on that specific field re-run. This is the fine-grained reactivity that Angular’s been working toward.
+
+## Getting Started with the Basics
+
+Here's a simple booking form where someone can reserve a seat.
+
+First, define your data model as a TypeScript interface:
+
+```typescript
+interface SeatReservation {
+  passengerName: string;
+  seatNumber: string;
+}
+```
+
+Now create a signal to hold your form state:
+
+```typescript
+reservationModel = signal<SeatReservation>({
+  passengerName: "",
+  seatNumber: "",
+});
+```
+
+And here’s the magic: wrap it with `form()`.
+
+```typescript
+reservationForm = form(this.reservationModel);
+```
+
+Isn't it beautiful? One line. No injected services. No manual control creation. The `form()` function automatically creates the entire form structure (called a FieldTree internally -- we'll talk about that later) that mirrors your data model.
+
+Binding in the template is equally clean:
+
+```jsx
+<input type="text" [field]="reservationForm.passengerName" />
+<input type="text" [field]="reservationForm.seatNumber" />
+
+<button type="submit">Book Seat</button>
+```
+
+The `[field]` directive automatically syncs everything: typing updates your signal, and programmatic updates reflect in the DOM without extra plumbing.
+
+<Ideaquote>
+  Don't forget to import `Field` directive in your standalone component.
+</Ideaquote>
+
+## Form State as Signals
+
+Every piece of form state (validity, touched state, errors) is exposed as a signal. That makes it easy to compose behavior or react to changes without the typical RxJS overhead.
+
+```typescript
+const isFormInvalid = computed(() => this.reservationForm().invalid());
+```
+
+This makes template checks simple and predictable:
+
+```html
+<button type="submit" (click)="submitForm()" [disabled]="isFormInvalid()">
+  Book Seat
+</button>
+```
+
+## Centralized Validation Schemas
+
+One of the best parts of Signal Forms is how it organizes validation. Validators live right next to the form definition and are called when the field's value changes:
+
+```typescript
+reservationForm = form(this.reservationModel, (fieldPath) => {
+  required(fieldPath.passengerName);
+  minLength(fieldPath.passengerName, 2);
+  required(fieldPath.seatNumber);
+  pattern(fieldPath.seatNumber, /^[A-F]\d{1,2}$/);
+});
+```
+
+In the template, you can check the validity of the form and its fields:
+
+```jsx
+<input type="text" [field]="reservationForm.passengerName" />
+
+@if (reservationForm.passengerName().invalid()) {
+  <span>Passenger name is invalid.</span>
+}
+```
+
+We can take this a step further by customizing the error messages using an optional message parameter and looping over the errors in the template:
+
+```typescript
+reservationForm = form(this.reservationModel, (fieldPath) => {
+  required(fieldPath.passengerName, { message: "Passenger name is required" });
+  minLength(fieldPath.passengerName, 2, {
+    message: "Name must be at least 2 characters",
+  });
+  required(fieldPath.seatNumber, { message: "Seat number is required" });
+  pattern(fieldPath.seatNumber, /^[A-F]\d{1,2}$/, {
+    message: "Invalid seat format (e.g., A12)",
+  });
+});
+```
+
+```jsx
+@if (reservationForm.passengerName().touched()) {
+<ul>
+  @for (error of reservationForm.passengerName().errors(); track error.kind) {
+  <li>{{ error.message }}</li>
+  }
+</ul>
+}
+```
+
+If you've ever maintained a large form with scattered validation logic, you'll appreciate having everything declared upfront. It's easier to review, easier to modify, and easier to test.
+
+## Custom Validators and Context
+
+For more involved or reusable validation logic, custom validators are straightforward. You use the `validate()` function and provide a validator callback that receives a context object.
+
+Let's create a validator that ensures seat numbers follow airline conventions:
+
+```typescript
+import { validate, SchemaPath } from "@angular/forms/signals";
+
+function validSeatFormat(field: SchemaPath<string>): void {
+  return validate(field, (context) => {
+    const value = context.value();
+
+    if (!value || typeof value !== "string") return undefined;
+
+    // Seat must be letter A-F followed by 1-2 digits
+    const seatPattern = /^[A-F]\d{1,2}$/;
+
+    if (!seatPattern.test(value)) {
+      return {
+        kind: "invalid-seat-format",
+        message: "Seat must be in format like A12 or F5",
+      };
+    }
+
+    return undefined;
+  });
+}
+
+function validFlightNumber(field: SchemaPath<string>): void {
+  return validate(field, (context) => {
+    const value = context.value();
+
+    if (!value || typeof value !== "string") return undefined;
+
+    // Flight number must be two uppercase letters followed by at least 3 digits
+    const flightPattern = /^[A-Z]{2}\d{3,}$/;
+
+    if (!flightPattern.test(value)) {
+      return {
+        kind: "invalid-flight-number",
+        message:
+          "Flight number must be 2 letters followed by at least 3 digits (e.g., AA123)",
+      };
+    }
+
+    return undefined;
+  });
+}
+```
+
+Validators return `undefined` when valid, or a `ValidationError` object when not. The API is easy to understand and doesn't force you into a framework-heavy abstraction.
+
+Use it like any other validator:
+
+```typescript
+reservationForm = form(this.reservationModel, (fieldPath) => {
+  required(fieldPath.passengerName);
+  minLength(fieldPath.passengerName, 2);
+  required(fieldPath.seatNumber);
+  validSeatFormat(fieldPath.seatNumber);
+});
+```
+
+We'll use both of these custom validators in our more complex booking form example later on.
+
+## Cross-Field Validation with validateTree
+
+Here's where Signal Forms really shine.
+
+Let's expand our booking form to include a return flight. We need to ensure the return date comes after the departure date, a classic cross-field validation that depends on reading multiple values at once.
+
+Instead of writing a group-level validator and manually bubbling errors around, you can use `validateTree()` to validate the entire form:
+
+```typescript
+import { validateTree } from "@angular/forms/signals";
+
+interface FlightBooking {
+  departureDate: string;
+  returnDate: string;
+}
+
+bookingModel = signal<FlightBooking>({
+  departureDate: "",
+  returnDate: "",
+});
+
+bookingForm = form(this.bookingModel, (fieldPath) => {
+  required(fieldPath.departureDate);
+  required(fieldPath.returnDate);
+
+  // Cross-field validation
+  validateTree(fieldPath, (context) => {
+    const { departureDate, returnDate } = context.value();
+
+    if (
+      departureDate &&
+      returnDate &&
+      new Date(returnDate) <= new Date(departureDate)
+    ) {
+      return {
+        field: context.field.returnDate, // Target the error to returnDate field
+        kind: "return-after-departure",
+        message: "Return date must be after departure date",
+      };
+    }
+
+    return undefined;
+  });
+});
+```
+
+You can inspect the entire form’s value and still target the error to a specific field. It's explicit, easy to understand, and a big improvement over Reactive Forms' parent-level validators.
+
+## Dynamic Forms and Nested Structures
+
+Let's take our booking example further. In a real-world application, you'd need to handle more complex scenarios like a full flight booking form with nested objects and dynamic arrays. Here's where Signal Forms really show their power.
+
+Here's what our complete booking model looks like:
+
+```typescript
+interface Booking {
+  passengerName: string;
+  flights: Array<{
+    id: string;
+    flightNumber: string;
+    seatNumber: string;
+    aircraft: {
+      model: string;
+      capacity: number;
+    };
+    class: string;
+    amount: number;
+  }>;
+}
+```
+
+Notice we have a passenger name at the top level, and an array of flights. Each flight has its own nested aircraft object plus several other fields. This is the kind of structure that would have been painful to set up with Reactive Forms.
+
+Let's initialize our signal with a single outbound flight:
+
+```typescript
+bookingModel = signal<Booking>({
+  passengerName: "",
+  flights: [
+    {
+      id: crypto.randomUUID(),
+      flightNumber: "",
+      seatNumber: "",
+      aircraft: { model: "", capacity: 0 },
+      class: "",
+      amount: 0,
+    },
+  ],
+});
+```
+
+The `form()` function automatically derives the entire structure. The nested `aircraft` object becomes a nested field group, and the `flights` array becomes a dynamic field array—no manual instantiation required.
+
+### Validating Array Items with applyEach
+
+Here's where things get interesting. When you need to apply validation to every item in an array, Signal Forms gives you the `applyEach()` function:
+
+```typescript
+import { applyEach } from "@angular/forms/signals";
+
+bookingForm = form(this.bookingModel, (root) => {
+  required(root.passengerName, {
+    message: "Passenger name is required",
+  });
+  minLength(root.passengerName, 2, {
+    message: "Name must be at least 2 characters",
+  });
+
+  applyEach(root.flights, (flight) => {
+    required(flight.flightNumber, { message: "Flight number is required" });
+    validFlightNumber(flight.flightNumber);
+    required(flight.seatNumber, { message: "Seat number is required" });
+    validSeatFormat(flight.seatNumber);
+    required(flight.aircraft.model, { message: "Aircraft model is required" });
+    required(flight.aircraft.capacity, { message: "Capacity is required" });
+    required(flight.class, { message: "Class is required" });
+    required(flight.amount, { message: "Amount is required" });
+  });
+});
+```
+
+The `applyEach()` function takes the array field path and a callback that receives each item. Inside that callback, you can apply validators to the item's fields just like you would for any other field. This is incredibly clean compared to manually iterating and applying validators in Reactive Forms.
+
+### Rendering Dynamic Arrays in the Template
+
+In your template, you can iterate over the flights array and access each flight's fields naturally:
+
+```jsx
+@for (flight of bookingForm.flights; track flight.id()) {
+  <fieldset>
+    <legend>{{ $index === 0 ? 'Outbound Flight' : 'Return Flight' }}</legend>
+
+    <div>
+      <label>
+        Flight Number:
+        <input type="text" placeholder="e.g., AA123" [field]="flight.flightNumber" />
+      </label>
+      @for (error of getErrors(flight.flightNumber); track error.kind) {
+        <ul>
+          <li>{{ error.message }}</li>
+        </ul>
+      }
+    </div>
+
+    <div>
+      <label>
+        Seat Number:
+        <input type="text" placeholder="e.g., A12" [field]="flight.seatNumber" />
+      </label>
+      @for (error of getErrors(flight.seatNumber); track error.kind) {
+        <ul>
+          <li>{{ error.message }}</li>
+        </ul>
+      }
+    </div>
+
+    <!-- Nested aircraft fields -->
+    <div>
+      <label>
+        Aircraft Model:
+        <input type="text" placeholder="e.g., Boeing 737" [field]="flight.aircraft.model" />
+      </label>
+    </div>
+
+    <div>
+      <label>
+        Capacity:
+        <input type="number" placeholder="e.g., 180" [field]="flight.aircraft.capacity" />
+      </label>
+    </div>
+
+    <div>
+      <label>
+        Class:
+        <select [field]="flight.class">
+          <option value="">Select a class</option>
+          @for (flightClass of flightClasses; track flightClass) {
+            <option [value]="flightClass">{{ flightClass }}</option>
+          }
+        </select>
+      </label>
+    </div>
+
+    <div>
+      <label>
+        Amount:
+        <input type="number" placeholder="e.g., 299" [field]="flight.amount" />
+      </label>
+    </div>
+
+    @if ($index > 0) {
+      <button type="button" (click)="removeFlight($index)">Remove Return Flight</button>
+    }
+  </fieldset>
+}
+
+@if (bookingForm.flights.length < 2) {
+  <button type="button" (click)="addFlight()">Add Return Flight</button>
+}
+```
+
+Notice how we can access nested fields like `flight.aircraft.model` directly. Signal Forms maintains the full type safety throughout the entire structure.
+
+### Helper for Conditional Error Display
+
+One pattern I've found useful is creating a helper method to only show errors when a field has been touched:
+
+```typescript
+getErrors(field: FieldTree<unknown>): ValidationError[] {
+  return field().touched() ? field().errors() : [];
+}
+```
+
+This prevents showing validation errors immediately when the form loads, which is a much better user experience.
+
+### Adding and Removing Items
+
+Adding a new flight is as simple as updating your signal:
+
+```typescript
+addFlight() {
+  this.bookingModel.update((booking) => ({
+    ...booking,
+    flights: [
+      ...booking.flights,
+      {
+        id: crypto.randomUUID(),
+        flightNumber: '',
+        seatNumber: '',
+        aircraft: { model: '', capacity: 0 },
+        class: '',
+        amount: 0,
+      },
+    ],
+  }));
+}
+```
+
+And removing one is just as straightforward:
+
+```typescript
+removeFlight(index: number) {
+  this.bookingModel.update((booking) => ({
+    ...booking,
+    flights: booking.flights.filter((_, i) => i !== index),
+  }));
+}
+```
+
+The form structure updates automatically. No `FormArray.push()`, no `FormArray.removeAt()`, no manually tracking controls. Just update your data, and Signal Forms handles the rest.
+
+This is a massive improvement over the imperative dance you had to do with `FormArray` in Reactive Forms.
+
+## Building Custom Components Without ControlValueAccessor
+
+You can build custom components without touching `ControlValueAccessor` (finally!) and instead reach for Signals!
+
+A simple star rating might look like this:
+
+```typescript
+@Component({
+  selector: "star-rating",
+  template: `
+    @for (star of [1, 2, 3, 4, 5]; track star) {
+      <span (click)="rating.set(star)" [class.filled]="star <= rating()">
+        ★
+      </span>
+    }
+  `,
+})
+export class StarRatingComponent {
+  rating = model<number>(0);
+}
+```
+
+You use model() to create a two-way bindable signal, and it just works with Signal Forms:
+
+```jsx
+<star-rating [field]="reviewForm.rating" />
+```
+
+## Full-Cycle Reactivity
+
+What makes Signal Forms feel so modern is how naturally they fit into Angular's new reactive ecosystem. If your app already uses signals, signal stores, or Resources, this completes the loop.
+
+You can:
+
+- Load data via a Resource (a signal)
+- Copy it into a writable form model (another signal)
+- Edit it via Signal Forms
+- Save it back through a signal-based mutation
+
+No subscriptions.
+Just signals all the way down!
+
+And if you still need RxJS interop, `toObservable()` bridges the gap cleanly!
+
+## Final Thoughts
+
+Signal Forms feel like a real evolution of how Angular handles forms. They cut down on boilerplate, sidestep the pain points of `ControlValueAccessor`, offer incredible performance thanks to fine-grained reactivity, and align perfectly with Angular’s signal-first direction.
+
+<Thoughtquote>
+  The biggest shift is the mindset: **your data is the source of truth, not
+  Angular’s form classes**. You describe the data you want, and Angular builds
+  the reactive layer around it.
+</Thoughtquote>
+
+If you’re spinning up a new project or want to modernize an existing one, Signal Forms are absolutely worth exploring. They’re a preview of where Angular is heading, and I think that future looks pretty great!
