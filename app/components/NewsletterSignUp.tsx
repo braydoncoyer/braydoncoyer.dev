@@ -16,6 +16,7 @@ interface FormState {
   message: string;
   isSuccess: boolean;
   isLoading: boolean;
+  website: string; // Honeypot field - should remain empty for real users
 }
 
 export function NewsletterSignUp({
@@ -28,6 +29,7 @@ export function NewsletterSignUp({
     message: "",
     isSuccess: false,
     isLoading: false,
+    website: "",
   });
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -49,7 +51,7 @@ export function NewsletterSignUp({
     }
 
     try {
-      const result = await createContact(formState.email);
+      const result = await createContact(formState.email, formState.website);
 
       if (result.success) {
         setFormState((prev) => ({
@@ -124,6 +126,36 @@ export function NewsletterSignUp({
                   className="w-full rounded-full border border-gray-400 bg-transparent px-5 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-slate-100 focus:ring-offset-2 focus:ring-offset-dark-primary md:w-[425px]"
                   disabled={formState.isLoading}
                 />
+                {/* Honeypot field - hidden from real users, bots will fill this */}
+                <div
+                  aria-hidden="true"
+                  style={{
+                    position: "absolute",
+                    left: "-9999px",
+                    top: "-9999px",
+                    opacity: 0,
+                    height: 0,
+                    width: 0,
+                    overflow: "hidden",
+                    pointerEvents: "none",
+                  }}
+                >
+                  <label htmlFor="website">Website</label>
+                  <input
+                    type="text"
+                    id="website"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={formState.website}
+                    onChange={(e) =>
+                      setFormState((prev) => ({
+                        ...prev,
+                        website: e.target.value,
+                      }))
+                    }
+                  />
+                </div>
                 <button
                   type="submit"
                   className="group absolute right-1 top-1 isolate inline-flex h-[42px] items-center justify-center overflow-hidden rounded-full bg-slate-100 px-4 py-2.5 text-left text-sm font-medium text-slate-900 shadow-[0_1px_theme(colors.white/0.07)_inset,0_1px_3px_theme(colors.gray.900/0.2)] ring-1 ring-white transition duration-300 ease-[cubic-bezier(0.4,0.36,0,1)] before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:rounded-full before:bg-gradient-to-b before:from-white/20 before:opacity-50 before:transition-opacity before:duration-300 before:ease-[cubic-bezier(0.4,0.36,0,1)] after:pointer-events-none after:absolute after:inset-0 after:-z-10 after:rounded-full after:bg-gradient-to-b after:from-white/10 after:from-[46%] after:to-[54%] after:mix-blend-overlay hover:before:opacity-100"
