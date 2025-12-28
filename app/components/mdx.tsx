@@ -6,6 +6,7 @@ import Link from "next/link";
 
 import { BgGradient } from "./BgGradient";
 import { CodePlayground } from "./CodePlayground";
+import { Details, DetailsSummary } from "./Details";
 
 interface MDXProps {
   code: string;
@@ -461,6 +462,8 @@ const sharedComponents = {
   code: Code,
   Table,
   CodePlayground,
+  Details,
+  DetailsSummary,
   p: paragraph,
   ol: OrderedList,
   ul: UnorderedList,
