@@ -3,48 +3,63 @@
 import { useEffect, useState } from "react";
 
 interface PerformanceMode {
+  isMobile: boolean;
+  prefersReducedMotion: boolean;
   shouldReduceAnimations: boolean;
 }
 
 /**
- * Hook to detect user's reduced motion preference.
- * Respects the prefers-reduced-motion accessibility setting.
- * This follows Framer Motion's standard pattern for animation control.
+ * Hook to detect performance constraints and accessibility preferences.
+ * Combines viewport detection (for performance) with prefers-reduced-motion (for accessibility).
+ * This is the production-standard hybrid approach used by apps like Stripe and Notion.
  */
 export function usePerformanceMode(): PerformanceMode {
-  const [shouldReduceAnimations, setShouldReduceAnimations] = useState(false);
+  const [mode, setMode] = useState<PerformanceMode>({
+    isMobile: false,
+    prefersReducedMotion: false,
+    shouldReduceAnimations: false,
+  });
 
   useEffect(() => {
-    // Check user's reduced motion preference
-    const checkReducedMotion = () => {
+    const checkPerformanceMode = () => {
+      const isMobile = window.innerWidth < 768;
       const prefersReducedMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)"
       ).matches;
-      setShouldReduceAnimations(prefersReducedMotion);
+
+      setMode({
+        isMobile,
+        prefersReducedMotion,
+        // Reduce animations for EITHER mobile performance OR accessibility
+        shouldReduceAnimations: isMobile || prefersReducedMotion,
+      });
     };
 
-    checkReducedMotion();
+    checkPerformanceMode();
+
+    // Listen for viewport changes
+    window.addEventListener("resize", checkPerformanceMode);
 
     // Listen for reduced motion preference changes
     const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const handleMotionChange = () => checkReducedMotion();
 
     // Modern browsers
     if (motionQuery.addEventListener) {
-      motionQuery.addEventListener("change", handleMotionChange);
+      motionQuery.addEventListener("change", checkPerformanceMode);
     } else {
       // Fallback for older browsers
-      motionQuery.addListener(handleMotionChange);
+      motionQuery.addListener(checkPerformanceMode);
     }
 
     return () => {
+      window.removeEventListener("resize", checkPerformanceMode);
       if (motionQuery.removeEventListener) {
-        motionQuery.removeEventListener("change", handleMotionChange);
+        motionQuery.removeEventListener("change", checkPerformanceMode);
       } else {
-        motionQuery.removeListener(handleMotionChange);
+        motionQuery.removeListener(checkPerformanceMode);
       }
     };
   }, []);
 
-  return { shouldReduceAnimations };
+  return mode;
 }
