@@ -16,7 +16,10 @@ export function StatsPageWrapper({ children }: StatsPageWrapperProps) {
   const { shouldReduceAnimations } = usePerformanceMode();
 
   return (
-    <MotionConfig reducedMotion={shouldReduceAnimations ? "always" : "user"}>
+    <MotionConfig
+      reducedMotion={shouldReduceAnimations ? "always" : "user"}
+      transition={shouldReduceAnimations ? { duration: 0 } : undefined}
+    >
       {children}
     </MotionConfig>
   );
