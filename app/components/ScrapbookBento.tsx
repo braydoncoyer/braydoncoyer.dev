@@ -6,9 +6,12 @@ import { useClickAnyWhere, useMediaQuery } from "usehooks-ts";
 
 import { cn } from "../lib/utils";
 import { useRotationVelocity } from "../lib/useRotationVelocity";
-import { getRandomNumberInRange } from "../lib/getRandomNumberInRange";
 import { useElementBoundingRect } from "../lib/useelementBoundingRect";
 import { BentoCard } from "./BentoCard";
+
+// Deterministic "random" values based on index to avoid hydration mismatch
+const stickerRotations = [-8, 12, -5, 10];
+const stickerYOffsets = [12, -8, 15, -10];
 
 function Sticker({
   children,
@@ -32,12 +35,9 @@ function Sticker({
   const [isCaptionVisible, setIsCaptionVisible] = useState<Boolean>(false);
   const [isModal, setIsModal] = useState<Boolean>(false);
 
-  // Set up initial values persisted in state even while dragging
-  const [initialRotation] = useState<number>(getRandomNumberInRange(-15, 15));
-  const [initialY] = useState<number>(
-    getRandomNumberInRange(10, 25) *
-      (index === 0 ? 1 : index % 2 === 0 ? -0.5 : 0.5),
-  );
+  // Use deterministic values based on index to avoid hydration mismatch
+  const initialRotation = stickerRotations[index % stickerRotations.length];
+  const initialY = stickerYOffsets[index % stickerYOffsets.length];
 
   // Handle smaller devices with different behavior
   const matches = useMediaQuery("(max-width: 768px)");
