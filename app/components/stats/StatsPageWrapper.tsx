@@ -1,25 +1,20 @@
 "use client";
 
 import { MotionConfig } from "framer-motion";
-import { usePerformanceMode } from "@/app/hooks/usePerformanceMode";
 
 interface StatsPageWrapperProps {
   children: React.ReactNode;
 }
 
 /**
- * Wrapper component that disables Framer Motion animations on mobile.
- * Uses MotionConfig with reducedMotion="always" to skip all motion animations.
- * Individual components handle RAF loop optimization via usePerformanceMode hook.
+ * Wrapper component that respects user's motion preferences.
+ * Uses Framer Motion's standard reducedMotion="user" setting,
+ * which automatically disables animations for users with prefers-reduced-motion enabled.
+ * Individual components optimize expensive RAF loops via usePerformanceMode hook.
  */
 export function StatsPageWrapper({ children }: StatsPageWrapperProps) {
-  const { shouldReduceAnimations } = usePerformanceMode();
-
   return (
-    <MotionConfig
-      reducedMotion={shouldReduceAnimations ? "always" : "user"}
-      transition={shouldReduceAnimations ? { duration: 0 } : undefined}
-    >
+    <MotionConfig reducedMotion="user">
       {children}
     </MotionConfig>
   );

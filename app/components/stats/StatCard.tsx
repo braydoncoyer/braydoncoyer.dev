@@ -31,7 +31,7 @@ export function StatCard({
   useEffect(() => {
     if (!animate || numericValue === null) return;
 
-    // Skip expensive counting animation on mobile/reduced motion
+    // Skip expensive counting animation for users with reduced motion preference
     if (shouldReduceAnimations) {
       setDisplayValue(numericValue);
       return;

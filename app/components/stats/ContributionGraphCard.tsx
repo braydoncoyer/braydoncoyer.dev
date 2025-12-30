@@ -52,7 +52,7 @@ export function ContributionGraphCard({
   } | null>(null);
 
   useEffect(() => {
-    // Skip expensive counting animation on mobile/reduced motion
+    // Skip expensive counting animation for users with reduced motion preference
     if (shouldReduceAnimations) {
       setDisplayCount(contributions.totalContributions);
       return;

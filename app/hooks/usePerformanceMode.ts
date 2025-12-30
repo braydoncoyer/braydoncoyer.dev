@@ -3,45 +3,31 @@
 import { useEffect, useState } from "react";
 
 interface PerformanceMode {
-  isMobile: boolean;
-  prefersReducedMotion: boolean;
   shouldReduceAnimations: boolean;
 }
 
 /**
- * Hook to detect performance constraints and adjust animations accordingly.
- * Returns flags for mobile detection and reduced motion preferences.
+ * Hook to detect user's reduced motion preference.
+ * Respects the prefers-reduced-motion accessibility setting.
+ * This follows Framer Motion's standard pattern for animation control.
  */
 export function usePerformanceMode(): PerformanceMode {
-  const [mode, setMode] = useState<PerformanceMode>({
-    isMobile: false,
-    prefersReducedMotion: false,
-    shouldReduceAnimations: false,
-  });
+  const [shouldReduceAnimations, setShouldReduceAnimations] = useState(false);
 
   useEffect(() => {
-    // Check if viewport is mobile-sized
-    const checkMobile = () => {
-      const isMobile = window.innerWidth < 768;
+    // Check user's reduced motion preference
+    const checkReducedMotion = () => {
       const prefersReducedMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)"
       ).matches;
-
-      setMode({
-        isMobile,
-        prefersReducedMotion,
-        shouldReduceAnimations: isMobile || prefersReducedMotion,
-      });
+      setShouldReduceAnimations(prefersReducedMotion);
     };
 
-    checkMobile();
-
-    // Listen for viewport changes
-    window.addEventListener("resize", checkMobile);
+    checkReducedMotion();
 
     // Listen for reduced motion preference changes
     const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const handleMotionChange = () => checkMobile();
+    const handleMotionChange = () => checkReducedMotion();
 
     // Modern browsers
     if (motionQuery.addEventListener) {
@@ -52,7 +38,6 @@ export function usePerformanceMode(): PerformanceMode {
     }
 
     return () => {
-      window.removeEventListener("resize", checkMobile);
       if (motionQuery.removeEventListener) {
         motionQuery.removeEventListener("change", handleMotionChange);
       } else {
@@ -61,5 +46,5 @@ export function usePerformanceMode(): PerformanceMode {
     };
   }, []);
 
-  return mode;
+  return { shouldReduceAnimations };
 }

@@ -115,7 +115,7 @@ function RisingWave({ isHovered, delay, shouldReduceAnimations }: { isHovered: b
           }
         />
 
-        {/* Glow line on hover - skip on mobile due to expensive blur filter */}
+        {/* Glow line on hover - skip for reduced motion users due to expensive blur filter */}
         {!shouldReduceAnimations && (
           <motion.path
             d={curvePath}
@@ -156,7 +156,7 @@ function RisingWave({ isHovered, delay, shouldReduceAnimations }: { isHovered: b
           }
         />
 
-        {/* Pulsing ring on endpoint - only on hover, skip on mobile */}
+        {/* Pulsing ring on endpoint - only on hover, skip for reduced motion users */}
         {!shouldReduceAnimations && (
           <motion.circle
             cx="310"
@@ -225,7 +225,7 @@ export function SiteViewsCard({ value, delay = 0 }: SiteViewsCardProps) {
   const [displayValue, setDisplayValue] = useState(0);
 
   useEffect(() => {
-    // Skip expensive counting animation on mobile/reduced motion
+    // Skip expensive counting animation for users with reduced motion preference
     if (shouldReduceAnimations) {
       setDisplayValue(value);
       return;
