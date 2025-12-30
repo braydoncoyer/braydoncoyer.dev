@@ -92,18 +92,12 @@ function CommitDot({ className }: { className?: string }) {
 // Theme configs
 const themeConfig = {
   stars: {
-    iconBg: "bg-amber-100",
-    iconColor: "text-amber-500",
     decorColor: "text-amber-400",
   },
   forks: {
-    iconBg: "bg-teal-100",
-    iconColor: "text-teal-600",
     decorColor: "text-teal-400",
   },
   commits: {
-    iconBg: "bg-violet-100",
-    iconColor: "text-violet-600",
     decorColor: "text-violet-400",
   },
 };
@@ -149,7 +143,7 @@ export function GitHubStatsCard({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay, ease: "easeOut" }}
-      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border-primary bg-bg-primary p-6 transition-all duration-300 hover:border-indigo-400 hover:bg-white"
+      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border-primary bg-bg-primary p-4 transition-all duration-300 hover:border-indigo-400 hover:bg-white"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -231,64 +225,12 @@ export function GitHubStatsCard({
 
       {/* Content */}
       <div className="relative z-20 flex h-full flex-col">
-        <motion.div
-          animate={{
-            y: isHovered ? -4 : 0,
-            rotate: type === "stars" && isHovered ? [0, -8, 8, 0] : 0,
-          }}
-          transition={{
-            y: { type: "spring", stiffness: 200, damping: 15 },
-            rotate: { duration: 0.5 },
-          }}
-          className={`mb-3 flex h-10 w-10 items-center justify-center rounded-xl ${theme.iconBg}`}
-        >
-          {type === "stars" && (
-            <svg
-              className={`h-5 w-5 ${theme.iconColor}`}
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-          )}
-          {type === "forks" && (
-            <svg
-              className={`h-5 w-5 ${theme.iconColor}`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 6a3 3 0 100-6 3 3 0 000 6zM18 6a3 3 0 100-6 3 3 0 000 6zM12 24a3 3 0 100-6 3 3 0 000 6zM6 6v6a6 6 0 006 6M18 6v6a6 6 0 01-6 6"
-              />
-            </svg>
-          )}
-          {type === "commits" && (
-            <svg
-              className={`h-5 w-5 ${theme.iconColor}`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-          )}
-        </motion.div>
-
-        <h2 className="mb-2 font-medium text-text-primary">{label}</h2>
+        <h2 className="mb-1 text-sm font-medium text-text-primary">{label}</h2>
 
         <motion.p
           animate={{ scale: isHovered ? 1.02 : 1 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          className="mt-auto text-3xl font-semibold tracking-tight text-purple-primary"
+          className="mt-auto text-2xl font-semibold tracking-tight text-purple-primary"
         >
           {displayValue.toLocaleString()}
         </motion.p>

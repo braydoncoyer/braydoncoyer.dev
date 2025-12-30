@@ -145,40 +145,40 @@ export default async function StatsPage() {
               />
             </div>
 
-            {/* Row 7: Contribution Graph */}
+            {/* Row 7: Contribution Graph + GitHub Stats side by side */}
             {githubStats.contributions && (
-              <div className="md:col-span-12">
+              <div className="h-full md:col-span-9">
                 <ContributionGraphCard
                   contributions={githubStats.contributions}
                   delay={0.95}
                 />
               </div>
             )}
-
-            {/* Row 8: GitHub Stats */}
-            <div className="md:col-span-4">
-              <GitHubStatsCard
-                type="stars"
-                label="GitHub Stars on My Website"
-                value={githubStats.stars}
-                delay={1.0}
-              />
-            </div>
-            <div className="md:col-span-4">
-              <GitHubStatsCard
-                type="forks"
-                label="Forks of My Website"
-                value={githubStats.forks}
-                delay={1.05}
-              />
-            </div>
-            <div className="md:col-span-4">
-              <GitHubStatsCard
-                type="commits"
-                label="Commits to My Website"
-                value={githubStats.commits}
-                delay={1.1}
-              />
+            <div className="flex h-full flex-col gap-2 md:col-span-3">
+              <div className="flex-1">
+                <GitHubStatsCard
+                  type="stars"
+                  label="GitHub Stars"
+                  value={githubStats.stars}
+                  delay={1.0}
+                />
+              </div>
+              <div className="flex-1">
+                <GitHubStatsCard
+                  type="forks"
+                  label="Forks"
+                  value={githubStats.forks}
+                  delay={1.05}
+                />
+              </div>
+              <div className="flex-1">
+                <GitHubStatsCard
+                  type="commits"
+                  label="Commits"
+                  value={githubStats.commits}
+                  delay={1.1}
+                />
+              </div>
             </div>
           </div>
         </GridWrapper>
