@@ -44,6 +44,9 @@ export function CoffeeCupsCard({ cups, delay = 0 }: CoffeeCupsCardProps) {
     requestAnimationFrame(animateCount);
   }, [cups, delay, shouldReduceAnimations]);
 
+  // Use actual value immediately if animations are reduced to prevent flash from 0
+  const effectiveDisplayCups = shouldReduceAnimations ? cups : displayCups;
+
   // Staggered coffee cup decorations
   const coffeeCups = [
     { x: "10%", y: "20%", rotate: -15, delay: 0 },
@@ -90,7 +93,7 @@ export function CoffeeCupsCard({ cups, delay = 0 }: CoffeeCupsCardProps) {
           <div className="mt-auto">
             <div className="flex items-baseline gap-1">
               <span className="text-3xl font-semibold tracking-tight text-purple-primary">
-                ~{displayCups.toLocaleString()}
+                ~{effectiveDisplayCups.toLocaleString()}
               </span>
               <span className="text-sm text-text-secondary">cups</span>
             </div>
@@ -167,7 +170,7 @@ export function CoffeeCupsCard({ cups, delay = 0 }: CoffeeCupsCardProps) {
             className="flex items-baseline gap-1"
           >
             <span className="text-3xl font-semibold tracking-tight text-purple-primary">
-              ~{displayCups.toLocaleString()}
+              ~{effectiveDisplayCups.toLocaleString()}
             </span>
             <span className="text-sm text-text-secondary">cups</span>
           </motion.div>

@@ -55,6 +55,9 @@ export function MostViewedArticleCard({
     requestAnimationFrame(animateCount);
   }, [viewCount, delay, shouldReduceAnimations]);
 
+  // Use actual value immediately if animations are reduced to prevent flash from 0
+  const effectiveDisplayCount = shouldReduceAnimations ? viewCount : displayCount;
+
   const cardClassName = "group relative flex h-full min-h-[420px] flex-col overflow-hidden rounded-2xl border border-border-primary bg-bg-primary transition-all duration-300 hover:border-indigo-400 hover:bg-white";
 
   // Mobile: Plain div (zero animation overhead)
@@ -155,7 +158,7 @@ export function MostViewedArticleCard({
             {/* View count */}
             <div className="flex items-baseline gap-2">
               <span className="text-3xl font-bold tabular-nums tracking-tight text-purple-primary">
-                {displayCount.toLocaleString()}
+                {effectiveDisplayCount.toLocaleString()}
               </span>
               <span className="text-sm text-text-tertiary">views</span>
             </div>
@@ -295,7 +298,7 @@ export function MostViewedArticleCard({
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
               className="text-3xl font-bold tabular-nums tracking-tight text-purple-primary"
             >
-              {displayCount.toLocaleString()}
+              {effectiveDisplayCount.toLocaleString()}
             </motion.span>
             <span className="text-sm text-text-tertiary">views</span>
           </div>
