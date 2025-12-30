@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import type { ContributionData, ContributionDay } from "@/app/lib/stats/types";
+import { usePerformanceMode } from "@/app/hooks/usePerformanceMode";
 
 interface ContributionGraphCardProps {
   contributions: ContributionData;
@@ -41,6 +42,7 @@ export function ContributionGraphCard({
   contributions,
   delay = 0,
 }: ContributionGraphCardProps) {
+  const { shouldReduceAnimations } = usePerformanceMode();
   const [isHovered, setIsHovered] = useState(false);
   const [displayCount, setDisplayCount] = useState(0);
   const [tooltip, setTooltip] = useState<{
@@ -50,15 +52,23 @@ export function ContributionGraphCard({
   } | null>(null);
 
   useEffect(() => {
+    // Skip expensive counting animation on mobile/reduced motion
+    if (shouldReduceAnimations) {
+      setDisplayCount(contributions.totalContributions);
+      return;
+    }
+
     const duration = 1500;
     const startTime = performance.now();
     const startDelay = delay * 1000;
+
+    let rafId: number;
 
     const animateCount = (currentTime: number) => {
       const elapsed = currentTime - startTime - startDelay;
 
       if (elapsed < 0) {
-        requestAnimationFrame(animateCount);
+        rafId = requestAnimationFrame(animateCount);
         return;
       }
 
@@ -67,12 +77,16 @@ export function ContributionGraphCard({
       setDisplayCount(Math.floor(eased * contributions.totalContributions));
 
       if (progress < 1) {
-        requestAnimationFrame(animateCount);
+        rafId = requestAnimationFrame(animateCount);
       }
     };
 
-    requestAnimationFrame(animateCount);
-  }, [contributions.totalContributions, delay]);
+    rafId = requestAnimationFrame(animateCount);
+
+    return () => {
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, [contributions.totalContributions, delay, shouldReduceAnimations]);
 
   // Get month labels for the graph
   const getMonthLabels = () => {
@@ -101,11 +115,15 @@ export function ContributionGraphCard({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={shouldReduceAnimations ? false : { opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay, ease: "easeOut" }}
+      transition={
+        shouldReduceAnimations
+          ? { duration: 0 }
+          : { duration: 0.5, delay, ease: "easeOut" }
+      }
       className="group relative flex h-full min-h-[220px] flex-col overflow-hidden rounded-2xl border border-border-primary bg-bg-primary p-6 transition-all duration-300 hover:border-indigo-400 hover:bg-white"
-      onMouseEnter={() => setIsHovered(true)}
+      onMouseEnter={() => !shouldReduceAnimations && setIsHovered(true)}
       onMouseLeave={() => {
         setIsHovered(false);
         setTooltip(null);
@@ -118,7 +136,9 @@ export function ContributionGraphCard({
       <div className="relative z-20 mb-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <motion.div
-            animate={{ y: isHovered ? -2 : 0 }}
+            animate={
+              shouldReduceAnimations ? {} : { y: isHovered ? -2 : 0 }
+            }
             transition={{ type: "spring", stiffness: 200, damping: 15 }}
             className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100"
           >
@@ -136,7 +156,9 @@ export function ContributionGraphCard({
           </div>
         </div>
         <motion.div
-          animate={{ scale: isHovered ? 1.05 : 1 }}
+          animate={
+            shouldReduceAnimations ? {} : { scale: isHovered ? 1.05 : 1 }
+          }
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
           className="text-right"
         >
@@ -194,13 +216,17 @@ export function ContributionGraphCard({
                 {contributions.weeks.map((week, weekIndex) => (
                   <motion.div
                     key={weekIndex}
-                    initial={{ opacity: 0, scale: 0.5 }}
+                    initial={shouldReduceAnimations ? false : { opacity: 0, scale: 0.5 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{
-                      duration: 0.3,
-                      delay: delay + 0.3 + weekIndex * 0.005,
-                      ease: "easeOut",
-                    }}
+                    transition={
+                      shouldReduceAnimations
+                        ? { duration: 0 }
+                        : {
+                            duration: 0.3,
+                            delay: delay + 0.3 + weekIndex * 0.005,
+                            ease: "easeOut",
+                          }
+                    }
                     className="flex flex-col"
                     style={{ gap: "2px" }}
                   >
@@ -265,13 +291,17 @@ export function ContributionGraphCard({
               {contributions.weeks.map((week, weekIndex) => (
                 <motion.div
                   key={weekIndex}
-                  initial={{ opacity: 0, scale: 0.5 }}
+                  initial={shouldReduceAnimations ? false : { opacity: 0, scale: 0.5 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{
-                    duration: 0.3,
-                    delay: delay + 0.3 + weekIndex * 0.005,
-                    ease: "easeOut",
-                  }}
+                  transition={
+                    shouldReduceAnimations
+                      ? { duration: 0 }
+                      : {
+                          duration: 0.3,
+                          delay: delay + 0.3 + weekIndex * 0.005,
+                          ease: "easeOut",
+                        }
+                  }
                   className="flex flex-col gap-[3px]"
                 >
                   {week.contributionDays.map((day, dayIndex) => (

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { usePerformanceMode } from "@/app/hooks/usePerformanceMode";
 
 interface StatCardProps {
   label: string;
@@ -22,6 +23,7 @@ export function StatCard({
   delay = 0,
   className = "",
 }: StatCardProps) {
+  const { shouldReduceAnimations } = usePerformanceMode();
   const [isHovered, setIsHovered] = useState(false);
   const numericValue = typeof value === "number" ? value : null;
   const [displayValue, setDisplayValue] = useState(animate ? 0 : numericValue);
@@ -29,15 +31,23 @@ export function StatCard({
   useEffect(() => {
     if (!animate || numericValue === null) return;
 
+    // Skip expensive counting animation on mobile/reduced motion
+    if (shouldReduceAnimations) {
+      setDisplayValue(numericValue);
+      return;
+    }
+
     const duration = 1500;
     const startTime = performance.now();
     const startDelay = delay * 1000;
+
+    let rafId: number;
 
     const animateCount = (currentTime: number) => {
       const elapsed = currentTime - startTime - startDelay;
 
       if (elapsed < 0) {
-        requestAnimationFrame(animateCount);
+        rafId = requestAnimationFrame(animateCount);
         return;
       }
 
@@ -46,20 +56,28 @@ export function StatCard({
       setDisplayValue(Math.floor(eased * numericValue));
 
       if (progress < 1) {
-        requestAnimationFrame(animateCount);
+        rafId = requestAnimationFrame(animateCount);
       }
     };
 
-    requestAnimationFrame(animateCount);
-  }, [numericValue, animate, delay]);
+    rafId = requestAnimationFrame(animateCount);
+
+    return () => {
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, [numericValue, animate, delay, shouldReduceAnimations]);
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={shouldReduceAnimations ? false : { opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay, ease: "easeOut" }}
+      transition={
+        shouldReduceAnimations
+          ? { duration: 0 }
+          : { duration: 0.5, delay, ease: "easeOut" }
+      }
       className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border-primary bg-bg-primary p-6 transition-all duration-300 hover:border-indigo-400 hover:bg-white ${className}`}
-      onMouseEnter={() => setIsHovered(true)}
+      onMouseEnter={() => !shouldReduceAnimations && setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Hover gradient overlay */}
@@ -68,7 +86,9 @@ export function StatCard({
       <div className="relative z-20 flex h-full flex-col">
         {icon && (
           <motion.div
-            animate={{ y: isHovered ? -4 : 0 }}
+            animate={
+              shouldReduceAnimations ? {} : { y: isHovered ? -4 : 0 }
+            }
             transition={{ type: "spring", stiffness: 200, damping: 15 }}
             className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-purple-primary/10 text-purple-primary"
           >
@@ -79,7 +99,9 @@ export function StatCard({
         <h2 className="mb-2 font-medium text-text-primary">{label}</h2>
 
         <motion.p
-          animate={{ scale: isHovered ? 1.02 : 1 }}
+          animate={
+            shouldReduceAnimations ? {} : { scale: isHovered ? 1.02 : 1 }
+          }
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
           className="mt-auto text-3xl font-semibold tracking-tight text-purple-primary"
         >
