@@ -19,6 +19,7 @@ import { GitHubStatsCard } from "@/app/components/stats/GitHubStatsCard";
 import { ContributionGraphCard } from "@/app/components/stats/ContributionGraphCard";
 import { LighthouseScoreCard } from "@/app/components/stats/LighthouseScoreCard";
 import { GridWrapper } from "@/app/components/GridWrapper";
+import { StatsPageWrapper } from "@/app/components/stats/StatsPageWrapper";
 
 export const metadata: Metadata = {
   title: "Stats | Braydon Coyer",
@@ -52,8 +53,9 @@ export default async function StatsPage() {
   const mostViewedArticle = serverStats.topViewedArticles[0];
 
   return (
-    <div className="mt-14 space-y-12 pb-16 md:mt-16 md:space-y-16">
-      <StatsPageHeader />
+    <StatsPageWrapper>
+      <div className="mt-14 space-y-12 pb-16 md:mt-16 md:space-y-16">
+        <StatsPageHeader />
 
       {/* Blog Stats Section */}
       <section>
@@ -250,6 +252,7 @@ export default async function StatsPage() {
           </GridWrapper>
         </section>
       )}
-    </div>
+      </div>
+    </StatsPageWrapper>
   );
 }
