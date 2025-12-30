@@ -223,7 +223,16 @@ export async function toggleReaction(slug: string, reactionType: ReactionType) {
   }
 }
 
-export async function createContact(email: string): Promise<CreateContactResponse> {
+export async function createContact(
+  email: string,
+  honeypot?: string
+): Promise<CreateContactResponse> {
+  // If honeypot field is filled, it's likely a bot - silently reject
+  // Return success to fool the bot, but don't actually create the contact
+  if (honeypot) {
+    return { success: true };
+  }
+
   try {
     const response = await fetch(
       "https://app.loops.so/api/v1/contacts/create",
