@@ -64,3 +64,16 @@ export interface ComputedStats {
   coffeeCups: number;
   techStackCount: number;
 }
+
+export interface LighthouseScores {
+  performance: number;
+  accessibility: number;
+  bestPractices: number;
+  seo: number;
+  fetchedAt: string;
+}
+
+export interface LighthouseStats {
+  mobile: LighthouseScores | null;
+  desktop: LighthouseScores | null;
+}

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { getBuildTimeStats } from "@/app/lib/stats/build-time-stats";
 import { getServerStats } from "@/app/lib/stats/server-stats";
 import { getGitHubStats } from "@/app/lib/stats/github-stats";
+import { getLighthouseStats } from "@/app/lib/stats/lighthouse-stats";
 import { StatsPageHeader } from "@/app/components/stats/StatsPageHeader";
 import { StatCard } from "@/app/components/stats/StatCard";
 import { TopArticlesCard } from "@/app/components/stats/TopArticlesCard";
@@ -14,6 +15,7 @@ import { CommunityMessagesCard } from "@/app/components/stats/CommunityMessagesC
 import { ChangelogUpdatesCard } from "@/app/components/stats/ChangelogUpdatesCard";
 import { GitHubStatsCard } from "@/app/components/stats/GitHubStatsCard";
 import { ContributionGraphCard } from "@/app/components/stats/ContributionGraphCard";
+import { LighthouseScoreCard } from "@/app/components/stats/LighthouseScoreCard";
 import { GridWrapper } from "@/app/components/GridWrapper";
 
 export const metadata: Metadata = {
@@ -27,11 +29,13 @@ const REVAMP_DATE = new Date("2025-03-31");
 
 export default async function StatsPage() {
   // Parallel data fetching
-  const [buildTimeStats, serverStats, githubStats] = await Promise.all([
-    Promise.resolve(getBuildTimeStats()),
-    getServerStats(),
-    getGitHubStats(),
-  ]);
+  const [buildTimeStats, serverStats, githubStats, lighthouseStats] =
+    await Promise.all([
+      Promise.resolve(getBuildTimeStats()),
+      getServerStats(),
+      getGitHubStats(),
+      getLighthouseStats(),
+    ]);
 
   // Computed stats
   const coffeeCups = Math.floor(buildTimeStats.totalWords / 500);
@@ -180,6 +184,26 @@ export default async function StatsPage() {
                 />
               </div>
             </div>
+
+            {/* Row 8: Lighthouse Scores */}
+            {lighthouseStats.mobile && (
+              <div className="md:col-span-6">
+                <LighthouseScoreCard
+                  scores={lighthouseStats.mobile}
+                  strategy="mobile"
+                  delay={1.15}
+                />
+              </div>
+            )}
+            {lighthouseStats.desktop && (
+              <div className="md:col-span-6">
+                <LighthouseScoreCard
+                  scores={lighthouseStats.desktop}
+                  strategy="desktop"
+                  delay={1.2}
+                />
+              </div>
+            )}
           </div>
         </GridWrapper>
       </section>
