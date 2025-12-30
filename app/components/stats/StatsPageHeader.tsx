@@ -2,8 +2,36 @@
 
 import { motion } from "framer-motion";
 import { GridWrapper } from "../GridWrapper";
+import { usePerformanceMode } from "@/app/hooks/usePerformanceMode";
 
 export function StatsPageHeader() {
+  const { shouldReduceAnimations } = usePerformanceMode();
+
+  // Mobile: Plain divs (zero animation overhead)
+  if (shouldReduceAnimations) {
+    return (
+      <section>
+        <GridWrapper>
+          <div className="text-center">
+            <span className="text-sm font-medium text-indigo-600">Stats</span>
+          </div>
+        </GridWrapper>
+        <GridWrapper>
+          <h1 className="mx-auto mt-4 max-w-2xl text-balance text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-5xl">
+            A peek behind the curtain
+          </h1>
+        </GridWrapper>
+        <GridWrapper>
+          <p className="mx-auto mt-4 max-w-xl text-center leading-8 text-text-secondary">
+            Numbers, metrics, and fun facts about this little corner of the
+            internet. Updated in real-time.
+          </p>
+        </GridWrapper>
+      </section>
+    );
+  }
+
+  // Desktop: Full Framer Motion animations
   return (
     <section>
       <GridWrapper>

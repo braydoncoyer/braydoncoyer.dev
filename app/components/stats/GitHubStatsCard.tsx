@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { usePerformanceMode } from "@/app/hooks/usePerformanceMode";
 
 type GitHubStatType = "stars" | "forks" | "commits";
 
@@ -108,12 +109,18 @@ export function GitHubStatsCard({
   value,
   delay = 0,
 }: GitHubStatsCardProps) {
+  const { shouldReduceAnimations } = usePerformanceMode();
   const [isHovered, setIsHovered] = useState(false);
   const [displayValue, setDisplayValue] = useState(0);
 
   const theme = themeConfig[type];
 
   useEffect(() => {
+    if (shouldReduceAnimations) {
+      setDisplayValue(value);
+      return;
+    }
+
     const duration = 1500;
     const startTime = performance.now();
     const startDelay = delay * 1000;
@@ -136,14 +143,86 @@ export function GitHubStatsCard({
     };
 
     requestAnimationFrame(animateCount);
-  }, [value, delay]);
+  }, [value, delay, shouldReduceAnimations]);
 
+  const cardClassName = "group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border-primary bg-bg-primary p-4 transition-all duration-300 hover:border-indigo-400 hover:bg-white";
+
+  // Mobile: Plain div (zero animation overhead)
+  if (shouldReduceAnimations) {
+    return (
+      <div className={cardClassName}>
+        {/* Hover gradient overlay */}
+        <div className="pointer-events-none absolute inset-0 z-10 rounded-2xl bg-gradient-to-tl from-indigo-400/20 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+        {/* Floating decorations based on type */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          {type === "stars" &&
+            starDecorations.map((star, i) => (
+              <div
+                key={i}
+                className={`absolute ${theme.decorColor}`}
+                style={{
+                  left: star.x,
+                  top: star.y,
+                  opacity: 0.3,
+                  transform: `rotate(${star.rotate}deg)`,
+                }}
+              >
+                <StarShape size={star.size} />
+              </div>
+            ))}
+
+          {type === "forks" &&
+            forkDecorations.map((fork, i) => (
+              <div
+                key={i}
+                className={`absolute ${theme.decorColor}`}
+                style={{
+                  left: fork.x,
+                  top: fork.y,
+                  opacity: 0.28,
+                  transform: `rotate(${fork.rotate}deg)`,
+                }}
+              >
+                <BranchShape />
+              </div>
+            ))}
+
+          {type === "commits" &&
+            commitDecorations.map((commit, i) => (
+              <div
+                key={i}
+                className={`absolute ${theme.decorColor}`}
+                style={{
+                  left: commit.x,
+                  top: commit.y,
+                  opacity: 0.32,
+                }}
+              >
+                <CommitDot />
+              </div>
+            ))}
+        </div>
+
+        {/* Content */}
+        <div className="relative z-20 flex h-full flex-col">
+          <h2 className="mb-1 text-sm font-medium text-text-primary">{label}</h2>
+
+          <p className="mt-auto text-2xl font-semibold tracking-tight text-purple-primary">
+            {displayValue.toLocaleString()}
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  // Desktop: Full Framer Motion animations
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay, ease: "easeOut" }}
-      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border-primary bg-bg-primary p-4 transition-all duration-300 hover:border-indigo-400 hover:bg-white"
+      className={cardClassName}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
