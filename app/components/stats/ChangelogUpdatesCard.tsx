@@ -80,8 +80,8 @@ export function ChangelogUpdatesCard({
             }}
             transition={{
               type: "spring",
-              stiffness: 120,
-              damping: 20,
+              stiffness: 60,
+              damping: 18,
             }}
             className="absolute left-0 right-0 top-0"
           >
@@ -106,7 +106,7 @@ export function ChangelogUpdatesCard({
                   }`}
                 />
                 {/* Entry card */}
-                <div className="z-10 inline-block w-[85px] space-y-px rounded-lg border border-border-primary bg-white px-2 py-1.5 text-xs shadow-sm">
+                <div className="z-10 inline-block w-[100px] space-y-px rounded-lg border border-border-primary bg-white px-2 py-1.5 text-xs shadow-sm">
                   <p className="overflow-hidden text-ellipsis whitespace-nowrap font-semibold text-text-secondary">
                     {item.title}
                   </p>
@@ -126,8 +126,8 @@ export function ChangelogUpdatesCard({
         </div>
 
         {/* Gradient overlays for scroll effect */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-12 bg-gradient-to-b from-bg-primary to-transparent transition-colors group-hover:from-white" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-44 bg-gradient-to-t from-bg-primary via-bg-primary/90 to-transparent transition-colors group-hover:from-white group-hover:via-white/90" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-10 bg-gradient-to-b from-bg-primary to-transparent transition-colors group-hover:from-white" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-32 bg-gradient-to-t from-bg-primary via-bg-primary/75 to-transparent transition-colors group-hover:from-white group-hover:via-white/75" />
 
         {/* Content at bottom */}
         <div className="relative z-20 mt-auto">

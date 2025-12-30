@@ -4,6 +4,7 @@ import { getServerStats } from "@/app/lib/stats/server-stats";
 import { getGitHubStats } from "@/app/lib/stats/github-stats";
 import { getLighthouseStats } from "@/app/lib/stats/lighthouse-stats";
 import { StatsPageHeader } from "@/app/components/stats/StatsPageHeader";
+import { StatsSectionHeader } from "@/app/components/stats/StatsSectionHeader";
 import { StatCard } from "@/app/components/stats/StatCard";
 import { TopArticlesCard } from "@/app/components/stats/TopArticlesCard";
 import { ReactionBreakdown } from "@/app/components/stats/ReactionBreakdown";
@@ -13,6 +14,7 @@ import { CoffeeCupsCard } from "@/app/components/stats/CoffeeCupsCard";
 import { MostViewedArticleCard } from "@/app/components/stats/MostViewedArticleCard";
 import { CommunityMessagesCard } from "@/app/components/stats/CommunityMessagesCard";
 import { ChangelogUpdatesCard } from "@/app/components/stats/ChangelogUpdatesCard";
+import { SiteViewsCard } from "@/app/components/stats/SiteViewsCard";
 import { GitHubStatsCard } from "@/app/components/stats/GitHubStatsCard";
 import { ContributionGraphCard } from "@/app/components/stats/ContributionGraphCard";
 import { LighthouseScoreCard } from "@/app/components/stats/LighthouseScoreCard";
@@ -53,16 +55,21 @@ export default async function StatsPage() {
     <div className="mt-14 space-y-12 pb-16 md:mt-16 md:space-y-16">
       <StatsPageHeader />
 
-      {/* Main Bento Grid */}
+      {/* Blog Stats Section */}
       <section>
         <GridWrapper>
+          <StatsSectionHeader
+            title="Blog Stats"
+            description="Content creation metrics and popular articles"
+            delay={0.2}
+          />
           <div className="grid grid-cols-1 gap-2 md:grid-cols-12">
-            {/* Row 1-2: Hero section with Most Viewed Article flanked by stats */}
+            {/* Row 1: Key metrics + Most Viewed Article */}
             <div className="md:col-span-2">
               <StatCard
                 label="Total Articles"
                 value={buildTimeStats.totalArticles}
-                delay={0.3}
+                delay={0.25}
               />
             </div>
             {mostViewedArticle && mostViewedArticle.imageName && (
@@ -72,72 +79,44 @@ export default async function StatsPage() {
                   slug={mostViewedArticle.slug}
                   imageName={mostViewedArticle.imageName}
                   viewCount={mostViewedArticle.count}
-                  delay={0.35}
+                  delay={0.3}
                 />
               </div>
             )}
             <div className="md:col-span-5">
-              <DaysSinceRevamp revampDate={REVAMP_DATE} delay={0.4} />
+              <CoffeeCupsCard cups={coffeeCups} delay={0.35} />
             </div>
+
+            {/* Row 2: Writing stats */}
             <div className="md:col-span-2">
-              <ChangelogUpdatesCard
-                count={buildTimeStats.changelogCount}
-                delay={0.45}
+              <StatCard
+                label="Words Written"
+                value={buildTimeStats.totalWords}
+                delay={0.4}
               />
             </div>
             <div className="md:col-span-5">
-              <CoffeeCupsCard cups={coffeeCups} delay={0.5} />
-            </div>
-
-            {/* Row 3-4: Reactions centered with stats and community cards */}
-            <div className="md:col-span-3">
-              <StatCard
-                label="Words Written on Blog"
-                value={buildTimeStats.totalWords}
-                delay={0.55}
-              />
-            </div>
-            <div className="md:col-span-5 md:row-span-2">
-              <ReactionBreakdown
-                reactions={serverStats.reactionsByType}
-                delay={0.6}
-              />
-            </div>
-            <div className="md:col-span-4">
-              <CommunityMessagesCard
-                count={serverStats.communityWallMessages}
-                delay={0.65}
-              />
-            </div>
-            <div className="md:col-span-3">
               <StatCard
                 label="Reading Time"
                 value={readingTimeFormatted}
                 animate={false}
-                delay={0.7}
-              />
-            </div>
-            <div className="md:col-span-4">
-              <StatCard
-                label="Total Site Views"
-                value={serverStats.totalViews}
-                delay={0.75}
+                delay={0.45}
               />
             </div>
 
-            {/* Row 5-6: Article lists with Category chart */}
+            {/* Row 3-4: Article lists + Category chart */}
             <div className="md:col-span-5">
               <TopArticlesCard
                 title="Top Viewed Articles"
                 articles={serverStats.topViewedArticles.slice(1, 5)}
                 metricLabel="views"
-                delay={0.8}
+                delay={0.5}
               />
             </div>
             <div className="md:col-span-7 md:row-span-2">
               <CategoryBarChart
                 categories={buildTimeStats.categoryBreakdown}
-                delay={0.85}
+                delay={0.55}
               />
             </div>
             <div className="md:col-span-5">
@@ -145,16 +124,67 @@ export default async function StatsPage() {
                 title="Most Reacted Articles"
                 articles={serverStats.topReactedArticles.slice(0, 4)}
                 metricLabel="reactions"
-                delay={0.9}
+                delay={0.6}
+              />
+            </div>
+          </div>
+        </GridWrapper>
+      </section>
+
+      {/* Engagement Section */}
+      <section>
+        <GridWrapper>
+          <StatsSectionHeader
+            title="Engagement"
+            description="Site activity and community interactions"
+            delay={0.65}
+          />
+          <div className="grid grid-cols-1 gap-2 md:grid-cols-12">
+            {/* Row 1: Views + Reactions + Community */}
+            <div className="md:col-span-3">
+              <SiteViewsCard value={serverStats.totalViews} delay={0.7} />
+            </div>
+            <div className="md:col-span-5 md:row-span-2">
+              <ReactionBreakdown
+                reactions={serverStats.reactionsByType}
+                delay={0.75}
+              />
+            </div>
+            <div className="md:col-span-4">
+              <CommunityMessagesCard
+                count={serverStats.communityWallMessages}
+                delay={0.8}
               />
             </div>
 
-            {/* Row 7: Contribution Graph + GitHub Stats side by side */}
+            {/* Row 2: Site meta */}
+            <div className="md:col-span-3">
+              <ChangelogUpdatesCard
+                count={buildTimeStats.changelogCount}
+                delay={0.85}
+              />
+            </div>
+            <div className="md:col-span-4">
+              <DaysSinceRevamp revampDate={REVAMP_DATE} delay={0.9} />
+            </div>
+          </div>
+        </GridWrapper>
+      </section>
+
+      {/* GitHub Section */}
+      <section>
+        <GridWrapper>
+          <StatsSectionHeader
+            title="GitHub"
+            description="Open source contributions and repository stats"
+            delay={0.95}
+          />
+          <div className="grid grid-cols-1 gap-2 md:grid-cols-12">
             {githubStats.contributions && (
               <div className="h-full md:col-span-9">
                 <ContributionGraphCard
                   contributions={githubStats.contributions}
-                  delay={0.95}
+                  delay={1.0}
                 />
               </div>
             )}
@@ -164,7 +194,7 @@ export default async function StatsPage() {
                   type="stars"
                   label="GitHub Stars"
                   value={githubStats.stars}
-                  delay={1.0}
+                  delay={1.05}
                 />
               </div>
               <div className="flex-1">
@@ -172,7 +202,7 @@ export default async function StatsPage() {
                   type="forks"
                   label="Forks"
                   value={githubStats.forks}
-                  delay={1.05}
+                  delay={1.1}
                 />
               </div>
               <div className="flex-1">
@@ -180,33 +210,46 @@ export default async function StatsPage() {
                   type="commits"
                   label="Commits"
                   value={githubStats.commits}
-                  delay={1.1}
-                />
-              </div>
-            </div>
-
-            {/* Row 8: Lighthouse Scores */}
-            {lighthouseStats.mobile && (
-              <div className="md:col-span-6">
-                <LighthouseScoreCard
-                  scores={lighthouseStats.mobile}
-                  strategy="mobile"
                   delay={1.15}
                 />
               </div>
-            )}
-            {lighthouseStats.desktop && (
-              <div className="md:col-span-6">
-                <LighthouseScoreCard
-                  scores={lighthouseStats.desktop}
-                  strategy="desktop"
-                  delay={1.2}
-                />
-              </div>
-            )}
+            </div>
           </div>
         </GridWrapper>
       </section>
+
+      {/* Performance Section */}
+      {(lighthouseStats.mobile || lighthouseStats.desktop) && (
+        <section>
+          <GridWrapper>
+            <StatsSectionHeader
+              title="Performance"
+              description="Lighthouse scores for site speed and accessibility"
+              delay={1.2}
+            />
+            <div className="grid grid-cols-1 gap-2 md:grid-cols-12">
+              {lighthouseStats.mobile && (
+                <div className="md:col-span-6">
+                  <LighthouseScoreCard
+                    scores={lighthouseStats.mobile}
+                    strategy="mobile"
+                    delay={1.25}
+                  />
+                </div>
+              )}
+              {lighthouseStats.desktop && (
+                <div className="md:col-span-6">
+                  <LighthouseScoreCard
+                    scores={lighthouseStats.desktop}
+                    strategy="desktop"
+                    delay={1.3}
+                  />
+                </div>
+              )}
+            </div>
+          </GridWrapper>
+        </section>
+      )}
     </div>
   );
 }
