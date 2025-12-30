@@ -67,17 +67,51 @@ export function StatCard({
     };
   }, [numericValue, animate, delay, shouldReduceAnimations]);
 
+  const cardClassName = `group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border-primary bg-bg-primary p-6 transition-all duration-300 hover:border-indigo-400 hover:bg-white ${className}`;
+
+  // Mobile: Plain div (zero animation overhead)
+  if (shouldReduceAnimations) {
+    return (
+      <div className={cardClassName}>
+        {/* Hover gradient overlay */}
+        <div className="pointer-events-none absolute inset-0 z-10 rounded-2xl bg-gradient-to-tl from-indigo-400/20 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+        <div className="relative z-20 flex h-full flex-col">
+          {icon && (
+            <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-purple-primary/10 text-purple-primary">
+              {icon}
+            </div>
+          )}
+
+          <h2 className="mb-2 font-medium text-text-primary">{label}</h2>
+
+          <p className="mt-auto text-3xl font-semibold tracking-tight text-purple-primary">
+            {numericValue !== null ? (
+              <>
+                {displayValue?.toLocaleString()}
+                {suffix && (
+                  <span className="ml-1 text-lg font-normal text-text-secondary">
+                    {suffix}
+                  </span>
+                )}
+              </>
+            ) : (
+              value
+            )}
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  // Desktop: Full Framer Motion animations
   return (
     <motion.div
-      initial={shouldReduceAnimations ? false : { opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={
-        shouldReduceAnimations
-          ? { duration: 0 }
-          : { duration: 0.5, delay, ease: "easeOut" }
-      }
-      className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border-primary bg-bg-primary p-6 transition-all duration-300 hover:border-indigo-400 hover:bg-white ${className}`}
-      onMouseEnter={() => !shouldReduceAnimations && setIsHovered(true)}
+      transition={{ duration: 0.5, delay, ease: "easeOut" }}
+      className={cardClassName}
+      onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Hover gradient overlay */}
@@ -86,9 +120,7 @@ export function StatCard({
       <div className="relative z-20 flex h-full flex-col">
         {icon && (
           <motion.div
-            animate={
-              shouldReduceAnimations ? {} : { y: isHovered ? -4 : 0 }
-            }
+            animate={{ y: isHovered ? -4 : 0 }}
             transition={{ type: "spring", stiffness: 200, damping: 15 }}
             className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-purple-primary/10 text-purple-primary"
           >
@@ -99,9 +131,7 @@ export function StatCard({
         <h2 className="mb-2 font-medium text-text-primary">{label}</h2>
 
         <motion.p
-          animate={
-            shouldReduceAnimations ? {} : { scale: isHovered ? 1.02 : 1 }
-          }
+          animate={{ scale: isHovered ? 1.02 : 1 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
           className="mt-auto text-3xl font-semibold tracking-tight text-purple-primary"
         >
