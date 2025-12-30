@@ -9,11 +9,11 @@ interface CommunityMessagesCardProps {
   delay?: number;
 }
 
-// Mini message card patterns (simplified versions of the community wall)
-const miniPatterns = [
-  { gradient: "from-[#90D2AA] to-[#FEFFB4]", rotate: -6, x: -20, y: 10 },
-  { gradient: "from-[#C48EFF] to-[#FCCEED]", rotate: 3, x: 0, y: 0 },
-  { gradient: "from-[#81E0CA] to-[#E9F2FE]", rotate: 8, x: 15, y: 5 },
+// Mini card patterns for fan-out effect
+const miniCards = [
+  { rotate: -12, x: -25, y: 8, gradient: "url(#grad1)" },
+  { rotate: 0, x: 0, y: 0, gradient: "url(#grad2)" },
+  { rotate: 12, x: 25, y: 8, gradient: "url(#grad3)" },
 ];
 
 export function CommunityMessagesCard({
@@ -58,55 +58,145 @@ export function CommunityMessagesCard({
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
+        {/* Dot pattern background */}
+        <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_2px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
+
         {/* Hover gradient overlay */}
         <div className="pointer-events-none absolute inset-0 z-30 rounded-2xl bg-gradient-to-tl from-indigo-400/20 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-        <div className="relative z-20 flex h-full flex-col">
-          <h2 className="mb-2 font-medium text-text-primary">
-            Community Messages
-          </h2>
-          <p className="text-sm text-text-secondary">From the wall</p>
-
-          {/* Stacked mini message cards - bigger and fan out more */}
-          <div className="relative my-4 flex flex-1 items-center justify-center">
-            {miniPatterns.map((pattern, index) => (
-              <motion.div
+        {/* Stacked cards with fan-out animation */}
+        <div className="absolute inset-0 flex items-center justify-center pb-16">
+          <div className="relative h-32 w-40">
+            {miniCards.map((card, index) => (
+              <motion.svg
                 key={index}
+                className="absolute left-1/2 top-1/2 w-36"
+                style={{
+                  zIndex: index === 1 ? 3 : index === 2 ? 2 : 1,
+                  originX: "50%",
+                  originY: "50%",
+                }}
                 initial={{
-                  rotate: pattern.rotate,
-                  x: pattern.x * 0.3,
-                  y: pattern.y * 0.3,
-                  scale: 1 - index * 0.03,
+                  x: "-50%",
+                  y: "-50%",
+                  rotate: card.rotate * 0.6,
+                  scale: 1 - (2 - index) * 0.02,
                 }}
                 animate={{
-                  rotate: isHovered
-                    ? pattern.rotate * 2.5
-                    : pattern.rotate,
-                  x: isHovered ? pattern.x * 2.2 : pattern.x * 0.3,
-                  y: isHovered ? pattern.y * 2 - 15 : pattern.y * 0.3,
-                  scale: isHovered ? 1 : 1 - index * 0.03,
+                  x: isHovered
+                    ? `calc(-50% + ${card.x * 2.2}px)`
+                    : `calc(-50% + ${card.x * 0.6}px)`,
+                  y: isHovered
+                    ? `calc(-50% + ${card.y * 2 - 15}px)`
+                    : `calc(-50% + ${card.y * 0.5}px)`,
+                  rotate: isHovered ? card.rotate * 2.2 : card.rotate * 0.8,
+                  scale: isHovered ? 1 : 1 - (2 - index) * 0.02,
                 }}
                 transition={{
                   type: "spring",
-                  stiffness: 200,
-                  damping: 15,
-                  delay: index * 0.03,
+                  stiffness: 300,
+                  damping: 20,
+                  delay: index * 0.05,
                 }}
-                className={`absolute h-28 w-36 rounded-xl border-2 border-white/60 bg-gradient-to-b ${pattern.gradient} shadow-md`}
-                style={{ zIndex: 3 - index }}
+                viewBox="-15 -15 160 155"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                {/* Mini card content lines */}
-                <div className="flex h-full flex-col justify-center p-4">
-                  <div className="mb-2 h-2 w-full rounded bg-white/60" />
-                  <div className="mb-2 h-2 w-4/5 rounded bg-white/50" />
-                  <div className="h-2 w-3/5 rounded bg-white/40" />
-                </div>
-              </motion.div>
+                <defs>
+                  <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#90D2AA" />
+                    <stop offset="100%" stopColor="#FEFFB4" />
+                  </linearGradient>
+                  <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#C48EFF" />
+                    <stop offset="100%" stopColor="#FCCEED" />
+                  </linearGradient>
+                  <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#81E0CA" />
+                    <stop offset="100%" stopColor="#E9F2FE" />
+                  </linearGradient>
+                  <filter id={`shadow${index}`} x="-20%" y="-20%" width="150%" height="150%">
+                    <feDropShadow dx="4" dy="4" stdDeviation="8" floodOpacity="0.15" />
+                  </filter>
+                </defs>
+
+                {/* Card background with shadow */}
+                <g filter={`url(#shadow${index})`}>
+                  <rect
+                    width="120"
+                    height="115"
+                    x="5"
+                    y="5"
+                    rx="8"
+                    fill="#F7F7F8"
+                  />
+                </g>
+
+                {/* Gradient header area */}
+                <rect
+                  x="10"
+                  y="10"
+                  width="110"
+                  height="90"
+                  rx="4"
+                  fill={card.gradient}
+                  opacity="0.85"
+                />
+
+                {/* Decorative circles on gradient */}
+                <circle cx="85" cy="35" r="25" fill="white" opacity="0.3" />
+                <circle cx="40" cy="60" r="18" fill="white" opacity="0.2" />
+
+                {/* Text lines */}
+                <motion.rect
+                  x="25"
+                  y="35"
+                  width="50"
+                  height="6"
+                  rx="3"
+                  fill="white"
+                  opacity={isHovered ? 0.8 : 0.5}
+                  transition={{ duration: 0.3 }}
+                />
+                <motion.rect
+                  x="25"
+                  y="50"
+                  width="35"
+                  height="6"
+                  rx="3"
+                  fill="white"
+                  opacity={isHovered ? 0.8 : 0.5}
+                  transition={{ duration: 0.3, delay: 0.05 }}
+                />
+
+                {/* Avatar circle - left side */}
+                <circle
+                  cx="26"
+                  cy="110"
+                  r="7"
+                  fill="#D1D5DB"
+                />
+
+                {/* User name line */}
+                <rect
+                  x="40"
+                  y="106"
+                  width="50"
+                  height="7"
+                  rx="3"
+                  fill="#E5E7EB"
+                />
+              </motion.svg>
             ))}
           </div>
+        </div>
 
-          {/* Count */}
-          <div className="mt-auto flex items-baseline gap-2">
+        {/* Content at bottom */}
+        <div className="relative z-20 mt-auto">
+          <h2 className="mb-1 font-medium text-text-primary">
+            Community Messages
+          </h2>
+          <div className="flex items-baseline gap-2">
             <motion.span
               animate={{ scale: isHovered ? 1.05 : 1 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -120,10 +210,11 @@ export function CommunityMessagesCard({
 
         {/* Link arrow */}
         <motion.div
+          initial={{ x: 8, y: 8, opacity: 0 }}
           animate={{
             x: isHovered ? 0 : 8,
             y: isHovered ? 0 : 8,
-            opacity: isHovered ? 1 : 0,
+            opacity: isHovered ? 1 : 0
           }}
           transition={{ duration: 0.2 }}
           className="absolute bottom-4 right-4 z-40 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-100"

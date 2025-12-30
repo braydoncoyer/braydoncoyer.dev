@@ -51,7 +51,14 @@ export default async function StatsPage() {
       <section>
         <GridWrapper>
           <div className="grid grid-cols-1 gap-2 md:grid-cols-12">
-            {/* Row 1: Most Viewed Article + Content Stats */}
+            {/* Row 1-2: Hero section with Most Viewed Article flanked by stats */}
+            <div className="md:col-span-2">
+              <StatCard
+                label="Total Articles"
+                value={buildTimeStats.totalArticles}
+                delay={0.3}
+              />
+            </div>
             {mostViewedArticle && mostViewedArticle.imageName && (
               <div className="md:col-span-5 md:row-span-2">
                 <MostViewedArticleCard
@@ -59,94 +66,84 @@ export default async function StatsPage() {
                   slug={mostViewedArticle.slug}
                   imageName={mostViewedArticle.imageName}
                   viewCount={mostViewedArticle.count}
-                  delay={0.3}
+                  delay={0.35}
                 />
               </div>
             )}
-            <div className="md:col-span-4">
+            <div className="md:col-span-5">
+              <DaysSinceRevamp revampDate={REVAMP_DATE} delay={0.4} />
+            </div>
+            <div className="md:col-span-2">
+              <ChangelogUpdatesCard
+                count={buildTimeStats.changelogCount}
+                delay={0.45}
+              />
+            </div>
+            <div className="md:col-span-5">
+              <CoffeeCupsCard cups={coffeeCups} delay={0.5} />
+            </div>
+
+            {/* Row 3-4: Reactions centered with stats and community cards */}
+            <div className="md:col-span-3">
               <StatCard
-                label="Total Articles"
-                value={buildTimeStats.totalArticles}
-                delay={0.35}
+                label="Words Written on Blog"
+                value={buildTimeStats.totalWords}
+                delay={0.55}
+              />
+            </div>
+            <div className="md:col-span-5 md:row-span-2">
+              <ReactionBreakdown
+                reactions={serverStats.reactionsByType}
+                delay={0.6}
+              />
+            </div>
+            <div className="md:col-span-4">
+              <CommunityMessagesCard
+                count={serverStats.communityWallMessages}
+                delay={0.65}
               />
             </div>
             <div className="md:col-span-3">
-              <StatCard
-                label="Words Written"
-                value={buildTimeStats.totalWords}
-                delay={0.4}
-              />
-            </div>
-            <div className="md:col-span-4">
               <StatCard
                 label="Reading Time"
                 value={readingTimeFormatted}
                 animate={false}
-                delay={0.45}
-              />
-            </div>
-            <div className="md:col-span-3">
-              <StatCard
-                label="Total Views"
-                value={serverStats.totalViews}
-                delay={0.5}
-              />
-            </div>
-
-            {/* Row 2: Reactions + Fun Stats */}
-            <div className="md:col-span-5 md:row-span-2">
-              <ReactionBreakdown
-                reactions={serverStats.reactionsByType}
-                delay={0.55}
-              />
-            </div>
-            <div className="md:col-span-4">
-              <DaysSinceRevamp revampDate={REVAMP_DATE} delay={0.6} />
-            </div>
-            <div className="md:col-span-3">
-              <CoffeeCupsCard cups={coffeeCups} delay={0.65} />
-            </div>
-
-            {/* Row 3: Community + Changelog */}
-            <div className="md:col-span-4">
-              <CommunityMessagesCard
-                count={serverStats.communityWallMessages}
                 delay={0.7}
               />
             </div>
-            <div className="md:col-span-3">
-              <ChangelogUpdatesCard
-                count={buildTimeStats.changelogCount}
+            <div className="md:col-span-4">
+              <StatCard
+                label="Total Site Views"
+                value={serverStats.totalViews}
                 delay={0.75}
               />
             </div>
 
-            {/* Row 4: Top Articles + Categories */}
-            <div className="md:col-span-6">
+            {/* Row 5-6: Article lists with Category chart */}
+            <div className="md:col-span-5">
               <TopArticlesCard
-                title="Top Viewed"
+                title="Top Viewed Articles"
                 articles={serverStats.topViewedArticles.slice(1, 5)}
                 metricLabel="views"
                 delay={0.8}
               />
             </div>
-            <div className="md:col-span-6 md:row-span-2">
+            <div className="md:col-span-7 md:row-span-2">
               <CategoryBarChart
                 categories={buildTimeStats.categoryBreakdown}
                 delay={0.85}
               />
             </div>
-
-            <div className="md:col-span-6">
+            <div className="md:col-span-5">
               <TopArticlesCard
-                title="Most Reacted"
+                title="Most Reacted Articles"
                 articles={serverStats.topReactedArticles.slice(0, 4)}
                 metricLabel="reactions"
                 delay={0.9}
               />
             </div>
 
-            {/* Row 5: GitHub Stats */}
+            {/* Row 7: GitHub Stats */}
             <div className="md:col-span-4">
               <StatCard
                 label="GitHub Stars"
