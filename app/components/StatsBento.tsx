@@ -2,13 +2,8 @@ import { BentoCard } from "./BentoCard";
 
 export function StatsBento() {
   return (
-    <BentoCard height="h-[220px]" className="group">
-      <h2 className="mb-2 font-medium">
-        Stats{" "}
-        <span className="ml-2 text-xs uppercase text-text-tertiary">
-          coming soon
-        </span>
-      </h2>
+    <BentoCard height="h-[220px]" className="group" linkTo="/stats">
+      <h2 className="mb-2 font-medium">Stats</h2>
       <div className="absolute inset-x-0 bottom-0">
         <StatsIllustration />
       </div>
