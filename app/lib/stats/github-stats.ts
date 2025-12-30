@@ -1,9 +1,62 @@
 "use server";
 
 import { unstable_cache } from "next/cache";
-import type { GitHubStats } from "./types";
+import type { GitHubStats, ContributionData } from "./types";
 
 const GITHUB_REPO = "braydoncoyer/braydoncoyer.dev";
+const GITHUB_USERNAME = "braydoncoyer";
+
+async function fetchContributions(token: string): Promise<ContributionData | null> {
+  const query = `
+    query {
+      user(login: "${GITHUB_USERNAME}") {
+        contributionsCollection {
+          contributionCalendar {
+            totalContributions
+            weeks {
+              contributionDays {
+                date
+                contributionCount
+                contributionLevel
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  try {
+    const response = await fetch("https://api.github.com/graphql", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ query }),
+    });
+
+    if (!response.ok) {
+      console.error("Failed to fetch contributions:", response.status);
+      return null;
+    }
+
+    const data = await response.json();
+    const calendar = data?.data?.user?.contributionsCollection?.contributionCalendar;
+
+    if (!calendar) {
+      return null;
+    }
+
+    return {
+      totalContributions: calendar.totalContributions,
+      weeks: calendar.weeks,
+    };
+  } catch (error) {
+    console.error("Error fetching contributions:", error);
+    return null;
+  }
+}
 
 export const getGitHubStats = unstable_cache(
   async (): Promise<GitHubStats> => {
@@ -15,6 +68,7 @@ export const getGitHubStats = unstable_cache(
         stars: 0,
         forks: 0,
         commits: 0,
+        contributions: null,
       };
     }
 
@@ -62,10 +116,14 @@ export const getGitHubStats = unstable_cache(
         }
       }
 
+      // Fetch contribution graph data
+      const contributions = await fetchContributions(token);
+
       return {
         stars,
         forks,
         commits,
+        contributions,
       };
     } catch (error) {
       console.error("Error fetching GitHub stats:", error);
@@ -73,6 +131,7 @@ export const getGitHubStats = unstable_cache(
         stars: 0,
         forks: 0,
         commits: 0,
+        contributions: null,
       };
     }
   },

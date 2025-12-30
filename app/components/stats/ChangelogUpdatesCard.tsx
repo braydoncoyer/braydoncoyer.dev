@@ -127,7 +127,7 @@ export function ChangelogUpdatesCard({
 
         {/* Gradient overlays for scroll effect */}
         <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-12 bg-gradient-to-b from-bg-primary to-transparent transition-colors group-hover:from-white" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-32 bg-gradient-to-t from-bg-primary to-transparent transition-colors group-hover:from-white" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-44 bg-gradient-to-t from-bg-primary via-bg-primary/90 to-transparent transition-colors group-hover:from-white group-hover:via-white/90" />
 
         {/* Content at bottom */}
         <div className="relative z-20 mt-auto">

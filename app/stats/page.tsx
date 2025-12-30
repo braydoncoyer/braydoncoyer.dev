@@ -13,6 +13,7 @@ import { MostViewedArticleCard } from "@/app/components/stats/MostViewedArticleC
 import { CommunityMessagesCard } from "@/app/components/stats/CommunityMessagesCard";
 import { ChangelogUpdatesCard } from "@/app/components/stats/ChangelogUpdatesCard";
 import { GitHubStatsCard } from "@/app/components/stats/GitHubStatsCard";
+import { ContributionGraphCard } from "@/app/components/stats/ContributionGraphCard";
 import { GridWrapper } from "@/app/components/GridWrapper";
 
 export const metadata: Metadata = {
@@ -144,29 +145,39 @@ export default async function StatsPage() {
               />
             </div>
 
-            {/* Row 7: GitHub Stats */}
+            {/* Row 7: Contribution Graph */}
+            {githubStats.contributions && (
+              <div className="md:col-span-12">
+                <ContributionGraphCard
+                  contributions={githubStats.contributions}
+                  delay={0.95}
+                />
+              </div>
+            )}
+
+            {/* Row 8: GitHub Stats */}
             <div className="md:col-span-4">
               <GitHubStatsCard
                 type="stars"
-                label="GitHub Stars"
+                label="GitHub Stars on My Website"
                 value={githubStats.stars}
-                delay={0.95}
-              />
-            </div>
-            <div className="md:col-span-4">
-              <GitHubStatsCard
-                type="forks"
-                label="Forks"
-                value={githubStats.forks}
                 delay={1.0}
               />
             </div>
             <div className="md:col-span-4">
               <GitHubStatsCard
-                type="commits"
-                label="Commits"
-                value={githubStats.commits}
+                type="forks"
+                label="Forks of My Website"
+                value={githubStats.forks}
                 delay={1.05}
+              />
+            </div>
+            <div className="md:col-span-4">
+              <GitHubStatsCard
+                type="commits"
+                label="Commits to My Website"
+                value={githubStats.commits}
+                delay={1.1}
               />
             </div>
           </div>
