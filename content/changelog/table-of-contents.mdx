@@ -1,0 +1,18 @@
+---
+title: "Table of Contents with Animated Indicator"
+publishedAt: 2025-12-31T06:00:00Z
+imageName: toc_changelog_item.jpeg
+draft: false
+---
+
+Long-form articles now feature a floating Table of Contents on desktop! As you scroll, a glowing dot smoothly animates to show which section you're currently reading.
+
+Here's what makes it special:
+
+- **Smart scroll tracking** — The active section updates as you read, using a performant scroll-based approach with `requestAnimationFrame` throttling
+- **Visual hierarchy** — H2 headings appear at the top level, with H3 subsections indented beneath them
+- **Springy animations** — The indicator uses a custom `cubic-bezier` easing that overshoots slightly before settling, giving it a playful feel
+- **CSS Anchor Positioning** — Uses cutting-edge CSS as a progressive enhancement, falling back to JavaScript for older browsers
+- **Accessibility-first** — Respects `prefers-reduced-motion` and includes proper ARIA labels
+
+Want to build your own? I wrote a full tutorial: [A Modern Table of Contents in Next.js with CSS Anchor Positioning](/blog/a-modern-table-of-contents-in-nextjs-with-css-anchor-positioning).

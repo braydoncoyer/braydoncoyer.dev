@@ -1,0 +1,528 @@
+---
+title: "A Modern Table of Contents in Next.js with CSS Anchor Positioning"
+publishedAt: 2025-12-31T06:00:00Z
+summary: In this tutorial, you'll learn how to build a floating table of contents component for your Next.js blog that tracks the reader's scroll position and highlights the active section with a smooth animated dot.
+imageName: toc_nextjs_modern_css.jpeg
+categories: ["programming", "react", "css", "javascript"]
+---
+
+Long-form content benefits from navigation. When readers land on your article, they want to know what's ahead and be able to jump to sections that interest them. A table of contents solves this, but a _good_ table of contents does more - it tells readers where they are as they scroll.
+
+In this tutorial, we'll build a floating table of contents component for Next.js that extracts headings from your MDX content, tracks scroll position to highlight the active section, and animates a dot indicator as readers move through your article.
+
+## The End Result
+
+Before we dive in, here's what we're building: a fixed sidebar positioned on the left side of the viewport (on desktop) that displays your article's headings, with H3 subheadings indented under their parent H2 sections. As the reader scrolls, a small dot smoothly animates to indicate which section is currently in view. If you're reading this on a wide screen, you can see it in action right now.
+
+The component stays out of the way on smaller screens and only appears when there's enough viewport space to display it comfortably alongside your content.
+
+We'll also use CSS Anchor Positioning as a progressive enhancement - a cutting-edge CSS feature that lets elements position themselves relative to other elements without JavaScript. For browsers that don't support it yet, we'll fall back to JavaScript-based positioning.
+
+## Extracting Headings from MDX
+
+The first challenge is getting a list of headings from your MDX content. We need the heading text, its level (H2 or H3), and a slug for the anchor link.
+
+Let's create a utility file to handle this:
+
+```typescript:app/lib/toc-utils.ts
+export interface TocHeading {
+  level: 2 | 3;
+  text: string;
+  slug: string;
+}
+
+export function slugify(str: string): string {
+  return str
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/&/g, "-and-")
+    .replace(/[^\w\-]+/g, "")
+    .replace(/\-\-+/g, "-");
+}
+
+export function extractHeadingsFromMdx(content: string): TocHeading[] {
+  const headings: TocHeading[] = [];
+  const headingRegex = /^(#{2,3})\s+(.+)$/gm;
+  let match;
+
+  while ((match = headingRegex.exec(content)) !== null) {
+    const level = match[1].length as 2 | 3;
+    const text = match[2].trim();
+
+    if (!text) continue;
+
+    headings.push({
+      level,
+      text,
+      slug: slugify(text),
+    });
+  }
+
+  return headings;
+}
+```
+
+The regex `/^(#{2,3})\s+(.+)$/gm` matches lines that start with two or three `#` characters followed by whitespace and the heading text. We skip H1 headings since those are typically the article title.
+
+<Thoughtquote>
+  Make sure your `slugify` function matches whatever you're using to generate
+  heading IDs in your MDX renderer. If they don't match, the anchor links won't
+  work.
+</Thoughtquote>
+
+## Tracking the Active Section
+
+Next, we need to know which heading the reader is currently viewing. This is where the Intersection Observer API often comes up, but I've found a simpler scroll-based approach works better for this use case.
+
+The idea is straightforward: as the user scrolls, find the last heading that has passed a certain point near the top of the viewport. That's the "active" section.
+
+```typescript:app/hooks/useActiveSection.ts
+"use client";
+
+import { useState, useEffect, useCallback } from "react";
+
+interface UseActiveSectionOptions {
+  headingIds: string[];
+  topOffset?: number;
+}
+
+export function useActiveSection({
+  headingIds,
+  topOffset = 120,
+}: UseActiveSectionOptions): string | null {
+  const [activeId, setActiveId] = useState<string | null>(null);
+
+  const calculateActiveHeading = useCallback(() => {
+    if (headingIds.length === 0) return;
+
+    const headingPositions = headingIds
+      .map((id) => {
+        const element = document.getElementById(id);
+        if (!element) return null;
+        const rect = element.getBoundingClientRect();
+        return { id, top: rect.top };
+      })
+      .filter(Boolean) as { id: string; top: number }[];
+
+    if (headingPositions.length === 0) return;
+
+    let currentHeading: string | null = null;
+
+    for (const heading of headingPositions) {
+      if (heading.top <= topOffset) {
+        currentHeading = heading.id;
+      }
+    }
+
+    // If no heading has passed the offset, check if first heading is visible
+    if (currentHeading === null && headingPositions.length > 0) {
+      const firstHeading = headingPositions[0];
+      if (firstHeading.top < window.innerHeight * 0.5) {
+        currentHeading = firstHeading.id;
+      }
+    }
+
+    if (currentHeading !== null) {
+      setActiveId(currentHeading);
+    }
+  }, [headingIds, topOffset]);
+
+  useEffect(() => {
+    if (headingIds.length === 0) return;
+
+    calculateActiveHeading();
+
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          calculateActiveHeading();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [headingIds, calculateActiveHeading]);
+
+  return activeId;
+}
+```
+
+A few things worth noting:
+
+- The `topOffset` parameter accounts for fixed headers or any space you want between the top of the viewport and where you consider a section "active."
+- We use `requestAnimationFrame` to throttle scroll calculations. Without this, you'd be running calculations on every single scroll event, which hurts performance.
+- The `{ passive: true }` option on the scroll listener tells the browser we won't call `preventDefault()`, allowing it to optimize scrolling.
+
+## Building the Table of Contents Component
+
+Now for the main component. We'll combine our heading extraction and active section tracking into a floating sidebar.
+
+```tsx:app/components/TableOfContents.tsx
+"use client";
+
+import { useEffect, useRef, useState, useCallback } from "react";
+import { useActiveSection } from "@/app/hooks/useActiveSection";
+import type { TocHeading } from "@/app/lib/toc-utils";
+
+interface TableOfContentsProps {
+  headings: TocHeading[];
+}
+
+export function TableOfContents({ headings }: TableOfContentsProps) {
+  const headingIds = headings.map((h) => h.slug);
+  const activeId = useActiveSection({ headingIds });
+  const navRef = useRef<HTMLElement>(null);
+  const indicatorRef = useRef<HTMLSpanElement>(null);
+  const [isMoving, setIsMoving] = useState(false);
+
+  // Update indicator position when active heading changes
+  const updateIndicatorPosition = useCallback(() => {
+    if (!activeId || !navRef.current || !indicatorRef.current) return;
+
+    const activeLink = navRef.current.querySelector(
+      `a[href="#${activeId}"]`
+    ) as HTMLElement | null;
+
+    if (!activeLink) return;
+
+    const tocContent = navRef.current.querySelector(".toc-content");
+    if (!tocContent) return;
+
+    const contentRect = tocContent.getBoundingClientRect();
+    const linkRect = activeLink.getBoundingClientRect();
+
+    const top = linkRect.top - contentRect.top + linkRect.height / 2;
+    const isH3 = activeLink.classList.contains("toc-link--h3");
+    const left = isH3 ? 11 : -3;
+
+    indicatorRef.current.style.top = `${top}px`;
+    indicatorRef.current.style.left = `${left}px`;
+  }, [activeId]);
+
+  useEffect(() => {
+    if (!activeId) return;
+
+    setIsMoving(true);
+    const timer = setTimeout(() => setIsMoving(false), 600);
+
+    updateIndicatorPosition();
+
+    return () => clearTimeout(timer);
+  }, [activeId, updateIndicatorPosition]);
+
+  const handleLinkClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    slug: string
+  ) => {
+    e.preventDefault();
+    const element = document.getElementById(slug);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      window.history.pushState(null, "", `#${slug}`);
+    }
+  };
+
+  if (headings.length === 0) return null;
+
+  return (
+    <nav ref={navRef} aria-label="Table of contents" className="toc-container">
+      <div className="toc-content">
+        <p className="toc-label">Table of Contents</p>
+
+        <span
+          ref={indicatorRef}
+          className={`toc-indicator ${activeId ? "toc-indicator--visible" : ""} ${isMoving ? "toc-indicator--moving" : ""}`}
+          aria-hidden="true"
+        />
+
+        <ul className="toc-list">
+          {headings.map((heading) => (
+            <li key={heading.slug} className="toc-item">
+              <a
+                href={`#${heading.slug}`}
+                className={`toc-link toc-link--h${heading.level} ${activeId === heading.slug ? "toc-link--active" : ""}`}
+                onClick={(e) => handleLinkClick(e, heading.slug)}
+              >
+                {heading.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </nav>
+  );
+}
+```
+
+The component renders a nav element with a list of links. The indicator (our animated dot) is positioned absolutely within the `.toc-content` wrapper. When the active heading changes, we calculate where the dot should move based on the active link's position.
+
+## Styling with Modern CSS
+
+Here's where the magic happens. We'll use CSS custom properties for easy theming and CSS transitions for smooth animations.
+
+```css:app/globals.css
+.toc-container {
+  --toc-text-primary: #0f172a;
+  --toc-text-secondary: #5e5f6e;
+  --toc-text-tertiary: #94a3b8;
+  --toc-accent: #6c47ff;
+  --toc-accent-glow: rgba(108, 71, 255, 0.15);
+  --toc-transition: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  position: fixed;
+  left: max(1rem, calc((100vw - 1280px) / 2 - 200px));
+  width: 180px;
+  max-height: calc(100vh - 200px);
+  overflow: visible;
+  z-index: 40;
+}
+
+/* Hide on smaller screens */
+@media (max-width: 1536px) {
+  .toc-container {
+    display: none !important;
+  }
+}
+
+.toc-content {
+  position: relative;
+  padding-left: 20px;
+}
+
+.toc-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--toc-text-tertiary);
+  margin-bottom: 16px;
+}
+```
+
+The `left` positioning uses `max()` and `calc()` to position the TOC in the margin area of a centered content container. Adjust the `1280px` value to match your content's max-width.
+
+### The Animated Dot Indicator
+
+The dot indicator is a small circle that moves to highlight the active section. The animation uses a custom cubic-bezier easing function that creates a satisfying overshoot effect.
+
+```css
+.toc-indicator {
+  position: absolute;
+  left: -3px;
+  width: 7px;
+  height: 7px;
+  background-color: var(--toc-accent);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 3px var(--toc-accent-glow),
+    0 0 12px var(--toc-accent-glow);
+  transition:
+    top 0.4s var(--toc-transition),
+    left 0.4s var(--toc-transition),
+    opacity 0.2s ease;
+  opacity: 0;
+}
+
+.toc-indicator--visible {
+  opacity: 1;
+}
+```
+
+The `cubic-bezier(0.34, 1.56, 0.64, 1)` timing function is key here. The `1.56` value makes the animation overshoot its target slightly before settling, giving it a playful, springy feel.
+
+<Ideaquote>
+  Try adjusting the cubic-bezier values to change the animation personality.
+  Higher second values create more bounce, while values closer to 1 feel more
+  controlled.
+</Ideaquote>
+
+### Adding a Pulse Animation
+
+When the dot moves between sections, a subtle pulse animation draws attention to the change:
+
+```css
+@keyframes toc-dot-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 3px var(--toc-accent-glow),
+      0 0 12px var(--toc-accent-glow);
+  }
+  50% {
+    box-shadow:
+      0 0 0 5px var(--toc-accent-glow),
+      0 0 16px var(--toc-accent-glow);
+  }
+}
+
+.toc-indicator--moving {
+  animation: toc-dot-pulse 0.6s ease-out;
+}
+```
+
+### Styling the Links
+
+The link styles create visual hierarchy between H2 and H3 headings:
+
+```css
+.toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.toc-link {
+  display: block;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--toc-text-secondary);
+  text-decoration: none;
+  padding: 5px 0;
+  transition: color 0.15s ease;
+}
+
+.toc-link--h2 {
+  font-weight: 500;
+  color: var(--toc-text-primary);
+}
+
+.toc-link--h3 {
+  font-weight: 400;
+  font-size: 11px;
+  padding-left: 14px;
+}
+
+.toc-link:hover {
+  color: var(--toc-text-primary);
+}
+
+.toc-link--active {
+  color: var(--toc-accent) !important;
+}
+```
+
+H3 links are indented with `padding-left: 14px`, which creates the visual nesting effect. The dot indicator shifts horizontally to align with this indentation (that's the `left: isH3 ? 11 : -3` logic in the component).
+
+### Respecting User Preferences
+
+Always respect the `prefers-reduced-motion` media query for users who are sensitive to animations:
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  .toc-indicator {
+    transition:
+      top 0.1s ease,
+      left 0.1s ease,
+      opacity 0.1s ease;
+  }
+
+  .toc-indicator--moving {
+    animation: none;
+  }
+}
+```
+
+### Progressive Enhancement with CSS Anchor Positioning
+
+Here's where things get interesting. CSS Anchor Positioning is a new CSS feature that allows elements to position themselves relative to other "anchor" elements - no JavaScript required. At the time of writing, it's supported in Chrome and Edge, with other browsers catching up.
+
+The idea is simple: we mark the active TOC link as an anchor, and the dot indicator positions itself relative to that anchor. When the active section changes, CSS handles the positioning automatically.
+
+First, we detect support and set the anchor name on the active link:
+
+```typescript
+function supportsAnchorPositioning(): boolean {
+  if (typeof CSS === "undefined") return false;
+  return CSS.supports("anchor-name", "--test");
+}
+
+// In the component, when activeId changes:
+if (supportsAnchors && navRef.current) {
+  // Clear previous anchor
+  const links = navRef.current.querySelectorAll("a[data-toc-link]");
+  links.forEach((link) => {
+    (link as HTMLElement).style.removeProperty("anchor-name");
+  });
+
+  // Set anchor on active link
+  const activeLink = navRef.current.querySelector(`a[href="#${activeId}"]`);
+  if (activeLink) {
+    (activeLink as HTMLElement).style.setProperty(
+      "anchor-name",
+      "--toc-active",
+    );
+  }
+}
+```
+
+Then in CSS, we use `@supports` to apply anchor positioning only in browsers that support it:
+
+```css
+@supports (anchor-name: --toc-active) {
+  .toc-indicator {
+    position-anchor: --toc-active;
+    top: anchor(center);
+    transform: translateY(-50%);
+  }
+}
+```
+
+The `position-anchor` property tells the indicator which anchor to follow, and `top: anchor(center)` positions it at the vertical center of that anchor element.
+
+<Ideaquote>
+  CSS Anchor Positioning is one of those features that feels like magic when you
+  first use it. Keep an eye on browser support - as adoption grows, you'll be
+  able to remove the JavaScript fallback entirely.
+</Ideaquote>
+
+For browsers without support, the JavaScript positioning we built earlier kicks in seamlessly. Users get the same experience either way.
+
+## Using the Component
+
+In your blog post page, extract the headings and pass them to the component:
+
+```tsx
+import { TableOfContents } from "@/app/components/TableOfContents";
+import { extractHeadingsFromMdx } from "@/app/lib/toc-utils";
+
+export default function BlogPost({ content }: { content: string }) {
+  const headings = extractHeadingsFromMdx(content);
+
+  return (
+    <article>
+      <TableOfContents headings={headings} />
+      {/* Your MDX content */}
+    </article>
+  );
+}
+```
+
+## Wrapping Up
+
+A table of contents transforms long articles from walls of text into navigable documents. The animated indicator adds a layer of polish that helps readers understand where they are as they scroll.
+
+Here's what we covered:
+
+- **Heading extraction:** Using regex to parse H2 and H3 headings from MDX content with matching slugs for anchor links.
+- **Active section tracking:** A scroll-based approach that's simpler and more reliable than Intersection Observer for this use case.
+- **Smooth animations:** CSS transitions with custom easing functions create that satisfying springy movement.
+- **CSS Anchor Positioning:** A progressive enhancement using cutting-edge CSS to position the indicator relative to the active link, with a JavaScript fallback for older browsers.
+- **Accessibility:** Respecting reduced motion preferences and providing proper aria labels.
+
+The full implementation is available in my site's [GitHub repository](https://github.com/braydoncoyer/braydoncoyer.dev) if you want to see how all the pieces fit together. Feel free to adapt it for your own blog!
+
+## Resources & Shoutouts
+
+This feature was inspired by some fantastic work from the CSS community:
+
+- **[Una Kravets](https://una.im/)** — Her deep dives on CSS Anchor Positioning were invaluable. Check out her article [Introducing the CSS anchor positioning API](https://developer.chrome.com/blog/anchor-positioning-api) for a comprehensive overview of the API.
+- **[Jhey Tompkins](https://jhey.dev/)** — His creative experiments with anchor positioning and animated indicators helped shape the approach for the dot animation. His [CodePen demos](https://codepen.io/jh3y) are always worth exploring.
+- **[CSS-Tricks](https://css-tricks.com/)** — Still the go-to resource for CSS techniques and inspiration.
+
+Thanks to these folks for pushing the web forward and sharing their knowledge!
