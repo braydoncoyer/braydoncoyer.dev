@@ -235,3 +235,253 @@ blockquote p {
   margin-left: -1rem !important;
   padding-left: calc(1rem - 3px) !important;
 }
+
+/* ===========================================
+   Table of Contents - CSS Anchor Positioning
+   =========================================== */
+
+.toc-container {
+  --toc-text-primary: #0f172a;
+  --toc-text-secondary: #5e5f6e;
+  --toc-text-tertiary: #94a3b8;
+  --toc-accent: #6c47ff;
+  --toc-accent-glow: rgba(108, 71, 255, 0.15);
+  --toc-border: #e2e8f0;
+  --toc-transition: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  position: fixed;
+  /* Position further left to avoid overlap - account for container width */
+  left: max(1rem, calc((100vw - 1280px) / 2 - 200px));
+  top: 140px;
+  width: 180px;
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+  z-index: 40;
+
+  /* Subtle fade on scroll overflow */
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 8px,
+    black calc(100% - 24px),
+    transparent 100%
+  );
+}
+
+/* Hide on smaller viewports - need enough space outside container */
+@media (max-width: 1536px) {
+  .toc-container {
+    display: none;
+  }
+}
+
+/* The content wrapper with the vertical line */
+.toc-content {
+  position: relative;
+  padding-left: 20px;
+}
+
+/* The vertical track line */
+.toc-content::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--toc-border) 10%,
+    var(--toc-border) 90%,
+    transparent 100%
+  );
+}
+
+/* ===========================================
+   The Animated Dot Indicator
+   =========================================== */
+
+.toc-indicator {
+  position: absolute;
+  left: -3px;
+  width: 7px;
+  height: 7px;
+  background-color: var(--toc-accent);
+  border-radius: 50%;
+
+  /* Glow effect */
+  box-shadow:
+    0 0 0 3px var(--toc-accent-glow),
+    0 0 12px var(--toc-accent-glow);
+
+  /* Smooth animation with overshoot for both vertical and horizontal movement */
+  transition:
+    top 0.4s var(--toc-transition),
+    left 0.4s var(--toc-transition),
+    opacity 0.2s ease;
+
+  /* Start hidden until first section is active */
+  opacity: 0;
+}
+
+.toc-indicator--visible {
+  opacity: 1;
+}
+
+/* Pulse animation when dot moves */
+@keyframes toc-dot-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 3px var(--toc-accent-glow),
+      0 0 12px var(--toc-accent-glow);
+  }
+  50% {
+    box-shadow:
+      0 0 0 5px var(--toc-accent-glow),
+      0 0 16px var(--toc-accent-glow);
+  }
+}
+
+.toc-indicator--moving {
+  animation: toc-dot-pulse 0.6s ease-out;
+}
+
+/* ===========================================
+   CSS Anchor Positioning (Progressive Enhancement)
+   =========================================== */
+
+@supports (anchor-name: --toc-active) {
+  .toc-indicator {
+    position-anchor: --toc-active;
+    top: anchor(center);
+    transform: translateY(-50%);
+  }
+}
+
+/* ===========================================
+   Section Label
+   =========================================== */
+
+.toc-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--toc-text-tertiary);
+  margin-bottom: 16px;
+  padding-left: 0;
+}
+
+/* ===========================================
+   TOC Links - Typography & Hierarchy
+   =========================================== */
+
+.toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.toc-item {
+  margin: 0;
+}
+
+/* Base link styles */
+.toc-link {
+  display: block;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--toc-text-secondary);
+  text-decoration: none;
+  padding: 5px 0;
+  transition:
+    color 0.15s ease,
+    transform 0.15s ease;
+  user-select: none;
+}
+
+/* H2 headings - Main sections */
+.toc-link--h2 {
+  font-weight: 500;
+  color: var(--toc-text-primary);
+}
+
+/* H3 headings - Subsections (indented) */
+.toc-link--h3 {
+  font-weight: 400;
+  font-size: 11px;
+  color: var(--toc-text-secondary);
+  padding-left: 14px;
+}
+
+/* ===========================================
+   Interactive States
+   =========================================== */
+
+.toc-link:hover {
+  color: var(--toc-text-primary);
+}
+
+.toc-link--h3:hover {
+  transform: translateX(2px);
+}
+
+/* Active/Current section */
+.toc-link--active {
+  color: var(--toc-accent) !important;
+}
+
+/* Focus state for accessibility */
+.toc-link:focus-visible {
+  outline: 2px solid var(--toc-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ===========================================
+   Scrollbar Styling
+   =========================================== */
+
+.toc-container::-webkit-scrollbar {
+  width: 3px;
+}
+
+.toc-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.toc-container::-webkit-scrollbar-thumb {
+  background: var(--toc-border);
+  border-radius: 3px;
+}
+
+.toc-container::-webkit-scrollbar-thumb:hover {
+  background: var(--toc-text-tertiary);
+}
+
+/* ===========================================
+   Reduced Motion Preference
+   =========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .toc-indicator {
+    transition:
+      top 0.1s ease,
+      left 0.1s ease,
+      opacity 0.1s ease;
+  }
+
+  .toc-link {
+    transition: color 0.1s ease;
+  }
+
+  .toc-link--h3:hover {
+    transform: none;
+  }
+
+  .toc-indicator--moving {
+    animation: none;
+  }
+}

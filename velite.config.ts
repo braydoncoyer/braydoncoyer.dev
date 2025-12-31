@@ -1,5 +1,9 @@
 import { defineConfig, defineCollection, s } from "velite";
 import rehypeRaw from "rehype-raw";
+import {
+  TocHeading,
+  extractHeadingsFromMdx,
+} from "./app/lib/toc-utils";
 
 const computedFields = <T extends { slug: string }>(data: T) => ({
   ...data,
@@ -24,7 +28,16 @@ export const posts = defineCollection({
       draft: s.boolean().default(false),
       audioFile: s.string().optional(), // Audio file name (e.g., "article-slug.mp3")
     })
-    .transform(computedFields),
+    .transform((data, { meta }) => {
+      // Extract headings from raw MDX content for table of contents
+      const rawContent = (meta as { content?: string }).content || "";
+      const headings = extractHeadingsFromMdx(rawContent);
+
+      return {
+        ...computedFields(data),
+        headings,
+      };
+    }),
 });
 
 export const changelogItems = defineCollection({

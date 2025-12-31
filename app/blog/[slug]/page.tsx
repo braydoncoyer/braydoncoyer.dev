@@ -15,6 +15,7 @@ import ArticleReactionWrapper from "@/app/components/ArticleReactionsWrapper";
 import { Suspense } from "react";
 import { Metadata, ResolvingMetadata } from "next";
 import { AudioPlayer } from "@/app/components/AudioPlayer";
+import { TableOfContents } from "@/app/components/TableOfContents";
 
 interface BlogPageProps {
   params: Promise<{
@@ -76,8 +77,12 @@ export default async function BlogPage({ params }: BlogPageProps) {
   });
 
   return (
-    <article className="space-y-12">
-      {/* Article Banner Image */}
+    <>
+      {/* Table of Contents - fixed position, outside content flow */}
+      <TableOfContents headings={post.headings} />
+
+      <article className="space-y-12">
+        {/* Article Banner Image */}
       <div className="relative">
         {/* Lines */}
         <span className="absolute top-6 z-10 h-px w-full bg-zinc-500/75 mix-blend-screen md:top-12"></span>
@@ -288,7 +293,8 @@ export default async function BlogPage({ params }: BlogPageProps) {
         </div>
       </section>
       <NewsletterSignUp />
-    </article>
+      </article>
+    </>
   );
 }
 
