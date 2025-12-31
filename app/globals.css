@@ -255,17 +255,8 @@ blockquote p {
   /* top is set dynamically via inline style */
   width: 180px;
   max-height: calc(100vh - 200px);
-  overflow-y: auto;
+  overflow: visible;
   z-index: 40;
-
-  /* Subtle fade on scroll overflow */
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    black 8px,
-    black calc(100% - 24px),
-    transparent 100%
-  );
 }
 
 /* Hide on smaller viewports - need enough space outside container */
@@ -275,27 +266,29 @@ blockquote p {
   }
 }
 
-/* The content wrapper with the vertical line */
+/* The content wrapper */
 .toc-content {
   position: relative;
   padding-left: 20px;
 }
 
-/* The vertical track line */
-.toc-content::before {
-  content: "";
+/* SVG container for the path line */
+.toc-path-svg {
   position: absolute;
   left: 0;
-  top: 4px;
-  bottom: 4px;
-  width: 1px;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    var(--toc-border) 10%,
-    var(--toc-border) 90%,
-    transparent 100%
-  );
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+/* The path line styling */
+.toc-path-line {
+  stroke: #cbd5e1;
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 /* ===========================================
@@ -425,7 +418,7 @@ blockquote p {
 }
 
 .toc-link--h3:hover {
-  transform: translateX(2px);
+  color: var(--toc-text-primary);
 }
 
 /* Active/Current section */
@@ -475,10 +468,6 @@ blockquote p {
 
   .toc-link {
     transition: color 0.1s ease;
-  }
-
-  .toc-link--h3:hover {
-    transform: none;
   }
 
   .toc-indicator--moving {
