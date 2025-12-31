@@ -13,7 +13,7 @@ interface LinkPreviewProps {
 }
 
 const POPOVER_WIDTH = 320;
-const POPOVER_HEIGHT_ESTIMATE = 220; // Approximate height
+const POPOVER_HEIGHT_ESTIMATE = 220;
 
 export function LinkPreview({
   href,
@@ -21,16 +21,19 @@ export function LinkPreview({
   preview,
   className,
 }: LinkPreviewProps) {
-  const [isVisible, setIsVisible] = useState(false);
   const [position, setPosition] = useState<{ top: number; left: number } | null>(null);
   const [isMounted, setIsMounted] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [isHoveringLink, setIsHoveringLink] = useState(false);
+  const [isHoveringPopover, setIsHoveringPopover] = useState(false);
+  const showTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const hideTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const linkRef = useRef<HTMLAnchorElement>(null);
+  const popoverRef = useRef<HTMLDivElement>(null);
   const uniqueId = useId();
 
   const popoverId = `popover-${uniqueId.replace(/:/g, "")}`;
 
-  // Check if we're in the browser
+  // Mount check for portal
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -58,7 +61,7 @@ export function LinkPreview({
       left = viewportWidth - POPOVER_WIDTH - 10;
     }
 
-    // If still no space (very small viewport), don't show
+    // If still no space, don't show
     if (top + POPOVER_HEIGHT_ESTIMATE > viewportHeight - 10 && top < 10) {
       return null;
     }
@@ -66,31 +69,53 @@ export function LinkPreview({
     return { top, left };
   }, []);
 
-  const showPreview = useCallback(() => {
-    if (!preview) return;
+  // Show/hide logic based on hover state of both link and popover
+  useEffect(() => {
+    const shouldShow = isHoveringLink || isHoveringPopover;
 
-    // Clear any pending hide timeout
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-
-    // Delay before showing (prevents flicker on quick hover)
-    timeoutRef.current = setTimeout(() => {
-      const pos = calculatePosition();
-      if (pos) {
-        setPosition(pos);
-        setIsVisible(true);
+    if (shouldShow) {
+      // Clear any pending hide
+      if (hideTimeoutRef.current) {
+        clearTimeout(hideTimeoutRef.current);
+        hideTimeoutRef.current = null;
       }
-    }, 200);
-  }, [preview, calculatePosition]);
 
-  const hidePreview = useCallback(() => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = null;
+      // Delay before showing
+      if (!popoverRef.current?.matches(":popover-open")) {
+        showTimeoutRef.current = setTimeout(() => {
+          const pos = calculatePosition();
+          if (pos) {
+            setPosition(pos);
+            try {
+              popoverRef.current?.showPopover();
+            } catch (e) {
+              // Ignore
+            }
+          }
+        }, 200);
+      }
+    } else {
+      // Clear any pending show
+      if (showTimeoutRef.current) {
+        clearTimeout(showTimeoutRef.current);
+        showTimeoutRef.current = null;
+      }
+
+      // Small delay before hiding (allows moving between link and popover)
+      hideTimeoutRef.current = setTimeout(() => {
+        try {
+          popoverRef.current?.hidePopover();
+        } catch (e) {
+          // Ignore
+        }
+      }, 100);
     }
-    setIsVisible(false);
-  }, []);
+
+    return () => {
+      if (showTimeoutRef.current) clearTimeout(showTimeoutRef.current);
+      if (hideTimeoutRef.current) clearTimeout(hideTimeoutRef.current);
+    };
+  }, [isHoveringLink, isHoveringPopover, calculatePosition]);
 
   // If no preview available, render simple link
   if (!preview) {
@@ -114,11 +139,11 @@ export function LinkPreview({
         className={className}
         target="_blank"
         rel="noopener noreferrer"
-        onMouseEnter={showPreview}
-        onMouseLeave={hidePreview}
-        onFocus={showPreview}
-        onBlur={hidePreview}
-        aria-describedby={isVisible ? popoverId : undefined}
+        onMouseEnter={() => setIsHoveringLink(true)}
+        onMouseLeave={() => setIsHoveringLink(false)}
+        onFocus={() => setIsHoveringLink(true)}
+        onBlur={() => setIsHoveringLink(false)}
+        aria-describedby={popoverId}
       >
         {children}
       </a>
@@ -126,13 +151,15 @@ export function LinkPreview({
       {isMounted &&
         createPortal(
           <LinkPreviewPopover
+            ref={popoverRef}
             id={popoverId}
             screenshotPath={preview.screenshotPath}
             url={href}
-            isVisible={isVisible}
             width={preview.width}
             height={preview.height}
             position={position}
+            onMouseEnter={() => setIsHoveringPopover(true)}
+            onMouseLeave={() => setIsHoveringPopover(false)}
           />,
           document.body
         )}

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 
 interface LinkPreviewImageProps {
   src: string;
@@ -38,16 +37,14 @@ export function LinkPreviewImage({
         <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-slate-100 via-slate-200 to-slate-100 bg-[length:200%_100%]" />
       )}
 
-      {/* Image */}
-      <motion.img
+      {/* Image with CSS transition */}
+      <img
         src={src}
         alt={alt}
         width={displayWidth}
         height={displayHeight}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isLoaded ? 1 : 0 }}
-        transition={{ duration: 0.2 }}
-        className="h-full w-full object-cover object-top"
+        className="h-full w-full object-cover object-top transition-opacity duration-200"
+        style={{ opacity: isLoaded ? 1 : 0 }}
         onLoad={() => setIsLoaded(true)}
         onError={() => setHasError(true)}
       />

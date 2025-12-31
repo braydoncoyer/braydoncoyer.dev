@@ -116,8 +116,7 @@ function getPreviewFromManifest(
   };
 }
 
-function CustomLink(props: { href: string; children: React.ReactNode; [key: string]: any }) {
-  const href = props.href;
+function CustomLink({ href, children, ...rest }: { href: string; children: React.ReactNode; [key: string]: any }) {
   const manifest = useLinkPreviewManifest();
 
   const styles = `font-medium border-b border-indigo-400 hover:border-b-2 text-slate-900 transition-all duration-75`;
@@ -125,15 +124,15 @@ function CustomLink(props: { href: string; children: React.ReactNode; [key: stri
   // Internal links (starting with /)
   if (href.startsWith("/")) {
     return (
-      <Link className={styles} href={href} {...props}>
-        {props.children}
+      <Link className={styles} href={href} {...rest}>
+        {children}
       </Link>
     );
   }
 
   // Anchor links (starting with #)
   if (href.startsWith("#")) {
-    return <a className={styles} {...props} />;
+    return <a className={styles} href={href} {...rest}>{children}</a>;
   }
 
   // External links - check for preview
@@ -141,7 +140,7 @@ function CustomLink(props: { href: string; children: React.ReactNode; [key: stri
 
   return (
     <LinkPreview href={href} className={styles} preview={preview}>
-      {props.children}
+      {children}
     </LinkPreview>
   );
 }

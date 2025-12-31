@@ -476,54 +476,58 @@ blockquote p {
 }
 
 /* ===========================================
-   Link Preview Popover
+   Link Preview Popover - Native Popover API
    =========================================== */
 
 .link-preview-popover {
-  /* Reset */
+  /* Reset popover defaults */
   margin: 0;
   padding: 0;
   border: none;
   background: transparent;
   overflow: visible;
 
-  /* Prevent text selection during animation */
-  user-select: none;
-  pointer-events: none;
+  /* Positioning via JS */
+  position: fixed;
+  inset: unset;
+  z-index: 9999;
+
+  /* Animation setup */
+  opacity: 0;
+  transform: translateY(8px) scale(0.96);
+  transition:
+    opacity 0.15s ease-out,
+    transform 0.15s ease-out,
+    overlay 0.15s ease-out allow-discrete,
+    display 0.15s ease-out allow-discrete;
 }
 
-/* Card container */
+/* Open state */
+.link-preview-popover:popover-open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Entry animation - starting styles */
+@starting-style {
+  .link-preview-popover:popover-open {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+}
+
+/* ===========================================
+   Popover Card Styles
+   =========================================== */
+
 .link-preview-card {
   width: 320px;
   max-width: calc(100vw - 32px);
-  pointer-events: auto;
 }
 
-/* Tether Arrow - Points to the link */
-.link-preview-arrow {
-  position: absolute;
-  bottom: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 12px;
-  height: 6px;
-  overflow: hidden;
-}
-
-.link-preview-arrow::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%) rotate(45deg);
-  width: 10px;
-  height: 10px;
-  background: white;
-  box-shadow:
-    0 4px 6px -1px rgb(0 0 0 / 0.1),
-    0 2px 4px -2px rgb(0 0 0 / 0.1);
-  border-radius: 2px;
-}
+/* ===========================================
+   Responsive & Accessibility
+   =========================================== */
 
 /* Hide on touch devices since hover doesn't work well */
 @media (hover: none) and (pointer: coarse) {
@@ -535,12 +539,13 @@ blockquote p {
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .link-preview-popover {
-    animation: none !important;
-    transition: none !important;
+    transition: none;
   }
 
-  .link-preview-popover * {
-    animation: none !important;
-    transition: none !important;
+  @starting-style {
+    .link-preview-popover:popover-open {
+      opacity: 1;
+      transform: none;
+    }
   }
 }
