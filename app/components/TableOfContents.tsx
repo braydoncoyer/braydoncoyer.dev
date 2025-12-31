@@ -23,10 +23,52 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
   const indicatorRef = useRef<HTMLSpanElement>(null);
   const [isMoving, setIsMoving] = useState(false);
   const [supportsAnchors, setSupportsAnchors] = useState(false);
+  const [topPosition, setTopPosition] = useState(140);
+  const fixedTop = 140; // The fixed top position when scrolled
 
   // Check for anchor positioning support on mount
   useEffect(() => {
     setSupportsAnchors(supportsAnchorPositioning());
+  }, []);
+
+  // Track scroll position to calculate dynamic top value
+  useEffect(() => {
+    // Find the article content wrapper (.wrapper.z-10)
+    const contentWrapper = document.querySelector("article .wrapper.z-10");
+    if (!contentWrapper) return;
+
+    const calculateTopPosition = () => {
+      // Get the content wrapper's position relative to the viewport
+      const wrapperRect = contentWrapper.getBoundingClientRect();
+
+      // If the content wrapper is below the fixed position, TOC follows it
+      // If the content wrapper has scrolled past, TOC stays fixed
+      const newTop = Math.max(fixedTop, wrapperRect.top);
+      setTopPosition(newTop);
+    };
+
+    // Calculate on mount
+    calculateTopPosition();
+
+    // Throttled scroll handler
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          calculateTopPosition();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", calculateTopPosition);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", calculateTopPosition);
+    };
   }, []);
 
   // Update indicator position (handles both vertical and horizontal positioning)
@@ -34,7 +76,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
     if (!activeId || !navRef.current || !indicatorRef.current) return;
 
     const activeLink = navRef.current.querySelector(
-      `a[href="#${activeId}"]`
+      `a[href="#${activeId}"]`,
     ) as HTMLElement | null;
 
     if (!activeLink) return;
@@ -74,7 +116,10 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
       const activeLink = navRef.current.querySelector(`a[href="#${activeId}"]`);
       if (activeLink) {
         // Use setProperty for CSS anchor-name (not yet in TypeScript CSSStyleDeclaration)
-        (activeLink as HTMLElement).style.setProperty("anchor-name", "--toc-active");
+        (activeLink as HTMLElement).style.setProperty(
+          "anchor-name",
+          "--toc-active",
+        );
       }
     }
 
@@ -87,7 +132,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
   // Handle smooth scroll on link click
   const handleLinkClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    slug: string
+    slug: string,
   ) => {
     e.preventDefault();
     const element = document.getElementById(slug);
@@ -106,9 +151,10 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
       ref={navRef}
       aria-label="Table of contents"
       className="toc-container"
+      style={{ top: `${topPosition}px` }}
     >
       <div className="toc-content">
-        <p className="toc-label">On this page</p>
+        <p className="toc-label">Table of Contents</p>
 
         {/* The animated dot indicator */}
         <span

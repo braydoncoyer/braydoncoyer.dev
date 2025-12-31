@@ -252,7 +252,7 @@ blockquote p {
   position: fixed;
   /* Position further left to avoid overlap - account for container width */
   left: max(1rem, calc((100vw - 1280px) / 2 - 200px));
-  top: 140px;
+  /* top is set dynamically via inline style */
   width: 180px;
   max-height: calc(100vh - 200px);
   overflow-y: auto;
@@ -271,7 +271,7 @@ blockquote p {
 /* Hide on smaller viewports - need enough space outside container */
 @media (max-width: 1536px) {
   .toc-container {
-    display: none;
+    display: none !important;
   }
 }
 
