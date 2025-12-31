@@ -184,7 +184,7 @@ function Code({ children, ...props }) {
   };
 
   if (!isMultiLine) {
-    return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
+    return <code suppressHydrationWarning dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
   }
 
   return (
@@ -242,6 +242,7 @@ function Code({ children, ...props }) {
       <div className="code-container">
         <code
           className="mb-12"
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: codeHTML }}
           {...props}
         />
