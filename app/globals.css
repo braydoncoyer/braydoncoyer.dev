@@ -474,3 +474,73 @@ blockquote p {
     animation: none;
   }
 }
+
+/* ===========================================
+   Link Preview Popover
+   =========================================== */
+
+.link-preview-popover {
+  /* Reset */
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  overflow: visible;
+
+  /* Prevent text selection during animation */
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Card container */
+.link-preview-card {
+  width: 320px;
+  max-width: calc(100vw - 32px);
+  pointer-events: auto;
+}
+
+/* Tether Arrow - Points to the link */
+.link-preview-arrow {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 6px;
+  overflow: hidden;
+}
+
+.link-preview-arrow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  background: white;
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+  border-radius: 2px;
+}
+
+/* Hide on touch devices since hover doesn't work well */
+@media (hover: none) and (pointer: coarse) {
+  .link-preview-popover {
+    display: none !important;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .link-preview-popover {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .link-preview-popover * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

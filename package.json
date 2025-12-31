@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate-previews": "npx tsx scripts/generate-link-previews.ts",
+    "fix-previews": "npx tsx scripts/fix-failed-previews.ts"
   },
   "dependencies": {
     "@codesandbox/sandpack-react": "^2.20.0",
@@ -37,11 +39,13 @@
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "15.2.6",
+    "playwright": "^1.57.0",
     "postcss": "^8",
     "prettier": "^3.4.2",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^3.4.7",
     "tailwindcss-full-bleed": "^2.0.1",
+    "tsx": "^4.21.0",
     "typescript": "^5",
     "velite": "^0.1.1"
   }

@@ -37,3 +37,6 @@ next-env.d.ts
 
 # velite files
 .velite
+
+# link preview content hash (local optimization only)
+public/previews/.content-hash
