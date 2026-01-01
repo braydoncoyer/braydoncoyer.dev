@@ -15,6 +15,22 @@ interface LinkPreviewProps {
 const POPOVER_WIDTH = 320;
 const POPOVER_HEIGHT_ESTIMATE = 220;
 
+/**
+ * Check if browser supports CSS Anchor Positioning
+ */
+function supportsAnchorPositioning(): boolean {
+  if (typeof CSS === "undefined") return false;
+  return CSS.supports("anchor-name", "--test");
+}
+
+/**
+ * Check if device is touch-only (no hover capability)
+ */
+function isTouchDevice(): boolean {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+}
+
 export function LinkPreview({
   href,
   children,
@@ -23,6 +39,8 @@ export function LinkPreview({
 }: LinkPreviewProps) {
   const [position, setPosition] = useState<{ top: number; left: number } | null>(null);
   const [isMounted, setIsMounted] = useState(false);
+  const [supportsAnchor, setSupportsAnchor] = useState(false);
+  const [isTouch, setIsTouch] = useState(false);
   const [isHoveringLink, setIsHoveringLink] = useState(false);
   const [isHoveringPopover, setIsHoveringPopover] = useState(false);
   const showTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -32,10 +50,13 @@ export function LinkPreview({
   const uniqueId = useId();
 
   const popoverId = `popover-${uniqueId.replace(/:/g, "")}`;
+  const anchorName = `--anchor-${uniqueId.replace(/:/g, "")}`;
 
-  // Mount check for portal
+  // Mount check for portal, anchor support, and touch device detection
   useEffect(() => {
     setIsMounted(true);
+    setIsTouch(isTouchDevice());
+    setSupportsAnchor(supportsAnchorPositioning());
   }, []);
 
   const calculatePosition = useCallback(() => {
@@ -83,14 +104,17 @@ export function LinkPreview({
       // Delay before showing
       if (!popoverRef.current?.matches(":popover-open")) {
         showTimeoutRef.current = setTimeout(() => {
-          const pos = calculatePosition();
-          if (pos) {
+          // Only calculate JS position if browser doesn't support anchor positioning
+          if (!supportsAnchor) {
+            const pos = calculatePosition();
+            if (!pos) return;
             setPosition(pos);
-            try {
-              popoverRef.current?.showPopover();
-            } catch (e) {
-              // Ignore
-            }
+          }
+
+          try {
+            popoverRef.current?.showPopover();
+          } catch (e) {
+            // Ignore
           }
         }, 200);
       }
@@ -115,10 +139,10 @@ export function LinkPreview({
       if (showTimeoutRef.current) clearTimeout(showTimeoutRef.current);
       if (hideTimeoutRef.current) clearTimeout(hideTimeoutRef.current);
     };
-  }, [isHoveringLink, isHoveringPopover, calculatePosition]);
+  }, [isHoveringLink, isHoveringPopover, calculatePosition, supportsAnchor]);
 
-  // If no preview available, render simple link
-  if (!preview) {
+  // If no preview available or touch device, render simple link
+  if (!preview || isTouch) {
     return (
       <a
         href={href}
@@ -144,6 +168,7 @@ export function LinkPreview({
         onFocus={() => setIsHoveringLink(true)}
         onBlur={() => setIsHoveringLink(false)}
         aria-describedby={popoverId}
+        style={supportsAnchor ? { anchorName: anchorName } as React.CSSProperties : undefined}
       >
         {children}
       </a>
@@ -157,7 +182,8 @@ export function LinkPreview({
             url={href}
             width={preview.width}
             height={preview.height}
-            position={position}
+            position={supportsAnchor ? null : position}
+            anchorName={supportsAnchor ? anchorName : undefined}
             onMouseEnter={() => setIsHoveringPopover(true)}
             onMouseLeave={() => setIsHoveringPopover(false)}
           />,

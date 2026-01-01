@@ -10,6 +10,7 @@ interface LinkPreviewPopoverProps {
   width: number;
   height: number;
   position: { top: number; left: number } | null;
+  anchorName?: string;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
 }
@@ -41,9 +42,16 @@ function formatDisplayUrl(url: string): string {
 export const LinkPreviewPopover = forwardRef<
   HTMLDivElement,
   LinkPreviewPopoverProps
->(({ id, screenshotPath, url, width, height, position, onMouseEnter, onMouseLeave }, ref) => {
+>(({ id, screenshotPath, url, width, height, position, anchorName, onMouseEnter, onMouseLeave }, ref) => {
   const displayUrl = formatDisplayUrl(url);
   const faviconUrl = getFaviconUrl(url);
+
+  // Build style object - use CSS Anchor Positioning when supported, fallback to JS position
+  const popoverStyle: React.CSSProperties = anchorName
+    ? { positionAnchor: anchorName } as React.CSSProperties
+    : position
+      ? { top: position.top, left: position.left }
+      : {};
 
   return (
     <div
@@ -52,8 +60,8 @@ export const LinkPreviewPopover = forwardRef<
       // @ts-expect-error - popover is a valid HTML attribute
       popover="manual"
       role="tooltip"
-      className="link-preview-popover"
-      style={position ? { top: position.top, left: position.left } : undefined}
+      className={`link-preview-popover${anchorName ? ' anchor-positioned' : ''}`}
+      style={popoverStyle}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >

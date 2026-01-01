@@ -38,8 +38,8 @@ const EXCLUDED_DOMAINS = [
 // Internal patterns
 const INTERNAL_PATTERNS = [/^\//, /^#/, /braydoncoyer\.dev/];
 
-// Max age before regeneration (30 days)
-const MAX_SCREENSHOT_AGE_MS = 30 * 24 * 60 * 60 * 1000;
+// Max age before regeneration (6 months)
+const MAX_SCREENSHOT_AGE_MS = 6 * 30 * 24 * 60 * 60 * 1000;
 
 // Concurrency limit
 const CONCURRENCY = 3;
@@ -337,7 +337,7 @@ async function main() {
     // Skip if failed previously (don't retry on every build)
     if (existing.status === "failed") return false;
 
-    // Regenerate if older than 30 days
+    // Regenerate if older than 6 months
     const age = Date.now() - new Date(existing.generatedAt).getTime();
     return age > MAX_SCREENSHOT_AGE_MS;
   });

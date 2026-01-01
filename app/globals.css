@@ -526,6 +526,25 @@ blockquote p {
 }
 
 /* ===========================================
+   CSS Anchor Positioning (Progressive Enhancement)
+   Supported in Chrome 125+, Edge 125+
+   =========================================== */
+
+@supports (anchor-name: --test) {
+  .link-preview-popover.anchor-positioned {
+    /* Use CSS Anchor Positioning instead of JS */
+    position: absolute;
+    position-try-fallbacks: flip-block;
+
+    /* Position above the anchor, centered horizontally */
+    bottom: anchor(top);
+    left: anchor(center);
+    transform: translateX(-50%);
+    margin-bottom: 12px;
+  }
+}
+
+/* ===========================================
    Responsive & Accessibility
    =========================================== */
 
