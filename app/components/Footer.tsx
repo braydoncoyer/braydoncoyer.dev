@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { SocialPill } from "./SocialPill";
 import { GridWrapper } from "./GridWrapper";
