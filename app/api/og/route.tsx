@@ -1,13 +1,9 @@
-import { siteMetadata } from "@/app/data/siteMetadata";
 import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
-// import fs from "fs";
-// import path from "path";
+import fs from "fs";
+import path from "path";
 
-// export const runtime = "nodejs";
-
-// Route segment config
-export const fetchCache = "force-no-store";
+export const runtime = "nodejs";
 
 export async function GET(request: NextRequest) {
   try {
@@ -15,37 +11,27 @@ export async function GET(request: NextRequest) {
 
     // Get the query parameters
     const title = searchParams.get("title") || "Blog Post";
-    const summary = searchParams.get("summary") || "";
     const imageName = searchParams.get("image") || "";
 
-    const isDevelopment = process.env.NODE_ENV === "development";
-    const baseUrl = isDevelopment
-      ? "http://localhost:3000"
-      : siteMetadata.siteUrl;
+    // Read images directly from the filesystem
+    const publicDir = path.join(process.cwd(), "public");
 
-    const imageUrl = imageName ? `${baseUrl}/blog/${imageName}` : "";
+    // Read the blog image
+    let blogImageSrc = "";
+    if (imageName) {
+      const blogImagePath = path.join(publicDir, "blog", imageName);
+      if (fs.existsSync(blogImagePath)) {
+        const blogImageBuffer = fs.readFileSync(blogImagePath);
+        const ext = path.extname(imageName).toLowerCase().slice(1);
+        const mimeType = ext === "jpg" ? "jpeg" : ext;
+        blogImageSrc = `data:image/${mimeType};base64,${blogImageBuffer.toString("base64")}`;
+      }
+    }
 
-    // Load fonts using the file system with Node.js runtime
-    // const geistRegular = fs.readFileSync(
-    //   path.join(
-    //     process.cwd(),
-    //     "node_modules/geist/dist/fonts/geist-sans/Geist-Regular.ttf",
-    //   ),
-    // );
-
-    // const geistMedium = fs.readFileSync(
-    //   path.join(
-    //     process.cwd(),
-    //     "node_modules/geist/dist/fonts/geist-sans/Geist-Medium.ttf",
-    //   ),
-    // );
-
-    // const geistSemiBold = fs.readFileSync(
-    //   path.join(
-    //     process.cwd(),
-    //     "node_modules/geist/dist/fonts/geist-sans/Geist-SemiBold.ttf",
-    //   ),
-    // );
+    // Read the overlay image
+    const overlayPath = path.join(publicDir, "braydoncoyer_og_overlay.png");
+    const overlayBuffer = fs.readFileSync(overlayPath);
+    const overlaySrc = `data:image/png;base64,${overlayBuffer.toString("base64")}`;
 
     return new ImageResponse(
       (
@@ -60,18 +46,46 @@ export async function GET(request: NextRequest) {
             position: "relative",
           }}
         >
+          {blogImageSrc && (
+            <img
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+              }}
+              src={blogImageSrc}
+              alt="article background image"
+            />
+          )}
           <img
-            tw="absolute inset-0 -z-10"
-            src={imageUrl}
-            alt="article background image"
-          />
-          <img
-            tw="absolute inset-0 -z-10"
-            src={`${baseUrl}/braydoncoyer_og_overlay.png`}
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+            src={overlaySrc}
             alt="Gradient overlay"
           />
 
-          <h1 tw="absolute -bottom-12 left-0 pl-22 w-full text-white text-6xl leading-tight max-w-4xl">
+          <h1
+            style={{
+              position: "absolute",
+              bottom: -48,
+              left: 0,
+              paddingLeft: 88,
+              width: "100%",
+              color: "white",
+              fontSize: 60,
+              lineHeight: 1.2,
+              maxWidth: 896,
+            }}
+          >
             {title}
           </h1>
         </div>
