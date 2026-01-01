@@ -77,7 +77,7 @@ pre {
 }
 
 .code-frame {
-  @apply flex h-9 items-center justify-between overflow-scroll rounded-t-xl border-b border-[#E2E3E5] bg-white px-4;
+  @apply flex h-9 items-center justify-between overflow-hidden rounded-t-xl border-b border-[#E2E3E5] bg-white px-4;
 }
 
 .code-frame-content {
@@ -89,7 +89,7 @@ pre {
 }
 
 .code-container {
-  @apply overflow-scroll rounded-b-xl bg-white p-6;
+  @apply overflow-auto rounded-b-xl bg-white p-6;
 }
 
 .frame-controls {
