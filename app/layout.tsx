@@ -10,6 +10,7 @@ import { GeistSans } from "geist/font/sans";
 import Script from "next/script";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteMetadata.siteUrl),
   description: siteMetadata.description,
   openGraph: {
     title: siteMetadata.title,
