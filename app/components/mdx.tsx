@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as runtime from "react/jsx-runtime";
 import { highlight } from "sugar-high";
 import Link from "next/link";
@@ -7,6 +7,8 @@ import Link from "next/link";
 import { BgGradient } from "./BgGradient";
 import { CodePlayground } from "./CodePlayground";
 import { Details, DetailsSummary } from "./Details";
+import { LinkPreview } from "./LinkPreview";
+import type { LinkPreviewData, LinkPreviewManifest } from "@/app/lib/link-previews/types";
 
 interface MDXProps {
   code: string;
@@ -36,30 +38,110 @@ function Table({ data }) {
   );
 }
 
-function CustomLink(props) {
-  let href = props.href;
+// Simple hash function matching the build script
+function hashUrl(url: string): string {
+  let hash = 0;
+  for (let i = 0; i < url.length; i++) {
+    const char = url.charCodeAt(i);
+    hash = (hash << 5) - hash + char;
+    hash = hash & hash;
+  }
+  return Math.abs(hash).toString(16).padStart(12, "0").slice(0, 12);
+}
+
+// Cache for manifest data
+let manifestCache: LinkPreviewManifest | null = null;
+let manifestLoading = false;
+let manifestLoaded = false;
+
+function useLinkPreviewManifest() {
+  const [manifest, setManifest] = useState<LinkPreviewManifest | null>(manifestCache);
+
+  useEffect(() => {
+    if (manifestLoaded) {
+      setManifest(manifestCache);
+      return;
+    }
+
+    if (manifestLoading) {
+      // Wait for existing load to complete
+      const checkLoaded = setInterval(() => {
+        if (manifestLoaded) {
+          setManifest(manifestCache);
+          clearInterval(checkLoaded);
+        }
+      }, 50);
+      return () => clearInterval(checkLoaded);
+    }
+
+    manifestLoading = true;
+
+    fetch("/previews/manifest.json")
+      .then((res) => {
+        if (res.ok) return res.json();
+        return null;
+      })
+      .then((data) => {
+        manifestCache = data;
+        manifestLoaded = true;
+        manifestLoading = false;
+        setManifest(data);
+      })
+      .catch(() => {
+        manifestLoaded = true;
+        manifestLoading = false;
+      });
+  }, []);
+
+  return manifest;
+}
+
+function getPreviewFromManifest(
+  manifest: LinkPreviewManifest | null,
+  url: string
+): LinkPreviewData | null {
+  if (!manifest?.previews) return null;
+
+  const hash = hashUrl(url);
+  const entry = manifest.previews[hash];
+
+  if (!entry || entry.status !== "success") {
+    return null;
+  }
+
+  return {
+    screenshotPath: entry.screenshotPath,
+    width: entry.width,
+    height: entry.height,
+  };
+}
+
+function CustomLink({ href, children, ...rest }: { href: string; children: React.ReactNode; [key: string]: any }) {
+  const manifest = useLinkPreviewManifest();
 
   const styles = `font-medium border-b border-indigo-400 hover:border-b-2 text-slate-900 transition-all duration-75`;
 
+  // Internal links (starting with /)
   if (href.startsWith("/")) {
     return (
-      <Link className={styles} href={href} {...props}>
-        {props.children}
+      <Link className={styles} href={href} {...rest}>
+        {children}
       </Link>
     );
   }
 
+  // Anchor links (starting with #)
   if (href.startsWith("#")) {
-    return <a className={styles} {...props} />;
+    return <a className={styles} href={href} {...rest}>{children}</a>;
   }
 
+  // External links - check for preview
+  const preview = getPreviewFromManifest(manifest, href);
+
   return (
-    <a
-      className={styles}
-      target="_blank"
-      rel="noopener noreferrer"
-      {...props}
-    />
+    <LinkPreview href={href} className={styles} preview={preview}>
+      {children}
+    </LinkPreview>
   );
 }
 

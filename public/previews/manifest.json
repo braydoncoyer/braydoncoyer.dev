@@ -1,0 +1,991 @@
+{
+  "generated": "2025-12-31T22:05:04.812Z",
+  "version": "1.0",
+  "previews": {
+    "00006c2edbb4": {
+      "url": "https://www.monolisa.dev/",
+      "screenshotPath": "/previews/00006c2edbb4.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:28:58.250Z",
+      "status": "success"
+    },
+    "00001fe33eb3": {
+      "url": "https://www.jetbrains.com/lp/mono/",
+      "screenshotPath": "/previews/00001fe33eb3.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:56:59.197Z",
+      "status": "success"
+    },
+    "000003445a4a": {
+      "url": "https://www.browserstack.com/guide/what-is-test-driven-development",
+      "screenshotPath": "/previews/000003445a4a.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:56:34.467Z",
+      "status": "success"
+    },
+    "00003ef4ec56": {
+      "url": "https://github.com/tonsky/FiraCode",
+      "screenshotPath": "/previews/00003ef4ec56.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:29:27.302Z",
+      "status": "success"
+    },
+    "000034792134": {
+      "url": "https://github.com/adobe-fonts/source-code-pro",
+      "screenshotPath": "/previews/000034792134.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:29:27.712Z",
+      "status": "success"
+    },
+    "000031bb6732": {
+      "url": "https://www.myfonts.com/person/Steve_Matteson/",
+      "screenshotPath": "/previews/000031bb6732.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:29:41.553Z",
+      "status": "success"
+    },
+    "0000681fc80c": {
+      "url": "https://larsenwork.com/monoid/",
+      "screenshotPath": "/previews/0000681fc80c.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:29:43.603Z",
+      "status": "success"
+    },
+    "000001df317c": {
+      "url": "https://github.com/AlbertoDorado/droid-sans-mono-zeromod",
+      "screenshotPath": "/previews/000001df317c.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:29:44.404Z",
+      "status": "success"
+    },
+    "00002febdd3a": {
+      "url": "https://github.com/AlbertoDorado",
+      "screenshotPath": "/previews/00002febdd3a.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:29:44.942Z",
+      "status": "success"
+    },
+    "00001d8ae025": {
+      "url": "https://www.monolisa.dev",
+      "screenshotPath": "/previews/00001d8ae025.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:29:49.688Z",
+      "status": "success"
+    },
+    "00003a7b454c": {
+      "url": "https://docs.microsoft.com/en-us/typography/font-list/consolas",
+      "screenshotPath": "/previews/00003a7b454c.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:29:50.254Z",
+      "status": "success"
+    },
+    "0000362f1790": {
+      "url": "https://djr.com",
+      "screenshotPath": "/previews/0000362f1790.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:29:52.363Z",
+      "status": "success"
+    },
+    "000042ccab54": {
+      "url": "https://input.djr.com",
+      "screenshotPath": "/previews/000042ccab54.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:29:54.912Z",
+      "status": "success"
+    },
+    "00002f130751": {
+      "url": "https://fonts.google.com/specimen/Source+Code+Pro#standard-styles",
+      "screenshotPath": "/previews/00002f130751.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:50:59.562Z",
+      "status": "success"
+    },
+    "00006b421899": {
+      "url": "https://www.dafont.com/monofur.font",
+      "screenshotPath": "/previews/00006b421899.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:57:25.256Z",
+      "status": "success"
+    },
+    "000039379e60": {
+      "url": "https://dejavu-fonts.github.io",
+      "screenshotPath": "/previews/000039379e60.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:30:24.262Z",
+      "status": "success"
+    },
+    "00003e23dcfb": {
+      "url": "https://github.com/ProgrammingFonts/ProgrammingFonts",
+      "screenshotPath": "/previews/00003e23dcfb.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:30:26.783Z",
+      "status": "success"
+    },
+    "000040a3102a": {
+      "url": "https://una.im/",
+      "screenshotPath": "/previews/000040a3102a.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:51:08.036Z",
+      "status": "success"
+    },
+    "00002205c539": {
+      "url": "https://jhey.dev/",
+      "screenshotPath": "/previews/00002205c539.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:30:55.827Z",
+      "status": "success"
+    },
+    "000009744134": {
+      "url": "https://developer.chrome.com/blog/anchor-positioning-api",
+      "screenshotPath": "/previews/000009744134.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:30:56.475Z",
+      "status": "success"
+    },
+    "00007ac656e4": {
+      "url": "https://codepen.io/jh3y",
+      "screenshotPath": "/previews/00007ac656e4.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:57:33.217Z",
+      "status": "success"
+    },
+    "00003540dace": {
+      "url": "https://nextjs.org/",
+      "screenshotPath": "/previews/00003540dace.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:31:25.721Z",
+      "status": "success"
+    },
+    "000005b85510": {
+      "url": "https://microlink.io/screenshot",
+      "screenshotPath": "/previews/000005b85510.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:31:25.771Z",
+      "status": "success"
+    },
+    "00001fa66103": {
+      "url": "https://css-tricks.com/",
+      "screenshotPath": "/previews/00001fa66103.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:57:58.113Z",
+      "status": "success"
+    },
+    "000039803f00": {
+      "url": "https://tailwindcss.com/",
+      "screenshotPath": "/previews/000039803f00.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:31:55.639Z",
+      "status": "success"
+    },
+    "00007f345517": {
+      "url": "https://supabase.com/",
+      "screenshotPath": "/previews/00007f345517.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:31:56.576Z",
+      "status": "success"
+    },
+    "00006a63f4be": {
+      "url": "https://www.notion.so/product?utm_source=google&utm_campaign=2075789710&utm_medium=80211061601&utm_content=500427479647&utm_term=notion&targetid=aud-1188813422817:kwd-312974742&gclid=Cj0KCQiAzMGNBhCyARIsANpUkzMIIZl2Z9mzf48BtyHyqEdNRIJpk6z9majB1vQgp1fXQ4OBMqodeYoaAn8REALw_wcB",
+      "screenshotPath": "/previews/00006a63f4be.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:31:58.891Z",
+      "status": "success"
+    },
+    "000036707c2a": {
+      "url": "https://microlink.io/",
+      "screenshotPath": "/previews/000036707c2a.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:32:01.860Z",
+      "status": "success"
+    },
+    "00000fbca3ff": {
+      "url": "https://cloudinary.com/",
+      "screenshotPath": "/previews/00000fbca3ff.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:32:03.729Z",
+      "status": "success"
+    },
+    "00006e4d5dba": {
+      "url": "https://iconic.app/",
+      "screenshotPath": "/previews/00006e4d5dba.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:32:04.740Z",
+      "status": "success"
+    },
+    "00001b8965e5": {
+      "url": "https://www.npmjs.com/package/autoprefixer",
+      "screenshotPath": "/previews/00001b8965e5.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:32:07.473Z",
+      "status": "success"
+    },
+    "00005eb69cd7": {
+      "url": "https://codepen.io/braydoncoyer",
+      "screenshotPath": "/previews/00005eb69cd7.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:32:09.843Z",
+      "status": "success"
+    },
+    "00000a156af4": {
+      "url": "https://bootcamp.uxdesign.cc/how-to-make-glassmorphism-more-accessible-9121d816004c",
+      "screenshotPath": "/previews/00000a156af4.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:58:23.014Z",
+      "status": "success"
+    },
+    "0000120ffe69": {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions",
+      "screenshotPath": "/previews/0000120ffe69.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:32:37.216Z",
+      "status": "success"
+    },
+    "000041115cca": {
+      "url": "https://angular.io/api/common/Location",
+      "screenshotPath": "/previews/000041115cca.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:32:37.289Z",
+      "status": "success"
+    },
+    "000070862d6e": {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes",
+      "screenshotPath": "/previews/000070862d6e.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:32:37.559Z",
+      "status": "success"
+    },
+    "000077bd082a": {
+      "url": "https://shields.io/",
+      "screenshotPath": "/previews/000077bd082a.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:32:40.239Z",
+      "status": "success"
+    },
+    "0000129d7036": {
+      "url": "https://github.com/",
+      "screenshotPath": "/previews/0000129d7036.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:32:41.000Z",
+      "status": "success"
+    },
+    "0000779218e9": {
+      "url": "https://github.com/braydoncoyer",
+      "screenshotPath": "/previews/0000779218e9.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:32:41.719Z",
+      "status": "success"
+    },
+    "0000118aca14": {
+      "url": "https://hashnode.com/@iamdarshshah",
+      "screenshotPath": "/previews/0000118aca14.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:32:43.765Z",
+      "status": "success"
+    },
+    "00000ce58ecf": {
+      "url": "https://github.com/anuraghazra/github-readme-stats",
+      "screenshotPath": "/previews/00000ce58ecf.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:32:44.950Z",
+      "status": "success"
+    },
+    "00001131919c": {
+      "url": "https://iamdarshshah.hashnode.dev/how-to-add-your-recently-published-articles-to-your-github-profile-readme-using-github-actions",
+      "screenshotPath": "/previews/00001131919c.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:32:44.979Z",
+      "status": "success"
+    },
+    "00006384a17f": {
+      "url": "https://github.com/braydoncoyer/ng-limeade",
+      "screenshotPath": "/previews/00006384a17f.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:32:48.304Z",
+      "status": "success"
+    },
+    "00000e9a7fc8": {
+      "url": "https://github.com/braydoncoyer/officeapi",
+      "screenshotPath": "/previews/00000e9a7fc8.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:32:48.330Z",
+      "status": "success"
+    },
+    "000038465f0a": {
+      "url": "https://github.com/braydoncoyer/tailwindcss-v2-dark-mode-template",
+      "screenshotPath": "/previews/000038465f0a.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:32:48.586Z",
+      "status": "success"
+    },
+    "0000722f94c5": {
+      "url": "https://raw.githubusercontent.com/braydoncoyer/braydoncoyer/main/README.template.md",
+      "screenshotPath": "/previews/0000722f94c5.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:32:50.354Z",
+      "status": "success"
+    },
+    "00000356cf53": {
+      "url": "https://github.com/braydoncoyer/braydoncoyer/blob/main/index.js",
+      "screenshotPath": "/previews/00000356cf53.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:32:51.304Z",
+      "status": "success"
+    },
+    "00002d587ff9": {
+      "url": "http://shield.io",
+      "screenshotPath": "/previews/00002d587ff9.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:32:52.110Z",
+      "status": "success"
+    },
+    "00001f5a9442": {
+      "url": "https://jasmine.github.io/api/3.6/global.html#beforeEach",
+      "screenshotPath": "/previews/00001f5a9442.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:32:54.059Z",
+      "status": "success"
+    },
+    "000048d2c163": {
+      "url": "https://angular.io/api/core/testing/TestBed",
+      "screenshotPath": "/previews/000048d2c163.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:32:54.494Z",
+      "status": "success"
+    },
+    "00005d67fc00": {
+      "url": "https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss",
+      "screenshotPath": "/previews/00005d67fc00.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:32:56.072Z",
+      "status": "success"
+    },
+    "00006b24dad7": {
+      "url": "https://git-scm.com/docs/githooks",
+      "screenshotPath": "/previews/00006b24dad7.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:32:58.032Z",
+      "status": "success"
+    },
+    "00003b8c3c5d": {
+      "url": "https://www.npmjs.com/package/husky",
+      "screenshotPath": "/previews/00003b8c3c5d.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:32:59.041Z",
+      "status": "success"
+    },
+    "000035fc687a": {
+      "url": "http://dev.to",
+      "screenshotPath": "/previews/000035fc687a.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:32:59.570Z",
+      "status": "success"
+    },
+    "0000566a193d": {
+      "url": "https://ogp.me",
+      "screenshotPath": "/previews/0000566a193d.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:33:01.344Z",
+      "status": "success"
+    },
+    "00000074095f": {
+      "url": "https://res.cloudinary.com/braydoncoyer/",
+      "screenshotPath": "/previews/00000074095f.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:33:01.451Z",
+      "status": "success"
+    },
+    "00005c4be3eb": {
+      "url": "https://cloudinary.com/invites/lpov9zyyucivvxsnalc5/gle5rlywpxclhxkdtqur",
+      "screenshotPath": "/previews/00005c4be3eb.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:33:04.292Z",
+      "status": "success"
+    },
+    "0000191dd21c": {
+      "url": "https://www.juanfernandes.uk/blog/automated-open-graph-images-with-11ty-and-cloudinary/",
+      "screenshotPath": "/previews/0000191dd21c.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:33:07.372Z",
+      "status": "success"
+    },
+    "0000383a171b": {
+      "url": "http://socialsharepreview.com",
+      "screenshotPath": "/previews/0000383a171b.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:33:07.811Z",
+      "status": "success"
+    },
+    "00002c3beb01": {
+      "url": "https://www.contentful.com/blog/2021/09/08/personalized-image-social-sharing-with-cloudinary-nextjs/",
+      "screenshotPath": "/previews/00002c3beb01.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:58:48.850Z",
+      "status": "success"
+    },
+    "000077210233": {
+      "url": "https://urre.me/writings/dynamic-open-graph-images/",
+      "screenshotPath": "/previews/000077210233.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:33:36.213Z",
+      "status": "success"
+    },
+    "000060a880ae": {
+      "url": "https://github.com/typicode/json-server",
+      "screenshotPath": "/previews/000060a880ae.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:33:37.414Z",
+      "status": "success"
+    },
+    "0000616aada1": {
+      "url": "https://dribbble.com/shots/10844834-New-Logo-Collection-7-logos-mark-design",
+      "screenshotPath": "/previews/0000616aada1.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:33:38.819Z",
+      "status": "success"
+    },
+    "00001e8bdaa0": {
+      "url": "https://angular.io/tutorial/toh-pt6#get-heroes-with-httpclient",
+      "screenshotPath": "/previews/00001e8bdaa0.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:33:41.248Z",
+      "status": "success"
+    },
+    "00003db6e54f": {
+      "url": "https://github.com/braydoncoyer/angular-service-test-http/tree/completed_tests",
+      "screenshotPath": "/previews/00003db6e54f.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:33:41.864Z",
+      "status": "success"
+    },
+    "000025015106": {
+      "url": "https://github.com/braydoncoyer/angular-service-test-http",
+      "screenshotPath": "/previews/000025015106.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:33:42.081Z",
+      "status": "success"
+    },
+    "00000ee6633b": {
+      "url": "https://tailwindcss.com/docs",
+      "screenshotPath": "/previews/00000ee6633b.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:33:44.406Z",
+      "status": "success"
+    },
+    "00003dab3371": {
+      "url": "https://github.com/braydoncoyer/angular-signal-form-introduction",
+      "screenshotPath": "/previews/00003dab3371.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:33:45.410Z",
+      "status": "success"
+    },
+    "00003faba468": {
+      "url": "https://github.com/tailwindlabs/tailwindcss-typography#customization",
+      "screenshotPath": "/previews/00003faba468.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:33:45.734Z",
+      "status": "success"
+    },
+    "000027b0f932": {
+      "url": "https://velite.js.org/",
+      "screenshotPath": "/previews/000027b0f932.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:33:47.887Z",
+      "status": "success"
+    },
+    "00004c4ab1b5": {
+      "url": "https://vercel.com/font",
+      "screenshotPath": "/previews/00004c4ab1b5.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:33:48.296Z",
+      "status": "success"
+    },
+    "00000c885c47": {
+      "url": "https://www.npmjs.com/package/framer-motion",
+      "screenshotPath": "/previews/00000c885c47.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:33:48.711Z",
+      "status": "success"
+    },
+    "00006c0f659a": {
+      "url": "https://kuldar.com/",
+      "screenshotPath": "/previews/00006c0f659a.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:33:51.077Z",
+      "status": "success"
+    },
+    "000040f74b7f": {
+      "url": "https://vemetric.com",
+      "screenshotPath": "/previews/000040f74b7f.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:33:51.664Z",
+      "status": "success"
+    },
+    "00001cfdfcbb": {
+      "url": "https://loops.so/",
+      "screenshotPath": "/previews/00001cfdfcbb.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:33:52.243Z",
+      "status": "success"
+    },
+    "000009f9d581": {
+      "url": "https://nextjs.org",
+      "screenshotPath": "/previews/000009f9d581.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:33:54.955Z",
+      "status": "success"
+    },
+    "000043d423aa": {
+      "url": "https://wizardly-payne-b3707b.netlify.app/blog",
+      "screenshotPath": "/previews/000043d423aa.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:33:55.323Z",
+      "status": "success"
+    },
+    "000001f4fbb4": {
+      "url": "https://sld.codes",
+      "screenshotPath": "/previews/000001f4fbb4.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:33:55.855Z",
+      "status": "success"
+    },
+    "000064f39ef1": {
+      "url": "https://tailwindcss.com",
+      "screenshotPath": "/previews/000064f39ef1.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:33:59.180Z",
+      "status": "success"
+    },
+    "00003de8e9fa": {
+      "url": "https://supabase.com",
+      "screenshotPath": "/previews/00003de8e9fa.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:33:59.364Z",
+      "status": "success"
+    },
+    "000028c85dd0": {
+      "url": "https://cloudinary.com",
+      "screenshotPath": "/previews/000028c85dd0.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:34:05.313Z",
+      "status": "success"
+    },
+    "0000351b4515": {
+      "url": "https://iconic.app",
+      "screenshotPath": "/previews/0000351b4515.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:34:08.905Z",
+      "status": "success"
+    },
+    "0000353605fb": {
+      "url": "https://bit.dev",
+      "screenshotPath": "/previews/0000353605fb.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:34:09.295Z",
+      "status": "success"
+    },
+    "00007abeb841": {
+      "url": "https://harmony-docs.bit.dev/bit-dot-dev/bit-dev",
+      "screenshotPath": "/previews/00007abeb841.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:34:09.547Z",
+      "status": "success"
+    },
+    "00006da79ca4": {
+      "url": "https://debbie.codes",
+      "screenshotPath": "/previews/00006da79ca4.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:34:12.353Z",
+      "status": "success"
+    },
+    "00007c806e0a": {
+      "url": "https://harmony-docs.bit.dev/getting-started/installing-bit",
+      "screenshotPath": "/previews/00007c806e0a.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:34:13.160Z",
+      "status": "success"
+    },
+    "00003935dd10": {
+      "url": "https://angular-2-training-book.rangle.io/modules/introduction#:~:text=In%20Angular%2C%20a%20module%20is,to%20see%20the%20full%20picture.",
+      "screenshotPath": "/previews/00003935dd10.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:34:13.843Z",
+      "status": "success"
+    },
+    "000039f76e7e": {
+      "url": "https://braydoncoyer-2hvriu779-braydon-coyer.vercel.app/",
+      "screenshotPath": "/previews/000039f76e7e.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:34:17.540Z",
+      "status": "success"
+    },
+    "00005967d94c": {
+      "url": "https://wizardly-payne-b3707b.netlify.app/",
+      "screenshotPath": "/previews/00005967d94c.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:34:18.362Z",
+      "status": "success"
+    },
+    "000017cc7bfc": {
+      "url": "https://www.framer.com/?via=braydoncoyer",
+      "screenshotPath": "/previews/000017cc7bfc.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:34:19.293Z",
+      "status": "success"
+    },
+    "00006b899f0f": {
+      "url": "https://braydoncoyer-dev-git-v3-braydon-coyer.vercel.app/",
+      "screenshotPath": "/previews/00006b899f0f.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:34:21.150Z",
+      "status": "success"
+    },
+    "00007e4d086a": {
+      "url": "https://marketplace.visualstudio.com/items?itemName=emmanuelbeziat.vscode-great-icons",
+      "screenshotPath": "/previews/00007e4d086a.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:34:22.885Z",
+      "status": "success"
+    },
+    "0000720b8578": {
+      "url": "https://marketplace.visualstudio.com/items?itemName=sdras.night-owl",
+      "screenshotPath": "/previews/0000720b8578.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:34:22.952Z",
+      "status": "success"
+    },
+    "000071ed2f06": {
+      "url": "https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2",
+      "screenshotPath": "/previews/000071ed2f06.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:34:27.318Z",
+      "status": "success"
+    },
+    "00004027b43f": {
+      "url": "https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag",
+      "screenshotPath": "/previews/00004027b43f.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:34:27.459Z",
+      "status": "success"
+    },
+    "00006e2a568f": {
+      "url": "https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag",
+      "screenshotPath": "/previews/00006e2a568f.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:59:13.991Z",
+      "status": "success"
+    },
+    "000003c99527": {
+      "url": "https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow",
+      "screenshotPath": "/previews/000003c99527.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:34:56.946Z",
+      "status": "success"
+    },
+    "0000192d9d7d": {
+      "url": "https://marketplace.visualstudio.com/items?itemName=PsykoSoldi3r.itunes-vscode",
+      "screenshotPath": "/previews/0000192d9d7d.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:34:57.034Z",
+      "status": "success"
+    },
+    "00002c43100b": {
+      "url": "https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode",
+      "screenshotPath": "/previews/00002c43100b.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:34:57.117Z",
+      "status": "success"
+    },
+    "00007c259de4": {
+      "url": "https://gamesalad.com/",
+      "screenshotPath": "/previews/00007c259de4.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:34:59.932Z",
+      "status": "success"
+    },
+    "00005e5e4bdc": {
+      "url": "https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker",
+      "screenshotPath": "/previews/00005e5e4bdc.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:35:00.751Z",
+      "status": "success"
+    },
+    "00002996ee47": {
+      "url": "https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint",
+      "screenshotPath": "/previews/00002996ee47.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:35:00.902Z",
+      "status": "success"
+    },
+    "000012fed0f9": {
+      "url": "https://tailwindcss.com/docs/installation/framework-guides",
+      "screenshotPath": "/previews/000012fed0f9.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:35:03.591Z",
+      "status": "success"
+    },
+    "0000317947c4": {
+      "url": "https://play.tailwindcss.com/",
+      "screenshotPath": "/previews/0000317947c4.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:35:04.206Z",
+      "status": "success"
+    },
+    "0000047825dd": {
+      "url": "https://codepen.io/trending",
+      "screenshotPath": "/previews/0000047825dd.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:35:06.568Z",
+      "status": "success"
+    },
+    "00005a4d3e7b": {
+      "url": "https://realfavicongenerator.net/favicon-generator/nextjs",
+      "screenshotPath": "/previews/00005a4d3e7b.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:35:08.733Z",
+      "status": "success"
+    },
+    "00001f4efb9c": {
+      "url": "https://codepen.io/braydoncoyer/pen/KKZmNJa",
+      "screenshotPath": "/previews/00001f4efb9c.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:35:09.326Z",
+      "status": "success"
+    },
+    "0000640c9d2d": {
+      "url": "https://tailwindcss.com/docs/using-with-preprocessors#using-post-css-as-your-preprocessor",
+      "screenshotPath": "/previews/0000640c9d2d.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:59:39.211Z",
+      "status": "success"
+    },
+    "000058c044ef": {
+      "url": "https://codepen.io/braydoncoyer/pen/dyJWOBr",
+      "screenshotPath": "/previews/000058c044ef.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:35:39.562Z",
+      "status": "success"
+    },
+    "00002013f607": {
+      "url": "https://codepen.io/braydoncoyer/pen/JjMNbgm",
+      "screenshotPath": "/previews/00002013f607.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:35:39.785Z",
+      "status": "success"
+    },
+    "000008997632": {
+      "url": "https://caniuse.com/css-not-sel-list",
+      "screenshotPath": "/previews/000008997632.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:35:40.129Z",
+      "status": "success"
+    },
+    "0000636ecc0d": {
+      "url": "https://www.joshwcomeau.com/",
+      "screenshotPath": "/previews/0000636ecc0d.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:35:42.655Z",
+      "status": "success"
+    },
+    "000057409349": {
+      "url": "https://developer.apple.com/tutorials/swiftui/",
+      "screenshotPath": "/previews/000057409349.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:35:43.693Z",
+      "status": "success"
+    },
+    "000025750e23": {
+      "url": "https://developer.apple.com/documentation/swiftui",
+      "screenshotPath": "/previews/000025750e23.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:35:43.955Z",
+      "status": "success"
+    },
+    "00002db0041b": {
+      "url": "https://telmo.is/",
+      "screenshotPath": "/previews/00002db0041b.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:59:39.335Z",
+      "status": "failed",
+      "errorMessage": "page.goto: net::ERR_NAME_NOT_RESOLVED at https://telmo.is/\nCall log:\n\u001b[2m  - navigating to \"https://telmo.is/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+    },
+    "000011e5f183": {
+      "url": "https://una.im/archive/",
+      "screenshotPath": "/previews/000011e5f183.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:35:45.697Z",
+      "status": "success"
+    },
+    "000055d51779": {
+      "url": "https://aboutmonica.com/writing",
+      "screenshotPath": "/previews/000055d51779.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:35:46.064Z",
+      "status": "success"
+    },
+    "00002656f611": {
+      "url": "https://codeup.com/program/data-science/?utm_campaign=The+Social+Robin+-+Search+-+San+Antonio+-+DS&utm_medium=ppc&utm_term=codeup&utm_source=adwords&hsa_net=adwords&hsa_mt=b&hsa_ver=3&hsa_grp=101818371279&hsa_ad=452789059416&hsa_tgt=kwd-303629395623&hsa_cam=10300080163&hsa_acc=2267998492&hsa_src=g&hsa_kw=codeup&gclid=Cj0KCQjwxtSSBhDYARIsAEn0thRnWvMaKbE_dUrmNu4kIUmJwg1d74CiAd7GCN0d_LAvZyiQXTxnYUYaAtHTEALw_wcB",
+      "screenshotPath": "/previews/00002656f611.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:35:47.874Z",
+      "status": "success"
+    },
+    "000040ce7eef": {
+      "url": "https://hashnode.com/@braydoncoyer/joinme",
+      "screenshotPath": "/previews/000040ce7eef.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:35:48.032Z",
+      "status": "success"
+    },
+    "00007449d5f0": {
+      "url": "https://markodenic.com/make-your-first-open-source-contribution/",
+      "screenshotPath": "/previews/00007449d5f0.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:35:49.107Z",
+      "status": "success"
+    },
+    "000030c292c4": {
+      "url": "https://www.codingdojo.com/",
+      "screenshotPath": "/previews/000030c292c4.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:35:53.873Z",
+      "status": "success"
+    },
+    "0000435c1834": {
+      "url": "https://www.udacity.com/online-learning-for-individuals?utm_source=gsem_brand&utm_medium=ads_r&utm_campaign=747168232_c_individuals&utm_term=126315200811&utm_keyword=udacity_e&gclid=Cj0KCQjwxtSSBhDYARIsAEn0thSld1mtcnAqhPGWjTX4vEhFdqQZkDqM_jExREc5iNkyu3FnYb5HL9AaAsgrEALw_wcB",
+      "screenshotPath": "/previews/0000435c1834.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:35:56.728Z",
+      "status": "success"
+    },
+    "000019bcc9c0": {
+      "url": "https://flatironschool.com/welcome-to-flatiron-school/?utm_source=Google&utm_medium=ppc&utm_campaign=12728169839&utm_content=127574231184&utm_term=flatiron%20school&uqaid=513799628798&Cj0KCQjwxtSSBhDYARIsAEn0thTQa0u-zcWd68JDoXAiiWlpyLCj_eTlXehvrKWzRHUbRPMJBI-jwvcaAq_SEALw_wcB&gclid=Cj0KCQjwxtSSBhDYARIsAEn0thTQa0u-zcWd68JDoXAiiWlpyLCj_eTlXehvrKWzRHUbRPMJBI-jwvcaAq_SEALw_wcB",
+      "screenshotPath": "/previews/000019bcc9c0.jpeg",
+      "width": 1200,
+      "height": 630,
+      "generatedAt": "2025-12-31T21:35:57.261Z",
+      "status": "success"
+    }
+  }
+}

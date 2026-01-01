@@ -474,3 +474,97 @@ blockquote p {
     animation: none;
   }
 }
+
+/* ===========================================
+   Link Preview Popover - Native Popover API
+   =========================================== */
+
+.link-preview-popover {
+  /* Reset popover defaults */
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  overflow: visible;
+
+  /* Positioning via JS */
+  position: fixed;
+  inset: unset;
+  z-index: 9999;
+
+  /* Animation setup */
+  opacity: 0;
+  transform: translateY(8px) scale(0.96);
+  transition:
+    opacity 0.15s ease-out,
+    transform 0.15s ease-out,
+    overlay 0.15s ease-out allow-discrete,
+    display 0.15s ease-out allow-discrete;
+}
+
+/* Open state */
+.link-preview-popover:popover-open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Entry animation - starting styles */
+@starting-style {
+  .link-preview-popover:popover-open {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+}
+
+/* ===========================================
+   Popover Card Styles
+   =========================================== */
+
+.link-preview-card {
+  width: 320px;
+  max-width: calc(100vw - 32px);
+}
+
+/* ===========================================
+   CSS Anchor Positioning (Progressive Enhancement)
+   Supported in Chrome 125+, Edge 125+
+   =========================================== */
+
+@supports (anchor-name: --test) {
+  .link-preview-popover.anchor-positioned {
+    /* Use CSS Anchor Positioning instead of JS */
+    position: absolute;
+    position-try-fallbacks: flip-block;
+
+    /* Position above the anchor, centered horizontally */
+    bottom: anchor(top);
+    left: anchor(center);
+    transform: translateX(-50%);
+    margin-bottom: 12px;
+  }
+}
+
+/* ===========================================
+   Responsive & Accessibility
+   =========================================== */
+
+/* Hide on touch devices since hover doesn't work well */
+@media (hover: none) and (pointer: coarse) {
+  .link-preview-popover {
+    display: none !important;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .link-preview-popover {
+    transition: none;
+  }
+
+  @starting-style {
+    .link-preview-popover:popover-open {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
