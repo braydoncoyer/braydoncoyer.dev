@@ -7,10 +7,15 @@ const GITHUB_REPO = "braydoncoyer/braydoncoyer.dev";
 const GITHUB_USERNAME = "braydoncoyer";
 
 async function fetchContributions(token: string): Promise<ContributionData | null> {
+  // Calculate rolling 365-day window ending today
+  const today = new Date();
+  const oneYearAgo = new Date();
+  oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+
   const query = `
     query {
       user(login: "${GITHUB_USERNAME}") {
-        contributionsCollection {
+        contributionsCollection(from: "${oneYearAgo.toISOString()}", to: "${today.toISOString()}") {
           contributionCalendar {
             totalContributions
             weeks {
