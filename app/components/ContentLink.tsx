@@ -23,11 +23,29 @@ export function ContentLink({
   title,
   description,
   href,
+  links,
 }: {
   title: string;
   description: string;
   href?: string;
+  links?: { label: string; href: string }[];
 }) {
+  const arrowIcon = (
+    <svg
+      className="relative ml-2.5 mt-px overflow-visible"
+      width="3"
+      height="6"
+      viewBox="0 0 3 6"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M0 0L3 3L0 6"></path>
+    </svg>
+  );
+
   const content = (
     <div>
       <div>
@@ -36,25 +54,26 @@ export function ContentLink({
         </span>
       </div>
       <p className="text-text-secondary">{description}</p>
-      {href ? (
+      {links ? (
+        <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1">
+          {links.map((link) => (
+            <a
+              key={link.href}
+              className="flex items-center text-sm font-medium text-indigo-600"
+              href={link.href}
+            >
+              {link.label}
+              {arrowIcon}
+            </a>
+          ))}
+        </div>
+      ) : href ? (
         <a
           className="mt-2 flex items-center text-sm font-medium text-indigo-600"
           href={href}
         >
           View
-          <svg
-            className="relative ml-2.5 mt-px overflow-visible"
-            width="3"
-            height="6"
-            viewBox="0 0 3 6"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M0 0L3 3L0 6"></path>
-          </svg>
+          {arrowIcon}
         </a>
       ) : null}
     </div>

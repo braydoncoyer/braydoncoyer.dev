@@ -20,17 +20,18 @@ type CreateContactResponse = {
 };
 
 export async function incrementViewCount(slug: string) {
-  const supabase = await createSupabaseAdminClient();
-
   try {
-    const { data: existingArticle } = await supabase
+    const supabase = await createSupabaseAdminClient();
+
+    const { data: existingArticle, error: selectError } = await supabase
       .from("article_views")
       .select("*")
       .eq("slug", slug)
-      .single();
+      .maybeSingle();
+
+    if (selectError) throw selectError;
 
     if (existingArticle) {
-      // If it exists, increment the count
       const { error } = await supabase
         .from("article_views")
         .update({
@@ -43,7 +44,6 @@ export async function incrementViewCount(slug: string) {
 
       return existingArticle.view_count + 1;
     } else {
-      // If it doesn't exist, create a new record
       const { error } = await supabase
         .from("article_views")
         .insert({ slug, view_count: 1 });
@@ -53,7 +53,7 @@ export async function incrementViewCount(slug: string) {
       return 1;
     }
   } catch (error) {
-    console.error("Error incrementing view count:", error);
+    console.warn("Error incrementing view count:", error);
     return 0;
   }
 }

@@ -115,7 +115,7 @@ export const PhotoGallery = ({
       y: "44px",
       zIndex: 10, // Lowest z-index (at bottom)
       direction: "left" as Direction,
-      src: "/braydon_headshot_4.jpg",
+      src: "/braydon_react_miami_headshot.jpg",
     },
   ];
 
