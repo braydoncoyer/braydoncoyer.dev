@@ -9,11 +9,17 @@ import { PageSection } from "../components/PageSection";
 import { ContentLink } from "../components/ContentLink";
 import { VideoCard } from "../components/VideoCard";
 
+interface TalkEvent {
+  event: string;
+  url: string;
+}
+
 interface Talk {
   title: string;
   description: string;
   event: string;
   url?: string;
+  events?: TalkEvent[];
 }
 
 const talksAndPresentations: Talk[] = [
@@ -21,21 +27,24 @@ const talksAndPresentations: Talk[] = [
     title: "Behind the Scenes of Tailwind CSS",
     description:
       "Ever peeked into Tailwind's source code? You'll see exactly how thousands of utility classes get generated, the purging techniques that scan your templates to slash bundle sizes, and how JIT compilation delivers unlimited arbitrary values without tanking performance.",
-    event: "Stir Trek 2025",
-    url: "https://youtu.be/qx_t3uae1o4?si=uvU6dITj1UjbBELf",
+    event: "Stir Trek 2025, React Miami 2026",
+    events: [
+      { event: "React Miami 2026", url: "https://www.youtube.com/watch?v=mPcRf-wHOFQ" },
+      { event: "Stir Trek 2025", url: "https://youtu.be/qx_t3uae1o4?si=uvU6dITj1UjbBELf" },
+    ],
   },
   {
     title: "What's New in Tailwind CSS v4?",
     description:
       "Tailwind CSS v4 brings numerous enhancements to the developer experience. In this session, we'll explore the key changes and new features to help you prepare for the official release of v4.",
-    event: "Commit Your Code Conference",
+    event: "Commit Your Code '24",
     url: "https://www.youtube.com/live/Ils_dA_fHmY?si=Jk-2MDczcxbE95La&t=15711",
   },
   {
     title: "The Power of a Second Brain in a Developer's Workflow",
     description:
       "Instead of using AI to solve a problem and forgetting the solution moments later, use a Second Brain to enhance memory retention and discover related information in context of your past experiences. ",
-    event: "C3 Dev Fest",
+    event: "C3 Conf",
     url: "https://gitnation.com/contents/the-power-of-a-second-brain-in-a-developers-workflow",
   },
   {
@@ -103,46 +112,124 @@ export default function SpeakingPage() {
         </div>
 
         <div>
-          {/* Photos */}
-          <div className="mb-8 mt-16 hidden items-center justify-center space-x-12 lg:flex">
-            <div className="relative">
-              <ShadowBox width={278} height={278}></ShadowBox>
-              <span className="absolute left-1 top-2 rotate-[-8deg]">
-                <Photo
-                  width={270}
-                  height={270}
-                  src="/c3_speaker_head.png"
-                  alt="DoorDash hitting it's millionth total order back in 2015."
-                  direction="right"
-                />
-              </span>
-            </div>
+          {/* Photos — fan effect */}
+          <div className="relative mx-auto mb-8 mt-8 hidden h-[250px] max-w-3xl lg:block">
 
-            <div className="relative">
-              <ShadowBox width={412} height={278}></ShadowBox>
-              <span className="absolute left-1 top-1 rotate-[8deg]">
+            {/* Stir Trek — far left */}
+            <div
+              className="absolute z-10"
+              style={{
+                bottom: 0,
+                left: '50%',
+                marginLeft: -440,
+                transformOrigin: 'bottom center',
+                transform: 'rotate(-18deg)',
+              }}
+            >
+              <ShadowBox width={200} height={240}></ShadowBox>
+              <span className="absolute left-1 top-1">
                 <Photo
-                  width={404}
-                  height={270}
-                  src="/braydon_commit_your_code.jpeg"
-                  alt="DoorDash hitting it's millionth total order back in 2015."
+                  width={192}
+                  height={232}
+                  src="/braydon_stir_trek.jpeg"
+                  alt="Braydon at Stir Trek 2025."
                   direction="left"
                 />
               </span>
             </div>
 
-            <div className="relative">
-              <ShadowBox width={188} height={278}></ShadowBox>
-              <span className="absolute left-1 top-1 rotate-[-8deg]">
+            {/* Commit Your Code — left-center */}
+            <div
+              className="absolute z-20"
+              style={{
+                bottom: 0,
+                left: '50%',
+                marginLeft: -310,
+                transformOrigin: 'bottom center',
+                transform: 'rotate(-8deg)',
+              }}
+            >
+              <ShadowBox width={230} height={200}></ShadowBox>
+              <span className="absolute left-1 top-1">
                 <Photo
-                  width={180}
-                  height={270}
-                  src="/braydon_stir_trek.jpeg"
-                  alt="DoorDash hitting it's millionth total order back in 2015."
+                  width={222}
+                  height={192}
+                  src="/braydon_commit_your_code.jpeg"
+                  alt="Braydon at Commit Your Code conference."
+                  direction="left"
+                />
+              </span>
+            </div>
+
+            {/* React Miami stage — center hero */}
+            <div
+              className="absolute z-50"
+              style={{
+                bottom: 0,
+                left: '50%',
+                marginLeft: -150,
+                transformOrigin: 'bottom center',
+                transform: 'rotate(0deg)',
+              }}
+            >
+              <ShadowBox width={300} height={228}></ShadowBox>
+              <span className="absolute left-1 top-1">
+                <Photo
+                  width={292}
+                  height={220}
+                  src="/react_miami_stage.jpg"
+                  alt="Braydon on stage at React Miami 2026."
                   direction="right"
                 />
               </span>
             </div>
+
+            {/* C3 speaker — right-center */}
+            <div
+              className="absolute z-30"
+              style={{
+                bottom: 0,
+                left: '50%',
+                marginLeft: 80,
+                transformOrigin: 'bottom center',
+                transform: 'rotate(8deg)',
+              }}
+            >
+              <ShadowBox width={230} height={230}></ShadowBox>
+              <span className="absolute left-1 top-1">
+                <Photo
+                  width={222}
+                  height={222}
+                  src="/c3_speaker_head.png"
+                  alt="Braydon speaking at C3 Conf."
+                  direction="right"
+                />
+              </span>
+            </div>
+
+            {/* React Miami headshot — far right */}
+            <div
+              className="absolute z-20"
+              style={{
+                bottom: 0,
+                left: '50%',
+                marginLeft: 240,
+                transformOrigin: 'bottom center',
+                transform: 'rotate(18deg)',
+              }}
+            >
+              <ShadowBox width={200} height={240}></ShadowBox>
+              <span className="absolute left-1 top-1">
+                <Photo
+                  width={192}
+                  height={232}
+                  src="/braydon_react_miami_headshot.jpg"
+                  alt="Braydon speaking at React Miami 2026."
+                  direction="right"
+                />
+              </span>
+            </div>
+
           </div>
           {/* Mobile Photos */}
           <AnimatedMobilePhotos delay={0.1} />
@@ -161,7 +248,10 @@ export default function SpeakingPage() {
                     key={talk.title}
                     title={talk.title}
                     description={talk.description}
-                    href={talk.url}
+                    links={talk.events
+                      ? talk.events.map((e) => ({ label: e.event, href: e.url }))
+                      : talk.url ? [{ label: talk.event, href: talk.url }] : undefined
+                    }
                   />
                 ))}
               </div>

@@ -14,6 +14,7 @@ export function ProfilePicture() {
       "/braydon_headshot_3.jpg",
       "/braydon_speaking_photo.jpeg",
       "/braydon_headshot_4.jpg",
+      "/braydon_react_miami_headshot.jpg",
     ];
     const availableImages = images.filter((img) => img !== imageSrc);
     const randomIndex = Math.floor(Math.random() * availableImages.length);
@@ -116,7 +117,7 @@ export function ProfilePicture() {
           <AnimatePresence mode="wait">
             <motion.img
               key={imageSrc}
-              className="h-[100px] w-[100px] cursor-pointer rounded-full transition-opacity hover:opacity-90"
+              className="h-[100px] w-[100px] cursor-pointer rounded-full object-cover transition-opacity hover:opacity-90"
               src={imageSrc}
               alt=""
               onClick={changeImage}

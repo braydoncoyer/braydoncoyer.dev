@@ -22,15 +22,14 @@ export async function ViewCounter({
   );
 }
 
-// Helper function to just get the count without incrementing
 async function getViewCount(slug: string) {
-  const supabase = await createSupabaseAdminClient();
   try {
+    const supabase = await createSupabaseAdminClient();
     const { data } = await supabase
       .from("article_views")
       .select("view_count")
       .eq("slug", slug)
-      .single();
+      .maybeSingle();
 
     return data?.view_count || 0;
   } catch {

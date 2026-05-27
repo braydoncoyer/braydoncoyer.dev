@@ -405,7 +405,8 @@ const connections: Connection[] = [
     name: "Sam Selikoff",
     profile_picture: "/connections/Sam Selikoff.jpeg",
     socialLink: "https://x.com/BraydonCoyer",
-    isConnected: false,
+    isConnected: true,
+    connectedDate: new Date("2026-04-22"),
   },
   {
     name: "Samuel Kraft",
@@ -582,14 +583,73 @@ const connections: Connection[] = [
     socialLink: "https://x.com/BraydonCoyer",
     isConnected: false,
   },
+  {
+    name: "Brooks Lybrand",
+    profile_picture: "/connections/brookes_lybrand.jpg",
+    socialLink: "https://x.com/BraydonCoyer",
+    isConnected: true,
+    connectedDate: new Date("2025-03-26"),
+  },
+  {
+    name: "Pauline Narvas",
+    profile_picture: "/connections/pauline_narvas.jpg",
+    socialLink: "https://x.com/BraydonCoyer",
+    isConnected: true,
+    connectedDate: new Date("2026-04-22"),
+  },
+  {
+    name: "Ryan Vogel",
+    profile_picture: "/connections/ryan_vogel.jpg",
+    socialLink: "https://x.com/BraydonCoyer",
+    isConnected: true,
+    connectedDate: new Date("2026-04-22"),
+  },
+  {
+    name: "Simeon Griggs",
+    profile_picture: "/connections/simeon_griggs.jpg",
+    socialLink: "https://x.com/BraydonCoyer",
+    isConnected: true,
+    connectedDate: new Date("2026-04-22"),
+  },
+  {
+    name: "Will Johnson",
+    profile_picture: "/connections/will_johnson.jpg",
+    socialLink: "https://x.com/BraydonCoyer",
+    isConnected: true,
+    connectedDate: new Date("2026-04-22"),
+  },
+  {
+    name: "Michelle Bakels",
+    profile_picture: "/connections/michelle_bakels.jpg",
+    socialLink: "https://x.com/BraydonCoyer",
+    isConnected: true,
+    connectedDate: new Date("2026-04-22"),
+  },
+  {
+    name: "Rebecca Bakels",
+    profile_picture: "/connections/rebecca_bakels.jpg",
+    socialLink: "https://x.com/BraydonCoyer",
+    isConnected: true,
+    connectedDate: new Date("2026-04-22"),
+  },
+  {
+    name: "Will King",
+    profile_picture: "/connections/will_king.jpg",
+    socialLink: "https://x.com/BraydonCoyer",
+    isConnected: true,
+    connectedDate: new Date("2026-04-22"),
+  },
 ];
 
 export default function ConnectionsPage() {
   const sortedConnections = [...connections].sort((a, b) => {
-    if (a.isConnected === b.isConnected) {
-      return a.name.localeCompare(b.name);
+    if (a.isConnected !== b.isConnected) {
+      return a.isConnected ? -1 : 1;
     }
-    return a.isConnected ? -1 : 1;
+    if (a.isConnected && b.isConnected && a.connectedDate && b.connectedDate) {
+      return b.connectedDate.getTime() - a.connectedDate.getTime();
+    }
+    return a.name.localeCompare(b.name);
   });
 
   return (
