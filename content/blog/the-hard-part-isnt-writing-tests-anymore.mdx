@@ -1,0 +1,37 @@
+---
+title: The Hard Part Isn't Writing Tests Anymore
+publishedAt: 2026-07-07T12:00:00Z
+summary: AI has made writing tests cheap. It hasn't made deciding what deserves to be tested any easier.
+imageName: the_hard_part_isnt_writing_tests_anymore.jpeg
+categories: ["testing", "programming", "personal"]
+draft: false
+---
+
+
+I've been thinking a lot about how our frontend test suite has grown over the last six months. I don't have any hard numbers to back this up, but it genuinely feels like we're writing more tests than ever before.
+
+My first reaction was, _"That's awesome."_
+
+More tests usually means more confidence, and if our coverage is increasing, that's probably a sign we're moving in the right direction.
+
+The more I thought about it, though, the more I realized that AI has fundamentally changed the economics of writing tests. One of the best side effects of tools like Claude Code is that they're exceptionally good at generating them. Need to cover a handful of edge cases? Ask Claude. Need tests for a new component? Claude will happily produce a suite in a matter of seconds.
+
+**Writing tests just isn't the expensive part anymore.**
+
+A coworker recently made an observation that I haven't been able to shake: as AI gets better, our attention during code review may naturally shift away from implementation and toward the tests themselves.
+
+That sounded backwards to me at first. Aren't the tests supposed to validate the implementation?
+
+More often than not, the implementation is... *fine*. AI has gotten remarkably good at translating requirements into code. Where I find myself slowing down is the test suite. Did the AI actually capture the behavior we care about? Did it invent assumptions that were never part of the feature? Is it testing implementation details instead of observable behavior? Does this test actually communicate the intent of the product requirement?
+
+Those questions have started taking more of my attention than the implementation itself.
+
+That's been an interesting shift because I don't think it's really about AI writing bad tests. It's about AI making tests so cheap to produce that quantity is no longer the bottleneck. We can generate hundreds of assertions without much effort, but that doesn't necessarily buy us confidence.
+
+Confidence still comes from choosing the right behaviors to protect.
+
+think that's changed how I think about the health of a test suite. Six months ago I would have been excited to see the number of tests growing as quickly as they are today. Now, I'm much more interested in whether those tests faithfully encode the product requirements. A thousand assertions that validate the wrong behavior aren't nearly as valuable as a handful that capture the guarantees your users actually depend on.
+
+AI has made writing tests cheap. It hasn't made deciding what deserves to be tested any easier.
+
+If anything, that's becoming the more valuable engineering skill.

@@ -351,7 +351,7 @@ export default function SpeakingPage() {
                       <ShadowBox width={200} height={200}></ShadowBox>
                       <img
                         className="absolute left-1 top-2 h-[186px] w-[186px] rotate-[-8deg] rounded-lg object-cover shadow"
-                        src="/braydon_speaking_photo_square.jpg"
+                        src="/braydon_headshot_6.jpeg"
                         alt=""
                       />
                     </div>
