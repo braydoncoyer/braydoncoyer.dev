@@ -106,7 +106,7 @@ export const PhotoGallery = ({
       y: "22px",
       zIndex: 20,
       direction: "right" as Direction,
-      src: "/c3_speaker_head.png",
+      src: "/braydon_headshot_6.jpeg",
     },
     {
       id: 5,
