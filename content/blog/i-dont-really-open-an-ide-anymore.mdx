@@ -1,0 +1,48 @@
+---
+title: I Don't Really Open an IDE Anymore
+publishedAt: 2026-08-22T12:00:00Z
+summary: Writing the first version got cheap. The job moved upstream.
+imageName: i_dont_really_open_an_ide_anymore.jpeg
+categories: ["personal", "programming"]
+draft: false
+---
+
+I've been thinking about how little time I spend actually writing code lately.
+
+For most of my career, writing code was the job. You opened the editor, found the thing that needed to change, and started working through it. At the end of the day, you could usually point to a bunch of code you had written and say, “Yep, I worked today.”
+
+That's not really what my days look like anymore.
+
+Most days I work in Solo with Claude Code. I'll explain what I'm trying to change, give it enough context to get started, and let it take the first pass.
+
+But there's an important part of that workflow that's easy to miss.
+
+Claude isn't starting from nothing.
+
+I've spent a lot of time building the systems around it: giving it context about the codebase, documenting the patterns I want it to follow, shaping the instructions it works from, and figuring out where it tends to go wrong. A big reason I can get good code out of these tools is because I already know what good code looks like.
+
+In a weird way, some of the engineering has moved upstream. Instead of making every decision while I'm physically writing the implementation, I'm trying to encode more of those decisions into the environment the AI is working inside.
+
+For a while, that still made me feel a little weird.
+
+If I wasn't the one actually writing most of the production code, what exactly was I doing? Was I becoming worse at the thing I'm supposed to be good at?
+
+I eventually realized I was measuring my contribution by the wrong thing.
+
+Writing the first version of something has gotten incredibly cheap. Work that might have taken me a few hours can sometimes exist in a few minutes.
+
+But getting code quickly and getting good software quickly are two very different things.
+
+Claude can make a perfectly reasonable change that solves the wrong problem. It can introduce an abstraction we don't need, miss an existing pattern in the codebase, misunderstand an edge case, or write tests that technically pass without proving much of anything.
+
+So I spend a lot more of my time thinking about what we should actually build, explaining the problem clearly, reviewing what comes back, and deciding what needs another pass.
+
+And the more I work this way, the more I realize that those were always some of the most important parts of being an engineer.
+
+The typing just used to take up a much larger percentage of the day.
+
+You still need to understand the system. You still need to recognize when something doesn't belong. You still need to know what “done” actually looks like. And you definitely need to read AI-generated code like it might be confidently wrong, because sometimes it is.
+
+I still write code. I still open the editor. I'm just spending much less of my day proving that I'm an engineer by how much code I personally type.
+
+And I think I'm becoming more comfortable with that.
