@@ -1,0 +1,68 @@
+---
+title: When an Agent Says It's Done
+publishedAt: 2026-10-23T12:00:00Z
+summary: We've gotten remarkably good at delegating implementation, but we're still doing much of the verification ourselves.
+imageName: when_an_agent_says_its_done.jpeg
+categories: ["personal", "programming", "productivity"]
+draft: false
+---
+
+I've been thinking a lot lately about what it actually means when an agent tells me it's done.
+
+Most of the time, the handoff looks something like asking an agent (I primarily use Claude Code) to implement a feature, it goes off and writes the code, and eventually comes back with a summary that sounds pretty confident. The code looks reasonable, but I still have to read through the diff, open the application, and test everything myself.
+
+What's interesting is that with newer models, I'm rarely spending much time asking Claude to rewrite its implementation. The code is usually pretty close to what I wanted, and often works on the first attempt. But that doesn't mean I can just take its word for it.
+
+I still need to make sure the feature works in the application, that it hasn't affected existing functionality, and that it behaves correctly for users with different permissions and entitlements. Depending on the change, that can take considerably longer than it took Claude to write the code.
+
+<Infoquote>
+  I wrote about how my job has moved toward explaining the problem and reviewing what comes back in [I Don't Really Open an IDE Anymore](https://braydoncoyer.dev/blog/i-dont-really-open-an-ide-anymore). This post picks up where that one left off.
+</Infoquote>
+
+I've started to think this is becoming one of the bigger bottlenecks in agentic development. We've gotten remarkably good at delegating implementation, but we're still doing much of the verification ourselves. And as we start running more agents in parallel, that becomes harder to keep up with.
+
+## Giving agents a way to verify their work
+
+This isn't a particularly new idea. Anthropic's [Claude Code documentation](https://code.claude.com/docs/en/best-practices) recommends giving Claude ways to verify its work, and Addy Osmani [wrote about agentic verification](https://addyo.substack.com/p/agentic-verification) and reviewing evidence rather than relying entirely on diffs.
+
+Over the last few months, [Devyn](https://www.linkedin.com/in/devyn-coyer/) and I have been working on bringing some of these ideas into our engineering workflows at LogicGate.
+
+We've been experimenting with giving agents clearer expectations before they start working. What needs to work, how should they verify it, and when should they stop and ask for help? Depending on the ticket, that might mean running tests, opening the application with Playwright, comparing screenshots against a Figma design via MCP, or querying a database to confirm that a change actually happened.
+
+I think there's an important distinction between asking an agent to test its work and giving it a meaningful way to verify that the feature is complete. An agent might open the application, test the happy path, and report that everything works. But what happens when the user doesn't have access to a particular module, or a feature flag is disabled? The implementation could work perfectly in one environment and still be broken for a large portion of users.
+
+## Putting it into practice
+
+We've started bringing these ideas together in a shared `/ticket` skill. It pulls the requirements from Jira, creates an implementation plan and API contract for us to approve, and then has agents build and verify the changes. A separate agent reviews the implementation against the original requirements, and any findings go back to the agents responsible for the work.
+
+If something fails, the agent can investigate and try again without needing us to initiate another round of work. When it's finished, we get a report of what passed, what couldn't be verified, and an evidence folder with screenshots, test results, and other artifacts.
+
+Being able to start a PR review with something more useful than a confident summary is actually pretty refreshing. Of course, passing tests and having screenshots doesn't automatically mean the work is ready to merge. We still require human approval, and part of reviewing the evidence is making sure the agent actually tested the right things.
+
+I've also been seeing more teams move in this direction. [Warp recently shared](https://x.com/varoonkodithala/status/2113386434086207875) how they're using computer use to have agents navigate applications, test features, and capture screenshots and recordings that get attached to pull requests.
+
+I like this. A reviewer can watch the feature working without having to pull down the branch, start the application, and manually reproduce everything the agent just tested. Don't go crazy on me - I still think pulling and manually testing is a good idea, but we now have the opportunity to remove a lot of the work involved in verifying changes.
+
+My gut says that's where a lot of the opportunity is right now. We don't necessarily need agents making more decisions on our behalf. We need them doing more of the work required for us to make those decisions.
+
+## Bringing the team along
+
+At our October onsite, Devyn and I ran a couple of exercises to introduce this workflow to the rest of engineering. We started with everyone working through a single ticket, identifying useful verification signals and seeing what Claude could validate on its own.
+
+For the second exercise, we had each squad run two or three tickets in parallel using Git worktrees. Each agent had its own isolated environment, allowing several tickets to move forward without interfering with each other.
+
+One thing has become pretty obvious when I work with parallel agents in the same codebase - starting three agents doesn't mean I'm suddenly three times as productive. Even if all three produce great implementations, I still have three sets of changes to verify. I need to understand what each one does, test it in the application, and make sure it hasn't affected anything else. At some point, I become the bottleneck simply because I can't keep up with everything coming back.
+
+This is why we've been spending so much time on verification. We want agents to work through the normal cycle of implementing, testing, and checking their work against the requirements before coming back to us. When something fails, they should investigate and try again. When everything passes, we should have evidence we can review.
+
+Part of what Devyn and I have been trying to accomplish is making this workflow accessible to the whole team. We've been working to standardize the MCPs, CLIs, and other tools our agents have access to, so everyone has a consistent starting point. We've all developed our own collection of prompts, tools, and habits, and I think there's a lot to gain from sharing what works.
+
+## What's next?
+
+We're still figuring a lot of this out, and I don't have hard numbers showing how much time we're saving or whether we're consistently reducing regressions. Those are things I'd like us to start measuring as we continue improving the workflow.
+
+But I've started paying a lot more attention to how much of my time goes toward verifying completed work, and how much of that verification an agent could reasonably do on its own.
+
+I still want to review implementations, make architectural decisions, and make sure we're solving the right problems. I just don't think I need to personally click through every workflow to establish that a feature works.
+
+As models continue to improve, I suspect the next big productivity gains won't come from getting agents to write code much better (Opus 5.5 is legit). They'll come from getting agents to reliably verify more of the work they're already capable of doing.
