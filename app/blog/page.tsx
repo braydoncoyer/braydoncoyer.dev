@@ -8,6 +8,25 @@ import { CategorySelect } from "@/app/components/CategorySelect";
 import { FeaturedBlogCard } from "@/app/components/FeaturedBlogCard";
 import { GridWrapper } from "@/app/components/GridWrapper";
 import clsx from "clsx";
+import { pageMetadata } from "@/app/lib/seo";
+
+const BLOG_DESCRIPTION =
+  "Articles on front-end engineering, AI-assisted development, Angular, React, CSS, Tailwind and testing.";
+
+// A filtered list (/blog?category=angular) points search engines at the
+// matching category page, so the two URLs don't compete.
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ category?: string }>;
+}) {
+  const category = (await searchParams).category?.toLowerCase();
+  return pageMetadata({
+    title: "Blog",
+    description: BLOG_DESCRIPTION,
+    path: category ? `/blog/category/${encodeURIComponent(category)}` : "/blog",
+  });
+}
 
 export default async function BlogPage({
   searchParams,
@@ -54,7 +73,6 @@ export default async function BlogPage({
 
   return (
     <div className="mt-14 space-y-16 md:mt-16">
-      <title>Blog | Braydon Coyer</title>
       <GridWrapper>
         <h1 className="mx-auto max-w-2xl text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-6xl md:leading-[64px]">
           {category

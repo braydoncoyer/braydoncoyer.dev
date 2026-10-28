@@ -8,6 +8,14 @@ import { AnimatedMobilePhotos } from "@/app/components/AnimatedMobilePhotos";
 import { PageSection } from "../components/PageSection";
 import { ContentLink } from "../components/ContentLink";
 import { VideoCard } from "../components/VideoCard";
+import { pageMetadata } from "@/app/lib/seo";
+
+export const metadata = pageMetadata({
+  title: "Speaking",
+  description:
+    "My conference talks, meetup sessions, podcasts and video appearances, plus speaker bios and headshots for event organizers.",
+  path: "/speaking",
+});
 
 interface TalkEvent {
   event: string;
@@ -92,7 +100,6 @@ const talksAndPresentations: Talk[] = [
 export default function SpeakingPage() {
   return (
     <div className="relative">
-      <title>Speaking | Braydon Coyer</title>
       <div className="relative space-y-16">
         <GridWrapper>
           <h1 className="max-w-3/5 mx-auto mt-16 text-balance text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-6xl md:leading-[64px]">

@@ -5,6 +5,20 @@ import {
 import { NewsletterSignUp } from "@/app/components/NewsletterSignUp";
 import { BlogPostList } from "@/app/components/BlogPostList";
 import { CategorySelect } from "@/app/components/CategorySelect";
+import { pageMetadata } from "@/app/lib/seo";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ category: string }>;
+}) {
+  const category = decodeURIComponent((await params).category).toLowerCase();
+  return pageMetadata({
+    title: `Articles about ${category}`,
+    description: `Everything I've written about ${category}: tutorials, tips and lessons learned.`,
+    path: `/blog/category/${encodeURIComponent(category)}`,
+  });
+}
 
 export default async function CategoryPage({
   params,
@@ -31,7 +45,6 @@ export default async function CategoryPage({
 
   return (
     <div className="mt-[100px] w-full space-y-[80px]">
-      <title>{category} Articles</title>
       <h1 className="mx-auto max-w-2xl text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-6xl md:leading-[64px]">
         {`Articles about ${category || "Unknown Category"}`}
       </h1>

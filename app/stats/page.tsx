@@ -1,4 +1,3 @@
-import { Metadata } from "next";
 import { getBuildTimeStats } from "@/app/lib/stats/build-time-stats";
 import { getServerStats } from "@/app/lib/stats/server-stats";
 import { getGitHubStats } from "@/app/lib/stats/github-stats";
@@ -20,12 +19,14 @@ import { ContributionGraphCard } from "@/app/components/stats/ContributionGraphC
 import { LighthouseScoreCard } from "@/app/components/stats/LighthouseScoreCard";
 import { GridWrapper } from "@/app/components/GridWrapper";
 import { StatsPageWrapper } from "@/app/components/stats/StatsPageWrapper";
+import { pageMetadata } from "@/app/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Stats | Braydon Coyer",
+export const metadata = pageMetadata({
+  title: "Stats",
   description:
     "Numbers, metrics, and fun facts about braydoncoyer.dev - total articles, views, reactions, and more.",
-};
+  path: "/stats",
+});
 
 // Revamp date: March 31, 2025
 const REVAMP_DATE = new Date("2025-03-31");

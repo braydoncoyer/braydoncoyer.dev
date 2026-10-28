@@ -5,7 +5,7 @@ export const siteMetadata = {
   description:
     "I'm Braydon, a senior front-end engineer, blogger and international speaker. Welcome to my corner of the internet!",
   language: "en-us",
-  siteUrl: "https://braydoncoyer.dev",
+  siteUrl: "https://www.braydoncoyer.dev",
   siteRepo: "https://github.com/braydoncoyer/braydoncoyer.dev",
   avatarImage:
     "https://res.cloudinary.com/braydoncoyer/image/upload/v1636553710/avatar.jpg",

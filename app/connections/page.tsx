@@ -1,6 +1,12 @@
-import type { Metadata } from "next";
 import { HorizontalLine } from "@/app/components/HorizontalLine";
 import { GridWrapper } from "@/app/components/GridWrapper";
+import { pageMetadata } from "@/app/lib/seo";
+
+export const metadata = pageMetadata({
+  title: "Connections",
+  description: "An evolving list of people I've met and those I wish to meet.",
+  path: "/connections",
+});
 
 type Connection = {
   name: string;
@@ -8,11 +14,6 @@ type Connection = {
   socialLink: string;
   isConnected: boolean;
   connectedDate?: Date;
-};
-
-export const metadata: Metadata = {
-  title: "Connections | Your App Name",
-  description: "Manage your connections and network",
 };
 
 const connections: Connection[] = [

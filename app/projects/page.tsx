@@ -1,4 +1,12 @@
 import { GridWrapper } from "@/app/components/GridWrapper";
+import { pageMetadata } from "@/app/lib/seo";
+
+export const metadata = pageMetadata({
+  title: "Projects",
+  description:
+    "A collection of my favorite projects: sites and tools I've designed and built, like the Commit Your Code conference website and Pomegradient.",
+  path: "/projects",
+});
 
 interface Project {
   title: string;
