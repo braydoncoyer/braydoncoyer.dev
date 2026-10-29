@@ -320,7 +320,9 @@ export async function generateMetadata({
     title: post.title,
     description: post.summary,
     alternates: {
-      canonical: path,
+      // Posts first published elsewhere (daily.dev, Bundle) credit the
+      // original with canonicalUrl in their frontmatter.
+      canonical: post.canonicalUrl ?? path,
       types: {
         ...feedAlternates,
         "text/markdown": [{ url: `${path}.md`, title: post.title }],

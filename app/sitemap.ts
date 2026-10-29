@@ -9,12 +9,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = fetchAndSortBlogPosts();
   const latestPostDate = posts[0] ? new Date(posts[0].publishedAt) : undefined;
 
-  const blogUrls = posts.map((post) => ({
-    url: absoluteUrl(`/blog/${post.slug}`),
-    lastModified: new Date(post.publishedAt),
-    changeFrequency: "weekly" as const,
-    priority: 0.8,
-  }));
+  // Posts whose canonical lives on another site stay out, since a sitemap
+  // should only list URLs this site wants indexed.
+  const blogUrls = posts
+    .filter((post) => !post.canonicalUrl)
+    .map((post) => ({
+      url: absoluteUrl(`/blog/${post.slug}`),
+      lastModified: new Date(post.publishedAt),
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    }));
 
   const categoryUrls = Array.from(extractUniqueBlogCategories(posts)).map(
     (category) => ({

@@ -18,5 +18,8 @@ export async function GET(
   const post = fetchAndSortBlogPosts().find((post) => post.slug === slug);
   if (!post) notFound();
 
-  return markdownResponse(postToMarkdown(post), `/blog/${post.slug}`);
+  return markdownResponse(
+    postToMarkdown(post),
+    post.canonicalUrl ?? `/blog/${post.slug}`,
+  );
 }

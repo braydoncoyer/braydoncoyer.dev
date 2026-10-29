@@ -43,13 +43,14 @@ export function postToMarkdown(post: Blog): string {
   ].join("\n");
 }
 
-export function markdownResponse(body: string, canonicalPath: string) {
+// canonical is a path on this site or a full URL elsewhere.
+export function markdownResponse(body: string, canonical: string) {
   return new Response(body, {
     headers: {
       "Content-Type": "text/markdown; charset=utf-8",
       // Point search engines at the HTML page so the Markdown copy never
       // competes with it.
-      Link: `<${absoluteUrl(canonicalPath)}>; rel="canonical"`,
+      Link: `<${absoluteUrl(canonical)}>; rel="canonical"`,
     },
   });
 }
