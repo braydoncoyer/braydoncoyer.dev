@@ -7,6 +7,13 @@ import { siteMetadata } from "@/app/data/siteMetadata";
 import { fetchAndSortBlogPosts } from "@/app/lib/utils";
 import { FeaturedBlogCard } from "@/app/components/FeaturedBlogCard";
 import clsx from "clsx";
+import { pageMetadata } from "@/app/lib/seo";
+
+export const metadata = pageMetadata({
+  title: "Links",
+  description: "Quick links to my latest articles, socials and projects.",
+  path: "/links",
+});
 
 export default async function LinksPage() {
   const allPublishedBlogPosts = await fetchAndSortBlogPosts();
@@ -14,7 +21,6 @@ export default async function LinksPage() {
 
   return (
     <div className="relative">
-      <title>Links | Braydon Coyer</title>
       <div className="space-y-12">
         <ProfilePicture />
         <GridWrapper>

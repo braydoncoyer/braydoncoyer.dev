@@ -13,7 +13,9 @@ import clsx from "clsx";
 import { ViewCounter } from "@/app/components/ViewCounter";
 import ArticleReactionWrapper from "@/app/components/ArticleReactionsWrapper";
 import { Suspense } from "react";
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
+import { siteMetadata } from "@/app/data/siteMetadata";
+import { feedAlternates, postOgImageUrl } from "@/app/lib/seo";
 import { AudioPlayer } from "@/app/components/AudioPlayer";
 import { TableOfContents } from "@/app/components/TableOfContents";
 
@@ -298,10 +300,9 @@ export default async function BlogPage({ params }: BlogPageProps) {
   );
 }
 
-export async function generateMetadata(
-  { params }: BlogPageProps,
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: BlogPageProps): Promise<Metadata> {
   const slug = (await params).slug;
 
   const post = posts.find((post) => post.slug === slug);
@@ -312,34 +313,42 @@ export async function generateMetadata(
     };
   }
 
-  const previousImages = (await parent)?.openGraph?.images || [];
+  const path = `/blog/${post.slug}`;
+  const ogImage = postOgImageUrl(post);
 
   return {
     title: post.title,
     description: post.summary,
+    alternates: {
+      // Posts first published elsewhere (daily.dev, Bundle) credit the
+      // original with canonicalUrl in their frontmatter.
+      canonical: post.canonicalUrl ?? path,
+      types: {
+        ...feedAlternates,
+        "text/markdown": [{ url: `${path}.md`, title: post.title }],
+      },
+    },
     openGraph: {
       title: post.title,
       description: post.summary,
       type: "article",
+      url: path,
+      siteName: siteMetadata.title,
+      locale: "en_US",
       publishedTime: post.publishedAt,
-      authors: ["Braydon Coyer"],
-      images: [
-        {
-          url: `/api/og?title=${encodeURIComponent(post.title)}&summary=${encodeURIComponent(post.summary)}&image=${encodeURIComponent(post.imageName)}`,
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-        ...previousImages,
-      ],
+      authors: [siteMetadata.author],
+      tags: post.categories,
+      // Only the post's own card: listing the site-wide image too lets some
+      // apps pick the generic one.
+      images: [{ url: ogImage, width: 1200, height: 630, alt: post.title }],
     },
     twitter: {
       card: "summary_large_image",
+      site: siteMetadata.twitterHandle,
+      creator: siteMetadata.twitterHandle,
       title: post.title,
       description: post.summary,
-      images: [
-        `/api/og?title=${encodeURIComponent(post.title)}&summary=${encodeURIComponent(post.summary)}&image=${encodeURIComponent(post.imageName)}`,
-      ],
+      images: [ogImage],
     },
   };
 }

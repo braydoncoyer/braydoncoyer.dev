@@ -12,13 +12,20 @@ import { CurrentlyReadingBento } from "@/app/components/CurrentlyReadingBento";
 import { GridWrapper } from "@/app/components/GridWrapper";
 import { AboutTrackPattern } from "@/app/components/AboutTrackPattern";
 import { Photo } from "@/app/components/Photo";
+import { pageMetadata } from "@/app/lib/seo";
+
+export const metadata = pageMetadata({
+  title: "About",
+  description:
+    "Get to know Braydon Coyer, a senior front-end engineer at LogicGate: how I got into programming, my work history, and what I'm up to outside of code.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   const timeOfDayGreeting = getTimeOfDayGreeting();
 
   return (
     <div className="relative mt-14">
-      <title>About | Braydon Coyer</title>
       <div className="relative space-y-10 md:space-y-16">
         {/* Title */}
         <GridWrapper className="space-y-12">

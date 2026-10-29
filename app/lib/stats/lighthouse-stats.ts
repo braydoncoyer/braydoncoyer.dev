@@ -3,7 +3,7 @@
 import { unstable_cache } from "next/cache";
 import type { LighthouseScores, LighthouseStats } from "./types";
 
-const SITE_URL = "https://braydoncoyer.dev";
+const SITE_URL = "https://www.braydoncoyer.dev";
 
 interface PageSpeedResponse {
   lighthouseResult?: {

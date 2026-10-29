@@ -3,11 +3,18 @@ import { NewsletterSignUp } from "@/app/components/NewsletterSignUp";
 import { hardwareData, softwareData } from "app/data/toolbox";
 import { HorizontalLine } from "@/app/components/HorizontalLine";
 import { GridWrapper } from "@/app/components/GridWrapper";
+import { pageMetadata } from "@/app/lib/seo";
+
+export const metadata = pageMetadata({
+  title: "Toolbox",
+  description:
+    "The hardware and software I keep in my toolbox as a front-end engineer.",
+  path: "/toolbox",
+});
 
 export default function ToolboxPage() {
   return (
     <div className="relative">
-      <title>Toolbox | Braydon Coyer</title>
       <span className="absolute left-1/2 top-20 -translate-y-1/2 translate-x-1/2">
         <HorizontalLine />
       </span>

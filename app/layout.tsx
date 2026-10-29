@@ -8,27 +8,34 @@ import { cx } from "./lib/utils";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import Script from "next/script";
+import { DEFAULT_OG_IMAGE, feedAlternates } from "./lib/seo";
 
+// Pages set their own canonical URL with pageMetadata(); the root layout only
+// carries the defaults that every page shares.
 export const metadata: Metadata = {
   metadataBase: new URL(siteMetadata.siteUrl),
+  title: {
+    default: `${siteMetadata.title} · Senior Front-End Engineer`,
+    template: `%s | ${siteMetadata.title}`,
+  },
   description: siteMetadata.description,
+  authors: [{ name: siteMetadata.author, url: siteMetadata.siteUrl }],
+  alternates: { types: feedAlternates },
   openGraph: {
+    type: "website",
+    siteName: siteMetadata.title,
+    locale: "en_US",
     title: siteMetadata.title,
     description: siteMetadata.description,
-    images: [
-      {
-        url: "/braydon_coyer_blogfolio_og.jpg", // Your default OG image
-        width: 1200,
-        height: 630,
-        alt: siteMetadata.title,
-      },
-    ],
+    images: [DEFAULT_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
+    site: siteMetadata.twitterHandle,
+    creator: siteMetadata.twitterHandle,
     title: siteMetadata.title,
     description: siteMetadata.description,
-    images: ["/braydon_coyer_blogfolio_og.jpg"],
+    images: [DEFAULT_OG_IMAGE.url],
   },
 };
 

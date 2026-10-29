@@ -5,6 +5,14 @@ import { InfiniteCanvas } from "@/app/components/InfiniteCanvas";
 import { CommunityWallCard } from "@/app/components/CommunityWallCard";
 import { GridWrapper } from "../components/GridWrapper";
 import { Button } from "../components/Button";
+import { pageMetadata } from "@/app/lib/seo";
+
+export const metadata = pageMetadata({
+  title: "Community Wall",
+  description:
+    "Leave a note on my community wall and read what others have shared.",
+  path: "/community-wall",
+});
 
 type SearchParamProps = {
   searchParams: Promise<{ show: string }>;
@@ -24,7 +32,6 @@ export default async function Page({ searchParams }: SearchParamProps) {
 
   return (
     <>
-      <title>Community Wall | Braydon Coyer</title>
       {show ? <CommunityWallModal /> : null}
 
       {/* Page Header */}

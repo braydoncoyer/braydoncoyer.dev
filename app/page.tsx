@@ -15,6 +15,13 @@ import { AboutMeBento } from "./components/AboutMeBento";
 import { AnimatedMobilePhotos } from "./components/AnimatedMobilePhotos";
 import { GridWrapper } from "./components/GridWrapper";
 import clsx from "clsx";
+import { pageMetadata } from "@/app/lib/seo";
+import { siteMetadata } from "@/app/data/siteMetadata";
+
+export const metadata = pageMetadata({
+  description: siteMetadata.description,
+  path: "/",
+});
 
 export default async function Home() {
   const allPublishedBlogPosts = await fetchAndSortBlogPosts();

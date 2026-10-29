@@ -43,6 +43,7 @@ const footerSections: FooterSection[] = [
       { href: "/connections", label: "Connections" },
       { href: "/links", label: "Links" },
       { href: "/stats", label: "Stats" },
+      { href: "/rss.xml", label: "RSS" },
     ],
   },
 ];
