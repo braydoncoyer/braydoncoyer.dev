@@ -169,19 +169,23 @@ function AudioIndicator({ isHovered }: { isHovered: boolean }) {
             initial={{
               fill: "#A5AEB8",
               height: bar.baseHeight,
-              y: 16 - bar.baseHeight / 2,
+              // `y` is a CSS transform, and Framer Motion drops SVG transforms
+              // until the rect has been measured. That leaves the bars on the
+              // top of the pill until hover starts the animation. `attrY` is
+              // the SVG y attribute, so the bars are centered on first paint.
+              attrY: 16 - bar.baseHeight / 2,
             }}
             animate={isHovered ? "hover" : "initial"}
             variants={{
               initial: {
                 fill: "#A5AEB8",
                 height: bar.baseHeight,
-                y: 16 - bar.baseHeight / 2,
+                attrY: 16 - bar.baseHeight / 2,
               },
               hover: {
                 fill: "#6c47ff",
                 height: bar.baseHeight * 1.5,
-                y: 16 - (bar.baseHeight * 1.5) / 2,
+                attrY: 16 - (bar.baseHeight * 1.5) / 2,
                 transition: {
                   duration: 0.6,
                   repeat: Infinity,
