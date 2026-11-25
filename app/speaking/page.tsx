@@ -270,6 +270,14 @@ export default function SpeakingPage() {
               </p>
               <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-3">
                 <VideoCard
+                  title="How AI Changed My Workflow as a Frontend Engineer"
+                  subtitle="TuxCare Livestream"
+                  url="https://www.youtube.com/watch?v=saFS_yVZ5o8"
+                  target="_blank"
+                  thumbnailUrl="/tuxcare_livestream.jpeg"
+                  duration={2562}
+                />
+                <VideoCard
                   title="Build a Devious Web Video Player in 4 Hours"
                   subtitle="Web Dev Challenge"
                   url="https://youtu.be/bF32laUxoK0?si=UW3OGEQ4dYVSzhBV"
